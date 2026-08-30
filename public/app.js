@@ -71,6 +71,8 @@ const I18N = {
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
     "plans.noTraining": "No training on my data",
+    "plans.columns": "Columns",
+    "plans.columns.title": "Show columns",
     "plans.badge.noTraining": "no training",
     "plans.badge.zeroRetention": "zero retention",
     "plans.badge.retention": "retention {d}d",
@@ -186,6 +188,8 @@ const I18N = {
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
     "plans.noTraining": "Kein Training auf meinen Daten",
+    "plans.columns": "Spalten",
+    "plans.columns.title": "Spalten anzeigen",
     "plans.badge.noTraining": "kein Training",
     "plans.badge.zeroRetention": "Zero Retention",
     "plans.badge.retention": "Speicherung {d} T",
@@ -416,6 +420,26 @@ let maxBudget = 300;   // Budget-Filter: max $/Monat
 let minAiScore = 0;    // AI-Score-Filter: mindestens
 let noTrainingOnly = false; // Privacy-Filter: nur "no training on my data"
 
+/* ---------------- Spalten-Auswahl (User-anpassbar) ---------------- */
+// Alle verfügbaren Spalten; Auswahl wird in localStorage gespeichert.
+const ALL_COLUMNS = ["plan", "model", "score", "tokens", "req10", "rawtokens", "rawreq", "price", "privacy"];
+const DEFAULT_COLUMNS = ["plan", "model", "score", "tokens", "req10", "price", "privacy"];
+let visibleColumns = loadColumns();
+function loadColumns() {
+  try {
+    const stored = localStorage.getItem("cpc-columns");
+    if (stored) {
+      const arr = JSON.parse(stored);
+      if (Array.isArray(arr) && arr.length) return arr.filter((c) => ALL_COLUMNS.includes(c));
+    }
+  } catch (e) { /* fallthrough */ }
+  return [...DEFAULT_COLUMNS];
+}
+function saveColumns() {
+  try { localStorage.setItem("cpc-columns", JSON.stringify(visibleColumns)); } catch (e) { /* ignore */ }
+}
+function columnVisible(col) { return visibleColumns.includes(col); }
+
 /* ---------------- AI-Score (Artificial Analysis) ---------------- */
 function aiScoreFor(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
@@ -614,30 +638,68 @@ function renderPlans() {
   if (count) count.textContent = `${combos.length} / ${totalCombos}`;
 
   if (!combos.length) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Kombinationen gefunden." : "No combinations match."}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="${visibleColumns.length}" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Kombinationen gefunden." : "No combinations match."}</td></tr>`;
     return;
   }
 
   tbody.innerHTML = combos.map((c) => {
-    const priceStr = c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-";
-    const scoreStr = c.score !== null ? `<span class="num strong">${c.score.toFixed(1)}</span>` : `<span class="muted">-</span>`;
-    const scoreBar = c.score !== null
-      ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
-      : "";
-    const codingStr = c.codingScore !== null ? `<span class="muted">${c.codingScore.toFixed(1)}</span>` : "";
-    return `
-    <tr>
-      <td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>
-      <td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>
-      <td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>
-      <td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>
-      <td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>
-      <td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>
-      <td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? fmtNum(c.rawRequestsPerMonth) : "-"}</span></td>
-      <td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span></td>
-      <td data-label="${t("plans.th.privacy")}">${privacyBadge(c)}</td>
-    </tr>`;
+    const cells = visibleColumns.map((col) => renderCell(col, c)).join("");
+    return `<tr>${cells}</tr>`;
   }).join("");
+  syncColumnHeaders();
+}
+
+// Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
+function renderCell(col, c) {
+  const priceStr = c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-";
+  const scoreStr = c.score !== null ? `<span class="num strong">${c.score.toFixed(1)}</span>` : `<span class="muted">-</span>`;
+  const scoreBar = c.score !== null
+    ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
+    : "";
+  const codingStr = c.codingScore !== null ? `<span class="muted">${c.codingScore.toFixed(1)}</span>` : "";
+  switch (col) {
+    case "plan": return `<td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
+    case "model": return `<td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
+    case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>`;
+    case "tokens": return `<td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>`;
+    case "req10": return `<td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>`;
+    case "rawtokens": return `<td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>`;
+    case "rawreq": return `<td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? fmtNum(c.rawRequestsPerMonth) : "-"}</span></td>`;
+    case "price": return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span></td>`;
+    case "privacy": return `<td data-label="${t("plans.th.privacy")}">${privacyBadge(c)}</td>`;
+    default: return "";
+  }
+}
+
+// Tabellenköpfe: nur sichtbare Spalten anzeigen
+function syncColumnHeaders() {
+  const table = document.getElementById("plans-table");
+  if (!table) return;
+  const head = table.querySelector("thead tr");
+  if (!head) return;
+  const sortableMap = { plan: "plan", model: "model", score: "score", tokens: "tokens", req10: "req10", rawtokens: "rawtokens", rawreq: "rawreq", price: "price", privacy: null };
+  head.innerHTML = visibleColumns.map((col) => {
+    const sortKey = sortableMap[col];
+    const i18nKey = `plans.th.${col}`;
+    const label = t(i18nKey) || col;
+    const th = document.createElement("th");
+    if (sortKey) {
+      th.dataset.sort = sortKey;
+      th.innerHTML = `${label}<span class="sort-ind">${plansSort.key === sortKey ? (plansSort.dir === "asc" ? "↑" : "↓") : "↕"}</span>`;
+      if (plansSort.key === sortKey) th.classList.add("sorted");
+    } else {
+      th.textContent = label;
+    }
+    return th.outerHTML;
+  }).join("");
+  bindSortHeader("plans-table", plansSort, renderPlans);
+}
+
+// Spalten-Picker UI synchronisieren
+function syncColumnPicker() {
+  document.querySelectorAll("#col-picker-panel input[data-col]").forEach((box) => {
+    box.checked = visibleColumns.includes(box.dataset.col);
+  });
 }
 
 function renderFormula() {
@@ -747,6 +809,30 @@ function init() {
     noTrainingOnly = e.target.checked;
     renderPlans();
   });
+
+  // Spalten-Picker: Dropdown öffnen/schließen
+  const colBtn = $("#col-picker-btn");
+  const colPanel = $("#col-picker-panel");
+  if (colBtn && colPanel) {
+    colBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      colPanel.hidden = !colPanel.hidden;
+    });
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("#col-picker")) colPanel.hidden = true;
+    });
+  }
+  // Spalten-Checkboxen: Sichtbarkeit togglen + speichern
+  document.querySelectorAll("#col-picker-panel input[data-col]").forEach((box) => {
+    box.addEventListener("change", () => {
+      const col = box.dataset.col;
+      if (box.checked) { if (!visibleColumns.includes(col)) visibleColumns.push(col); }
+      else { visibleColumns = visibleColumns.filter((c) => c !== col); }
+      saveColumns();
+      renderPlans();
+    });
+  });
+  syncColumnPicker();
 
   // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)

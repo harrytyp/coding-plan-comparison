@@ -380,6 +380,22 @@ th[data-sort].sorted { color: var(--primary); }
 .score-fill { height: 100%; background: var(--info); border-radius: 2px; }
 .privacy-badges { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
 
+/* ============ SPALTEN-PICKER ============ */
+.col-picker { position: relative; }
+.col-picker-btn { white-space: nowrap; }
+.col-picker-panel {
+  position: absolute; right: 0; top: calc(100% + 6px); z-index: 60;
+  background: var(--bg-elev); border: 1px solid var(--border-strong); border-radius: 10px;
+  box-shadow: var(--shadow-lg); padding: 14px; min-width: 210px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.col-picker-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); margin-bottom: 2px; }
+.col-picker-panel label {
+  display: flex; align-items: center; gap: 9px; font-size: 13.5px; cursor: pointer; padding: 3px 2px; border-radius: 5px;
+}
+.col-picker-panel label:hover { background: var(--bg-muted); }
+.col-picker-panel input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--primary); cursor: pointer; }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
   .nav-links { display: none; }
@@ -483,6 +499,21 @@ th[data-sort].sorted { color: var(--primary); }
         <input type="checkbox" id="privacy-toggle">
         <span data-i18n="plans.noTraining">No training on my data</span>
       </label>
+      <div class="col-picker" id="col-picker">
+        <button class="btn col-picker-btn" id="col-picker-btn" type="button" data-i18n="plans.columns">Columns</button>
+        <div class="col-picker-panel" id="col-picker-panel" hidden>
+          <div class="col-picker-title" data-i18n="plans.columns.title">Show columns</div>
+          <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
+          <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
+          <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
+          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
+          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $10</span></label>
+          <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
+          <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
+          <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
+          <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
+        </div>
+      </div>
       <span class="toolbar-count" id="plans-count"></span>
     </div>
     <div class="table-wrap" id="plans-table-wrap">
