@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-30T21:31:22.975Z",
+  "generatedAt": "2026-08-30T21:40:56.540Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -27,7 +27,10 @@
       "price": {
         "monthlyUsd": 10,
         "paidPrice": 10,
-        "advertised": 10
+        "advertised": 10,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "dollar_usage",
       "quotas": [
@@ -880,7 +883,10 @@
       "price": {
         "monthlyUsd": 1,
         "paidPrice": 1,
-        "advertised": 1
+        "advertised": 1,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -2200,7 +2206,10 @@
       "price": {
         "monthlyUsd": 10,
         "paidPrice": 10.77,
-        "advertised": 10
+        "advertised": 10,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -3520,7 +3529,10 @@
       "price": {
         "monthlyUsd": 20,
         "paidPrice": 20,
-        "advertised": 20
+        "advertised": 20,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -4840,7 +4852,10 @@
       "price": {
         "monthlyUsd": 100,
         "paidPrice": 100,
-        "advertised": 100
+        "advertised": 100,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -6160,7 +6175,10 @@
       "price": {
         "monthlyUsd": 200,
         "paidPrice": 200,
-        "advertised": 200
+        "advertised": 200,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7480,7 +7498,10 @@
       "price": {
         "monthlyUsd": 16.5,
         "paidPrice": 16.5,
-        "advertised": 16.5
+        "advertised": 16.5,
+        "currency": "CNY",
+        "monthlyCny": 118,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7573,7 +7594,10 @@
       "price": {
         "monthlyUsd": 75,
         "paidPrice": 75,
-        "advertised": 75
+        "advertised": 75,
+        "currency": "CNY",
+        "monthlyCny": 538,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7666,7 +7690,10 @@
       "price": {
         "monthlyUsd": 151,
         "paidPrice": 151,
-        "advertised": 151
+        "advertised": 151,
+        "currency": "CNY",
+        "monthlyCny": 1078,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7759,7 +7786,10 @@
       "price": {
         "monthlyUsd": 50,
         "paidPrice": 50,
-        "advertised": 50
+        "advertised": 50,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "requests",
       "quotas": [
@@ -7810,7 +7840,10 @@
       "price": {
         "monthlyUsd": 6,
         "paidPrice": 6,
-        "advertised": 8
+        "advertised": 8,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7845,7 +7878,10 @@
       "price": {
         "monthlyUsd": 18,
         "paidPrice": 18,
-        "advertised": 25
+        "advertised": 25,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7880,7 +7916,10 @@
       "price": {
         "monthlyUsd": 68,
         "paidPrice": 68,
-        "advertised": 80
+        "advertised": 80,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "credits",
       "quotas": [
@@ -7914,8 +7953,11 @@
       "provider": "moonshot",
       "price": {
         "monthlyUsd": 13.9,
-        "paidPrice": 13.9,
-        "advertised": 13.9
+        "paidPrice": 99,
+        "advertised": 99,
+        "currency": "CNY",
+        "monthlyCny": 99,
+        "altPrice": "$13.9/mo ≈"
       },
       "meter": "credits",
       "quotas": [
@@ -8048,8 +8090,11 @@
       "provider": "moonshot",
       "price": {
         "monthlyUsd": 27.9,
-        "paidPrice": 27.9,
-        "advertised": 27.9
+        "paidPrice": 199,
+        "advertised": 199,
+        "currency": "CNY",
+        "monthlyCny": 199,
+        "altPrice": "$27.9/mo ≈"
       },
       "meter": "credits",
       "quotas": [
@@ -8182,8 +8227,11 @@
       "provider": "moonshot",
       "price": {
         "monthlyUsd": 97.9,
-        "paidPrice": 97.9,
-        "advertised": 97.9
+        "paidPrice": 699,
+        "advertised": 699,
+        "currency": "CNY",
+        "monthlyCny": 699,
+        "altPrice": "$97.9/mo ≈"
       },
       "meter": "credits",
       "quotas": [
@@ -8317,7 +8365,10 @@
       "price": {
         "monthlyUsd": 10,
         "paidPrice": 10,
-        "advertised": 10
+        "advertised": 10,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null
       },
       "meter": "prompts",
       "quotas": [

@@ -329,8 +329,10 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   // Offizielle Billing-Beispiele (kimi.com/code/docs): einfacher Request ~¥0.03,
   // komplexer Task ~¥1.6. Membership-Preis (CNY/Monat) ÷ Kosten/Request = Requests/Monat.
   // Tiers skalieren mit den offiziellen relativen Credits (Moderato = 4× Andante).
+  // HINWEIS: Kimi hat NUR CNY-Preise (auch international). paidPrice = CNY (kanonisch),
+  // USD nur als Alt-Info (Kurs 0.14 dokumentiert). Keine willkürliche USD-Darstellung.
   const KIMI_SIMPLE_REQUEST_CNY = 0.03;
-  const USD_PER_CNY = 0.14; // grobe Umrechnung für Anzeige; kanonisch bleibt CNY
+  const USD_PER_CNY = 0.14; // dokumentierter Umrechnungskurs (Anzeige)
   for (const p of kimiPrices?.plans ?? []) {
     const tierKey = kimiTierMap[p.name];
     if (!tierKey) continue;
@@ -339,7 +341,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       id: `kimi-${tierKey}`,
       provider: "moonshot",
       name: `Kimi Code ${p.name}`,
-      price: { monthlyUsd: usd, paidPrice: usd, advertisedPrice: usd, billingNote: `CNY ${p.priceCny}/月 (offiziell, kimi.com)`, altPrice: `¥${p.priceCny}/mo` },
+      // Kanonisch: CNY. paidPrice in CNY für korrekte $10-Normalisierung.
+      price: { monthlyUsd: usd, paidPrice: p.priceCny, advertisedPrice: p.priceCny, currency: "CNY", monthlyCny: p.priceCny, billingNote: `¥${p.priceCny}/Monat (offiziell, kimi.com)`, altPrice: `$${usd}/mo ≈` },
       meter: "credits",
       quotas: [
         { label: "7-day quota", unit: "credits", amount: null, window: "week", refresh: "weekly", disclosure: "undisclosed", shared: "Kimi Code + Kimi Membership" },
@@ -642,7 +645,12 @@ async function main() {
 
   for (const plan of plans) {
     const models = modelsForPlan(plan, feeds);
-    const paid = plan.price.paidPrice ?? plan.price.monthlyUsd;
+    // Normalisierungs-Basis: $10 sind USD. Bei CNY-Plänen (Kimi, GLM) ist der
+    // paidPrice in CNY, aber die Normalisierung braucht den USD-Preis.
+    // monthlyUsd (mit dokumentiertem Kurs umgerechnet) ist die korrekte Basis.
+    const paid = plan.price.currency === "CNY" && plan.price.monthlyUsd
+      ? plan.price.monthlyUsd
+      : (plan.price.paidPrice ?? plan.price.monthlyUsd);
     const meterAmount = plan.meter === "dollar_usage"
       ? plan.quotas.find((q) => q.label === "Monthly")?.amount
       : plan.quotas.find((q) => q.window === "month")?.amount;
@@ -716,7 +724,14 @@ async function main() {
       id: plan.id,
       name: plan.name,
       provider: plan.provider,
-      price: { monthlyUsd: plan.price.monthlyUsd, paidPrice: paid, advertised: plan.price.advertisedPrice ?? plan.price.monthlyUsd },
+      price: {
+        monthlyUsd: plan.price.monthlyUsd ?? null,
+        paidPrice: plan.price.paidPrice ?? paid, // Original-Preis (CNY bei Kimi)
+        advertised: plan.price.advertisedPrice ?? plan.price.monthlyUsd,
+        currency: plan.price.currency ?? "USD",
+        monthlyCny: plan.price.monthlyCny ?? null,
+        altPrice: plan.price.altPrice ?? null,
+      },
       meter: plan.meter,
       quotas: plan.quotas,
       windowCaps,
