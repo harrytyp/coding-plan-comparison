@@ -432,7 +432,7 @@ function modelsForPlan(plan, feeds) {
     if (!oc?.models) return out;
     for (const m of oc.models) {
       if (typeof m.usage !== "number" || m.usage <= 0) continue;
-      out.push({ name: m.name, usage: m.usage, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m });
+      out.push({ name: m.name, usage: m.usage, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m, privacy: m.privacy ?? null });
     }
     return out;
   }
@@ -601,6 +601,7 @@ async function main() {
         requestsPerMonth: monthlyRequests,
         requestsRawInWindow: requests,
         normalizedPer10: normalized,
+        privacy: m.privacy ?? null,
       });
     }
 

@@ -57,6 +57,7 @@ export function parseOcgo(raw) {
       effectiveCachedRead: m.effectiveCachedRead ?? null,
       effectiveCachedWrite: m.effectiveCachedWrite ?? null,
       provider: m.provider ?? null,
+      privacy: m.privacy ?? null,
     })),
   };
 }

@@ -67,6 +67,9 @@ const I18N = {
     "plans.th.req10": "Requests / $10",
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
+    "plans.noTraining": "No training on my data",
+    "plans.badge.noTraining": "no training",
+    "plans.badge.retention": "retention {d}d",
     "models.searchPh": "Filter models...",
     "models.h2": "Model for model, per $10",
     "models.sub": "Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, scaled to exactly $10 paid.",
@@ -175,6 +178,9 @@ const I18N = {
     "plans.th.req10": "Requests / $10",
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
+    "plans.noTraining": "Kein Training auf meinen Daten",
+    "plans.badge.noTraining": "kein Training",
+    "plans.badge.retention": "Speicherung {d} T",
     "view.models": "Modell-Vergleich",
     "models.searchPh": "Modelle filtern...",
     "models.h2": "Modell für Modell, pro 10 $",
@@ -400,6 +406,7 @@ let plansSearch = "";
 let plansMeter = "";
 let maxBudget = 300;   // Budget-Filter: max $/Monat
 let minAiScore = 0;    // AI-Score-Filter: mindestens
+let noTrainingOnly = false; // Privacy-Filter: nur "no training on my data"
 
 /* ---------------- AI-Score (Artificial Analysis) ---------------- */
 function aiScoreFor(modelName, family) {
@@ -442,6 +449,10 @@ function buildCombos() {
         codingScore: score?.coding ?? null,
         tokensPer10,
         req10: row.normalizedPer10 ?? null,
+        // Privacy: training=false = "no training on my data"; retentionDays = Speicherdauer
+        noTraining: row.privacy ? row.privacy.training === false : null,
+        retentionDays: row.privacy?.retentionDays ?? null,
+        privacyKnown: row.privacy != null,
       });
     }
   }
@@ -498,6 +509,15 @@ function bindSortHeader(tableId, state, renderFn) {
   });
 }
 
+// Privacy-Badge: "no training" grün, Retention-Zeit als Info
+function privacyBadge(c) {
+  if (!c.privacyKnown) return "";
+  const parts = [];
+  if (c.noTraining === true) parts.push(`<span class="badge badge-green" title="No training on my data">${t("plans.badge.noTraining")}</span>`);
+  if (typeof c.retentionDays === "number") parts.push(`<span class="badge badge-gray" title="Data retention">${t("plans.badge.retention").replace("{d}", String(c.retentionDays))}</span>`);
+  return parts.length ? `<div class="privacy-badges">${parts.join(" ")}</div>` : "";
+}
+
 function renderPlans() {
   const tbody = $("#plans-tbody");
   if (!tbody) return;
@@ -513,6 +533,8 @@ function renderPlans() {
   if (maxBudget < 300) combos = combos.filter((c) => (c.price ?? 0) <= maxBudget);
   // Filter: AI-Score (mindestens)
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
+  // Filter: Privacy — nur "no training on my data"
+  if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
   // Sortieren
   combos.sort(sortBy(plansSort.key, plansSort.dir));
   // Count
@@ -535,7 +557,7 @@ function renderPlans() {
     return `
     <tr>
       <td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>
-      <td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>
+      <td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span>${privacyBadge(c)}</td>
       <td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>
       <td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>
       <td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>
@@ -641,6 +663,13 @@ function init() {
   if (aiSlider) aiSlider.addEventListener("input", (e) => {
     minAiScore = parseInt(e.target.value, 10) || 0;
     syncFilterUI();
+    renderPlans();
+  });
+
+  // Privacy-Filter: "No training on my data"
+  const privacyToggle = $("#privacy-toggle");
+  if (privacyToggle) privacyToggle.addEventListener("change", (e) => {
+    noTrainingOnly = e.target.checked;
     renderPlans();
   });
 

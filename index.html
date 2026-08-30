@@ -192,6 +192,9 @@ section { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
 /* ============ TABLES ============ */
 .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); box-shadow: var(--shadow-sm); }
 table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 720px; }
+@media (max-width: 760px) {
+  table { min-width: 0; } /* Tabelle darf auf Mobile schrumpfen (Karten-Layout) */
+}
 thead th {
   text-align: left; padding: 13px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
   color: var(--text-muted); border-bottom: 1px solid var(--border); background: var(--bg-muted); position: sticky; top: 0;
@@ -290,6 +293,23 @@ th[data-sort].sorted { color: var(--primary); }
 
 /* Mobile: Tabelle wird zu Karten (kein horizontales Scrollen) */
 @media (max-width: 760px) {
+  /* Sticky-Filterleiste: beim Scrollen erreichbar */
+  .table-toolbar {
+    position: sticky; top: 56px; z-index: 40;
+    background: color-mix(in oklab, var(--bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    padding: 10px 4px; margin: 0 0 12px;
+    border-radius: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    max-width: 100%; box-sizing: border-box;
+  }
+  .toolbar-search { width: 100%; grid-column: 1 / -1; font-size: 16px; padding: 12px 14px; box-sizing: border-box; min-width: 0; } /* 16px verhindert iOS-Zoom */
+  .toolbar-select { width: 100%; font-size: 15px; padding: 11px 10px; min-width: 0; }
+  .budget-filter, .ai-filter { padding: 6px 10px; min-width: 0; }
+  .budget-filter input[type=range], .ai-filter input[type=range] { flex: 1; width: auto; height: 28px; min-width: 0; }
+  .privacy-filter { grid-column: 1 / -1; justify-content: center; padding: 12px; font-size: 14px; width: 100%; box-sizing: border-box; }
+  .toolbar-count { grid-column: 1 / -1; text-align: center; margin-left: 0; }
+
   .table-wrap { border: none; background: none; box-shadow: none; }
   .sortable-table, .sortable-table thead, .sortable-table tbody, .sortable-table tr, .sortable-table td {
     display: block; width: 100%;
@@ -297,12 +317,12 @@ th[data-sort].sorted { color: var(--primary); }
   .sortable-table thead { display: none; }
   .sortable-table tbody tr {
     background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 14px; margin-bottom: 12px; box-shadow: var(--shadow-sm);
+    padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow-sm);
   }
   .sortable-table tbody tr:hover { background: var(--bg-elev); }
   .sortable-table td {
     display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; text-align: right;
+    padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; text-align: right;
   }
   .sortable-table td:last-child { border-bottom: none; }
   /* Label vor jedem Wert (data-label) */
@@ -310,8 +330,14 @@ th[data-sort].sorted { color: var(--primary); }
     content: attr(data-label); display: block; font-size: 11.5px; font-weight: 700;
     text-transform: uppercase; letter-spacing: .04em; color: var(--text-faint); text-align: left;
   }
-  .toolbar-search { min-width: 100%; }
-  .toolbar-select { flex: 1; }
+  /* Hero kompakter */
+  .hero { padding: 40px 18px 28px; }
+  .hero h1 { font-size: 34px; }
+  .hero-meta { gap: 10px; font-size: 12px; }
+  /* Section-Padding kompakter */
+  section { padding: 36px 18px; }
+  /* Score-Bar größer (Touch) */
+  .score-bar { width: 80px; height: 5px; }
 }
 
 /* ============ VIEW TABS & BUDGET FILTER ============ */
@@ -340,11 +366,19 @@ th[data-sort].sorted { color: var(--primary); }
 .ai-filter label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
 .ai-filter input[type=range] { width: 110px; accent-color: var(--info); cursor: pointer; }
 .ai-filter output { font-weight: 700; min-width: 30px; text-align: right; }
+.privacy-filter {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 9px 14px;
+  font-size: 13px; font-weight: 600; color: var(--text-muted); user-select: none;
+}
+.privacy-filter input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--success); cursor: pointer; }
+.privacy-filter:has(input:checked) { border-color: var(--success); color: var(--success); background: var(--success-soft); }
 .table-note { margin-top: 10px; font-size: 13px; color: var(--text-faint); }
 .score-bar {
   width: 60px; height: 4px; background: var(--bg-muted); border-radius: 2px; margin-top: 4px; overflow: hidden;
 }
 .score-fill { height: 100%; background: var(--info); border-radius: 2px; }
+.privacy-badges { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
@@ -445,6 +479,10 @@ th[data-sort].sorted { color: var(--primary); }
         <input type="range" id="ai-slider" min="0" max="70" step="1" value="0">
         <output id="ai-value" class="num">0</output>
       </div>
+      <label class="privacy-filter" id="privacy-filter">
+        <input type="checkbox" id="privacy-toggle">
+        <span data-i18n="plans.noTraining">No training on my data</span>
+      </label>
       <span class="toolbar-count" id="plans-count"></span>
     </div>
     <div class="table-wrap" id="plans-table-wrap">
