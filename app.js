@@ -91,10 +91,14 @@ const I18N = {
     "dash.x": "X axis",
     "dash.y": "Y axis",
     "dash.pareto": "Pareto line",
-    "dash.green": "Green quarter",
-    "dash.legend.green": "Green quarter",
+    "dash.green": "Show target",
+    "dash.legend.green": "Target zone",
     "dash.legend.pareto": "Pareto frontier",
     "dash.legend.frontier": "Pareto points",
+    "dash.legend.shapes": "● no training · ■ trains · ▲ unknown",
+    "dash.target": "Target:",
+    "dash.targetX": "min X",
+    "dash.targetY": "min Y",
     "dash.clickHint": "Click a dot to see the plan and model",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $10",
@@ -236,10 +240,14 @@ const I18N = {
     "dash.x": "X-Achse",
     "dash.y": "Y-Achse",
     "dash.pareto": "Pareto-Linie",
-    "dash.green": "Grünes Viertel",
-    "dash.legend.green": "Grünes Viertel",
+    "dash.green": "Zielzone zeigen",
+    "dash.legend.green": "Zielzone",
     "dash.legend.pareto": "Pareto-Frontier",
     "dash.legend.frontier": "Pareto-Punkte",
+    "dash.legend.shapes": "● kein Training · ■ trainiert · ▲ unbekannt",
+    "dash.target": "Ziel:",
+    "dash.targetX": "min X",
+    "dash.targetY": "min Y",
     "dash.clickHint": "Klicke einen Punkt, um Plan und Modell zu sehen",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $10",
@@ -808,6 +816,8 @@ let dashX = "tokens";
 let dashY = "score";
 let dashPareto = true;
 let dashGreen = true;
+let dashTargetX = null; // Ziel-Schwelle X (Green Target)
+let dashTargetY = null; // Ziel-Schwelle Y (Green Target)
 
 // Punkt-Wert für eine Metrik
 function metricValue(combo, metric) {
@@ -897,11 +907,26 @@ function renderDashboard() {
 
   const px = points.map((p) => ({ ...p, px: sx(p.x), py: sy(p.y) }));
 
-  // Green Quarter: oberes rechtes Viertel (hohe X + hohe Y)
-  const gqX = sx(xLog ? Math.sqrt(xMin * xMax) : (xMin + xMax) / 2);
-  const gqY = sy(yLog ? Math.sqrt(yMin * yMax) : (yMin + yMax) / 2);
+  // Zielzone (Green Target): Bereich oberhalb der User-Schwellen.
+  // Ohne gesetzte Schwellen: automatisch der obere-rechte Bereich
+  // (Median als sinnvolle Default-Schwelle — Punkte über Median auf beiden Achsen).
+  let targetX = dashTargetX;
+  let targetY = dashTargetY;
+  if (targetX === null || targetX === undefined) {
+    const xValsSorted = xVals.slice().sort((a, b) => a - b);
+    targetX = xValsSorted[Math.floor(xValsSorted.length / 2)]; // Median
+  }
+  if (targetY === null || targetY === undefined) {
+    const yValsSorted = yVals.slice().sort((a, b) => a - b);
+    targetY = yValsSorted[Math.floor(yValsSorted.length / 2)]; // Median
+  }
+  const tX = sx(targetX), tY = sy(targetY);
   const greenRect = dashGreen
-    ? `<rect class="dash-green-region" x="${gqX}" y="${PAD_T}" width="${PAD_L + plotW - gqX}" height="${gqY - PAD_T}"/>`
+    ? `<rect class="dash-green-region" x="${tX}" y="${PAD_T}" width="${PAD_L + plotW - tX}" height="${Math.max(0, tY - PAD_T)}"/>`
+    : "";
+  const thresholdLines = dashGreen
+    ? `<line class="dash-threshold-line" x1="${tX}" y1="${PAD_T}" x2="${tX}" y2="${H - PAD_B}"/>
+       <line class="dash-threshold-line" x1="${PAD_L}" y1="${tY}" x2="${W - PAD_R}" y2="${tY}"/>`
     : "";
 
   // Pareto-Frontier
@@ -930,18 +955,31 @@ function renderDashboard() {
   const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 3.2}" text-anchor="middle">${fmtTokens(v)}</text>`).join("");
   const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 1}" y="${(sy(v) + 0.8).toFixed(2)}" text-anchor="end">${fmtTokens(v)}</text>`).join("");
 
-  // Frontier-Punkte identifizieren (für Hervorhebung + Legende)
+  // Punkte: Farbe + FORM (Accessibility: nicht nur Farbe unterscheiden).
+  // no-training = Kreis, trainiert = Quadrat, unbekannt = Dreieck.
+  // Frontier-Punkte zusätzlich größer + primary.
   const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
   const dots = px.map((p, i) => {
     const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
     const color = p.combo.noTraining === true ? "var(--success)" : (p.combo.noTraining === false ? "var(--danger)" : "var(--info)");
     const r = isFrontier ? 2.4 : 1.6;
     const cls = isFrontier ? "dash-dot dash-dot-frontier" : "dash-dot";
-    return `<circle class="${cls}" data-i="${i}" cx="${p.px.toFixed(2)}" cy="${p.py.toFixed(2)}" r="${r}" fill="${isFrontier ? "var(--primary)" : color}"/>`;
+    const x = p.px.toFixed(2), y = p.py.toFixed(2);
+    const shape = p.combo.noTraining === true ? "circle"
+      : (p.combo.noTraining === false ? "square" : "triangle");
+    if (shape === "square") {
+      return `<rect class="${cls}" data-i="${i}" x="${(p.px - r * 0.8).toFixed(2)}" y="${(p.py - r * 0.8).toFixed(2)}" width="${(r * 1.6).toFixed(2)}" height="${(r * 1.6).toFixed(2)}" fill="${isFrontier ? "var(--primary)" : color}" transform="rotate(45 ${x} ${y})"/>`;
+    }
+    if (shape === "triangle") {
+      const h = r * 1.8;
+      return `<path class="${cls}" data-i="${i}" d="M${x},${(p.py - h / 2).toFixed(2)} L${(p.px + r).toFixed(2)},${(p.py + h / 2).toFixed(2)} L${(p.px - r).toFixed(2)},${(p.py + h / 2).toFixed(2)} Z" fill="${isFrontier ? "var(--primary)" : color}"/>`;
+    }
+    return `<circle class="${cls}" data-i="${i}" cx="${x}" cy="${y}" r="${r}" fill="${isFrontier ? "var(--primary)" : color}"/>`;
   }).join("");
 
   svg.innerHTML = `
     ${greenRect}
+    ${thresholdLines}
     ${xGrid}${yGrid}
     <line class="dash-axis-line" x1="${PAD_L}" y1="${H - PAD_B}" x2="${W - PAD_R}" y2="${H - PAD_B}"/>
     <line class="dash-axis-line" x1="${PAD_L}" y1="${PAD_T}" x2="${PAD_L}" y2="${H - PAD_B}"/>
@@ -1019,6 +1057,10 @@ function initDashboard() {
   if (pSel) pSel.addEventListener("change", (e) => { dashPareto = e.target.checked; renderDashboard(); });
   const gSel = $("#dash-green");
   if (gSel) gSel.addEventListener("change", (e) => { dashGreen = e.target.checked; renderDashboard(); });
+  // Ziel-Schwellen (Green Target)
+  const tx = $("#dash-target-x"), ty = $("#dash-target-y");
+  if (tx) tx.addEventListener("input", (e) => { dashTargetX = e.target.value === "" ? null : parseFloat(e.target.value); renderDashboard(); });
+  if (ty) ty.addEventListener("input", (e) => { dashTargetY = e.target.value === "" ? null : parseFloat(e.target.value); renderDashboard(); });
   bindDashTooltip();
 }
 

@@ -453,15 +453,26 @@ th[data-sort].sorted { color: var(--primary); }
 .dash-check { cursor: pointer; }
 .dash-check input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--primary); cursor: pointer; }
 .dash-legend { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-muted); margin-left: auto; flex-wrap: wrap; }
+.legend-shape { font-size: 11.5px; opacity: .9; }
 .dot-swatch { display: inline-block; width: 11px; height: 11px; border-radius: 3px; }
 .dot-green { background: var(--success); opacity: .25; border: 1.5px solid var(--success); }
 .dot-pareto { background: var(--primary); }
 .dot-frontier { background: var(--primary); border-radius: 50%; width: 8px; height: 8px; box-shadow: 0 0 0 2px var(--bg-elev); }
+/* Ziel-Schwellen (Green Target) */
+.dash-target { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.dash-target-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); }
+.dash-target-ctl { gap: 4px; }
+.dash-target-input {
+  width: 72px; padding: 6px 8px; border: 1px solid var(--border-strong); border-radius: 7px;
+  background: var(--bg-elev); color: var(--text); font-size: 13px; font-family: var(--font); text-align: right;
+}
+.dash-target-input:focus { border-color: var(--success); outline: none; }
 /* Dashboard-Layout: Plot links, Detail-Panel rechts */
 .dash-body { display: grid; grid-template-columns: 1fr 280px; gap: 14px; }
 .dash-plot {
   position: relative; width: 100%; height: 420px; border: 1px solid var(--border);
   border-radius: var(--radius-sm); background: var(--bg-muted); overflow: hidden;
+  touch-action: manipulation; /* kein 300ms Tap-Delay auf Mobile */
 }
 #dash-svg { width: 100%; height: 100%; display: block; }
 /* Plot-Elemente */
@@ -469,10 +480,11 @@ th[data-sort].sorted { color: var(--primary); }
 .dash-axis-line { stroke: var(--text-faint); stroke-width: 0.25; }
 .dash-axis-label { font-size: 2.4px; fill: var(--text-muted); font-family: var(--font); }
 .dash-tick { font-size: 2px; fill: var(--text-faint); font-family: var(--font); }
-.dash-dot { stroke: var(--bg-elev); stroke-width: 0.3; cursor: pointer; }
-.dash-dot:hover { stroke: var(--text); stroke-width: 0.6; }
+.dash-dot { stroke: var(--bg-elev); stroke-width: 0.3; cursor: pointer; opacity: 0.75; }
+.dash-dot:hover { stroke: var(--text); stroke-width: 0.6; opacity: 1; }
 .dash-pareto-line { stroke: var(--primary); stroke-width: 0.5; fill: none; stroke-dasharray: 1.2 0.8; }
 .dash-green-region { fill: var(--success); opacity: 0.12; pointer-events: none; }
+.dash-threshold-line { stroke: var(--success); stroke-width: 0.35; stroke-dasharray: 1 0.8; }
 .dash-tooltip {
   position: absolute; pointer-events: none; background: var(--text); color: var(--bg);
   padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; white-space: nowrap;
@@ -624,14 +636,26 @@ th[data-sort].sorted { color: var(--primary); }
         <input type="checkbox" id="dash-pareto" checked>
         <span data-i18n="dash.pareto">Pareto line</span>
       </label>
-      <label class="dash-ctl dash-check">
-        <input type="checkbox" id="dash-green" checked>
-        <span data-i18n="dash.green">Green quarter</span>
-      </label>
+      <span class="dash-target" id="dash-target">
+        <span class="dash-target-title" data-i18n="dash.target">Target:</span>
+        <label class="dash-ctl dash-target-ctl">
+          <span data-i18n="dash.targetX">min X</span>
+          <input type="number" id="dash-target-x" class="dash-target-input" min="0" step="any" placeholder="-">
+        </label>
+        <label class="dash-ctl dash-target-ctl">
+          <span data-i18n="dash.targetY">min Y</span>
+          <input type="number" id="dash-target-y" class="dash-target-input" min="0" step="any" placeholder="-">
+        </label>
+        <label class="dash-ctl dash-check">
+          <input type="checkbox" id="dash-green" checked>
+          <span data-i18n="dash.green">Show target</span>
+        </label>
+      </span>
       <span class="dash-legend" id="dash-legend">
-        <span class="dot-swatch dot-green"></span><span data-i18n="dash.legend.green">Green quarter</span>
+        <span class="dot-swatch dot-green"></span><span data-i18n="dash.legend.green">Target zone</span>
         <span class="dot-swatch dot-pareto"></span><span data-i18n="dash.legend.pareto">Pareto frontier</span>
         <span class="dot-swatch dot-frontier"></span><span data-i18n="dash.legend.frontier">Pareto points</span>
+        <span class="legend-shape" data-i18n="dash.legend.shapes">● no training · ■ trains · ▲ unknown</span>
       </span>
     </div>
     <div class="dash-body">
