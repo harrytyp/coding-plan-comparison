@@ -1,0 +1,87 @@
+# Quellen-Definition: Alle Live-Endpoints, die die Pipeline fetcht.
+# Jede Quelle hat: id, url, typ (json-api | html-docs | feed), parser, und die Felder die sie liefert.
+# Change-Detection: fetch.mjs speichert sha256 + fetchedAt; check.mjs difft gegen den letzten Snapshot.
+# Deterministisch: build.mjs nutzt NUR die gespeicherten Snapshots (manifest.json + cache/), nie Live-Fetches im Build.
+
+sources:
+  # ---- Maschinenlesbare Preis-Tracker (JSON-APIs, CORS offen, ideal) ----
+  - id: ocgo-pricing
+    url: "https://ocgo-pricing.all-the.rest/data/latest.json"
+    typ: json-api
+    parser: ocgo
+    provides: [plan_meta, model_prices, model_usage, patterns, peak_hours]
+    note: "OpenCode Go Preis-Tracker: Token-Preise, usage (Credits/Monat), multiplier, pattern (Workload-Profil)."
+
+  - id: cc-pricing
+    url: "https://cc-pricing.all-the.rest/data/latest.json"
+    typ: json-api
+    parser: cc
+    provides: [plan_meta, model_prices, allowances, patterns, request_estimates, peak_hours]
+    note: "Command Code Preis-Tracker: allowances je Plan, Token-Preise, requestEstimate (offizielle Request-Schätzung)."
+
+  # ---- Offizielle Docs (statisches HTML, scrapebar) ----
+  - id: glm-coding-overview
+    url: "https://docs.bigmodel.cn/cn/coding-plan/overview"
+    typ: html-docs
+    parser: glm-overview
+    provides: [plan_quotas, credit_formula, mcp_costs, off_peak]
+    note: "GLM Coding Plan: 5h/Wochen-Quoten, Credit-Formel (in×6.9+cached×1.7+out×24)/10000, GLM-5.3-Flash-Koeffizienten, MCP 1.2, Off-Peak 50%. Preise NICHT hier."
+
+  - id: glm-team-overview
+    url: "https://docs.bigmodel.cn/cn/coding-plan/team"
+    typ: html-docs
+    parser: glm-overview
+    provides: [team_plan_quotas, credit_formula]
+    note: "GLM Team-Pläne."
+
+  - id: qwen-coding-plan
+    url: "https://www.alibabacloud.com/help/en/model-studio/coding-plan"
+    typ: html-docs
+    parser: qwen-docs
+    provides: [plan_meta, plan_quotas, task_conversion]
+    note: "Qwen Coding Plan: $50/Monat, 6k/5h, 45k/Woche, 90k/Monat, simple 5-10 / complex 10-30+ calls."
+
+  - id: qwen-token-personal
+    url: "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+    typ: html-docs
+    parser: qwen-token-personal
+    provides: [plan_meta, plan_quotas, concurrent_agents, extra_bundle]
+    note: "Qwen Token Plan Personal: Lite $6/Std $18/Pro $68 (limited-time), 7d-Quoten, concurrent agents, Extra Bundle $15/20k."
+
+  - id: kimi-membership-pricing
+    url: "https://www.kimi.com/en/help/membership/membership-pricing"
+    typ: html-docs
+    parser: kimi-pricing
+    provides: [plan_meta, plan_prices, credit_pool]
+    note: "Kimi Membership Preise (CNY): Andante ¥49, Moderato ¥99, Allegretto ¥199, Allegro ¥699."
+
+  - id: kimi-code-membership
+    url: "https://www.kimi.com/code/docs/en/kimi-code/membership.html"
+    typ: html-docs
+    parser: kimi-code
+    provides: [quota_rules, extra_usage, rate_limits]
+    note: "Kimi Code: 7d-Quota (kein Rollover), 5h-Rate-Window, Extra Usage (RMB, nach Verbrauch)."
+
+  # ---- Nicht-scrapebar (Auth/JS) → manuell in overrides.yml, Cron-Agent prüft ----
+  - id: glm-pricing-page
+    url: "https://open.bigmodel.cn/glm-coding"
+    typ: js-spa
+    parser: none
+    provides: [plan_prices]
+    auth: required
+    note: "GLM Preise nur per JS/API (401 ohne Auth). Quoten+Formel kommen aus glm-coding-overview; Preise als overrides + manuelle Verifikation."
+
+  - id: minimax-token-plan
+    url: "https://platform.minimax.io/subscribe/token-plan"
+    typ: js-spa
+    parser: none
+    provides: [plan_meta, plan_quotas]
+    auth: unknown
+    note: "MiniMax Token Plan ist JS-SPA; Daten evtl. per API. Erstmal overrides."
+
+  - id: mimo-token-plan
+    url: "https://mimo.mi.com/token-plan"
+    typ: html-docs
+    parser: mimo
+    provides: [plan_meta, plan_quotas]
+    note: "MiMo Token Plan (HTML, 372KB) — Parser zu implementieren."

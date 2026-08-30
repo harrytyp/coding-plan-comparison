@@ -1,0 +1,10 @@
+# Build-Artefakte — deterministisch aus Quellen reproduzierbar (npm run update)
+cache/
+parsed/
+
+# Node
+node_modules/
+dist/
+
+# OS
+.DS_Store

@@ -1,0 +1,24 @@
+# Overrides — nur für Daten, die NICHT scrapebar sind (JS-SPA, Auth-APIs, undisclosed).
+# Alles Scrapebare kommt dynamisch aus sources.yml → cache/ → parsed/.
+# Diese Datei ist die manuelle Ergänzung; ein Cron-Agent prüft die Quellen und aktualisiert hier.
+
+overrides:
+  # GLM Preise: nur über JS/API (Auth nötig), daher manuell gepflegt.
+  # Quelle: open.bigmodel.cn/glm-coding (SPA); Quoten+Formel kommen dynamisch aus glm-coding-overview.
+  - id: glm-lite
+    price: { monthlyUsd: 16.5, paidPrice: 16.5, advertisedPrice: 16.5, currency: CNY, monthlyCny: 118, billingNote: "¥118/月 连续包月; 包季 8折 ¥94.4, 包年 7折 ¥82.6" }
+    lastVerified: 2026-08-28
+  - id: glm-pro
+    price: { monthlyUsd: 75, paidPrice: 75, advertisedPrice: 75, currency: CNY, monthlyCny: 538, billingNote: "¥538/月 连续包月; 包季 8折 ¥430.4, 包年 7折 ¥376.6" }
+    lastVerified: 2026-08-28
+  - id: glm-max
+    price: { monthlyUsd: 151, paidPrice: 151, advertisedPrice: 151, currency: CNY, monthlyCny: 1078, billingNote: "¥1078/月 连续包月; 包季 8折 ¥862.4, 包年 7折 ¥754.6" }
+    lastVerified: 2026-08-28
+
+  # MiniMax Token Plan: JS-SPA, Preise/Quoten nicht direkt scrapebar (bisher).
+  # Werte aus coding-plans-Tabelle (Rohdaten, zu verifizieren).
+  - id: minimax-starter
+    price: { monthlyUsd: 10, paidPrice: 10, advertisedPrice: 10 }
+    quota: { label: "5h", unit: prompts, amount: 100, window: "5h", refresh: rolling, disclosure: exact }
+    lastVerified: 2026-08-28
+    note: "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Cron-Agent soll API finden."

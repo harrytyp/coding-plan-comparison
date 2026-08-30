@@ -1,0 +1,5800 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-30T17:02:12.831Z",
+  "targetMonthlyPrice": 10,
+  "methodology": {
+    "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
+    "costPerRequest": "(0.05×input + 0.95×cachedWrite)×pattern.input + cachedRead×pattern.cachedRead + output×pattern.output, /1M",
+    "normalizedMetric": "average requests per month scaled to exactly $10 paid",
+    "fallbackPattern": {
+      "input": 800,
+      "cachedRead": 50000,
+      "output": 162
+    },
+    "drawThresholdPercent": 10,
+    "patternUnification": "Für geteilte Modell-Familien wird das OpenCode-Go-Pattern (echte per-Modell-Tokenstatistik) für beide Provider verwendet; das CC-Feed nutzt sonst nur das generische 800/50000/162-Pattern, was Kosten verzerrt.",
+    "fenster": "5h-Windows als Obergrenze (Cap), nicht ×180; undisclosed bleibt undisclosed; keine direkte Credit-Umrechnung zwischen Anbietern."
+  },
+  "sources": {
+    "ocgo-pricing.json": null,
+    "cc-pricing.json": null
+  },
+  "plans": [
+    {
+      "id": "opencode-go",
+      "name": "OpenCode Go",
+      "provider": "opencode",
+      "price": {
+        "monthlyUsd": 10,
+        "paidPrice": 10,
+        "advertised": 10
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "5h window",
+          "unit": "usd",
+          "amount": 12,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "usd",
+          "amount": 30,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "usd",
+          "amount": 60,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 12,
+        "weekly": 30,
+        "monthly": 60
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "ocgo-pricing"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 33,
+      "modelStats": {
+        "count": 33,
+        "min": 422.5352112676057,
+        "max": 226586.10271903325,
+        "mean": 22759.26994936339,
+        "median": 9447.033631439728,
+        "p25": 3957.78364116095,
+        "p75": 18894.067262879456
+      },
+      "modelRows": [
+        {
+          "model": "Grok 4.6",
+          "family": "grok 4.6",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 845.0704225352114,
+          "requestsRawInWindow": 845.0704225352114,
+          "normalizedPer10": 845.0704225352114
+        },
+        {
+          "model": "Grok 4.6",
+          "family": "grok 4.6",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0355,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 422.5352112676057,
+          "requestsRawInWindow": 422.5352112676057,
+          "normalizedPer10": 422.5352112676057
+        },
+        {
+          "model": "GPT 5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 9923.91663910023,
+          "requestsRawInWindow": 9923.91663910023,
+          "normalizedPer10": 9923.91663910023
+        },
+        {
+          "model": "GPT 5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.002891,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5188.516084399862,
+          "requestsRawInWindow": 5188.516084399862,
+          "normalizedPer10": 5188.516084399862
+        },
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 15789.473684210527,
+          "requestsRawInWindow": 15789.473684210527,
+          "normalizedPer10": 15789.473684210529
+        },
+        {
+          "model": "GLM-5.3",
+          "family": "glm-5.3",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 989.4459102902375,
+          "requestsRawInWindow": 989.4459102902375,
+          "normalizedPer10": 989.4459102902376
+        },
+        {
+          "model": "GLM-5.2",
+          "family": "glm-5.2",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3957.78364116095,
+          "requestsRawInWindow": 3957.78364116095,
+          "normalizedPer10": 3957.7836411609505
+        },
+        {
+          "model": "GLM-5.1",
+          "family": "glm-5.1",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3957.78364116095,
+          "requestsRawInWindow": 3957.78364116095,
+          "normalizedPer10": 3957.7836411609505
+        },
+        {
+          "model": "Kimi K3",
+          "family": "kimi k3",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0306,
+          "patternUsed": {
+            "input": 1050,
+            "cachedRead": 76500,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 490.19607843137254,
+          "requestsRawInWindow": 490.19607843137254,
+          "normalizedPer10": 490.19607843137254
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "family": "kimi k2.7 code",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0120765,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4968.326915911067,
+          "requestsRawInWindow": 4968.326915911067,
+          "normalizedPer10": 4968.326915911067
+        },
+        {
+          "model": "Kimi K2.6",
+          "family": "kimi k2.6",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0104265,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5754.567688102431,
+          "requestsRawInWindow": 5754.567688102431,
+          "normalizedPer10": 5754.567688102431
+        },
+        {
+          "model": "LongCat-2.0",
+          "family": "longcat-2.0",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0010494,
+          "patternUsed": {
+            "input": 920,
+            "cachedRead": 88900,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 57175.52887364208,
+          "requestsRawInWindow": 57175.52887364208,
+          "normalizedPer10": 57175.52887364208
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 150375.93984962406,
+          "requestsRawInWindow": 150375.93984962406,
+          "normalizedPer10": 150375.93984962406
+        },
+        {
+          "model": "MiMo V2.5 Pro",
+          "family": "mimo v2.5 pro",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00092075,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16291.06706489275,
+          "requestsRawInWindow": 16291.06706489275,
+          "normalizedPer10": 16291.067064892752
+        },
+        {
+          "model": "MiniMax M3",
+          "family": "minimax m3",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.003741,
+          "patternUsed": {
+            "input": 510,
+            "cachedRead": 56000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16038.492381716118,
+          "requestsRawInWindow": 16038.492381716118,
+          "normalizedPer10": 16038.492381716118
+        },
+        {
+          "model": "MiniMax M2.7",
+          "family": "minimax m2.7",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.003561375,
+          "patternUsed": {
+            "input": 300,
+            "cachedRead": 55000,
+            "output": 125
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16847.425502790356,
+          "requestsRawInWindow": 16847.425502790356,
+          "normalizedPer10": 16847.425502790356
+        },
+        {
+          "model": "MiniMax M2.5",
+          "family": "minimax m2.5",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.003561375,
+          "patternUsed": {
+            "input": 300,
+            "cachedRead": 55000,
+            "output": 125
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16847.425502790356,
+          "requestsRawInWindow": 16847.425502790356,
+          "normalizedPer10": 16847.425502790356
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 226586.10271903325,
+          "requestsRawInWindow": 226586.10271903325,
+          "normalizedPer10": 226586.10271903322
+        },
+        {
+          "model": "Qwen3.8 Max",
+          "family": "qwen3.8 max",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0187395,
+          "patternUsed": {
+            "input": 420,
+            "cachedRead": 66000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 800.4482510205715,
+          "requestsRawInWindow": 800.4482510205715,
+          "normalizedPer10": 800.4482510205715
+        },
+        {
+          "model": "Qwen3.8 Flash",
+          "family": "qwen3.8 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0011405,
+          "patternUsed": {
+            "input": 600,
+            "cachedRead": 58000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 26304.2525208242,
+          "requestsRawInWindow": 26304.2525208242,
+          "normalizedPer10": 26304.2525208242
+        },
+        {
+          "model": "Qwen3.7 Max",
+          "family": "qwen3.7 max",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.035799375,
+          "patternUsed": {
+            "input": 420,
+            "cachedRead": 66000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1676.0069135285182,
+          "requestsRawInWindow": 1676.0069135285182,
+          "normalizedPer10": 1676.0069135285182
+        },
+        {
+          "model": "Qwen3.7 Plus",
+          "family": "qwen3.7 plus",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0028315,
+          "patternUsed": {
+            "input": 500,
+            "cachedRead": 57000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 21190.181882394492,
+          "requestsRawInWindow": 21190.181882394492,
+          "normalizedPer10": 21190.181882394492
+        },
+        {
+          "model": "Qwen3.7 Plus",
+          "family": "qwen3.7 plus",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0084945,
+          "patternUsed": {
+            "input": 500,
+            "cachedRead": 57000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7063.393960798163,
+          "requestsRawInWindow": 7063.393960798163,
+          "normalizedPer10": 7063.393960798162
+        },
+        {
+          "model": "Qwen3.6 Plus",
+          "family": "qwen3.6 plus",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.003729375,
+          "patternUsed": {
+            "input": 500,
+            "cachedRead": 57000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16088.48667672197,
+          "requestsRawInWindow": 16088.48667672197,
+          "normalizedPer10": 16088.48667672197
+        },
+        {
+          "model": "Qwen3.6 Plus",
+          "family": "qwen3.6 plus",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0137775,
+          "patternUsed": {
+            "input": 500,
+            "cachedRead": 57000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4354.926510615133,
+          "requestsRawInWindow": 4354.926510615133,
+          "normalizedPer10": 4354.926510615133
+        },
+        {
+          "model": "DeepSeek V4 Pro",
+          "family": "deepseek v4 pro",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0028732,
+          "patternUsed": {
+            "input": 750,
+            "cachedRead": 82000,
+            "output": 290
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5220.659891410274,
+          "requestsRawInWindow": 5220.659891410274,
+          "normalizedPer10": 5220.659891410274
+        },
+        {
+          "model": "DeepSeek V4 Pro",
+          "family": "deepseek v4 pro",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0057464,
+          "patternUsed": {
+            "input": 750,
+            "cachedRead": 82000,
+            "output": 290
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2610.329945705137,
+          "requestsRawInWindow": 2610.329945705137,
+          "normalizedPer10": 2610.329945705137
+        },
+        {
+          "model": "DeepSeek V4 Flash",
+          "family": "deepseek v4 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0007939,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 37788.13452575891,
+          "requestsRawInWindow": 37788.13452575891,
+          "normalizedPer10": 37788.13452575891
+        },
+        {
+          "model": "DeepSeek V4 Flash",
+          "family": "deepseek v4 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015878,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 18894.067262879456,
+          "requestsRawInWindow": 18894.067262879456,
+          "normalizedPer10": 18894.067262879456
+        },
+        {
+          "model": "DeepSeek V4 Flash Vision Exp",
+          "family": "deepseek v4 flash",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0007939,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 18894.067262879456,
+          "requestsRawInWindow": 18894.067262879456,
+          "normalizedPer10": 18894.067262879456
+        },
+        {
+          "model": "DeepSeek V4 Flash Vision Exp",
+          "family": "deepseek v4 flash",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015878,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 9447.033631439728,
+          "requestsRawInWindow": 9447.033631439728,
+          "normalizedPer10": 9447.033631439728
+        },
+        {
+          "model": "Hy4 preview",
+          "family": "tencent hy4",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004433014999999999,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6767.403223314156,
+          "requestsRawInWindow": 6767.403223314156,
+          "normalizedPer10": 6767.403223314157
+        },
+        {
+          "model": "Hy3",
+          "family": "tencent hy3",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0027898000000000003,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 21506.918058642194,
+          "requestsRawInWindow": 21506.918058642194,
+          "normalizedPer10": 21506.918058642194
+        }
+      ]
+    },
+    {
+      "id": "command-code-go",
+      "name": "Command Code Go",
+      "provider": "command-code",
+      "price": {
+        "monthlyUsd": 1,
+        "paidPrice": 1,
+        "advertised": 1
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h window",
+          "unit": "credits",
+          "amount": 3,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "credits",
+          "amount": 6,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 10,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 3,
+        "weekly": 6,
+        "monthly": 10
+      },
+      "officialConversion": "Offizielle requestEstimate: 15,000 req/mo",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cc-pricing"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "command-code-goat",
+      "name": "Command Code GOAT",
+      "provider": "command-code",
+      "price": {
+        "monthlyUsd": 10,
+        "paidPrice": 10.77,
+        "advertised": 10
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h window",
+          "unit": "credits",
+          "amount": 14,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "credits",
+          "amount": 35,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 70,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 14,
+        "weekly": 35,
+        "monthly": 70
+      },
+      "officialConversion": "Offizielle requestEstimate: 75,000 req/mo",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cc-pricing"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 63,
+      "modelStats": {
+        "count": 63,
+        "min": 294.11764705882354,
+        "max": 75576.26905151783,
+        "mean": 10374.425157120239,
+        "median": 2941.1764705882356,
+        "p25": 1290.0703169871658,
+        "p75": 10437.685682153002
+      },
+      "modelRows": [
+        {
+          "model": "Tencent Hy4 Preview",
+          "family": "tencent hy4",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004433014999999999,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4511.602148876104,
+          "requestsRawInWindow": 4511.602148876104,
+          "normalizedPer10": 4189.045634982455
+        },
+        {
+          "model": "Tencent Hy3",
+          "family": "tencent hy3",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0027898000000000003,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 25091.404401749227,
+          "requestsRawInWindow": 25091.404401749227,
+          "normalizedPer10": 23297.497123258338
+        },
+        {
+          "model": "Kimi K3",
+          "family": "kimi k3",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0306,
+          "patternUsed": {
+            "input": 1050,
+            "cachedRead": 76500,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 653.5947712418301,
+          "requestsRawInWindow": 653.5947712418301,
+          "normalizedPer10": 606.866082861495
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "family": "kimi k2.7 code",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0120765,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4968.326915911067,
+          "requestsRawInWindow": 4968.326915911067,
+          "normalizedPer10": 4613.11691356645
+        },
+        {
+          "model": "Kimi K2.7 Code HighSpeed",
+          "family": "kimi k2.7 code",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.024153,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 828.0544859851778,
+          "requestsRawInWindow": 828.0544859851778,
+          "normalizedPer10": 768.8528189277417
+        },
+        {
+          "model": "Kimi K2.6",
+          "family": "kimi k2.6",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0104265,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1918.189229367477,
+          "requestsRawInWindow": 1918.189229367477,
+          "normalizedPer10": 1781.0484952344261
+        },
+        {
+          "model": "Kimi K2.5",
+          "family": "kimi k2.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005966,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3352.329869259135,
+          "requestsRawInWindow": 3352.329869259135,
+          "normalizedPer10": 3112.6554032118247
+        },
+        {
+          "model": "GLM-5.3 Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 40,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 21052.63157894737,
+          "requestsRawInWindow": 21052.63157894737,
+          "normalizedPer10": 19547.475932170262
+        },
+        {
+          "model": "GLM-5.3",
+          "family": "glm-5.3",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1319.2612137203166,
+          "requestsRawInWindow": 1319.2612137203166,
+          "normalizedPer10": 1224.9407741135717
+        },
+        {
+          "model": "GLM-5.2",
+          "family": "glm-5.2",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4617.4142480211085,
+          "requestsRawInWindow": 4617.4142480211085,
+          "normalizedPer10": 4287.292709397501
+        },
+        {
+          "model": "GLM-5.2 Fast",
+          "family": "glm-5.2",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0296375,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 674.8207507380852,
+          "requestsRawInWindow": 674.8207507380852,
+          "normalizedPer10": 626.5745132201348
+        },
+        {
+          "model": "GLM-5.1",
+          "family": "glm-5.1",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1319.2612137203166,
+          "requestsRawInWindow": 1319.2612137203166,
+          "normalizedPer10": 1224.9407741135717
+        },
+        {
+          "model": "GLM-5",
+          "family": "glm-5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0113184,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1767.0342097823016,
+          "requestsRawInWindow": 1767.0342097823016,
+          "normalizedPer10": 1640.700287634449
+        },
+        {
+          "model": "MiniMax M3",
+          "family": "minimax m3",
+          "allowance": 47,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.003741,
+          "patternUsed": {
+            "input": 510,
+            "cachedRead": 56000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 12563.48569901096,
+          "requestsRawInWindow": 12563.48569901096,
+          "normalizedPer10": 11665.260630465145
+        },
+        {
+          "model": "MiniMax M2.7",
+          "family": "minimax m2.7",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00354,
+          "patternUsed": {
+            "input": 300,
+            "cachedRead": 55000,
+            "output": 125
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5649.717514124293,
+          "requestsRawInWindow": 5649.717514124293,
+          "normalizedPer10": 5245.791563718007
+        },
+        {
+          "model": "MiniMax M2.5",
+          "family": "minimax m2.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00189,
+          "patternUsed": {
+            "input": 300,
+            "cachedRead": 55000,
+            "output": 125
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10582.010582010582,
+          "requestsRawInWindow": 10582.010582010582,
+          "normalizedPer10": 9825.450865376586
+        },
+        {
+          "model": "DeepSeek V4 Pro (latest)",
+          "family": "deepseek v4 pro",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0028732,
+          "patternUsed": {
+            "input": 750,
+            "cachedRead": 82000,
+            "output": 290
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6960.8798552137,
+          "requestsRawInWindow": 6960.8798552137,
+          "normalizedPer10": 6463.212493234633
+        },
+        {
+          "model": "DeepSeek V4 Pro (latest)",
+          "family": "deepseek v4 pro",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0057464,
+          "patternUsed": {
+            "input": 750,
+            "cachedRead": 82000,
+            "output": 290
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3480.43992760685,
+          "requestsRawInWindow": 3480.43992760685,
+          "normalizedPer10": 3231.6062466173166
+        },
+        {
+          "model": "DeepSeek V4 Flash (latest)",
+          "family": "deepseek v4 flash",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0007939,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 75576.26905151783,
+          "requestsRawInWindow": 75576.26905151783,
+          "normalizedPer10": 70172.95176556901
+        },
+        {
+          "model": "DeepSeek V4 Flash (latest)",
+          "family": "deepseek v4 flash",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015878,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 37788.13452575891,
+          "requestsRawInWindow": 37788.13452575891,
+          "normalizedPer10": 35086.47588278451
+        },
+        {
+          "model": "DeepSeek V4 Flash Vision (exp)",
+          "family": "deepseek v4 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0007939,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 25192.089683839273,
+          "requestsRawInWindow": 25192.089683839273,
+          "normalizedPer10": 23390.983921856336
+        },
+        {
+          "model": "DeepSeek V4 Flash Vision (exp)",
+          "family": "deepseek v4 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015878,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 12596.044841919636,
+          "requestsRawInWindow": 12596.044841919636,
+          "normalizedPer10": 11695.491960928168
+        },
+        {
+          "model": "Qwen 3.8 Max",
+          "family": "qwen 3.8 max",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015452,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1294.3308309603935,
+          "requestsRawInWindow": 1294.3308309603935,
+          "normalizedPer10": 1201.7927864070507
+        },
+        {
+          "model": "Qwen 3.8 27B",
+          "family": "qwen 3.8 27b",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.002806,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 24946.543121881685,
+          "requestsRawInWindow": 24946.543121881685,
+          "normalizedPer10": 23162.992685126912
+        },
+        {
+          "model": "Qwen 3.6 Max Preview",
+          "family": "qwen 3.6 max",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0155544,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1285.809803013938,
+          "requestsRawInWindow": 1285.809803013938,
+          "normalizedPer10": 1193.880968443768
+        },
+        {
+          "model": "Qwen 3.6 Plus",
+          "family": "qwen 3.6 plus",
+          "allowance": 33,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005886,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5606.523955147809,
+          "requestsRawInWindow": 5606.523955147809,
+          "normalizedPer10": 5205.68612362842
+        },
+        {
+          "model": "Qwen 3.7 Max",
+          "family": "qwen 3.7 max",
+          "allowance": 33,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0573876,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 575.0371160320349,
+          "requestsRawInWindow": 575.0371160320349,
+          "normalizedPer10": 533.9248988226879
+        },
+        {
+          "model": "Qwen 3.7 Plus",
+          "family": "qwen 3.7 plus",
+          "allowance": 33,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0046552,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7088.846880907373,
+          "requestsRawInWindow": 7088.846880907373,
+          "normalizedPer10": 6582.030530090412
+        },
+        {
+          "model": "Qwen 3.8 Flash",
+          "family": "qwen 3.8 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00100414,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 19917.541378692214,
+          "requestsRawInWindow": 19917.541378692214,
+          "normalizedPer10": 18493.538884579586
+        },
+        {
+          "model": "Qwen 3.7 Flash",
+          "family": "qwen 3.7 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00035114,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 56957.33895312411,
+          "requestsRawInWindow": 56957.33895312411,
+          "normalizedPer10": 52885.18008646622
+        },
+        {
+          "model": "Step 3.7 Flash",
+          "family": "step 3.7 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0023463000000000004,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 8524.059156970548,
+          "requestsRawInWindow": 8524.059156970548,
+          "normalizedPer10": 7914.632457725673
+        },
+        {
+          "model": "Step 3.5 Flash",
+          "family": "step 3.5 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0011286,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 17721.0703526493,
+          "requestsRawInWindow": 17721.0703526493,
+          "normalizedPer10": 16454.10432000864
+        },
+        {
+          "model": "MiMo V2.5 Pro",
+          "family": "mimo v2.5 pro",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 21772.26213803614,
+          "requestsRawInWindow": 21772.26213803614,
+          "normalizedPer10": 20215.656581277755
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 75187.96992481203,
+          "requestsRawInWindow": 75187.96992481203,
+          "normalizedPer10": 69812.4140434652
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "family": "nemotron 3 ultra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0068688,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2911.7167481947354,
+          "requestsRawInWindow": 2911.7167481947354,
+          "normalizedPer10": 2703.543870190098
+        },
+        {
+          "model": "Claude Fable 5",
+          "family": "claude fable 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 294.11764705882354,
+          "requestsRawInWindow": 294.11764705882354,
+          "normalizedPer10": 273.08973728767273
+        },
+        {
+          "model": "Claude Opus 5",
+          "family": "claude opus 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 546.1794745753455
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "family": "claude opus 4.8",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 546.1794745753455
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "family": "claude opus 4.7",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 546.1794745753455
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "family": "claude opus 4.6",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 546.1794745753455
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "family": "claude sonnet 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1470.5882352941178,
+          "requestsRawInWindow": 1470.5882352941178,
+          "normalizedPer10": 1365.448686438364
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "family": "claude sonnet 4.6",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0204,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 980.3921568627451,
+          "requestsRawInWindow": 980.3921568627451,
+          "normalizedPer10": 910.2991242922425
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "family": "claude haiku 4.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2941.1764705882356,
+          "requestsRawInWindow": 2941.1764705882356,
+          "normalizedPer10": 2730.897372876728
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "family": "gpt-5.6 sol",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.03481,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2010.9164033323757,
+          "requestsRawInWindow": 2010.9164033323757,
+          "normalizedPer10": 1867.1461497979346
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "family": "gpt-5.6 terra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.013924,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1436.3688595231254,
+          "requestsRawInWindow": 1436.3688595231254,
+          "normalizedPer10": 1333.675821284239
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 13231.888852133641,
+          "requestsRawInWindow": 13231.888852133641,
+          "normalizedPer10": 12285.87637152613
+        },
+        {
+          "model": "GPT-5.5",
+          "family": "gpt-5.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.03006,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 665.3359946773121,
+          "requestsRawInWindow": 665.3359946773121,
+          "normalizedPer10": 617.7678687811626
+        },
+        {
+          "model": "GPT-5.4",
+          "family": "gpt-5.4",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01503,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1330.6719893546242,
+          "requestsRawInWindow": 1330.6719893546242,
+          "normalizedPer10": 1235.5357375623253
+        },
+        {
+          "model": "GPT-5.4 Mini",
+          "family": "gpt-5.4 mini",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004509,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4435.573297848747,
+          "requestsRawInWindow": 4435.573297848747,
+          "normalizedPer10": 4118.452458541084
+        },
+        {
+          "model": "GPT-5.3 Codex",
+          "family": "gpt-5.3 codex",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.026376,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 758.2650894752805,
+          "requestsRawInWindow": 758.2650894752805,
+          "normalizedPer10": 704.0530078693413
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "family": "gemini 3.7 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004419169200000001,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4525.73755266035,
+          "requestsRawInWindow": 4525.73755266035,
+          "normalizedPer10": 4202.1704295824975
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "family": "gemini 3.6 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2017.1457387796268,
+          "requestsRawInWindow": 2017.1457387796268,
+          "normalizedPer10": 1872.9301195725413
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "family": "gemini 3.5 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.010158,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1968.8915140775744,
+          "requestsRawInWindow": 1968.8915140775744,
+          "normalizedPer10": 1828.1258255130683
+        },
+        {
+          "model": "Gemini 3.5 Flash Lite",
+          "family": "gemini 3.5 flash lite",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.002145,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 9324.009324009323,
+          "requestsRawInWindow": 9324.009324009323,
+          "normalizedPer10": 8657.390272989158
+        },
+        {
+          "model": "Gemini 3.1 Flash Lite",
+          "family": "gemini 3.1 flash lite",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.001943,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10293.36078229542,
+          "requestsRawInWindow": 10293.36078229542,
+          "normalizedPer10": 9557.438052270585
+        },
+        {
+          "model": "Fugu Ultra",
+          "family": "fugu ultra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.03386,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 590.6674542232723,
+          "requestsRawInWindow": 590.6674542232723,
+          "normalizedPer10": 548.4377476539205
+        },
+        {
+          "model": "Muse Spark 1.2",
+          "family": "muse spark 1.2",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1567.398119122257,
+          "requestsRawInWindow": 1567.398119122257,
+          "normalizedPer10": 1455.3371579593845
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 75528.70090634441,
+          "requestsRawInWindow": 75528.70090634441,
+          "normalizedPer10": 70128.78449985554
+        },
+        {
+          "model": "Muse Spark 1.1",
+          "family": "muse spark 1.1",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0091885,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2176.633835772977,
+          "requestsRawInWindow": 2176.633835772977,
+          "normalizedPer10": 2021.0156321011857
+        },
+        {
+          "model": "Grok 4.6",
+          "family": "grok 4.6",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1126.7605633802818,
+          "requestsRawInWindow": 1126.7605633802818,
+          "normalizedPer10": 1046.2029372147463
+        },
+        {
+          "model": "Grok 4.5",
+          "family": "grok 4.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.027572,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 725.3735673872044,
+          "requestsRawInWindow": 725.3735673872044,
+          "normalizedPer10": 673.5130616408583
+        },
+        {
+          "model": "Inkling",
+          "family": "inkling",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0099561,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2008.818714155141,
+          "requestsRawInWindow": 2008.818714155141,
+          "normalizedPer10": 1865.1984346844392
+        },
+        {
+          "model": "Inkling Small",
+          "family": "inkling small",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005594399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3575.0035750035754,
+          "requestsRawInWindow": 3575.0035750035754,
+          "normalizedPer10": 3319.4090761407388
+        }
+      ]
+    },
+    {
+      "id": "command-code-pro",
+      "name": "Command Code Pro",
+      "provider": "command-code",
+      "price": {
+        "monthlyUsd": 20,
+        "paidPrice": 20,
+        "advertised": 20
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h window",
+          "unit": "credits",
+          "amount": 16,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "credits",
+          "amount": 40,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 80,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 16,
+        "weekly": 40,
+        "monthly": 80
+      },
+      "officialConversion": "Offizielle requestEstimate: 100,000 req/mo",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cc-pricing"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 63,
+      "modelStats": {
+        "count": 63,
+        "min": 294.11764705882354,
+        "max": 113293.05135951663,
+        "mean": 13891.52210065872,
+        "median": 4367.5751222921035,
+        "p25": 1453.4785474086216,
+        "p75": 14011.328249043068
+      },
+      "modelRows": [
+        {
+          "model": "Tencent Hy4 Preview",
+          "family": "tencent hy4",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004433014999999999,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6767.403223314156,
+          "requestsRawInWindow": 6767.403223314156,
+          "normalizedPer10": 3383.7016116570785
+        },
+        {
+          "model": "Tencent Hy3",
+          "family": "tencent hy3",
+          "allowance": 80,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0027898000000000003,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 28675.89074485626,
+          "requestsRawInWindow": 28675.89074485626,
+          "normalizedPer10": 14337.94537242813
+        },
+        {
+          "model": "Kimi K3",
+          "family": "kimi k3",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0306,
+          "patternUsed": {
+            "input": 1050,
+            "cachedRead": 76500,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 980.3921568627451,
+          "requestsRawInWindow": 980.3921568627451,
+          "normalizedPer10": 490.19607843137254
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "family": "kimi k2.7 code",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0120765,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5796.381401896245,
+          "requestsRawInWindow": 5796.381401896245,
+          "normalizedPer10": 2898.1907009481224
+        },
+        {
+          "model": "Kimi K2.7 Code HighSpeed",
+          "family": "kimi k2.7 code",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.024153,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1242.0817289777667,
+          "requestsRawInWindow": 1242.0817289777667,
+          "normalizedPer10": 621.0408644888834
+        },
+        {
+          "model": "Kimi K2.6",
+          "family": "kimi k2.6",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0104265,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2877.2838440512155,
+          "requestsRawInWindow": 2877.2838440512155,
+          "normalizedPer10": 1438.6419220256078
+        },
+        {
+          "model": "Kimi K2.5",
+          "family": "kimi k2.5",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005966,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5028.494803888702,
+          "requestsRawInWindow": 5028.494803888702,
+          "normalizedPer10": 2514.247401944351
+        },
+        {
+          "model": "GLM-5.3 Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 50,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 26315.78947368421,
+          "requestsRawInWindow": 26315.78947368421,
+          "normalizedPer10": 13157.894736842103
+        },
+        {
+          "model": "GLM-5.3",
+          "family": "glm-5.3",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1978.891820580475,
+          "requestsRawInWindow": 1978.891820580475,
+          "normalizedPer10": 989.4459102902376
+        },
+        {
+          "model": "GLM-5.2",
+          "family": "glm-5.2",
+          "allowance": 80,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5277.0448548812665,
+          "requestsRawInWindow": 5277.0448548812665,
+          "normalizedPer10": 2638.5224274406332
+        },
+        {
+          "model": "GLM-5.2 Fast",
+          "family": "glm-5.2",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0296375,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1012.2311261071278,
+          "requestsRawInWindow": 1012.2311261071278,
+          "normalizedPer10": 506.1155630535639
+        },
+        {
+          "model": "GLM-5.1",
+          "family": "glm-5.1",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01516,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1978.891820580475,
+          "requestsRawInWindow": 1978.891820580475,
+          "normalizedPer10": 989.4459102902376
+        },
+        {
+          "model": "GLM-5",
+          "family": "glm-5",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0113184,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2650.5513146734525,
+          "requestsRawInWindow": 2650.5513146734525,
+          "normalizedPer10": 1325.2756573367262
+        },
+        {
+          "model": "MiniMax M3",
+          "family": "minimax m3",
+          "allowance": 57,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.003741,
+          "patternUsed": {
+            "input": 510,
+            "cachedRead": 56000,
+            "output": 190
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 15236.567762630313,
+          "requestsRawInWindow": 15236.567762630313,
+          "normalizedPer10": 7618.283881315157
+        },
+        {
+          "model": "MiniMax M2.7",
+          "family": "minimax m2.7",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00354,
+          "patternUsed": {
+            "input": 300,
+            "cachedRead": 55000,
+            "output": 125
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 8474.57627118644,
+          "requestsRawInWindow": 8474.57627118644,
+          "normalizedPer10": 4237.28813559322
+        },
+        {
+          "model": "MiniMax M2.5",
+          "family": "minimax m2.5",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00189,
+          "patternUsed": {
+            "input": 300,
+            "cachedRead": 55000,
+            "output": 125
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 15873.015873015873,
+          "requestsRawInWindow": 15873.015873015873,
+          "normalizedPer10": 7936.507936507936
+        },
+        {
+          "model": "DeepSeek V4 Pro (latest)",
+          "family": "deepseek v4 pro",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0028732,
+          "patternUsed": {
+            "input": 750,
+            "cachedRead": 82000,
+            "output": 290
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10441.319782820548,
+          "requestsRawInWindow": 10441.319782820548,
+          "normalizedPer10": 5220.659891410274
+        },
+        {
+          "model": "DeepSeek V4 Pro (latest)",
+          "family": "deepseek v4 pro",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0057464,
+          "patternUsed": {
+            "input": 750,
+            "cachedRead": 82000,
+            "output": 290
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5220.659891410274,
+          "requestsRawInWindow": 5220.659891410274,
+          "normalizedPer10": 2610.329945705137
+        },
+        {
+          "model": "DeepSeek V4 Flash (latest)",
+          "family": "deepseek v4 flash",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0007939,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 88172.31389343746,
+          "requestsRawInWindow": 88172.31389343746,
+          "normalizedPer10": 44086.15694671873
+        },
+        {
+          "model": "DeepSeek V4 Flash (latest)",
+          "family": "deepseek v4 flash",
+          "allowance": 70,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015878,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 44086.15694671873,
+          "requestsRawInWindow": 44086.15694671873,
+          "normalizedPer10": 22043.078473359365
+        },
+        {
+          "model": "DeepSeek V4 Flash Vision (exp)",
+          "family": "deepseek v4 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0007939,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 37788.13452575891,
+          "requestsRawInWindow": 37788.13452575891,
+          "normalizedPer10": 18894.067262879456
+        },
+        {
+          "model": "DeepSeek V4 Flash Vision (exp)",
+          "family": "deepseek v4 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015878,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 18894.067262879456,
+          "requestsRawInWindow": 18894.067262879456,
+          "normalizedPer10": 9447.033631439728
+        },
+        {
+          "model": "Qwen 3.8 Max",
+          "family": "qwen 3.8 max",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015452,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1941.49624644059,
+          "requestsRawInWindow": 1941.49624644059,
+          "normalizedPer10": 970.748123220295
+        },
+        {
+          "model": "Qwen 3.8 27B",
+          "family": "qwen 3.8 27b",
+          "allowance": 80,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.002806,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 28510.33499643621,
+          "requestsRawInWindow": 28510.33499643621,
+          "normalizedPer10": 14255.167498218105
+        },
+        {
+          "model": "Qwen 3.6 Max Preview",
+          "family": "qwen 3.6 max",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0155544,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1928.7147045209074,
+          "requestsRawInWindow": 1928.7147045209074,
+          "normalizedPer10": 964.3573522604536
+        },
+        {
+          "model": "Qwen 3.6 Plus",
+          "family": "qwen 3.6 plus",
+          "allowance": 43,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005886,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7305.470608222902,
+          "requestsRawInWindow": 7305.470608222902,
+          "normalizedPer10": 3652.735304111451
+        },
+        {
+          "model": "Qwen 3.7 Max",
+          "family": "qwen 3.7 max",
+          "allowance": 43,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0573876,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 749.2907875568939,
+          "requestsRawInWindow": 749.2907875568939,
+          "normalizedPer10": 374.64539377844693
+        },
+        {
+          "model": "Qwen 3.7 Plus",
+          "family": "qwen 3.7 plus",
+          "allowance": 43,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0046552,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 9236.982299364152,
+          "requestsRawInWindow": 9236.982299364152,
+          "normalizedPer10": 4618.491149682076
+        },
+        {
+          "model": "Qwen 3.8 Flash",
+          "family": "qwen 3.8 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00100414,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 29876.31206803832,
+          "requestsRawInWindow": 29876.31206803832,
+          "normalizedPer10": 14938.15603401916
+        },
+        {
+          "model": "Qwen 3.7 Flash",
+          "family": "qwen 3.7 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00035114,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 85436.00842968616,
+          "requestsRawInWindow": 85436.00842968616,
+          "normalizedPer10": 42718.00421484308
+        },
+        {
+          "model": "Step 3.7 Flash",
+          "family": "step 3.7 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0023463000000000004,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 12786.088735455822,
+          "requestsRawInWindow": 12786.088735455822,
+          "normalizedPer10": 6393.044367727911
+        },
+        {
+          "model": "Step 3.5 Flash",
+          "family": "step 3.5 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0011286,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 26581.60552897395,
+          "requestsRawInWindow": 26581.60552897395,
+          "normalizedPer10": 13290.802764486976
+        },
+        {
+          "model": "MiMo V2.5 Pro",
+          "family": "mimo v2.5 pro",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 32658.393207054214,
+          "requestsRawInWindow": 32658.393207054214,
+          "normalizedPer10": 16329.196603527107
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 40,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 100250.62656641605,
+          "requestsRawInWindow": 100250.62656641605,
+          "normalizedPer10": 50125.31328320802
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "family": "nemotron 3 ultra",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0068688,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4367.5751222921035,
+          "requestsRawInWindow": 4367.5751222921035,
+          "normalizedPer10": 2183.7875611460518
+        },
+        {
+          "model": "Claude Fable 5",
+          "family": "claude fable 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 294.11764705882354,
+          "requestsRawInWindow": 294.11764705882354,
+          "normalizedPer10": 147.05882352941177
+        },
+        {
+          "model": "Claude Opus 5",
+          "family": "claude opus 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 294.11764705882354
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "family": "claude opus 4.8",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 294.11764705882354
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "family": "claude opus 4.7",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 294.11764705882354
+        },
+        {
+          "model": "Claude Opus 4.6",
+          "family": "claude opus 4.6",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 588.2352941176471,
+          "requestsRawInWindow": 588.2352941176471,
+          "normalizedPer10": 294.11764705882354
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "family": "claude sonnet 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1470.5882352941178,
+          "requestsRawInWindow": 1470.5882352941178,
+          "normalizedPer10": 735.2941176470589
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "family": "claude sonnet 4.6",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0204,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 980.3921568627451,
+          "requestsRawInWindow": 980.3921568627451,
+          "normalizedPer10": 490.19607843137254
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "family": "claude haiku 4.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2941.1764705882356,
+          "requestsRawInWindow": 2941.1764705882356,
+          "normalizedPer10": 1470.5882352941178
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "family": "gpt-5.6 sol",
+          "allowance": 80,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.03481,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2298.190175237001,
+          "requestsRawInWindow": 2298.190175237001,
+          "normalizedPer10": 1149.0950876185004
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "family": "gpt-5.6 terra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.013924,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1436.3688595231254,
+          "requestsRawInWindow": 1436.3688595231254,
+          "normalizedPer10": 718.1844297615627
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 19847.83327820046,
+          "requestsRawInWindow": 19847.83327820046,
+          "normalizedPer10": 9923.91663910023
+        },
+        {
+          "model": "GPT-5.5",
+          "family": "gpt-5.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.03006,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 665.3359946773121,
+          "requestsRawInWindow": 665.3359946773121,
+          "normalizedPer10": 332.66799733865605
+        },
+        {
+          "model": "GPT-5.4",
+          "family": "gpt-5.4",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01503,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1330.6719893546242,
+          "requestsRawInWindow": 1330.6719893546242,
+          "normalizedPer10": 665.3359946773121
+        },
+        {
+          "model": "GPT-5.4 Mini",
+          "family": "gpt-5.4 mini",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004509,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4435.573297848747,
+          "requestsRawInWindow": 4435.573297848747,
+          "normalizedPer10": 2217.7866489243734
+        },
+        {
+          "model": "GPT-5.3 Codex",
+          "family": "gpt-5.3 codex",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.026376,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 758.2650894752805,
+          "requestsRawInWindow": 758.2650894752805,
+          "normalizedPer10": 379.1325447376403
+        },
+        {
+          "model": "Gemini 3.7 Flash",
+          "family": "gemini 3.7 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.004419169200000001,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6788.606328990525,
+          "requestsRawInWindow": 6788.606328990525,
+          "normalizedPer10": 3394.303164495263
+        },
+        {
+          "model": "Gemini 3.6 Flash",
+          "family": "gemini 3.6 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2017.1457387796268,
+          "requestsRawInWindow": 2017.1457387796268,
+          "normalizedPer10": 1008.5728693898134
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "family": "gemini 3.5 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.010158,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1968.8915140775744,
+          "requestsRawInWindow": 1968.8915140775744,
+          "normalizedPer10": 984.4457570387873
+        },
+        {
+          "model": "Gemini 3.5 Flash Lite",
+          "family": "gemini 3.5 flash lite",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.002145,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 9324.009324009323,
+          "requestsRawInWindow": 9324.009324009323,
+          "normalizedPer10": 4662.004662004661
+        },
+        {
+          "model": "Gemini 3.1 Flash Lite",
+          "family": "gemini 3.1 flash lite",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.001943,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10293.36078229542,
+          "requestsRawInWindow": 10293.36078229542,
+          "normalizedPer10": 5146.68039114771
+        },
+        {
+          "model": "Fugu Ultra",
+          "family": "fugu ultra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.03386,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 590.6674542232723,
+          "requestsRawInWindow": 590.6674542232723,
+          "normalizedPer10": 295.33372711163616
+        },
+        {
+          "model": "Muse Spark 1.2",
+          "family": "muse spark 1.2",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2351.0971786833857,
+          "requestsRawInWindow": 2351.0971786833857,
+          "normalizedPer10": 1175.5485893416928
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 113293.05135951663,
+          "requestsRawInWindow": 113293.05135951663,
+          "normalizedPer10": 56646.525679758306
+        },
+        {
+          "model": "Muse Spark 1.1",
+          "family": "muse spark 1.1",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0091885,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2176.633835772977,
+          "requestsRawInWindow": 2176.633835772977,
+          "normalizedPer10": 1088.3169178864885
+        },
+        {
+          "model": "Grok 4.6",
+          "family": "grok 4.6",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1690.1408450704228,
+          "requestsRawInWindow": 1690.1408450704228,
+          "normalizedPer10": 845.0704225352114
+        },
+        {
+          "model": "Grok 4.5",
+          "family": "grok 4.5",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.027572,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1088.0603510808066,
+          "requestsRawInWindow": 1088.0603510808066,
+          "normalizedPer10": 544.0301755404033
+        },
+        {
+          "model": "Inkling",
+          "family": "inkling",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0099561,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3013.2280712327115,
+          "requestsRawInWindow": 3013.2280712327115,
+          "normalizedPer10": 1506.6140356163557
+        },
+        {
+          "model": "Inkling Small",
+          "family": "inkling small",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005594399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5362.505362505363,
+          "requestsRawInWindow": 5362.505362505363,
+          "normalizedPer10": 2681.2526812526817
+        }
+      ]
+    },
+    {
+      "id": "command-code-max10",
+      "name": "Command Code Max 10×",
+      "provider": "command-code",
+      "price": {
+        "monthlyUsd": 100,
+        "paidPrice": 100,
+        "advertised": 100
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h window",
+          "unit": "credits",
+          "amount": 45,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "credits",
+          "amount": 90,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 150,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 45,
+        "weekly": 90,
+        "monthly": 150
+      },
+      "officialConversion": "Offizielle requestEstimate: 230,000 req/mo",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cc-pricing"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "command-code-max20",
+      "name": "Command Code Max 20×",
+      "provider": "command-code",
+      "price": {
+        "monthlyUsd": 200,
+        "paidPrice": 200,
+        "advertised": 200
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h window",
+          "unit": "credits",
+          "amount": 90,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "credits",
+          "amount": 180,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 300,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 90,
+        "weekly": 180,
+        "monthly": 300
+      },
+      "officialConversion": "Offizielle requestEstimate: 370,000 req/mo",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cc-pricing"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "glm-lite",
+      "name": "GLM Coding Plan Lite",
+      "provider": "zhipu",
+      "price": {
+        "monthlyUsd": 16.5,
+        "paidPrice": 16.5,
+        "advertised": 16.5
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h rolling",
+          "unit": "credits",
+          "amount": 2000,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "7-day",
+          "unit": "credits",
+          "amount": 10000,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 2000,
+        "weekly": 10000,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "glm-coding-overview",
+        "overrides"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 4115.969581749049,
+        "max": 12478.386167146975,
+        "mean": 8297.177874448013,
+        "median": 8297.17787444801,
+        "p25": 6206.57372809853,
+        "p75": 10387.782020797493
+      },
+      "modelRows": [
+        {
+          "model": "GLM-5.3",
+          "family": "glm-5.3",
+          "allowance": 10000,
+          "window": "week",
+          "windowNote": "weekly×4.33→monthly",
+          "costPerRequest": 0.00174,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": 10.52,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 4115.969581749049,
+          "requestsRawInWindow": 950.5703422053232,
+          "normalizedPer10": 2494.527019241848
+        },
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 10000,
+          "window": "week",
+          "windowNote": "weekly×4.33→monthly",
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": 3.47,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 12478.386167146975,
+          "requestsRawInWindow": 2881.844380403458,
+          "normalizedPer10": 7562.658283119379
+        }
+      ]
+    },
+    {
+      "id": "glm-pro",
+      "name": "GLM Coding Plan Pro",
+      "provider": "zhipu",
+      "price": {
+        "monthlyUsd": 75,
+        "paidPrice": 75,
+        "advertised": 75
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h rolling",
+          "unit": "credits",
+          "amount": 12000,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "7-day",
+          "unit": "credits",
+          "amount": 60000,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 12000,
+        "weekly": 60000,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "glm-coding-overview",
+        "overrides"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 24695.817490494297,
+        "max": 74870.31700288183,
+        "mean": 49783.067246688064,
+        "median": 49783.067246688064,
+        "p25": 37239.442368591175,
+        "p75": 62326.69212478494
+      },
+      "modelRows": [
+        {
+          "model": "GLM-5.3",
+          "family": "glm-5.3",
+          "allowance": 60000,
+          "window": "week",
+          "windowNote": "weekly×4.33→monthly",
+          "costPerRequest": 0.00174,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": 10.52,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 24695.817490494297,
+          "requestsRawInWindow": 5703.42205323194,
+          "normalizedPer10": 3292.7756653992396
+        },
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 60000,
+          "window": "week",
+          "windowNote": "weekly×4.33→monthly",
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": 3.47,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 74870.31700288183,
+          "requestsRawInWindow": 17291.066282420747,
+          "normalizedPer10": 9982.708933717577
+        }
+      ]
+    },
+    {
+      "id": "glm-max",
+      "name": "GLM Coding Plan Max",
+      "provider": "zhipu",
+      "price": {
+        "monthlyUsd": 151,
+        "paidPrice": 151,
+        "advertised": 151
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h rolling",
+          "unit": "credits",
+          "amount": 28000,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "7-day",
+          "unit": "credits",
+          "amount": 140000,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 28000,
+        "weekly": 140000,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "glm-coding-overview",
+        "overrides"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 57623.574144486694,
+        "max": 174697.40634005764,
+        "mean": 116160.49024227216,
+        "median": 116160.49024227218,
+        "p25": 86892.03219337943,
+        "p75": 145428.9482911649
+      },
+      "modelRows": [
+        {
+          "model": "GLM-5.3",
+          "family": "glm-5.3",
+          "allowance": 140000,
+          "window": "week",
+          "windowNote": "weekly×4.33→monthly",
+          "costPerRequest": 0.00174,
+          "patternUsed": {
+            "input": 700,
+            "cachedRead": 52000,
+            "output": 150
+          },
+          "creditsPerRequest": 10.52,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 57623.574144486694,
+          "requestsRawInWindow": 13307.984790874525,
+          "normalizedPer10": 3816.130738045477
+        },
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 140000,
+          "window": "week",
+          "windowNote": "weekly×4.33→monthly",
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": 3.47,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 174697.40634005764,
+          "requestsRawInWindow": 40345.821325648416,
+          "normalizedPer10": 11569.364658281962
+        }
+      ]
+    },
+    {
+      "id": "qwen-coding-pro",
+      "name": "Qwen Coding Plan Pro",
+      "provider": "alibaba",
+      "price": {
+        "monthlyUsd": 50,
+        "paidPrice": 50,
+        "advertised": 50
+      },
+      "meter": "requests",
+      "quotas": [
+        {
+          "label": "5h rolling",
+          "unit": "requests",
+          "amount": 6000,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Weekly",
+          "unit": "requests",
+          "amount": 45000,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
+          "label": "Monthly",
+          "unit": "requests",
+          "amount": 90000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 6000,
+        "weekly": 45000,
+        "monthly": 90000
+      },
+      "officialConversion": "simple 5–10 calls, complex 10–30+ calls",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "qwen-coding-plan"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "qwen-token-personal-lite",
+      "name": "Qwen Token Plan Personal Lite",
+      "provider": "alibaba",
+      "price": {
+        "monthlyUsd": 6,
+        "paidPrice": 6,
+        "advertised": 8
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day rolling",
+          "unit": "credits",
+          "amount": 2500,
+          "window": "rolling",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "Tiered deduction coefficients by model (offiziell); Koeffizienten nicht öffentlich",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "qwen-token-personal"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "qwen-token-personal-standard",
+      "name": "Qwen Token Plan Personal Standard",
+      "provider": "alibaba",
+      "price": {
+        "monthlyUsd": 18,
+        "paidPrice": 18,
+        "advertised": 25
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day rolling",
+          "unit": "credits",
+          "amount": 10000,
+          "window": "rolling",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "Tiered deduction coefficients by model (offiziell); Koeffizienten nicht öffentlich",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "qwen-token-personal"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "qwen-token-personal-pro",
+      "name": "Qwen Token Plan Personal Pro",
+      "provider": "alibaba",
+      "price": {
+        "monthlyUsd": 68,
+        "paidPrice": 68,
+        "advertised": 80
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day rolling",
+          "unit": "credits",
+          "amount": 40000,
+          "window": "rolling",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "Tiered deduction coefficients by model (offiziell); Koeffizienten nicht öffentlich",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "qwen-token-personal"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "kimi-moderato",
+      "name": "Kimi Code Moderato",
+      "provider": "moonshot",
+      "price": {
+        "monthlyUsd": 13.9,
+        "paidPrice": 13.9,
+        "advertised": 13.9
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day quota",
+          "unit": "credits",
+          "amount": null,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "undisclosed",
+          "shared": "Kimi Code + Kimi Membership"
+        },
+        {
+          "label": "5h rate window",
+          "unit": "credits",
+          "amount": null,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "undisclosed"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "RMB, charged by actual usage, rates close to platform API",
+      "disclosure": "partial",
+      "sourceIds": [
+        "kimi-membership-pricing",
+        "kimi-code-membership"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "kimi-allegretto",
+      "name": "Kimi Code Allegretto",
+      "provider": "moonshot",
+      "price": {
+        "monthlyUsd": 27.9,
+        "paidPrice": 27.9,
+        "advertised": 27.9
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day quota",
+          "unit": "credits",
+          "amount": null,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "undisclosed",
+          "shared": "Kimi Code + Kimi Membership"
+        },
+        {
+          "label": "5h rate window",
+          "unit": "credits",
+          "amount": null,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "undisclosed"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "RMB, charged by actual usage, rates close to platform API",
+      "disclosure": "partial",
+      "sourceIds": [
+        "kimi-membership-pricing",
+        "kimi-code-membership"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "kimi-allegro",
+      "name": "Kimi Code Allegro",
+      "provider": "moonshot",
+      "price": {
+        "monthlyUsd": 97.9,
+        "paidPrice": 97.9,
+        "advertised": 97.9
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day quota",
+          "unit": "credits",
+          "amount": null,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "undisclosed",
+          "shared": "Kimi Code + Kimi Membership"
+        },
+        {
+          "label": "5h rate window",
+          "unit": "credits",
+          "amount": null,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "undisclosed"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "RMB, charged by actual usage, rates close to platform API",
+      "disclosure": "partial",
+      "sourceIds": [
+        "kimi-membership-pricing",
+        "kimi-code-membership"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    },
+    {
+      "id": "minimax-starter",
+      "name": "minimax-starter",
+      "provider": "unknown",
+      "price": {
+        "monthlyUsd": 10,
+        "paidPrice": 10,
+        "advertised": 10
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "5h",
+          "unit": "prompts",
+          "amount": 100,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": 100,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "undisclosed",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-08-28",
+      "modelCount": 0,
+      "modelStats": null,
+      "modelRows": []
+    }
+  ],
+  "pairwiseComparisons": [
+    {
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "meanRequestsA": 22759.26994936339,
+      "meanRequestsB": 10374.425157120239,
+      "advantagePercent": 119.37861235369857,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "meanRequestsA": 22759.26994936339,
+      "meanRequestsB": 13891.52210065872,
+      "advantagePercent": 63.8356818241262,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "glm-lite",
+      "meanRequestsA": 22759.26994936339,
+      "meanRequestsB": 8297.177874448013,
+      "advantagePercent": 174.3013382833799,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "glm-pro",
+      "meanRequestsA": 22759.26994936339,
+      "meanRequestsB": 49783.067246688064,
+      "advantagePercent": 54.283110286103344,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "glm-max",
+      "meanRequestsA": 22759.26994936339,
+      "meanRequestsB": 116160.49024227216,
+      "advantagePercent": 80.40704726547287,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "meanRequestsA": 10374.425157120239,
+      "meanRequestsB": 13891.52210065872,
+      "advantagePercent": 25.31829786580194,
+      "winner": "command-code-pro"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "glm-lite",
+      "meanRequestsA": 10374.425157120239,
+      "meanRequestsB": 8297.177874448013,
+      "advantagePercent": 25.035588173532062,
+      "winner": "command-code-goat"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "glm-pro",
+      "meanRequestsA": 10374.425157120239,
+      "meanRequestsB": 49783.067246688064,
+      "advantagePercent": 79.16073530441132,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "glm-max",
+      "meanRequestsA": 10374.425157120239,
+      "meanRequestsB": 116160.49024227216,
+      "advantagePercent": 91.06888655903343,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "glm-lite",
+      "meanRequestsA": 13891.52210065872,
+      "meanRequestsB": 8297.177874448013,
+      "advantagePercent": 67.42466307054895,
+      "winner": "command-code-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "glm-pro",
+      "meanRequestsA": 13891.52210065872,
+      "meanRequestsB": 49783.067246688064,
+      "advantagePercent": 72.09588948824184,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "glm-max",
+      "meanRequestsA": 13891.52210065872,
+      "meanRequestsB": 116160.49024227216,
+      "advantagePercent": 88.04109549496079,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "glm-pro",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 49783.067246688064,
+      "advantagePercent": 83.33333333333333,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "glm-max",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 116160.49024227216,
+      "advantagePercent": 92.85714285714286,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "glm-max",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 116160.49024227216,
+      "advantagePercent": 57.14285714285715,
+      "winner": "glm-max"
+    }
+  ],
+  "modelComparisons": [
+    {
+      "planId": "opencode-go",
+      "family": "grok 4.6",
+      "modelCount": 2,
+      "normalizedPer10Median": 633.8028169014085,
+      "normalizedPer10Mean": 633.8028169014085
+    },
+    {
+      "planId": "opencode-go",
+      "family": "gpt-5.6 luna",
+      "modelCount": 2,
+      "normalizedPer10Median": 7556.216361750046,
+      "normalizedPer10Mean": 7556.216361750046
+    },
+    {
+      "planId": "opencode-go",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 15789.473684210529,
+      "normalizedPer10Mean": 15789.473684210529
+    },
+    {
+      "planId": "opencode-go",
+      "family": "glm-5.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 989.4459102902376,
+      "normalizedPer10Mean": 989.4459102902376
+    },
+    {
+      "planId": "opencode-go",
+      "family": "glm-5.2",
+      "modelCount": 1,
+      "normalizedPer10Median": 3957.7836411609505,
+      "normalizedPer10Mean": 3957.7836411609505
+    },
+    {
+      "planId": "opencode-go",
+      "family": "glm-5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 3957.7836411609505,
+      "normalizedPer10Mean": 3957.7836411609505
+    },
+    {
+      "planId": "opencode-go",
+      "family": "kimi k3",
+      "modelCount": 1,
+      "normalizedPer10Median": 490.19607843137254,
+      "normalizedPer10Mean": 490.19607843137254
+    },
+    {
+      "planId": "opencode-go",
+      "family": "kimi k2.7 code",
+      "modelCount": 1,
+      "normalizedPer10Median": 4968.326915911067,
+      "normalizedPer10Mean": 4968.326915911067
+    },
+    {
+      "planId": "opencode-go",
+      "family": "kimi k2.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 5754.567688102431,
+      "normalizedPer10Mean": 5754.567688102431
+    },
+    {
+      "planId": "opencode-go",
+      "family": "longcat-2.0",
+      "modelCount": 1,
+      "normalizedPer10Median": 57175.52887364208,
+      "normalizedPer10Mean": 57175.52887364208
+    },
+    {
+      "planId": "opencode-go",
+      "family": "mimo v2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 150375.93984962406,
+      "normalizedPer10Mean": 150375.93984962406
+    },
+    {
+      "planId": "opencode-go",
+      "family": "mimo v2.5 pro",
+      "modelCount": 1,
+      "normalizedPer10Median": 16291.067064892752,
+      "normalizedPer10Mean": 16291.067064892752
+    },
+    {
+      "planId": "opencode-go",
+      "family": "minimax m3",
+      "modelCount": 1,
+      "normalizedPer10Median": 16038.492381716118,
+      "normalizedPer10Mean": 16038.492381716118
+    },
+    {
+      "planId": "opencode-go",
+      "family": "minimax m2.7",
+      "modelCount": 1,
+      "normalizedPer10Median": 16847.425502790356,
+      "normalizedPer10Mean": 16847.425502790356
+    },
+    {
+      "planId": "opencode-go",
+      "family": "minimax m2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 16847.425502790356,
+      "normalizedPer10Mean": 16847.425502790356
+    },
+    {
+      "planId": "opencode-go",
+      "family": "muse spark 1.2",
+      "modelCount": 1,
+      "normalizedPer10Median": 226586.10271903322,
+      "normalizedPer10Mean": 226586.10271903322
+    },
+    {
+      "planId": "opencode-go",
+      "family": "qwen3.8 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 800.4482510205715,
+      "normalizedPer10Mean": 800.4482510205715
+    },
+    {
+      "planId": "opencode-go",
+      "family": "qwen3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 26304.2525208242,
+      "normalizedPer10Mean": 26304.2525208242
+    },
+    {
+      "planId": "opencode-go",
+      "family": "qwen3.7 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 1676.0069135285182,
+      "normalizedPer10Mean": 1676.0069135285182
+    },
+    {
+      "planId": "opencode-go",
+      "family": "qwen3.7 plus",
+      "modelCount": 2,
+      "normalizedPer10Median": 14126.787921596326,
+      "normalizedPer10Mean": 14126.787921596328
+    },
+    {
+      "planId": "opencode-go",
+      "family": "qwen3.6 plus",
+      "modelCount": 2,
+      "normalizedPer10Median": 10221.70659366855,
+      "normalizedPer10Mean": 10221.706593668552
+    },
+    {
+      "planId": "opencode-go",
+      "family": "deepseek v4 pro",
+      "modelCount": 2,
+      "normalizedPer10Median": 3915.4949185577057,
+      "normalizedPer10Mean": 3915.4949185577057
+    },
+    {
+      "planId": "opencode-go",
+      "family": "deepseek v4 flash",
+      "modelCount": 4,
+      "normalizedPer10Median": 18894.067262879456,
+      "normalizedPer10Mean": 21255.82567073939
+    },
+    {
+      "planId": "opencode-go",
+      "family": "tencent hy4",
+      "modelCount": 1,
+      "normalizedPer10Median": 6767.403223314157,
+      "normalizedPer10Mean": 6767.403223314157
+    },
+    {
+      "planId": "opencode-go",
+      "family": "tencent hy3",
+      "modelCount": 1,
+      "normalizedPer10Median": 21506.918058642194,
+      "normalizedPer10Mean": 21506.918058642194
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "tencent hy4",
+      "modelCount": 1,
+      "normalizedPer10Median": 4189.045634982455,
+      "normalizedPer10Mean": 4189.045634982455
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "tencent hy3",
+      "modelCount": 1,
+      "normalizedPer10Median": 23297.497123258338,
+      "normalizedPer10Mean": 23297.497123258338
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "kimi k3",
+      "modelCount": 1,
+      "normalizedPer10Median": 606.866082861495,
+      "normalizedPer10Mean": 606.866082861495
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "kimi k2.7 code",
+      "modelCount": 2,
+      "normalizedPer10Median": 2690.984866247096,
+      "normalizedPer10Mean": 2690.984866247096
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "kimi k2.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 1781.0484952344261,
+      "normalizedPer10Mean": 1781.0484952344261
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "kimi k2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 3112.6554032118247,
+      "normalizedPer10Mean": 3112.6554032118247
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 19547.475932170262,
+      "normalizedPer10Mean": 19547.475932170262
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "glm-5.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 1224.9407741135717,
+      "normalizedPer10Mean": 1224.9407741135717
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "glm-5.2",
+      "modelCount": 2,
+      "normalizedPer10Median": 2456.9336113088184,
+      "normalizedPer10Mean": 2456.933611308818
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "glm-5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 1224.9407741135717,
+      "normalizedPer10Mean": 1224.9407741135717
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "glm-5",
+      "modelCount": 1,
+      "normalizedPer10Median": 1640.700287634449,
+      "normalizedPer10Mean": 1640.700287634449
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "minimax m3",
+      "modelCount": 1,
+      "normalizedPer10Median": 11665.260630465145,
+      "normalizedPer10Mean": 11665.260630465145
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "minimax m2.7",
+      "modelCount": 1,
+      "normalizedPer10Median": 5245.791563718007,
+      "normalizedPer10Mean": 5245.791563718007
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "minimax m2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 9825.450865376586,
+      "normalizedPer10Mean": 9825.450865376586
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "deepseek v4 pro",
+      "modelCount": 2,
+      "normalizedPer10Median": 4847.409369925975,
+      "normalizedPer10Mean": 4847.409369925975
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "deepseek v4 flash",
+      "modelCount": 4,
+      "normalizedPer10Median": 29238.72990232042,
+      "normalizedPer10Mean": 35086.47588278451
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.8 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 1201.7927864070507,
+      "normalizedPer10Mean": 1201.7927864070507
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.8 27b",
+      "modelCount": 1,
+      "normalizedPer10Median": 23162.992685126912,
+      "normalizedPer10Mean": 23162.992685126912
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.6 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 1193.880968443768,
+      "normalizedPer10Mean": 1193.880968443768
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.6 plus",
+      "modelCount": 1,
+      "normalizedPer10Median": 5205.68612362842,
+      "normalizedPer10Mean": 5205.68612362842
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.7 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 533.9248988226879,
+      "normalizedPer10Mean": 533.9248988226879
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.7 plus",
+      "modelCount": 1,
+      "normalizedPer10Median": 6582.030530090412,
+      "normalizedPer10Mean": 6582.030530090412
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 18493.538884579586,
+      "normalizedPer10Mean": 18493.538884579586
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 52885.18008646622,
+      "normalizedPer10Mean": 52885.18008646622
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "step 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 7914.632457725673,
+      "normalizedPer10Mean": 7914.632457725673
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "step 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 16454.10432000864,
+      "normalizedPer10Mean": 16454.10432000864
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "mimo v2.5 pro",
+      "modelCount": 1,
+      "normalizedPer10Median": 20215.656581277755,
+      "normalizedPer10Mean": 20215.656581277755
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "mimo v2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 69812.4140434652,
+      "normalizedPer10Mean": 69812.4140434652
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "nemotron 3 ultra",
+      "modelCount": 1,
+      "normalizedPer10Median": 2703.543870190098,
+      "normalizedPer10Mean": 2703.543870190098
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude fable 5",
+      "modelCount": 1,
+      "normalizedPer10Median": 273.08973728767273,
+      "normalizedPer10Mean": 273.08973728767273
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude opus 5",
+      "modelCount": 1,
+      "normalizedPer10Median": 546.1794745753455,
+      "normalizedPer10Mean": 546.1794745753455
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude opus 4.8",
+      "modelCount": 1,
+      "normalizedPer10Median": 546.1794745753455,
+      "normalizedPer10Mean": 546.1794745753455
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude opus 4.7",
+      "modelCount": 1,
+      "normalizedPer10Median": 546.1794745753455,
+      "normalizedPer10Mean": 546.1794745753455
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude opus 4.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 546.1794745753455,
+      "normalizedPer10Mean": 546.1794745753455
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude sonnet 5",
+      "modelCount": 1,
+      "normalizedPer10Median": 1365.448686438364,
+      "normalizedPer10Mean": 1365.448686438364
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude sonnet 4.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 910.2991242922425,
+      "normalizedPer10Mean": 910.2991242922425
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude haiku 4.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 2730.897372876728,
+      "normalizedPer10Mean": 2730.897372876728
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.6 sol",
+      "modelCount": 1,
+      "normalizedPer10Median": 1867.1461497979346,
+      "normalizedPer10Mean": 1867.1461497979346
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.6 terra",
+      "modelCount": 1,
+      "normalizedPer10Median": 1333.675821284239,
+      "normalizedPer10Mean": 1333.675821284239
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer10Median": 12285.87637152613,
+      "normalizedPer10Mean": 12285.87637152613
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 617.7678687811626,
+      "normalizedPer10Mean": 617.7678687811626
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.4",
+      "modelCount": 1,
+      "normalizedPer10Median": 1235.5357375623253,
+      "normalizedPer10Mean": 1235.5357375623253
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.4 mini",
+      "modelCount": 1,
+      "normalizedPer10Median": 4118.452458541084,
+      "normalizedPer10Mean": 4118.452458541084
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-5.3 codex",
+      "modelCount": 1,
+      "normalizedPer10Median": 704.0530078693413,
+      "normalizedPer10Mean": 704.0530078693413
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gemini 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 4202.1704295824975,
+      "normalizedPer10Mean": 4202.1704295824975
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gemini 3.6 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 1872.9301195725413,
+      "normalizedPer10Mean": 1872.9301195725413
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gemini 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 1828.1258255130683,
+      "normalizedPer10Mean": 1828.1258255130683
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gemini 3.5 flash lite",
+      "modelCount": 1,
+      "normalizedPer10Median": 8657.390272989158,
+      "normalizedPer10Mean": 8657.390272989158
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gemini 3.1 flash lite",
+      "modelCount": 1,
+      "normalizedPer10Median": 9557.438052270585,
+      "normalizedPer10Mean": 9557.438052270585
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "fugu ultra",
+      "modelCount": 1,
+      "normalizedPer10Median": 548.4377476539205,
+      "normalizedPer10Mean": 548.4377476539205
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "muse spark 1.2",
+      "modelCount": 2,
+      "normalizedPer10Median": 35792.060828907466,
+      "normalizedPer10Mean": 35792.06082890746
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "muse spark 1.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 2021.0156321011857,
+      "normalizedPer10Mean": 2021.0156321011857
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "grok 4.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 1046.2029372147463,
+      "normalizedPer10Mean": 1046.2029372147463
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "grok 4.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 673.5130616408583,
+      "normalizedPer10Mean": 673.5130616408583
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "inkling",
+      "modelCount": 1,
+      "normalizedPer10Median": 1865.1984346844392,
+      "normalizedPer10Mean": 1865.1984346844392
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "inkling small",
+      "modelCount": 1,
+      "normalizedPer10Median": 3319.4090761407388,
+      "normalizedPer10Mean": 3319.4090761407388
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "tencent hy4",
+      "modelCount": 1,
+      "normalizedPer10Median": 3383.7016116570785,
+      "normalizedPer10Mean": 3383.7016116570785
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "tencent hy3",
+      "modelCount": 1,
+      "normalizedPer10Median": 14337.94537242813,
+      "normalizedPer10Mean": 14337.94537242813
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "kimi k3",
+      "modelCount": 1,
+      "normalizedPer10Median": 490.19607843137254,
+      "normalizedPer10Mean": 490.19607843137254
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "kimi k2.7 code",
+      "modelCount": 2,
+      "normalizedPer10Median": 1759.615782718503,
+      "normalizedPer10Mean": 1759.615782718503
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "kimi k2.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 1438.6419220256078,
+      "normalizedPer10Mean": 1438.6419220256078
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "kimi k2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 2514.247401944351,
+      "normalizedPer10Mean": 2514.247401944351
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 13157.894736842103,
+      "normalizedPer10Mean": 13157.894736842103
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "glm-5.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 989.4459102902376,
+      "normalizedPer10Mean": 989.4459102902376
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "glm-5.2",
+      "modelCount": 2,
+      "normalizedPer10Median": 1572.3189952470984,
+      "normalizedPer10Mean": 1572.3189952470987
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "glm-5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 989.4459102902376,
+      "normalizedPer10Mean": 989.4459102902376
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "glm-5",
+      "modelCount": 1,
+      "normalizedPer10Median": 1325.2756573367262,
+      "normalizedPer10Mean": 1325.2756573367262
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "minimax m3",
+      "modelCount": 1,
+      "normalizedPer10Median": 7618.283881315157,
+      "normalizedPer10Mean": 7618.283881315157
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "minimax m2.7",
+      "modelCount": 1,
+      "normalizedPer10Median": 4237.28813559322,
+      "normalizedPer10Mean": 4237.28813559322
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "minimax m2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 7936.507936507936,
+      "normalizedPer10Mean": 7936.507936507936
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "deepseek v4 pro",
+      "modelCount": 2,
+      "normalizedPer10Median": 3915.4949185577057,
+      "normalizedPer10Mean": 3915.4949185577057
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "deepseek v4 flash",
+      "modelCount": 4,
+      "normalizedPer10Median": 20468.57286811941,
+      "normalizedPer10Mean": 23617.58407859932
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.8 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 970.748123220295,
+      "normalizedPer10Mean": 970.748123220295
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.8 27b",
+      "modelCount": 1,
+      "normalizedPer10Median": 14255.167498218105,
+      "normalizedPer10Mean": 14255.167498218105
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.6 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 964.3573522604536,
+      "normalizedPer10Mean": 964.3573522604536
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.6 plus",
+      "modelCount": 1,
+      "normalizedPer10Median": 3652.735304111451,
+      "normalizedPer10Mean": 3652.735304111451
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.7 max",
+      "modelCount": 1,
+      "normalizedPer10Median": 374.64539377844693,
+      "normalizedPer10Mean": 374.64539377844693
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.7 plus",
+      "modelCount": 1,
+      "normalizedPer10Median": 4618.491149682076,
+      "normalizedPer10Mean": 4618.491149682076
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 14938.15603401916,
+      "normalizedPer10Mean": 14938.15603401916
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 42718.00421484308,
+      "normalizedPer10Mean": 42718.00421484308
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "step 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 6393.044367727911,
+      "normalizedPer10Mean": 6393.044367727911
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "step 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 13290.802764486976,
+      "normalizedPer10Mean": 13290.802764486976
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "mimo v2.5 pro",
+      "modelCount": 1,
+      "normalizedPer10Median": 16329.196603527107,
+      "normalizedPer10Mean": 16329.196603527107
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "mimo v2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 50125.31328320802,
+      "normalizedPer10Mean": 50125.31328320802
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "nemotron 3 ultra",
+      "modelCount": 1,
+      "normalizedPer10Median": 2183.7875611460518,
+      "normalizedPer10Mean": 2183.7875611460518
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude fable 5",
+      "modelCount": 1,
+      "normalizedPer10Median": 147.05882352941177,
+      "normalizedPer10Mean": 147.05882352941177
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude opus 5",
+      "modelCount": 1,
+      "normalizedPer10Median": 294.11764705882354,
+      "normalizedPer10Mean": 294.11764705882354
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude opus 4.8",
+      "modelCount": 1,
+      "normalizedPer10Median": 294.11764705882354,
+      "normalizedPer10Mean": 294.11764705882354
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude opus 4.7",
+      "modelCount": 1,
+      "normalizedPer10Median": 294.11764705882354,
+      "normalizedPer10Mean": 294.11764705882354
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude opus 4.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 294.11764705882354,
+      "normalizedPer10Mean": 294.11764705882354
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude sonnet 5",
+      "modelCount": 1,
+      "normalizedPer10Median": 735.2941176470589,
+      "normalizedPer10Mean": 735.2941176470589
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude sonnet 4.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 490.19607843137254,
+      "normalizedPer10Mean": 490.19607843137254
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude haiku 4.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 1470.5882352941178,
+      "normalizedPer10Mean": 1470.5882352941178
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.6 sol",
+      "modelCount": 1,
+      "normalizedPer10Median": 1149.0950876185004,
+      "normalizedPer10Mean": 1149.0950876185004
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.6 terra",
+      "modelCount": 1,
+      "normalizedPer10Median": 718.1844297615627,
+      "normalizedPer10Mean": 718.1844297615627
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer10Median": 9923.91663910023,
+      "normalizedPer10Mean": 9923.91663910023
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 332.66799733865605,
+      "normalizedPer10Mean": 332.66799733865605
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.4",
+      "modelCount": 1,
+      "normalizedPer10Median": 665.3359946773121,
+      "normalizedPer10Mean": 665.3359946773121
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.4 mini",
+      "modelCount": 1,
+      "normalizedPer10Median": 2217.7866489243734,
+      "normalizedPer10Mean": 2217.7866489243734
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-5.3 codex",
+      "modelCount": 1,
+      "normalizedPer10Median": 379.1325447376403,
+      "normalizedPer10Mean": 379.1325447376403
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gemini 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 3394.303164495263,
+      "normalizedPer10Mean": 3394.303164495263
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gemini 3.6 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 1008.5728693898134,
+      "normalizedPer10Mean": 1008.5728693898134
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gemini 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 984.4457570387873,
+      "normalizedPer10Mean": 984.4457570387873
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gemini 3.5 flash lite",
+      "modelCount": 1,
+      "normalizedPer10Median": 4662.004662004661,
+      "normalizedPer10Mean": 4662.004662004661
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gemini 3.1 flash lite",
+      "modelCount": 1,
+      "normalizedPer10Median": 5146.68039114771,
+      "normalizedPer10Mean": 5146.68039114771
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "fugu ultra",
+      "modelCount": 1,
+      "normalizedPer10Median": 295.33372711163616,
+      "normalizedPer10Mean": 295.33372711163616
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "muse spark 1.2",
+      "modelCount": 2,
+      "normalizedPer10Median": 28911.03713455,
+      "normalizedPer10Mean": 28911.03713455
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "muse spark 1.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 1088.3169178864885,
+      "normalizedPer10Mean": 1088.3169178864885
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "grok 4.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 845.0704225352114,
+      "normalizedPer10Mean": 845.0704225352114
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "grok 4.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 544.0301755404033,
+      "normalizedPer10Mean": 544.0301755404033
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "inkling",
+      "modelCount": 1,
+      "normalizedPer10Median": 1506.6140356163557,
+      "normalizedPer10Mean": 1506.6140356163557
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "inkling small",
+      "modelCount": 1,
+      "normalizedPer10Median": 2681.2526812526817,
+      "normalizedPer10Mean": 2681.2526812526817
+    },
+    {
+      "planId": "glm-lite",
+      "family": "glm-5.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 2494.527019241848,
+      "normalizedPer10Mean": 2494.527019241848
+    },
+    {
+      "planId": "glm-lite",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 7562.658283119379,
+      "normalizedPer10Mean": 7562.658283119379
+    },
+    {
+      "planId": "glm-pro",
+      "family": "glm-5.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 3292.7756653992396,
+      "normalizedPer10Mean": 3292.7756653992396
+    },
+    {
+      "planId": "glm-pro",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 9982.708933717577,
+      "normalizedPer10Mean": 9982.708933717577
+    },
+    {
+      "planId": "glm-max",
+      "family": "glm-5.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 3816.130738045477,
+      "normalizedPer10Mean": 3816.130738045477
+    },
+    {
+      "planId": "glm-max",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 11569.364658281962,
+      "normalizedPer10Mean": 11569.364658281962
+    }
+  ],
+  "familyComparisons": [
+    {
+      "family": "grok 4.6",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 633.8028169014085,
+      "requestsB": 1046.2029372147463,
+      "advantagePercent": 39.41875,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.6 luna",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 7556.216361750046,
+      "requestsB": 12285.87637152613,
+      "advantagePercent": 38.49672474922172,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.3 flash",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 15789.473684210529,
+      "requestsB": 19547.475932170262,
+      "advantagePercent": 19.225,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.3",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 989.4459102902376,
+      "requestsB": 1224.9407741135717,
+      "advantagePercent": 19.22499999999999,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.2",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 3957.7836411609505,
+      "requestsB": 2456.9336113088184,
+      "advantagePercent": 61.08630786538116,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "glm-5.1",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 3957.7836411609505,
+      "requestsB": 1224.9407741135717,
+      "advantagePercent": 223.10000000000002,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "kimi k3",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 490.19607843137254,
+      "requestsB": 606.866082861495,
+      "advantagePercent": 19.225,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "kimi k2.7 code",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 4968.326915911067,
+      "requestsB": 2690.984866247096,
+      "advantagePercent": 84.62857142857143,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "kimi k2.6",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 5754.567688102431,
+      "requestsB": 1781.0484952344261,
+      "advantagePercent": 223.10000000000002,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "mimo v2.5",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 150375.93984962406,
+      "requestsB": 69812.4140434652,
+      "advantagePercent": 115.39999999999999,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "mimo v2.5 pro",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 16291.067064892752,
+      "requestsB": 20215.656581277755,
+      "advantagePercent": 19.41361390171056,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "minimax m3",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 16038.492381716118,
+      "requestsB": 11665.260630465145,
+      "advantagePercent": 37.489361702127624,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "minimax m2.7",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 16847.425502790356,
+      "requestsB": 5245.791563718007,
+      "advantagePercent": 221.16078761714232,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "minimax m2.5",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 16847.425502790356,
+      "requestsB": 9825.450865376586,
+      "advantagePercent": 71.46720016847425,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "muse spark 1.2",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 226586.10271903322,
+      "requestsB": 35792.060828907466,
+      "advantagePercent": 533.062465450525,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "deepseek v4 pro",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 3915.4949185577057,
+      "requestsB": 4847.409369925975,
+      "advantagePercent": 19.225,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "deepseek v4 flash",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 18894.067262879456,
+      "requestsB": 29238.72990232042,
+      "advantagePercent": 35.38,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "tencent hy4",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 6767.403223314157,
+      "requestsB": 4189.045634982455,
+      "advantagePercent": 61.55000000000002,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "tencent hy3",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 21506.918058642194,
+      "requestsB": 23297.497123258338,
+      "advantagePercent": 7.685714285714296,
+      "winner": "draw"
+    },
+    {
+      "family": "grok 4.6",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 633.8028169014085,
+      "requestsB": 845.0704225352114,
+      "advantagePercent": 25,
+      "winner": "command-code-pro"
+    },
+    {
+      "family": "gpt-5.6 luna",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 7556.216361750046,
+      "requestsB": 9923.91663910023,
+      "advantagePercent": 23.858526461432028,
+      "winner": "command-code-pro"
+    },
+    {
+      "family": "glm-5.3 flash",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 15789.473684210529,
+      "requestsB": 13157.894736842103,
+      "advantagePercent": 20.00000000000004,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "glm-5.3",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 989.4459102902376,
+      "requestsB": 989.4459102902376,
+      "advantagePercent": 0,
+      "winner": "draw"
+    },
+    {
+      "family": "glm-5.2",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 3957.7836411609505,
+      "requestsB": 1572.3189952470984,
+      "advantagePercent": 151.71632811947066,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "glm-5.1",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 3957.7836411609505,
+      "requestsB": 989.4459102902376,
+      "advantagePercent": 300,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "kimi k3",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 490.19607843137254,
+      "requestsB": 490.19607843137254,
+      "advantagePercent": 0,
+      "winner": "draw"
+    },
+    {
+      "family": "kimi k2.7 code",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 4968.326915911067,
+      "requestsB": 1759.615782718503,
+      "advantagePercent": 182.35294117647055,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "kimi k2.6",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 5754.567688102431,
+      "requestsB": 1438.6419220256078,
+      "advantagePercent": 300,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "mimo v2.5",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 150375.93984962406,
+      "requestsB": 50125.31328320802,
+      "advantagePercent": 200,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "mimo v2.5 pro",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 16291.067064892752,
+      "requestsB": 16329.196603527107,
+      "advantagePercent": 0.23350529459679192,
+      "winner": "draw"
+    },
+    {
+      "family": "minimax m3",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 16038.492381716118,
+      "requestsB": 7618.283881315157,
+      "advantagePercent": 110.52631578947367,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "minimax m2.7",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 16847.425502790356,
+      "requestsB": 4237.28813559322,
+      "advantagePercent": 297.5992418658524,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "minimax m2.5",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 16847.425502790356,
+      "requestsB": 7936.507936507936,
+      "advantagePercent": 112.2775613351585,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "muse spark 1.2",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 226586.10271903322,
+      "requestsB": 28911.03713455,
+      "advantagePercent": 683.7356427737853,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "deepseek v4 pro",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 3915.4949185577057,
+      "requestsB": 3915.4949185577057,
+      "advantagePercent": 0,
+      "winner": "draw"
+    },
+    {
+      "family": "deepseek v4 flash",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 18894.067262879456,
+      "requestsB": 20468.57286811941,
+      "advantagePercent": 7.692307692307676,
+      "winner": "draw"
+    },
+    {
+      "family": "tencent hy4",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 6767.403223314157,
+      "requestsB": 3383.7016116570785,
+      "advantagePercent": 100,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "tencent hy3",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 21506.918058642194,
+      "requestsB": 14337.94537242813,
+      "advantagePercent": 49.99999999999998,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "tencent hy4",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 4189.045634982455,
+      "requestsB": 3383.7016116570785,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "tencent hy3",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 23297.497123258338,
+      "requestsB": 14337.94537242813,
+      "advantagePercent": 62.48839368616528,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "kimi k3",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 606.866082861495,
+      "requestsB": 490.19607843137254,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "kimi k2.7 code",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2690.984866247096,
+      "requestsB": 1759.615782718503,
+      "advantagePercent": 52.93025288109672,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "kimi k2.6",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1781.0484952344261,
+      "requestsB": 1438.6419220256078,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "kimi k2.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 3112.6554032118247,
+      "requestsB": 2514.247401944351,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.3 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 19547.475932170262,
+      "requestsB": 13157.894736842103,
+      "advantagePercent": 48.560817084494026,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.3",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1224.9407741135717,
+      "requestsB": 989.4459102902376,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.2",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2456.9336113088184,
+      "requestsB": 1572.3189952470984,
+      "advantagePercent": 56.26177758685018,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5.1",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1224.9407741135717,
+      "requestsB": 989.4459102902376,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "glm-5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1640.700287634449,
+      "requestsB": 1325.2756573367262,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "minimax m3",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 11665.260630465145,
+      "requestsB": 7618.283881315157,
+      "advantagePercent": 53.121894802000384,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "minimax m2.7",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 5245.791563718007,
+      "requestsB": 4237.28813559322,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "minimax m2.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 9825.450865376586,
+      "requestsB": 7936.507936507936,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "deepseek v4 pro",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 4847.409369925975,
+      "requestsB": 3915.4949185577057,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "deepseek v4 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 29238.72990232042,
+      "requestsB": 20468.57286811941,
+      "advantagePercent": 42.84693950432115,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.8 max",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1201.7927864070507,
+      "requestsB": 970.748123220295,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.8 27b",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 23162.992685126912,
+      "requestsB": 14255.167498218105,
+      "advantagePercent": 62.48839368616528,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.6 max",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1193.880968443768,
+      "requestsB": 964.3573522604536,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.6 plus",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 5205.68612362842,
+      "requestsB": 3652.735304111451,
+      "advantagePercent": 42.51473731942734,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.7 max",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 533.9248988226879,
+      "requestsB": 374.64539377844693,
+      "advantagePercent": 42.51473731942734,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.7 plus",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 6582.030530090412,
+      "requestsB": 4618.491149682076,
+      "advantagePercent": 42.51473731942737,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.8 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 18493.538884579586,
+      "requestsB": 14938.15603401916,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.7 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 52885.18008646622,
+      "requestsB": 42718.00421484308,
+      "advantagePercent": 23.800680903745008,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "step 3.7 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 7914.632457725673,
+      "requestsB": 6393.044367727911,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "step 3.5 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 16454.10432000864,
+      "requestsB": 13290.802764486976,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "mimo v2.5 pro",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 20215.656581277755,
+      "requestsB": 16329.196603527107,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "mimo v2.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 69812.4140434652,
+      "requestsB": 50125.31328320802,
+      "advantagePercent": 39.27576601671308,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "nemotron 3 ultra",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2703.543870190098,
+      "requestsB": 2183.7875611460518,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude fable 5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 273.08973728767273,
+      "requestsB": 147.05882352941177,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude opus 5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 546.1794745753455,
+      "requestsB": 294.11764705882354,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude opus 4.8",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 546.1794745753455,
+      "requestsB": 294.11764705882354,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude opus 4.7",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 546.1794745753455,
+      "requestsB": 294.11764705882354,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude opus 4.6",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 546.1794745753455,
+      "requestsB": 294.11764705882354,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude sonnet 5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1365.448686438364,
+      "requestsB": 735.2941176470589,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude sonnet 4.6",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 910.2991242922425,
+      "requestsB": 490.19607843137254,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude haiku 4.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2730.897372876728,
+      "requestsB": 1470.5882352941178,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.6 sol",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1867.1461497979346,
+      "requestsB": 1149.0950876185004,
+      "advantagePercent": 62.48839368616525,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.6 terra",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1333.675821284239,
+      "requestsB": 718.1844297615627,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.6 luna",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 12285.87637152613,
+      "requestsB": 9923.91663910023,
+      "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 617.7678687811626,
+      "requestsB": 332.66799733865605,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.4",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1235.5357375623253,
+      "requestsB": 665.3359946773121,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.4 mini",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 4118.452458541084,
+      "requestsB": 2217.7866489243734,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-5.3 codex",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 704.0530078693413,
+      "requestsB": 379.1325447376403,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gemini 3.7 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 4202.1704295824975,
+      "requestsB": 3394.303164495263,
+      "advantagePercent": 23.80068090374494,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gemini 3.6 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1872.9301195725413,
+      "requestsB": 1008.5728693898134,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gemini 3.5 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1828.1258255130683,
+      "requestsB": 984.4457570387873,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gemini 3.5 flash lite",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 8657.390272989158,
+      "requestsB": 4662.004662004661,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gemini 3.1 flash lite",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 9557.438052270585,
+      "requestsB": 5146.68039114771,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "fugu ultra",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 548.4377476539205,
+      "requestsB": 295.33372711163616,
+      "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "muse spark 1.2",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 35792.060828907466,
+      "requestsB": 28911.03713455,
+      "advantagePercent": 23.800680903745008,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "muse spark 1.1",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2021.0156321011857,
+      "requestsB": 1088.3169178864885,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "grok 4.6",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1046.2029372147463,
+      "requestsB": 845.0704225352114,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "grok 4.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 673.5130616408583,
+      "requestsB": 544.0301755404033,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "inkling",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1865.1984346844392,
+      "requestsB": 1506.6140356163557,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "inkling small",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 3319.4090761407388,
+      "requestsB": 2681.2526812526817,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    }
+  ],
+  "statistics": {
+    "totalPlans": 17,
+    "comparablePlans": 6,
+    "plansWithModels": 6,
+    "undisclosed": 1
+  },
+  "warnings": [
+    "command-code-go: no model pricing from feeds (meter=credits) — Rohdaten nur, keine Request-Normalisierung",
+    "command-code-max10: no model pricing from feeds (meter=credits) — Rohdaten nur, keine Request-Normalisierung",
+    "command-code-max20: no model pricing from feeds (meter=credits) — Rohdaten nur, keine Request-Normalisierung",
+    "qwen-coding-pro: no model pricing from feeds (meter=requests) — Rohdaten nur, keine Request-Normalisierung",
+    "qwen-token-personal-lite: no model pricing from feeds (meter=credits) — Rohdaten nur, keine Request-Normalisierung",
+    "qwen-token-personal-standard: no model pricing from feeds (meter=credits) — Rohdaten nur, keine Request-Normalisierung",
+    "qwen-token-personal-pro: no model pricing from feeds (meter=credits) — Rohdaten nur, keine Request-Normalisierung"
+  ]
+}

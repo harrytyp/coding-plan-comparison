@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "coding-plan-compare schema",
+  "description": "Schema für data/plans.yml — Credit/Token-Pass-Subscriptions mit Grundcredits (Token-Preise), Cache-Modell und Workload-Profil. Analog ai-10-usd + coding-plan-index.",
+  "type": "object",
+  "required": ["meta", "plans"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["snapshot"],
+      "properties": {
+        "snapshot": { "type": "string", "format": "date" },
+        "basis": { "type": "string" }
+      }
+    },
+    "plans": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/plan" }
+    }
+  },
+  "$defs": {
+    "price": {
+      "type": "object",
+      "required": ["monthlyUsd"],
+      "properties": {
+        "monthlyUsd": { "type": ["number", "null"] },
+        "paidPrice": { "type": ["number", "null"], "description": "Bezahlter Checkout-Preis (ai-10-usd-Prinzip), kann vom beworbenen abweichen" },
+        "advertisedPrice": { "type": ["number", "null"] },
+        "billingNote": { "type": "string" },
+        "altPrice": { "type": ["string", "null"], "description": "Zweitwährung, z.B. '¥39/mo'" }
+      }
+    },
+    "quota": {
+      "type": "object",
+      "required": ["label", "unit", "amount", "window", "refresh"],
+      "properties": {
+        "label": { "type": "string" },
+        "unit": { "enum": ["usd", "credits", "requests", "prompts", "messages", "calls", "tasks", "gpu_hours"] },
+        "amount": { "type": ["number", "string", "null"] },
+        "window": { "enum": ["5h", "day", "week", "month", "rolling", "dynamic", "concurrent"] },
+        "refresh": { "enum": ["rolling", "weekly", "monthly", "daily", "task_done", "contract", "dynamic"] },
+        "shared": { "type": ["boolean", "string"] },
+        "disclosure": { "enum": ["exact", "approximate", "undisclosed"] }
+      }
+    },
+    "tokenPricing": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "note": { "type": "string" },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "input": { "type": ["number", "null"] },
+              "output": { "type": ["number", "null"] },
+              "cachedRead": { "type": ["number", "null"] },
+              "cachedWrite": { "type": ["number", "null"] },
+              "multiplier": { "type": ["number", "null"] },
+              "usage": { "type": ["number", "null"], "description": "Plan-eigene Credits/Monat für dieses Modell (OpenCode Go)" },
+              "allowances": { "type": "object", "description": "Plan-spezifische Allowances (Command Code)" },
+              "pattern": { "type": "object", "properties": { "input": { "type": "number" }, "cachedRead": { "type": "number" }, "output": { "type": "number" } } }
+            }
+          }
+        }
+      }
+    },
+    "workload": {
+      "type": "object",
+      "properties": {
+        "pattern": { "type": "object", "properties": { "input": { "type": "number" }, "cachedRead": { "type": "number" }, "output": { "type": "number" } } },
+        "taskConversion": { "type": ["string", "null"], "description": "Anbieter-eigene Umrechnung, z.B. '10,000 inference calls ≈ 1,000 user requests'" }
+      }
+    },
+    "providerCost": {
+      "type": "object",
+      "description": "Anbietereigene Credit-Formel (z.B. GLM). Formel: creditsPerRequest = (input×c_input + cachedRead×c_cached + output×c_output)/10000 auf Pattern angewendet.",
+      "properties": {
+        "formula": { "type": "string", "description": "Menschlesbare Formel-Beschreibung" },
+        "perModel": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["model", "input", "cachedRead", "output"],
+            "properties": {
+              "model": { "type": "string" },
+              "input": { "type": "number" },
+              "cachedRead": { "type": "number" },
+              "output": { "type": "number" }
+            }
+          }
+        },
+        "mcpPerCall": { "type": ["number", "null"], "description": "Credits pro MCP-Tool-Call (falls Anbieter getrennt abrechnet)" },
+        "offPeakDiscount": { "type": ["number", "null"], "description": "Off-Peak-Rabatt als Faktor (z.B. 0.5 = 50% Abzug)" },
+        "note": { "type": "string" }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "required": ["id", "provider", "name", "price", "meter", "quotas", "disclosure", "sourceIds", "verifiedAt"],
+      "properties": {
+        "id": { "type": "string" },
+        "provider": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "$ref": "#/$defs/price" },
+        "meter": { "enum": ["dollar_usage", "credits", "requests", "prompts", "messages", "inference_calls", "gpu", "allowance"] },
+        "quotas": { "type": "array", "items": { "$ref": "#/$defs/quota" } },
+        "tokenPricing": { "$ref": "#/$defs/tokenPricing" },
+        "workload": { "$ref": "#/$defs/workload" },
+        "throughput": { "type": "object", "properties": { "concurrency": { "type": ["number", "null"] }, "rpm": { "type": ["number", "null"] }, "notes": { "type": "string" } } },
+        "models": { "type": "array", "items": { "type": "string" } },
+        "disclosure": { "enum": ["disclosed", "undisclosed", "partial"] },
+        "sourceIds": { "type": "array", "items": { "type": "string" } },
+        "verifiedAt": { "type": "string", "format": "date" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

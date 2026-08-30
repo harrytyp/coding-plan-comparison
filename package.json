@@ -1,0 +1,19 @@
+{
+  "name": "coding-plan-compare",
+  "version": "0.2.0",
+  "description": "Dynamische, reproduzierbare Vergleichsdatenbank für AI-Coding-Plan-Subscriptions. Fetch → Parse → Build: alle Daten aus live gescrapten offiziellen Quellen, mit Change-Detection.",
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "parse": "node scripts/parse-all.mjs",
+    "check": "node scripts/check.mjs",
+    "generate": "node scripts/build.mjs",
+    "update": "node scripts/fetch.mjs && node scripts/parse-all.mjs && node scripts/build.mjs",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "build": "npm run parse && npm run generate && npm test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT"
+}
