@@ -316,6 +316,9 @@ footer { border-top: 1px solid var(--border); margin-top: 40px; background: var(
   background: var(--bg-elev); color: var(--text); font-size: 14px; font-family: var(--font); cursor: pointer;
 }
 .toolbar-count { font-size: 13px; color: var(--text-faint); font-weight: 600; margin-left: auto; white-space: nowrap; }
+/* Sortier-Selector: nur auf Mobile sichtbar (dort ist der thead versteckt) */
+.sort-select { display: none; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.sort-select select { padding: 7px 9px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--bg-elev); color: var(--text); font-size: 13px; font-family: var(--font); cursor: pointer; }
 .sortable-table th { cursor: pointer; user-select: none; }
 .sortable-table th:hover { color: var(--primary); }
 .sortable-table th .sort-ind {
@@ -348,6 +351,8 @@ th[data-sort].sorted { color: var(--primary); }
     display: block; width: 100%;
   }
   .sortable-table thead { display: none; }
+  .sort-select { display: flex; grid-column: 1 / -1; justify-content: center; }
+  .sort-select select { flex: 1; }
   .sortable-table tbody tr {
     background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow-sm);
@@ -603,29 +608,27 @@ th[data-sort].sorted { color: var(--primary); }
         </div>
       </div>
       <span class="toolbar-count" id="plans-count"></span>
+      <label class="sort-select" id="sort-select">
+        <span data-i18n="sort.label">Sort by</span>
+        <select id="sort-select-key">
+          <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
+          <option value="score" data-i18n="sort.score">AI score</option>
+          <option value="req10" data-i18n="sort.req10">Requests / $10</option>
+          <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
+          <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
+          <option value="price" data-i18n="sort.price">Plan price</option>
+          <option value="plan" data-i18n="sort.plan">Plan</option>
+          <option value="model" data-i18n="sort.model">Model</option>
+        </select>
+        <select id="sort-select-dir">
+          <option value="desc" data-i18n="sort.desc">↓ desc</option>
+          <option value="asc" data-i18n="sort.asc">↑ asc</option>
+        </select>
+      </label>
     </div>
-    <div class="table-wrap" id="plans-table-wrap">
-      <table id="plans-table" class="sortable-table">
-        <thead>
-          <tr>
-            <th data-sort="plan" data-i18n="plans.th.plan">Plan</th>
-            <th data-sort="model" data-i18n="plans.th.model">Model</th>
-            <th data-sort="score" data-i18n="plans.th.score">AI score</th>
-            <th data-sort="tokens" data-i18n="plans.th.tokens">Tokens / $</th>
-            <th data-sort="req10" data-i18n="plans.th.req10">Requests / $10</th>
-            <th data-sort="rawtokens" data-i18n="plans.th.rawtokens">Tokens / mo</th>
-            <th data-sort="rawreq" data-i18n="plans.th.rawreq">Requests / mo</th>
-            <th data-sort="price" data-i18n="plans.th.price">Plan price / mo</th>
-            <th data-i18n="plans.th.privacy">Privacy</th>
-          </tr>
-        </thead>
-        <tbody id="plans-tbody"></tbody>
-      </table>
-    </div>
-    <p class="table-note" id="table-note"></p>
-
+    
     <!-- ===== DASHBOARD: Pareto-Plot (AA-Stil) ===== -->
-    <div class="dashboard" id="dashboard">
+<div class="dashboard" id="dashboard">
       <div class="section-head">
         <h3 data-i18n="dash.h3">Pareto dashboard</h3>
         <p data-i18n="dash.sub">Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.</p>
@@ -671,6 +674,27 @@ th[data-sort].sorted { color: var(--primary); }
       </div>
       <p class="table-note" id="dash-note"></p>
     </div>
+<div class="table-wrap" id="plans-table-wrap">
+      <table id="plans-table" class="sortable-table">
+        <thead>
+          <tr>
+            <th data-sort="plan" data-i18n="plans.th.plan">Plan</th>
+            <th data-sort="model" data-i18n="plans.th.model">Model</th>
+            <th data-sort="score" data-i18n="plans.th.score">AI score</th>
+            <th data-sort="tokens" data-i18n="plans.th.tokens">Tokens / $</th>
+            <th data-sort="req10" data-i18n="plans.th.req10">Requests / $10</th>
+            <th data-sort="rawtokens" data-i18n="plans.th.rawtokens">Tokens / mo</th>
+            <th data-sort="rawreq" data-i18n="plans.th.rawreq">Requests / mo</th>
+            <th data-sort="price" data-i18n="plans.th.price">Plan price / mo</th>
+            <th data-i18n="plans.th.privacy">Privacy</th>
+          </tr>
+        </thead>
+        <tbody id="plans-tbody"></tbody>
+      </table>
+    </div>
+    <p class="table-note" id="table-note"></p>
+
+    
   </section>
 
   <!-- ===== METHOD ===== -->

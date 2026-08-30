@@ -74,6 +74,17 @@ const I18N = {
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
     "filters.toggle": "Filters",
+    "sort.label": "Sort by",
+    "sort.tokens": "Tokens / $",
+    "sort.score": "AI score",
+    "sort.req10": "Requests / $10",
+    "sort.rawtokens": "Tokens / mo",
+    "sort.rawreq": "Requests / mo",
+    "sort.price": "Plan price",
+    "sort.plan": "Plan",
+    "sort.model": "Model",
+    "sort.desc": "desc",
+    "sort.asc": "asc",
     "dash.h3": "Pareto dashboard",
     "dash.sub": "Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.",
     "dash.x": "X axis",
@@ -206,6 +217,17 @@ const I18N = {
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
     "filters.toggle": "Filter",
+    "sort.label": "Sortieren nach",
+    "sort.tokens": "Tokens / $",
+    "sort.score": "AI-Score",
+    "sort.req10": "Requests / $10",
+    "sort.rawtokens": "Tokens / Monat",
+    "sort.rawreq": "Requests / Monat",
+    "sort.price": "Planpreis",
+    "sort.plan": "Plan",
+    "sort.model": "Modell",
+    "sort.desc": "absteigend",
+    "sort.asc": "aufsteigend",
     "dash.h3": "Pareto-Dashboard",
     "dash.sub": "Jeder Punkt ist eine Plan+Modell-Kombination. Die Pareto-Linie verbindet die besten Kompromisse; das grüne Viertel ist die Zielzone. Nutzt die Filter oben.",
     "dash.x": "X-Achse",
@@ -744,6 +766,11 @@ function renderCell(col, c) {
 function syncColumnHeaders() {
   const table = document.getElementById("plans-table");
   if (!table) return;
+  // Sort-Selector (Mobile) mit aktuellem Sort-Zustand synchronisieren
+  const selKey = $("#sort-select-key");
+  const selDir = $("#sort-select-dir");
+  if (selKey) selKey.value = plansSort.key;
+  if (selDir) selDir.value = plansSort.dir;
   const head = table.querySelector("thead tr");
   if (!head) return;
   const sortableMap = { plan: "plan", model: "model", score: "score", tokens: "tokens", req10: "req10", rawtokens: "rawtokens", rawreq: "rawreq", price: "price", privacy: null };
@@ -1042,6 +1069,19 @@ function init() {
   // Filter-Toggle: ein-/ausklappen
   const filterToggle = $("#filter-toggle");
   if (filterToggle) filterToggle.addEventListener("click", () => toggleFilters());
+
+  // Sort-Selector (Mobile): ändert Sortierung
+  const sortKeySel = $("#sort-select-key");
+  if (sortKeySel) sortKeySel.addEventListener("change", (e) => {
+    plansSort.key = e.target.value;
+    plansSort.dir = $("#sort-select-dir")?.value || "desc";
+    renderPlans();
+  });
+  const sortDirSel = $("#sort-select-dir");
+  if (sortDirSel) sortDirSel.addEventListener("change", (e) => {
+    plansSort.dir = e.target.value;
+    renderPlans();
+  });
 
   // Budget-Slider (max $/Monat)
   const budgetSlider = $("#budget-slider");
