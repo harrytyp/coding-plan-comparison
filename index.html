@@ -266,6 +266,35 @@ footer { border-top: 1px solid var(--border); margin-top: 40px; background: var(
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ============ FILTER-TOGGLE BAR ============ */
+.filter-bar {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.filter-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; font-size: 14px; font-weight: 600;
+}
+.filter-toggle-icon { display: inline-block; transition: transform .2s; font-size: 11px; }
+.filter-toggle[aria-expanded="true"] .filter-toggle-icon { transform: rotate(90deg); }
+.filter-count-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px;
+  background: var(--primary); color: #fff; font-size: 12px; font-weight: 700;
+}
+.filter-active {
+  font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; flex-wrap: wrap;
+}
+.filter-active .chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--primary-soft); color: var(--primary); padding: 3px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 600;
+}
+.filter-active .chip button {
+  border: none; background: none; color: inherit; cursor: pointer; font-size: 14px; line-height: 1; padding: 0 2px;
+}
+.filter-active .chip button:hover { opacity: .7; }
+
 /* ============ TABLE TOOLBAR & SORTABLE ============ */
 .table-toolbar {
   display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
@@ -522,7 +551,16 @@ th[data-sort].sorted { color: var(--primary); }
       <h2 data-i18n="plans.h2">Plans and models, compared</h2>
       <p data-i18n="plans.sub">Every plan and model combination. Filter by budget and minimum AI score to find the most tokens per dollar.</p>
     </div>
-    <div class="table-toolbar" id="plans-toolbar">
+    <!-- Filter-Toggle: schlanker Header, Filter eingeklappt -->
+    <div class="filter-bar" id="filter-bar">
+      <button class="btn filter-toggle" id="filter-toggle" type="button" aria-expanded="false">
+        <span class="filter-toggle-icon" id="filter-toggle-icon">▸</span>
+        <span data-i18n="filters.toggle">Filters</span>
+        <span class="filter-count-badge" id="filter-count-badge" hidden>0</span>
+      </button>
+      <span class="filter-active" id="filter-active"></span>
+    </div>
+    <div class="table-toolbar" id="plans-toolbar" hidden>
       <input type="search" id="plans-search" class="toolbar-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh">
       <select id="plans-meter-filter" class="toolbar-select">
         <option value="" data-i18n="plans.allMeters">All meters</option>

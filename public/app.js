@@ -73,6 +73,7 @@ const I18N = {
     "plans.noTraining": "No training on my data",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
+    "filters.toggle": "Filters",
     "dash.h3": "Pareto dashboard",
     "dash.sub": "Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.",
     "dash.x": "X axis",
@@ -204,6 +205,7 @@ const I18N = {
     "plans.noTraining": "Kein Training auf meinen Daten",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
+    "filters.toggle": "Filter",
     "dash.h3": "Pareto-Dashboard",
     "dash.sub": "Jeder Punkt ist eine Plan+Modell-Kombination. Die Pareto-Linie verbindet die besten Kompromisse; das grüne Viertel ist die Zielzone. Nutzt die Filter oben.",
     "dash.x": "X-Achse",
@@ -396,6 +398,44 @@ function syncFilterUI() {
   if (aiSlider && aiOut) {
     aiSlider.value = minAiScore;
     aiOut.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
+  }
+  syncFilterChips();
+}
+
+/* ---------------- Filter-Toggle + aktive-Filter-Chips ---------------- */
+let filtersOpen = false;
+// Gemeinsames Re-Rendering: Tabelle + Dashboard + Filter-Chips
+function rerender() {
+  renderPlans();
+  renderDashboard();
+  syncFilterChips();
+}
+function toggleFilters(force) {
+  filtersOpen = force !== undefined ? force : !filtersOpen;
+  const toolbar = $("#plans-toolbar");
+  const btn = $("#filter-toggle");
+  if (toolbar) toolbar.hidden = !filtersOpen;
+  if (btn) btn.setAttribute("aria-expanded", String(filtersOpen));
+}
+
+// Aktive Filter als Chips anzeigen (mit Entfernen-Button) + Zähler-Badge
+function syncFilterChips() {
+  const container = $("#filter-active");
+  const badge = $("#filter-count-badge");
+  if (!container) return;
+  const chips = [];
+  if (plansSearch) chips.push({ label: `${t("plans.searchPh").replace("...", "")} "${plansSearch}"`, clear: () => { plansSearch = ""; const el = $("#plans-search"); if (el) el.value = ""; rerender(); } });
+  if (plansMeter) chips.push({ label: meterLabel(plansMeter), clear: () => { plansMeter = ""; const el = $("#plans-meter-filter"); if (el) el.value = ""; rerender(); } });
+  if (maxBudget < 300) chips.push({ label: `${t("plans.budget")} ≤ ${fmtMoney(maxBudget)}`, clear: () => { maxBudget = 300; syncFilterUI(); rerender(); } });
+  if (minAiScore > 0) chips.push({ label: `${t("plans.aiScore")} ≥ ${minAiScore}`, clear: () => { minAiScore = 0; syncFilterUI(); rerender(); } });
+  if (noTrainingOnly) chips.push({ label: t("plans.noTraining"), clear: () => { noTrainingOnly = false; const el = $("#privacy-toggle"); if (el) el.checked = false; rerender(); } });
+  container.innerHTML = chips.map((c) => `<span class="chip">${escapeHtml(c.label)}<button type="button" aria-label="remove">×</button></span>`).join("");
+  container.querySelectorAll(".chip button").forEach((btn, i) => {
+    btn.addEventListener("click", chips[i].clear);
+  });
+  if (badge) {
+    badge.hidden = chips.length === 0;
+    badge.textContent = String(chips.length);
   }
 }
 
@@ -993,12 +1033,15 @@ function init() {
     history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
   });
 
-  // Filter-Event-Listener (aktualisieren Tabelle UND Dashboard)
-  const rerender = () => { renderPlans(); renderDashboard(); };
+  // Filter-Event-Listener (aktualisieren Tabelle UND Dashboard; rerender ist global)
   const plansSearchEl = $("#plans-search");
   if (plansSearchEl) plansSearchEl.addEventListener("input", (e) => { plansSearch = e.target.value; rerender(); });
   const plansMeterEl = $("#plans-meter-filter");
   if (plansMeterEl) plansMeterEl.addEventListener("change", (e) => { plansMeter = e.target.value; rerender(); });
+
+  // Filter-Toggle: ein-/ausklappen
+  const filterToggle = $("#filter-toggle");
+  if (filterToggle) filterToggle.addEventListener("click", () => toggleFilters());
 
   // Budget-Slider (max $/Monat)
   const budgetSlider = $("#budget-slider");
