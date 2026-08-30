@@ -380,6 +380,52 @@ th[data-sort].sorted { color: var(--primary); }
 .score-fill { height: 100%; background: var(--info); border-radius: 2px; }
 .privacy-badges { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
 
+/* ============ DASHBOARD / PARETO-PLOT ============ */
+.dashboard {
+  margin-top: 40px; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg-elev); box-shadow: var(--shadow-sm);
+}
+.dashboard .section-head { margin-bottom: 16px; }
+.dashboard .section-head h3 { font-size: 20px; margin: 0 0 4px; font-weight: 800; }
+.dashboard .section-head p { font-size: 14px; color: var(--text-muted); margin: 0; }
+.dash-controls {
+  display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 14px;
+}
+.dash-ctl { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.dash-ctl select {
+  padding: 7px 10px; border: 1px solid var(--border-strong); border-radius: 8px;
+  background: var(--bg-elev); color: var(--text); font-size: 13px; font-family: var(--font); cursor: pointer;
+}
+.dash-check { cursor: pointer; }
+.dash-check input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--primary); cursor: pointer; }
+.dash-legend { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-muted); margin-left: auto; flex-wrap: wrap; }
+.dot-swatch { display: inline-block; width: 11px; height: 11px; border-radius: 3px; }
+.dot-green { background: var(--success); opacity: .25; border: 1.5px solid var(--success); }
+.dot-pareto { background: var(--primary); }
+.dash-plot {
+  position: relative; width: 100%; height: 420px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg-muted); overflow: hidden;
+}
+#dash-svg { width: 100%; height: 100%; display: block; }
+/* Plot-Elemente */
+.dash-grid-line { stroke: var(--border); stroke-width: 0.15; }
+.dash-axis-line { stroke: var(--text-faint); stroke-width: 0.25; }
+.dash-axis-label { font-size: 2.4px; fill: var(--text-muted); font-family: var(--font); }
+.dash-tick { font-size: 2px; fill: var(--text-faint); font-family: var(--font); }
+.dash-dot { stroke: var(--bg-elev); stroke-width: 0.3; cursor: pointer; }
+.dash-dot:hover { stroke: var(--text); stroke-width: 0.6; }
+.dash-pareto-line { stroke: var(--primary); stroke-width: 0.5; fill: none; stroke-dasharray: 1.2 0.8; }
+.dash-green-region { fill: var(--success); opacity: 0.12; pointer-events: none; }
+.dash-tooltip {
+  position: absolute; pointer-events: none; background: var(--text); color: var(--bg);
+  padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; white-space: nowrap;
+  transform: translate(-50%, -120%); box-shadow: var(--shadow-md); z-index: 20; display: none;
+}
+@media (max-width: 760px) {
+  .dash-plot { height: 320px; }
+  .dash-legend { margin-left: 0; }
+}
+
 /* ============ SPALTEN-PICKER ============ */
 .col-picker { position: relative; }
 .col-picker-btn { white-space: nowrap; }
@@ -535,6 +581,54 @@ th[data-sort].sorted { color: var(--primary); }
       </table>
     </div>
     <p class="table-note" id="table-note"></p>
+
+    <!-- ===== DASHBOARD: Pareto-Plot (AA-Stil) ===== -->
+    <div class="dashboard" id="dashboard">
+      <div class="section-head">
+        <h3 data-i18n="dash.h3">Pareto dashboard</h3>
+        <p data-i18n="dash.sub">Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.</p>
+      </div>
+      <div class="dash-controls">
+        <label class="dash-ctl">
+          <span data-i18n="dash.x">X axis</span>
+          <select id="dash-x">
+            <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
+            <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
+            <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
+            <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
+            <option value="score" data-i18n="dash.m.score">AI score</option>
+            <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
+          </select>
+        </label>
+        <label class="dash-ctl">
+          <span data-i18n="dash.y">Y axis</span>
+          <select id="dash-y">
+            <option value="score" data-i18n="dash.m.score">AI score</option>
+            <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
+            <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
+            <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
+            <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
+            <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
+          </select>
+        </label>
+        <label class="dash-ctl dash-check">
+          <input type="checkbox" id="dash-pareto" checked>
+          <span data-i18n="dash.pareto">Pareto line</span>
+        </label>
+        <label class="dash-ctl dash-check">
+          <input type="checkbox" id="dash-green" checked>
+          <span data-i18n="dash.green">Green quarter</span>
+        </label>
+        <span class="dash-legend">
+          <span class="dot-swatch dot-green"></span><span data-i18n="dash.legend.green">Green quarter</span>
+          <span class="dot-swatch dot-pareto"></span><span data-i18n="dash.legend.pareto">Pareto frontier</span>
+        </span>
+      </div>
+      <div class="dash-plot" id="dash-plot">
+        <svg id="dash-svg" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Pareto plot"></svg>
+      </div>
+      <p class="table-note" id="dash-note"></p>
+    </div>
   </section>
 
   <!-- ===== METHOD ===== -->

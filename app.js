@@ -73,6 +73,20 @@ const I18N = {
     "plans.noTraining": "No training on my data",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
+    "dash.h3": "Pareto dashboard",
+    "dash.sub": "Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.",
+    "dash.x": "X axis",
+    "dash.y": "Y axis",
+    "dash.pareto": "Pareto line",
+    "dash.green": "Green quarter",
+    "dash.legend.green": "Green quarter",
+    "dash.legend.pareto": "Pareto frontier",
+    "dash.m.tokens": "Tokens / $",
+    "dash.m.req10": "Requests / $10",
+    "dash.m.rawtokens": "Tokens / mo",
+    "dash.m.rawreq": "Requests / mo",
+    "dash.m.score": "AI score",
+    "dash.m.price": "Plan price / mo",
     "plans.badge.noTraining": "no training",
     "plans.badge.zeroRetention": "zero retention",
     "plans.badge.retention": "retention {d}d",
@@ -190,6 +204,20 @@ const I18N = {
     "plans.noTraining": "Kein Training auf meinen Daten",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
+    "dash.h3": "Pareto-Dashboard",
+    "dash.sub": "Jeder Punkt ist eine Plan+Modell-Kombination. Die Pareto-Linie verbindet die besten Kompromisse; das grüne Viertel ist die Zielzone. Nutzt die Filter oben.",
+    "dash.x": "X-Achse",
+    "dash.y": "Y-Achse",
+    "dash.pareto": "Pareto-Linie",
+    "dash.green": "Grünes Viertel",
+    "dash.legend.green": "Grünes Viertel",
+    "dash.legend.pareto": "Pareto-Frontier",
+    "dash.m.tokens": "Tokens / $",
+    "dash.m.req10": "Requests / $10",
+    "dash.m.rawtokens": "Tokens / Monat",
+    "dash.m.rawreq": "Requests / Monat",
+    "dash.m.score": "AI-Score",
+    "dash.m.price": "Planpreis / Monat",
     "plans.badge.noTraining": "kein Training",
     "plans.badge.zeroRetention": "Zero Retention",
     "plans.badge.retention": "Speicherung {d} T",
@@ -350,6 +378,7 @@ function renderAll() {
   if (!data) return;
   renderStats();
   renderPlans();
+  renderDashboard();
   renderFormula();
   bindSortHeader("plans-table", plansSort, renderPlans);
   syncFilterUI();
@@ -702,6 +731,189 @@ function syncColumnPicker() {
   });
 }
 
+/* ============ DASHBOARD / PARETO-PLOT (AA-Stil) ============ */
+let dashX = "tokens";
+let dashY = "score";
+let dashPareto = true;
+let dashGreen = true;
+
+// Punkt-Wert für eine Metrik
+function metricValue(combo, metric) {
+  switch (metric) {
+    case "tokens": return combo.tokensPer10;
+    case "req10": return combo.req10;
+    case "rawtokens": return combo.rawTokensPerMonth;
+    case "rawreq": return combo.rawRequestsPerMonth;
+    case "score": return combo.score;
+    case "price": return combo.price;
+    default: return null;
+  }
+}
+// Metrik-Label (i18n)
+function metricLabel(metric) {
+  const map = {
+    tokens: t("dash.m.tokens"), req10: t("dash.m.req10"), rawtokens: t("dash.m.rawtokens"),
+    rawreq: t("dash.m.rawreq"), score: t("dash.m.score"), price: t("dash.m.price"),
+  };
+  return map[metric] ?? metric;
+}
+// Kurz-Format für Tooltip
+function metricFmt(metric, val) {
+  if (val === null || val === undefined) return "-";
+  if (metric === "price") return fmtMoney(val);
+  if (metric === "score") return val.toFixed(1);
+  return fmtTokens(val);
+}
+
+// Pareto-Frontier: Punkte die in beiden Achsen nicht dominiert werden
+// (maximiert X und Y — "mehr ist besser" auf beiden Achsen).
+function paretoFrontier(points) {
+  const sorted = points.filter((p) => p.x != null && p.y != null).sort((a, b) => b.x - a.x);
+  const frontier = [];
+  let maxY = -Infinity;
+  for (const p of sorted) {
+    if (p.y > maxY) {
+      frontier.push(p);
+      maxY = p.y;
+    }
+  }
+  // Von links nach rechts sortieren für die Linie
+  return frontier.sort((a, b) => a.x - b.x);
+}
+
+function renderDashboard() {
+  const svg = $("#dash-svg");
+  const note = $("#dash-note");
+  if (!svg) return;
+  // Gleiche Filter wie die Tabelle anwenden (Suche, Budget, AI, Privacy)
+  let combos = buildCombos();
+  if (plansSearch) {
+    const q = plansSearch.toLowerCase();
+    combos = combos.filter((c) => [c.planName, c.model, c.provider].join(" ").toLowerCase().includes(q));
+  }
+  if (plansMeter) combos = combos.filter((c) => c.meter === plansMeter);
+  if (maxBudget < 300) combos = combos.filter((c) => (c.price ?? 0) <= maxBudget);
+  if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
+  if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
+
+  const points = combos.map((c) => ({
+    combo: c,
+    x: metricValue(c, dashX),
+    y: metricValue(c, dashY),
+  })).filter((p) => p.x != null && p.y != null && p.x > 0 && p.y > 0);
+
+  const W = 100, H = 100, PAD_L = 12, PAD_B = 9, PAD_T = 4, PAD_R = 4;
+  const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
+
+  if (!points.length) {
+    svg.innerHTML = "";
+    if (note) note.textContent = lang === "de" ? "Keine Daten für den Plot nach Filtern." : "No data for the plot after filtering.";
+    return;
+  }
+
+  // Skalen: log für Token/Request-Metriken (riesige Spannen), linear für Score/Preis
+  const logScale = (m) => m === "tokens" || m === "req10" || m === "rawtokens" || m === "rawreq";
+  const xLog = logScale(dashX), yLog = logScale(dashY);
+  const xVals = points.map((p) => p.x), yVals = points.map((p) => p.y);
+  const xMin = xLog ? Math.min(...xVals) * 0.8 : 0;
+  const xMax = xLog ? Math.max(...xVals) * 1.2 : Math.max(...xVals) * 1.05;
+  const yMin = yLog ? Math.min(...yVals) * 0.8 : 0;
+  const yMax = yLog ? Math.max(...yVals) * 1.2 : Math.max(...yVals) * 1.05;
+
+  const sx = (v) => PAD_L + (xLog ? (Math.log(v) - Math.log(xMin)) / (Math.log(xMax) - Math.log(xMin)) : (v - xMin) / (xMax - xMin)) * plotW;
+  const sy = (v) => H - PAD_B - (yLog ? (Math.log(v) - Math.log(yMin)) / (Math.log(yMax) - Math.log(yMin)) : (v - yMin) / (yMax - yMin)) * plotH;
+
+  const px = points.map((p) => ({ ...p, px: sx(p.x), py: sy(p.y) }));
+
+  // Green Quarter: oberes rechtes Viertel (hohe X + hohe Y)
+  const gqX = sx(xLog ? Math.sqrt(xMin * xMax) : (xMin + xMax) / 2);
+  const gqY = sy(yLog ? Math.sqrt(yMin * yMax) : (yMin + yMax) / 2);
+  const greenRect = dashGreen
+    ? `<rect class="dash-green-region" x="${gqX}" y="${PAD_T}" width="${PAD_L + plotW - gqX}" height="${gqY - PAD_T}"/>`
+    : "";
+
+  // Pareto-Frontier
+  const frontier = dashPareto ? paretoFrontier(points) : [];
+  const linePath = frontier.length > 1
+    ? `<path class="dash-pareto-line" d="M${frontier.map((p) => `${sx(p.x).toFixed(2)},${sy(p.y).toFixed(2)}`).join(" L")}"/>`
+    : "";
+
+  // Achsen + Ticks (log-Skala: 10er-Potenzen; linear: ~5 Ticks)
+  const ticks = (log, min, max, n) => {
+    if (log) {
+      const out = [];
+      let v = Math.pow(10, Math.ceil(Math.log10(min)));
+      while (v <= max && out.length < 8) { if (v >= min) out.push(v); v *= 10; }
+      return out;
+    }
+    const out = [];
+    for (let i = 0; i <= n; i++) out.push(min + ((max - min) * i) / n);
+    return out;
+  };
+  const xTicks = ticks(xLog, xMin, xMax, 5);
+  const yTicks = ticks(yLog, yMin, yMax, 5);
+
+  const xGrid = xTicks.map((v) => `<line class="dash-grid-line" x1="${sx(v).toFixed(2)}" y1="${PAD_T}" x2="${sx(v).toFixed(2)}" y2="${H - PAD_B}"/>`).join("");
+  const yGrid = yTicks.map((v) => `<line class="dash-grid-line" x1="${PAD_L}" y1="${sy(v).toFixed(2)}" x2="${W - PAD_R}" y2="${sy(v).toFixed(2)}"/>`).join("");
+  const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 3.2}" text-anchor="middle">${fmtTokens(v)}</text>`).join("");
+  const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 1}" y="${(sy(v) + 0.8).toFixed(2)}" text-anchor="end">${fmtTokens(v)}</text>`).join("");
+
+  const dots = px.map((p, i) => {
+    const color = p.combo.noTraining === true ? "var(--success)" : (p.combo.noTraining === false ? "var(--danger)" : "var(--info)");
+    return `<circle class="dash-dot" data-i="${i}" cx="${p.px.toFixed(2)}" cy="${p.py.toFixed(2)}" r="1.6" fill="${color}"/>`;
+  }).join("");
+
+  svg.innerHTML = `
+    ${greenRect}
+    ${xGrid}${yGrid}
+    <line class="dash-axis-line" x1="${PAD_L}" y1="${H - PAD_B}" x2="${W - PAD_R}" y2="${H - PAD_B}"/>
+    <line class="dash-axis-line" x1="${PAD_L}" y1="${PAD_T}" x2="${PAD_L}" y2="${H - PAD_B}"/>
+    ${linePath}
+    ${dots}
+    ${xTickLabels}${yTickLabels}
+    <text class="dash-axis-label" x="${PAD_L + plotW / 2}" y="${H - 0.5}" text-anchor="middle">${escapeHtml(metricLabel(dashX))}</text>
+    <text class="dash-axis-label" x="1.5" y="${PAD_T + plotH / 2}" text-anchor="middle" transform="rotate(-90 1.5 ${PAD_T + plotH / 2})">${escapeHtml(metricLabel(dashY))}</text>
+  `;
+
+  // Tooltip + Punkt-Daten für Hover
+  svg._points = px;
+  if (note) note.textContent = `${points.length} ${lang === "de" ? "Kombinationen im Plot" : "combinations plotted"} · ${frontier.length} ${lang === "de" ? "Pareto-Punkte" : "Pareto points"}`;
+}
+
+// Tooltip-Events (Delegation auf SVG)
+function bindDashTooltip() {
+  const svg = $("#dash-svg");
+  const tip = document.getElementById("dash-tooltip") || (() => { const d = document.createElement("div"); d.id = "dash-tooltip"; d.className = "dash-tooltip"; document.body.appendChild(d); return d; })();
+  if (!svg) return;
+  svg.addEventListener("mousemove", (e) => {
+    const circle = e.target.closest(".dash-dot");
+    if (circle && svg._points) {
+      const p = svg._points[parseInt(circle.dataset.i, 10)];
+      if (!p) return;
+      tip.style.display = "block";
+      tip.textContent = `${p.combo.planName} · ${p.combo.model} · ${metricLabel(dashX)} ${metricFmt(dashX, p.x)} · ${metricLabel(dashY)} ${metricFmt(dashY, p.y)}`;
+      const rect = svg.getBoundingClientRect();
+      tip.style.left = `${rect.left + (p.px / 100) * rect.width}px`;
+      tip.style.top = `${rect.top + (p.py / 100) * rect.height}px`;
+    } else {
+      tip.style.display = "none";
+    }
+  });
+  svg.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+}
+
+// Dashboard-Controls initialisieren
+function initDashboard() {
+  const xSel = $("#dash-x"), ySel = $("#dash-y");
+  if (xSel) xSel.addEventListener("change", (e) => { dashX = e.target.value; renderDashboard(); });
+  if (ySel) ySel.addEventListener("change", (e) => { dashY = e.target.value; renderDashboard(); });
+  const pSel = $("#dash-pareto");
+  if (pSel) pSel.addEventListener("change", (e) => { dashPareto = e.target.checked; renderDashboard(); });
+  const gSel = $("#dash-green");
+  if (gSel) gSel.addEventListener("change", (e) => { dashGreen = e.target.checked; renderDashboard(); });
+  bindDashTooltip();
+}
+
 function renderFormula() {
   const block = $("#formula-block");
   const m = data.methodology ?? {};
@@ -781,18 +993,19 @@ function init() {
     history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
   });
 
-  // Filter-Event-Listener
+  // Filter-Event-Listener (aktualisieren Tabelle UND Dashboard)
+  const rerender = () => { renderPlans(); renderDashboard(); };
   const plansSearchEl = $("#plans-search");
-  if (plansSearchEl) plansSearchEl.addEventListener("input", (e) => { plansSearch = e.target.value; renderPlans(); });
+  if (plansSearchEl) plansSearchEl.addEventListener("input", (e) => { plansSearch = e.target.value; rerender(); });
   const plansMeterEl = $("#plans-meter-filter");
-  if (plansMeterEl) plansMeterEl.addEventListener("change", (e) => { plansMeter = e.target.value; renderPlans(); });
+  if (plansMeterEl) plansMeterEl.addEventListener("change", (e) => { plansMeter = e.target.value; rerender(); });
 
   // Budget-Slider (max $/Monat)
   const budgetSlider = $("#budget-slider");
   if (budgetSlider) budgetSlider.addEventListener("input", (e) => {
     maxBudget = parseInt(e.target.value, 10) || 300;
     syncFilterUI();
-    renderPlans();
+    rerender();
   });
 
   // AI-Score-Slider (mindestens)
@@ -800,14 +1013,14 @@ function init() {
   if (aiSlider) aiSlider.addEventListener("input", (e) => {
     minAiScore = parseInt(e.target.value, 10) || 0;
     syncFilterUI();
-    renderPlans();
+    rerender();
   });
 
   // Privacy-Filter: "No training on my data"
   const privacyToggle = $("#privacy-toggle");
   if (privacyToggle) privacyToggle.addEventListener("change", (e) => {
     noTrainingOnly = e.target.checked;
-    renderPlans();
+    rerender();
   });
 
   // Spalten-Picker: Dropdown öffnen/schließen
@@ -833,6 +1046,7 @@ function init() {
     });
   });
   syncColumnPicker();
+  initDashboard();
 
   // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)
