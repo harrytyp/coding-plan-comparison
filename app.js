@@ -443,14 +443,38 @@ function providerPrivacy(provider) {
   const match = entries.find((e) => e.provider === provider);
   return match || null;
 }
-// Privacy einer Combo zusammenführen: Modell-Privacy (Feed) hat Vorrang, sonst Anbieter-Policy
+// Globale Modell-Privacy-Map: Ein Modell hat dieselbe Training-Policy überall.
+// Zwei Ebenen: exakter Modellname (z.B. "Muse Spark 1.2 Contributor") hat Vorrang,
+// Familie ("muse spark 1.2") nur als Fallback. Behebt: Muse Spark 1.2 Contributor
+// hat training=true (ocgo-Feed) → gilt AUCH in Command Code trotz Anbieter-Zusage.
+const modelPrivacyMap = new Map();
+const modelPrivacyByName = new Map();
+function buildModelPrivacyMap() {
+  modelPrivacyMap.clear();
+  modelPrivacyByName.clear();
+  for (const plan of data?.plans ?? []) {
+    for (const row of plan.modelRows ?? []) {
+      if (row.privacy && (row.privacy.training === true || row.privacy.training === false)) {
+        const nameKey = row.model.toLowerCase();
+        const famKey = row.family || nameKey;
+        if (!modelPrivacyByName.has(nameKey)) modelPrivacyByName.set(nameKey, row.privacy);
+        if (!modelPrivacyMap.has(famKey)) modelPrivacyMap.set(famKey, row.privacy);
+      }
+    }
+  }
+}
+
+// Privacy einer Combo: Modell-genaue Privacy hat STRENGEN Vorrang.
+// Ein Modell trainiert (oder nicht) unabhängig vom Plan/Anbieter.
+// Anbieter-Policy gilt nur als Fallback für Modelle ohne eigene Aussage.
 function comboPrivacy(plan, row) {
-  if (row.privacy && (row.privacy.training === false || row.privacy.training === true)) {
+  const modelPriv = modelPrivacyByName.get(row.model.toLowerCase()) ?? modelPrivacyMap.get(row.family);
+  if (modelPriv) {
     return {
-      noTraining: row.privacy.training === false,
-      retentionDays: typeof row.privacy.retentionDays === "number" ? row.privacy.retentionDays : null,
+      noTraining: modelPriv.training === false,
+      retentionDays: typeof modelPriv.retentionDays === "number" ? modelPriv.retentionDays : null,
       zeroRetention: null,
-      source: "model (feed)",
+      source: "model",
       known: true,
     };
   }
@@ -640,6 +664,7 @@ async function loadData() {
     const resp = await fetch(DATA_URL, { cache: "no-cache" });
     if (!resp.ok) throw new Error("HTTP " + resp.status + " für " + DATA_URL);
     data = await resp.json();
+    buildModelPrivacyMap(); // Modell-Privacy-Map aufbauen, bevor gerendert wird
     // Loading-Note entfernen
     const note = document.getElementById("loading-note");
     if (note) note.remove();
