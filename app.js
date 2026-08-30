@@ -3,6 +3,14 @@
  * Dependency-free. Loads public/data/latest.json, renders the
  * whole page, i18n EN/DE, dark mode, URL state.
  * ============================================================ */
+/* Idempotenz-Schutz: verhindert Crash bei doppelt geladenem Script
+ * (z.B. aggressive Caches, Browser-Addons, doppelter Refresh).
+ * Sonst: "Identifier '$' has already been declared" → Seite tot. */
+(function () {
+if (typeof window !== "undefined" && window.__CPC_LOADED__) {
+  return; // bereits geladen — nichts tun
+}
+if (typeof window !== "undefined") window.__CPC_LOADED__ = true;
 "use strict";
 
 /* ---------------- i18n ---------------- */
@@ -452,3 +460,5 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
+
+})(); /* Ende Idempotenz-Schutz */
