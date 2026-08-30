@@ -61,6 +61,11 @@ const I18N = {
     "plans.th.models": "Models",
     "plans.th.avgreq": "Avg req / mo",
     "plans.th.status": "Status",
+    "plans.th.tokens": "Tokens / $",
+    "plans.th.bestreq": "Best model / $10",
+    "plans.budget": "Max $/mo",
+    "view.plans": "Plans",
+    "view.models": "Model comparison",
     "models.searchPh": "Filter models...",
     "models.h2": "Model for model, per $10",
     "models.sub": "Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, scaled to exactly $10 paid.",
@@ -163,6 +168,11 @@ const I18N = {
     "plans.th.models": "Modelle",
     "plans.th.avgreq": "Ø Requests / Monat",
     "plans.th.status": "Status",
+    "plans.th.tokens": "Tokens / $",
+    "plans.th.bestreq": "Bestes Modell / $10",
+    "plans.budget": "Max $/Monat",
+    "view.plans": "Pläne",
+    "view.models": "Modell-Vergleich",
     "models.searchPh": "Modelle filtern...",
     "models.h2": "Modell für Modell, pro 10 $",
     "models.sub": "Mittelwerte verschleiern die Wahrheit: Billige Modelle blähen den Schnitt auf. Wir vergleichen dieselbe Modell-Familie über Pläne, skaliert auf exakt 10 $ bezahlt.",
@@ -262,6 +272,16 @@ function fmtNum(n, digits = 0) {
   return n.toLocaleString(lang === "de" ? "de-DE" : "en-US", { maximumFractionDigits: digits });
 }
 
+// Tokens kompakt: 1.6 Mrd → "1.6B", 45 Mio → "45M", 900k → "900K"
+function fmtTokens(n) {
+  if (n === null || n === undefined || !isFinite(n)) return "-";
+  const loc = lang === "de" ? "de-DE" : "en-US";
+  if (n >= 1e9) return (n / 1e9).toLocaleString(loc, { maximumFractionDigits: 1 }) + "B";
+  if (n >= 1e6) return (n / 1e6).toLocaleString(loc, { maximumFractionDigits: 0 }) + "M";
+  if (n >= 1e3) return (n / 1e3).toLocaleString(loc, { maximumFractionDigits: 0 }) + "K";
+  return Math.round(n).toLocaleString(loc);
+}
+
 function fmtMoney(n) {
   if (n === null || n === undefined || !isFinite(n)) return "-";
   return "$" + n.toLocaleString(lang === "de" ? "de-DE" : "en-US", { maximumFractionDigits: 2 });
@@ -313,6 +333,43 @@ function renderAll() {
   renderFormula();
   bindSortHeader("plans-table", plansSort, renderPlans);
   bindSortHeader("family-table", modelsSort, renderFamilyTable);
+  syncView();
+  syncBudgetUI();
+}
+
+/* ---------------- View-Umschalter (eine Tabelle, zwei Ansichten) ---------------- */
+function setView(next) {
+  view = next === "models" ? "models" : "plans";
+  syncView();
+  const p = new URLSearchParams(location.search);
+  if (view === "models") p.set("view", "models"); else p.delete("view");
+  history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
+}
+function syncView() {
+  const plansTable = $("#plans-table");
+  const familyTable = $("#family-table");
+  const note = $("#table-note");
+  if (plansTable) plansTable.style.display = view === "plans" ? "" : "none";
+  if (familyTable) familyTable.style.display = view === "models" ? "" : "none";
+  $$(".view-tab").forEach((b) => b.classList.toggle("active", b.dataset.view === view));
+  // Budget-Filter nur im Plans-View relevant
+  const budgetEl = $("#budget-filter");
+  if (budgetEl) budgetEl.style.display = view === "plans" ? "" : "none";
+  const searchEl = $("#plans-search");
+  if (searchEl) searchEl.placeholder = view === "models" ? t("models.searchPh") : t("plans.searchPh");
+  if (note) {
+    note.textContent = view === "plans"
+      ? (lang === "de" ? "Tokens/$ = durchschnittliche Tokens pro $10 über alle Modelle des Plans." : "Tokens/$ = average tokens per $10 across all models in the plan.")
+      : (lang === "de" ? "Vergleich pro Modell-Familie, skaliert auf $10." : "Per model family, scaled to $10.");
+  }
+}
+function syncBudgetUI() {
+  const slider = $("#budget-slider");
+  const out = $("#budget-value");
+  if (slider && out) {
+    slider.value = maxBudget;
+    out.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
+  }
 }
 
 function renderStats() {
@@ -358,12 +415,39 @@ function quotaSummary(plan) {
 }
 
 /* ---------------- Sortier-/Filter-State ---------------- */
+let view = "plans"; // "plans" | "models" — eine Tabelle, zwei Ansichten
 let plansSort = { key: "price", dir: "asc" };
 let modelsSort = { key: "edge", dir: "desc" };
 let plansSearch = "";
 let plansMeter = "";
-let plansStatus = "";
-let modelsSearch = "";
+let maxBudget = 300; // Budget-Filter: max $/Monat
+
+/* ---------------- Metriken pro Plan ---------------- */
+// Tokens pro Request aus dem Workload-Pattern (input + cachedRead + output)
+function tokensPerRequest(row) {
+  const p = row.patternUsed;
+  if (!p) return null;
+  return (p.input || 0) + (p.cachedRead || 0) + (p.output || 0);
+}
+// Tokens pro $10 (normalisiert): Requests pro $10 × Tokens pro Request
+function tokensPer10(plan) {
+  if (!plan.modelRows?.length) return null;
+  let total = 0, count = 0;
+  for (const r of plan.modelRows) {
+    const tpr = tokensPerRequest(r);
+    if (tpr && r.normalizedPer10) { total += tpr * r.normalizedPer10; count++; }
+  }
+  return count ? total / count : null;
+}
+// Bestes Modell: höchste Requests pro $10
+function bestModel(plan) {
+  if (!plan.modelRows?.length) return null;
+  let best = null;
+  for (const r of plan.modelRows) {
+    if (!best || (r.normalizedPer10 ?? 0) > (best.normalizedPer10 ?? 0)) best = r;
+  }
+  return best;
+}
 
 function sortBy(key, dir) {
   return (a, b) => {
@@ -375,6 +459,8 @@ function sortBy(key, dir) {
     else if (key === "quota") { va = quotaSummary(a).toLowerCase(); vb = quotaSummary(b).toLowerCase(); }
     else if (key === "models") { va = a.modelCount ?? null; vb = b.modelCount ?? null; }
     else if (key === "avgreq") { va = a.modelStats?.mean ?? null; vb = b.modelStats?.mean ?? null; }
+    else if (key === "tokens") { va = tokensPer10(a); vb = tokensPer10(b); }
+    else if (key === "bestreq") { va = bestModel(a)?.normalizedPer10 ?? null; vb = bestModel(b)?.normalizedPer10 ?? null; }
     else if (key === "status") { va = a.disclosure ?? ""; vb = b.disclosure ?? ""; }
     else if (key === "family") { va = (a.family || "").toLowerCase(); vb = (b.family || "").toLowerCase(); }
     else if (key === "reqA") { va = a.requestsA ?? null; vb = b.requestsA ?? null; }
@@ -418,13 +504,17 @@ function bindSortHeader(tableId, state, renderFn) {
 function renderPlans() {
   const tbody = $("#plans-tbody");
   let plans = (data.plans ?? []).slice();
-  // Filter
+  // Filter: Suche
   if (plansSearch) {
     const q = plansSearch.toLowerCase();
     plans = plans.filter((p) => [p.name, p.provider, meterLabel(p.meter), quotaSummary(p)].join(" ").toLowerCase().includes(q));
   }
+  // Filter: Meter
   if (plansMeter) plans = plans.filter((p) => p.meter === plansMeter);
-  if (plansStatus) plans = plans.filter((p) => p.disclosure === plansStatus);
+  // Filter: Budget (max $/Monat)
+  if (maxBudget < 300) {
+    plans = plans.filter((p) => (p.price?.paidPrice ?? p.price?.monthlyUsd ?? 0) <= maxBudget);
+  }
   // Sortieren
   plans.sort(sortBy(plansSort.key, plansSort.dir));
   // Count
@@ -439,16 +529,19 @@ function renderPlans() {
       : (p.disclosure === "partial" ? (lang === "de" ? "teilweise" : "partial") : (lang === "de" ? "verifiziert" : "verified"));
     const discClass = p.disclosure === "undisclosed" ? "badge-gray" : (p.disclosure === "partial" ? "badge-amber" : "badge-green");
     const mean = p.modelStats?.mean;
-    const src = (p.sourceIds ?? []).join(", ") || "";
+    const t10 = tokensPer10(p);
+    const best = bestModel(p);
+    const t10Str = t10 ? fmtTokens(t10) : "-";
+    const bestStr = best ? `${escapeHtml(best.model)} · ${fmtNum(best.normalizedPer10)}` : "-";
     return `
     <tr>
       <td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(p.name)}</span></td>
-      <td data-label="${t("plans.th.provider")}"><span class="muted">${escapeHtml(p.provider)}</span></td>
       <td data-label="${t("plans.th.price")}"><span class="num strong">${priceStr}</span></td>
       <td data-label="${t("plans.th.meter")}"><span class="muted">${meterLabel(p.meter)}</span></td>
-      <td data-label="${t("plans.th.quota")}"><span class="muted" style="font-size:12.5px">${escapeHtml(quotaSummary(p))}</span></td>
-      <td data-label="${t("plans.th.models")}"><span class="num">${p.modelCount || "-"}</span></td>
+      <td data-label="${t("plans.th.tokens")}"><span class="num">${t10Str}</span></td>
+      <td data-label="${t("plans.th.bestreq")}"><span class="muted" style="font-size:12.5px">${bestStr}</span></td>
       <td data-label="${t("plans.th.avgreq")}"><span class="num">${mean ? fmtNum(mean) : "-"}</span></td>
+      <td data-label="${t("plans.th.models")}"><span class="num">${p.modelCount || "-"}</span></td>
       <td data-label="${t("plans.th.status")}"><span class="badge ${discClass}">${discLabel}</span></td>
     </tr>`;
   }).join("") || `<tr><td colspan="8" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Pläne gefunden." : "No plans match."}</td></tr>`;
@@ -457,8 +550,9 @@ function renderPlans() {
 function renderFamilyTable() {
   const tbody = $("#family-tbody");
   let rows = (data.familyComparisons ?? []).slice();
-  if (modelsSearch) {
-    const q = modelsSearch.toLowerCase();
+  // Suche aus dem Plans-View mitbenutzen (eine Tabelle, ein Suchfeld)
+  if (plansSearch) {
+    const q = plansSearch.toLowerCase();
     rows = rows.filter((r) => (r.family || "").toLowerCase().includes(q) || planNamePlain(r.planA).toLowerCase().includes(q) || planNamePlain(r.planB).toLowerCase().includes(q));
   }
   rows.sort(sortBy(modelsSort.key, modelsSort.dir));
@@ -577,10 +671,19 @@ function init() {
   if (plansSearchEl) plansSearchEl.addEventListener("input", (e) => { plansSearch = e.target.value; renderPlans(); });
   const plansMeterEl = $("#plans-meter-filter");
   if (plansMeterEl) plansMeterEl.addEventListener("change", (e) => { plansMeter = e.target.value; renderPlans(); });
-  const plansStatusEl = $("#plans-status-filter");
-  if (plansStatusEl) plansStatusEl.addEventListener("change", (e) => { plansStatus = e.target.value; renderPlans(); });
-  const modelsSearchEl = $("#models-search");
-  if (modelsSearchEl) modelsSearchEl.addEventListener("input", (e) => { modelsSearch = e.target.value; renderFamilyTable(); });
+
+  // Budget-Slider (max $/Monat)
+  const budgetSlider = $("#budget-slider");
+  if (budgetSlider) budgetSlider.addEventListener("input", (e) => {
+    maxBudget = parseInt(e.target.value, 10) || 300;
+    syncBudgetUI();
+    renderPlans();
+  });
+
+  // View-Tabs (Pläne / Modell-Vergleich)
+  $$(".view-tab").forEach((btn) => {
+    btn.addEventListener("click", () => setView(btn.dataset.view));
+  });
 
   // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)

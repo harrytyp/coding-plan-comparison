@@ -314,6 +314,27 @@ th[data-sort].sorted { color: var(--primary); }
   .toolbar-select { flex: 1; }
 }
 
+/* ============ VIEW TABS & BUDGET FILTER ============ */
+.view-tabs {
+  display: inline-flex; gap: 4px; background: var(--bg-muted);
+  border: 1px solid var(--border); border-radius: 10px; padding: 4px; margin-bottom: 14px;
+}
+.view-tab {
+  border: none; background: none; padding: 8px 16px; border-radius: 7px;
+  font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+  transition: all .15s;
+}
+.view-tab:hover { color: var(--text); }
+.view-tab.active { background: var(--bg-elev); color: var(--text); box-shadow: var(--shadow-sm); }
+.budget-filter {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 8px 14px;
+}
+.budget-filter label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.budget-filter input[type=range] { width: 120px; accent-color: var(--primary); cursor: pointer; }
+.budget-filter output { font-weight: 700; min-width: 52px; text-align: right; }
+.table-note { margin-top: 10px; font-size: 13px; color: var(--text-faint); }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
   .nav-links { display: none; }
@@ -388,11 +409,15 @@ th[data-sort].sorted { color: var(--primary); }
     </div>
   </section>
 
-  <!-- ===== PLANS ===== -->
+  <!-- ===== PLANS: EINE TABELLE mit Budget-Filter & Modell-Leistung ===== -->
   <section id="plans">
     <div class="section-head">
       <h2 data-i18n="plans.h2">The plans</h2>
       <p data-i18n="plans.sub">Every subscription we track, with its real meter: credits, requests, dollar-usage or prompts. Prices are the paid checkout price, not the advertised one.</p>
+    </div>
+    <div class="view-tabs" id="view-tabs" role="tablist">
+      <button class="view-tab active" data-view="plans" data-i18n="view.plans">Plans</button>
+      <button class="view-tab" data-view="models" data-i18n="view.models">Model comparison</button>
     </div>
     <div class="table-toolbar" id="plans-toolbar">
       <input type="search" id="plans-search" class="toolbar-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh">
@@ -403,45 +428,32 @@ th[data-sort].sorted { color: var(--primary); }
         <option value="requests" data-i18n="plans.meter.requests">Requests</option>
         <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
       </select>
-      <select id="plans-status-filter" class="toolbar-select">
-        <option value="" data-i18n="plans.allStatus">All statuses</option>
-        <option value="disclosed" data-i18n="plans.status.disclosed">Verified</option>
-        <option value="partial" data-i18n="plans.status.partial">Partial</option>
-        <option value="undisclosed" data-i18n="plans.status.undisclosed">Undisclosed</option>
-      </select>
+      <div class="budget-filter" id="budget-filter">
+        <label data-i18n="plans.budget">Max $/mo</label>
+        <input type="range" id="budget-slider" min="0" max="300" step="5" value="300">
+        <output id="budget-value" class="num">$300</output>
+      </div>
       <span class="toolbar-count" id="plans-count"></span>
     </div>
     <div class="table-wrap" id="plans-table-wrap">
-      <table id="plans-table" class="sortable-table">
+      <!-- View: Pläne -->
+      <table id="plans-table" class="sortable-table" data-view-table="plans">
         <thead>
           <tr>
             <th data-sort="name" data-i18n="plans.th.plan">Plan</th>
-            <th data-sort="provider" data-i18n="plans.th.provider">Provider</th>
             <th data-sort="price" data-i18n="plans.th.price">Price / mo</th>
             <th data-sort="meter" data-i18n="plans.th.meter">Meter</th>
-            <th data-sort="quota" data-i18n="plans.th.quota">Quota</th>
-            <th data-sort="models" data-i18n="plans.th.models">Models</th>
+            <th data-sort="tokens" data-i18n="plans.th.tokens">Tokens / $</th>
+            <th data-sort="bestreq" data-i18n="plans.th.bestreq">Best model req / $10</th>
             <th data-sort="avgreq" data-i18n="plans.th.avgreq">Avg req / mo</th>
+            <th data-sort="models" data-i18n="plans.th.models">Models</th>
             <th data-sort="status" data-i18n="plans.th.status">Status</th>
           </tr>
         </thead>
         <tbody id="plans-tbody"></tbody>
       </table>
-    </div>
-  </section>
-
-  <!-- ===== MODELS / FAMILY COMPARISON ===== -->
-  <section id="models">
-    <div class="section-head">
-      <h2 data-i18n="models.h2">Model for model, per $10</h2>
-      <p data-i18n="models.sub">Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, scaled to exactly $10 paid.</p>
-    </div>
-    <div class="table-toolbar" id="models-toolbar">
-      <input type="search" id="models-search" class="toolbar-search" placeholder="Filter models…" data-i18n-ph="models.searchPh">
-      <span class="toolbar-count" id="models-count"></span>
-    </div>
-    <div class="table-wrap">
-      <table id="family-table" class="sortable-table">
+      <!-- View: Modell-Vergleich (gleiche Tabelle, anderer Kopf/Inhalt) -->
+      <table id="family-table" class="sortable-table" data-view-table="models" style="display:none">
         <thead>
           <tr>
             <th data-sort="family" data-i18n="models.th.model">Model family</th>
@@ -456,6 +468,7 @@ th[data-sort].sorted { color: var(--primary); }
         <tbody id="family-tbody"></tbody>
       </table>
     </div>
+    <p class="table-note" id="table-note"></p>
   </section>
 
   <!-- ===== METHOD ===== -->
