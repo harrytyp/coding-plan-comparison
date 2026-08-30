@@ -69,6 +69,10 @@
 
 /* ============ BASE ============ */
 *, *::before, *::after { box-sizing: border-box; }
+/* WICHTIG: hidden-Attribut muss IMMER gewinnen, sonst überschreiben
+   display:flex/grid Regeln das UA-Stylesheet und Elemente sind sichtbar,
+   obwohl sie hidden sind (Filter-Toolbar, Spalten-Picker-Panel). */
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body {
   margin: 0;
