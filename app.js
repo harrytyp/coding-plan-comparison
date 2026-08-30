@@ -75,6 +75,10 @@ const I18N = {
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
     "filters.toggle": "Filters",
+    "sheet.title": "Customize list",
+    "sheet.sort": "Sort by",
+    "sheet.filter": "Filter",
+    "sheet.done": "Done",
     "sort.label": "Sort by",
     "sort.tokens": "Tokens / $",
     "sort.score": "AI score",
@@ -224,6 +228,10 @@ const I18N = {
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
     "filters.toggle": "Filter",
+    "sheet.title": "Liste anpassen",
+    "sheet.sort": "Sortieren nach",
+    "sheet.filter": "Filtern",
+    "sheet.done": "Fertig",
     "sort.label": "Sortieren nach",
     "sort.tokens": "Tokens / $",
     "sort.score": "AI-Score",
@@ -790,8 +798,8 @@ function renderCell(col, c) {
     : "";
   const codingStr = c.codingScore !== null ? `<span class="muted">${c.codingScore.toFixed(1)}</span>` : "";
   switch (col) {
-    case "plan": return `<td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
-    case "model": return `<td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
+    case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>`;
     case "tokens": return `<td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>`;
     case "req10": return `<td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>`;
@@ -837,6 +845,78 @@ function syncColumnPicker() {
   document.querySelectorAll("#col-picker-panel input[data-col]").forEach((box) => {
     box.checked = visibleColumns.includes(box.dataset.col);
   });
+  // Mobile-Sheet-Spalten syncen
+  document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
+    box.checked = visibleColumns.includes(box.dataset.col);
+  });
+}
+
+/* ============ MOBILE BOTTOM-SHEET (Filter & Columns) ============ */
+function openSheet() {
+  const sheet = $("#sheet");
+  const overlay = $("#sheet-overlay");
+  if (!sheet) return;
+  // Sync aller Controls mit aktuellem State
+  const sk = $("#sheet-sort-key"); if (sk) sk.value = plansSort.key;
+  const sd = $("#sheet-sort-dir"); if (sd) sd.value = plansSort.dir;
+  const ss = $("#sheet-search"); if (ss) ss.value = plansSearch;
+  const sm = $("#sheet-meter"); if (sm) sm.value = plansMeter;
+  const sb = $("#sheet-budget"); if (sb) sb.value = maxBudget;
+  const sbo = $("#sheet-budget-out"); if (sbo) sbo.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
+  const sa = $("#sheet-ai"); if (sa) sa.value = minAiScore;
+  const sao = $("#sheet-ai-out"); if (sao) sao.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
+  const sp = $("#sheet-privacy"); if (sp) sp.checked = noTrainingOnly;
+  syncColumnPicker();
+  sheet.hidden = false;
+  if (overlay) overlay.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+function closeSheet() {
+  const sheet = $("#sheet");
+  const overlay = $("#sheet-overlay");
+  if (sheet) sheet.hidden = true;
+  if (overlay) overlay.hidden = true;
+  document.body.style.overflow = "";
+}
+function initSheet() {
+  // Auf Mobile: "Filter & Columns"-Button öffnet Sheet (statt Filter-Toggle + Col-Picker)
+  const isMobile = window.matchMedia("(max-width: 760px)").matches;
+  if (isMobile) {
+    const ft = $("#filter-toggle");
+    if (ft) ft.addEventListener("click", openSheet);
+    const cp = $("#col-picker-btn");
+    if (cp) cp.style.display = "none"; // Columns im Sheet
+  }
+  // Sheet-Controls: Änderungen direkt anwenden
+  const sk = $("#sheet-sort-key"); if (sk) sk.addEventListener("change", (e) => { plansSort.key = e.target.value; renderPlans(); });
+  const sd = $("#sheet-sort-dir"); if (sd) sd.addEventListener("change", (e) => { plansSort.dir = e.target.value; renderPlans(); });
+  const ss = $("#sheet-search"); if (ss) ss.addEventListener("input", (e) => { plansSearch = e.target.value; rerender(); });
+  const sm = $("#sheet-meter"); if (sm) sm.addEventListener("change", (e) => { plansMeter = e.target.value; rerender(); });
+  const sb = $("#sheet-budget"); if (sb) sb.addEventListener("input", (e) => {
+    maxBudget = parseInt(e.target.value, 10) || 300;
+    const o = $("#sheet-budget-out"); if (o) o.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
+    rerender();
+  });
+  const sa = $("#sheet-ai"); if (sa) sa.addEventListener("input", (e) => {
+    minAiScore = parseInt(e.target.value, 10) || 0;
+    const o = $("#sheet-ai-out"); if (o) o.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
+    rerender();
+  });
+  const sp = $("#sheet-privacy"); if (sp) sp.addEventListener("change", (e) => { noTrainingOnly = e.target.checked; rerender(); });
+  // Sheet-Spalten
+  document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
+    box.addEventListener("change", () => {
+      const col = box.dataset.col;
+      if (box.checked) { if (!visibleColumns.includes(col)) visibleColumns.push(col); }
+      else { visibleColumns = visibleColumns.filter((c) => c !== col); }
+      saveColumns();
+      renderPlans();
+    });
+  });
+  // Schließen
+  const sc = $("#sheet-close"); if (sc) sc.addEventListener("click", closeSheet);
+  const so = $("#sheet-overlay"); if (so) so.addEventListener("click", closeSheet);
+  const sd2 = $("#sheet-done"); if (sd2) sd2.addEventListener("click", closeSheet);
 }
 
 /* ============ DASHBOARD / PARETO-PLOT (AA-Stil) ============ */
@@ -1262,6 +1342,7 @@ function init() {
   });
   syncColumnPicker();
   initDashboard();
+  initSheet();
 
   // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)
