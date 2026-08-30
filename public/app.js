@@ -62,10 +62,11 @@ const I18N = {
     "plans.th.avgreq": "Avg req / mo",
     "plans.th.status": "Status",
     "plans.th.tokens": "Tokens / $",
-    "plans.th.bestreq": "Best model / $10",
+    "plans.th.model": "Model",
+    "plans.th.score": "AI score",
+    "plans.th.req10": "Requests / $10",
     "plans.budget": "Max $/mo",
-    "view.plans": "Plans",
-    "view.models": "Model comparison",
+    "plans.aiScore": "Min AI score",
     "models.searchPh": "Filter models...",
     "models.h2": "Model for model, per $10",
     "models.sub": "Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, scaled to exactly $10 paid.",
@@ -169,9 +170,11 @@ const I18N = {
     "plans.th.avgreq": "Ø Requests / Monat",
     "plans.th.status": "Status",
     "plans.th.tokens": "Tokens / $",
-    "plans.th.bestreq": "Bestes Modell / $10",
+    "plans.th.model": "Modell",
+    "plans.th.score": "AI-Score",
+    "plans.th.req10": "Requests / $10",
     "plans.budget": "Max $/Monat",
-    "view.plans": "Pläne",
+    "plans.aiScore": "Min. AI-Score",
     "view.models": "Modell-Vergleich",
     "models.searchPh": "Modelle filtern...",
     "models.h2": "Modell für Modell, pro 10 $",
@@ -329,46 +332,23 @@ function renderAll() {
   if (!data) return;
   renderStats();
   renderPlans();
-  renderFamilyTable();
   renderFormula();
   bindSortHeader("plans-table", plansSort, renderPlans);
-  bindSortHeader("family-table", modelsSort, renderFamilyTable);
-  syncView();
-  syncBudgetUI();
+  syncFilterUI();
 }
 
-/* ---------------- View-Umschalter (eine Tabelle, zwei Ansichten) ---------------- */
-function setView(next) {
-  view = next === "models" ? "models" : "plans";
-  syncView();
-  const p = new URLSearchParams(location.search);
-  if (view === "models") p.set("view", "models"); else p.delete("view");
-  history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
-}
-function syncView() {
-  const plansTable = $("#plans-table");
-  const familyTable = $("#family-table");
-  const note = $("#table-note");
-  if (plansTable) plansTable.style.display = view === "plans" ? "" : "none";
-  if (familyTable) familyTable.style.display = view === "models" ? "" : "none";
-  $$(".view-tab").forEach((b) => b.classList.toggle("active", b.dataset.view === view));
-  // Budget-Filter nur im Plans-View relevant
-  const budgetEl = $("#budget-filter");
-  if (budgetEl) budgetEl.style.display = view === "plans" ? "" : "none";
-  const searchEl = $("#plans-search");
-  if (searchEl) searchEl.placeholder = view === "models" ? t("models.searchPh") : t("plans.searchPh");
-  if (note) {
-    note.textContent = view === "plans"
-      ? (lang === "de" ? "Tokens/$ = durchschnittliche Tokens pro $10 über alle Modelle des Plans." : "Tokens/$ = average tokens per $10 across all models in the plan.")
-      : (lang === "de" ? "Vergleich pro Modell-Familie, skaliert auf $10." : "Per model family, scaled to $10.");
+function syncFilterUI() {
+  const budgetSlider = $("#budget-slider");
+  const budgetOut = $("#budget-value");
+  if (budgetSlider && budgetOut) {
+    budgetSlider.value = maxBudget;
+    budgetOut.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
   }
-}
-function syncBudgetUI() {
-  const slider = $("#budget-slider");
-  const out = $("#budget-value");
-  if (slider && out) {
-    slider.value = maxBudget;
-    out.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
+  const aiSlider = $("#ai-slider");
+  const aiOut = $("#ai-value");
+  if (aiSlider && aiOut) {
+    aiSlider.value = minAiScore;
+    aiOut.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
   }
 }
 
@@ -415,60 +395,77 @@ function quotaSummary(plan) {
 }
 
 /* ---------------- Sortier-/Filter-State ---------------- */
-let view = "plans"; // "plans" | "models" — eine Tabelle, zwei Ansichten
-let plansSort = { key: "price", dir: "asc" };
-let modelsSort = { key: "edge", dir: "desc" };
+let plansSort = { key: "tokens", dir: "desc" }; // Standard: meisten Tokens/$ zuerst
 let plansSearch = "";
 let plansMeter = "";
-let maxBudget = 300; // Budget-Filter: max $/Monat
+let maxBudget = 300;   // Budget-Filter: max $/Monat
+let minAiScore = 0;    // AI-Score-Filter: mindestens
 
-/* ---------------- Metriken pro Plan ---------------- */
+/* ---------------- AI-Score (Artificial Analysis) ---------------- */
+function aiScoreFor(modelName, family) {
+  const scores = data?.aiScores?.scores ?? {};
+  // Normalisiere Modellname/Familie auf AA-Slug: "Grok 4.6" → "grok-4-6", "GLM-5.3" → "glm-5-3"
+  const candidates = [];
+  const raw = (modelName || family || "").toLowerCase();
+  candidates.push(raw.replace(/\s+/g, "-").replace(/\./g, "-"));
+  candidates.push(family ? family.replace(/\s+/g, "-").replace(/\./g, "-") : null);
+  candidates.push(raw.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-"));
+  for (const c of candidates) {
+    if (!c) continue;
+    if (scores[c]) return scores[c];
+    // Prefix-Match (z.B. "grok-4-6" matcht "grok-4-6-high")
+    const keys = Object.keys(scores);
+    const exact = keys.find((k) => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"));
+    if (exact) return scores[exact];
+  }
+  return null;
+}
+
+/* ---------------- Kombinations-Zeilen (Plan + Modell) ---------------- */
+function buildCombos() {
+  const combos = [];
+  for (const plan of data?.plans ?? []) {
+    const price = plan.price?.paidPrice ?? plan.price?.monthlyUsd ?? null;
+    for (const row of plan.modelRows ?? []) {
+      const score = aiScoreFor(row.model, row.family);
+      const tokensPerReq = tokensPerRequest(row);
+      const tokensPer10 = tokensPerReq && row.normalizedPer10 ? tokensPerReq * row.normalizedPer10 : null;
+      combos.push({
+        planId: plan.id,
+        planName: plan.name,
+        provider: plan.provider,
+        price,
+        meter: plan.meter,
+        model: row.model,
+        family: row.family,
+        score: score?.intelligence ?? null,
+        codingScore: score?.coding ?? null,
+        tokensPer10,
+        req10: row.normalizedPer10 ?? null,
+      });
+    }
+  }
+  return combos;
+}
+
 // Tokens pro Request aus dem Workload-Pattern (input + cachedRead + output)
 function tokensPerRequest(row) {
   const p = row.patternUsed;
   if (!p) return null;
   return (p.input || 0) + (p.cachedRead || 0) + (p.output || 0);
 }
-// Tokens pro $10 (normalisiert): Requests pro $10 × Tokens pro Request
-function tokensPer10(plan) {
-  if (!plan.modelRows?.length) return null;
-  let total = 0, count = 0;
-  for (const r of plan.modelRows) {
-    const tpr = tokensPerRequest(r);
-    if (tpr && r.normalizedPer10) { total += tpr * r.normalizedPer10; count++; }
-  }
-  return count ? total / count : null;
-}
-// Bestes Modell: höchste Requests pro $10
-function bestModel(plan) {
-  if (!plan.modelRows?.length) return null;
-  let best = null;
-  for (const r of plan.modelRows) {
-    if (!best || (r.normalizedPer10 ?? 0) > (best.normalizedPer10 ?? 0)) best = r;
-  }
-  return best;
-}
 
 function sortBy(key, dir) {
   return (a, b) => {
     let va, vb;
-    if (key === "name") { va = (a.name || "").toLowerCase(); vb = (b.name || "").toLowerCase(); }
-    else if (key === "provider") { va = (a.provider || "").toLowerCase(); vb = (b.provider || "").toLowerCase(); }
-    else if (key === "price") { va = a.price?.paidPrice ?? a.price?.monthlyUsd ?? 1e9; vb = b.price?.paidPrice ?? b.price?.monthlyUsd ?? 1e9; }
-    else if (key === "meter") { va = meterLabel(a.meter); vb = meterLabel(b.meter); }
-    else if (key === "quota") { va = quotaSummary(a).toLowerCase(); vb = quotaSummary(b).toLowerCase(); }
-    else if (key === "models") { va = a.modelCount ?? null; vb = b.modelCount ?? null; }
-    else if (key === "avgreq") { va = a.modelStats?.mean ?? null; vb = b.modelStats?.mean ?? null; }
-    else if (key === "tokens") { va = tokensPer10(a); vb = tokensPer10(b); }
-    else if (key === "bestreq") { va = bestModel(a)?.normalizedPer10 ?? null; vb = bestModel(b)?.normalizedPer10 ?? null; }
-    else if (key === "status") { va = a.disclosure ?? ""; vb = b.disclosure ?? ""; }
-    else if (key === "family") { va = (a.family || "").toLowerCase(); vb = (b.family || "").toLowerCase(); }
-    else if (key === "reqA") { va = a.requestsA ?? null; vb = b.requestsA ?? null; }
-    else if (key === "reqB") { va = a.requestsB ?? null; vb = b.requestsB ?? null; }
-    else if (key === "winner") { va = a.winner === "draw" ? "zzz" : (a.winner === a.planA ? "a" : "b"); vb = b.winner === "draw" ? "zzz" : (b.winner === b.planA ? "a" : "b"); }
-    else if (key === "edge") { va = a.advantagePercent ?? null; vb = b.advantagePercent ?? null; }
+    if (key === "plan") { va = (a.planName || "").toLowerCase(); vb = (b.planName || "").toLowerCase(); }
+    else if (key === "model") { va = (a.model || "").toLowerCase(); vb = (b.model || "").toLowerCase(); }
+    else if (key === "score") { va = a.score ?? null; vb = b.score ?? null; }
+    else if (key === "tokens") { va = a.tokensPer10 ?? null; vb = b.tokensPer10 ?? null; }
+    else if (key === "req10") { va = a.req10 ?? null; vb = b.req10 ?? null; }
+    else if (key === "price") { va = a.price ?? null; vb = b.price ?? null; }
     else return 0;
-    // Fehlende Werte (null) immer ans Ende, egal welche Richtung
+    // Fehlende Werte (null) immer ans Ende
     if (va === null || va === undefined) return 1;
     if (vb === null || vb === undefined) return -1;
     if (typeof va === "number" && typeof vb === "number") return dir === "asc" ? va - vb : vb - va;
@@ -503,89 +500,48 @@ function bindSortHeader(tableId, state, renderFn) {
 
 function renderPlans() {
   const tbody = $("#plans-tbody");
-  let plans = (data.plans ?? []).slice();
-  // Filter: Suche
+  if (!tbody) return;
+  let combos = buildCombos();
+  // Filter: Suche (Plan, Modell, Provider)
   if (plansSearch) {
     const q = plansSearch.toLowerCase();
-    plans = plans.filter((p) => [p.name, p.provider, meterLabel(p.meter), quotaSummary(p)].join(" ").toLowerCase().includes(q));
+    combos = combos.filter((c) => [c.planName, c.model, c.provider].join(" ").toLowerCase().includes(q));
   }
   // Filter: Meter
-  if (plansMeter) plans = plans.filter((p) => p.meter === plansMeter);
+  if (plansMeter) combos = combos.filter((c) => c.meter === plansMeter);
   // Filter: Budget (max $/Monat)
-  if (maxBudget < 300) {
-    plans = plans.filter((p) => (p.price?.paidPrice ?? p.price?.monthlyUsd ?? 0) <= maxBudget);
-  }
+  if (maxBudget < 300) combos = combos.filter((c) => (c.price ?? 0) <= maxBudget);
+  // Filter: AI-Score (mindestens)
+  if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
   // Sortieren
-  plans.sort(sortBy(plansSort.key, plansSort.dir));
+  combos.sort(sortBy(plansSort.key, plansSort.dir));
   // Count
   const count = $("#plans-count");
-  if (count) count.textContent = `${plans.length} / ${(data.plans ?? []).length}`;
+  const totalCombos = buildCombos().length;
+  if (count) count.textContent = `${combos.length} / ${totalCombos}`;
 
-  tbody.innerHTML = plans.map((p) => {
-    const price = p.price?.paidPrice ?? p.price?.monthlyUsd;
-    const priceStr = price !== null && price !== undefined ? fmtMoney(price) : `<span style="color:var(--text-faint)">${t("plans.noPrice")}</span>`;
-    const discLabel = p.disclosure === "undisclosed"
-      ? (lang === "de" ? "nicht veröffentlicht" : "undisclosed")
-      : (p.disclosure === "partial" ? (lang === "de" ? "teilweise" : "partial") : (lang === "de" ? "verifiziert" : "verified"));
-    const discClass = p.disclosure === "undisclosed" ? "badge-gray" : (p.disclosure === "partial" ? "badge-amber" : "badge-green");
-    const mean = p.modelStats?.mean;
-    const t10 = tokensPer10(p);
-    const best = bestModel(p);
-    const t10Str = t10 ? fmtTokens(t10) : "-";
-    const bestStr = best ? `${escapeHtml(best.model)} · ${fmtNum(best.normalizedPer10)}` : "-";
-    return `
-    <tr>
-      <td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(p.name)}</span></td>
-      <td data-label="${t("plans.th.price")}"><span class="num strong">${priceStr}</span></td>
-      <td data-label="${t("plans.th.meter")}"><span class="muted">${meterLabel(p.meter)}</span></td>
-      <td data-label="${t("plans.th.tokens")}"><span class="num">${t10Str}</span></td>
-      <td data-label="${t("plans.th.bestreq")}"><span class="muted" style="font-size:12.5px">${bestStr}</span></td>
-      <td data-label="${t("plans.th.avgreq")}"><span class="num">${mean ? fmtNum(mean) : "-"}</span></td>
-      <td data-label="${t("plans.th.models")}"><span class="num">${p.modelCount || "-"}</span></td>
-      <td data-label="${t("plans.th.status")}"><span class="badge ${discClass}">${discLabel}</span></td>
-    </tr>`;
-  }).join("") || `<tr><td colspan="8" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Pläne gefunden." : "No plans match."}</td></tr>`;
-}
-
-function renderFamilyTable() {
-  const tbody = $("#family-tbody");
-  let rows = (data.familyComparisons ?? []).slice();
-  // Suche aus dem Plans-View mitbenutzen (eine Tabelle, ein Suchfeld)
-  if (plansSearch) {
-    const q = plansSearch.toLowerCase();
-    rows = rows.filter((r) => (r.family || "").toLowerCase().includes(q) || planNamePlain(r.planA).toLowerCase().includes(q) || planNamePlain(r.planB).toLowerCase().includes(q));
-  }
-  rows.sort(sortBy(modelsSort.key, modelsSort.dir));
-  const count = $("#models-count");
-  if (count) count.textContent = `${rows.length} / ${(data.familyComparisons ?? []).length}`;
-  if (!rows.length) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Vergleiche gefunden." : "No comparisons match."}</td></tr>`;
+  if (!combos.length) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Kombinationen gefunden." : "No combinations match."}</td></tr>`;
     return;
   }
-  tbody.innerHTML = rows.map((r) => {
-    const isDraw = r.winner === "draw";
-    const badge = isDraw
-      ? `<span class="badge badge-gray">${t("models.winner.draw")}</span>`
-      : (r.winner === r.planA
-        ? `<span class="badge badge-green">${planNamePlain(r.planA)}</span>`
-        : `<span class="badge badge-blue">${planNamePlain(r.planB)}</span>`);
-    const edge = isDraw ? "-" : `${fmtPct(r.advantagePercent)} ${t("models.edge")}`;
+
+  tbody.innerHTML = combos.map((c) => {
+    const priceStr = c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-";
+    const scoreStr = c.score !== null ? `<span class="num strong">${c.score.toFixed(1)}</span>` : `<span class="muted">-</span>`;
+    const scoreBar = c.score !== null
+      ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
+      : "";
+    const codingStr = c.codingScore !== null ? `<span class="muted">${c.codingScore.toFixed(1)}</span>` : "";
     return `
     <tr>
-      <td data-label="${t("models.th.model")}"><span class="strong">${escapeHtml(r.family)}</span></td>
-      <td data-label="${t("models.th.planA")}"><span class="muted">${planNamePlain(r.planA)}</span></td>
-      <td data-label="${t("models.th.req")}"><span class="num">${fmtNum(r.requestsA)}</span></td>
-      <td data-label="${t("models.th.planB")}"><span class="muted">${planNamePlain(r.planB)}</span></td>
-      <td data-label="${t("models.th.req")}"><span class="num">${fmtNum(r.requestsB)}</span></td>
-      <td data-label="${t("models.th.winner")}">${badge}</td>
-      <td data-label="${t("models.th.edge")}"><span class="num" style="color:${isDraw ? "var(--text-faint)" : "var(--success)"}">${edge}</span></td>
+      <td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>
+      <td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>
+      <td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>
+      <td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>
+      <td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>
+      <td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span></td>
     </tr>`;
   }).join("");
-}
-
-function planNamePlain(id) {
-  const p = (data.plans ?? []).find((x) => x.id === id);
-  return p ? p.name : id;
 }
 
 function renderFormula() {
@@ -676,13 +632,16 @@ function init() {
   const budgetSlider = $("#budget-slider");
   if (budgetSlider) budgetSlider.addEventListener("input", (e) => {
     maxBudget = parseInt(e.target.value, 10) || 300;
-    syncBudgetUI();
+    syncFilterUI();
     renderPlans();
   });
 
-  // View-Tabs (Pläne / Modell-Vergleich)
-  $$(".view-tab").forEach((btn) => {
-    btn.addEventListener("click", () => setView(btn.dataset.view));
+  // AI-Score-Slider (mindestens)
+  const aiSlider = $("#ai-slider");
+  if (aiSlider) aiSlider.addEventListener("input", (e) => {
+    minAiScore = parseInt(e.target.value, 10) || 0;
+    syncFilterUI();
+    renderPlans();
   });
 
   // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container

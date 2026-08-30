@@ -333,7 +333,18 @@ th[data-sort].sorted { color: var(--primary); }
 .budget-filter label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
 .budget-filter input[type=range] { width: 120px; accent-color: var(--primary); cursor: pointer; }
 .budget-filter output { font-weight: 700; min-width: 52px; text-align: right; }
+.ai-filter {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 8px 14px;
+}
+.ai-filter label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+.ai-filter input[type=range] { width: 110px; accent-color: var(--info); cursor: pointer; }
+.ai-filter output { font-weight: 700; min-width: 30px; text-align: right; }
 .table-note { margin-top: 10px; font-size: 13px; color: var(--text-faint); }
+.score-bar {
+  width: 60px; height: 4px; background: var(--bg-muted); border-radius: 2px; margin-top: 4px; overflow: hidden;
+}
+.score-fill { height: 100%; background: var(--info); border-radius: 2px; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
@@ -409,15 +420,11 @@ th[data-sort].sorted { color: var(--primary); }
     </div>
   </section>
 
-  <!-- ===== PLANS: EINE TABELLE mit Budget-Filter & Modell-Leistung ===== -->
+  <!-- ===== EINE TABELLE: Plan + Modell-Kombinationen ===== -->
   <section id="plans">
     <div class="section-head">
-      <h2 data-i18n="plans.h2">The plans</h2>
-      <p data-i18n="plans.sub">Every subscription we track, with its real meter: credits, requests, dollar-usage or prompts. Prices are the paid checkout price, not the advertised one.</p>
-    </div>
-    <div class="view-tabs" id="view-tabs" role="tablist">
-      <button class="view-tab active" data-view="plans" data-i18n="view.plans">Plans</button>
-      <button class="view-tab" data-view="models" data-i18n="view.models">Model comparison</button>
+      <h2 data-i18n="plans.h2">Plans and models, compared</h2>
+      <p data-i18n="plans.sub">Every plan and model combination. Filter by budget and minimum AI score to find the most tokens per dollar.</p>
     </div>
     <div class="table-toolbar" id="plans-toolbar">
       <input type="search" id="plans-search" class="toolbar-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh">
@@ -433,39 +440,26 @@ th[data-sort].sorted { color: var(--primary); }
         <input type="range" id="budget-slider" min="0" max="300" step="5" value="300">
         <output id="budget-value" class="num">$300</output>
       </div>
+      <div class="ai-filter" id="ai-filter">
+        <label data-i18n="plans.aiScore">Min AI score</label>
+        <input type="range" id="ai-slider" min="0" max="70" step="1" value="0">
+        <output id="ai-value" class="num">0</output>
+      </div>
       <span class="toolbar-count" id="plans-count"></span>
     </div>
     <div class="table-wrap" id="plans-table-wrap">
-      <!-- View: Pläne -->
-      <table id="plans-table" class="sortable-table" data-view-table="plans">
+      <table id="plans-table" class="sortable-table">
         <thead>
           <tr>
-            <th data-sort="name" data-i18n="plans.th.plan">Plan</th>
-            <th data-sort="price" data-i18n="plans.th.price">Price / mo</th>
-            <th data-sort="meter" data-i18n="plans.th.meter">Meter</th>
+            <th data-sort="plan" data-i18n="plans.th.plan">Plan</th>
+            <th data-sort="model" data-i18n="plans.th.model">Model</th>
+            <th data-sort="score" data-i18n="plans.th.score">AI score</th>
             <th data-sort="tokens" data-i18n="plans.th.tokens">Tokens / $</th>
-            <th data-sort="bestreq" data-i18n="plans.th.bestreq">Best model req / $10</th>
-            <th data-sort="avgreq" data-i18n="plans.th.avgreq">Avg req / mo</th>
-            <th data-sort="models" data-i18n="plans.th.models">Models</th>
-            <th data-sort="status" data-i18n="plans.th.status">Status</th>
+            <th data-sort="req10" data-i18n="plans.th.req10">Requests / $10</th>
+            <th data-sort="price" data-i18n="plans.th.price">Plan price / mo</th>
           </tr>
         </thead>
         <tbody id="plans-tbody"></tbody>
-      </table>
-      <!-- View: Modell-Vergleich (gleiche Tabelle, anderer Kopf/Inhalt) -->
-      <table id="family-table" class="sortable-table" data-view-table="models" style="display:none">
-        <thead>
-          <tr>
-            <th data-sort="family" data-i18n="models.th.model">Model family</th>
-            <th data-i18n="models.th.planA">Plan A</th>
-            <th data-sort="reqA" data-i18n="models.th.req">Requests / $10</th>
-            <th data-i18n="models.th.planB">Plan B</th>
-            <th data-sort="reqB" data-i18n="models.th.req">Requests / $10</th>
-            <th data-sort="winner" data-i18n="models.th.winner">Winner</th>
-            <th data-sort="edge" data-i18n="models.th.edge">Edge</th>
-          </tr>
-        </thead>
-        <tbody id="family-tbody"></tbody>
       </table>
     </div>
     <p class="table-note" id="table-note"></p>
@@ -579,6 +573,6 @@ th[data-sort].sorted { color: var(--primary); }
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=925151a"></script>
+<script src="app.js?v=a4780d5"></script>
 </body>
 </html>

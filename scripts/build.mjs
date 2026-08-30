@@ -17,6 +17,7 @@
  * Reproduzierbar: deterministisch aus committeden Inputs (data + feeds-Snapshots).
  */
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -721,6 +722,7 @@ async function main() {
     pairwiseComparisons: pairwise,
     modelComparisons,
     familyComparisons,
+    aiScores: loadAiScores(ROOT),
     statistics: {
       totalPlans: plans.length,
       comparablePlans: comparablePlans.length,
@@ -741,3 +743,20 @@ main().catch((e) => {
   console.error(e);
   process.exit(1);
 });
+
+// AI-Scores (Artificial Analysis Intelligence Index) aus data/ai-scores.json laden
+function loadAiScores(root) {
+  try {
+    const raw = readFileSync(join(root, "data", "ai-scores.json"), "utf8");
+    const parsed = JSON.parse(raw);
+    return {
+      source: parsed.source ?? "Artificial Analysis",
+      fetchedAt: parsed.fetchedAt ?? null,
+      count: parsed.count ?? Object.keys(parsed.scores ?? {}).length,
+      scores: parsed.scores ?? {},
+    };
+  } catch (e) {
+    console.warn("WARN: ai-scores.json nicht lesbar:", e.message);
+    return { source: "Artificial Analysis", fetchedAt: null, count: 0, scores: {} };
+  }
+}
