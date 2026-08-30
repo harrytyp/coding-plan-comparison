@@ -17,6 +17,7 @@ if (typeof window !== "undefined") window.__CPC_LOADED__ = true;
 const I18N = {
   en: {
     "nav.brand": "Coding Plan Compare",
+    "nav.pareto": "Pareto",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -93,6 +94,8 @@ const I18N = {
     "dash.green": "Green quarter",
     "dash.legend.green": "Green quarter",
     "dash.legend.pareto": "Pareto frontier",
+    "dash.legend.frontier": "Pareto points",
+    "dash.clickHint": "Click a dot to see the plan and model",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $10",
     "dash.m.rawtokens": "Tokens / mo",
@@ -236,6 +239,8 @@ const I18N = {
     "dash.green": "Grünes Viertel",
     "dash.legend.green": "Grünes Viertel",
     "dash.legend.pareto": "Pareto-Frontier",
+    "dash.legend.frontier": "Pareto-Punkte",
+    "dash.clickHint": "Klicke einen Punkt, um Plan und Modell zu sehen",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $10",
     "dash.m.rawtokens": "Tokens / Monat",
@@ -925,9 +930,14 @@ function renderDashboard() {
   const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 3.2}" text-anchor="middle">${fmtTokens(v)}</text>`).join("");
   const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 1}" y="${(sy(v) + 0.8).toFixed(2)}" text-anchor="end">${fmtTokens(v)}</text>`).join("");
 
+  // Frontier-Punkte identifizieren (für Hervorhebung + Legende)
+  const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
   const dots = px.map((p, i) => {
+    const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
     const color = p.combo.noTraining === true ? "var(--success)" : (p.combo.noTraining === false ? "var(--danger)" : "var(--info)");
-    return `<circle class="dash-dot" data-i="${i}" cx="${p.px.toFixed(2)}" cy="${p.py.toFixed(2)}" r="1.6" fill="${color}"/>`;
+    const r = isFrontier ? 2.4 : 1.6;
+    const cls = isFrontier ? "dash-dot dash-dot-frontier" : "dash-dot";
+    return `<circle class="${cls}" data-i="${i}" cx="${p.px.toFixed(2)}" cy="${p.py.toFixed(2)}" r="${r}" fill="${isFrontier ? "var(--primary)" : color}"/>`;
   }).join("");
 
   svg.innerHTML = `
@@ -942,9 +952,32 @@ function renderDashboard() {
     <text class="dash-axis-label" x="1.5" y="${PAD_T + plotH / 2}" text-anchor="middle" transform="rotate(-90 1.5 ${PAD_T + plotH / 2})">${escapeHtml(metricLabel(dashY))}</text>
   `;
 
-  // Tooltip + Punkt-Daten für Hover
+  // Tooltip + Punkt-Daten für Hover + Klick
   svg._points = px;
   if (note) note.textContent = `${points.length} ${lang === "de" ? "Kombinationen im Plot" : "combinations plotted"} · ${frontier.length} ${lang === "de" ? "Pareto-Punkte" : "Pareto points"}`;
+}
+
+// Klick auf Punkt → Detail-Panel mit Plan/Modell/Werten füllen
+function showDashDetail(p) {
+  const content = $("#dash-detail-content");
+  const empty = $("#dash-detail-empty");
+  if (!content) return;
+  if (!p) { content.hidden = true; if (empty) empty.style.display = ""; return; }
+  if (empty) empty.style.display = "none";
+  content.hidden = false;
+  const priv = p.combo.noTraining === true
+    ? `<span class="badge badge-green">${t("plans.badge.noTraining")}</span>`
+    : (p.combo.noTraining === false ? `<span class="badge badge-red">${lang === "de" ? "trainiert" : "trains on data"}</span>` : "");
+  content.innerHTML = `
+    <div class="dd-name">${escapeHtml(p.combo.model)}</div>
+    <div class="dd-plan">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>
+    <div class="dd-row"><span class="k">${metricLabel(dashX)}</span><span class="v">${metricFmt(dashX, p.x)}</span></div>
+    <div class="dd-row"><span class="k">${metricLabel(dashY)}</span><span class="v">${metricFmt(dashY, p.y)}</span></div>
+    <div class="dd-row"><span class="k">AI ${lang === "de" ? "Score" : "score"}</span><span class="v">${p.combo.score !== null ? p.combo.score.toFixed(1) : "-"}</span></div>
+    <div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtMoney(p.combo.price) : "-"}</span></div>
+    <div class="dd-row"><span class="k">${t("plans.th.tokens")}</span><span class="v">${fmtTokens(p.combo.tokensPer10)}</span></div>
+    ${priv ? `<div class="dd-badge">${priv}</div>` : ""}
+  `;
 }
 
 // Tooltip-Events (Delegation auf SVG)
@@ -967,6 +1000,14 @@ function bindDashTooltip() {
     }
   });
   svg.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+  // Klick auf Punkt → Detail-Panel
+  svg.addEventListener("click", (e) => {
+    const circle = e.target.closest(".dash-dot");
+    if (circle && svg._points) {
+      const p = svg._points[parseInt(circle.dataset.i, 10)];
+      if (p) showDashDetail(p);
+    }
+  });
 }
 
 // Dashboard-Controls initialisieren

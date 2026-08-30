@@ -316,9 +316,14 @@ footer { border-top: 1px solid var(--border); margin-top: 40px; background: var(
   background: var(--bg-elev); color: var(--text); font-size: 14px; font-family: var(--font); cursor: pointer;
 }
 .toolbar-count { font-size: 13px; color: var(--text-faint); font-weight: 600; margin-left: auto; white-space: nowrap; }
-/* Sortier-Selector: nur auf Mobile sichtbar (dort ist der thead versteckt) */
-.sort-select { display: none; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text-muted); }
-.sort-select select { padding: 7px 9px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--bg-elev); color: var(--text); font-size: 13px; font-family: var(--font); cursor: pointer; }
+/* Sortier-Leiste: IMMER sichtbar (Desktop + Mobile) */
+.sort-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 10px; padding: 8px 12px;
+  background: var(--bg-muted); border: 1px solid var(--border); border-radius: 10px;
+}
+.sort-select { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--text-muted); }
+.sort-select select { padding: 8px 10px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--bg-elev); color: var(--text); font-size: 13px; font-family: var(--font); cursor: pointer; min-height: 40px; }
 .sortable-table th { cursor: pointer; user-select: none; }
 .sortable-table th:hover { color: var(--primary); }
 .sortable-table th .sort-ind {
@@ -351,8 +356,10 @@ th[data-sort].sorted { color: var(--primary); }
     display: block; width: 100%;
   }
   .sortable-table thead { display: none; }
-  .sort-select { display: flex; grid-column: 1 / -1; justify-content: center; }
-  .sort-select select { flex: 1; }
+  /* Sortier-Leiste auf Mobile: volle Breite, große Touch-Ziele */
+  .sort-bar { flex-direction: column; align-items: stretch; }
+  .sort-select { justify-content: space-between; }
+  .sort-select select { flex: 1; min-height: 44px; font-size: 15px; }
   .sortable-table tbody tr {
     background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 14px 16px; margin-bottom: 12px; box-shadow: var(--shadow-sm);
@@ -391,19 +398,28 @@ th[data-sort].sorted { color: var(--primary); }
 .view-tab:hover { color: var(--text); }
 .view-tab.active { background: var(--bg-elev); color: var(--text); box-shadow: var(--shadow-sm); }
 .budget-filter {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 8px 14px;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 10px 14px;
 }
 .budget-filter label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-.budget-filter input[type=range] { width: 120px; accent-color: var(--primary); cursor: pointer; }
-.budget-filter output { font-weight: 700; min-width: 52px; text-align: right; }
+/* Große Touch-freundliche Slider (min. 44px Zielhöhe) */
+.budget-filter input[type=range] { width: 180px; height: 44px; min-height: 44px; accent-color: var(--primary); cursor: pointer; -webkit-appearance: none; appearance: none; background: transparent; }
+.budget-filter input[type=range]::-webkit-slider-runnable-track { height: 8px; border-radius: 4px; background: var(--bg-muted); border: 1px solid var(--border-strong); }
+.budget-filter input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--primary); margin-top: -8px; cursor: grab; border: 2px solid var(--bg-elev); box-shadow: var(--shadow-sm); }
+.budget-filter input[type=range]::-moz-range-track { height: 8px; border-radius: 4px; background: var(--bg-muted); border: 1px solid var(--border-strong); }
+.budget-filter input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--primary); cursor: grab; border: 2px solid var(--bg-elev); }
+.budget-filter output { font-weight: 700; min-width: 56px; text-align: right; font-size: 14px; }
 .ai-filter {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 8px 14px;
+  display: flex; align-items: center; gap: 12px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 10px 14px;
 }
 .ai-filter label { font-size: 13px; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
-.ai-filter input[type=range] { width: 110px; accent-color: var(--info); cursor: pointer; }
-.ai-filter output { font-weight: 700; min-width: 30px; text-align: right; }
+.ai-filter input[type=range] { width: 160px; height: 44px; min-height: 44px; accent-color: var(--info); cursor: pointer; -webkit-appearance: none; appearance: none; background: transparent; }
+.ai-filter input[type=range]::-webkit-slider-runnable-track { height: 8px; border-radius: 4px; background: var(--bg-muted); border: 1px solid var(--border-strong); }
+.ai-filter input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--info); margin-top: -8px; cursor: grab; border: 2px solid var(--bg-elev); box-shadow: var(--shadow-sm); }
+.ai-filter input[type=range]::-moz-range-track { height: 8px; border-radius: 4px; background: var(--bg-muted); border: 1px solid var(--border-strong); }
+.ai-filter input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--info); cursor: grab; border: 2px solid var(--bg-elev); }
+.ai-filter output { font-weight: 700; min-width: 34px; text-align: right; font-size: 14px; }
 .privacy-filter {
   display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: 9px; padding: 9px 14px;
@@ -436,10 +452,13 @@ th[data-sort].sorted { color: var(--primary); }
 }
 .dash-check { cursor: pointer; }
 .dash-check input[type=checkbox] { width: 15px; height: 15px; accent-color: var(--primary); cursor: pointer; }
-.dash-legend { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-muted); margin-left: auto; flex-wrap: wrap; }
+.dash-legend { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-muted); margin-left: auto; flex-wrap: wrap; }
 .dot-swatch { display: inline-block; width: 11px; height: 11px; border-radius: 3px; }
 .dot-green { background: var(--success); opacity: .25; border: 1.5px solid var(--success); }
 .dot-pareto { background: var(--primary); }
+.dot-frontier { background: var(--primary); border-radius: 50%; width: 8px; height: 8px; box-shadow: 0 0 0 2px var(--bg-elev); }
+/* Dashboard-Layout: Plot links, Detail-Panel rechts */
+.dash-body { display: grid; grid-template-columns: 1fr 280px; gap: 14px; }
 .dash-plot {
   position: relative; width: 100%; height: 420px; border: 1px solid var(--border);
   border-radius: var(--radius-sm); background: var(--bg-muted); overflow: hidden;
@@ -459,9 +478,24 @@ th[data-sort].sorted { color: var(--primary); }
   padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; white-space: nowrap;
   transform: translate(-50%, -120%); box-shadow: var(--shadow-md); z-index: 20; display: none;
 }
+/* Detail-Panel: zeigt das angeklickte Modell */
+.dash-detail {
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--bg-elev); padding: 16px; min-height: 200px;
+}
+.dash-detail-empty { color: var(--text-faint); font-size: 13.5px; text-align: center; padding: 40px 10px; }
+.dash-detail-content .dd-name { font-size: 17px; font-weight: 800; margin: 0 0 2px; }
+.dash-detail-content .dd-plan { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.dash-detail-content .dd-row { display: flex; justify-content: space-between; font-size: 13.5px; padding: 5px 0; border-bottom: 1px solid var(--border); }
+.dash-detail-content .dd-row:last-child { border-bottom: none; }
+.dash-detail-content .dd-row .k { color: var(--text-muted); }
+.dash-detail-content .dd-row .v { font-weight: 700; }
+.dash-detail-content .dd-badge { margin-top: 10px; }
 @media (max-width: 760px) {
   .dash-plot { height: 320px; }
   .dash-legend { margin-left: 0; }
+  .dash-body { grid-template-columns: 1fr; }
+  .dash-detail { min-height: 0; }
 }
 
 /* ============ SPALTEN-PICKER ============ */
@@ -505,6 +539,7 @@ th[data-sort].sorted { color: var(--primary); }
       <span data-i18n="nav.brand">Coding Plan Compare</span>
     </a>
     <div class="nav-links">
+      <a href="#pareto" data-i18n="nav.pareto">Pareto</a>
       <a href="#plans" data-i18n="nav.plans">Plans</a>
       <a href="#models" data-i18n="nav.models">Models</a>
       <a href="#method" data-i18n="nav.method">Methodology</a>
@@ -555,10 +590,86 @@ th[data-sort].sorted { color: var(--primary); }
   </section>
 
   <!-- ===== EINE TABELLE: Plan + Modell-Kombinationen ===== -->
-  <section id="plans">
+  
+  <!-- ===== PARETO DASHBOARD (eigene Sektion) ===== -->
+  <section id="pareto">
+    <div class="section-head">
+      <h2 data-i18n="dash.h3">Pareto dashboard</h2>
+      <p data-i18n="dash.sub">Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone.</p>
+    </div>
+    <div class="dash-controls" id="dash-controls">
+      <label class="dash-ctl">
+        <span data-i18n="dash.x">X axis</span>
+        <select id="dash-x">
+          <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
+          <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
+          <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
+          <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
+          <option value="score" data-i18n="dash.m.score">AI score</option>
+          <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
+        </select>
+      </label>
+      <label class="dash-ctl">
+        <span data-i18n="dash.y">Y axis</span>
+        <select id="dash-y">
+          <option value="score" data-i18n="dash.m.score">AI score</option>
+          <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
+          <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
+          <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
+          <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
+          <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
+        </select>
+      </label>
+      <label class="dash-ctl dash-check">
+        <input type="checkbox" id="dash-pareto" checked>
+        <span data-i18n="dash.pareto">Pareto line</span>
+      </label>
+      <label class="dash-ctl dash-check">
+        <input type="checkbox" id="dash-green" checked>
+        <span data-i18n="dash.green">Green quarter</span>
+      </label>
+      <span class="dash-legend" id="dash-legend">
+        <span class="dot-swatch dot-green"></span><span data-i18n="dash.legend.green">Green quarter</span>
+        <span class="dot-swatch dot-pareto"></span><span data-i18n="dash.legend.pareto">Pareto frontier</span>
+        <span class="dot-swatch dot-frontier"></span><span data-i18n="dash.legend.frontier">Pareto points</span>
+      </span>
+    </div>
+    <div class="dash-body">
+      <div class="dash-plot" id="dash-plot">
+        <svg id="dash-svg" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Pareto plot"></svg>
+      </div>
+      <div class="dash-detail" id="dash-detail">
+        <div class="dash-detail-empty" id="dash-detail-empty" data-i18n="dash.clickHint">Click a dot to see the plan and model</div>
+        <div class="dash-detail-content" id="dash-detail-content" hidden></div>
+      </div>
+    </div>
+    <p class="table-note" id="dash-note"></p>
+  </section>
+
+<section id="plans">
     <div class="section-head">
       <h2 data-i18n="plans.h2">Plans and models, compared</h2>
       <p data-i18n="plans.sub">Every plan and model combination. Filter by budget and minimum AI score to find the most tokens per dollar.</p>
+    </div>
+    <!-- Sortier-Leiste: IMMER sichtbar (Mobile + Desktop) -->
+    <div class="sort-bar" id="sort-bar">
+      <label class="sort-select" id="sort-select">
+        <span data-i18n="sort.label">Sort by</span>
+        <select id="sort-select-key">
+          <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
+          <option value="score" data-i18n="sort.score">AI score</option>
+          <option value="req10" data-i18n="sort.req10">Requests / $10</option>
+          <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
+          <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
+          <option value="price" data-i18n="sort.price">Plan price</option>
+          <option value="plan" data-i18n="sort.plan">Plan</option>
+          <option value="model" data-i18n="sort.model">Model</option>
+        </select>
+        <select id="sort-select-dir">
+          <option value="desc" data-i18n="sort.desc">↓ desc</option>
+          <option value="asc" data-i18n="sort.asc">↑ asc</option>
+        </select>
+      </label>
     </div>
     <!-- Filter-Toggle: schlanker Header, Filter eingeklappt -->
     <div class="filter-bar" id="filter-bar">
@@ -608,72 +719,9 @@ th[data-sort].sorted { color: var(--primary); }
         </div>
       </div>
       <span class="toolbar-count" id="plans-count"></span>
-      <label class="sort-select" id="sort-select">
-        <span data-i18n="sort.label">Sort by</span>
-        <select id="sort-select-key">
-          <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
-          <option value="score" data-i18n="sort.score">AI score</option>
-          <option value="req10" data-i18n="sort.req10">Requests / $10</option>
-          <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
-          <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
-          <option value="price" data-i18n="sort.price">Plan price</option>
-          <option value="plan" data-i18n="sort.plan">Plan</option>
-          <option value="model" data-i18n="sort.model">Model</option>
-        </select>
-        <select id="sort-select-dir">
-          <option value="desc" data-i18n="sort.desc">↓ desc</option>
-          <option value="asc" data-i18n="sort.asc">↑ asc</option>
-        </select>
-      </label>
+
     </div>
     
-    <!-- ===== DASHBOARD: Pareto-Plot (AA-Stil) ===== -->
-<div class="dashboard" id="dashboard">
-      <div class="section-head">
-        <h3 data-i18n="dash.h3">Pareto dashboard</h3>
-        <p data-i18n="dash.sub">Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.</p>
-      </div>
-      <div class="dash-controls">
-        <label class="dash-ctl">
-          <span data-i18n="dash.x">X axis</span>
-          <select id="dash-x">
-            <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
-            <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
-            <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
-            <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
-            <option value="score" data-i18n="dash.m.score">AI score</option>
-            <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
-          </select>
-        </label>
-        <label class="dash-ctl">
-          <span data-i18n="dash.y">Y axis</span>
-          <select id="dash-y">
-            <option value="score" data-i18n="dash.m.score">AI score</option>
-            <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
-            <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
-            <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
-            <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
-            <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
-          </select>
-        </label>
-        <label class="dash-ctl dash-check">
-          <input type="checkbox" id="dash-pareto" checked>
-          <span data-i18n="dash.pareto">Pareto line</span>
-        </label>
-        <label class="dash-ctl dash-check">
-          <input type="checkbox" id="dash-green" checked>
-          <span data-i18n="dash.green">Green quarter</span>
-        </label>
-        <span class="dash-legend">
-          <span class="dot-swatch dot-green"></span><span data-i18n="dash.legend.green">Green quarter</span>
-          <span class="dot-swatch dot-pareto"></span><span data-i18n="dash.legend.pareto">Pareto frontier</span>
-        </span>
-      </div>
-      <div class="dash-plot" id="dash-plot">
-        <svg id="dash-svg" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Pareto plot"></svg>
-      </div>
-      <p class="table-note" id="dash-note"></p>
-    </div>
 <div class="table-wrap" id="plans-table-wrap">
       <table id="plans-table" class="sortable-table">
         <thead>
