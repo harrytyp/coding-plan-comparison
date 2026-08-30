@@ -180,6 +180,29 @@ let lang = "en";
 let theme = "light";
 let data = null;
 
+/* ---------------- Basis-URL (robust, egal welche URL) ----------------
+ * Leitet den Datenpfad aus dem Script-Src ab statt aus location.pathname.
+ * Funktioniert mit/ohne trailing slash, mit Sub-Pfaden, mit Query-Parametern.
+ */
+function baseUrl() {
+  try {
+    const scripts = document.querySelectorAll("script[src]");
+    for (const s of scripts) {
+      const src = s.getAttribute("src") || "";
+      if (src.includes("app.js")) {
+        // z.B. "/coding-plan-comparison/app.js" → Basis "/coding-plan-comparison/"
+        const idx = src.lastIndexOf("/");
+        if (idx >= 0) return src.slice(0, idx + 1);
+      }
+    }
+  } catch (e) { /* fallthrough */ }
+  // Fallback: location (mit trailing slash erzwingen)
+  let base = location.pathname;
+  if (!base.endsWith("/")) base = base.slice(0, base.lastIndexOf("/") + 1);
+  return base;
+}
+const DATA_URL = baseUrl() + "data/latest.json";
+
 /* ---------------- Helpers ---------------- */
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => [...document.querySelectorAll(sel)];
@@ -373,13 +396,17 @@ function toast(msg) {
 async function loadData() {
   const main = $("#main");
   try {
-    const resp = await fetch("data/latest.json", { cache: "no-cache" });
-    if (!resp.ok) throw new Error("HTTP " + resp.status);
+    const resp = await fetch(DATA_URL, { cache: "no-cache" });
+    if (!resp.ok) throw new Error("HTTP " + resp.status + " für " + DATA_URL);
     data = await resp.json();
     applyI18n();
   } catch (e) {
-    console.error(e);
-    main.innerHTML = `<div class="state-box"><div class="spinner" style="display:none"></div><p style="font-size:18px;font-weight:700">${t("error")}</p></div>`;
+    console.error("Coding Plan Compare: Daten konnten nicht geladen werden:", e);
+    main.innerHTML = `<div class="state-box">
+      <p style="font-size:18px;font-weight:700;margin:0 0 8px">${t("error")}</p>
+      <p style="font-size:14px;color:var(--text-muted);margin:0 0 16px" class="mono">${e.message || e}</p>
+      <button class="btn" onclick="location.reload()">↻ ${lang === "de" ? "Erneut versuchen" : "Retry"}</button>
+    </div>`;
   }
 }
 
