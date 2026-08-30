@@ -324,6 +324,12 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   const kimiPrices = parsed["kimi-membership-pricing"];
   const kimiCode = parsed["kimi-code-membership"];
   const kimiTierMap = { Moderato: "moderato", Allegretto: "allegretto", Allegro: "allegro" };
+  // Offizielle relative Credits (Index): Andante 1×, Moderato 4×, Allegretto 20×, Allegro 60×
+  const kimiTierMult = { moderato: 4, allegretto: 20, allegro: 60 };
+  // Offizielle Billing-Beispiele (kimi.com/code/docs): einfacher Request ~¥0.03,
+  // komplexer Task ~¥1.6. Membership-Preis (CNY/Monat) ÷ Kosten/Request = Requests/Monat.
+  // Tiers skalieren mit den offiziellen relativen Credits (Moderato = 4× Andante).
+  const KIMI_SIMPLE_REQUEST_CNY = 0.03;
   const USD_PER_CNY = 0.14; // grobe Umrechnung für Anzeige; kanonisch bleibt CNY
   for (const p of kimiPrices?.plans ?? []) {
     const tierKey = kimiTierMap[p.name];
@@ -342,6 +348,14 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit-Balance; Extra Usage nach Verbrauch" },
       workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
       models: ["Kimi K3", "Kimi K2.7 Code"],
+      // Offizielle Umrechnung: Membership-Preis ÷ offizieller Request-Kosten (¥0.03)
+      providerCost: {
+        formula: "requests = monthlyPriceCNY / 0.03 (offizielles Billing-Beispiel: einfacher Request ~¥0.03)",
+        monthlyPriceCny: p.priceCny,
+        requestCostCny: KIMI_SIMPLE_REQUEST_CNY,
+        tierMultiplier: kimiTierMult[tierKey],
+        feedModels: ["Kimi K3", "Kimi K2.7 Code", "Kimi K2.6", "Kimi K2.5"],
+      },
       disclosure: "partial",
       sourceIds: ["kimi-membership-pricing", "kimi-code-membership"],
       verifiedAt: "2026-08-28",
@@ -495,6 +509,31 @@ function modelsForPlan(plan, feeds) {
           },
         });
       }
+    }
+    return out;
+  }
+
+  // Kimi-Membership (providerCost mit monthlyPriceCny): offizielles Billing-Beispiel
+  // "einfacher Request ~¥0.03" → requests/mo = monthlyPriceCNY / 0.03.
+  // Modell-Kosten aus Feed für die Verteilung.
+  if (plan.providerCost?.monthlyPriceCny && plan.providerCost?.feedModels) {
+    const oc = feeds["ocgo-pricing.json"];
+    const cc = feeds["cc-pricing.json"];
+    const allModels = [...(oc?.models ?? []), ...(cc?.models ?? [])];
+    const totalRequests = plan.providerCost.monthlyPriceCny / plan.providerCost.requestCostCny;
+    for (const modelName of plan.providerCost.feedModels) {
+      const match = allModels.find((m) => m.name && m.name.toLowerCase().includes(modelName.toLowerCase()));
+      if (!match) continue;
+      const pattern = match.pattern ?? FALLBACK_PATTERN;
+      out.push({
+        name: match.name,
+        allowance: totalRequests, // Monats-Requests aus offizieller Umrechnung
+        window: "month",
+        pattern,
+        pricing: match,
+        feedModel: true,
+        fromOfficialBilling: true,
+      });
     }
     return out;
   }
