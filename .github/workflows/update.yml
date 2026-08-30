@@ -88,6 +88,9 @@ jobs:
           mkdir -p data
           cp public/data/latest.json data/latest.json
           touch .nojekyll
+          # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen
+          VERSION=$(git rev-parse --short HEAD)
+          sed -i "s/__VERSION__/$VERSION/g" ./index.html
           git add index.html app.js data/latest.json .nojekyll
           if git diff --cached --quiet; then
             echo "Website unverändert"
