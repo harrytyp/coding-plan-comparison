@@ -20,5 +20,7 @@ overrides:
   - id: minimax-starter
     price: { monthlyUsd: 10, paidPrice: 10, advertisedPrice: 10 }
     quota: { label: "5h", unit: prompts, amount: 100, window: "5h", refresh: rolling, disclosure: exact }
+    feedModels: ["MiniMax M3", "MiniMax M2.7", "MiniMax M2.5"]
+    meter: prompts
     lastVerified: 2026-08-28
-    note: "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Cron-Agent soll API finden."
+    note: "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Prompts = 100/5h; Modellkosten aus Feed."

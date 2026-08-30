@@ -292,8 +292,13 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   }
 
   // --- Qwen Token Personal (dynamisch aus Docs) ---
+  // HINWEIS: Qwen-Credits sind ein eigenes Währungssystem ("tiered deduction
+  // coefficients by model", Koeffizienten NICHT öffentlich). Die API-Dollar-Preise
+  // sind NICHT die Credit-Kosten → keine Requests-Normalisierung möglich.
+  // Ehrlich: Rohdaten mit offiziellen Multiplikatoren (Lite 1× / Standard 4× / Pro 16×).
   const qwenTok = parsed["qwen-token-personal"];
   const qwenTierMap = { Lite: "lite", Standard: "standard", Pro: "pro" };
+  const qwenTierMult = { lite: 1, standard: 4, pro: 16 };
   for (const p of qwenTok?.plans ?? []) {
     const tierKey = qwenTierMap[p.name];
     if (!tierKey) continue;
@@ -307,7 +312,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         { label: "7-day rolling", unit: "credits", amount: p.quota7d, window: "rolling", refresh: "rolling", disclosure: "exact" },
       ],
       tokenPricing: null,
-      workload: { pattern: null, taskConversion: "Tiered deduction coefficients by model (offiziell); Koeffizienten nicht öffentlich" },
+      workload: { pattern: null, taskConversion: `Tiered deduction coefficients by model (offiziell); Koeffizienten nicht öffentlich. Offizieller Multiplikator: ${qwenTierMult[tierKey]}× Lite` },
       models: ["Qwen 文本与多模态", "Claude Code", "Cursor", "Qwen Code", "OpenClaw"],
       disclosure: "disclosed",
       sourceIds: ["qwen-token-personal"],
@@ -356,6 +361,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       tokenPricing: null,
       workload: { pattern: null, taskConversion: null },
       models: [],
+      feedModels: ov.feedModels ?? null,
       disclosure: "undisclosed",
       sourceIds: ["overrides"],
       verifiedAt: ov.lastVerified ?? "2026-08-28",
@@ -420,10 +426,33 @@ function modelsForPlan(plan, feeds) {
     const cc = feeds["cc-pricing.json"];
     if (!cc?.models) return out;
     const planId = plan.id.replace("command-code-", "");
+    // Eigene allowances vorhanden?
+    const own = cc.models.some((m) => (m.allowances?.[planId] ?? null) != null);
+    if (own) {
+      for (const m of cc.models) {
+        const allowance = m.allowances?.[planId] ?? null;
+        if (allowance == null) continue;
+        out.push({ name: m.name, allowance, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m });
+      }
+      return out;
+    }
+    // Keine eigenen allowances (go/max10/max20): GOAT-Verteilung als Basis,
+    // skaliert mit dem Credits-Verhältnis zum GOAT-Plan.
+    const goatPlan = cc.plans?.find((p) => p.id === "goat");
+    const thisPlan = cc.plans?.find((p) => p.id === planId);
+    if (!goatPlan?.creditsMonthly || !thisPlan?.creditsMonthly) return out;
+    const scale = thisPlan.creditsMonthly / goatPlan.creditsMonthly;
     for (const m of cc.models) {
-      const allowance = m.allowances?.[planId] ?? null;
-      if (allowance == null) continue;
-      out.push({ name: m.name, allowance, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m });
+      const goatAllowance = m.allowances?.goat ?? null;
+      if (goatAllowance == null) continue;
+      out.push({
+        name: m.name,
+        allowance: goatAllowance * scale,
+        pattern: m.pattern ?? FALLBACK_PATTERN,
+        pricing: m,
+        scaledFrom: "goat",
+        scaleFactor: scale,
+      });
     }
     return out;
   }
@@ -466,6 +495,33 @@ function modelsForPlan(plan, feeds) {
           },
         });
       }
+    }
+    return out;
+  }
+
+  // Generische feedModels-Pläne (Qwen Token, Kimi, MiniMax): Modelle aus dem Feed
+  // mit Token-Preisen + Pattern. "1 Request" kostet die Modell-Token-Kosten
+  // (ai-10-usd-Formel). Quota (Credits/7d) wird als Monats-Menge genutzt (≈ 4.33×).
+  if (plan.feedModels?.length) {
+    const oc = feeds["ocgo-pricing.json"];
+    const cc = feeds["cc-pricing.json"];
+    const allModels = [...(oc?.models ?? []), ...(cc?.models ?? [])];
+    // Monats-Quota: 7d-Fenster × 4.33, Monats-Fenster × 1
+    const quota = plan.quotas.find((q) => q.amount != null);
+    if (!quota || typeof quota.amount !== "number" || quota.amount <= 0) return out;
+    const monthly = quota.window === "rolling" || quota.window === "week" ? quota.amount * 4.33 : quota.amount;
+    for (const modelName of plan.feedModels) {
+      const match = allModels.find((m) => m.name && m.name.toLowerCase().includes(modelName.toLowerCase()));
+      if (!match) continue;
+      const pattern = match.pattern ?? FALLBACK_PATTERN;
+      out.push({
+        name: match.name,
+        allowance: monthly, // Monats-Credits
+        window: "month",
+        pattern,
+        pricing: match,
+        feedModel: true,
+      });
     }
     return out;
   }
