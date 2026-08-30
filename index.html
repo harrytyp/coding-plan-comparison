@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Coding Plan Compare — AI Coding Subscriptions, Compared</title>
+<meta name="description" content="The independent, reproducible comparison of AI coding plan subscriptions. Live prices, real token economics, credit formulas, cache-aware cost modeling. English & Deutsch.">
+<meta name="robots" content="index,follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coding Plan Compare">
+<meta property="og:description" content="Reproducible, live-updated comparison of AI coding plan subscriptions — real token economics, not marketing numbers.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b57d0'/%3E%3Cpath d='M18 20h28v6H18zm0 10h28v6H18zm0 10h18v6H18z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root {
+  --bg: #f8fafc;
+  --bg-elev: #ffffff;
+  --bg-muted: #f1f5f9;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-faint: #94a3b8;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --primary: #0b57d0;
+  --primary-strong: #0842a0;
+  --primary-soft: #e8f0fe;
+  --success: #0d9488;
+  --success-soft: #ccfbf1;
+  --info: #2563eb;
+  --info-soft: #dbeafe;
+  --warn: #d97706;
+  --warn-soft: #fef3c7;
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 1px 2px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.08);
+  --shadow-md: 0 4px 12px rgba(15,23,42,.08), 0 2px 4px rgba(15,23,42,.05);
+  --shadow-lg: 0 16px 40px rgba(15,23,42,.12);
+  --font: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
+  --maxw: 1180px;
+}
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --bg-elev: #111a2e;
+  --bg-muted: #16223a;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-faint: #64748b;
+  --border: #1e293b;
+  --border-strong: #334155;
+  --primary: #6ea8fe;
+  --primary-strong: #93c5fd;
+  --primary-soft: #172a45;
+  --success: #2dd4bf;
+  --success-soft: #0f2e2a;
+  --info: #60a5fa;
+  --info-soft: #172a45;
+  --warn: #fbbf24;
+  --warn-soft: #2e2410;
+  --danger: #f87171;
+  --danger-soft: #3a1717;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.45);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,.5);
+}
+
+/* ============ BASE ============ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background:
+    radial-gradient(1000px 500px at 85% -10%, color-mix(in oklab, var(--primary) 10%, transparent), transparent),
+    radial-gradient(800px 400px at -10% 20%, color-mix(in oklab, var(--info) 7%, transparent), transparent),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  transition: background .3s ease, color .3s ease;
+}
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+.mono { font-family: var(--mono); font-size: .88em; }
+::selection { background: color-mix(in oklab, var(--primary) 30%, transparent); }
+
+/* ============ NAV ============ */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(12px);
+  background: color-mix(in oklab, var(--bg) 82%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 24px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
+.brand:hover { text-decoration: none; }
+.brand svg { width: 28px; height: 28px; border-radius: 7px; }
+.nav-links { display: flex; gap: 4px; margin-left: 8px; }
+.nav-links a {
+  padding: 7px 12px; border-radius: 8px; color: var(--text-muted); font-size: 14px; font-weight: 500;
+}
+.nav-links a:hover { background: var(--bg-muted); color: var(--text); text-decoration: none; }
+.nav-spacer { flex: 1; }
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 14px; border-radius: 9px; border: 1px solid var(--border-strong);
+  background: var(--bg-elev); color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all .15s ease; font-family: var(--font);
+}
+.btn:hover { border-color: var(--primary); color: var(--primary); }
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-strong); color: #fff; }
+.lang-switch { display: flex; border: 1px solid var(--border-strong); border-radius: 9px; overflow: hidden; }
+.lang-switch button {
+  border: none; background: var(--bg-elev); color: var(--text-muted); padding: 7px 12px; cursor: pointer; font-weight: 600; font-size: 13px;
+}
+.lang-switch button.active { background: var(--primary-soft); color: var(--primary); }
+.icon-btn { border: none; background: none; cursor: pointer; padding: 8px; border-radius: 8px; color: var(--text-muted); display: inline-flex; }
+.icon-btn:hover { background: var(--bg-muted); color: var(--text); }
+
+/* ============ HERO ============ */
+.hero { max-width: var(--maxw); margin: 0 auto; padding: 72px 24px 40px; text-align: center; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--primary-soft); color: var(--primary);
+  padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 24px;
+}
+.hero h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.03em; font-weight: 800; }
+.hero h1 .grad {
+  background: linear-gradient(100deg, var(--primary), color-mix(in oklab, var(--info) 70%, var(--primary)));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p.lead { font-size: clamp(17px, 2.4vw, 21px); color: var(--text-muted); max-width: 720px; margin: 0 auto 32px; }
+.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero-cta .btn { padding: 12px 22px; font-size: 15px; }
+.hero-meta { margin-top: 28px; font-size: 13px; color: var(--text-faint); display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+.hero-meta .dot { display: inline-flex; align-items: center; gap: 5px; }
+.hero-meta .live { width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+
+/* ============ SECTIONS ============ */
+section { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
+.section-head { margin-bottom: 28px; }
+.section-head h2 { font-size: clamp(24px, 3.6vw, 34px); margin: 0 0 8px; letter-spacing: -0.02em; font-weight: 800; }
+.section-head p { color: var(--text-muted); margin: 0; font-size: 16px; max-width: 720px; }
+
+/* ============ STATS ============ */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.stat-card {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow-sm); text-align: left;
+}
+.stat-card .label { font-size: 13px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.stat-card .value { font-size: 30px; font-weight: 800; margin-top: 6px; letter-spacing: -0.02em; }
+.stat-card .sub { font-size: 13px; color: var(--text-faint); margin-top: 2px; }
+
+/* ============ CARDS / GRIDS ============ */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.card {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; box-shadow: var(--shadow-sm); transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.card .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.card h3 { margin: 0; font-size: 17px; font-weight: 700; }
+.card .vendor { font-size: 13px; color: var(--text-muted); }
+.card .price { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+.card .price small { font-size: 13px; color: var(--text-faint); font-weight: 500; }
+.card .meta { margin-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+.card .meta .row { display: flex; justify-content: space-between; font-size: 13.5px; gap: 10px; }
+.card .meta .row .k { color: var(--text-muted); }
+.card .meta .row .v { font-weight: 600; text-align: right; }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+}
+.badge-green { background: var(--success-soft); color: var(--success); }
+.badge-blue { background: var(--info-soft); color: var(--info); }
+.badge-gray { background: var(--bg-muted); color: var(--text-muted); }
+.badge-amber { background: var(--warn-soft); color: var(--warn); }
+.badge-red { background: var(--danger-soft); color: var(--danger); }
+
+/* ============ TABLES ============ */
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elev); box-shadow: var(--shadow-sm); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 720px; }
+thead th {
+  text-align: left; padding: 13px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--text-muted); border-bottom: 1px solid var(--border); background: var(--bg-muted); position: sticky; top: 0;
+}
+tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: color-mix(in oklab, var(--primary) 4%, transparent); }
+td .strong { font-weight: 700; }
+td .muted { color: var(--text-muted); font-size: 12.5px; }
+td .num { font-weight: 600; }
+
+/* ============ METHOD / EXPLAINERS ============ */
+.method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.method-card {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px;
+}
+.method-card .step-num {
+  width: 30px; height: 30px; border-radius: 8px; background: var(--primary-soft); color: var(--primary);
+  display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; margin-bottom: 12px;
+}
+.method-card h3 { margin: 0 0 8px; font-size: 17px; }
+.method-card p { margin: 0; color: var(--text-muted); font-size: 14.5px; }
+.code-block {
+  background: var(--bg-muted); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 14px 16px; font-family: var(--mono); font-size: 13px; overflow-x: auto; margin: 10px 0;
+}
+.code-block .c { color: var(--text-faint); }
+.formula {
+  background: var(--bg-muted); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px 24px; font-family: var(--mono); font-size: 15px; overflow-x: auto; text-align: center; margin: 16px 0;
+}
+
+/* ============ FAQ ============ */
+details {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  margin-bottom: 10px; overflow: hidden;
+}
+details summary {
+  padding: 16px 20px; cursor: pointer; font-weight: 600; font-size: 15px; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: "+"; font-size: 20px; color: var(--text-faint); font-weight: 400; transition: transform .2s; }
+details[open] summary::after { transform: rotate(45deg); }
+details .faq-body { padding: 0 20px 18px; color: var(--text-muted); font-size: 14.5px; }
+
+/* ============ FOOTER ============ */
+footer { border-top: 1px solid var(--border); margin-top: 40px; background: var(--bg-elev); }
+.footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.footer-inner .col h4 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+.footer-inner .col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+.footer-inner .col a { color: var(--text-muted); font-size: 14px; }
+.footer-inner .col a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); }
+.footer-bottom .inner { max-width: var(--maxw); margin: 0 auto; padding: 18px 24px; font-size: 13px; color: var(--text-faint); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* ============ TOAST ============ */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--text); color: var(--bg); padding: 12px 20px; border-radius: 10px; font-size: 14px; font-weight: 600;
+  opacity: 0; pointer-events: none; transition: all .3s ease; z-index: 100; box-shadow: var(--shadow-lg);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ============ LOADING / ERROR ============ */
+.state-box { text-align: center; padding: 80px 24px; }
+.spinner {
+  width: 42px; height: 42px; border: 3px solid var(--border); border-top-color: var(--primary);
+  border-radius: 50%; margin: 0 auto 18px; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .hero { padding: 48px 20px 32px; }
+  section { padding: 40px 20px; }
+  .footer-inner { flex-direction: column; }
+  .lang-switch { margin-left: auto; }
+  .nav-inner { padding: 10px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#" data-i18n-nav-brand>
+      <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0b57d0"/><path d="M18 20h28v6H18zm0 10h28v6H18zm0 10h18v6H18z" fill="#fff"/></svg>
+      <span data-i18n="nav.brand">Coding Plan Compare</span>
+    </a>
+    <div class="nav-links">
+      <a href="#plans" data-i18n="nav.plans">Plans</a>
+      <a href="#models" data-i18n="nav.models">Models</a>
+      <a href="#method" data-i18n="nav.method">Methodology</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <div class="lang-switch">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-badge">
+    <span class="live"></span>
+    <span data-i18n="hero.live">Live data · auto-updated daily</span>
+  </div>
+  <h1><span data-i18n="hero.h1a">AI Coding Subscriptions,</span><br><span class="grad" data-i18n="hero.h1b">Compared Honestly.</span></h1>
+  <p class="lead" data-i18n="hero.lead">"60 for 10" is only the sticker price. We compare what you actually get — real token economics, provider credit formulas, cache-aware cost per request — from live official sources, reproduced daily.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#plans" data-i18n="hero.cta1">Compare plans</a>
+    <a class="btn" href="#method" data-i18n="hero.cta2">How it works</a>
+  </div>
+  <div class="hero-meta">
+    <span class="dot"><span class="live"></span> <span id="meta-sources" data-i18n="hero.sources">11 live sources</span></span>
+    <span class="dot" id="meta-updated"></span>
+    <span class="dot" data-i18n="hero.free">Free · open data · no affiliate links</span>
+  </div>
+  <div class="disclaimer" id="disclaimer" style="display:none;margin-top:24px;max-width:720px;margin-left:auto;margin-right:auto;padding:12px 18px;border-radius:10px;background:var(--warn-soft);border:1px solid color-mix(in oklab, var(--warn) 30%, transparent);font-size:13.5px;color:var(--text);text-align:left">
+    <strong id="disclaimer-title"></strong> <span id="disclaimer-text"></span>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ===== STATS ===== -->
+  <section id="stats">
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="label" data-i18n="stats.plans">Plans tracked</div><div class="value num" id="stat-plans">—</div><div class="sub" id="stat-plans-sub"></div></div>
+      <div class="stat-card"><div class="label" data-i18n="stats.comparable">Directly comparable</div><div class="value num" id="stat-comparable">—</div><div class="sub" data-i18n="stats.comparable-sub">with full model pricing</div></div>
+      <div class="stat-card"><div class="label" data-i18n="stats.models">Model families</div><div class="value num" id="stat-models">—</div><div class="sub" data-i18n="stats.models-sub">matched across plans</div></div>
+      <div class="stat-card"><div class="label" data-i18n="stats.sources">Live sources</div><div class="value num" id="stat-sources">—</div><div class="sub" data-i18n="stats.sources-sub">official feeds & docs</div></div>
+    </div>
+  </section>
+
+  <!-- ===== PLANS ===== -->
+  <section id="plans">
+    <div class="section-head">
+      <h2 data-i18n="plans.h2">The plans</h2>
+      <p data-i18n="plans.sub">Every subscription we track, with its real meter: credits, requests, dollar-usage or prompts. Prices are the paid checkout price, not the advertised one.</p>
+    </div>
+    <div class="cards" id="plans-grid"></div>
+  </section>
+
+  <!-- ===== MODELS / FAMILY COMPARISON ===== -->
+  <section id="models">
+    <div class="section-head">
+      <h2 data-i18n="models.h2">Model for model, per $10</h2>
+      <p data-i18n="models.sub">Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, scaled to exactly $10 paid.</p>
+    </div>
+    <div class="table-wrap">
+      <table id="family-table">
+        <thead>
+          <tr>
+            <th data-i18n="models.th.model">Model family</th>
+            <th data-i18n="models.th.planA">Plan A</th>
+            <th data-i18n="models.th.req">Requests / $10</th>
+            <th data-i18n="models.th.planB">Plan B</th>
+            <th data-i18n="models.th.req">Requests / $10</th>
+            <th data-i18n="models.th.winner">Winner</th>
+            <th data-i18n="models.th.edge">Edge</th>
+          </tr>
+        </thead>
+        <tbody id="family-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== METHOD ===== -->
+  <section id="method">
+    <div class="section-head">
+      <h2 data-i18n="method.h2">Why "60 for 10" is not the answer</h2>
+      <p data-i18n="method.sub">The sticker value hides the real economics. Here is exactly how we make plans comparable — every step reproducible.</p>
+    </div>
+
+    <div class="formula mono" id="formula-block"></div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="step-num">1</div>
+        <h3 data-i18n="method.s1.t">Real token prices, not marketing</h3>
+        <p data-i18n="method.s1.p">Every model behind a plan has published API token prices: input, output, cached-read and cached-write. That is the ground truth behind any credit or dollar-usage number.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">2</div>
+        <h3 data-i18n="method.s2.t">Provider credit formulas</h3>
+        <p data-i18n="method.s2.p">Providers define their own credits (GLM: <span class="mono">(in×6.9 + cached×1.7 + out×24)/10000</span>). We scrape those formulas from the official docs — never invent them.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">3</div>
+        <h3 data-i18n="method.s3.t">Cache-aware workload model</h3>
+        <p data-i18n="method.s3.p">Coding agents hit the cache constantly. Input is priced 5% fresh + 95% cached-write, cached-read and output at their real rates — per model, per workload pattern.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">4</div>
+        <h3 data-i18n="method.s4.t">Windows are caps, not volumes</h3>
+        <p data-i18n="method.s4.p">A 5-hour window is a throughput limit, not a monthly quota. Weekly credits scale to a month (×4.33); 5h caps are never multiplied into fake monthly numbers.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">5</div>
+        <h3 data-i18n="method.s5.t">Fair pattern unification</h3>
+        <p data-i18n="method.s5.p">Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans — so a cheap pattern can't rig the comparison.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">6</div>
+        <h3 data-i18n="method.s6.t">Undisclosed stays undisclosed</h3>
+        <p data-i18n="method.s6.p">If a provider hides its numbers, we say so. No invented credits, no back-calculated quotas. Honesty is a feature.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq">
+    <div class="section-head">
+      <h2 data-i18n="faq.h2">Frequently asked questions</h2>
+    </div>
+    <details>
+      <summary data-i18n="faq.q1"></summary>
+      <div class="faq-body" data-i18n="faq.a1"></div>
+    </details>
+    <details>
+      <summary data-i18n="faq.q2"></summary>
+      <div class="faq-body" data-i18n="faq.a2"></div>
+    </details>
+    <details>
+      <summary data-i18n="faq.q3"></summary>
+      <div class="faq-body" data-i18n="faq.a3"></div>
+    </details>
+    <details>
+      <summary data-i18n="faq.q4"></summary>
+      <div class="faq-body" data-i18n="faq.a4"></div>
+    </details>
+    <details>
+      <summary data-i18n="faq.q5"></summary>
+      <div class="faq-body" data-i18n="faq.a5"></div>
+    </details>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="col">
+      <h4 data-i18n="foot.product">Product</h4>
+      <ul>
+        <li><a href="#plans" data-i18n="foot.plans">Plans</a></li>
+        <li><a href="#models" data-i18n="foot.models">Model comparison</a></li>
+        <li><a href="#method" data-i18n="foot.method">Methodology</a></li>
+        <li><a href="#faq" data-i18n="foot.faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4 data-i18n="foot.data">Data</h4>
+      <ul>
+        <li><a href="data/latest.json" target="_blank" data-i18n="foot.json">latest.json (API)</a></li>
+        <li><a href="https://github.com/harrytyp/coding-plan-comparison" target="_blank" data-i18n="foot.repo">GitHub</a></li>
+        <li><a href="https://github.com/harrytyp/coding-plan-comparison/blob/main/sources.yml" target="_blank" data-i18n="foot.sources">sources.yml</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4 data-i18n="foot.legal">Note</h4>
+      <ul>
+        <li><span data-i18n="foot.note">Independent & informational. We don't sell plans and have no affiliate links. Always confirm on the official provider page.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="inner">
+      <span data-i18n="foot.rights">© 2026 Coding Plan Compare · MIT License</span>
+      <span data-i18n="foot.lang">English · Deutsch</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

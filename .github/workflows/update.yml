@@ -80,21 +80,18 @@ jobs:
             }
           '
 
-  # ---- GitHub Pages Deploy (die Website) ----
-  deploy:
-    needs: update
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public/
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # Website-Dateien für Legacy-Pages (Source: main/) in die Wurzel spiegeln
+      - name: Website-Dateien in Root spiegeln
+        run: |
+          cp public/index.html ./index.html
+          cp public/app.js ./app.js
+          mkdir -p data
+          cp public/data/latest.json data/latest.json
+          touch .nojekyll
+          git add index.html app.js data/latest.json .nojekyll
+          if git diff --cached --quiet; then
+            echo "Website unverändert"
+          else
+            git commit -m "chore(web): sync website files to root for legacy Pages $(date -u +%Y-%m-%d)"
+            git push
+          fi
