@@ -322,6 +322,31 @@ let lang = "en";
 let theme = "light";
 let data = null;
 
+/* ---------------- Währung (einheitliche Anzeige, tägliche Kurse) ----------------
+ * Alle Preise werden intern in USD geführt; die UI rechnet in die gewählte
+ * Währung um. Kurse von open.er-api.com (kostenlos, täglich aktualisiert).
+ */
+let currency = "USD";
+let exchangeRates = { USD: 1 }; // USD → Zielwährung
+async function loadExchangeRates() {
+  try {
+    const resp = await fetch("https://open.er-api.com/v6/latest/USD", { cache: "no-cache" });
+    if (resp.ok) {
+      const d = await resp.json();
+      if (d.rates) exchangeRates = { ...d.rates, USD: 1 };
+    }
+  } catch (e) { /* offline: USD bleibt */ }
+}
+// USD-Betrag → gewählte Währung (formatiert)
+function fmtPrice(usd) {
+  if (usd === null || usd === undefined || !isFinite(usd)) return "-";
+  const rate = exchangeRates[currency] ?? 1;
+  const value = usd * rate;
+  const loc = lang === "de" ? "de-DE" : (currency === "EUR" ? "de-DE" : "en-US");
+  const opts = { style: "currency", currency, maximumFractionDigits: currency === "JPY" ? 0 : 2 };
+  try { return value.toLocaleString(loc, opts); } catch { return `${currency} ${value.toFixed(2)}`; }
+}
+
 /* ---------------- Basis-URL (robust, egal welche URL) ----------------
  * Leitet den Datenpfad aus dem Script-Src ab statt aus location.pathname.
  * Funktioniert mit/ohne trailing slash, mit Sub-Pfaden, mit Query-Parametern.
@@ -622,7 +647,9 @@ function comboPrivacy(plan, row) {
 function buildCombos() {
   const combos = [];
   for (const plan of data?.plans ?? []) {
-    const price = plan.price?.paidPrice ?? plan.price?.monthlyUsd ?? null;
+    // Preis: USD als Vergleichs-Basis (Sortierung/Budget), Anzeige in gewählter Währung
+    const priceUsd = plan.price?.monthlyUsd ?? (plan.price?.currency === "CNY" ? plan.price?.monthlyUsd : plan.price?.paidPrice) ?? null;
+    const priceDisplay = priceUsd !== null && priceUsd !== undefined ? fmtPrice(priceUsd) : null;
     for (const row of plan.modelRows ?? []) {
       const score = aiScoreFor(row.model, row.family);
       const tokensPerReq = tokensPerRequest(row);
@@ -632,7 +659,8 @@ function buildCombos() {
         planId: plan.id,
         planName: plan.name,
         provider: plan.provider,
-        price,
+        price: priceUsd,
+        priceDisplay,
         meter: plan.meter,
         model: row.model,
         family: row.family,
@@ -755,7 +783,7 @@ function renderPlans() {
 
 // Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
 function renderCell(col, c) {
-  const priceStr = c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-";
+  const priceStr = c.priceDisplay ?? (c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-");
   const scoreStr = c.score !== null ? `<span class="num strong">${c.score.toFixed(1)}</span>` : `<span class="muted">-</span>`;
   const scoreBar = c.score !== null
     ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
@@ -1093,6 +1121,10 @@ async function loadData() {
     const note = document.getElementById("loading-note");
     if (note) note.remove();
     applyI18n();
+    // Kurse laden (async) → danach Preise in gewählter Währung neu rendern
+    await loadExchangeRates();
+    renderPlans();
+    renderDashboard();
   } catch (e) {
     console.error("Coding Plan Compare: Daten konnten nicht geladen werden:", e);
     const note = document.getElementById("loading-note");
@@ -1124,6 +1156,11 @@ function init() {
   theme = urlTheme === "dark" || urlTheme === "light" ? urlTheme : (storedTheme === "dark" ? "dark" : "light");
   applyTheme();
 
+  // Währung (gespeichert oder Standard USD) + tägliche Kurse laden
+  const storedCur = localStorage.getItem("cpc-currency");
+  currency = ["USD", "EUR", "CNY", "GBP", "JPY"].includes(storedCur) ? storedCur : "USD";
+  loadExchangeRates();
+
   // Events
   $$(".lang-switch button").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -1142,6 +1179,18 @@ function init() {
     if (theme === "dark") p.set("theme", "dark"); else p.delete("theme");
     history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
   });
+
+  // Währungs-Umschalter (einheitliche Preis-Anzeige)
+  const currencySel = $("#currency-select");
+  if (currencySel) {
+    currencySel.value = currency;
+    currencySel.addEventListener("change", (e) => {
+      currency = e.target.value;
+      localStorage.setItem("cpc-currency", currency);
+      renderPlans();
+      renderDashboard();
+    });
+  }
 
   // Filter-Event-Listener (aktualisieren Tabelle UND Dashboard; rerender ist global)
   const plansSearchEl = $("#plans-search");
