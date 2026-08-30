@@ -767,12 +767,40 @@ function loadAiScores(root) {
 
 // Privacy-Aussagen aus data/privacy.yml laden (selbst erhoben, offizielle Quellen)
 function loadPrivacy(root) {
+  const entries = [];
+  // 1. Statische Basis aus data/privacy.yml (selbst erhoben, für alle Anbieter)
   try {
     const raw = readFileSync(join(root, "data", "privacy.yml"), "utf8");
     const parsed = parseYaml(raw);
-    return parsed.privacy ?? [];
+    entries.push(...(parsed.privacy ?? []));
   } catch (e) {
     console.warn("WARN: privacy.yml nicht lesbar:", e.message);
-    return [];
   }
+  // 2. Geparste Privacy-Quellen (aus Crawl) ergänzen/überschreiben — z.B. Command Code
+  //    aus der offiziellen Policy, automatisch extrahiert statt manuell.
+  try {
+    const parsedFile = join(root, "parsed", "privacy-command-code.json");
+    const parsed = JSON.parse(readFileSync(parsedFile, "utf8"));
+    if (parsed?.provider) {
+      const idx = entries.findIndex((e) => e.provider === parsed.provider);
+      const entry = {
+        provider: parsed.provider,
+        scope: "provider",
+        training: parsed.training,
+        trainingNote: parsed.trainingQuote ? parsed.trainingQuote.slice(0, 200) : null,
+        zeroRetention: parsed.zeroRetention,
+        zeroRetentionNote: parsed.zeroRetentionQuote ? parsed.zeroRetentionQuote.slice(0, 200) : null,
+        retentionDays: parsed.retentionDays,
+        retentionNote: parsed.retentionQuote ? parsed.retentionQuote.slice(0, 200) : null,
+        sourceUrl: "https://commandcode.ai/privacy",
+        verifiedAt: new Date().toISOString().slice(0, 10),
+        crawled: true,
+      };
+      if (idx >= 0) entries[idx] = entry;
+      else entries.push(entry);
+    }
+  } catch (e) {
+    // Kein geparstes Privacy → statische Daten bleiben
+  }
+  return entries;
 }

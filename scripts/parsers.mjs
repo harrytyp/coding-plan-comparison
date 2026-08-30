@@ -222,6 +222,56 @@ export function parseKimiCode(html) {
   return out;
 }
 
+// ---------- Parser: Privacy-Policy-Text (z.B. Command Code) ----------
+// Extrahiert strukturierte Privacy-Aussagen aus Policy-Text.
+// Deterministisch: sucht nach dokumentierten Mustern; unbekannt bleibt unbekannt.
+export function parsePrivacyText(html) {
+  const text = htmlToText(html);
+  const out = {
+    training: null,
+    trainingQuote: null,
+    zeroRetention: null,
+    zeroRetentionQuote: null,
+    retentionDays: null,
+    retentionQuote: null,
+    provider: null,
+  };
+
+  // Anbieter erkennen (aus URL-Mustern im Text oder fix via Aufrufer)
+  if (/command ?code/i.test(text)) out.provider = "command-code";
+
+  // "does not train" / "never use for training" → training=false
+  const noTrain = /(does not|never|will not|won't|do not)\s+(train|use[^.]*for (model )?training)/i.exec(text);
+  if (noTrain) {
+    out.training = false;
+    out.trainingQuote = text.slice(Math.max(0, noTrain.index - 60), noTrain.index + 120).trim();
+  }
+  // "trains on" / "may use for training" → training=true
+  const yesTrain = /(trains?|may use|uses)[^.]*\b(train(ing)?)\b/i.exec(text);
+  if (!noTrain && yesTrain) {
+    out.training = true;
+    out.trainingQuote = text.slice(Math.max(0, yesTrain.index - 60), yesTrain.index + 120).trim();
+  }
+
+  // "zero data retention" / "never stored" → zeroRetention=true
+  const zero = /(zero[ -]?data retention|never stored|not stored)/i.exec(text);
+  if (zero) {
+    out.zeroRetention = true;
+    out.zeroRetentionQuote = text.slice(Math.max(0, zero.index - 70), zero.index + 120).trim();
+  }
+
+  // "retained for up to X days" / "thirty (30) days" / "30 days" → retentionDays
+  const ret = /retained?[^.]{0,60}?\(?(\d{1,3})\)?\s*days?/i.exec(text)
+    || /(?:up to|for)\s+(?:thirty|sixty|ninety)?\s*\(?(\d{1,3})\)?\s*days?/i.exec(text)
+    || /retained?[^.]{0,40}?(\d{1,3})\s*days?/i.exec(text);
+  if (ret) {
+    out.retentionDays = parseInt(ret[1], 10);
+    out.retentionQuote = text.slice(Math.max(0, ret.index - 70), ret.index + 120).trim();
+  }
+
+  return out;
+}
+
 // ---------- Registry ----------
 export const PARSERS = {
   ocgo: parseOcgo,
@@ -231,4 +281,5 @@ export const PARSERS = {
   "qwen-token-personal": parseQwenTokenPersonal,
   "kimi-pricing": parseKimiPricing,
   "kimi-code": parseKimiCode,
+  "privacy-text": parsePrivacyText,
 };
