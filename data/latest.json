@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-30T18:36:16.700Z",
+  "generatedAt": "2026-08-30T18:47:51.205Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -99,7 +99,8 @@
             "training": false,
             "retentionDays": 30,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 27895774.647887327
         },
         {
           "model": "Grok 4.6",
@@ -122,7 +123,8 @@
             "training": false,
             "retentionDays": 30,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 13947887.323943663
         },
         {
           "model": "GPT 5.6 Luna",
@@ -145,7 +147,8 @@
             "training": false,
             "retentionDays": 30,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 508303010.25471383
         },
         {
           "model": "GPT 5.6 Luna",
@@ -168,7 +171,8 @@
             "training": false,
             "retentionDays": 30,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 265755793.84296092
         },
         {
           "model": "GLM-5.3-Flash",
@@ -191,7 +195,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 887368421.0526316
         },
         {
           "model": "GLM-5.3",
@@ -214,7 +219,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 52292216.35883905
         },
         {
           "model": "GLM-5.2",
@@ -237,7 +243,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 209168865.4353562
         },
         {
           "model": "GLM-5.1",
@@ -260,7 +267,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 209168865.4353562
         },
         {
           "model": "Kimi K3",
@@ -283,7 +291,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 38161764.705882356
         },
         {
           "model": "Kimi K2.7 Code",
@@ -306,7 +315,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 278574090.1751335
         },
         {
           "model": "Kimi K2.6",
@@ -329,7 +339,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 322658610.27190334
         },
         {
           "model": "LongCat-2.0",
@@ -352,7 +363,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 5146941109.205259
         },
         {
           "model": "MiMo V2.5",
@@ -375,7 +387,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 10921052631.578947
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -398,7 +411,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 1418870486.016834
         },
         {
           "model": "MiniMax M3",
@@ -421,7 +435,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 909382518.0433038
         },
         {
           "model": "MiniMax M2.7",
@@ -444,7 +459,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 933768558.4921556
         },
         {
           "model": "MiniMax M2.5",
@@ -468,7 +484,8 @@
             "retentionDays": true,
             "validUntil": null,
             "fallback": true
-          }
+          },
+          "rawTokensPerMonth": 933768558.4921556
         },
         {
           "model": "Muse Spark 1.2 Contributor",
@@ -491,7 +508,8 @@
             "training": true,
             "retentionDays": false,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 16386706948.640486
         },
         {
           "model": "Qwen3.8 Max",
@@ -514,7 +532,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 53325862.48299047
         },
         {
           "model": "Qwen3.8 Flash",
@@ -537,7 +556,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 1546690048.224463
         },
         {
           "model": "Qwen3.7 Max",
@@ -560,7 +580,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 111655580.57926989
         },
         {
           "model": "Qwen3.7 Plus",
@@ -583,7 +604,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 1222461592.7953382
         },
         {
           "model": "Qwen3.7 Plus",
@@ -606,7 +628,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 407487197.598446
         },
         {
           "model": "Qwen3.6 Plus",
@@ -629,7 +652,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 928144796.3800905
         },
         {
           "model": "Qwen3.6 Plus",
@@ -652,7 +676,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 251235710.39738703
         },
         {
           "model": "DeepSeek V4 Pro",
@@ -675,7 +700,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 433523597.38270915
         },
         {
           "model": "DeepSeek V4 Pro",
@@ -698,7 +724,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 216761798.69135457
         },
         {
           "model": "DeepSeek V4 Flash",
@@ -721,7 +748,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": "2026-08-31"
-          }
+          },
+          "rawTokensPerMonth": 2721501448.545157
         },
         {
           "model": "DeepSeek V4 Flash",
@@ -744,7 +772,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": "2026-08-31"
-          }
+          },
+          "rawTokensPerMonth": 1360750724.2725785
         },
         {
           "model": "DeepSeek V4 Flash Vision Exp",
@@ -767,7 +796,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 1360750724.2725785
         },
         {
           "model": "DeepSeek V4 Flash Vision Exp",
@@ -790,7 +820,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 680375362.1362892
         },
         {
           "model": "Hy4 preview",
@@ -813,7 +844,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 491482659.0931906
         },
         {
           "model": "Hy3",
@@ -836,7 +868,8 @@
             "training": false,
             "retentionDays": true,
             "validUntil": null
-          }
+          },
+          "rawTokensPerMonth": 1561939924.0088892
         }
       ]
     },
@@ -966,7 +999,8 @@
           "requestsPerMonth": 4511.602148876104,
           "requestsRawInWindow": 4511.602148876104,
           "normalizedPer10": 4189.045634982455,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 327655106.06212705
         },
         {
           "model": "Tencent Hy3",
@@ -985,7 +1019,8 @@
           "requestsPerMonth": 25091.404401749227,
           "requestsRawInWindow": 25091.404401749227,
           "normalizedPer10": 23297.497123258338,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1822263244.6770377
         },
         {
           "model": "Kimi K3",
@@ -1004,7 +1039,8 @@
           "requestsPerMonth": 653.5947712418301,
           "requestsRawInWindow": 653.5947712418301,
           "normalizedPer10": 606.866082861495,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 50882352.941176474
         },
         {
           "model": "Kimi K2.7 Code",
@@ -1023,7 +1059,8 @@
           "requestsPerMonth": 4968.326915911067,
           "requestsRawInWindow": 4968.326915911067,
           "normalizedPer10": 4613.11691356645,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 278574090.1751335
         },
         {
           "model": "Kimi K2.7 Code HighSpeed",
@@ -1042,7 +1079,8 @@
           "requestsPerMonth": 828.0544859851778,
           "requestsRawInWindow": 828.0544859851778,
           "normalizedPer10": 768.8528189277417,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 46429015.02918892
         },
         {
           "model": "Kimi K2.6",
@@ -1061,7 +1099,8 @@
           "requestsPerMonth": 1918.189229367477,
           "requestsRawInWindow": 1918.189229367477,
           "normalizedPer10": 1781.0484952344261,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 107552870.09063444
         },
         {
           "model": "Kimi K2.5",
@@ -1080,7 +1119,8 @@
           "requestsPerMonth": 3352.329869259135,
           "requestsRawInWindow": 3352.329869259135,
           "normalizedPer10": 3112.6554032118247,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 170841434.79718405
         },
         {
           "model": "GLM-5.3 Flash",
@@ -1099,7 +1139,8 @@
           "requestsPerMonth": 21052.63157894737,
           "requestsRawInWindow": 21052.63157894737,
           "normalizedPer10": 19547.475932170262,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1183157894.7368422
         },
         {
           "model": "GLM-5.3",
@@ -1118,7 +1159,8 @@
           "requestsPerMonth": 1319.2612137203166,
           "requestsRawInWindow": 1319.2612137203166,
           "normalizedPer10": 1224.9407741135717,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 69722955.14511873
         },
         {
           "model": "GLM-5.2",
@@ -1137,7 +1179,8 @@
           "requestsPerMonth": 4617.4142480211085,
           "requestsRawInWindow": 4617.4142480211085,
           "normalizedPer10": 4287.292709397501,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 244030343.0079156
         },
         {
           "model": "GLM-5.2 Fast",
@@ -1156,7 +1199,8 @@
           "requestsPerMonth": 674.8207507380852,
           "requestsRawInWindow": 674.8207507380852,
           "normalizedPer10": 626.5745132201348,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 35664276.6765078
         },
         {
           "model": "GLM-5.1",
@@ -1175,7 +1219,8 @@
           "requestsPerMonth": 1319.2612137203166,
           "requestsRawInWindow": 1319.2612137203166,
           "normalizedPer10": 1224.9407741135717,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 69722955.14511873
         },
         {
           "model": "GLM-5",
@@ -1194,7 +1239,8 @@
           "requestsPerMonth": 1767.0342097823016,
           "requestsRawInWindow": 1767.0342097823016,
           "normalizedPer10": 1640.700287634449,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 90051597.39892565
         },
         {
           "model": "MiniMax M3",
@@ -1213,7 +1259,8 @@
           "requestsPerMonth": 12563.48569901096,
           "requestsRawInWindow": 12563.48569901096,
           "normalizedPer10": 11665.260630465145,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 712349639.1339214
         },
         {
           "model": "MiniMax M2.7",
@@ -1232,7 +1279,8 @@
           "requestsPerMonth": 5649.717514124293,
           "requestsRawInWindow": 5649.717514124293,
           "normalizedPer10": 5245.791563718007,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 313135593.22033894
         },
         {
           "model": "MiniMax M2.5",
@@ -1251,7 +1299,8 @@
           "requestsPerMonth": 10582.010582010582,
           "requestsRawInWindow": 10582.010582010582,
           "normalizedPer10": 9825.450865376586,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 586507936.5079365
         },
         {
           "model": "DeepSeek V4 Pro (latest)",
@@ -1270,7 +1319,8 @@
           "requestsPerMonth": 6960.8798552137,
           "requestsRawInWindow": 6960.8798552137,
           "normalizedPer10": 6463.212493234633,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 578031463.1769456
         },
         {
           "model": "DeepSeek V4 Pro (latest)",
@@ -1289,7 +1339,8 @@
           "requestsPerMonth": 3480.43992760685,
           "requestsRawInWindow": 3480.43992760685,
           "normalizedPer10": 3231.6062466173166,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 289015731.5884728
         },
         {
           "model": "DeepSeek V4 Flash (latest)",
@@ -1308,7 +1359,8 @@
           "requestsPerMonth": 75576.26905151783,
           "requestsRawInWindow": 75576.26905151783,
           "normalizedPer10": 70172.95176556901,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 5443002897.090314
         },
         {
           "model": "DeepSeek V4 Flash (latest)",
@@ -1327,7 +1379,8 @@
           "requestsPerMonth": 37788.13452575891,
           "requestsRawInWindow": 37788.13452575891,
           "normalizedPer10": 35086.47588278451,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 2721501448.545157
         },
         {
           "model": "DeepSeek V4 Flash Vision (exp)",
@@ -1346,7 +1399,8 @@
           "requestsPerMonth": 25192.089683839273,
           "requestsRawInWindow": 25192.089683839273,
           "normalizedPer10": 23390.983921856336,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1814334299.0301044
         },
         {
           "model": "DeepSeek V4 Flash Vision (exp)",
@@ -1365,7 +1419,8 @@
           "requestsPerMonth": 12596.044841919636,
           "requestsRawInWindow": 12596.044841919636,
           "normalizedPer10": 11695.491960928168,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 907167149.5150522
         },
         {
           "model": "Qwen 3.8 Max",
@@ -1384,7 +1439,8 @@
           "requestsPerMonth": 1294.3308309603935,
           "requestsRawInWindow": 1294.3308309603935,
           "normalizedPer10": 1201.7927864070507,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 65961687.80740358
         },
         {
           "model": "Qwen 3.8 27B",
@@ -1403,7 +1459,8 @@
           "requestsPerMonth": 24946.543121881685,
           "requestsRawInWindow": 24946.543121881685,
           "normalizedPer10": 23162.992685126912,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1271325730.5773344
         },
         {
           "model": "Qwen 3.6 Max Preview",
@@ -1422,7 +1479,8 @@
           "requestsPerMonth": 1285.809803013938,
           "requestsRawInWindow": 1285.809803013938,
           "normalizedPer10": 1193.880968443768,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 65527439.18119632
         },
         {
           "model": "Qwen 3.6 Plus",
@@ -1441,7 +1499,8 @@
           "requestsPerMonth": 5606.523955147809,
           "requestsRawInWindow": 5606.523955147809,
           "normalizedPer10": 5205.68612362842,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 285719673.80224264
         },
         {
           "model": "Qwen 3.7 Max",
@@ -1460,7 +1519,8 @@
           "requestsPerMonth": 575.0371160320349,
           "requestsRawInWindow": 575.0371160320349,
           "normalizedPer10": 533.9248988226879,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29305041.50722456
         },
         {
           "model": "Qwen 3.7 Plus",
@@ -1479,7 +1539,8 @@
           "requestsPerMonth": 7088.846880907373,
           "requestsRawInWindow": 7088.846880907373,
           "normalizedPer10": 6582.030530090412,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 361261814.7448015
         },
         {
           "model": "Qwen 3.8 Flash",
@@ -1498,7 +1559,8 @@
           "requestsPerMonth": 19917.541378692214,
           "requestsRawInWindow": 19917.541378692214,
           "normalizedPer10": 18493.538884579586,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1015037743.7409127
         },
         {
           "model": "Qwen 3.7 Flash",
@@ -1517,7 +1579,8 @@
           "requestsPerMonth": 56957.33895312411,
           "requestsRawInWindow": 56957.33895312411,
           "normalizedPer10": 52885.18008646622,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 2902659907.729111
         },
         {
           "model": "Step 3.7 Flash",
@@ -1536,7 +1599,8 @@
           "requestsPerMonth": 8524.059156970548,
           "requestsRawInWindow": 8524.059156970548,
           "normalizedPer10": 7914.632457725673,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 434403102.7575331
         },
         {
           "model": "Step 3.5 Flash",
@@ -1555,7 +1619,8 @@
           "requestsPerMonth": 17721.0703526493,
           "requestsRawInWindow": 17721.0703526493,
           "normalizedPer10": 16454.10432000864,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 903101187.3117137
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -1574,7 +1639,8 @@
           "requestsPerMonth": 21772.26213803614,
           "requestsRawInWindow": 21772.26213803614,
           "normalizedPer10": 20215.656581277755,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1896255170.9122577
         },
         {
           "model": "MiMo V2.5",
@@ -1593,7 +1659,8 @@
           "requestsPerMonth": 75187.96992481203,
           "requestsRawInWindow": 75187.96992481203,
           "normalizedPer10": 69812.4140434652,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 5460526315.789474
         },
         {
           "model": "Nemotron 3 Ultra",
@@ -1612,7 +1679,8 @@
           "requestsPerMonth": 2911.7167481947354,
           "requestsRawInWindow": 2911.7167481947354,
           "normalizedPer10": 2703.543870190098,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 148386908.92150012
         },
         {
           "model": "Claude Fable 5",
@@ -1631,7 +1699,8 @@
           "requestsPerMonth": 294.11764705882354,
           "requestsRawInWindow": 294.11764705882354,
           "normalizedPer10": 273.08973728767273,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 14988823.529411765
         },
         {
           "model": "Claude Opus 5",
@@ -1650,7 +1719,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Opus 4.8",
@@ -1669,7 +1739,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Opus 4.7",
@@ -1688,7 +1759,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Opus 4.6",
@@ -1707,7 +1779,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Sonnet 5",
@@ -1726,7 +1799,8 @@
           "requestsPerMonth": 1470.5882352941178,
           "requestsRawInWindow": 1470.5882352941178,
           "normalizedPer10": 1365.448686438364,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 74944117.64705883
         },
         {
           "model": "Claude Sonnet 4.6",
@@ -1745,7 +1819,8 @@
           "requestsPerMonth": 980.3921568627451,
           "requestsRawInWindow": 980.3921568627451,
           "normalizedPer10": 910.2991242922425,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 49962745.09803922
         },
         {
           "model": "Claude Haiku 4.5",
@@ -1764,7 +1839,8 @@
           "requestsPerMonth": 2941.1764705882356,
           "requestsRawInWindow": 2941.1764705882356,
           "normalizedPer10": 2730.897372876728,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 149888235.29411766
         },
         {
           "model": "GPT-5.6 Sol",
@@ -1783,7 +1859,8 @@
           "requestsPerMonth": 2010.9164033323757,
           "requestsRawInWindow": 2010.9164033323757,
           "normalizedPer10": 1867.1461497979346,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 102480321.74662453
         },
         {
           "model": "GPT-5.6 Terra",
@@ -1802,7 +1879,8 @@
           "requestsPerMonth": 1436.3688595231254,
           "requestsRawInWindow": 1436.3688595231254,
           "normalizedPer10": 1333.675821284239,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 73200229.81901751
         },
         {
           "model": "GPT-5.6 Luna",
@@ -1821,7 +1899,8 @@
           "requestsPerMonth": 13231.888852133641,
           "requestsRawInWindow": 13231.888852133641,
           "normalizedPer10": 12285.87637152613,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 677737347.0062851
         },
         {
           "model": "GPT-5.5",
@@ -1840,7 +1919,8 @@
           "requestsPerMonth": 665.3359946773121,
           "requestsRawInWindow": 665.3359946773121,
           "normalizedPer10": 617.7678687811626,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 33906852.96074518
         },
         {
           "model": "GPT-5.4",
@@ -1859,7 +1939,8 @@
           "requestsPerMonth": 1330.6719893546242,
           "requestsRawInWindow": 1330.6719893546242,
           "normalizedPer10": 1235.5357375623253,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 67813705.92149036
         },
         {
           "model": "GPT-5.4 Mini",
@@ -1878,7 +1959,8 @@
           "requestsPerMonth": 4435.573297848747,
           "requestsRawInWindow": 4435.573297848747,
           "normalizedPer10": 4118.452458541084,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 226045686.40496784
         },
         {
           "model": "GPT-5.3 Codex",
@@ -1897,7 +1979,8 @@
           "requestsPerMonth": 758.2650894752805,
           "requestsRawInWindow": 758.2650894752805,
           "normalizedPer10": 704.0530078693413,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 38642705.48983925
         },
         {
           "model": "Gemini 3.7 Flash",
@@ -1916,7 +1999,8 @@
           "requestsPerMonth": 4525.73755266035,
           "requestsRawInWindow": 4525.73755266035,
           "normalizedPer10": 4202.1704295824975,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 230640637.15867677
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -1935,7 +2019,8 @@
           "requestsPerMonth": 2017.1457387796268,
           "requestsRawInWindow": 2017.1457387796268,
           "normalizedPer10": 1872.9301195725413,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 102797781.13968734
         },
         {
           "model": "Gemini 3.5 Flash",
@@ -1954,7 +2039,8 @@
           "requestsPerMonth": 1968.8915140775744,
           "requestsRawInWindow": 1968.8915140775744,
           "normalizedPer10": 1828.1258255130683,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 100338649.34042135
         },
         {
           "model": "Gemini 3.5 Flash Lite",
@@ -1973,7 +2059,8 @@
           "requestsPerMonth": 9324.009324009323,
           "requestsRawInWindow": 9324.009324009323,
           "normalizedPer10": 8657.390272989158,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 475170163.1701631
         },
         {
           "model": "Gemini 3.1 Flash Lite",
@@ -1992,7 +2079,8 @@
           "requestsPerMonth": 10293.36078229542,
           "requestsRawInWindow": 10293.36078229542,
           "normalizedPer10": 9557.438052270585,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 524570252.1873392
         },
         {
           "model": "Fugu Ultra",
@@ -2011,7 +2099,8 @@
           "requestsPerMonth": 590.6674542232723,
           "requestsRawInWindow": 590.6674542232723,
           "normalizedPer10": 548.4377476539205,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 30101594.802126404
         },
         {
           "model": "Muse Spark 1.2",
@@ -2030,7 +2119,8 @@
           "requestsPerMonth": 1567.398119122257,
           "requestsRawInWindow": 1567.398119122257,
           "normalizedPer10": 1455.3371579593845,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 113354231.97492163
         },
         {
           "model": "Muse Spark 1.2 Contributor",
@@ -2049,7 +2139,8 @@
           "requestsPerMonth": 75528.70090634441,
           "requestsRawInWindow": 75528.70090634441,
           "normalizedPer10": 70128.78449985554,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 5462235649.546828
         },
         {
           "model": "Muse Spark 1.1",
@@ -2068,7 +2159,8 @@
           "requestsPerMonth": 2176.633835772977,
           "requestsRawInWindow": 2176.633835772977,
           "normalizedPer10": 2021.0156321011857,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 110925613.53866245
         },
         {
           "model": "Grok 4.6",
@@ -2087,7 +2179,8 @@
           "requestsPerMonth": 1126.7605633802818,
           "requestsRawInWindow": 1126.7605633802818,
           "normalizedPer10": 1046.2029372147463,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 37194366.1971831
         },
         {
           "model": "Grok 4.5",
@@ -2106,7 +2199,8 @@
           "requestsPerMonth": 725.3735673872044,
           "requestsRawInWindow": 725.3735673872044,
           "normalizedPer10": 673.5130616408583,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 36966487.74118671
         },
         {
           "model": "Inkling",
@@ -2125,7 +2219,8 @@
           "requestsPerMonth": 2008.818714155141,
           "requestsRawInWindow": 2008.818714155141,
           "normalizedPer10": 1865.1984346844392,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 102373419.3107743
         },
         {
           "model": "Inkling Small",
@@ -2144,7 +2239,8 @@
           "requestsPerMonth": 3575.0035750035754,
           "requestsRawInWindow": 3575.0035750035754,
           "normalizedPer10": 3319.4090761407388,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 182189332.18933222
         }
       ]
     },
@@ -2223,7 +2319,8 @@
           "requestsPerMonth": 6767.403223314156,
           "requestsRawInWindow": 6767.403223314156,
           "normalizedPer10": 3383.7016116570785,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 491482659.0931906
         },
         {
           "model": "Tencent Hy3",
@@ -2242,7 +2339,8 @@
           "requestsPerMonth": 28675.89074485626,
           "requestsRawInWindow": 28675.89074485626,
           "normalizedPer10": 14337.94537242813,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 2082586565.345186
         },
         {
           "model": "Kimi K3",
@@ -2261,7 +2359,8 @@
           "requestsPerMonth": 980.3921568627451,
           "requestsRawInWindow": 980.3921568627451,
           "normalizedPer10": 490.19607843137254,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 76323529.41176471
         },
         {
           "model": "Kimi K2.7 Code",
@@ -2280,7 +2379,8 @@
           "requestsPerMonth": 5796.381401896245,
           "requestsRawInWindow": 5796.381401896245,
           "normalizedPer10": 2898.1907009481224,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 325003105.20432246
         },
         {
           "model": "Kimi K2.7 Code HighSpeed",
@@ -2299,7 +2399,8 @@
           "requestsPerMonth": 1242.0817289777667,
           "requestsRawInWindow": 1242.0817289777667,
           "normalizedPer10": 621.0408644888834,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 69643522.54378338
         },
         {
           "model": "Kimi K2.6",
@@ -2318,7 +2419,8 @@
           "requestsPerMonth": 2877.2838440512155,
           "requestsRawInWindow": 2877.2838440512155,
           "normalizedPer10": 1438.6419220256078,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 161329305.13595167
         },
         {
           "model": "Kimi K2.5",
@@ -2337,7 +2439,8 @@
           "requestsPerMonth": 5028.494803888702,
           "requestsRawInWindow": 5028.494803888702,
           "normalizedPer10": 2514.247401944351,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 256262152.19577605
         },
         {
           "model": "GLM-5.3 Flash",
@@ -2356,7 +2459,8 @@
           "requestsPerMonth": 26315.78947368421,
           "requestsRawInWindow": 26315.78947368421,
           "normalizedPer10": 13157.894736842103,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1478947368.4210527
         },
         {
           "model": "GLM-5.3",
@@ -2375,7 +2479,8 @@
           "requestsPerMonth": 1978.891820580475,
           "requestsRawInWindow": 1978.891820580475,
           "normalizedPer10": 989.4459102902376,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 104584432.7176781
         },
         {
           "model": "GLM-5.2",
@@ -2394,7 +2499,8 @@
           "requestsPerMonth": 5277.0448548812665,
           "requestsRawInWindow": 5277.0448548812665,
           "normalizedPer10": 2638.5224274406332,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 278891820.5804749
         },
         {
           "model": "GLM-5.2 Fast",
@@ -2413,7 +2519,8 @@
           "requestsPerMonth": 1012.2311261071278,
           "requestsRawInWindow": 1012.2311261071278,
           "normalizedPer10": 506.1155630535639,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 53496415.0147617
         },
         {
           "model": "GLM-5.1",
@@ -2432,7 +2539,8 @@
           "requestsPerMonth": 1978.891820580475,
           "requestsRawInWindow": 1978.891820580475,
           "normalizedPer10": 989.4459102902376,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 104584432.7176781
         },
         {
           "model": "GLM-5",
@@ -2451,7 +2559,8 @@
           "requestsPerMonth": 2650.5513146734525,
           "requestsRawInWindow": 2650.5513146734525,
           "normalizedPer10": 1325.2756573367262,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 135077396.0983885
         },
         {
           "model": "MiniMax M3",
@@ -2470,7 +2579,8 @@
           "requestsPerMonth": 15236.567762630313,
           "requestsRawInWindow": 15236.567762630313,
           "normalizedPer10": 7618.283881315157,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 863913392.1411388
         },
         {
           "model": "MiniMax M2.7",
@@ -2489,7 +2599,8 @@
           "requestsPerMonth": 8474.57627118644,
           "requestsRawInWindow": 8474.57627118644,
           "normalizedPer10": 4237.28813559322,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 469703389.8305085
         },
         {
           "model": "MiniMax M2.5",
@@ -2508,7 +2619,8 @@
           "requestsPerMonth": 15873.015873015873,
           "requestsRawInWindow": 15873.015873015873,
           "normalizedPer10": 7936.507936507936,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 879761904.7619047
         },
         {
           "model": "DeepSeek V4 Pro (latest)",
@@ -2527,7 +2639,8 @@
           "requestsPerMonth": 10441.319782820548,
           "requestsRawInWindow": 10441.319782820548,
           "normalizedPer10": 5220.659891410274,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 867047194.7654183
         },
         {
           "model": "DeepSeek V4 Pro (latest)",
@@ -2546,7 +2659,8 @@
           "requestsPerMonth": 5220.659891410274,
           "requestsRawInWindow": 5220.659891410274,
           "normalizedPer10": 2610.329945705137,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 433523597.38270915
         },
         {
           "model": "DeepSeek V4 Flash (latest)",
@@ -2565,7 +2679,8 @@
           "requestsPerMonth": 88172.31389343746,
           "requestsRawInWindow": 88172.31389343746,
           "normalizedPer10": 44086.15694671873,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 6350170046.605366
         },
         {
           "model": "DeepSeek V4 Flash (latest)",
@@ -2584,7 +2699,8 @@
           "requestsPerMonth": 44086.15694671873,
           "requestsRawInWindow": 44086.15694671873,
           "normalizedPer10": 22043.078473359365,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 3175085023.302683
         },
         {
           "model": "DeepSeek V4 Flash Vision (exp)",
@@ -2603,7 +2719,8 @@
           "requestsPerMonth": 37788.13452575891,
           "requestsRawInWindow": 37788.13452575891,
           "normalizedPer10": 18894.067262879456,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 2721501448.545157
         },
         {
           "model": "DeepSeek V4 Flash Vision (exp)",
@@ -2622,7 +2739,8 @@
           "requestsPerMonth": 18894.067262879456,
           "requestsRawInWindow": 18894.067262879456,
           "normalizedPer10": 9447.033631439728,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1360750724.2725785
         },
         {
           "model": "Qwen 3.8 Max",
@@ -2641,7 +2759,8 @@
           "requestsPerMonth": 1941.49624644059,
           "requestsRawInWindow": 1941.49624644059,
           "normalizedPer10": 970.748123220295,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 98942531.71110535
         },
         {
           "model": "Qwen 3.8 27B",
@@ -2660,7 +2779,8 @@
           "requestsPerMonth": 28510.33499643621,
           "requestsRawInWindow": 28510.33499643621,
           "normalizedPer10": 14255.167498218105,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1452943692.088382
         },
         {
           "model": "Qwen 3.6 Max Preview",
@@ -2679,7 +2799,8 @@
           "requestsPerMonth": 1928.7147045209074,
           "requestsRawInWindow": 1928.7147045209074,
           "normalizedPer10": 964.3573522604536,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 98291158.77179448
         },
         {
           "model": "Qwen 3.6 Plus",
@@ -2698,7 +2819,8 @@
           "requestsPerMonth": 7305.470608222902,
           "requestsRawInWindow": 7305.470608222902,
           "normalizedPer10": 3652.735304111451,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 372301393.13625556
         },
         {
           "model": "Qwen 3.7 Max",
@@ -2717,7 +2839,8 @@
           "requestsPerMonth": 749.2907875568939,
           "requestsRawInWindow": 749.2907875568939,
           "normalizedPer10": 374.64539377844693,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 38185357.115474425
         },
         {
           "model": "Qwen 3.7 Plus",
@@ -2736,7 +2859,8 @@
           "requestsPerMonth": 9236.982299364152,
           "requestsRawInWindow": 9236.982299364152,
           "normalizedPer10": 4618.491149682076,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 470735091.9401959
         },
         {
           "model": "Qwen 3.8 Flash",
@@ -2755,7 +2879,8 @@
           "requestsPerMonth": 29876.31206803832,
           "requestsRawInWindow": 29876.31206803832,
           "normalizedPer10": 14938.15603401916,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1522556615.611369
         },
         {
           "model": "Qwen 3.7 Flash",
@@ -2774,7 +2899,8 @@
           "requestsPerMonth": 85436.00842968616,
           "requestsRawInWindow": 85436.00842968616,
           "normalizedPer10": 42718.00421484308,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 4353989861.593666
         },
         {
           "model": "Step 3.7 Flash",
@@ -2793,7 +2919,8 @@
           "requestsPerMonth": 12786.088735455822,
           "requestsRawInWindow": 12786.088735455822,
           "normalizedPer10": 6393.044367727911,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 651604654.1362996
         },
         {
           "model": "Step 3.5 Flash",
@@ -2812,7 +2939,8 @@
           "requestsPerMonth": 26581.60552897395,
           "requestsRawInWindow": 26581.60552897395,
           "normalizedPer10": 13290.802764486976,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1354651780.9675703
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -2831,7 +2959,8 @@
           "requestsPerMonth": 32658.393207054214,
           "requestsRawInWindow": 32658.393207054214,
           "normalizedPer10": 16329.196603527107,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 2844382756.3683867
         },
         {
           "model": "MiMo V2.5",
@@ -2850,7 +2979,8 @@
           "requestsPerMonth": 100250.62656641605,
           "requestsRawInWindow": 100250.62656641605,
           "normalizedPer10": 50125.31328320802,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 7280701754.385965
         },
         {
           "model": "Nemotron 3 Ultra",
@@ -2869,7 +2999,8 @@
           "requestsPerMonth": 4367.5751222921035,
           "requestsRawInWindow": 4367.5751222921035,
           "normalizedPer10": 2183.7875611460518,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 222580363.3822502
         },
         {
           "model": "Claude Fable 5",
@@ -2888,7 +3019,8 @@
           "requestsPerMonth": 294.11764705882354,
           "requestsRawInWindow": 294.11764705882354,
           "normalizedPer10": 147.05882352941177,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 14988823.529411765
         },
         {
           "model": "Claude Opus 5",
@@ -2907,7 +3039,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Opus 4.8",
@@ -2926,7 +3059,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Opus 4.7",
@@ -2945,7 +3079,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Opus 4.6",
@@ -2964,7 +3099,8 @@
           "requestsPerMonth": 588.2352941176471,
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 29977647.05882353
         },
         {
           "model": "Claude Sonnet 5",
@@ -2983,7 +3119,8 @@
           "requestsPerMonth": 1470.5882352941178,
           "requestsRawInWindow": 1470.5882352941178,
           "normalizedPer10": 735.2941176470589,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 74944117.64705883
         },
         {
           "model": "Claude Sonnet 4.6",
@@ -3002,7 +3139,8 @@
           "requestsPerMonth": 980.3921568627451,
           "requestsRawInWindow": 980.3921568627451,
           "normalizedPer10": 490.19607843137254,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 49962745.09803922
         },
         {
           "model": "Claude Haiku 4.5",
@@ -3021,7 +3159,8 @@
           "requestsPerMonth": 2941.1764705882356,
           "requestsRawInWindow": 2941.1764705882356,
           "normalizedPer10": 1470.5882352941178,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 149888235.29411766
         },
         {
           "model": "GPT-5.6 Sol",
@@ -3040,7 +3179,8 @@
           "requestsPerMonth": 2298.190175237001,
           "requestsRawInWindow": 2298.190175237001,
           "normalizedPer10": 1149.0950876185004,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 117120367.71042804
         },
         {
           "model": "GPT-5.6 Terra",
@@ -3059,7 +3199,8 @@
           "requestsPerMonth": 1436.3688595231254,
           "requestsRawInWindow": 1436.3688595231254,
           "normalizedPer10": 718.1844297615627,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 73200229.81901751
         },
         {
           "model": "GPT-5.6 Luna",
@@ -3078,7 +3219,8 @@
           "requestsPerMonth": 19847.83327820046,
           "requestsRawInWindow": 19847.83327820046,
           "normalizedPer10": 9923.91663910023,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1016606020.5094277
         },
         {
           "model": "GPT-5.5",
@@ -3097,7 +3239,8 @@
           "requestsPerMonth": 665.3359946773121,
           "requestsRawInWindow": 665.3359946773121,
           "normalizedPer10": 332.66799733865605,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 33906852.96074518
         },
         {
           "model": "GPT-5.4",
@@ -3116,7 +3259,8 @@
           "requestsPerMonth": 1330.6719893546242,
           "requestsRawInWindow": 1330.6719893546242,
           "normalizedPer10": 665.3359946773121,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 67813705.92149036
         },
         {
           "model": "GPT-5.4 Mini",
@@ -3135,7 +3279,8 @@
           "requestsPerMonth": 4435.573297848747,
           "requestsRawInWindow": 4435.573297848747,
           "normalizedPer10": 2217.7866489243734,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 226045686.40496784
         },
         {
           "model": "GPT-5.3 Codex",
@@ -3154,7 +3299,8 @@
           "requestsPerMonth": 758.2650894752805,
           "requestsRawInWindow": 758.2650894752805,
           "normalizedPer10": 379.1325447376403,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 38642705.48983925
         },
         {
           "model": "Gemini 3.7 Flash",
@@ -3173,7 +3319,8 @@
           "requestsPerMonth": 6788.606328990525,
           "requestsRawInWindow": 6788.606328990525,
           "normalizedPer10": 3394.303164495263,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 345960955.7380151
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -3192,7 +3339,8 @@
           "requestsPerMonth": 2017.1457387796268,
           "requestsRawInWindow": 2017.1457387796268,
           "normalizedPer10": 1008.5728693898134,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 102797781.13968734
         },
         {
           "model": "Gemini 3.5 Flash",
@@ -3211,7 +3359,8 @@
           "requestsPerMonth": 1968.8915140775744,
           "requestsRawInWindow": 1968.8915140775744,
           "normalizedPer10": 984.4457570387873,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 100338649.34042135
         },
         {
           "model": "Gemini 3.5 Flash Lite",
@@ -3230,7 +3379,8 @@
           "requestsPerMonth": 9324.009324009323,
           "requestsRawInWindow": 9324.009324009323,
           "normalizedPer10": 4662.004662004661,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 475170163.1701631
         },
         {
           "model": "Gemini 3.1 Flash Lite",
@@ -3249,7 +3399,8 @@
           "requestsPerMonth": 10293.36078229542,
           "requestsRawInWindow": 10293.36078229542,
           "normalizedPer10": 5146.68039114771,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 524570252.1873392
         },
         {
           "model": "Fugu Ultra",
@@ -3268,7 +3419,8 @@
           "requestsPerMonth": 590.6674542232723,
           "requestsRawInWindow": 590.6674542232723,
           "normalizedPer10": 295.33372711163616,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 30101594.802126404
         },
         {
           "model": "Muse Spark 1.2",
@@ -3287,7 +3439,8 @@
           "requestsPerMonth": 2351.0971786833857,
           "requestsRawInWindow": 2351.0971786833857,
           "normalizedPer10": 1175.5485893416928,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 170031347.96238247
         },
         {
           "model": "Muse Spark 1.2 Contributor",
@@ -3306,7 +3459,8 @@
           "requestsPerMonth": 113293.05135951663,
           "requestsRawInWindow": 113293.05135951663,
           "normalizedPer10": 56646.525679758306,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 8193353474.320243
         },
         {
           "model": "Muse Spark 1.1",
@@ -3325,7 +3479,8 @@
           "requestsPerMonth": 2176.633835772977,
           "requestsRawInWindow": 2176.633835772977,
           "normalizedPer10": 1088.3169178864885,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 110925613.53866245
         },
         {
           "model": "Grok 4.6",
@@ -3344,7 +3499,8 @@
           "requestsPerMonth": 1690.1408450704228,
           "requestsRawInWindow": 1690.1408450704228,
           "normalizedPer10": 845.0704225352114,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 55791549.29577465
         },
         {
           "model": "Grok 4.5",
@@ -3363,7 +3519,8 @@
           "requestsPerMonth": 1088.0603510808066,
           "requestsRawInWindow": 1088.0603510808066,
           "normalizedPer10": 544.0301755404033,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 55449731.61178007
         },
         {
           "model": "Inkling",
@@ -3382,7 +3539,8 @@
           "requestsPerMonth": 3013.2280712327115,
           "requestsRawInWindow": 3013.2280712327115,
           "normalizedPer10": 1506.6140356163557,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 153560128.96616143
         },
         {
           "model": "Inkling Small",
@@ -3401,7 +3559,8 @@
           "requestsPerMonth": 5362.505362505363,
           "requestsRawInWindow": 5362.505362505363,
           "normalizedPer10": 2681.2526812526817,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 273283998.2839983
         }
       ]
     },
@@ -3575,7 +3734,8 @@
           "requestsPerMonth": 4115.969581749049,
           "requestsRawInWindow": 950.5703422053232,
           "normalizedPer10": 2494.527019241848,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 217528992.39543724
         },
         {
           "model": "GLM-5.3-Flash",
@@ -3594,7 +3754,8 @@
           "requestsPerMonth": 12478.386167146975,
           "requestsRawInWindow": 2881.844380403458,
           "normalizedPer10": 7562.658283119379,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 701285302.59366
         }
       ]
     },
@@ -3666,7 +3827,8 @@
           "requestsPerMonth": 24695.817490494297,
           "requestsRawInWindow": 5703.42205323194,
           "normalizedPer10": 3292.7756653992396,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 1305173954.3726237
         },
         {
           "model": "GLM-5.3-Flash",
@@ -3685,7 +3847,8 @@
           "requestsPerMonth": 74870.31700288183,
           "requestsRawInWindow": 17291.066282420747,
           "normalizedPer10": 9982.708933717577,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 4207711815.561959
         }
       ]
     },
@@ -3757,7 +3920,8 @@
           "requestsPerMonth": 57623.574144486694,
           "requestsRawInWindow": 13307.984790874525,
           "normalizedPer10": 3816.130738045477,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 3045405893.536122
         },
         {
           "model": "GLM-5.3-Flash",
@@ -3776,7 +3940,8 @@
           "requestsPerMonth": 174697.40634005764,
           "requestsRawInWindow": 40345.821325648416,
           "normalizedPer10": 11569.364658281962,
-          "privacy": null
+          "privacy": null,
+          "rawTokensPerMonth": 9817994236.31124
         }
       ]
     },
@@ -8475,6 +8640,69 @@
       }
     }
   },
+  "privacy": [
+    {
+      "provider": "command-code",
+      "scope": "provider",
+      "training": false,
+      "trainingNote": "Trainiert nicht auf deinen Quellcode; weist Provider an, Inhalte nicht zu trainieren.",
+      "zeroRetention": true,
+      "zeroRetentionNote": "Zero Data Retention Option: Eingaben/Ausgaben werden nie gespeichert.",
+      "retentionDays": 30,
+      "retentionNote": "Request-Daten werden standardmäßig bis zu 30 Tage aufbewahrt (Betrieb/Sicherheit).",
+      "sourceUrl": "https://commandcode.ai/privacy",
+      "verifiedAt": "2026-08-30"
+    },
+    {
+      "provider": "alibaba",
+      "scope": "provider",
+      "training": false,
+      "trainingNote": "Nutzt Daten nie für Modelltraining (Model Studio).",
+      "zeroRetention": null,
+      "retentionDays": null,
+      "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/what-is-model-studio",
+      "verifiedAt": "2026-08-30"
+    },
+    {
+      "provider": "opencode",
+      "scope": "per-model",
+      "training": null,
+      "retentionDays": null,
+      "sourceUrl": "https://ocgo-pricing.all-the.rest/data/latest.json",
+      "verifiedAt": "2026-08-30",
+      "note": "Dynamisch aus Feed; je Modell unterschiedlich (z.B. Muse Spark 1.2 Contributor: training=true)."
+    },
+    {
+      "provider": "zhipu",
+      "scope": "provider",
+      "training": null,
+      "zeroRetention": null,
+      "retentionDays": null,
+      "sourceUrl": null,
+      "verifiedAt": "2026-08-30",
+      "note": "GLM: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."
+    },
+    {
+      "provider": "moonshot",
+      "scope": "provider",
+      "training": null,
+      "zeroRetention": null,
+      "retentionDays": null,
+      "sourceUrl": null,
+      "verifiedAt": "2026-08-30",
+      "note": "Kimi: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."
+    },
+    {
+      "provider": "minimax",
+      "scope": "provider",
+      "training": null,
+      "zeroRetention": null,
+      "retentionDays": null,
+      "sourceUrl": null,
+      "verifiedAt": "2026-08-30",
+      "note": "MiniMax: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."
+    }
+  ],
   "statistics": {
     "totalPlans": 17,
     "comparablePlans": 6,
