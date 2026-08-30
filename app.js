@@ -407,14 +407,22 @@ async function loadData() {
     const resp = await fetch(DATA_URL, { cache: "no-cache" });
     if (!resp.ok) throw new Error("HTTP " + resp.status + " für " + DATA_URL);
     data = await resp.json();
+    // Loading-Note entfernen
+    const note = document.getElementById("loading-note");
+    if (note) note.remove();
     applyI18n();
   } catch (e) {
     console.error("Coding Plan Compare: Daten konnten nicht geladen werden:", e);
-    main.innerHTML = `<div class="state-box">
+    const note = document.getElementById("loading-note");
+    if (note) note.remove();
+    const errBox = document.createElement("div");
+    errBox.className = "state-box";
+    errBox.innerHTML = `
       <p style="font-size:18px;font-weight:700;margin:0 0 8px">${t("error")}</p>
-      <p style="font-size:14px;color:var(--text-muted);margin:0 0 16px" class="mono">${e.message || e}</p>
-      <button class="btn" onclick="location.reload()">↻ ${lang === "de" ? "Erneut versuchen" : "Retry"}</button>
-    </div>`;
+      <p style="font-size:14px;color:var(--text-muted);margin:0 0 16px" class="mono">${(e.message || e).replace(/</g, "&lt;")}</p>
+      <button class="btn" onclick="location.reload()">↻ ${lang === "de" ? "Erneut versuchen" : "Retry"}</button>`;
+    const mainEl = $("#main");
+    if (mainEl) mainEl.prepend(errBox);
   }
 }
 
@@ -453,8 +461,15 @@ function init() {
     history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
   });
 
-  // Show loading state
-  $("#main").innerHTML = `<div class="state-box"><div class="spinner"></div><p>${t("loading")}</p></div>`;
+  // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
+  // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)
+  const loadingNote = document.createElement("div");
+  loadingNote.id = "loading-note";
+  loadingNote.style.cssText = "text-align:center;padding:24px;color:var(--text-muted);font-size:15px";
+  loadingNote.textContent = t("loading");
+  const mainEl = $("#main");
+  // Nur anhängen, nicht ersetzen
+  if (mainEl && !document.getElementById("loading-note")) mainEl.prepend(loadingNote);
   applyI18n();
   loadData();
 }
