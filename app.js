@@ -65,10 +65,14 @@ const I18N = {
     "plans.th.model": "Model",
     "plans.th.score": "AI score",
     "plans.th.req10": "Requests / $10",
+    "plans.th.rawtokens": "Tokens / mo",
+    "plans.th.rawreq": "Requests / mo",
+    "plans.th.privacy": "Privacy",
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
     "plans.noTraining": "No training on my data",
     "plans.badge.noTraining": "no training",
+    "plans.badge.zeroRetention": "zero retention",
     "plans.badge.retention": "retention {d}d",
     "models.searchPh": "Filter models...",
     "models.h2": "Model for model, per $10",
@@ -176,10 +180,14 @@ const I18N = {
     "plans.th.model": "Modell",
     "plans.th.score": "AI-Score",
     "plans.th.req10": "Requests / $10",
+    "plans.th.rawtokens": "Tokens / Monat",
+    "plans.th.rawreq": "Requests / Monat",
+    "plans.th.privacy": "Datenschutz",
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
     "plans.noTraining": "Kein Training auf meinen Daten",
     "plans.badge.noTraining": "kein Training",
+    "plans.badge.zeroRetention": "Zero Retention",
     "plans.badge.retention": "Speicherung {d} T",
     "view.models": "Modell-Vergleich",
     "models.searchPh": "Modelle filtern...",
@@ -429,6 +437,36 @@ function aiScoreFor(modelName, family) {
 }
 
 /* ---------------- Kombinations-Zeilen (Plan + Modell) ---------------- */
+// Privacy je Anbieter aus data.privacy (in latest.json), plus Modell-Privacy aus Feed
+function providerPrivacy(provider) {
+  const entries = data?.privacy ?? [];
+  const match = entries.find((e) => e.provider === provider);
+  return match || null;
+}
+// Privacy einer Combo zusammenführen: Modell-Privacy (Feed) hat Vorrang, sonst Anbieter-Policy
+function comboPrivacy(plan, row) {
+  if (row.privacy && (row.privacy.training === false || row.privacy.training === true)) {
+    return {
+      noTraining: row.privacy.training === false,
+      retentionDays: typeof row.privacy.retentionDays === "number" ? row.privacy.retentionDays : null,
+      zeroRetention: null,
+      source: "model (feed)",
+      known: true,
+    };
+  }
+  const pp = providerPrivacy(plan.provider);
+  if (pp) {
+    return {
+      noTraining: pp.training === false ? true : (pp.training === true ? false : null),
+      retentionDays: pp.retentionDays ?? null,
+      zeroRetention: pp.zeroRetention === true ? true : (pp.zeroRetention === false ? false : null),
+      source: "provider",
+      known: pp.training != null || pp.zeroRetention != null,
+    };
+  }
+  return { noTraining: null, retentionDays: null, zeroRetention: null, source: null, known: false };
+}
+
 function buildCombos() {
   const combos = [];
   for (const plan of data?.plans ?? []) {
@@ -437,6 +475,7 @@ function buildCombos() {
       const score = aiScoreFor(row.model, row.family);
       const tokensPerReq = tokensPerRequest(row);
       const tokensPer10 = tokensPerReq && row.normalizedPer10 ? tokensPerReq * row.normalizedPer10 : null;
+      const priv = comboPrivacy(plan, row);
       combos.push({
         planId: plan.id,
         planName: plan.name,
@@ -449,10 +488,15 @@ function buildCombos() {
         codingScore: score?.coding ?? null,
         tokensPer10,
         req10: row.normalizedPer10 ?? null,
-        // Privacy: training=false = "no training on my data"; retentionDays = Speicherdauer
-        noTraining: row.privacy ? row.privacy.training === false : null,
-        retentionDays: row.privacy?.retentionDays ?? null,
-        privacyKnown: row.privacy != null,
+        // Rohdaten: Tokens/Monat und Requests/Monat (un-normalisiert)
+        rawTokensPerMonth: row.rawTokensPerMonth ?? null,
+        rawRequestsPerMonth: row.requestsPerMonth ?? null,
+        // Privacy: kombinierte Aussage (Modell-Feed vorrangig, sonst Anbieter-Policy)
+        noTraining: priv.noTraining,
+        retentionDays: priv.retentionDays,
+        zeroRetention: priv.zeroRetention,
+        privacyKnown: priv.known,
+        privacySource: priv.source,
       });
     }
   }
@@ -474,6 +518,8 @@ function sortBy(key, dir) {
     else if (key === "score") { va = a.score ?? null; vb = b.score ?? null; }
     else if (key === "tokens") { va = a.tokensPer10 ?? null; vb = b.tokensPer10 ?? null; }
     else if (key === "req10") { va = a.req10 ?? null; vb = b.req10 ?? null; }
+    else if (key === "rawtokens") { va = a.rawTokensPerMonth ?? null; vb = b.rawTokensPerMonth ?? null; }
+    else if (key === "rawreq") { va = a.rawRequestsPerMonth ?? null; vb = b.rawRequestsPerMonth ?? null; }
     else if (key === "price") { va = a.price ?? null; vb = b.price ?? null; }
     else return 0;
     // Fehlende Werte (null) immer ans Ende
@@ -514,7 +560,8 @@ function privacyBadge(c) {
   if (!c.privacyKnown) return "";
   const parts = [];
   if (c.noTraining === true) parts.push(`<span class="badge badge-green" title="No training on my data">${t("plans.badge.noTraining")}</span>`);
-  if (typeof c.retentionDays === "number") parts.push(`<span class="badge badge-gray" title="Data retention">${t("plans.badge.retention").replace("{d}", String(c.retentionDays))}</span>`);
+  if (c.zeroRetention === true) parts.push(`<span class="badge badge-green" title="Zero data retention">${t("plans.badge.zeroRetention")}</span>`);
+  if (typeof c.retentionDays === "number" && c.retentionDays !== false) parts.push(`<span class="badge badge-gray" title="Data retention">${t("plans.badge.retention").replace("{d}", String(c.retentionDays))}</span>`);
   return parts.length ? `<div class="privacy-badges">${parts.join(" ")}</div>` : "";
 }
 
@@ -557,11 +604,14 @@ function renderPlans() {
     return `
     <tr>
       <td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>
-      <td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span>${privacyBadge(c)}</td>
+      <td data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>
       <td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>
       <td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>
       <td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>
+      <td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>
+      <td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? fmtNum(c.rawRequestsPerMonth) : "-"}</span></td>
       <td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span></td>
+      <td data-label="${t("plans.th.privacy")}">${privacyBadge(c)}</td>
     </tr>`;
   }).join("");
 }

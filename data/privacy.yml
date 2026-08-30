@@ -1,0 +1,63 @@
+# Privacy-Daten: selbst erhoben aus offiziellen Anbieter-Quellen.
+# Jede Aussage hat: provider, quelle (URL), aussage, zeroRetention, training, retentionDays, verifiedAt.
+# Prinzip: NUR was offiziell dokumentiert ist. Unbekannt bleibt unbekannt.
+
+privacy:
+
+  - provider: command-code
+    scope: provider
+    training: false
+    trainingNote: "Trainiert nicht auf deinen Quellcode; weist Provider an, Inhalte nicht zu trainieren."
+    zeroRetention: true
+    zeroRetentionNote: "Zero Data Retention Option: Eingaben/Ausgaben werden nie gespeichert."
+    retentionDays: 30
+    retentionNote: "Request-Daten werden standardmäßig bis zu 30 Tage aufbewahrt (Betrieb/Sicherheit)."
+    sourceUrl: "https://commandcode.ai/privacy"
+    verifiedAt: 2026-08-30
+
+
+  - provider: alibaba
+    scope: provider
+    training: false
+    trainingNote: "Nutzt Daten nie für Modelltraining (Model Studio)."
+    zeroRetention: null
+    retentionDays: null
+    sourceUrl: "https://www.alibabacloud.com/help/en/model-studio/what-is-model-studio"
+    verifiedAt: 2026-08-30
+
+
+  - provider: opencode
+    scope: per-model
+    training: null
+    retentionDays: null
+    sourceUrl: "https://ocgo-pricing.all-the.rest/data/latest.json"
+    verifiedAt: 2026-08-30
+    note: "Dynamisch aus Feed; je Modell unterschiedlich (z.B. Muse Spark 1.2 Contributor: training=true)."
+
+
+  - provider: zhipu
+    scope: provider
+    training: null
+    zeroRetention: null
+    retentionDays: null
+    sourceUrl: null
+    verifiedAt: 2026-08-30
+    note: "GLM: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."
+
+  - provider: moonshot
+    scope: provider
+    training: null
+    zeroRetention: null
+    retentionDays: null
+    sourceUrl: null
+    verifiedAt: 2026-08-30
+    note: "Kimi: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."
+
+  - provider: minimax
+    scope: provider
+    training: null
+    zeroRetention: null
+    retentionDays: null
+    sourceUrl: null
+    verifiedAt: 2026-08-30
+    note: "MiniMax: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."

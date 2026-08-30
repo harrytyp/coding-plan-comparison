@@ -602,6 +602,8 @@ async function main() {
         requestsRawInWindow: requests,
         normalizedPer10: normalized,
         privacy: m.privacy ?? null,
+        // Rohdaten: Tokens pro Monat = Requests/Monat × Tokens pro Request (aus Pattern)
+        rawTokensPerMonth: monthlyRequests && pattern ? monthlyRequests * ((pattern.input || 0) + (pattern.cachedRead || 0) + (pattern.output || 0)) : null,
       });
     }
 
@@ -724,6 +726,7 @@ async function main() {
     modelComparisons,
     familyComparisons,
     aiScores: loadAiScores(ROOT),
+    privacy: loadPrivacy(ROOT),
     statistics: {
       totalPlans: plans.length,
       comparablePlans: comparablePlans.length,
@@ -759,5 +762,17 @@ function loadAiScores(root) {
   } catch (e) {
     console.warn("WARN: ai-scores.json nicht lesbar:", e.message);
     return { source: "Artificial Analysis", fetchedAt: null, count: 0, scores: {} };
+  }
+}
+
+// Privacy-Aussagen aus data/privacy.yml laden (selbst erhoben, offizielle Quellen)
+function loadPrivacy(root) {
+  try {
+    const raw = readFileSync(join(root, "data", "privacy.yml"), "utf8");
+    const parsed = parseYaml(raw);
+    return parsed.privacy ?? [];
+  } catch (e) {
+    console.warn("WARN: privacy.yml nicht lesbar:", e.message);
+    return [];
   }
 }
