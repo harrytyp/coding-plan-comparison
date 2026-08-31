@@ -519,12 +519,13 @@ function modelsForPlan(plan, feeds) {
     if (!cc?.models) return out;
     const planId = plan.id.replace("command-code-", "");
     // Eigene allowances vorhanden (goat/pro) ODER von GOAT abgeleitet (go/max10/max20).
-    // WICHTIG: CC-Allowances sind CREDITS, nicht Dollar. Die offizielle requestEstimate
-    // (Gesamtmenge in REQUESTS) ist der Anker. Verteilung auf Modelle folgt dem
-    // Kosten-Anteil: requests_i = requestEstimate × (allowance_i / cost_i) / Σ(allowance_j/cost_j).
+    // WICHTIG (verifiziert mit offiziellem Calculator): Die Allowances sind DOLLAR-Werte
+    // (1 Credit = $1 Nutzung; "premium models get $1 of usage per credit"). Der Calculator
+    // zeigt je Modell: "($allowance ÷ $costPerRequest per request)" = Modell-Limit.
+    // Die requestEstimate (~75K) ist die TYPISCHE Nutzung (Plan mix), NICHT die Summe
+    // der Modell-Limits — also kein Summen-Anker, der die Limits verfälscht.
     const own = cc.models.some((m) => (m.allowances?.[planId] ?? null) != null);
     const thisPlan = cc.plans?.find((p) => p.id === planId);
-    const totalEstimate = thisPlan?.requestEstimate ?? null;
     // Quelle der allowances: eigene (goat/pro) oder GOAT-skaliert (go/max10/max20)
     let sourceList = null;
     if (own) {
@@ -538,33 +539,16 @@ function modelsForPlan(plan, feeds) {
         .filter((x) => x.allowance != null);
     }
     if (!sourceList.length) return out;
-
-    if (totalEstimate) {
-      // Offizielle Gesamtmenge als Anker: Verteilung nach CREDIT-ANTEIL.
-      // Die Allowances (Credits) je Modell sind die offizielle Verteilung des
-      // Budgets. requests_i = totalEstimate × allowance_i / Σ(allowance_j).
-      // NICHT nach Kosten-Anteil: das würde teure Modelle (Nemotron, Claude)
-      // auf fast 0 Requests drücken, obwohl sie im Plan nutzbar sind (nur seltener).
-      const totalAllowance = sourceList.reduce((a, x) => a + x.allowance, 0);
-      if (totalAllowance > 0) {
-        for (const { m, allowance } of sourceList) {
-          out.push({
-            name: m.name,
-            allowance, // Original-Credits (für Referenz)
-            pattern: m.pattern ?? FALLBACK_PATTERN,
-            pricing: m,
-            directRequests: (allowance / totalAllowance) * totalEstimate, // fertige Requests/Monat
-            creditAllowance: allowance,
-            anchoredToOfficialTotal: totalEstimate,
-            requestAllocation: true,
-          });
-        }
-        return out;
-      }
-    }
-    // Kein offizieller Anker: Fallback auf Credits-Skalierung
+    // Modell-Limit je Modell: allowance (Dollar) / cost ($/request) — wie der Calculator.
     for (const { m, allowance } of sourceList) {
-      out.push({ name: m.name, allowance, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m, scaledFrom: "goat" });
+      out.push({
+        name: m.name,
+        allowance, // Dollar-Allowance (Modell-Limit)
+        pattern: m.pattern ?? FALLBACK_PATTERN,
+        pricing: m,
+        allowanceIsDollar: true,
+        officialPlanEstimate: thisPlan?.requestEstimate ?? null, // typische Nutzung (Referenz)
+      });
     }
     return out;
   }
