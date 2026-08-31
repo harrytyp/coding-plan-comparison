@@ -75,6 +75,7 @@ const I18N = {
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
     "plans.estimate": "estimate",
+    "plans.includePriceBased": "Include price-based plans (Kimi)",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
     "filters.toggle": "Filters",
@@ -243,6 +244,7 @@ const I18N = {
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
     "plans.estimate": "Schätzung",
+    "plans.includePriceBased": "Preisbasierte Pläne einblenden (Kimi)",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
     "filters.toggle": "Filter",
@@ -528,6 +530,7 @@ function syncFilterChips() {
   if (maxBudget < 300) chips.push({ label: `${t("plans.budget")} ≤ ${fmtMoney(maxBudget)}`, clear: () => { maxBudget = 300; syncFilterUI(); rerender(); } });
   if (minAiScore > 0) chips.push({ label: `${t("plans.aiScore")} ≥ ${minAiScore}`, clear: () => { minAiScore = 0; syncFilterUI(); rerender(); } });
   if (noTrainingOnly) chips.push({ label: t("plans.noTraining"), clear: () => { noTrainingOnly = false; const el = $("#privacy-toggle"); if (el) el.checked = false; rerender(); } });
+  if (includePriceBased) chips.push({ label: t("plans.includePriceBased"), clear: () => { includePriceBased = false; const el = $("#tierd-toggle"); if (el) el.checked = false; rerender(); } });
   container.innerHTML = chips.map((c) => `<span class="chip">${escapeHtml(c.label)}<button type="button" aria-label="remove">×</button></span>`).join("");
   container.querySelectorAll(".chip button").forEach((btn, i) => {
     btn.addEventListener("click", chips[i].clear);
@@ -587,6 +590,7 @@ let plansMeter = "";
 let maxBudget = 300;   // Budget-Filter: max $/Monat
 let minAiScore = 0;    // AI-Score-Filter: mindestens
 let noTrainingOnly = false; // Privacy-Filter: nur "no training on my data"
+let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per Default aus — einblendbar
 
 /* ---------------- Spalten-Auswahl (User-anpassbar) ---------------- */
 // Alle verfügbaren Spalten; Auswahl wird in localStorage gespeichert.
@@ -745,6 +749,7 @@ function buildCombos() {
         priceDisplay,
         meter: plan.meter,
         waitlist: plan.price?.waitlist === true,
+        dataTier: plan.dataTier ?? null,
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
@@ -848,6 +853,9 @@ function renderPlans() {
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
   // Filter: Privacy — nur "no training on my data"
   if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
+  // Datenqualität: Tier-D (preisbasiert, z.B. Kimi) per Default ausblenden —
+  // keine veröffentlichte Menge = nicht sicher vergleichbar. Toggle zum Einblenden.
+  if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
   // Sortieren
   combos.sort(sortBy(plansSort.key, plansSort.dir));
   // Count
@@ -958,6 +966,7 @@ function openSheet() {
   const sa = $("#sheet-ai"); if (sa) sa.value = minAiScore;
   const sao = $("#sheet-ai-out"); if (sao) sao.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
   const sp = $("#sheet-privacy"); if (sp) sp.checked = noTrainingOnly;
+  const st = $("#sheet-tierd"); if (st) st.checked = includePriceBased;
   syncColumnPicker();
   sheet.hidden = false;
   if (overlay) overlay.hidden = false;
@@ -995,6 +1004,7 @@ function initSheet() {
     rerender();
   });
   const sp = $("#sheet-privacy"); if (sp) sp.addEventListener("change", (e) => { noTrainingOnly = e.target.checked; rerender(); });
+  const st2 = $("#sheet-tierd"); if (st2) st2.addEventListener("change", (e) => { includePriceBased = e.target.checked; rerender(); });
   // Sheet-Spalten
   document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
     box.addEventListener("change", () => {
@@ -1101,6 +1111,7 @@ function renderDashboard() {
   if (maxBudget < 300) combos = combos.filter((c) => (c.price ?? 0) <= maxBudget);
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
   if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
+  if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
 
   const points = combos.map((c) => ({
     combo: c,
@@ -1469,6 +1480,12 @@ function init() {
   const privacyToggle = $("#privacy-toggle");
   if (privacyToggle) privacyToggle.addEventListener("change", (e) => {
     noTrainingOnly = e.target.checked;
+    rerender();
+  });
+  // Tier-D-Filter: preisbasierte Pläne (Kimi) einblenden
+  const tierdToggle = $("#tierd-toggle");
+  if (tierdToggle) tierdToggle.addEventListener("change", (e) => {
+    includePriceBased = e.target.checked;
     rerender();
   });
 

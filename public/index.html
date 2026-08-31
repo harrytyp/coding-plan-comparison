@@ -839,6 +839,10 @@ th[data-sort].sorted { color: var(--primary); }
         <input type="checkbox" id="privacy-toggle">
         <span data-i18n="plans.noTraining">No training on my data</span>
       </label>
+      <label class="privacy-filter" id="tierd-filter">
+        <input type="checkbox" id="tierd-toggle">
+        <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
+      </label>
       <div class="col-picker" id="col-picker">
         <button class="btn col-picker-btn" id="col-picker-btn" type="button" data-i18n="plans.columns">Columns</button>
         <div class="col-picker-panel" id="col-picker-panel" hidden>
@@ -908,6 +912,10 @@ th[data-sort].sorted { color: var(--primary); }
         <label class="sheet-check">
           <input type="checkbox" id="sheet-privacy">
           <span data-i18n="plans.noTraining">No training on my data</span>
+        </label>
+        <label class="sheet-check">
+          <input type="checkbox" id="sheet-tierd">
+          <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
         </label>
       </div>
 

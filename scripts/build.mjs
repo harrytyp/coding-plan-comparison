@@ -195,6 +195,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       tokenPricing: { source: "ocgo-pricing", note: "Feed: usage = Credits/Monat je Modell, pattern = Token-Profil, input/output/cachedRead/cachedWrite = API-Preise" },
       workload: { pattern: null, taskConversion: null },
       models: (oc.models ?? []).map((m) => m.name),
+      dataTier: "A",
+      dataTierNote: "Offizielle usage (Credits/Monat je Modell) aus Feed",
       disclosure: "disclosed",
       sourceIds: ["ocgo-pricing"],
       verifiedAt: oc.fetchedAt ? oc.fetchedAt.slice(0, 10) : "2026-08-28",
@@ -208,6 +210,13 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     for (const p of cc.plans ?? []) {
       if (!p.creditsMonthly) continue; // provider-Plan ohne credits überspringen
       const id = `command-code-${p.id}`;
+      // Tier: goat/pro haben eigene allowances (A), go/max10/max20 nutzen
+      // offizielle requestEstimate als Anker (B)
+      const hasOwnAllowances = cc.models.some((m) => (m.allowances?.[p.id] ?? null) != null);
+      const dataTier = hasOwnAllowances ? "A" : (p.requestEstimate ? "B" : "C");
+      const dataTierNote = hasOwnAllowances
+        ? "Offizielle Modell-Allowances aus Feed"
+        : (p.requestEstimate ? `Offizielle Gesamtmenge ${p.requestEstimate.toLocaleString()} req/mo als Anker` : "Von GOAT skaliert, kein offizieller Anker");
       add({
         id,
         provider: "command-code",
@@ -222,6 +231,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         tokenPricing: { source: "cc-pricing", note: "allowances = Credits/Monat je Modell; requestEstimate = offizielle Request-Schätzung" },
         workload: { pattern: null, taskConversion: p.requestEstimate ? `Offizielle requestEstimate: ${p.requestEstimate.toLocaleString()} req/mo` : null },
         models: [],
+        dataTier,
+        dataTierNote,
         disclosure: "disclosed",
         sourceIds: ["cc-pricing"],
         verifiedAt: cc.fetchedAt ? cc.fetchedAt.slice(0, 10) : "2026-08-28",
@@ -259,6 +270,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         },
         workload: { pattern: null, taskConversion: null },
         models: (glm.models ?? []).map((m) => m.model),
+        dataTier: "A",
+        dataTierNote: "Offizielle Quotas (5h/Wochen-Credits) aus GLM-Docs",
         disclosure: "disclosed",
         sourceIds: ["glm-coding-overview", ...(ov ? ["overrides"] : [])],
         verifiedAt: "2026-08-28",
@@ -374,6 +387,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit-Balance; Extra Usage nach Verbrauch" },
       workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
       models: ["Kimi K3", "Kimi K2.7 Code"],
+      dataTier: "D",
+      dataTierNote: "Keine veröffentlichte Menge (nur Waitlist) — Requests aus Preis÷Kosten abgeleitet",
       // Offizielle Umrechnung: Membership-Preis ÷ offizieller Request-Kosten (¥0.03)
       // USD-Preis über Kurs 0.14 in CNY für die Request-Berechnung (Kimi rechnet RMB)
       providerCost: {
@@ -436,6 +451,9 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       workload: { pattern: null, taskConversion: null },
       models: [],
       feedModels: ov.feedModels ?? null,
+      // MiniMax: offizielles 5h-Cap als Mengen-Basis (Tier A, wenn Quota vorhanden)
+      dataTier: ov.quota ? "A" : "C",
+      dataTierNote: ov.quota ? "Offizielles Quota (5h-Cap) aus Docs/Overrides" : "Keine offizielle Quota — abgeleitet",
       disclosure: "undisclosed",
       sourceIds: ["overrides"],
       verifiedAt: ov.lastVerified ?? "2026-08-28",
@@ -510,22 +528,44 @@ function modelsForPlan(plan, feeds) {
       }
       return out;
     }
-    // Keine eigenen allowances (go/max10/max20): GOAT-Verteilung als Basis,
-    // skaliert mit dem Credits-Verhältnis zum GOAT-Plan.
+    // Keine eigenen allowances (go/max10/max20): GOAT-Verteilung als Basis.
+    // WICHTIG: Wenn der Feed eine offizielle requestEstimate (Gesamtmenge in REQUESTS)
+    // liefert, wird die GOAT-Verteilung so normiert, dass die SUMME DER BERECHNETEN
+    // REQUESTS (allowance/cost je Modell) = requestEstimate ist. Die frühere
+    // Credit-Skalierung ergab 6-7x zu hohe Werte (Go: 93k statt 15k req/mo).
     const goatPlan = cc.plans?.find((p) => p.id === "goat");
     const thisPlan = cc.plans?.find((p) => p.id === planId);
     if (!goatPlan?.creditsMonthly || !thisPlan?.creditsMonthly) return out;
+    const goatAllowances = cc.models
+      .map((m) => ({ m, allowance: m.allowances?.goat ?? null }))
+      .filter((x) => x.allowance != null);
+    if (!goatAllowances.length) return out;
+    // Basis: Credits-Skalierung (falls keine offizielle Gesamtmenge)
     const scale = thisPlan.creditsMonthly / goatPlan.creditsMonthly;
-    for (const m of cc.models) {
-      const goatAllowance = m.allowances?.goat ?? null;
-      if (goatAllowance == null) continue;
+    // Offizielle Gesamtmenge (requestEstimate, in REQUESTS) als Anker
+    const totalEstimate = thisPlan.requestEstimate ?? null;
+    // Normierungsfaktor F so, dass Summe(allowance' / cost) = requestEstimate
+    let normFactor = 1;
+    if (totalEstimate) {
+      // Berechne die Requests der skalierten GOAT-Verteilung (je Modell)
+      // Hinweis: Muster direkt aus dem Feed (Konsistenz reicht für den Norm-Faktor)
+      let sumRequests = 0;
+      for (const { m, allowance } of goatAllowances) {
+        const pattern = m.pattern ?? FALLBACK_PATTERN;
+        const cost = requestCost(m, pattern);
+        if (cost && cost > 0) sumRequests += (allowance * scale) / cost;
+      }
+      if (sumRequests > 0) normFactor = totalEstimate / sumRequests;
+    }
+    for (const { m, allowance } of goatAllowances) {
       out.push({
         name: m.name,
-        allowance: goatAllowance * scale,
+        allowance: allowance * scale * normFactor,
         pattern: m.pattern ?? FALLBACK_PATTERN,
         pricing: m,
         scaledFrom: "goat",
         scaleFactor: scale,
+        anchoredToOfficialTotal: totalEstimate ?? null,
       });
     }
     return out;
@@ -803,6 +843,13 @@ async function main() {
       verifiedAt: plan.verifiedAt ?? null,
       modelCount: modelRows.length,
       modelStats: modelRows.length ? distribution(modelRows.map((r) => r.requestsPerMonth)) : null,
+      // Datenqualitäts-Tier für die Mengen-Basis:
+      // A = offizielle Quota-Menge (usage/allowances/quotas aus Feed/Docs)
+      // B = offizielle Gesamtmenge als Anker (requestEstimate normiert)
+      // C = abgeleitet (skaliert ohne offiziellen Anker)
+      // D = preisbasiert (keine veröffentlichte Menge, Preis÷Kosten)
+      dataTier: plan.dataTier ?? null,
+      dataTierNote: plan.dataTierNote ?? null,
       modelRows,
     });
 
