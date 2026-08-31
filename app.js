@@ -172,7 +172,7 @@ const I18N = {
     "legal.privacy.h3": "Privacy",
     "legal.privacy.body": "<p><strong>No cookies, no trackers.</strong> This site sets no cookies and makes no connections to third parties. All data is served from this GitHub Pages site itself.</p><p><strong>Local storage (your browser only).</strong> Your preferences (language, theme, currency, visible columns) are stored in your browser's localStorage so the page can remember them between visits. This data never leaves your device. localStorage is not a cookie and is not used for tracking.</p><p><strong>GitHub Pages hosting.</strong> This site is hosted by GitHub Pages. As with any web host, GitHub's servers process technical access data (IP address, user agent, requested files) in server logs. Please refer to GitHub's privacy policy for details on their data processing.</p><p><strong>No analytics, no advertising.</strong> We do not use analytics tools, advertising networks, or third-party embeds.</p><p><strong>Contact.</strong> For any privacy request, please use the contact details in the imprint.</p>",
     "legal.imprint.h3": "Imprint / Provider identification",
-    "legal.imprint.body": "<p>This website is operated by an individual maintainer on a non-commercial, informational basis.</p><p><span class=\"legal-placeholder\">[Operator name]</span><br><span class=\"legal-placeholder\">[Address / contact email]</span></p><p>If you offer this service commercially or target the DACH region, you may be required by law (e.g. §5 DDG in Germany) to publish your full name, address, and contact details here.</p>",
+    "legal.imprint.body": "<p>This website is operated by an individual maintainer on a non-commercial, informational basis.</p><p>Operator: <span class=\"legal-placeholder\">[Name or pseudonym]</span><br>Contact: <span class=\"legal-placeholder\">[contact email]</span></p><p>As a private, non-commercial website, a full postal address is not required. If this service becomes commercial or targets the DACH region, the imprint must be extended (e.g. §5 DDG in Germany) with your full name and address.</p>",
     "legal.disclaimer.h3": "Disclaimer",
     "legal.disclaimer.body": "<p>All prices, quotas, and conditions shown here are collected from public provider sources on a best-effort basis. They may change at any time. Always confirm current terms on the official provider website before purchasing.</p><p>This site is independent and not affiliated with, endorsed by, or sponsored by any provider shown. We do not sell plans and have no affiliate links.</p><p>Information is provided \"as is\" without warranty of any kind. We are not liable for any decisions made based on this data.</p>",
     "loading": "Loading live data…",
@@ -337,7 +337,7 @@ const I18N = {
     "legal.privacy.h3": "Datenschutz",
     "legal.privacy.body": "<p><strong>Keine Cookies, keine Tracker.</strong> Diese Seite setzt keine Cookies und stellt keine Verbindungen zu Dritten her. Alle Daten werden von dieser GitHub-Pages-Site selbst ausgeliefert.</p><p><strong>Lokaler Speicher (nur dein Browser).</strong> Deine Einstellungen (Sprache, Theme, Währung, sichtbare Spalten) werden im localStorage deines Browsers gespeichert, damit sich die Seite bei deinem nächsten Besuch daran erinnert. Diese Daten verlassen dein Gerät nie. localStorage ist kein Cookie und wird nicht zum Tracking verwendet.</p><p><strong>GitHub-Pages-Hosting.</strong> Diese Seite wird von GitHub Pages gehostet. Wie bei jedem Webhost verarbeiten GitHub-Server technische Zugriffsdaten (IP-Adresse, User-Agent, angeforderte Dateien) in Server-Logs. Details findest du in der Datenschutzerklärung von GitHub.</p><p><strong>Keine Analyse, keine Werbung.</strong> Wir nutzen keine Analysetools, Werbenetzwerke oder Drittanbieter-Embeds.</p><p><strong>Kontakt.</strong> Für Datenschutzanfragen nutze bitte die Kontaktdaten im Impressum.</p>",
     "legal.imprint.h3": "Impressum / Anbieterkennzeichnung",
-    "legal.imprint.body": "<p>Diese Website wird von einem einzelnen Betreiber auf nicht-kommerzieller, informativer Basis betrieben.</p><p><span class=\"legal-placeholder\">[Name des Betreibers]</span><br><span class=\"legal-placeholder\">[Adresse / Kontakt-E-Mail]</span></p><p>Falls du dieses Angebot kommerziell betreibst oder die DACH-Region anvisierst, kannst du gesetzlich verpflichtet sein (z.B. §5 DDG in Deutschland), hier deinen vollständigen Namen, Anschrift und Kontaktdaten zu veröffentlichen.</p>",
+    "legal.imprint.body": "<p>Diese Website wird von einem einzelnen Betreiber auf nicht-kommerzieller, informativer Basis betrieben.</p><p>Betreiber: <span class=\"legal-placeholder\">[Name oder Pseudonym]</span><br>Kontakt: <span class=\"legal-placeholder\">[Kontakt-E-Mail]</span></p><p>Als private, nicht-kommerzielle Website ist eine vollständige Postanschrift nicht erforderlich. Falls dieses Angebot kommerziell wird oder die DACH-Region anvisiert, muss das Impressum (z.B. §5 DDG in Deutschland) um deinen vollständigen Namen und deine Anschrift erweitert werden.</p>",
     "legal.disclaimer.h3": "Haftungsausschluss",
     "legal.disclaimer.body": "<p>Alle hier gezeigten Preise, Kontingente und Bedingungen werden nach bestem Bemühen aus öffentlichen Anbieterquellen gesammelt. Sie können sich jederzeit ändern. Bitte bestätige die aktuellen Konditionen vor dem Kauf immer auf der offiziellen Anbieterseite.</p><p>Diese Seite ist unabhängig und nicht mit einem der gezeigten Anbieter verbunden, von ihnen unterstützt oder gesponsert. Wir verkaufen keine Pläne und haben keine Affiliate-Links.</p><p>Die Informationen werden ohne jegliche Gewähr bereitgestellt. Wir haften nicht für Entscheidungen, die auf Grundlage dieser Daten getroffen werden.</p>",
     "foot.lang": "English · Deutsch",
@@ -440,7 +440,11 @@ function escapeHtml(s) {
 function applyI18n() {
   $$("[data-i18n]").forEach((el) => {
     const key = el.dataset.i18n;
-    el.textContent = t(key);
+    const val = t(key);
+    // Keys mit HTML-Inhalt (legal.*.body) via innerHTML setzen,
+    // damit <p>/<span> korrekt gerendert werden.
+    if (typeof val === "string" && val.startsWith("<")) el.innerHTML = val;
+    else el.textContent = val;
   });
   $$("[data-i18n-ph]").forEach((el) => {
     const key = el.dataset.i18nPh;
@@ -960,6 +964,16 @@ function metricValue(combo, metric) {
     default: return null;
   }
 }
+// Richtung einer Metrik: "max" = mehr ist besser (Tokens, Requests, Score),
+// "min" = weniger ist besser (Preis). Bestimmt Pareto-Frontier + Zielzone.
+function metricDir(metric) {
+  return metric === "price" ? "min" : "max";
+}
+// Ist die Achsen-Kombination sinnvoll? (nicht beide Achsen sind "min")
+// Preis als EINE Achse ist ok (Trade-off), beide min wäre unsinnig.
+function validAxes(x, y) {
+  return !(metricDir(x) === "min" && metricDir(y) === "min");
+}
 // Metrik-Label (i18n)
 function metricLabel(metric) {
   const map = {
@@ -971,24 +985,38 @@ function metricLabel(metric) {
 // Kurz-Format für Tooltip
 function metricFmt(metric, val) {
   if (val === null || val === undefined) return "-";
-  if (metric === "price") return fmtMoney(val);
+  if (metric === "price") return fmtPrice(val); // gewählte Währung (USD/EUR/CNY/...)
   if (metric === "score") return val.toFixed(1);
   return fmtTokens(val);
 }
 
-// Pareto-Frontier: Punkte die in beiden Achsen nicht dominiert werden
-// (maximiert X und Y — "mehr ist besser" auf beiden Achsen).
+// Pareto-Frontier: Punkte die in beiden Achsen nicht dominiert werden.
+// Richtungen werden respektiert: "max" = größer besser, "min" = kleiner besser.
+// Ein Punkt p dominiert q, wenn p auf beiden Achsen mindestens so gut ist
+// und auf einer besser — gemäß der jeweiligen Richtung.
 function paretoFrontier(points) {
-  const sorted = points.filter((p) => p.x != null && p.y != null).sort((a, b) => b.x - a.x);
+  const pts = points.filter((p) => p.x != null && p.y != null);
+  if (pts.length < 2) return pts;
+  const better = (a, b, dir) => (dir === "min" ? a < b : a > b);
+  const atLeast = (a, b, dir) => (dir === "min" ? a <= b : a >= b);
+  const dx = metricDir(dashX), dy = metricDir(dashY);
   const frontier = [];
-  let maxY = -Infinity;
-  for (const p of sorted) {
-    if (p.y > maxY) {
-      frontier.push(p);
-      maxY = p.y;
+  for (const p of pts) {
+    let dominated = false;
+    for (const q of pts) {
+      if (q === p) continue;
+      // q dominiert p?
+      const xDom = atLeast(q.x, p.x, dx) && better(q.y, p.y, dy);
+      const yDom = atLeast(q.y, p.y, dy) && better(q.x, p.x, dx);
+      const eqX = q.x === p.x, eqY = q.y === p.y;
+      if (!(eqX && eqY) && (xDom || yDom || (atLeast(q.x, p.x, dx) && atLeast(q.y, p.y, dy) && (q.x !== p.x || q.y !== p.y)))) {
+        dominated = true;
+        break;
+      }
     }
+    if (!dominated) frontier.push(p);
   }
-  // Von links nach rechts sortieren für die Linie
+  // Sortieren für die Linie: auf X-Achse aufsteigend (unabhängig von Richtung)
   return frontier.sort((a, b) => a.x - b.x);
 }
 
@@ -1046,9 +1074,16 @@ function renderDashboard() {
 
   const px = points.map((p) => ({ ...p, px: sx(p.x), py: sy(p.y) }));
 
-  // Zielzone (Green Target): Bereich oberhalb der User-Schwellen.
-  // Ohne gesetzte Schwellen: automatisch der obere-rechte Bereich
-  // (Median als sinnvolle Default-Schwelle — Punkte über Median auf beiden Achsen).
+  // Zielzone (Green Target): Bereich der "besseren" Werte auf beiden Achsen
+  // (Richtungsbewusst: bei price ist kleiner besser → Zielzone links unten).
+  // Bei ungültiger Kombination (beide Achsen "min") keine Zielzone zeigen.
+  // Gültige Achsen sicherstellen: Y-Achse erlaubt nur max-Metriken (score/tokens/req10),
+  // X-Achse erlaubt alle außer Kombi mit zwei "min". Gespeicherte Auswahl korrigieren.
+  const ALLOWED_Y = ["score", "tokens", "req10"];
+  if (!ALLOWED_Y.includes(dashY)) { dashY = "score"; const ys = $("#dash-y"); if (ys) ys.value = "score"; }
+  if (!validAxes(dashX, dashY)) { dashX = "tokens"; const xs = $("#dash-x"); if (xs) xs.value = "tokens"; }
+  const axesValid = validAxes(dashX, dashY);
+  const dx = metricDir(dashX), dy = metricDir(dashY);
   let targetX = dashTargetX;
   let targetY = dashTargetY;
   if (targetX === null || targetX === undefined) {
@@ -1060,21 +1095,30 @@ function renderDashboard() {
     targetY = yValsSorted[Math.floor(yValsSorted.length / 2)]; // Median
   }
   const tX = sx(targetX), tY = sy(targetY);
-  const greenRect = dashGreen
-    ? `<rect class="dash-green-region" x="${tX}" y="${PAD_T}" width="${PAD_L + plotW - tX}" height="${Math.max(0, tY - PAD_T)}"/>`
-    : "";
-  const thresholdLines = dashGreen
-    ? `<line class="dash-threshold-line" x1="${tX}" y1="${PAD_T}" x2="${tX}" y2="${H - PAD_B}"/>
-       <line class="dash-threshold-line" x1="${PAD_L}" y1="${tY}" x2="${W - PAD_R}" y2="${tY}"/>`
-    : "";
+  // Zielzone = Rechteck im "besseren" Quadranten (abhängig von beiden Richtungen).
+  // Für max/max: rechts-oben. Für min/max (Preis x Score): links-oben.
+  // Für max/min (Score x Preis): rechts-unten. Für min/min: ungültig.
+  let greenRect = "";
+  let thresholdLines = "";
+  if (dashGreen && axesValid) {
+    const betterX = (v) => (dx === "min" ? v <= tX : v >= tX);
+    const betterY = (v) => (dy === "min" ? v <= tY : v >= tY);
+    if (dx === "max" && dy === "max") {
+      greenRect = `<rect class="dash-green-region" x="${tX}" y="${PAD_T}" width="${PAD_L + plotW - tX}" height="${Math.max(0, tY - PAD_T)}"/>`;
+    } else if (dx === "min" && dy === "max") {
+      greenRect = `<rect class="dash-green-region" x="${PAD_L}" y="${PAD_T}" width="${Math.max(0, tX - PAD_L)}" height="${Math.max(0, tY - PAD_T)}"/>`;
+    } else if (dx === "max" && dy === "min") {
+      greenRect = `<rect class="dash-green-region" x="${tX}" y="${tY}" width="${PAD_L + plotW - tX}" height="${Math.max(0, H - PAD_B - tY)}"/>`;
+    }
+    thresholdLines = `<line class="dash-threshold-line" x1="${tX}" y1="${PAD_T}" x2="${tX}" y2="${H - PAD_B}"/>
+       <line class="dash-threshold-line" x1="${PAD_L}" y1="${tY}" x2="${W - PAD_R}" y2="${tY}"/>`;
+  }
 
   // Pareto-Frontier
   const frontier = dashPareto ? paretoFrontier(points) : [];
   const linePath = frontier.length > 1
     ? `<path class="dash-pareto-line" d="M${frontier.map((p) => `${sx(p.x).toFixed(2)},${sy(p.y).toFixed(2)}`).join(" L")}"/>`
     : "";
-
-  // Achsen + Ticks (log-Skala: 10er-Potenzen; linear: ~5 Ticks)
   const ticks = (log, min, max, n) => {
     if (log) {
       const out = [];
@@ -1091,8 +1135,9 @@ function renderDashboard() {
 
   const xGrid = xTicks.map((v) => `<line class="dash-grid-line" x1="${sx(v).toFixed(2)}" y1="${PAD_T}" x2="${sx(v).toFixed(2)}" y2="${H - PAD_B}"/>`).join("");
   const yGrid = yTicks.map((v) => `<line class="dash-grid-line" x1="${PAD_L}" y1="${sy(v).toFixed(2)}" x2="${W - PAD_R}" y2="${sy(v).toFixed(2)}"/>`).join("");
-  const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 18}" text-anchor="middle">${fmtTokens(v)}</text>`).join("");
-  const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 8}" y="${(sy(v) + 4).toFixed(2)}" text-anchor="end">${fmtTokens(v)}</text>`).join("");
+  const tickFmt = (m, v) => m === "price" ? fmtPrice(v) : (m === "score" ? v.toFixed(1) : fmtTokens(v));
+  const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 18}" text-anchor="middle">${tickFmt(dashX, v)}</text>`).join("");
+  const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 8}" y="${(sy(v) + 4).toFixed(2)}" text-anchor="end">${tickFmt(dashY, v)}</text>`).join("");
 
   // Punkte: Farbe + FORM (Accessibility: nicht nur Farbe unterscheiden).
   // no-training = Kreis, trainiert = Quadrat, unbekannt = Dreieck.
@@ -1131,7 +1176,16 @@ function renderDashboard() {
 
   // Tooltip + Punkt-Daten für Hover + Klick
   svg._points = px;
-  if (note) note.textContent = `${points.length} ${lang === "de" ? "Kombinationen im Plot" : "combinations plotted"} · ${frontier.length} ${lang === "de" ? "Pareto-Punkte" : "Pareto points"}`;
+  if (note) {
+    if (dashPareto && frontier.length === 1 && points.length > 1) {
+      // Genau 1 Pareto-Punkt: dieser Plan dominiert alle anderen auf beiden Achsen.
+      note.textContent = lang === "de"
+        ? `1 Pareto-Punkt: dieser Plan dominiert alle anderen (${points.length} Kombinationen im Plot)`
+        : `1 Pareto point: this plan dominates all others (${points.length} combinations plotted)`;
+    } else {
+      note.textContent = `${points.length} ${lang === "de" ? "Kombinationen im Plot" : "combinations plotted"} · ${frontier.length} ${lang === "de" ? "Pareto-Punkte" : "Pareto points"}`;
+    }
+  }
 }
 
 // Klick auf Punkt → Detail-Panel mit Plan/Modell/Werten füllen
