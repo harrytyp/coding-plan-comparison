@@ -605,19 +605,62 @@ function columnVisible(col) { return visibleColumns.includes(col); }
 /* ---------------- AI-Score (Artificial Analysis) ---------------- */
 function aiScoreFor(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
+  // Bekannte AA-Umbenennungen: Feed-Name → AA-Slug (wenn AA anders heißt)
+  const ALIASES = {
+    "qwen3-8-flash": "qwen3-8-flash-next", // AA: "Qwen3.8 Flash Next"
+    "qwen3-8-flash-27b": "qwen3-8-27b",
+    "qwen-3-8-flash": "qwen3-8-flash-next",
+  };
   // Normalisiere Modellname/Familie auf AA-Slug: "Grok 4.6" → "grok-4-6", "GLM-5.3" → "glm-5-3"
   const candidates = [];
   const raw = (modelName || family || "").toLowerCase();
-  candidates.push(raw.replace(/\s+/g, "-").replace(/\./g, "-"));
+  candidates.push(raw.replace(/\s+/g, "-").replace(/\./g, "-"));          // "qwen 3.8 max" → "qwen-3-8-max"
   candidates.push(family ? family.replace(/\s+/g, "-").replace(/\./g, "-") : null);
-  candidates.push(raw.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-"));
+  candidates.push(raw.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-"));    // "qwen3-8-max" Variante
+  candidates.push(raw.replace(/[^a-z0-9]/g, ""));                         // "qwen38max" (AA ohne Bindestriche)
+  candidates.push(raw.replace(/\s+/g, "").replace(/\./g, ""));            // "qwen38max" (Punkte weg)
   for (const c of candidates) {
     if (!c) continue;
+    // Alias zuerst prüfen (AA-Umbenennung)
+    const aliased = ALIASES[c] ?? null;
+    if (aliased && scores[aliased]) return scores[aliased];
     if (scores[c]) return scores[c];
+    // Toleranz für Bindestrich-Varianten: "qwen-3-8-max" → auch "qwen3-8-max" probieren
+    // (AA-Slugs kombinieren oft Präfix+Nummer: qwen3-8-max, glm-5-3 → glm5-3).
+    const compact = c.replace(/-+/g, "");
+    if (compact.length >= 5) {
+      const compactKey = Object.keys(scores).find((k) => k.replace(/-+/g, "") === compact);
+      if (compactKey) return scores[compactKey];
+    }
     // Prefix-Match (z.B. "grok-4-6" matcht "grok-4-6-high")
     const keys = Object.keys(scores);
     const exact = keys.find((k) => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"));
     if (exact) return scores[exact];
+  }
+  // Fallback: Familien-Mittelwert (z.B. "Qwen3.8 Flash" → Mittel der qwen3-8-*-Scores),
+  // damit fehlende Einzel-Scores einen ehrlichen Näherungswert zeigen (nie "–" ohne Grund).
+  if (family || modelName) {
+    const famKey = (family || modelName).toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+    // Prefix-Varianten: "qwen-3-8-flash" → "qwen-3", "qwen-3-8", und kompakt "qwen38"
+    // (AA-Slugs: qwen3-8-max → kompakt qwen38max — Prefix nur Familienkern, ohne Variante)
+    const prefixes = [
+      famKey.split("-").slice(0, 2).join("-"),
+      famKey.split("-").slice(0, 3).join("-"),
+      famKey.split("-").slice(0, 3).join(""), // "qwen38" aus ["qwen","3","8"] (Variante weglassen)
+    ];
+    let famScores = [];
+    for (const prefix of prefixes) {
+      if (!prefix || prefix.length < 3) continue;
+      famScores = Object.entries(scores)
+        .filter(([k]) => k.startsWith(prefix + "-") || k.replace(/-+/g, "").startsWith(prefix))
+        .map(([, v]) => v?.intelligence)
+        .filter((v) => typeof v === "number");
+      if (famScores.length >= 2) break;
+    }
+    if (famScores.length >= 2) {
+      const mean = famScores.reduce((a, b) => a + b, 0) / famScores.length;
+      return { intelligence: mean, coding: null, familyFallback: true };
+    }
   }
   return null;
 }
@@ -699,6 +742,7 @@ function buildCombos() {
         family: row.family,
         score: score?.intelligence ?? null,
         codingScore: score?.coding ?? null,
+        scoreFallback: score?.familyFallback === true,
         tokensPer10,
         req10: row.normalizedPer10 ?? null,
         // Rohdaten: Tokens/Monat und Requests/Monat (un-normalisiert)
@@ -817,7 +861,10 @@ function renderPlans() {
 // Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
 function renderCell(col, c) {
   const priceStr = c.priceDisplay ?? (c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-");
-  const scoreStr = c.score !== null ? `<span class="num strong">${c.score.toFixed(1)}</span>` : `<span class="muted">-</span>`;
+  // Familien-Fallback-Scores mit "~" markieren (Näherungswert, kein exakter AA-Wert)
+  const scoreStr = c.score !== null
+    ? `<span class="num strong">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>`
+    : `<span class="muted">-</span>`;
   const scoreBar = c.score !== null
     ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
     : "";
