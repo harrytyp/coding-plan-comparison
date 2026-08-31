@@ -762,6 +762,8 @@ async function main() {
         requestsRawInWindow: requests,
         normalizedPer10: normalized,
         privacy: m.privacy ?? null,
+        // Ehrlichkeit: Schätzung auf Basis offizieller Billing-Beispiele, kein offizielles Limit
+        estimate: m.fromOfficialBilling === true ? "price-based estimate (official billing example, not a published limit)" : null,
         // Rohdaten: Tokens pro Monat = Requests/Monat × Tokens pro Request (aus Pattern)
         rawTokensPerMonth: monthlyRequests && pattern ? monthlyRequests * ((pattern.input || 0) + (pattern.cachedRead || 0) + (pattern.output || 0)) : null,
       });
