@@ -251,6 +251,19 @@ details .faq-body { padding: 0 20px 18px; color: var(--text-muted); font-size: 1
 
 /* ============ FOOTER ============ */
 footer { border-top: 1px solid var(--border); margin-top: 40px; background: var(--bg-elev); }
+/* Legal-Sektion */
+.legal-section { max-width: var(--maxw); margin: 0 auto; }
+.legal-block {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 20px 22px; margin-bottom: 16px;
+}
+.legal-block h3 { font-size: 16px; font-weight: 800; margin: 0 0 10px; }
+.legal-block p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin: 0 0 10px; }
+.legal-block p:last-child { margin-bottom: 0; }
+.legal-placeholder {
+  display: inline-block; min-width: 120px; padding: 2px 10px; border: 1px dashed var(--border-strong);
+  border-radius: 6px; color: var(--text-faint); font-size: 13px;
+}
 .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .footer-inner .col h4 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
 .footer-inner .col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
@@ -998,6 +1011,43 @@ th[data-sort].sorted { color: var(--primary); }
       <div class="faq-body" data-i18n="faq.a5"></div>
     </details>
   </section>
+
+  <!-- ===== LEGAL ===== -->
+  <section id="legal" class="legal-section">
+    <div class="section-head">
+      <h2 data-i18n="legal.h2">Legal</h2>
+      <p data-i18n="legal.sub">Privacy, imprint and liability information.</p>
+    </div>
+
+    <div class="legal-block" id="privacy">
+      <h3 data-i18n="legal.privacy.h3">Privacy</h3>
+      <div data-i18n="legal.privacy.body">
+        <p><strong>No cookies, no trackers.</strong> This site sets no cookies and makes no connections to third parties. All data is served from this GitHub Pages site itself.</p>
+        <p><strong>Local storage (your browser only).</strong> Your preferences (language, theme, currency, visible columns) are stored in your browser's localStorage so the page can remember them between visits. This data never leaves your device. localStorage is not a cookie and is not used for tracking.</p>
+        <p><strong>GitHub Pages hosting.</strong> This site is hosted by GitHub Pages. As with any web host, GitHub's servers process technical access data (IP address, user agent, requested files) in server logs. Please refer to GitHub's privacy policy for details on their data processing.</p>
+        <p><strong>No analytics, no advertising.</strong> We do not use analytics tools, advertising networks, or third-party embeds.</p>
+        <p><strong>Contact.</strong> For any privacy request, please use the contact details in the imprint.</p>
+      </div>
+    </div>
+
+    <div class="legal-block" id="imprint">
+      <h3 data-i18n="legal.imprint.h3">Imprint / Provider identification</h3>
+      <div data-i18n="legal.imprint.body">
+        <p>This website is operated by an individual maintainer on a non-commercial, informational basis.</p>
+        <p><span class="legal-placeholder">[Operator name]</span><br><span class="legal-placeholder">[Address / contact email]</span></p>
+        <p>If you offer this service commercially or target the DACH region, you may be required by law (e.g. §5 DDG in Germany) to publish your full name, address, and contact details here.</p>
+      </div>
+    </div>
+
+    <div class="legal-block" id="disclaimer">
+      <h3 data-i18n="legal.disclaimer.h3">Disclaimer</h3>
+      <div data-i18n="legal.disclaimer.body">
+        <p>All prices, quotas, and conditions shown here are collected from public provider sources on a best-effort basis. They may change at any time. Always confirm current terms on the official provider website before purchasing.</p>
+        <p>This site is independent and not affiliated with, endorsed by, or sponsored by any provider shown. We do not sell plans and have no affiliate links.</p>
+        <p>Information is provided "as is" without warranty of any kind. We are not liable for any decisions made based on this data.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- ===== FOOTER ===== -->
@@ -1024,6 +1074,14 @@ th[data-sort].sorted { color: var(--primary); }
       <h4 data-i18n="foot.legal">Note</h4>
       <ul>
         <li><span data-i18n="foot.note">Independent & informational. We don't sell plans and have no affiliate links. Always confirm on the official provider page.</span></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h4 data-i18n="foot.legalTitle">Legal</h4>
+      <ul>
+        <li><a href="#privacy" data-i18n="foot.privacy">Privacy</a></li>
+        <li><a href="#imprint" data-i18n="foot.imprint">Imprint</a></li>
+        <li><a href="#disclaimer" data-i18n="foot.disclaimer">Disclaimer</a></li>
       </ul>
     </div>
   </div>
