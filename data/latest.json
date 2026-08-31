@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-31T07:30:50.902Z",
+  "generatedAt": "2026-08-31T08:00:20.192Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -30,7 +30,10 @@
         "advertised": 10,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "first month $5; beta"
       },
       "meter": "dollar_usage",
       "quotas": [
@@ -886,7 +889,10 @@
         "advertised": 1,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": ""
       },
       "meter": "credits",
       "quotas": [
@@ -2209,7 +2215,10 @@
         "advertised": 10,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "paid $10.77 (ai-10-usd verifiziert)"
       },
       "meter": "credits",
       "quotas": [
@@ -3532,7 +3541,10 @@
         "advertised": 20,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": ""
       },
       "meter": "credits",
       "quotas": [
@@ -4855,7 +4867,10 @@
         "advertised": 100,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": ""
       },
       "meter": "credits",
       "quotas": [
@@ -6178,7 +6193,10 @@
         "advertised": 200,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": ""
       },
       "meter": "credits",
       "quotas": [
@@ -7501,7 +7519,10 @@
         "advertised": 16.5,
         "currency": "CNY",
         "monthlyCny": 118,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "¥118/月 连续包月; 包季 8折 ¥94.4, 包年 7折 ¥82.6"
       },
       "meter": "credits",
       "quotas": [
@@ -7597,7 +7618,10 @@
         "advertised": 75,
         "currency": "CNY",
         "monthlyCny": 538,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "¥538/月 连续包月; 包季 8折 ¥430.4, 包年 7折 ¥376.6"
       },
       "meter": "credits",
       "quotas": [
@@ -7693,7 +7717,10 @@
         "advertised": 151,
         "currency": "CNY",
         "monthlyCny": 1078,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "¥1078/月 连续包月; 包季 8折 ¥862.4, 包年 7折 ¥754.6"
       },
       "meter": "credits",
       "quotas": [
@@ -7789,7 +7816,10 @@
         "advertised": 50,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "仅月付, 库存每日 UTC+8 00:00 补充"
       },
       "meter": "requests",
       "quotas": [
@@ -7843,7 +7873,10 @@
         "advertised": 8,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Limited-time $6 (Original $8)"
       },
       "meter": "credits",
       "quotas": [
@@ -7881,7 +7914,10 @@
         "advertised": 25,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Limited-time $18 (Original $25)"
       },
       "meter": "credits",
       "quotas": [
@@ -7919,7 +7955,10 @@
         "advertised": 80,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Limited-time $68 (Original $80)"
       },
       "meter": "credits",
       "quotas": [
@@ -7952,12 +7991,15 @@
       "name": "Kimi Code Moderato",
       "provider": "moonshot",
       "price": {
-        "monthlyUsd": 13.9,
-        "paidPrice": 99,
-        "advertised": 99,
-        "currency": "CNY",
-        "monthlyCny": 99,
-        "altPrice": "$13.9/mo ≈"
+        "monthlyUsd": 19,
+        "paidPrice": 19,
+        "advertised": 19,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": "$180/Jahr",
+        "yearlyUsd": 180,
+        "waitlist": true,
+        "billingNote": "$19/Monat monatlich, oder $180/Jahr ($15/Monat effektiv)"
       },
       "meter": "credits",
       "quotas": [
@@ -7987,25 +8029,25 @@
       "officialConversion": "RMB, charged by actual usage, rates close to platform API",
       "disclosure": "partial",
       "sourceIds": [
-        "kimi-membership-pricing",
+        "kimi-goods",
         "kimi-code-membership"
       ],
-      "verifiedAt": "2026-08-28",
+      "verifiedAt": "2026-08-31",
       "modelCount": 4,
       "modelStats": {
         "count": 4,
-        "min": 107843.13725490197,
-        "max": 553134.4284277573,
-        "mean": 312684.1922258504,
-        "median": 294879.6016103712,
-        "p25": 231904.26959505698,
-        "p75": 375659.5242411647
+        "min": 147832.24400871462,
+        "max": 758241.1442619287,
+        "mean": 428630.0174441431,
+        "median": 404223.34075296443,
+        "p25": 317896.2467347999,
+        "p75": 514957.1114623076
       },
       "modelRows": [
         {
           "model": "Kimi K3",
           "family": "kimi k3",
-          "allowance": 3300,
+          "allowance": 4523.666666666667,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0306,
@@ -8016,16 +8058,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 107843.13725490197,
-          "requestsRawInWindow": 107843.13725490197,
-          "normalizedPer10": 77584.99083086473,
+          "requestsPerMonth": 147832.24400871462,
+          "requestsRawInWindow": 147832.24400871462,
+          "normalizedPer10": 77806.44421511295,
           "privacy": null,
-          "rawTokensPerMonth": 8395588235.294119
+          "rawTokensPerMonth": 11508740196.078434
         },
         {
           "model": "Kimi K2.7 Code",
           "family": "kimi k2.7 code",
-          "allowance": 3300,
+          "allowance": 4523.666666666667,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0120765,
@@ -8036,16 +8078,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 273257.98037510866,
-          "requestsRawInWindow": 273257.98037510866,
-          "normalizedPer10": 196588.47509000625,
+          "requestsPerMonth": 374584.247643495,
+          "requestsRawInWindow": 374584.247643495,
+          "normalizedPer10": 197149.6040228921,
           "privacy": null,
-          "rawTokensPerMonth": 15321574959.632343
+          "rawTokensPerMonth": 21002938765.37076
         },
         {
           "model": "Kimi K2.6",
           "family": "kimi k2.6",
-          "allowance": 3300,
+          "allowance": 4523.666666666667,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0104265,
@@ -8056,16 +8098,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 316501.22284563375,
-          "requestsRawInWindow": 316501.22284563375,
-          "normalizedPer10": 227698.72147167896,
+          "requestsPerMonth": 433862.4338624339,
+          "requestsRawInWindow": 433862.4338624339,
+          "normalizedPer10": 228348.64940128097,
           "privacy": null,
-          "rawTokensPerMonth": 17746223564.954685
+          "rawTokensPerMonth": 24326666666.666668
         },
         {
           "model": "Kimi K2.5",
           "family": "kimi k2.5",
-          "allowance": 3300,
+          "allowance": 4523.666666666667,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.005966,
@@ -8076,11 +8118,11 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 553134.4284277573,
-          "requestsRawInWindow": 553134.4284277573,
-          "normalizedPer10": 397938.43771781103,
+          "requestsPerMonth": 758241.1442619287,
+          "requestsRawInWindow": 758241.1442619287,
+          "normalizedPer10": 399074.2864536467,
           "privacy": null,
-          "rawTokensPerMonth": 28188836741.53537
+          "rawTokensPerMonth": 38641485193.87641
         }
       ]
     },
@@ -8089,12 +8131,15 @@
       "name": "Kimi Code Allegretto",
       "provider": "moonshot",
       "price": {
-        "monthlyUsd": 27.9,
-        "paidPrice": 199,
-        "advertised": 199,
-        "currency": "CNY",
-        "monthlyCny": 199,
-        "altPrice": "$27.9/mo ≈"
+        "monthlyUsd": 39,
+        "paidPrice": 39,
+        "advertised": 39,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": "$372/Jahr",
+        "yearlyUsd": 372,
+        "waitlist": true,
+        "billingNote": "$39/Monat monatlich, oder $372/Jahr ($31/Monat effektiv)"
       },
       "meter": "credits",
       "quotas": [
@@ -8124,25 +8169,25 @@
       "officialConversion": "RMB, charged by actual usage, rates close to platform API",
       "disclosure": "partial",
       "sourceIds": [
-        "kimi-membership-pricing",
+        "kimi-goods",
         "kimi-code-membership"
       ],
-      "verifiedAt": "2026-08-28",
+      "verifiedAt": "2026-08-31",
       "modelCount": 4,
       "modelStats": {
         "count": 4,
-        "min": 216775.59912854034,
-        "max": 1111856.07330428,
-        "mean": 628526.8106358005,
-        "median": 592737.7850551907,
-        "p25": 466151.00655976107,
-        "p75": 755113.58913123
+        "min": 303453.1590413943,
+        "max": 1556430.8861325288,
+        "mean": 879842.7821045974,
+        "median": 829743.5416222333,
+        "p25": 652541.1351625759,
+        "p75": 1057045.1885642547
       },
       "modelRows": [
         {
           "model": "Kimi K3",
           "family": "kimi k3",
-          "allowance": 6633.333333333334,
+          "allowance": 9285.666666666666,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0306,
@@ -8153,16 +8198,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 216775.59912854034,
-          "requestsRawInWindow": 216775.59912854034,
-          "normalizedPer10": 77697.34735789977,
+          "requestsPerMonth": 303453.1590413943,
+          "requestsRawInWindow": 303453.1590413943,
+          "normalizedPer10": 77808.50231830623,
           "privacy": null,
-          "rawTokensPerMonth": 16875980392.156866
+          "rawTokensPerMonth": 23623828431.372547
         },
         {
           "model": "Kimi K2.7 Code",
           "family": "kimi k2.7 code",
-          "allowance": 6633.333333333334,
+          "allowance": 9285.666666666666,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0120765,
@@ -8173,16 +8218,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 549276.142370168,
-          "requestsRawInWindow": 549276.142370168,
-          "normalizedPer10": 196873.16930830397,
+          "requestsPerMonth": 768903.7938696365,
+          "requestsRawInWindow": 768903.7938696365,
+          "normalizedPer10": 197154.81894093243,
           "privacy": null,
-          "rawTokensPerMonth": 30797913302.69532
+          "rawTokensPerMonth": 43112435722.270515
         },
         {
           "model": "Kimi K2.6",
           "family": "kimi k2.6",
-          "allowance": 6633.333333333334,
+          "allowance": 9285.666666666666,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0104265,
@@ -8193,16 +8238,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 636199.4277402133,
-          "requestsRawInWindow": 636199.4277402133,
-          "normalizedPer10": 228028.46872409084,
+          "requestsPerMonth": 890583.2893748301,
+          "requestsRawInWindow": 890583.2893748301,
+          "normalizedPer10": 228354.68958328976,
           "privacy": null,
-          "rawTokensPerMonth": 35671701913.39376
+          "rawTokensPerMonth": 49935005035.24672
         },
         {
           "model": "Kimi K2.5",
           "family": "kimi k2.5",
-          "allowance": 6633.333333333334,
+          "allowance": 9285.666666666666,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.005966,
@@ -8213,11 +8258,11 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 1111856.07330428,
-          "requestsRawInWindow": 1111856.07330428,
-          "normalizedPer10": 398514.72161443724,
+          "requestsPerMonth": 1556430.8861325288,
+          "requestsRawInWindow": 1556430.8861325288,
+          "normalizedPer10": 399084.8425980843,
           "privacy": null,
-          "rawTokensPerMonth": 56662409207.73271
+          "rawTokensPerMonth": 79318830819.08594
         }
       ]
     },
@@ -8226,12 +8271,15 @@
       "name": "Kimi Code Allegro",
       "provider": "moonshot",
       "price": {
-        "monthlyUsd": 97.9,
-        "paidPrice": 699,
-        "advertised": 699,
-        "currency": "CNY",
-        "monthlyCny": 699,
-        "altPrice": "$97.9/mo ≈"
+        "monthlyUsd": 99,
+        "paidPrice": 99,
+        "advertised": 99,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": "$948/Jahr",
+        "yearlyUsd": 948,
+        "waitlist": true,
+        "billingNote": "$99/Monat monatlich, oder $948/Jahr ($79/Monat effektiv)"
       },
       "meter": "credits",
       "quotas": [
@@ -8261,25 +8309,25 @@
       "officialConversion": "RMB, charged by actual usage, rates close to platform API",
       "disclosure": "partial",
       "sourceIds": [
-        "kimi-membership-pricing",
+        "kimi-goods",
         "kimi-code-membership"
       ],
-      "verifiedAt": "2026-08-28",
+      "verifiedAt": "2026-08-31",
       "modelCount": 4,
       "modelStats": {
         "count": 4,
-        "min": 761437.908496732,
-        "max": 3905464.2976868926,
-        "mean": 2207739.90268555,
-        "median": 2082028.7022792876,
-        "p25": 1637384.6913832813,
-        "p75": 2652383.913581556
+        "min": 770305.0108932462,
+        "max": 3950944.239579841,
+        "mean": 2233449.49182412,
+        "median": 2106274.358411696,
+        "p25": 1656452.375772208,
+        "p75": 2683271.474463607
       },
       "modelRows": [
         {
           "model": "Kimi K3",
           "family": "kimi k3",
-          "allowance": 23300,
+          "allowance": 23571.333333333332,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0306,
@@ -8290,16 +8338,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 761437.908496732,
-          "requestsRawInWindow": 761437.908496732,
-          "normalizedPer10": 77777.11016309826,
+          "requestsPerMonth": 770305.0108932462,
+          "requestsRawInWindow": 770305.0108932462,
+          "normalizedPer10": 77808.58695891376,
           "privacy": null,
-          "rawTokensPerMonth": 59277941176.47059
+          "rawTokensPerMonth": 59968245098.039215
         },
         {
           "model": "Kimi K2.7 Code",
           "family": "kimi k2.7 code",
-          "allowance": 23300,
+          "allowance": 23571.333333333332,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0120765,
@@ -8310,16 +8358,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 1929366.9523454644,
-          "requestsRawInWindow": 1929366.9523454644,
-          "normalizedPer10": 197075.27603120165,
+          "requestsPerMonth": 1951834.830731862,
+          "requestsRawInWindow": 1951834.830731862,
+          "normalizedPer10": 197155.0334072588,
           "privacy": null,
-          "rawTokensPerMonth": 108179605018.0102
+          "rawTokensPerMonth": 109439378959.1355
         },
         {
           "model": "Kimi K2.6",
           "family": "kimi k2.6",
-          "allowance": 23300,
+          "allowance": 23571.333333333332,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0104265,
@@ -8330,16 +8378,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 2234690.452213111,
-          "requestsRawInWindow": 2234690.452213111,
-          "normalizedPer10": 228262.5589594597,
+          "requestsPerMonth": 2260713.8860915294,
+          "requestsRawInWindow": 2260713.8860915294,
+          "normalizedPer10": 228354.9379890434,
           "privacy": null,
-          "rawTokensPerMonth": 125299093655.58913
+          "rawTokensPerMonth": 126758227593.15205
         },
         {
           "model": "Kimi K2.5",
           "family": "kimi k2.5",
-          "allowance": 23300,
+          "allowance": 23571.333333333332,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.005966,
@@ -8350,11 +8398,151 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 3905464.2976868926,
-          "requestsRawInWindow": 3905464.2976868926,
-          "normalizedPer10": 398923.8302029512,
+          "requestsPerMonth": 3950944.239579841,
+          "requestsRawInWindow": 3950944.239579841,
+          "normalizedPer10": 399085.27672523644,
           "privacy": null,
-          "rawTokensPerMonth": 199030271538.71942
+          "rawTokensPerMonth": 201348020337.46786
+        }
+      ]
+    },
+    {
+      "id": "kimi-vivace",
+      "name": "Kimi Code Vivace",
+      "provider": "moonshot",
+      "price": {
+        "monthlyUsd": 199,
+        "paidPrice": 199,
+        "advertised": 199,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": "$1908/Jahr",
+        "yearlyUsd": 1908,
+        "waitlist": true,
+        "billingNote": "$199/Monat monatlich, oder $1908/Jahr ($159/Monat effektiv)"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "7-day quota",
+          "unit": "credits",
+          "amount": null,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "undisclosed",
+          "shared": "Kimi Code + Kimi Membership"
+        },
+        {
+          "label": "5h rate window",
+          "unit": "credits",
+          "amount": null,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "undisclosed"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": "RMB, charged by actual usage, rates close to platform API",
+      "disclosure": "partial",
+      "sourceIds": [
+        "kimi-goods",
+        "kimi-code-membership"
+      ],
+      "verifiedAt": "2026-08-31",
+      "modelCount": 4,
+      "modelStats": {
+        "count": 4,
+        "min": 1548398.692810458,
+        "max": 7941837.076768355,
+        "mean": 4489481.730864552,
+        "median": 4233845.576939696,
+        "p25": 3329653.393237393,
+        "p75": 5393673.914566856
+      },
+      "modelRows": [
+        {
+          "model": "Kimi K3",
+          "family": "kimi k3",
+          "allowance": 47381.00000000001,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0306,
+          "patternUsed": {
+            "input": 1050,
+            "cachedRead": 76500,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1548398.692810458,
+          "requestsRawInWindow": 1548398.692810458,
+          "normalizedPer10": 77808.97953821397,
+          "privacy": null,
+          "rawTokensPerMonth": 120542838235.29414
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "family": "kimi k2.7 code",
+          "allowance": 47381.00000000001,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0120765,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3923404.9600463714,
+          "requestsRawInWindow": 3923404.9600463714,
+          "normalizedPer10": 197156.02814303376,
+          "privacy": null,
+          "rawTokensPerMonth": 219985316109.80005
+        },
+        {
+          "model": "Kimi K2.6",
+          "family": "kimi k2.6",
+          "allowance": 47381.00000000001,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0104265,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4544286.193833022,
+          "requestsRawInWindow": 4544286.193833022,
+          "normalizedPer10": 228356.09014236295,
+          "privacy": null,
+          "rawTokensPerMonth": 254798126888.21756
+        },
+        {
+          "model": "Kimi K2.5",
+          "family": "kimi k2.5",
+          "allowance": 47381.00000000001,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.005966,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7941837.076768355,
+          "requestsRawInWindow": 7941837.076768355,
+          "normalizedPer10": 399087.2902898671,
+          "privacy": null,
+          "rawTokensPerMonth": 404731901106.2689
         }
       ]
     },
@@ -8368,7 +8556,10 @@
         "advertised": 10,
         "currency": "USD",
         "monthlyCny": null,
-        "altPrice": null
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
       },
       "meter": "prompts",
       "quotas": [
@@ -8535,25 +8726,33 @@
       "planA": "opencode-go",
       "planB": "kimi-moderato",
       "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 92.72132377804233,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 94.69022956323182,
       "winner": "kimi-moderato"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegretto",
       "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 96.37895002023211,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 97.41325718500265,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegro",
       "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 98.96911452650386,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 98.9809812116783,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 22759.26994936339,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.49305351232645,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "opencode-go",
@@ -8623,25 +8822,33 @@
       "planA": "command-code-go",
       "planB": "kimi-moderato",
       "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 99.52601993526396,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 99.65423309697982,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegretto",
       "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 99.76420087231725,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 99.83155391316771,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegro",
       "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 99.9328697762391,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 99.93364252282593,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.96698815530215,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-go",
@@ -8703,25 +8910,33 @@
       "planA": "command-code-goat",
       "planB": "kimi-moderato",
       "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 96.6821395468477,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 97.57963167885876,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegretto",
       "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 98.34940610622071,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 98.82087739217404,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegro",
       "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 99.5300884336737,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 99.53549765978154,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 10374.425157120239,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.76891708711503,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-goat",
@@ -8775,25 +8990,33 @@
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
       "meanRequestsA": 13873.5628246561,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 95.56307508675229,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 96.76327782468852,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
       "meanRequestsA": 13873.5628246561,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 97.792685595922,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 98.42317705994355,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
       "meanRequestsA": 13873.5628246561,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 99.37159432559153,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 99.37882800235947,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 13873.5628246561,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.69097629400568,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-pro",
@@ -8839,25 +9062,33 @@
       "planA": "command-code-max10",
       "planB": "kimi-moderato",
       "meanRequestsA": 22230.911050971925,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 92.89029902895935,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 94.81349645469733,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegretto",
       "meanRequestsA": 22230.911050971925,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 96.46301308475867,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 97.47330869751579,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegro",
       "meanRequestsA": 22230.911050971925,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 98.99304664358651,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 99.00463784238902,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 22230.911050971925,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.50482232953222,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-max10",
@@ -8895,25 +9126,33 @@
       "planA": "command-code-max20",
       "planB": "kimi-moderato",
       "meanRequestsA": 44461.82210194385,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 85.7805980579187,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 89.62699290939466,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegretto",
       "meanRequestsA": 44461.82210194385,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 92.92602616951734,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 94.94661739503158,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegro",
       "meanRequestsA": 44461.82210194385,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 97.98609328717303,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 98.00927568477805,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 44461.82210194385,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.00964465906443,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-max20",
@@ -8943,25 +9182,33 @@
       "planA": "glm-lite",
       "planB": "kimi-moderato",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 97.34646711258912,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 98.0642564597032,
       "winner": "kimi-moderato"
     },
     {
       "planA": "glm-lite",
       "planB": "kimi-allegretto",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 98.67990072435337,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 99.05697039934782,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "glm-lite",
       "planB": "kimi-allegro",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 99.62417774555983,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 99.62850389476812,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 99.8151862871519,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "glm-lite",
@@ -8983,25 +9230,33 @@
       "planA": "glm-pro",
       "planB": "kimi-moderato",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 84.07880267553469,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 88.38553875821925,
       "winner": "kimi-moderato"
     },
     {
       "planA": "glm-pro",
       "planB": "kimi-allegretto",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 92.07940434612027,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 94.34182239608693,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "glm-pro",
       "planB": "kimi-allegro",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 97.74506647335899,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 97.77102336860867,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 98.89111772291139,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "glm-pro",
@@ -9015,25 +9270,33 @@
       "planA": "glm-max",
       "planB": "kimi-moderato",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 62.8505395762476,
+      "meanRequestsB": 428630.0174441431,
+      "advantagePercent": 72.89959043584491,
       "winner": "kimi-moderato"
     },
     {
       "planA": "glm-max",
       "planB": "kimi-allegretto",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 81.5186101409473,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 86.79758559086949,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "glm-max",
       "planB": "kimi-allegro",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 94.73848843783765,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 94.79905452675355,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 97.41260802012657,
+      "winner": "kimi-vivace"
     },
     {
       "planA": "glm-max",
@@ -9046,50 +9309,82 @@
     {
       "planA": "kimi-moderato",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 312684.1922258504,
-      "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 50.25125628140705,
+      "meanRequestsA": 428630.0174441431,
+      "meanRequestsB": 879842.7821045974,
+      "advantagePercent": 51.28333991456366,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "kimi-moderato",
       "planB": "kimi-allegro",
-      "meanRequestsA": 312684.1922258504,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 85.83690987124464,
+      "meanRequestsA": 428630.0174441431,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 80.80860932771445,
       "winner": "kimi-allegro"
     },
     {
       "planA": "kimi-moderato",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 428630.0174441431,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 90.45257240947497,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-moderato",
       "planB": "minimax-starter",
-      "meanRequestsA": 312684.1922258504,
+      "meanRequestsA": 428630.0174441431,
       "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 1031.6985902666909,
+      "advantagePercent": 1451.3415725766934,
       "winner": "kimi-moderato"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "kimi-allegro",
-      "meanRequestsA": 628526.8106358005,
-      "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 71.53075822603718,
+      "meanRequestsA": 879842.7821045974,
+      "meanRequestsB": 2233449.49182412,
+      "advantagePercent": 60.606103459003876,
       "winner": "kimi-allegro"
     },
     {
       "planA": "kimi-allegretto",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 879842.7821045974,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 80.40213024911533,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-allegretto",
       "planB": "minimax-starter",
-      "meanRequestsA": 628526.8106358005,
+      "meanRequestsA": 879842.7821045974,
       "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 2174.828479424965,
+      "advantagePercent": 3084.4169322282028,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "kimi-allegro",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 2233449.49182412,
+      "meanRequestsB": 4489481.730864552,
+      "advantagePercent": 50.25150728491732,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-allegro",
       "planB": "minimax-starter",
-      "meanRequestsA": 2207739.90268555,
+      "meanRequestsA": 2233449.49182412,
       "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 7890.4779252163335,
+      "advantagePercent": 7983.528698193817,
       "winner": "kimi-allegro"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "minimax-starter",
+      "meanRequestsA": 4489481.730864552,
+      "meanRequestsB": 27629.635215164904,
+      "advantagePercent": 16148.791183462452,
+      "winner": "kimi-vivace"
     }
   ],
   "modelComparisons": [
@@ -11274,85 +11569,113 @@
       "planId": "kimi-moderato",
       "family": "kimi k3",
       "modelCount": 1,
-      "normalizedPer10Median": 77584.99083086473,
-      "normalizedPer10Mean": 77584.99083086473
+      "normalizedPer10Median": 77806.44421511295,
+      "normalizedPer10Mean": 77806.44421511295
     },
     {
       "planId": "kimi-moderato",
       "family": "kimi k2.7 code",
       "modelCount": 1,
-      "normalizedPer10Median": 196588.47509000625,
-      "normalizedPer10Mean": 196588.47509000625
+      "normalizedPer10Median": 197149.6040228921,
+      "normalizedPer10Mean": 197149.6040228921
     },
     {
       "planId": "kimi-moderato",
       "family": "kimi k2.6",
       "modelCount": 1,
-      "normalizedPer10Median": 227698.72147167896,
-      "normalizedPer10Mean": 227698.72147167896
+      "normalizedPer10Median": 228348.64940128097,
+      "normalizedPer10Mean": 228348.64940128097
     },
     {
       "planId": "kimi-moderato",
       "family": "kimi k2.5",
       "modelCount": 1,
-      "normalizedPer10Median": 397938.43771781103,
-      "normalizedPer10Mean": 397938.43771781103
+      "normalizedPer10Median": 399074.2864536467,
+      "normalizedPer10Mean": 399074.2864536467
     },
     {
       "planId": "kimi-allegretto",
       "family": "kimi k3",
       "modelCount": 1,
-      "normalizedPer10Median": 77697.34735789977,
-      "normalizedPer10Mean": 77697.34735789977
+      "normalizedPer10Median": 77808.50231830623,
+      "normalizedPer10Mean": 77808.50231830623
     },
     {
       "planId": "kimi-allegretto",
       "family": "kimi k2.7 code",
       "modelCount": 1,
-      "normalizedPer10Median": 196873.16930830397,
-      "normalizedPer10Mean": 196873.16930830397
+      "normalizedPer10Median": 197154.81894093243,
+      "normalizedPer10Mean": 197154.81894093243
     },
     {
       "planId": "kimi-allegretto",
       "family": "kimi k2.6",
       "modelCount": 1,
-      "normalizedPer10Median": 228028.46872409084,
-      "normalizedPer10Mean": 228028.46872409084
+      "normalizedPer10Median": 228354.68958328976,
+      "normalizedPer10Mean": 228354.68958328976
     },
     {
       "planId": "kimi-allegretto",
       "family": "kimi k2.5",
       "modelCount": 1,
-      "normalizedPer10Median": 398514.72161443724,
-      "normalizedPer10Mean": 398514.72161443724
+      "normalizedPer10Median": 399084.8425980843,
+      "normalizedPer10Mean": 399084.8425980843
     },
     {
       "planId": "kimi-allegro",
       "family": "kimi k3",
       "modelCount": 1,
-      "normalizedPer10Median": 77777.11016309826,
-      "normalizedPer10Mean": 77777.11016309826
+      "normalizedPer10Median": 77808.58695891376,
+      "normalizedPer10Mean": 77808.58695891376
     },
     {
       "planId": "kimi-allegro",
       "family": "kimi k2.7 code",
       "modelCount": 1,
-      "normalizedPer10Median": 197075.27603120165,
-      "normalizedPer10Mean": 197075.27603120165
+      "normalizedPer10Median": 197155.0334072588,
+      "normalizedPer10Mean": 197155.0334072588
     },
     {
       "planId": "kimi-allegro",
       "family": "kimi k2.6",
       "modelCount": 1,
-      "normalizedPer10Median": 228262.5589594597,
-      "normalizedPer10Mean": 228262.5589594597
+      "normalizedPer10Median": 228354.9379890434,
+      "normalizedPer10Mean": 228354.9379890434
     },
     {
       "planId": "kimi-allegro",
       "family": "kimi k2.5",
       "modelCount": 1,
-      "normalizedPer10Median": 398923.8302029512,
-      "normalizedPer10Mean": 398923.8302029512
+      "normalizedPer10Median": 399085.27672523644,
+      "normalizedPer10Mean": 399085.27672523644
+    },
+    {
+      "planId": "kimi-vivace",
+      "family": "kimi k3",
+      "modelCount": 1,
+      "normalizedPer10Median": 77808.97953821397,
+      "normalizedPer10Mean": 77808.97953821397
+    },
+    {
+      "planId": "kimi-vivace",
+      "family": "kimi k2.7 code",
+      "modelCount": 1,
+      "normalizedPer10Median": 197156.02814303376,
+      "normalizedPer10Mean": 197156.02814303376
+    },
+    {
+      "planId": "kimi-vivace",
+      "family": "kimi k2.6",
+      "modelCount": 1,
+      "normalizedPer10Median": 228356.09014236295,
+      "normalizedPer10Mean": 228356.09014236295
+    },
+    {
+      "planId": "kimi-vivace",
+      "family": "kimi k2.5",
+      "modelCount": 1,
+      "normalizedPer10Median": 399087.2902898671,
+      "normalizedPer10Mean": 399087.2902898671
     },
     {
       "planId": "minimax-starter",
@@ -14694,9 +15017,9 @@
     }
   },
   "statistics": {
-    "totalPlans": 17,
-    "comparablePlans": 13,
-    "plansWithModels": 13,
+    "totalPlans": 18,
+    "comparablePlans": 14,
+    "plansWithModels": 14,
     "undisclosed": 1
   },
   "warnings": [

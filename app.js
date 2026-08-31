@@ -72,6 +72,8 @@ const I18N = {
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
     "plans.noTraining": "No training on my data",
+    "plans.waitlist": "Waitlist",
+    "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
     "filters.toggle": "Filters",
@@ -237,6 +239,8 @@ const I18N = {
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
     "plans.noTraining": "Kein Training auf meinen Daten",
+    "plans.waitlist": "Waitlist",
+    "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
     "filters.toggle": "Filter",
@@ -738,6 +742,7 @@ function buildCombos() {
         price: priceUsd,
         priceDisplay,
         meter: plan.meter,
+        waitlist: plan.price?.waitlist === true,
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
@@ -877,7 +882,12 @@ function renderCell(col, c) {
     case "req10": return `<td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>`;
     case "rawtokens": return `<td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>`;
     case "rawreq": return `<td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? fmtNum(c.rawRequestsPerMonth) : "-"}</span></td>`;
-    case "price": return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span></td>`;
+    case "price": {
+      const wl = c.waitlist === true
+        ? `<div class="waitlist-badge" title="${t("plans.waitlist.title")}">${t("plans.waitlist")}</div>`
+        : "";
+      return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${wl}</td>`;
+    }
     case "privacy": return `<td data-label="${t("plans.th.privacy")}">${privacyBadge(c)}</td>`;
     default: return "";
   }

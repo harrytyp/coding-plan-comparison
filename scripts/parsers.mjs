@@ -236,6 +236,31 @@ export function parseKimiCode(html) {
   return out;
 }
 
+// ---------- Parser: Kimi Goods API (kimi.ai, JSON) ----------
+// Offizielle Goods-API: Preise in USD-Cents, billingCycle (MONTH/YEAR),
+// transitionSummary.reason (REASON_SUBSCRIPTION_NEED_APPLY = nur Waitlist).
+// Stabiles, deterministisches Schema — kein volatiler Timestamp.
+export function parseKimiGoods(raw) {
+  const data = JSON.parse(raw);
+  const goods = Array.isArray(data?.goods) ? data.goods : [];
+  const plans = [];
+  for (const g of goods) {
+    if (!g?.title || g.membershipLevel === "LEVEL_FREE") continue; // Adagio (kostenlos) überspringen
+    const amounts = Array.isArray(g.amounts) ? g.amounts : [];
+    const usd = amounts.find((a) => a?.currency === "USD");
+    if (!usd || !usd.priceInCents) continue;
+    const cycle = g.billingCycle ?? {};
+    plans.push({
+      name: g.title,
+      priceUsd: parseFloat(usd.priceInCents) / 100,
+      billingCycle: cycle.timeUnit === "TIME_UNIT_YEAR" ? "year" : (cycle.timeUnit === "TIME_UNIT_MONTH" ? "month" : null),
+      waitlist: g.transitionSummary?.reason === "REASON_SUBSCRIPTION_NEED_APPLY",
+      membershipLevel: g.membershipLevel ?? null,
+    });
+  }
+  return { source: "kimi.ai GoodsService ListGoods", plans };
+}
+
 // ---------- Parser: Privacy-Policy-Text (z.B. Command Code) ----------
 // Extrahiert strukturierte Privacy-Aussagen aus Policy-Text.
 // Deterministisch: sucht nach dokumentierten Mustern; unbekannt bleibt unbekannt.
@@ -295,6 +320,7 @@ export const PARSERS = {
   "qwen-token-personal": parseQwenTokenPersonal,
   "kimi-pricing": parseKimiPricing,
   "kimi-code": parseKimiCode,
+  "kimi-goods": parseKimiGoods,
   "privacy-text": parsePrivacyText,
   fx: parseFx,
 };

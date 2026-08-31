@@ -38,8 +38,15 @@ async function fetchSource(source) {
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 30000);
+    // Manche JSON-APIs (z.B. Kimi GoodsService) brauchen POST + leeren Body
+    const method = source.method ?? "GET";
+    const body = source.body ?? null;
+    const headers = { ...DEFAULT_HEADERS, Accept: typ === "json-api" ? "application/json" : "text/html,application/xhtml+xml" };
+    if (method === "POST") headers["Content-Type"] = "application/json; charset=utf-8";
     const resp = await fetch(url, {
-      headers: { ...DEFAULT_HEADERS, Accept: typ === "json-api" ? "application/json" : "text/html,application/xhtml+xml" },
+      method,
+      body: body ? JSON.stringify(body) : undefined,
+      headers,
       signal: controller.signal,
       redirect: "follow",
     });

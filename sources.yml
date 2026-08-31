@@ -53,7 +53,16 @@ sources:
     typ: html-docs
     parser: kimi-pricing
     provides: [plan_meta, plan_prices, credit_pool]
-    note: "Kimi Membership Preise (CNY): Andante ¥49, Moderato ¥99, Allegretto ¥199, Allegro ¥699."
+    note: "Kimi Membership Preise (CNY): Andante ¥49, Moderato ¥99, Allegretto ¥199, Allegro ¥699. Historisch; bevorzugt wird kimi-goods (kimi.ai, offizielle API)."
+
+  - id: kimi-goods
+    url: "https://www.kimi.ai/apiv2/kimi.gateway.order.v1.GoodsService/ListGoods"
+    typ: json-api
+    method: POST
+    body: {}
+    parser: kimi-goods
+    provides: [plan_pricing, billing_cycle, waitlist_status]
+    note: "Kimi.ai offizielle Goods-API: Preise in USD-Cents, billingCycle (MONTH/YEAR = monatlich/jaehrlich), transitionSummary (REASON_SUBSCRIPTION_NEED_APPLY = nur Waitlist). Primärquelle für Kimi-Preise."
 
   - id: kimi-code-membership
     url: "https://www.kimi.com/code/docs/en/kimi-code/membership.html"

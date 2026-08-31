@@ -334,6 +334,13 @@ footer { border-top: 1px solid var(--border); margin-top: 40px; background: var(
   background: var(--bg-elev); color: var(--text); font-size: 14px; font-family: var(--font); cursor: pointer;
 }
 .toolbar-count { font-size: 13px; color: var(--text-faint); font-weight: 600; margin-left: auto; white-space: nowrap; }
+/* Waitlist-Badge (Kimi: nur Waitlist, nicht kaufbar) */
+.waitlist-badge {
+  display: inline-block; margin-top: 3px; padding: 2px 8px;
+  border: 1px solid var(--warning, #d97706); border-radius: 999px;
+  color: var(--warning, #d97706); font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .03em; white-space: nowrap;
+}
 /* Sortier-Leiste: IMMER sichtbar (Desktop + Mobile) */
 .sort-bar {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;

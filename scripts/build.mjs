@@ -320,29 +320,52 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     });
   }
 
-  // --- Kimi Pläne (Preise dynamisch aus Pricing-Docs; Quota-Regeln aus Code-Docs) ---
-  const kimiPrices = parsed["kimi-membership-pricing"];
+  // --- Kimi Pläne (Preise aus kimi.ai Goods-API, Primär; Quota-Regeln aus Code-Docs) ---
+  const kimiPrices = parsed["kimi-membership-pricing"]; // Fallback (kimi.com, CNY)
+  const kimiGoods = parsed["kimi-goods"];               // Primär (kimi.ai, USD, Monat/Jahr, Waitlist)
   const kimiCode = parsed["kimi-code-membership"];
-  const kimiTierMap = { Moderato: "moderato", Allegretto: "allegretto", Allegro: "allegro" };
+  const kimiTierMap = { Moderato: "moderato", Allegretto: "allegretto", Allegro: "allegro", Vivace: "vivace" };
   // Offizielle relative Credits (Index): Andante 1×, Moderato 4×, Allegretto 20×, Allegro 60×
-  const kimiTierMult = { moderato: 4, allegretto: 20, allegro: 60 };
+  const kimiTierMult = { moderato: 4, allegretto: 20, allegro: 60, vivace: 120 };
   // Offizielle Billing-Beispiele (kimi.com/code/docs): einfacher Request ~¥0.03,
-  // komplexer Task ~¥1.6. Membership-Preis (CNY/Monat) ÷ Kosten/Request = Requests/Monat.
-  // Tiers skalieren mit den offiziellen relativen Credits (Moderato = 4× Andante).
-  // HINWEIS: Kimi hat NUR CNY-Preise (auch international). paidPrice = CNY (kanonisch),
-  // USD nur als Alt-Info (Kurs 0.14 dokumentiert). Keine willkürliche USD-Darstellung.
+  // komplexer Task ~¥1.6. Membership-Preis ÷ Kosten/Request = Requests/Monat.
+  // HINWEIS: Kimi hat auf kimi.com CNY-Preise, auf kimi.ai USD (international).
+  // Primärquelle kimi.ai: USD, monatlich UND jährlich (jährlich günstiger), nur Waitlist.
   const KIMI_SIMPLE_REQUEST_CNY = 0.03;
-  const USD_PER_CNY = 0.14; // dokumentierter Umrechnungskurs (Anzeige)
-  for (const p of kimiPrices?.plans ?? []) {
-    const tierKey = kimiTierMap[p.name];
+  const USD_PER_CNY = 0.14; // dokumentierter Umrechnungskurs (nur Fallback-Anzeige)
+
+  // Kimi-Goods-Pläne (bevorzugt): Monats-Preis als paidPrice, Jahres-Preis + Waitlist als Metadaten
+  const kimiGoodsPlans = kimiGoods?.plans ?? [];
+  const goodsByTier = {};
+  for (const gp of kimiGoodsPlans) {
+    const tierKey = kimiTierMap[gp.name];
     if (!tierKey) continue;
-    const usd = Math.round(p.priceCny * USD_PER_CNY * 10) / 10;
+    goodsByTier[tierKey] = goodsByTier[tierKey] ?? { name: gp.name, month: null, year: null, waitlist: true };
+    if (gp.billingCycle === "month") goodsByTier[tierKey].month = gp.priceUsd;
+    if (gp.billingCycle === "year") goodsByTier[tierKey].year = gp.priceUsd;
+    goodsByTier[tierKey].waitlist = goodsByTier[tierKey].waitlist && gp.waitlist;
+  }
+  for (const [tierKey, g] of Object.entries(goodsByTier)) {
+    if (!g.month) continue; // Monatspreis ist die Basis
+    const yearlyMonthly = g.year ? Math.round((g.year / 12) * 100) / 100 : null;
+    const billingNote = g.year
+      ? `$${g.month}/Monat monatlich, oder $${g.year}/Jahr ($${yearlyMonthly}/Monat effektiv)`
+      : `$${g.month}/Monat`;
     add({
       id: `kimi-${tierKey}`,
       provider: "moonshot",
-      name: `Kimi Code ${p.name}`,
-      // Kanonisch: CNY. paidPrice in CNY für korrekte $10-Normalisierung.
-      price: { monthlyUsd: usd, paidPrice: p.priceCny, advertisedPrice: p.priceCny, currency: "CNY", monthlyCny: p.priceCny, billingNote: `¥${p.priceCny}/Monat (offiziell, kimi.com)`, altPrice: `$${usd}/mo ≈` },
+      name: `Kimi Code ${g.name}`,
+      price: {
+        monthlyUsd: g.month,
+        paidPrice: g.month,
+        advertisedPrice: g.month,
+        currency: "USD",
+        monthlyCny: null,
+        billingNote,
+        altPrice: g.year ? `$${g.year}/Jahr` : null,
+        yearlyUsd: g.year ?? null,
+        waitlist: g.waitlist,
+      },
       meter: "credits",
       quotas: [
         { label: "7-day quota", unit: "credits", amount: null, window: "week", refresh: "weekly", disclosure: "undisclosed", shared: "Kimi Code + Kimi Membership" },
@@ -352,17 +375,51 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
       models: ["Kimi K3", "Kimi K2.7 Code"],
       // Offizielle Umrechnung: Membership-Preis ÷ offizieller Request-Kosten (¥0.03)
+      // USD-Preis über Kurs 0.14 in CNY für die Request-Berechnung (Kimi rechnet RMB)
       providerCost: {
         formula: "requests = monthlyPriceCNY / 0.03 (offizielles Billing-Beispiel: einfacher Request ~¥0.03)",
-        monthlyPriceCny: p.priceCny,
+        monthlyPriceCny: Math.round((g.month / USD_PER_CNY) * 100) / 100,
         requestCostCny: KIMI_SIMPLE_REQUEST_CNY,
-        tierMultiplier: kimiTierMult[tierKey],
+        tierMultiplier: kimiTierMult[tierKey] ?? null,
         feedModels: ["Kimi K3", "Kimi K2.7 Code", "Kimi K2.6", "Kimi K2.5"],
       },
-      disclosure: "partial",
-      sourceIds: ["kimi-membership-pricing", "kimi-code-membership"],
-      verifiedAt: "2026-08-28",
+      disclosure: g.waitlist ? "partial" : "disclosed",
+      sourceIds: ["kimi-goods", "kimi-code-membership"],
+      verifiedAt: "2026-08-31",
     });
+  }
+
+  // Fallback: Kimi-Preise aus kimi.com (CNY) nur wenn kimi-goods nichts lieferte
+  if (Object.keys(goodsByTier).length === 0) {
+    for (const p of kimiPrices?.plans ?? []) {
+      const tierKey = kimiTierMap[p.name];
+      if (!tierKey) continue;
+      const usd = Math.round(p.priceCny * USD_PER_CNY * 10) / 10;
+      add({
+        id: `kimi-${tierKey}`,
+        provider: "moonshot",
+        name: `Kimi Code ${p.name}`,
+        price: { monthlyUsd: usd, paidPrice: p.priceCny, advertisedPrice: p.priceCny, currency: "CNY", monthlyCny: p.priceCny, billingNote: `¥${p.priceCny}/Monat (offiziell, kimi.com)`, altPrice: `$${usd}/mo ≈` },
+        meter: "credits",
+        quotas: [
+          { label: "7-day quota", unit: "credits", amount: null, window: "week", refresh: "weekly", disclosure: "undisclosed", shared: "Kimi Code + Kimi Membership" },
+          { label: "5h rate window", unit: "credits", amount: null, window: "5h", refresh: "rolling", disclosure: "undisclosed" },
+        ],
+        tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit-Balance; Extra Usage nach Verbrauch" },
+        workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
+        models: ["Kimi K3", "Kimi K2.7 Code"],
+        providerCost: {
+          formula: "requests = monthlyPriceCNY / 0.03 (offizielles Billing-Beispiel: einfacher Request ~¥0.03)",
+          monthlyPriceCny: p.priceCny,
+          requestCostCny: KIMI_SIMPLE_REQUEST_CNY,
+          tierMultiplier: kimiTierMult[tierKey] ?? null,
+          feedModels: ["Kimi K3", "Kimi K2.7 Code", "Kimi K2.6", "Kimi K2.5"],
+        },
+        disclosure: "partial",
+        sourceIds: ["kimi-membership-pricing", "kimi-code-membership"],
+        verifiedAt: "2026-08-28",
+      });
+    }
   }
 
   // --- Nicht-scrapebare Pläne aus overrides.yml (MiniMax) ---
@@ -731,6 +788,9 @@ async function main() {
         currency: plan.price.currency ?? "USD",
         monthlyCny: plan.price.monthlyCny ?? null,
         altPrice: plan.price.altPrice ?? null,
+        yearlyUsd: plan.price.yearlyUsd ?? null,
+        waitlist: plan.price.waitlist ?? null,
+        billingNote: plan.price.billingNote ?? null,
       },
       meter: plan.meter,
       quotas: plan.quotas,
