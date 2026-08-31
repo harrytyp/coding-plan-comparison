@@ -121,5 +121,16 @@ sources:
     url: "https://platform.minimax.io/legal/privacy"
     typ: js-spa
     parser: none
+    optional: true
     provides: [privacy]
-    note: "MiniMax Privacy (aktuell 404 — wird vom Crawler als Down gemeldet)."
+    note: "MiniMax Privacy (aktuell 404 — wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
+
+  # ---- Währungskurse (täglich, für einheitliche Preis-Anzeige) ----
+  # Wird 1x täglich mit-gescraped (wie die anderen Quellen) statt Client-seitiger
+  # Live-API-Call. open.er-api.com: kostenlos, kein Key, täglich aktualisiert.
+  - id: fx-rates
+    url: "https://open.er-api.com/v6/latest/USD"
+    typ: json-api
+    parser: fx
+    provides: [fx_rates]
+    note: "Tägliche USD-Wechselkurse (EUR/CNY/GBP/JPY) für die einheitliche Preis-Anzeige. Parser extrahiert nur die relevanten Währungen (stabiler contentHash)."

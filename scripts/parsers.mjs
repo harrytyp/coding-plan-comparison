@@ -33,6 +33,20 @@ function findSection(text, startKw, endKws = []) {
   return text.slice(start, end);
 }
 
+// ---------- Parser: fx-rates (Währungskurse, JSON) ----------
+// Extrahiert NUR die relevanten Währungen → stabiler, kleiner Output
+// (volles rates-Objekt würde bei jedem API-Refresh den contentHash ändern).
+const FX_CURRENCIES = ["EUR", "CNY", "GBP", "JPY"];
+export function parseFx(raw) {
+  const data = JSON.parse(raw);
+  const rates = data?.rates ?? {};
+  const out = { base: data?.base_code ?? "USD", updatedAt: data?.time_last_update_utc ?? null, rates: {} };
+  for (const c of FX_CURRENCIES) {
+    if (typeof rates[c] === "number" && rates[c] > 0) out.rates[c] = rates[c];
+  }
+  return out;
+}
+
 // ---------- Parser: ocgo-pricing (JSON) ----------
 export function parseOcgo(raw) {
   const data = JSON.parse(raw);
@@ -282,4 +296,5 @@ export const PARSERS = {
   "kimi-pricing": parseKimiPricing,
   "kimi-code": parseKimiCode,
   "privacy-text": parsePrivacyText,
+  fx: parseFx,
 };

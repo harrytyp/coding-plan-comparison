@@ -113,6 +113,10 @@ async function fetchSource(source) {
     let manifest = { sources: {} };
     try { manifest = JSON.parse(await readFile(MANIFEST_PATH, "utf8")); } catch {}
     if (!manifest.sources?.[id]) {
+      if (source.optional) {
+        console.log(`  (optional, kein Snapshot — übersprungen, kein Fehler)`);
+        return null;
+      }
       throw new Error(`${id}: fetch fehlgeschlagen und kein Snapshot vorhanden: ${e.message}`);
     }
     console.log(`  (behalte letzten Snapshot von ${manifest.sources[id].fetchedAt})`);
@@ -133,8 +137,9 @@ async function main() {
   for (const s of targets) {
     results.push(await fetchSource(s));
   }
-  const changed = results.filter((r) => r.changed).length;
-  console.log(`\nFertig: ${results.length} Quellen, ${changed} geändert.`);
+  const ok = results.filter(Boolean); // optionale Quellen können null liefern
+  const changed = ok.filter((r) => r.changed).length;
+  console.log(`\nFertig: ${ok.length} Quellen, ${changed} geändert.`);
   if (changed) console.log("Nächster Schritt: node scripts/check.mjs (Diff-Report)");
 }
 

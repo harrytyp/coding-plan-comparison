@@ -837,6 +837,7 @@ async function main() {
     familyComparisons,
     aiScores: loadAiScores(ROOT),
     privacy: loadPrivacy(ROOT),
+    fx: parsed["fx-rates"] ?? { base: "USD", rates: { EUR: 0.86, CNY: 6.75, GBP: 0.74, JPY: 160 } },
     statistics: {
       totalPlans: plans.length,
       comparablePlans: comparablePlans.length,

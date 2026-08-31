@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-30T21:40:56.540Z",
+  "generatedAt": "2026-08-31T07:30:50.902Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -1940,10 +1940,10 @@
         {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
-          "allowance": 2.8571428571428568,
+          "allowance": 5.7142857142857135,
           "window": null,
           "windowNote": null,
-          "costPerRequest": 0.004419169200000001,
+          "costPerRequest": 0.008838338400000001,
           "patternUsed": {
             "input": 800,
             "cachedRead": 50000,
@@ -3263,10 +3263,10 @@
         {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
-          "allowance": 20,
+          "allowance": 40,
           "window": null,
           "windowNote": null,
-          "costPerRequest": 0.004419169200000001,
+          "costPerRequest": 0.008838338400000001,
           "patternUsed": {
             "input": 800,
             "cachedRead": 50000,
@@ -3577,7 +3577,7 @@
         "count": 63,
         "min": 294.11764705882354,
         "max": 113293.05135951663,
-        "mean": 13891.52210065872,
+        "mean": 13873.5628246561,
         "median": 4367.5751222921035,
         "p25": 1453.4785474086216,
         "p75": 14011.328249043068
@@ -4586,10 +4586,10 @@
         {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
-          "allowance": 30,
+          "allowance": 50,
           "window": null,
           "windowNote": null,
-          "costPerRequest": 0.004419169200000001,
+          "costPerRequest": 0.008838338400000001,
           "patternUsed": {
             "input": 800,
             "cachedRead": 50000,
@@ -4597,11 +4597,11 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 6788.606328990525,
-          "requestsRawInWindow": 6788.606328990525,
-          "normalizedPer10": 3394.303164495263,
+          "requestsPerMonth": 5657.171940825438,
+          "requestsRawInWindow": 5657.171940825438,
+          "normalizedPer10": 2828.585970412719,
           "privacy": null,
-          "rawTokensPerMonth": 345960955.7380151
+          "rawTokensPerMonth": 288300796.44834596
         },
         {
           "model": "Gemini 3.6 Flash",
@@ -5909,10 +5909,10 @@
         {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
-          "allowance": 42.857142857142854,
+          "allowance": 85.71428571428571,
           "window": null,
           "windowNote": null,
-          "costPerRequest": 0.004419169200000001,
+          "costPerRequest": 0.008838338400000001,
           "patternUsed": {
             "input": 800,
             "cachedRead": 50000,
@@ -7232,10 +7232,10 @@
         {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
-          "allowance": 85.71428571428571,
+          "allowance": 171.42857142857142,
           "window": null,
           "windowNote": null,
-          "costPerRequest": 0.004419169200000001,
+          "costPerRequest": 0.008838338400000001,
           "patternUsed": {
             "input": 800,
             "cachedRead": 50000,
@@ -8487,8 +8487,8 @@
       "planA": "opencode-go",
       "planB": "command-code-pro",
       "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 13891.52210065872,
-      "advantagePercent": 63.8356818241262,
+      "meanRequestsB": 13873.5628246561,
+      "advantagePercent": 64.04776651110566,
       "winner": "opencode-go"
     },
     {
@@ -8575,8 +8575,8 @@
       "planA": "command-code-go",
       "planB": "command-code-pro",
       "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 13891.52210065872,
-      "advantagePercent": 89.33118540940028,
+      "meanRequestsB": 13873.5628246561,
+      "advantagePercent": 89.31737466818875,
       "winner": "command-code-pro"
     },
     {
@@ -8655,8 +8655,8 @@
       "planA": "command-code-goat",
       "planB": "command-code-pro",
       "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 13891.52210065872,
-      "advantagePercent": 25.31829786580194,
+      "meanRequestsB": 13873.5628246561,
+      "advantagePercent": 25.221622677321154,
       "winner": "command-code-pro"
     },
     {
@@ -8734,73 +8734,73 @@
     {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 22230.911050971925,
-      "advantagePercent": 37.51258295799178,
+      "advantagePercent": 37.5933681132265,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max20",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 44461.82210194385,
-      "advantagePercent": 68.75629147899589,
+      "advantagePercent": 68.79668405661326,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-lite",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 67.42466307054895,
+      "advantagePercent": 67.20821265482473,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-pro",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 72.09588948824184,
+      "advantagePercent": 72.1319645575292,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-max",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 88.04109549496079,
+      "advantagePercent": 88.05655623894108,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 312684.1922258504,
-      "advantagePercent": 95.55733150378612,
+      "advantagePercent": 95.56307508675229,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 628526.8106358005,
-      "advantagePercent": 97.7898282355519,
+      "advantagePercent": 97.792685595922,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 2207739.90268555,
-      "advantagePercent": 99.37078085675941,
+      "advantagePercent": 99.37159432559153,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-pro",
       "planB": "minimax-starter",
-      "meanRequestsA": 13891.52210065872,
+      "meanRequestsA": 13873.5628246561,
       "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 49.72238325812508,
+      "advantagePercent": 49.78738330558413,
       "winner": "minimax-starter"
     },
     {
@@ -10364,8 +10364,8 @@
       "planId": "command-code-pro",
       "family": "gemini 3.7 flash",
       "modelCount": 1,
-      "normalizedPer10Median": 3394.303164495263,
-      "normalizedPer10Mean": 3394.303164495263
+      "normalizedPer10Median": 2828.585970412719,
+      "normalizedPer10Mean": 2828.585970412719
     },
     {
       "planId": "command-code-pro",
@@ -12120,8 +12120,8 @@
       "planA": "command-code-goat",
       "planB": "command-code-pro",
       "requestsA": 4202.1704295824975,
-      "requestsB": 3394.303164495263,
-      "advantagePercent": 23.80068090374494,
+      "requestsB": 2828.585970412719,
+      "advantagePercent": 48.560817084493955,
       "winner": "command-code-goat"
     },
     {
@@ -14630,7 +14630,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-08-30",
+      "verifiedAt": "2026-08-31",
       "crawled": true
     },
     {
@@ -14683,6 +14683,16 @@
       "note": "MiniMax: keine verifizierte Privacy-Aussage in öffentlichen Docs gefunden (SPA)."
     }
   ],
+  "fx": {
+    "base": "USD",
+    "updatedAt": "Mon, 31 Aug 2026 00:02:31 +0000",
+    "rates": {
+      "EUR": 0.862295,
+      "CNY": 6.735761,
+      "GBP": 0.738249,
+      "JPY": 160.045067
+    }
+  },
   "statistics": {
     "totalPlans": 17,
     "comparablePlans": 13,

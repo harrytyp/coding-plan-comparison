@@ -336,14 +336,11 @@ let data = null;
  */
 let currency = "USD";
 let exchangeRates = { USD: 1 }; // USD → Zielwährung
-async function loadExchangeRates() {
-  try {
-    const resp = await fetch("https://open.er-api.com/v6/latest/USD", { cache: "no-cache" });
-    if (resp.ok) {
-      const d = await resp.json();
-      if (d.rates) exchangeRates = { ...d.rates, USD: 1 };
-    }
-  } catch (e) { /* offline: USD bleibt */ }
+// Kurse kommen aus latest.json (fx-Source, 1x täglich mit-gescraped) —
+// KEIN Client-seitiger Live-API-Call (Datenschutz: keine Third-Party-Verbindung).
+function loadExchangeRates() {
+  const fx = data?.fx?.rates ?? null;
+  if (fx) exchangeRates = { ...fx, USD: 1 };
 }
 // USD-Betrag → gewählte Währung (formatiert)
 function fmtPrice(usd) {
@@ -1213,8 +1210,8 @@ async function loadData() {
     const note = document.getElementById("loading-note");
     if (note) note.remove();
     applyI18n();
-    // Kurse laden (async) → danach Preise in gewählter Währung neu rendern
-    await loadExchangeRates();
+    // Kurse aus latest.json (fx-Source) → Preise in gewählter Währung rendern
+    loadExchangeRates();
     renderPlans();
     renderDashboard();
   } catch (e) {
