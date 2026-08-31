@@ -992,8 +992,18 @@ function renderDashboard() {
     y: metricValue(c, dashY),
   })).filter((p) => p.x != null && p.y != null && p.x > 0 && p.y > 0);
 
-  const W = 100, H = 100, PAD_L = 12, PAD_B = 9, PAD_T = 4, PAD_R = 4;
+  // Dynamische Auflösung: viewBox an Container-Größe (CSS-Pixel) koppeln,
+  // damit auf Desktop (groß) volle Detailgenauigkeit herrscht und kein
+  // Strecken/Verzerren durch eine winzige 100×100-viewBox entsteht.
+  const rect = svg.getBoundingClientRect();
+  const cssW = Math.max(rect.width, 320);
+  const cssH = Math.max(rect.height, 240);
+  const W = cssW, H = cssH;
+  const PAD_L = Math.max(28, cssW * 0.045), PAD_B = Math.max(26, cssH * 0.07);
+  const PAD_T = 14, PAD_R = 12;
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
+  svg.setAttribute("viewBox", `0 0 ${W.toFixed(1)} ${H.toFixed(1)}`);
+  svg.setAttribute("preserveAspectRatio", "none");
 
   if (!points.length) {
     svg.innerHTML = "";
@@ -1060,8 +1070,8 @@ function renderDashboard() {
 
   const xGrid = xTicks.map((v) => `<line class="dash-grid-line" x1="${sx(v).toFixed(2)}" y1="${PAD_T}" x2="${sx(v).toFixed(2)}" y2="${H - PAD_B}"/>`).join("");
   const yGrid = yTicks.map((v) => `<line class="dash-grid-line" x1="${PAD_L}" y1="${sy(v).toFixed(2)}" x2="${W - PAD_R}" y2="${sy(v).toFixed(2)}"/>`).join("");
-  const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 3.2}" text-anchor="middle">${fmtTokens(v)}</text>`).join("");
-  const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 1}" y="${(sy(v) + 0.8).toFixed(2)}" text-anchor="end">${fmtTokens(v)}</text>`).join("");
+  const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 18}" text-anchor="middle">${fmtTokens(v)}</text>`).join("");
+  const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 8}" y="${(sy(v) + 4).toFixed(2)}" text-anchor="end">${fmtTokens(v)}</text>`).join("");
 
   // Punkte: Farbe + FORM (Accessibility: nicht nur Farbe unterscheiden).
   // no-training = Kreis, trainiert = Quadrat, unbekannt = Dreieck.
@@ -1070,7 +1080,7 @@ function renderDashboard() {
   const dots = px.map((p, i) => {
     const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
     const color = p.combo.noTraining === true ? "var(--success)" : (p.combo.noTraining === false ? "var(--danger)" : "var(--info)");
-    const r = isFrontier ? 2.4 : 1.6;
+    const r = isFrontier ? 7 : 5; // echte Pixel (viewBox = CSS-Pixel)
     const cls = isFrontier ? "dash-dot dash-dot-frontier" : "dash-dot";
     const x = p.px.toFixed(2), y = p.py.toFixed(2);
     const shape = p.combo.noTraining === true ? "circle"
@@ -1094,8 +1104,8 @@ function renderDashboard() {
     ${linePath}
     ${dots}
     ${xTickLabels}${yTickLabels}
-    <text class="dash-axis-label" x="${PAD_L + plotW / 2}" y="${H - 0.5}" text-anchor="middle">${escapeHtml(metricLabel(dashX))}</text>
-    <text class="dash-axis-label" x="1.5" y="${PAD_T + plotH / 2}" text-anchor="middle" transform="rotate(-90 1.5 ${PAD_T + plotH / 2})">${escapeHtml(metricLabel(dashY))}</text>
+    <text class="dash-axis-label" x="${PAD_L + plotW / 2}" y="${H - 8}" text-anchor="middle">${escapeHtml(metricLabel(dashX))}</text>
+    <text class="dash-axis-label" x="16" y="${PAD_T + plotH / 2}" text-anchor="middle" transform="rotate(-90 16 ${PAD_T + plotH / 2})">${escapeHtml(metricLabel(dashY))}</text>
   `;
 
   // Tooltip + Punkt-Daten für Hover + Klick
@@ -1139,8 +1149,10 @@ function bindDashTooltip() {
       tip.style.display = "block";
       tip.textContent = `${p.combo.planName} · ${p.combo.model} · ${metricLabel(dashX)} ${metricFmt(dashX, p.x)} · ${metricLabel(dashY)} ${metricFmt(dashY, p.y)}`;
       const rect = svg.getBoundingClientRect();
-      tip.style.left = `${rect.left + (p.px / 100) * rect.width}px`;
-      tip.style.top = `${rect.top + (p.py / 100) * rect.height}px`;
+      // p.px/p.py sind jetzt in CSS-Pixel-Koordinaten (dynamische viewBox)
+      const vbx = svg.viewBox.baseVal;
+      tip.style.left = `${rect.left + (p.px / vbx.width) * rect.width}px`;
+      tip.style.top = `${rect.top + (p.py / vbx.height) * rect.height}px`;
     } else {
       tip.style.display = "none";
     }
@@ -1343,6 +1355,13 @@ function init() {
   syncColumnPicker();
   initDashboard();
   initSheet();
+
+  // Chart-Auflösung dynamisch an Fenstergröße koppeln (debounced)
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => renderDashboard(), 150);
+  });
 
   // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)
