@@ -518,55 +518,53 @@ function modelsForPlan(plan, feeds) {
     const cc = feeds["cc-pricing.json"];
     if (!cc?.models) return out;
     const planId = plan.id.replace("command-code-", "");
-    // Eigene allowances vorhanden?
+    // Eigene allowances vorhanden (goat/pro) ODER von GOAT abgeleitet (go/max10/max20).
+    // WICHTIG: CC-Allowances sind CREDITS, nicht Dollar. Die offizielle requestEstimate
+    // (Gesamtmenge in REQUESTS) ist der Anker. Verteilung auf Modelle folgt dem
+    // Kosten-Anteil: requests_i = requestEstimate × (allowance_i / cost_i) / Σ(allowance_j/cost_j).
     const own = cc.models.some((m) => (m.allowances?.[planId] ?? null) != null);
-    if (own) {
-      for (const m of cc.models) {
-        const allowance = m.allowances?.[planId] ?? null;
-        if (allowance == null) continue;
-        out.push({ name: m.name, allowance, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m });
-      }
-      return out;
-    }
-    // Keine eigenen allowances (go/max10/max20): GOAT-Verteilung als Basis.
-    // WICHTIG: Wenn der Feed eine offizielle requestEstimate (Gesamtmenge in REQUESTS)
-    // liefert, wird die GOAT-Verteilung so normiert, dass die SUMME DER BERECHNETEN
-    // REQUESTS (allowance/cost je Modell) = requestEstimate ist. Die frühere
-    // Credit-Skalierung ergab 6-7x zu hohe Werte (Go: 93k statt 15k req/mo).
-    const goatPlan = cc.plans?.find((p) => p.id === "goat");
     const thisPlan = cc.plans?.find((p) => p.id === planId);
-    if (!goatPlan?.creditsMonthly || !thisPlan?.creditsMonthly) return out;
-    const goatAllowances = cc.models
-      .map((m) => ({ m, allowance: m.allowances?.goat ?? null }))
-      .filter((x) => x.allowance != null);
-    if (!goatAllowances.length) return out;
-    // Basis: Credits-Skalierung (falls keine offizielle Gesamtmenge)
-    const scale = thisPlan.creditsMonthly / goatPlan.creditsMonthly;
-    // Offizielle Gesamtmenge (requestEstimate, in REQUESTS) als Anker
-    const totalEstimate = thisPlan.requestEstimate ?? null;
-    // Normierungsfaktor F so, dass Summe(allowance' / cost) = requestEstimate
-    let normFactor = 1;
-    if (totalEstimate) {
-      // Berechne die Requests der skalierten GOAT-Verteilung (je Modell)
-      // Hinweis: Muster direkt aus dem Feed (Konsistenz reicht für den Norm-Faktor)
-      let sumRequests = 0;
-      for (const { m, allowance } of goatAllowances) {
-        const pattern = m.pattern ?? FALLBACK_PATTERN;
-        const cost = requestCost(m, pattern);
-        if (cost && cost > 0) sumRequests += (allowance * scale) / cost;
-      }
-      if (sumRequests > 0) normFactor = totalEstimate / sumRequests;
+    const totalEstimate = thisPlan?.requestEstimate ?? null;
+    // Quelle der allowances: eigene (goat/pro) oder GOAT-skaliert (go/max10/max20)
+    let sourceList = null;
+    if (own) {
+      sourceList = cc.models.map((m) => ({ m, allowance: m.allowances?.[planId] ?? null })).filter((x) => x.allowance != null);
+    } else {
+      const goatPlan = cc.plans?.find((p) => p.id === "goat");
+      if (!goatPlan?.creditsMonthly || !thisPlan?.creditsMonthly) return out;
+      const scale = thisPlan.creditsMonthly / goatPlan.creditsMonthly;
+      sourceList = cc.models
+        .map((m) => ({ m, allowance: (m.allowances?.goat ?? null) != null ? m.allowances.goat * scale : null }))
+        .filter((x) => x.allowance != null);
     }
-    for (const { m, allowance } of goatAllowances) {
-      out.push({
-        name: m.name,
-        allowance: allowance * scale * normFactor,
-        pattern: m.pattern ?? FALLBACK_PATTERN,
-        pricing: m,
-        scaledFrom: "goat",
-        scaleFactor: scale,
-        anchoredToOfficialTotal: totalEstimate ?? null,
-      });
+    if (!sourceList.length) return out;
+
+    if (totalEstimate) {
+      // Offizielle Gesamtmenge als Anker: Verteilung nach CREDIT-ANTEIL.
+      // Die Allowances (Credits) je Modell sind die offizielle Verteilung des
+      // Budgets. requests_i = totalEstimate × allowance_i / Σ(allowance_j).
+      // NICHT nach Kosten-Anteil: das würde teure Modelle (Nemotron, Claude)
+      // auf fast 0 Requests drücken, obwohl sie im Plan nutzbar sind (nur seltener).
+      const totalAllowance = sourceList.reduce((a, x) => a + x.allowance, 0);
+      if (totalAllowance > 0) {
+        for (const { m, allowance } of sourceList) {
+          out.push({
+            name: m.name,
+            allowance, // Original-Credits (für Referenz)
+            pattern: m.pattern ?? FALLBACK_PATTERN,
+            pricing: m,
+            directRequests: (allowance / totalAllowance) * totalEstimate, // fertige Requests/Monat
+            creditAllowance: allowance,
+            anchoredToOfficialTotal: totalEstimate,
+            requestAllocation: true,
+          });
+        }
+        return out;
+      }
+    }
+    // Kein offizieller Anker: Fallback auf Credits-Skalierung
+    for (const { m, allowance } of sourceList) {
+      out.push({ name: m.name, allowance, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m, scaledFrom: "goat" });
     }
     return out;
   }
@@ -760,7 +758,11 @@ async function main() {
       if (allowance == null || allowance <= 0) continue;
       let requests = null;
       let unit = "requests";
-      if (m.providerCost) {
+      if (m.directRequests != null) {
+        // CC mit offizieller Gesamtmenge: Requests direkt verteilt (Kosten-Anteil)
+        requests = m.directRequests;
+        unit = "requests (official total, cost-share allocation)";
+      } else if (m.providerCost) {
         // Anbieter-eigene Credit-Formel: Credits / Credits-pro-Request
         if (m.providerCost.creditsPerRequest > 0) {
           requests = allowance / m.providerCost.creditsPerRequest;
