@@ -74,6 +74,7 @@ const I18N = {
     "plans.noTraining": "No training on my data",
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
+    "plans.estimate": "estimate",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
     "filters.toggle": "Filters",
@@ -241,6 +242,7 @@ const I18N = {
     "plans.noTraining": "Kein Training auf meinen Daten",
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
+    "plans.estimate": "Schätzung",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
     "filters.toggle": "Filter",
@@ -753,6 +755,8 @@ function buildCombos() {
         // Rohdaten: Tokens/Monat und Requests/Monat (un-normalisiert)
         rawTokensPerMonth: row.rawTokensPerMonth ?? null,
         rawRequestsPerMonth: row.requestsPerMonth ?? null,
+        // Schätzung (kein offizielles Limit): z.B. Kimi price-based estimate
+        estimateNote: row.estimate ?? null,
         // Privacy: kombinierte Aussage (Modell-Feed vorrangig, sonst Anbieter-Policy)
         noTraining: priv.noTraining,
         retentionDays: priv.retentionDays,
@@ -879,9 +883,15 @@ function renderCell(col, c) {
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>`;
     case "tokens": return `<td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>`;
-    case "req10": return `<td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? fmtNum(c.req10) : "-"}</span></td>`;
+    case "req10": {
+      const mark = c.estimateNote ? "~" : "";
+      return `<td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? mark + fmtNum(c.req10) : "-"}</span>${c.estimateNote ? `<div class="est-note" title="${escapeHtml(c.estimateNote)}">${t("plans.estimate")}</div>` : ""}</td>`;
+    }
     case "rawtokens": return `<td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>`;
-    case "rawreq": return `<td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? fmtNum(c.rawRequestsPerMonth) : "-"}</span></td>`;
+    case "rawreq": {
+      const mark = c.estimateNote ? "~" : "";
+      return `<td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? mark + fmtNum(c.rawRequestsPerMonth) : "-"}</span>${c.estimateNote ? `<div class="est-note" title="${escapeHtml(c.estimateNote)}">${t("plans.estimate")}</div>` : ""}</td>`;
+    }
     case "price": {
       const wl = c.waitlist === true
         ? `<div class="waitlist-badge" title="${t("plans.waitlist.title")}">${t("plans.waitlist")}</div>`

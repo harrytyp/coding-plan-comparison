@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-31T08:00:20.192Z",
+  "generatedAt": "2026-08-31T08:25:06.523Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -106,6 +106,7 @@
             "retentionDays": 30,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 27895774.647887327
         },
         {
@@ -130,6 +131,7 @@
             "retentionDays": 30,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 13947887.323943663
         },
         {
@@ -154,6 +156,7 @@
             "retentionDays": 30,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 508303010.25471383
         },
         {
@@ -178,6 +181,7 @@
             "retentionDays": 30,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 265755793.84296092
         },
         {
@@ -202,6 +206,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 887368421.0526316
         },
         {
@@ -226,6 +231,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 52292216.35883905
         },
         {
@@ -250,6 +256,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 209168865.4353562
         },
         {
@@ -274,6 +281,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 209168865.4353562
         },
         {
@@ -298,6 +306,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 38161764.705882356
         },
         {
@@ -322,6 +331,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 278574090.1751335
         },
         {
@@ -346,6 +356,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 322658610.27190334
         },
         {
@@ -370,6 +381,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 5146941109.205259
         },
         {
@@ -394,6 +406,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 10921052631.578947
         },
         {
@@ -418,6 +431,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 1418870486.016834
         },
         {
@@ -442,6 +456,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 909382518.0433038
         },
         {
@@ -466,6 +481,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 933768558.4921556
         },
         {
@@ -491,6 +507,7 @@
             "validUntil": null,
             "fallback": true
           },
+          "estimate": null,
           "rawTokensPerMonth": 933768558.4921556
         },
         {
@@ -515,6 +532,7 @@
             "retentionDays": false,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 16386706948.640486
         },
         {
@@ -539,6 +557,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 53325862.48299047
         },
         {
@@ -563,6 +582,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 1546690048.224463
         },
         {
@@ -587,6 +607,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 111655580.57926989
         },
         {
@@ -611,6 +632,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 1222461592.7953382
         },
         {
@@ -635,6 +657,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 407487197.598446
         },
         {
@@ -659,6 +682,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 928144796.3800905
         },
         {
@@ -683,6 +707,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 251235710.39738703
         },
         {
@@ -707,6 +732,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 433523597.38270915
         },
         {
@@ -731,6 +757,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 216761798.69135457
         },
         {
@@ -755,6 +782,7 @@
             "retentionDays": true,
             "validUntil": "2026-08-31"
           },
+          "estimate": null,
           "rawTokensPerMonth": 2721501448.545157
         },
         {
@@ -779,6 +807,7 @@
             "retentionDays": true,
             "validUntil": "2026-08-31"
           },
+          "estimate": null,
           "rawTokensPerMonth": 1360750724.2725785
         },
         {
@@ -803,6 +832,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 1360750724.2725785
         },
         {
@@ -827,6 +857,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 680375362.1362892
         },
         {
@@ -851,6 +882,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 491482659.0931906
         },
         {
@@ -875,6 +907,7 @@
             "retentionDays": true,
             "validUntil": null
           },
+          "estimate": null,
           "rawTokensPerMonth": 1561939924.0088892
         }
       ]
@@ -961,6 +994,7 @@
           "requestsRawInWindow": 644.5145926965862,
           "normalizedPer10": 6445.145926965862,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 46807872.29458957
         },
         {
@@ -981,6 +1015,7 @@
           "requestsRawInWindow": 3584.4863431070326,
           "normalizedPer10": 35844.86343107033,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 260323320.66814825
         },
         {
@@ -1001,6 +1036,7 @@
           "requestsRawInWindow": 93.37068160597572,
           "normalizedPer10": 933.7068160597572,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 7268907.56302521
         },
         {
@@ -1021,6 +1057,7 @@
           "requestsRawInWindow": 709.7609879872953,
           "normalizedPer10": 7097.609879872953,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 39796298.59644765
         },
         {
@@ -1041,6 +1078,7 @@
           "requestsRawInWindow": 118.29349799788253,
           "normalizedPer10": 1182.9349799788251,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 6632716.432741273
         },
         {
@@ -1061,6 +1099,7 @@
           "requestsRawInWindow": 274.0270327667824,
           "normalizedPer10": 2740.270327667824,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 15364695.727233488
         },
         {
@@ -1081,6 +1120,7 @@
           "requestsRawInWindow": 478.9042670370192,
           "normalizedPer10": 4789.042670370192,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 24405919.256740574
         },
         {
@@ -1101,6 +1141,7 @@
           "requestsRawInWindow": 3007.518796992481,
           "normalizedPer10": 30075.18796992481,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 169022556.39097744
         },
         {
@@ -1121,6 +1162,7 @@
           "requestsRawInWindow": 188.46588767433093,
           "normalizedPer10": 1884.6588767433093,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 9960422.16358839
         },
         {
@@ -1141,6 +1183,7 @@
           "requestsRawInWindow": 659.6306068601583,
           "normalizedPer10": 6596.306068601583,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 34861477.572559364
         },
         {
@@ -1161,6 +1204,7 @@
           "requestsRawInWindow": 96.40296439115501,
           "normalizedPer10": 964.0296439115501,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5094896.668072542
         },
         {
@@ -1181,6 +1225,7 @@
           "requestsRawInWindow": 188.46588767433093,
           "normalizedPer10": 1884.6588767433093,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 9960422.16358839
         },
         {
@@ -1201,6 +1246,7 @@
           "requestsRawInWindow": 252.43345854032876,
           "normalizedPer10": 2524.3345854032877,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 12864513.914132234
         },
         {
@@ -1221,6 +1267,7 @@
           "requestsRawInWindow": 1794.7836712872797,
           "normalizedPer10": 17947.8367128728,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 101764234.16198877
         },
         {
@@ -1241,6 +1288,7 @@
           "requestsRawInWindow": 807.1025020177561,
           "normalizedPer10": 8071.025020177562,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 44733656.17433413
         },
         {
@@ -1261,6 +1309,7 @@
           "requestsRawInWindow": 1511.715797430083,
           "normalizedPer10": 15117.15797430083,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 83786848.07256235
         },
         {
@@ -1281,6 +1330,7 @@
           "requestsRawInWindow": 994.4114078876712,
           "normalizedPer10": 9944.114078876712,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 82575923.31099221
         },
         {
@@ -1301,6 +1351,7 @@
           "requestsRawInWindow": 497.2057039438356,
           "normalizedPer10": 4972.057039438356,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 41287961.655496106
         },
         {
@@ -1321,6 +1372,7 @@
           "requestsRawInWindow": 10796.609864502545,
           "normalizedPer10": 107966.09864502546,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 777571842.4414732
         },
         {
@@ -1341,6 +1393,7 @@
           "requestsRawInWindow": 5398.3049322512725,
           "normalizedPer10": 53983.04932251273,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 388785921.2207366
         },
         {
@@ -1361,6 +1414,7 @@
           "requestsRawInWindow": 3598.8699548341815,
           "normalizedPer10": 35988.699548341814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 259190614.14715776
         },
         {
@@ -1381,6 +1435,7 @@
           "requestsRawInWindow": 1799.4349774170907,
           "normalizedPer10": 17994.349774170907,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 129595307.07357888
         },
         {
@@ -1401,6 +1456,7 @@
           "requestsRawInWindow": 184.90440442291333,
           "normalizedPer10": 1849.0440442291333,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 9423098.25820051
         },
         {
@@ -1421,6 +1477,7 @@
           "requestsRawInWindow": 3563.791874554526,
           "normalizedPer10": 35637.91874554526,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 181617961.51104775
         },
         {
@@ -1441,6 +1498,7 @@
           "requestsRawInWindow": 183.68711471627685,
           "normalizedPer10": 1836.8711471627685,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 9361062.740170902
         },
         {
@@ -1461,6 +1519,7 @@
           "requestsRawInWindow": 800.9319935925441,
           "normalizedPer10": 8009.319935925441,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 40817096.25746323
         },
         {
@@ -1481,6 +1540,7 @@
           "requestsRawInWindow": 82.14815943314784,
           "normalizedPer10": 821.4815943314784,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4186434.50103208
         },
         {
@@ -1501,6 +1561,7 @@
           "requestsRawInWindow": 1012.6924115581961,
           "normalizedPer10": 10126.924115581962,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 51608830.67782879
         },
         {
@@ -1521,6 +1582,7 @@
           "requestsRawInWindow": 2845.3630540988875,
           "normalizedPer10": 28453.630540988874,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 145005391.9629875
         },
         {
@@ -1541,6 +1603,7 @@
           "requestsRawInWindow": 8136.762707589158,
           "normalizedPer10": 81367.62707589158,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 414665701.10415864
         },
         {
@@ -1561,6 +1624,7 @@
           "requestsRawInWindow": 1217.7227367100782,
           "normalizedPer10": 12177.227367100782,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 62057586.108219005
         },
         {
@@ -1581,6 +1645,7 @@
           "requestsRawInWindow": 2531.5814789498995,
           "normalizedPer10": 25315.814789498996,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 129014455.33024478
         },
         {
@@ -1601,6 +1666,7 @@
           "requestsRawInWindow": 3110.323162576591,
           "normalizedPer10": 31103.23162576591,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 270893595.8446082
         },
         {
@@ -1621,6 +1687,7 @@
           "requestsRawInWindow": 10741.138560687432,
           "normalizedPer10": 107411.38560687432,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 780075187.9699247
         },
         {
@@ -1641,6 +1708,7 @@
           "requestsRawInWindow": 415.9595354563907,
           "normalizedPer10": 4159.595354563907,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 21198129.845928583
         },
         {
@@ -1661,6 +1729,7 @@
           "requestsRawInWindow": 42.01680672268907,
           "normalizedPer10": 420.1680672268907,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2141260.5042016804
         },
         {
@@ -1681,6 +1750,7 @@
           "requestsRawInWindow": 84.03361344537814,
           "normalizedPer10": 840.3361344537814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4282521.008403361
         },
         {
@@ -1701,6 +1771,7 @@
           "requestsRawInWindow": 84.03361344537814,
           "normalizedPer10": 840.3361344537814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4282521.008403361
         },
         {
@@ -1721,6 +1792,7 @@
           "requestsRawInWindow": 84.03361344537814,
           "normalizedPer10": 840.3361344537814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4282521.008403361
         },
         {
@@ -1741,6 +1813,7 @@
           "requestsRawInWindow": 84.03361344537814,
           "normalizedPer10": 840.3361344537814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4282521.008403361
         },
         {
@@ -1761,6 +1834,7 @@
           "requestsRawInWindow": 210.08403361344537,
           "normalizedPer10": 2100.8403361344535,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 10706302.521008402
         },
         {
@@ -1781,6 +1855,7 @@
           "requestsRawInWindow": 140.05602240896354,
           "normalizedPer10": 1400.5602240896355,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 7137535.0140056005
         },
         {
@@ -1801,6 +1876,7 @@
           "requestsRawInWindow": 420.16806722689074,
           "normalizedPer10": 4201.680672268907,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 21412605.042016804
         },
         {
@@ -1821,6 +1897,7 @@
           "requestsRawInWindow": 287.2737719046251,
           "normalizedPer10": 2872.737719046251,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 14640045.963803506
         },
         {
@@ -1841,6 +1918,7 @@
           "requestsRawInWindow": 205.19555136044647,
           "normalizedPer10": 2051.9555136044646,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 10457175.688431073
         },
         {
@@ -1861,6 +1939,7 @@
           "requestsRawInWindow": 1890.2698360190914,
           "normalizedPer10": 18902.698360190912,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 96819621.00089785
         },
         {
@@ -1881,6 +1960,7 @@
           "requestsRawInWindow": 95.04799923961599,
           "normalizedPer10": 950.4799923961599,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4843836.1372493105
         },
         {
@@ -1901,6 +1981,7 @@
           "requestsRawInWindow": 190.09599847923198,
           "normalizedPer10": 1900.9599847923198,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 9687672.274498621
         },
         {
@@ -1921,6 +2002,7 @@
           "requestsRawInWindow": 633.6533282641067,
           "normalizedPer10": 6336.533282641067,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 32292240.914995406
         },
         {
@@ -1941,6 +2023,7 @@
           "requestsRawInWindow": 108.32358421075435,
           "normalizedPer10": 1083.2358421075435,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5520386.498548463
         },
         {
@@ -1961,6 +2044,7 @@
           "requestsRawInWindow": 646.5339360943357,
           "normalizedPer10": 6465.339360943357,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 32948662.451239534
         },
         {
@@ -1981,6 +2065,7 @@
           "requestsRawInWindow": 288.1636769685181,
           "normalizedPer10": 2881.6367696851808,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 14685397.305669619
         },
         {
@@ -2001,6 +2086,7 @@
           "requestsRawInWindow": 281.27021629679626,
           "normalizedPer10": 2812.7021629679625,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 14334092.76291733
         },
         {
@@ -2021,6 +2107,7 @@
           "requestsRawInWindow": 1332.0013320013318,
           "normalizedPer10": 13320.013320013317,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 67881451.88145187
         },
         {
@@ -2041,6 +2128,7 @@
           "requestsRawInWindow": 1470.4801117564882,
           "normalizedPer10": 14704.801117564883,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 74938607.45533416
         },
         {
@@ -2061,6 +2149,7 @@
           "requestsRawInWindow": 84.38106488903888,
           "normalizedPer10": 843.8106488903888,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4300227.8288752
         },
         {
@@ -2081,6 +2170,7 @@
           "requestsRawInWindow": 223.91401701746526,
           "normalizedPer10": 2239.1401701746527,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 16193461.710703088
         },
         {
@@ -2101,6 +2191,7 @@
           "requestsRawInWindow": 10789.814415192059,
           "normalizedPer10": 107898.14415192058,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 780319378.5066897
         },
         {
@@ -2121,6 +2212,7 @@
           "requestsRawInWindow": 310.94769082471095,
           "normalizedPer10": 3109.4769082471093,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 15846516.21980892
         },
         {
@@ -2141,6 +2233,7 @@
           "requestsRawInWindow": 160.96579476861166,
           "normalizedPer10": 1609.6579476861166,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5313480.885311871
         },
         {
@@ -2161,6 +2254,7 @@
           "requestsRawInWindow": 103.62479534102918,
           "normalizedPer10": 1036.2479534102918,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5280926.820169529
         },
         {
@@ -2181,6 +2275,7 @@
           "requestsRawInWindow": 286.9741020221629,
           "normalizedPer10": 2869.7410202216292,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 14624774.187253468
         },
         {
@@ -2201,6 +2296,7 @@
           "requestsRawInWindow": 510.7147964290821,
           "normalizedPer10": 5107.147964290822,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 26027047.455618884
         }
       ]
@@ -2287,6 +2383,7 @@
           "requestsRawInWindow": 4511.602148876104,
           "normalizedPer10": 4189.045634982455,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 327655106.06212705
         },
         {
@@ -2307,6 +2404,7 @@
           "requestsRawInWindow": 25091.404401749227,
           "normalizedPer10": 23297.497123258338,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1822263244.6770377
         },
         {
@@ -2327,6 +2425,7 @@
           "requestsRawInWindow": 653.5947712418301,
           "normalizedPer10": 606.866082861495,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 50882352.941176474
         },
         {
@@ -2347,6 +2446,7 @@
           "requestsRawInWindow": 4968.326915911067,
           "normalizedPer10": 4613.11691356645,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 278574090.1751335
         },
         {
@@ -2367,6 +2467,7 @@
           "requestsRawInWindow": 828.0544859851778,
           "normalizedPer10": 768.8528189277417,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 46429015.02918892
         },
         {
@@ -2387,6 +2488,7 @@
           "requestsRawInWindow": 1918.189229367477,
           "normalizedPer10": 1781.0484952344261,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 107552870.09063444
         },
         {
@@ -2407,6 +2509,7 @@
           "requestsRawInWindow": 3352.329869259135,
           "normalizedPer10": 3112.6554032118247,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 170841434.79718405
         },
         {
@@ -2427,6 +2530,7 @@
           "requestsRawInWindow": 21052.63157894737,
           "normalizedPer10": 19547.475932170262,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1183157894.7368422
         },
         {
@@ -2447,6 +2551,7 @@
           "requestsRawInWindow": 1319.2612137203166,
           "normalizedPer10": 1224.9407741135717,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 69722955.14511873
         },
         {
@@ -2467,6 +2572,7 @@
           "requestsRawInWindow": 4617.4142480211085,
           "normalizedPer10": 4287.292709397501,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 244030343.0079156
         },
         {
@@ -2487,6 +2593,7 @@
           "requestsRawInWindow": 674.8207507380852,
           "normalizedPer10": 626.5745132201348,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 35664276.6765078
         },
         {
@@ -2507,6 +2614,7 @@
           "requestsRawInWindow": 1319.2612137203166,
           "normalizedPer10": 1224.9407741135717,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 69722955.14511873
         },
         {
@@ -2527,6 +2635,7 @@
           "requestsRawInWindow": 1767.0342097823016,
           "normalizedPer10": 1640.700287634449,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 90051597.39892565
         },
         {
@@ -2547,6 +2656,7 @@
           "requestsRawInWindow": 12563.48569901096,
           "normalizedPer10": 11665.260630465145,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 712349639.1339214
         },
         {
@@ -2567,6 +2677,7 @@
           "requestsRawInWindow": 5649.717514124293,
           "normalizedPer10": 5245.791563718007,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 313135593.22033894
         },
         {
@@ -2587,6 +2698,7 @@
           "requestsRawInWindow": 10582.010582010582,
           "normalizedPer10": 9825.450865376586,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 586507936.5079365
         },
         {
@@ -2607,6 +2719,7 @@
           "requestsRawInWindow": 6960.8798552137,
           "normalizedPer10": 6463.212493234633,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 578031463.1769456
         },
         {
@@ -2627,6 +2740,7 @@
           "requestsRawInWindow": 3480.43992760685,
           "normalizedPer10": 3231.6062466173166,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 289015731.5884728
         },
         {
@@ -2647,6 +2761,7 @@
           "requestsRawInWindow": 75576.26905151783,
           "normalizedPer10": 70172.95176556901,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5443002897.090314
         },
         {
@@ -2667,6 +2782,7 @@
           "requestsRawInWindow": 37788.13452575891,
           "normalizedPer10": 35086.47588278451,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2721501448.545157
         },
         {
@@ -2687,6 +2803,7 @@
           "requestsRawInWindow": 25192.089683839273,
           "normalizedPer10": 23390.983921856336,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1814334299.0301044
         },
         {
@@ -2707,6 +2824,7 @@
           "requestsRawInWindow": 12596.044841919636,
           "normalizedPer10": 11695.491960928168,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 907167149.5150522
         },
         {
@@ -2727,6 +2845,7 @@
           "requestsRawInWindow": 1294.3308309603935,
           "normalizedPer10": 1201.7927864070507,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 65961687.80740358
         },
         {
@@ -2747,6 +2866,7 @@
           "requestsRawInWindow": 24946.543121881685,
           "normalizedPer10": 23162.992685126912,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1271325730.5773344
         },
         {
@@ -2767,6 +2887,7 @@
           "requestsRawInWindow": 1285.809803013938,
           "normalizedPer10": 1193.880968443768,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 65527439.18119632
         },
         {
@@ -2787,6 +2908,7 @@
           "requestsRawInWindow": 5606.523955147809,
           "normalizedPer10": 5205.68612362842,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 285719673.80224264
         },
         {
@@ -2807,6 +2929,7 @@
           "requestsRawInWindow": 575.0371160320349,
           "normalizedPer10": 533.9248988226879,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29305041.50722456
         },
         {
@@ -2827,6 +2950,7 @@
           "requestsRawInWindow": 7088.846880907373,
           "normalizedPer10": 6582.030530090412,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 361261814.7448015
         },
         {
@@ -2847,6 +2971,7 @@
           "requestsRawInWindow": 19917.541378692214,
           "normalizedPer10": 18493.538884579586,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1015037743.7409127
         },
         {
@@ -2867,6 +2992,7 @@
           "requestsRawInWindow": 56957.33895312411,
           "normalizedPer10": 52885.18008646622,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2902659907.729111
         },
         {
@@ -2887,6 +3013,7 @@
           "requestsRawInWindow": 8524.059156970548,
           "normalizedPer10": 7914.632457725673,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 434403102.7575331
         },
         {
@@ -2907,6 +3034,7 @@
           "requestsRawInWindow": 17721.0703526493,
           "normalizedPer10": 16454.10432000864,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 903101187.3117137
         },
         {
@@ -2927,6 +3055,7 @@
           "requestsRawInWindow": 21772.26213803614,
           "normalizedPer10": 20215.656581277755,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1896255170.9122577
         },
         {
@@ -2947,6 +3076,7 @@
           "requestsRawInWindow": 75187.96992481203,
           "normalizedPer10": 69812.4140434652,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5460526315.789474
         },
         {
@@ -2967,6 +3097,7 @@
           "requestsRawInWindow": 2911.7167481947354,
           "normalizedPer10": 2703.543870190098,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 148386908.92150012
         },
         {
@@ -2987,6 +3118,7 @@
           "requestsRawInWindow": 294.11764705882354,
           "normalizedPer10": 273.08973728767273,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 14988823.529411765
         },
         {
@@ -3007,6 +3139,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -3027,6 +3160,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -3047,6 +3181,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -3067,6 +3202,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 546.1794745753455,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -3087,6 +3223,7 @@
           "requestsRawInWindow": 1470.5882352941178,
           "normalizedPer10": 1365.448686438364,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 74944117.64705883
         },
         {
@@ -3107,6 +3244,7 @@
           "requestsRawInWindow": 980.3921568627451,
           "normalizedPer10": 910.2991242922425,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 49962745.09803922
         },
         {
@@ -3127,6 +3265,7 @@
           "requestsRawInWindow": 2941.1764705882356,
           "normalizedPer10": 2730.897372876728,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 149888235.29411766
         },
         {
@@ -3147,6 +3286,7 @@
           "requestsRawInWindow": 2010.9164033323757,
           "normalizedPer10": 1867.1461497979346,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 102480321.74662453
         },
         {
@@ -3167,6 +3307,7 @@
           "requestsRawInWindow": 1436.3688595231254,
           "normalizedPer10": 1333.675821284239,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 73200229.81901751
         },
         {
@@ -3187,6 +3328,7 @@
           "requestsRawInWindow": 13231.888852133641,
           "normalizedPer10": 12285.87637152613,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 677737347.0062851
         },
         {
@@ -3207,6 +3349,7 @@
           "requestsRawInWindow": 665.3359946773121,
           "normalizedPer10": 617.7678687811626,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 33906852.96074518
         },
         {
@@ -3227,6 +3370,7 @@
           "requestsRawInWindow": 1330.6719893546242,
           "normalizedPer10": 1235.5357375623253,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 67813705.92149036
         },
         {
@@ -3247,6 +3391,7 @@
           "requestsRawInWindow": 4435.573297848747,
           "normalizedPer10": 4118.452458541084,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 226045686.40496784
         },
         {
@@ -3267,6 +3412,7 @@
           "requestsRawInWindow": 758.2650894752805,
           "normalizedPer10": 704.0530078693413,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 38642705.48983925
         },
         {
@@ -3287,6 +3433,7 @@
           "requestsRawInWindow": 4525.73755266035,
           "normalizedPer10": 4202.1704295824975,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 230640637.15867677
         },
         {
@@ -3307,6 +3454,7 @@
           "requestsRawInWindow": 2017.1457387796268,
           "normalizedPer10": 1872.9301195725413,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 102797781.13968734
         },
         {
@@ -3327,6 +3475,7 @@
           "requestsRawInWindow": 1968.8915140775744,
           "normalizedPer10": 1828.1258255130683,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 100338649.34042135
         },
         {
@@ -3347,6 +3496,7 @@
           "requestsRawInWindow": 9324.009324009323,
           "normalizedPer10": 8657.390272989158,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 475170163.1701631
         },
         {
@@ -3367,6 +3517,7 @@
           "requestsRawInWindow": 10293.36078229542,
           "normalizedPer10": 9557.438052270585,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 524570252.1873392
         },
         {
@@ -3387,6 +3538,7 @@
           "requestsRawInWindow": 590.6674542232723,
           "normalizedPer10": 548.4377476539205,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 30101594.802126404
         },
         {
@@ -3407,6 +3559,7 @@
           "requestsRawInWindow": 1567.398119122257,
           "normalizedPer10": 1455.3371579593845,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 113354231.97492163
         },
         {
@@ -3427,6 +3580,7 @@
           "requestsRawInWindow": 75528.70090634441,
           "normalizedPer10": 70128.78449985554,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5462235649.546828
         },
         {
@@ -3447,6 +3601,7 @@
           "requestsRawInWindow": 2176.633835772977,
           "normalizedPer10": 2021.0156321011857,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 110925613.53866245
         },
         {
@@ -3467,6 +3622,7 @@
           "requestsRawInWindow": 1126.7605633802818,
           "normalizedPer10": 1046.2029372147463,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 37194366.1971831
         },
         {
@@ -3487,6 +3643,7 @@
           "requestsRawInWindow": 725.3735673872044,
           "normalizedPer10": 673.5130616408583,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 36966487.74118671
         },
         {
@@ -3507,6 +3664,7 @@
           "requestsRawInWindow": 2008.818714155141,
           "normalizedPer10": 1865.1984346844392,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 102373419.3107743
         },
         {
@@ -3527,6 +3685,7 @@
           "requestsRawInWindow": 3575.0035750035754,
           "normalizedPer10": 3319.4090761407388,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 182189332.18933222
         }
       ]
@@ -3613,6 +3772,7 @@
           "requestsRawInWindow": 6767.403223314156,
           "normalizedPer10": 3383.7016116570785,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 491482659.0931906
         },
         {
@@ -3633,6 +3793,7 @@
           "requestsRawInWindow": 28675.89074485626,
           "normalizedPer10": 14337.94537242813,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2082586565.345186
         },
         {
@@ -3653,6 +3814,7 @@
           "requestsRawInWindow": 980.3921568627451,
           "normalizedPer10": 490.19607843137254,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 76323529.41176471
         },
         {
@@ -3673,6 +3835,7 @@
           "requestsRawInWindow": 5796.381401896245,
           "normalizedPer10": 2898.1907009481224,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 325003105.20432246
         },
         {
@@ -3693,6 +3856,7 @@
           "requestsRawInWindow": 1242.0817289777667,
           "normalizedPer10": 621.0408644888834,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 69643522.54378338
         },
         {
@@ -3713,6 +3877,7 @@
           "requestsRawInWindow": 2877.2838440512155,
           "normalizedPer10": 1438.6419220256078,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 161329305.13595167
         },
         {
@@ -3733,6 +3898,7 @@
           "requestsRawInWindow": 5028.494803888702,
           "normalizedPer10": 2514.247401944351,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 256262152.19577605
         },
         {
@@ -3753,6 +3919,7 @@
           "requestsRawInWindow": 26315.78947368421,
           "normalizedPer10": 13157.894736842103,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1478947368.4210527
         },
         {
@@ -3773,6 +3940,7 @@
           "requestsRawInWindow": 1978.891820580475,
           "normalizedPer10": 989.4459102902376,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 104584432.7176781
         },
         {
@@ -3793,6 +3961,7 @@
           "requestsRawInWindow": 5277.0448548812665,
           "normalizedPer10": 2638.5224274406332,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 278891820.5804749
         },
         {
@@ -3813,6 +3982,7 @@
           "requestsRawInWindow": 1012.2311261071278,
           "normalizedPer10": 506.1155630535639,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 53496415.0147617
         },
         {
@@ -3833,6 +4003,7 @@
           "requestsRawInWindow": 1978.891820580475,
           "normalizedPer10": 989.4459102902376,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 104584432.7176781
         },
         {
@@ -3853,6 +4024,7 @@
           "requestsRawInWindow": 2650.5513146734525,
           "normalizedPer10": 1325.2756573367262,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 135077396.0983885
         },
         {
@@ -3873,6 +4045,7 @@
           "requestsRawInWindow": 15236.567762630313,
           "normalizedPer10": 7618.283881315157,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 863913392.1411388
         },
         {
@@ -3893,6 +4066,7 @@
           "requestsRawInWindow": 8474.57627118644,
           "normalizedPer10": 4237.28813559322,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 469703389.8305085
         },
         {
@@ -3913,6 +4087,7 @@
           "requestsRawInWindow": 15873.015873015873,
           "normalizedPer10": 7936.507936507936,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 879761904.7619047
         },
         {
@@ -3933,6 +4108,7 @@
           "requestsRawInWindow": 10441.319782820548,
           "normalizedPer10": 5220.659891410274,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 867047194.7654183
         },
         {
@@ -3953,6 +4129,7 @@
           "requestsRawInWindow": 5220.659891410274,
           "normalizedPer10": 2610.329945705137,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 433523597.38270915
         },
         {
@@ -3973,6 +4150,7 @@
           "requestsRawInWindow": 88172.31389343746,
           "normalizedPer10": 44086.15694671873,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 6350170046.605366
         },
         {
@@ -3993,6 +4171,7 @@
           "requestsRawInWindow": 44086.15694671873,
           "normalizedPer10": 22043.078473359365,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3175085023.302683
         },
         {
@@ -4013,6 +4192,7 @@
           "requestsRawInWindow": 37788.13452575891,
           "normalizedPer10": 18894.067262879456,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2721501448.545157
         },
         {
@@ -4033,6 +4213,7 @@
           "requestsRawInWindow": 18894.067262879456,
           "normalizedPer10": 9447.033631439728,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1360750724.2725785
         },
         {
@@ -4053,6 +4234,7 @@
           "requestsRawInWindow": 1941.49624644059,
           "normalizedPer10": 970.748123220295,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 98942531.71110535
         },
         {
@@ -4073,6 +4255,7 @@
           "requestsRawInWindow": 28510.33499643621,
           "normalizedPer10": 14255.167498218105,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1452943692.088382
         },
         {
@@ -4093,6 +4276,7 @@
           "requestsRawInWindow": 1928.7147045209074,
           "normalizedPer10": 964.3573522604536,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 98291158.77179448
         },
         {
@@ -4113,6 +4297,7 @@
           "requestsRawInWindow": 7305.470608222902,
           "normalizedPer10": 3652.735304111451,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 372301393.13625556
         },
         {
@@ -4133,6 +4318,7 @@
           "requestsRawInWindow": 749.2907875568939,
           "normalizedPer10": 374.64539377844693,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 38185357.115474425
         },
         {
@@ -4153,6 +4339,7 @@
           "requestsRawInWindow": 9236.982299364152,
           "normalizedPer10": 4618.491149682076,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 470735091.9401959
         },
         {
@@ -4173,6 +4360,7 @@
           "requestsRawInWindow": 29876.31206803832,
           "normalizedPer10": 14938.15603401916,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1522556615.611369
         },
         {
@@ -4193,6 +4381,7 @@
           "requestsRawInWindow": 85436.00842968616,
           "normalizedPer10": 42718.00421484308,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4353989861.593666
         },
         {
@@ -4213,6 +4402,7 @@
           "requestsRawInWindow": 12786.088735455822,
           "normalizedPer10": 6393.044367727911,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 651604654.1362996
         },
         {
@@ -4233,6 +4423,7 @@
           "requestsRawInWindow": 26581.60552897395,
           "normalizedPer10": 13290.802764486976,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1354651780.9675703
         },
         {
@@ -4253,6 +4444,7 @@
           "requestsRawInWindow": 32658.393207054214,
           "normalizedPer10": 16329.196603527107,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2844382756.3683867
         },
         {
@@ -4273,6 +4465,7 @@
           "requestsRawInWindow": 100250.62656641605,
           "normalizedPer10": 50125.31328320802,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 7280701754.385965
         },
         {
@@ -4293,6 +4486,7 @@
           "requestsRawInWindow": 4367.5751222921035,
           "normalizedPer10": 2183.7875611460518,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 222580363.3822502
         },
         {
@@ -4313,6 +4507,7 @@
           "requestsRawInWindow": 294.11764705882354,
           "normalizedPer10": 147.05882352941177,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 14988823.529411765
         },
         {
@@ -4333,6 +4528,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -4353,6 +4549,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -4373,6 +4570,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -4393,6 +4591,7 @@
           "requestsRawInWindow": 588.2352941176471,
           "normalizedPer10": 294.11764705882354,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 29977647.05882353
         },
         {
@@ -4413,6 +4612,7 @@
           "requestsRawInWindow": 1470.5882352941178,
           "normalizedPer10": 735.2941176470589,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 74944117.64705883
         },
         {
@@ -4433,6 +4633,7 @@
           "requestsRawInWindow": 980.3921568627451,
           "normalizedPer10": 490.19607843137254,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 49962745.09803922
         },
         {
@@ -4453,6 +4654,7 @@
           "requestsRawInWindow": 2941.1764705882356,
           "normalizedPer10": 1470.5882352941178,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 149888235.29411766
         },
         {
@@ -4473,6 +4675,7 @@
           "requestsRawInWindow": 2298.190175237001,
           "normalizedPer10": 1149.0950876185004,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 117120367.71042804
         },
         {
@@ -4493,6 +4696,7 @@
           "requestsRawInWindow": 1436.3688595231254,
           "normalizedPer10": 718.1844297615627,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 73200229.81901751
         },
         {
@@ -4513,6 +4717,7 @@
           "requestsRawInWindow": 19847.83327820046,
           "normalizedPer10": 9923.91663910023,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1016606020.5094277
         },
         {
@@ -4533,6 +4738,7 @@
           "requestsRawInWindow": 665.3359946773121,
           "normalizedPer10": 332.66799733865605,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 33906852.96074518
         },
         {
@@ -4553,6 +4759,7 @@
           "requestsRawInWindow": 1330.6719893546242,
           "normalizedPer10": 665.3359946773121,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 67813705.92149036
         },
         {
@@ -4573,6 +4780,7 @@
           "requestsRawInWindow": 4435.573297848747,
           "normalizedPer10": 2217.7866489243734,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 226045686.40496784
         },
         {
@@ -4593,6 +4801,7 @@
           "requestsRawInWindow": 758.2650894752805,
           "normalizedPer10": 379.1325447376403,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 38642705.48983925
         },
         {
@@ -4613,6 +4822,7 @@
           "requestsRawInWindow": 5657.171940825438,
           "normalizedPer10": 2828.585970412719,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 288300796.44834596
         },
         {
@@ -4633,6 +4843,7 @@
           "requestsRawInWindow": 2017.1457387796268,
           "normalizedPer10": 1008.5728693898134,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 102797781.13968734
         },
         {
@@ -4653,6 +4864,7 @@
           "requestsRawInWindow": 1968.8915140775744,
           "normalizedPer10": 984.4457570387873,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 100338649.34042135
         },
         {
@@ -4673,6 +4885,7 @@
           "requestsRawInWindow": 9324.009324009323,
           "normalizedPer10": 4662.004662004661,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 475170163.1701631
         },
         {
@@ -4693,6 +4906,7 @@
           "requestsRawInWindow": 10293.36078229542,
           "normalizedPer10": 5146.68039114771,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 524570252.1873392
         },
         {
@@ -4713,6 +4927,7 @@
           "requestsRawInWindow": 590.6674542232723,
           "normalizedPer10": 295.33372711163616,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 30101594.802126404
         },
         {
@@ -4733,6 +4948,7 @@
           "requestsRawInWindow": 2351.0971786833857,
           "normalizedPer10": 1175.5485893416928,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 170031347.96238247
         },
         {
@@ -4753,6 +4969,7 @@
           "requestsRawInWindow": 113293.05135951663,
           "normalizedPer10": 56646.525679758306,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 8193353474.320243
         },
         {
@@ -4773,6 +4990,7 @@
           "requestsRawInWindow": 2176.633835772977,
           "normalizedPer10": 1088.3169178864885,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 110925613.53866245
         },
         {
@@ -4793,6 +5011,7 @@
           "requestsRawInWindow": 1690.1408450704228,
           "normalizedPer10": 845.0704225352114,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 55791549.29577465
         },
         {
@@ -4813,6 +5032,7 @@
           "requestsRawInWindow": 1088.0603510808066,
           "normalizedPer10": 544.0301755404033,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 55449731.61178007
         },
         {
@@ -4833,6 +5053,7 @@
           "requestsRawInWindow": 3013.2280712327115,
           "normalizedPer10": 1506.6140356163557,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 153560128.96616143
         },
         {
@@ -4853,6 +5074,7 @@
           "requestsRawInWindow": 5362.505362505363,
           "normalizedPer10": 2681.2526812526817,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 273283998.2839983
         }
       ]
@@ -4939,6 +5161,7 @@
           "requestsRawInWindow": 9667.718890448794,
           "normalizedPer10": 966.7718890448793,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 702118084.4188436
         },
         {
@@ -4959,6 +5182,7 @@
           "requestsRawInWindow": 53767.29514660549,
           "normalizedPer10": 5376.729514660549,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3904849810.0222235
         },
         {
@@ -4979,6 +5203,7 @@
           "requestsRawInWindow": 1400.5602240896358,
           "normalizedPer10": 140.05602240896357,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 109033613.44537814
         },
         {
@@ -4999,6 +5224,7 @@
           "requestsRawInWindow": 10646.414819809428,
           "normalizedPer10": 1064.6414819809427,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 596944478.9467146
         },
         {
@@ -5019,6 +5245,7 @@
           "requestsRawInWindow": 1774.402469968238,
           "normalizedPer10": 177.44024699682382,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 99490746.4911191
         },
         {
@@ -5039,6 +5266,7 @@
           "requestsRawInWindow": 4110.405491501736,
           "normalizedPer10": 411.0405491501736,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 230470435.90850234
         },
         {
@@ -5059,6 +5287,7 @@
           "requestsRawInWindow": 7183.564005555289,
           "normalizedPer10": 718.3564005555289,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 366088788.8511087
         },
         {
@@ -5079,6 +5308,7 @@
           "requestsRawInWindow": 45112.781954887214,
           "normalizedPer10": 4511.278195488721,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2535338345.864661
         },
         {
@@ -5099,6 +5329,7 @@
           "requestsRawInWindow": 2826.988315114964,
           "normalizedPer10": 282.6988315114964,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 149406332.45382583
         },
         {
@@ -5119,6 +5350,7 @@
           "requestsRawInWindow": 9894.459102902374,
           "normalizedPer10": 989.4459102902374,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 522922163.58839047
         },
         {
@@ -5139,6 +5371,7 @@
           "requestsRawInWindow": 1446.0444658673252,
           "normalizedPer10": 144.6044465867325,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 76423450.02108814
         },
         {
@@ -5159,6 +5392,7 @@
           "requestsRawInWindow": 2826.988315114964,
           "normalizedPer10": 282.6988315114964,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 149406332.45382583
         },
         {
@@ -5179,6 +5413,7 @@
           "requestsRawInWindow": 3786.5018781049316,
           "normalizedPer10": 378.65018781049315,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 192967708.71198353
         },
         {
@@ -5199,6 +5434,7 @@
           "requestsRawInWindow": 26921.755069309198,
           "normalizedPer10": 2692.17550693092,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1526463512.4298315
         },
         {
@@ -5219,6 +5455,7 @@
           "requestsRawInWindow": 12106.537530266341,
           "normalizedPer10": 1210.6537530266341,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 671004842.6150119
         },
         {
@@ -5239,6 +5476,7 @@
           "requestsRawInWindow": 22675.736961451246,
           "normalizedPer10": 2267.5736961451244,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1256802721.0884354
         },
         {
@@ -5259,6 +5497,7 @@
           "requestsRawInWindow": 14916.17111831507,
           "normalizedPer10": 1491.6171118315071,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1238638849.6648834
         },
         {
@@ -5279,6 +5518,7 @@
           "requestsRawInWindow": 7458.085559157535,
           "normalizedPer10": 745.8085559157536,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 619319424.8324417
         },
         {
@@ -5299,6 +5539,7 @@
           "requestsRawInWindow": 161949.14796753816,
           "normalizedPer10": 16194.914796753814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 11663577636.622099
         },
         {
@@ -5319,6 +5560,7 @@
           "requestsRawInWindow": 80974.57398376908,
           "normalizedPer10": 8097.457398376907,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5831788818.311049
         },
         {
@@ -5339,6 +5581,7 @@
           "requestsRawInWindow": 53983.04932251272,
           "normalizedPer10": 5398.3049322512725,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3887859212.207366
         },
         {
@@ -5359,6 +5602,7 @@
           "requestsRawInWindow": 26991.52466125636,
           "normalizedPer10": 2699.1524661256362,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1943929606.103683
         },
         {
@@ -5379,6 +5623,7 @@
           "requestsRawInWindow": 2773.5660663437,
           "normalizedPer10": 277.35660663437005,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 141346473.87300766
         },
         {
@@ -5399,6 +5644,7 @@
           "requestsRawInWindow": 53456.878118317894,
           "normalizedPer10": 5345.68781183179,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2724269422.6657166
         },
         {
@@ -5419,6 +5665,7 @@
           "requestsRawInWindow": 2755.306720744153,
           "normalizedPer10": 275.5306720744153,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 140415941.10256353
         },
         {
@@ -5439,6 +5686,7 @@
           "requestsRawInWindow": 12013.979903888161,
           "normalizedPer10": 1201.3979903888162,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 612256443.8619485
         },
         {
@@ -5459,6 +5707,7 @@
           "requestsRawInWindow": 1232.2223914972174,
           "normalizedPer10": 123.22223914972173,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 62796517.51548119
         },
         {
@@ -5479,6 +5728,7 @@
           "requestsRawInWindow": 15190.386173372939,
           "normalizedPer10": 1519.038617337294,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 774132460.1674317
         },
         {
@@ -5499,6 +5749,7 @@
           "requestsRawInWindow": 42680.44581148332,
           "normalizedPer10": 4268.044581148331,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2175080879.444813
         },
         {
@@ -5519,6 +5770,7 @@
           "requestsRawInWindow": 122051.44061383737,
           "normalizedPer10": 12205.144061383739,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 6219985516.56238
         },
         {
@@ -5539,6 +5791,7 @@
           "requestsRawInWindow": 18265.841050651172,
           "normalizedPer10": 1826.5841050651172,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 930863791.623285
         },
         {
@@ -5559,6 +5812,7 @@
           "requestsRawInWindow": 37973.722184248494,
           "normalizedPer10": 3797.3722184248495,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1935216829.9536717
         },
         {
@@ -5579,6 +5833,7 @@
           "requestsRawInWindow": 46654.847438648874,
           "normalizedPer10": 4665.484743864888,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4063403937.6691236
         },
         {
@@ -5599,6 +5854,7 @@
           "requestsRawInWindow": 161117.0784103115,
           "normalizedPer10": 16111.707841031148,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 11701127819.548872
         },
         {
@@ -5619,6 +5875,7 @@
           "requestsRawInWindow": 6239.3930318458615,
           "normalizedPer10": 623.9393031845862,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 317971947.6889288
         },
         {
@@ -5639,6 +5896,7 @@
           "requestsRawInWindow": 630.2521008403361,
           "normalizedPer10": 63.0252100840336,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 32118907.563025206
         },
         {
@@ -5659,6 +5917,7 @@
           "requestsRawInWindow": 1260.5042016806722,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 64237815.12605041
         },
         {
@@ -5679,6 +5938,7 @@
           "requestsRawInWindow": 1260.5042016806722,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 64237815.12605041
         },
         {
@@ -5699,6 +5959,7 @@
           "requestsRawInWindow": 1260.5042016806722,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 64237815.12605041
         },
         {
@@ -5719,6 +5980,7 @@
           "requestsRawInWindow": 1260.5042016806722,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 64237815.12605041
         },
         {
@@ -5739,6 +6001,7 @@
           "requestsRawInWindow": 3151.2605042016808,
           "normalizedPer10": 315.12605042016804,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 160594537.81512606
         },
         {
@@ -5759,6 +6022,7 @@
           "requestsRawInWindow": 2100.8403361344535,
           "normalizedPer10": 210.08403361344534,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 107063025.21008402
         },
         {
@@ -5779,6 +6043,7 @@
           "requestsRawInWindow": 6302.5210084033615,
           "normalizedPer10": 630.2521008403361,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 321189075.6302521
         },
         {
@@ -5799,6 +6064,7 @@
           "requestsRawInWindow": 4309.106578569376,
           "normalizedPer10": 430.91065785693763,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 219600689.45705256
         },
         {
@@ -5819,6 +6085,7 @@
           "requestsRawInWindow": 3077.9332704066974,
           "normalizedPer10": 307.79332704066974,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 156857635.3264661
         },
         {
@@ -5839,6 +6106,7 @@
           "requestsRawInWindow": 28354.047540286374,
           "normalizedPer10": 2835.4047540286374,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1452294315.013468
         },
         {
@@ -5859,6 +6127,7 @@
           "requestsRawInWindow": 1425.71998859424,
           "normalizedPer10": 142.571998859424,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 72657542.05873966
         },
         {
@@ -5879,6 +6148,7 @@
           "requestsRawInWindow": 2851.43997718848,
           "normalizedPer10": 285.143997718848,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 145315084.11747932
         },
         {
@@ -5899,6 +6169,7 @@
           "requestsRawInWindow": 9504.7999239616,
           "normalizedPer10": 950.4799923961601,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 484383613.72493106
         },
         {
@@ -5919,6 +6190,7 @@
           "requestsRawInWindow": 1624.8537631613153,
           "normalizedPer10": 162.48537631613152,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 82805797.47822694
         },
         {
@@ -5939,6 +6211,7 @@
           "requestsRawInWindow": 9698.009041415035,
           "normalizedPer10": 969.8009041415035,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 494229936.768593
         },
         {
@@ -5959,6 +6232,7 @@
           "requestsRawInWindow": 4322.455154527772,
           "normalizedPer10": 432.24551545277717,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 220280959.5850443
         },
         {
@@ -5979,6 +6253,7 @@
           "requestsRawInWindow": 4219.053244451945,
           "normalizedPer10": 421.9053244451945,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 215011391.44376
         },
         {
@@ -5999,6 +6274,7 @@
           "requestsRawInWindow": 19980.019980019977,
           "normalizedPer10": 1998.0019980019977,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1018221778.221778
         },
         {
@@ -6019,6 +6295,7 @@
           "requestsRawInWindow": 22057.201676347326,
           "normalizedPer10": 2205.7201676347327,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1124079111.8300123
         },
         {
@@ -6039,6 +6316,7 @@
           "requestsRawInWindow": 1265.7159733355834,
           "normalizedPer10": 126.57159733355834,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 64503417.433128
         },
         {
@@ -6059,6 +6337,7 @@
           "requestsRawInWindow": 3358.710255261979,
           "normalizedPer10": 335.8710255261979,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 242901925.66054633
         },
         {
@@ -6079,6 +6358,7 @@
           "requestsRawInWindow": 161847.21622788088,
           "normalizedPer10": 16184.721622788089,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 11704790677.600346
         },
         {
@@ -6099,6 +6379,7 @@
           "requestsRawInWindow": 4664.2153623706645,
           "normalizedPer10": 466.42153623706645,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 237697743.2971338
         },
         {
@@ -6119,6 +6400,7 @@
           "requestsRawInWindow": 2414.486921529175,
           "normalizedPer10": 241.4486921529175,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 79702213.27967808
         },
         {
@@ -6139,6 +6421,7 @@
           "requestsRawInWindow": 1554.3719301154379,
           "normalizedPer10": 155.4371930115438,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 79213902.30254294
         },
         {
@@ -6159,6 +6442,7 @@
           "requestsRawInWindow": 4304.611530332444,
           "normalizedPer10": 430.4611530332444,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 219371612.808802
         },
         {
@@ -6179,6 +6463,7 @@
           "requestsRawInWindow": 7660.721946436232,
           "normalizedPer10": 766.0721946436232,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 390405711.8342833
         }
       ]
@@ -6265,6 +6550,7 @@
           "requestsRawInWindow": 19335.437780897588,
           "normalizedPer10": 966.7718890448793,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1404236168.8376873
         },
         {
@@ -6285,6 +6571,7 @@
           "requestsRawInWindow": 107534.59029321097,
           "normalizedPer10": 5376.729514660549,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 7809699620.044447
         },
         {
@@ -6305,6 +6592,7 @@
           "requestsRawInWindow": 2801.1204481792715,
           "normalizedPer10": 140.05602240896357,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 218067226.89075628
         },
         {
@@ -6325,6 +6613,7 @@
           "requestsRawInWindow": 21292.829639618856,
           "normalizedPer10": 1064.6414819809427,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1193888957.8934293
         },
         {
@@ -6345,6 +6634,7 @@
           "requestsRawInWindow": 3548.804939936476,
           "normalizedPer10": 177.44024699682382,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 198981492.9822382
         },
         {
@@ -6365,6 +6655,7 @@
           "requestsRawInWindow": 8220.810983003472,
           "normalizedPer10": 411.0405491501736,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 460940871.8170047
         },
         {
@@ -6385,6 +6676,7 @@
           "requestsRawInWindow": 14367.128011110579,
           "normalizedPer10": 718.3564005555289,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 732177577.7022173
         },
         {
@@ -6405,6 +6697,7 @@
           "requestsRawInWindow": 90225.56390977443,
           "normalizedPer10": 4511.278195488721,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5070676691.729322
         },
         {
@@ -6425,6 +6718,7 @@
           "requestsRawInWindow": 5653.976630229928,
           "normalizedPer10": 282.6988315114964,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 298812664.90765166
         },
         {
@@ -6445,6 +6739,7 @@
           "requestsRawInWindow": 19788.918205804748,
           "normalizedPer10": 989.4459102902374,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1045844327.1767809
         },
         {
@@ -6465,6 +6760,7 @@
           "requestsRawInWindow": 2892.0889317346505,
           "normalizedPer10": 144.6044465867325,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 152846900.04217628
         },
         {
@@ -6485,6 +6781,7 @@
           "requestsRawInWindow": 5653.976630229928,
           "normalizedPer10": 282.6988315114964,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 298812664.90765166
         },
         {
@@ -6505,6 +6802,7 @@
           "requestsRawInWindow": 7573.003756209863,
           "normalizedPer10": 378.65018781049315,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 385935417.42396706
         },
         {
@@ -6525,6 +6823,7 @@
           "requestsRawInWindow": 53843.510138618396,
           "normalizedPer10": 2692.17550693092,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3052927024.859663
         },
         {
@@ -6545,6 +6844,7 @@
           "requestsRawInWindow": 24213.075060532683,
           "normalizedPer10": 1210.6537530266341,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1342009685.2300239
         },
         {
@@ -6565,6 +6865,7 @@
           "requestsRawInWindow": 45351.47392290249,
           "normalizedPer10": 2267.5736961451244,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2513605442.176871
         },
         {
@@ -6585,6 +6886,7 @@
           "requestsRawInWindow": 29832.34223663014,
           "normalizedPer10": 1491.6171118315071,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2477277699.3297668
         },
         {
@@ -6605,6 +6907,7 @@
           "requestsRawInWindow": 14916.17111831507,
           "normalizedPer10": 745.8085559157536,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1238638849.6648834
         },
         {
@@ -6625,6 +6928,7 @@
           "requestsRawInWindow": 323898.2959350763,
           "normalizedPer10": 16194.914796753814,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 23327155273.244198
         },
         {
@@ -6645,6 +6949,7 @@
           "requestsRawInWindow": 161949.14796753816,
           "normalizedPer10": 8097.457398376907,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 11663577636.622099
         },
         {
@@ -6665,6 +6970,7 @@
           "requestsRawInWindow": 107966.09864502544,
           "normalizedPer10": 5398.3049322512725,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 7775718424.414732
         },
         {
@@ -6685,6 +6991,7 @@
           "requestsRawInWindow": 53983.04932251272,
           "normalizedPer10": 2699.1524661256362,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3887859212.207366
         },
         {
@@ -6705,6 +7012,7 @@
           "requestsRawInWindow": 5547.1321326874,
           "normalizedPer10": 277.35660663437005,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 282692947.7460153
         },
         {
@@ -6725,6 +7033,7 @@
           "requestsRawInWindow": 106913.75623663579,
           "normalizedPer10": 5345.68781183179,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 5448538845.331433
         },
         {
@@ -6745,6 +7054,7 @@
           "requestsRawInWindow": 5510.613441488306,
           "normalizedPer10": 275.5306720744153,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 280831882.20512706
         },
         {
@@ -6765,6 +7075,7 @@
           "requestsRawInWindow": 24027.959807776322,
           "normalizedPer10": 1201.3979903888162,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1224512887.723897
         },
         {
@@ -6785,6 +7096,7 @@
           "requestsRawInWindow": 2464.4447829944347,
           "normalizedPer10": 123.22223914972173,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 125593035.03096238
         },
         {
@@ -6805,6 +7117,7 @@
           "requestsRawInWindow": 30380.772346745878,
           "normalizedPer10": 1519.038617337294,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1548264920.3348634
         },
         {
@@ -6825,6 +7138,7 @@
           "requestsRawInWindow": 85360.89162296664,
           "normalizedPer10": 4268.044581148331,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4350161758.889626
         },
         {
@@ -6845,6 +7159,7 @@
           "requestsRawInWindow": 244102.88122767475,
           "normalizedPer10": 12205.144061383739,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 12439971033.12476
         },
         {
@@ -6865,6 +7180,7 @@
           "requestsRawInWindow": 36531.682101302344,
           "normalizedPer10": 1826.5841050651172,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1861727583.24657
         },
         {
@@ -6885,6 +7201,7 @@
           "requestsRawInWindow": 75947.44436849699,
           "normalizedPer10": 3797.3722184248495,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3870433659.9073434
         },
         {
@@ -6905,6 +7222,7 @@
           "requestsRawInWindow": 93309.69487729775,
           "normalizedPer10": 4665.484743864888,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 8126807875.338247
         },
         {
@@ -6925,6 +7243,7 @@
           "requestsRawInWindow": 322234.156820623,
           "normalizedPer10": 16111.707841031148,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 23402255639.097744
         },
         {
@@ -6945,6 +7264,7 @@
           "requestsRawInWindow": 12478.786063691723,
           "normalizedPer10": 623.9393031845862,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 635943895.3778576
         },
         {
@@ -6965,6 +7285,7 @@
           "requestsRawInWindow": 1260.5042016806722,
           "normalizedPer10": 63.0252100840336,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 64237815.12605041
         },
         {
@@ -6985,6 +7306,7 @@
           "requestsRawInWindow": 2521.0084033613443,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 128475630.25210083
         },
         {
@@ -7005,6 +7327,7 @@
           "requestsRawInWindow": 2521.0084033613443,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 128475630.25210083
         },
         {
@@ -7025,6 +7348,7 @@
           "requestsRawInWindow": 2521.0084033613443,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 128475630.25210083
         },
         {
@@ -7045,6 +7369,7 @@
           "requestsRawInWindow": 2521.0084033613443,
           "normalizedPer10": 126.0504201680672,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 128475630.25210083
         },
         {
@@ -7065,6 +7390,7 @@
           "requestsRawInWindow": 6302.5210084033615,
           "normalizedPer10": 315.12605042016804,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 321189075.6302521
         },
         {
@@ -7085,6 +7411,7 @@
           "requestsRawInWindow": 4201.680672268907,
           "normalizedPer10": 210.08403361344534,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 214126050.42016804
         },
         {
@@ -7105,6 +7432,7 @@
           "requestsRawInWindow": 12605.042016806723,
           "normalizedPer10": 630.2521008403361,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 642378151.2605042
         },
         {
@@ -7125,6 +7453,7 @@
           "requestsRawInWindow": 8618.213157138753,
           "normalizedPer10": 430.91065785693763,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 439201378.9141051
         },
         {
@@ -7145,6 +7474,7 @@
           "requestsRawInWindow": 6155.866540813395,
           "normalizedPer10": 307.79332704066974,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 313715270.6529322
         },
         {
@@ -7165,6 +7495,7 @@
           "requestsRawInWindow": 56708.09508057275,
           "normalizedPer10": 2835.4047540286374,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2904588630.026936
         },
         {
@@ -7185,6 +7516,7 @@
           "requestsRawInWindow": 2851.43997718848,
           "normalizedPer10": 142.571998859424,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 145315084.11747932
         },
         {
@@ -7205,6 +7537,7 @@
           "requestsRawInWindow": 5702.87995437696,
           "normalizedPer10": 285.143997718848,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 290630168.23495865
         },
         {
@@ -7225,6 +7558,7 @@
           "requestsRawInWindow": 19009.5998479232,
           "normalizedPer10": 950.4799923961601,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 968767227.4498621
         },
         {
@@ -7245,6 +7579,7 @@
           "requestsRawInWindow": 3249.7075263226307,
           "normalizedPer10": 162.48537631613152,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 165611594.9564539
         },
         {
@@ -7265,6 +7600,7 @@
           "requestsRawInWindow": 19396.01808283007,
           "normalizedPer10": 969.8009041415035,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 988459873.537186
         },
         {
@@ -7285,6 +7621,7 @@
           "requestsRawInWindow": 8644.910309055544,
           "normalizedPer10": 432.24551545277717,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 440561919.1700886
         },
         {
@@ -7305,6 +7642,7 @@
           "requestsRawInWindow": 8438.10648890389,
           "normalizedPer10": 421.9053244451945,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 430022782.88752
         },
         {
@@ -7325,6 +7663,7 @@
           "requestsRawInWindow": 39960.039960039954,
           "normalizedPer10": 1998.0019980019977,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2036443556.443556
         },
         {
@@ -7345,6 +7684,7 @@
           "requestsRawInWindow": 44114.40335269465,
           "normalizedPer10": 2205.7201676347327,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 2248158223.6600246
         },
         {
@@ -7365,6 +7705,7 @@
           "requestsRawInWindow": 2531.4319466711668,
           "normalizedPer10": 126.57159733355834,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 129006834.866256
         },
         {
@@ -7385,6 +7726,7 @@
           "requestsRawInWindow": 6717.420510523958,
           "normalizedPer10": 335.8710255261979,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 485803851.32109267
         },
         {
@@ -7405,6 +7747,7 @@
           "requestsRawInWindow": 323694.43245576177,
           "normalizedPer10": 16184.721622788089,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 23409581355.20069
         },
         {
@@ -7425,6 +7768,7 @@
           "requestsRawInWindow": 9328.430724741329,
           "normalizedPer10": 466.42153623706645,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 475395486.5942676
         },
         {
@@ -7445,6 +7789,7 @@
           "requestsRawInWindow": 4828.97384305835,
           "normalizedPer10": 241.4486921529175,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 159404426.55935615
         },
         {
@@ -7465,6 +7810,7 @@
           "requestsRawInWindow": 3108.7438602308757,
           "normalizedPer10": 155.4371930115438,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 158427804.60508588
         },
         {
@@ -7485,6 +7831,7 @@
           "requestsRawInWindow": 8609.223060664888,
           "normalizedPer10": 430.4611530332444,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 438743225.617604
         },
         {
@@ -7505,6 +7852,7 @@
           "requestsRawInWindow": 15321.443892872465,
           "normalizedPer10": 766.0721946436232,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 780811423.6685666
         }
       ]
@@ -7584,6 +7932,7 @@
           "requestsRawInWindow": 950.5703422053232,
           "normalizedPer10": 2494.527019241848,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 217528992.39543724
         },
         {
@@ -7604,6 +7953,7 @@
           "requestsRawInWindow": 2881.844380403458,
           "normalizedPer10": 7562.658283119379,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 701285302.59366
         }
       ]
@@ -7683,6 +8033,7 @@
           "requestsRawInWindow": 5703.42205323194,
           "normalizedPer10": 3292.7756653992396,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1305173954.3726237
         },
         {
@@ -7703,6 +8054,7 @@
           "requestsRawInWindow": 17291.066282420747,
           "normalizedPer10": 9982.708933717577,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 4207711815.561959
         }
       ]
@@ -7782,6 +8134,7 @@
           "requestsRawInWindow": 13307.984790874525,
           "normalizedPer10": 3816.130738045477,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 3045405893.536122
         },
         {
@@ -7802,6 +8155,7 @@
           "requestsRawInWindow": 40345.821325648416,
           "normalizedPer10": 11569.364658281962,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 9817994236.31124
         }
       ]
@@ -8062,6 +8416,7 @@
           "requestsRawInWindow": 147832.24400871462,
           "normalizedPer10": 77806.44421511295,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 11508740196.078434
         },
         {
@@ -8082,6 +8437,7 @@
           "requestsRawInWindow": 374584.247643495,
           "normalizedPer10": 197149.6040228921,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 21002938765.37076
         },
         {
@@ -8102,6 +8458,7 @@
           "requestsRawInWindow": 433862.4338624339,
           "normalizedPer10": 228348.64940128097,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 24326666666.666668
         },
         {
@@ -8122,6 +8479,7 @@
           "requestsRawInWindow": 758241.1442619287,
           "normalizedPer10": 399074.2864536467,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 38641485193.87641
         }
       ]
@@ -8202,6 +8560,7 @@
           "requestsRawInWindow": 303453.1590413943,
           "normalizedPer10": 77808.50231830623,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 23623828431.372547
         },
         {
@@ -8222,6 +8581,7 @@
           "requestsRawInWindow": 768903.7938696365,
           "normalizedPer10": 197154.81894093243,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 43112435722.270515
         },
         {
@@ -8242,6 +8602,7 @@
           "requestsRawInWindow": 890583.2893748301,
           "normalizedPer10": 228354.68958328976,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 49935005035.24672
         },
         {
@@ -8262,6 +8623,7 @@
           "requestsRawInWindow": 1556430.8861325288,
           "normalizedPer10": 399084.8425980843,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 79318830819.08594
         }
       ]
@@ -8342,6 +8704,7 @@
           "requestsRawInWindow": 770305.0108932462,
           "normalizedPer10": 77808.58695891376,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 59968245098.039215
         },
         {
@@ -8362,6 +8725,7 @@
           "requestsRawInWindow": 1951834.830731862,
           "normalizedPer10": 197155.0334072588,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 109439378959.1355
         },
         {
@@ -8382,6 +8746,7 @@
           "requestsRawInWindow": 2260713.8860915294,
           "normalizedPer10": 228354.9379890434,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 126758227593.15205
         },
         {
@@ -8402,6 +8767,7 @@
           "requestsRawInWindow": 3950944.239579841,
           "normalizedPer10": 399085.27672523644,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 201348020337.46786
         }
       ]
@@ -8482,6 +8848,7 @@
           "requestsRawInWindow": 1548398.692810458,
           "normalizedPer10": 77808.97953821397,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 120542838235.29414
         },
         {
@@ -8502,6 +8869,7 @@
           "requestsRawInWindow": 3923404.9600463714,
           "normalizedPer10": 197156.02814303376,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 219985316109.80005
         },
         {
@@ -8522,6 +8890,7 @@
           "requestsRawInWindow": 4544286.193833022,
           "normalizedPer10": 228356.09014236295,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 254798126888.21756
         },
         {
@@ -8542,6 +8911,7 @@
           "requestsRawInWindow": 7941837.076768355,
           "normalizedPer10": 399087.2902898671,
           "privacy": null,
+          "estimate": "price-based estimate (official billing example, not a published limit)",
           "rawTokensPerMonth": 404731901106.2689
         }
       ]
@@ -8612,6 +8982,7 @@
           "requestsRawInWindow": 26730.82063619353,
           "normalizedPer10": 26730.82063619353,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1515637530.072173
         },
         {
@@ -8632,6 +9003,7 @@
           "requestsRawInWindow": 28079.04250465059,
           "normalizedPer10": 28079.04250465059,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1556280930.820259
         },
         {
@@ -8652,6 +9024,7 @@
           "requestsRawInWindow": 28079.04250465059,
           "normalizedPer10": 28079.04250465059,
           "privacy": null,
+          "estimate": null,
           "rawTokensPerMonth": 1556280930.820259
         }
       ]
