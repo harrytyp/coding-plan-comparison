@@ -312,24 +312,29 @@ export function parsePrivacyText(html) {
 }
 
 // ---------- Parser: LLM Stats (zeroeval.com/stats/v1) ----------
-// Extrahiert top_scores je Modell. Der einzig wichtige Score ist `general`
-// (TrueSkill-Elo, 0-1000+), der alle Kategorien aggregiert.
-// `code` (0-1 normalisiert) wird separat als coding-Score gespeichert.
+// Single score: `conservative_rating` aus Rankings (0-100, konservative TrueSkill-Untergrenze).
+// Kompatibel mit models-Response (top_scores.general als Fallback).
 export function parseLlamaStats(raw) {
   const data = JSON.parse(raw);
+  // Support both: rankings-Response {models: [{model_id, model_name, conservative_rating, ...}]}
+  // und models-Response {models: [{id, name, top_scores: {general, ...}}]}
   const models = data?.models ?? [];
   const scores = {};
   for (const m of models) {
-    const ts = m.top_scores ?? {};
-    if (Object.keys(ts).length === 0) continue;
-    const slug = (m.id ?? m.name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+    const slug = (m.model_id ?? m.id ?? m.name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+    const name = m.model_name ?? m.name ?? slug;
+    // conservative_rating (0-100) aus Rankings, oder top_scores.general (TrueSkill 0-1000+) aus Models
+    let intel = null;
+    if (typeof m.conservative_rating === "number") {
+      intel = m.conservative_rating;
+    } else {
+      const ts = m.top_scores ?? {};
+      if (typeof ts.general === "number") intel = ts.general;
+    }
+    if (intel === null) continue;
     scores[slug] = {
-      // general = TrueSkill-Elo, der aggregierte Gesamtscore (einziger wichtiger Wert)
-      intelligence: typeof ts.general === "number" ? ts.general : null,
-      // code = 0-1 normalisiert, separate Coding-Metrik
-      coding: typeof ts.code === "number" ? ts.code : null,
-      name: m.name,
-      topScores: ts,
+      intelligence: intel,
+      name: name,
     };
   }
   return {
