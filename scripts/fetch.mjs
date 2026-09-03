@@ -35,6 +35,23 @@ async function fetchSource(source) {
   const { id, url, typ, parser } = source;
   const ext = typ === "json-api" ? "json" : "html";
   const outPath = join(CACHE_DIR, `${id}.${ext}`);
+
+  // TTL-Cache-Guard: wenn cache_ttl_hours gesetzt und Cache noch frisch, HTTP-Call überspringen
+  const ttlHours = source.cache_ttl_hours ?? 0;
+  if (ttlHours > 0) {
+    try {
+      const manifest = JSON.parse(await readFile(MANIFEST_PATH, "utf8"));
+      const prev = manifest.sources?.[id];
+      if (prev?.fetchedAt) {
+        const ageHours = (Date.now() - new Date(prev.fetchedAt).getTime()) / 3600000;
+        if (ageHours < ttlHours && prev.ok) {
+          console.log(`✓ ${id}: Cache gültig (${ageHours.toFixed(1)}h < ${ttlHours}h TTL) — übersprungen`);
+          return prev;
+        }
+      }
+    } catch { /* erster Durchlauf — kein Manifest vorhanden */ }
+  }
+
   try {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 30000);

@@ -154,6 +154,8 @@ const I18N = {
     "faq.a4": "The paid checkout price (paidPrice), not the advertised one. Command Code GOAT advertises $10 but checkout is $10.77. we scale by the real price. Where a plan is CNY (GLM, Kimi) we keep the official currency and note it.",
     "faq.q5": "How often does this update?",
     "faq.a5": "A GitHub Action fetches all sources daily at 03:17 UTC. If parsed content changed, it commits the new latest.json. If a non-scrapable price page (GLM, MiniMax) changed, it opens a review issue for manual verification.",
+    "faq.q6": "Where do the AI scores come from?",
+    "faq.a6": "Model benchmark scores (intelligence, coding, reasoning, agents) are sourced from llm-stats.com — a community-driven model catalog. We cache the data locally and only re-fetch when the cache expires (24h TTL). No API call is made if the cached data is still fresh.",
     "foot.product": "Product",
     "foot.plans": "Plans",
     "foot.models": "Model comparison",
@@ -163,6 +165,7 @@ const I18N = {
     "foot.json": "latest.json (API)",
     "foot.repo": "GitHub",
     "foot.sources": "sources.yml",
+    "foot.llmstats": "AI scores: llm-stats.com",
     "foot.legal": "Note",
     "foot.note": "Independent & informational. We don't sell plans and have no affiliate links. Always confirm on the official provider page.",
     "foot.legalTitle": "Legal",
@@ -324,6 +327,8 @@ const I18N = {
     "faq.a4": "Den bezahlten Checkout-Preis (paidPrice), nicht den beworbenen. Command Code GOAT bewirbt $10, aber der Checkout ist $10,77. wir skalieren mit dem echten Preis. Wo ein Plan in CNY ist (GLM, Kimi), behalten wir die offizielle Währung und weisen darauf hin.",
     "faq.q5": "Wie oft wird aktualisiert?",
     "faq.a5": "Eine GitHub Action holt täglich um 03:17 UTC alle Quellen. Wenn sich geparster Inhalt geändert hat, committed sie das neue latest.json. Wenn sich eine nicht-scrapebare Preisseite (GLM, MiniMax) geändert hat, öffnet sie ein Review-Issue zur manuellen Prüfung.",
+    "faq.q6": "Woher kommen die AI-Scores?",
+    "faq.a6": "Die Modell-Benchmark-Scores (Intelligenz, Coding, Reasoning, Agents) kommen von llm-stats.com — einem Community-Modell-Katalog. Wir cachen die Daten lokal und fetchen nur neu, wenn der Cache abläuft (24h TTL). Kein API-Call bei frischem Cache.",
     "foot.product": "Produkt",
     "foot.plans": "Pläne",
     "foot.models": "Modellvergleich",
@@ -333,6 +338,7 @@ const I18N = {
     "foot.json": "latest.json (API)",
     "foot.repo": "GitHub",
     "foot.sources": "sources.yml",
+    "foot.llmstats": "AI-Scores: llm-stats.com",
     "foot.legal": "Hinweis",
     "foot.note": "Unabhängig & informativ. Wir verkaufen keine Pläne und haben keine Affiliate-Links. Bitte immer auf der offiziellen Anbieterseite bestätigen.",
     "foot.legalTitle": "Rechtliches",
@@ -612,7 +618,7 @@ function saveColumns() {
 }
 function columnVisible(col) { return visibleColumns.includes(col); }
 
-/* ---------------- AI-Score (Artificial Analysis) ---------------- */
+/* ---------------- AI-Score (LLM Stats) ---------------- */
 function aiScoreFor(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
   // Bekannte AA-Umbenennungen: Feed-Name → AA-Slug (wenn AA anders heißt)
