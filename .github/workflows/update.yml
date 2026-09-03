@@ -28,6 +28,8 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      AA_API_KEY: ${{ secrets.AA_API_KEY }}
     steps:
       - uses: actions/checkout@v4
         with:

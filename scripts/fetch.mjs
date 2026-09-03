@@ -42,6 +42,12 @@ async function fetchSource(source) {
     const method = source.method ?? "GET";
     const body = source.body ?? null;
     const headers = { ...DEFAULT_HEADERS, Accept: typ === "json-api" ? "application/json" : "text/html,application/xhtml+xml" };
+    // Per-Source-Header aus sources.yml mit ${ENV_VAR}-Substitution
+    if (source.headers) {
+      for (const [k, v] of Object.entries(source.headers)) {
+        headers[k] = v.replace(/\$\{(\w+)\}/g, (_, name) => process.env[name] ?? "");
+      }
+    }
     if (method === "POST") headers["Content-Type"] = "application/json; charset=utf-8";
     const resp = await fetch(url, {
       method,

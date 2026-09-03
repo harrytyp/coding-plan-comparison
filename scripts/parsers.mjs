@@ -311,6 +311,32 @@ export function parsePrivacyText(html) {
   return out;
 }
 
+// ---------- Parser: Artificial Analysis LLM Models (JSON) ----------
+// Extrahiert Intelligence Index + Coding Index pro Modell (slug-basiert).
+export function parseAaModels(raw) {
+  const data = JSON.parse(raw);
+  const models = data?.data ?? [];
+  const scores = {};
+  for (const m of models) {
+    const ev = m.evaluations ?? {};
+    const intel = ev.artificial_analysis_intelligence_index;
+    const coding = ev.artificial_analysis_coding_index;
+    if (intel != null || coding != null) {
+      scores[m.slug] = {
+        intelligence: intel ?? null,
+        coding: coding ?? null,
+        name: m.name,
+      };
+    }
+  }
+  return {
+    source: "Artificial Analysis API (free tier)",
+    fetchedAt: new Date().toISOString(),
+    count: Object.keys(scores).length,
+    scores,
+  };
+}
+
 // ---------- Registry ----------
 export const PARSERS = {
   ocgo: parseOcgo,
@@ -323,4 +349,5 @@ export const PARSERS = {
   "kimi-goods": parseKimiGoods,
   "privacy-text": parsePrivacyText,
   fx: parseFx,
+  "aa-models": parseAaModels,
 };

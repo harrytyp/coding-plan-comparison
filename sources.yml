@@ -134,6 +134,17 @@ sources:
     provides: [privacy]
     note: "MiniMax Privacy (aktuell 404 — wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
 
+  # ---- AI-Scores (Artificial Analysis API) ----
+  # Offizielle API, API-Key via ${AA_API_KEY} aus GitHub Secrets.
+  - id: aa-llm-models
+    url: "https://artificialanalysis.ai/api/v2/data/llms/models"
+    typ: json-api
+    parser: aa-models
+    headers:
+      x-api-key: "${AA_API_KEY}"
+    provides: [ai_scores]
+    note: "AA Intelligence Index + Coding Index für alle Modelle (634 Modelle). API-Key aus GitHub Secrets."
+
   # ---- Währungskurse (täglich, für einheitliche Preis-Anzeige) ----
   # Wird 1x täglich mit-gescraped (wie die anderen Quellen) statt Client-seitiger
   # Live-API-Call. open.er-api.com: kostenlos, kein Key, täglich aktualisiert.
