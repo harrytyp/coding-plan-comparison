@@ -1,7 +1,7 @@
 {
   "source": "Artificial Analysis via free-llm-tracker benchmarks.json",
-  "fetchedAt": "2026-08-22T15:15:27Z",
-  "count": 597,
+  "fetchedAt": "2026-09-03T14:09:15Z",
+  "count": 598,
   "scores": {
     "gpt-oss-20b-low": {
       "intelligence": 14.4,
@@ -2389,6 +2389,10 @@
     },
     "seed-oss-36b-instruct": {
       "intelligence": 18.5,
+      "coding": null
+    },
+    "muse-spark-1-3": {
+      "intelligence": 61.5,
       "coding": null
     }
   }
