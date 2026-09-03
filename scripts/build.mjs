@@ -956,16 +956,16 @@ main().catch((e) => {
   process.exit(1);
 });
 
-// AI-Scores aus LLM Stats Rankings: conservative_rating (0-100)
+// AI-Scores aus LLM Stats Leaderboard Index: conservative (0-100)
 function loadAiScores(root) {
   const result = { source: "LLM Stats (zeroeval.com)", fetchedAt: null, count: 0, scores: {} };
   try {
-    const rPath = join(root, "parsed", "llm-stats-rankings.json");
-    const r = JSON.parse(readFileSync(rPath, "utf8"));
-    if (r?.scores && Object.keys(r.scores).length > 0) {
-      result.fetchedAt = r.fetchedAt ?? null;
-      result.source = r.source ?? result.source;
-      for (const [slug, s] of Object.entries(r.scores)) {
+    const mPath = join(root, "parsed", "llm-stats-indexes.json");
+    const m = JSON.parse(readFileSync(mPath, "utf8"));
+    if (m?.scores && Object.keys(m.scores).length > 0) {
+      result.fetchedAt = m.fetchedAt ?? null;
+      result.source = m.source ?? result.source;
+      for (const [slug, s] of Object.entries(m.scores)) {
         if (s.intelligence != null) {
           result.scores[slug] = { intelligence: s.intelligence };
           result.count++;

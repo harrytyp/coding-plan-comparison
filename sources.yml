@@ -134,17 +134,15 @@ sources:
     provides: [privacy]
     note: "MiniMax Privacy (aktuell 404 — wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
 
-  # ---- AI-Scores (LLM Stats) — nur 1x/Tag fetchen (cache_ttl_hours) ----
-  # Einziger Score: conservative_rating (0-100) aus Rankings. Gleiche Zahl wie auf llm-stats.com.
-  - id: llm-stats-rankings
-    url: "https://api.zeroeval.com/stats/v1/rankings?category=general&limit=50"
+  # ---- AI-Scores (LLM Stats Leaderboard) — nur 1x/Tag (cache_ttl_hours) ----
+  # Interner Leaderboard-Endpoint, kein Auth nötig. conservative (0-100) für alle Modelle.
+  - id: llm-stats-indexes
+    url: "https://api.zeroeval.com/leaderboard/indexes/compact?payloadVersion=2"
     typ: json-api
     parser: llm-stats
     cache_ttl_hours: 24
-    headers:
-      authorization: "Bearer ${LLM_STATS_KEY}"
     provides: [ai_scores]
-    note: "LLM Stats: conservative_rating (0-100) für Top-50 Modelle."
+    note: "LLM Stats Leaderboard: conservative (0-100) für 356 Modelle. Kein API-Key nötig."
 
   # ---- Währungskurse (täglich, für einheitliche Preis-Anzeige) ----
   # Wird 1x täglich mit-gescraped (wie die anderen Quellen) statt Client-seitiger

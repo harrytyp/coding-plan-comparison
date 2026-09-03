@@ -311,16 +311,18 @@ export function parsePrivacyText(html) {
   return out;
 }
 
-// ---------- Parser: LLM Stats (zeroeval.com/stats/v1) ----------
-// Einziger Score: conservative_rating (0-100) aus Rankings.
+// ---------- Parser: LLM Stats Leaderboard Index ----------
+// Einziger Score: conservative (0-100) aus dem internen Leaderboard-Endpoint.
+// Response: {general: {models: [{model_id, model_name, conservative, ...}]}}
 export function parseLlamaStats(raw) {
   const data = JSON.parse(raw);
-  const models = data?.models ?? [];
+  const models = data?.general?.models ?? [];
   const scores = {};
   for (const m of models) {
-    if (typeof m.conservative_rating !== "number") continue;
-    const slug = (m.model_id ?? m.model_name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
-    scores[slug] = { intelligence: m.conservative_rating, name: m.model_name };
+    if (typeof m.conservative !== "number") continue;
+    // Model IDs nutzen Dots (muse-spark-1.3) → Striche für Kompatibilität
+    const slug = m.model_id.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+    scores[slug] = { intelligence: m.conservative, name: m.model_name };
   }
   return {
     source: "LLM Stats (zeroeval.com)",

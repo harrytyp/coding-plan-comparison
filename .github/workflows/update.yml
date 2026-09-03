@@ -28,8 +28,6 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    env:
-      LLM_STATS_KEY: ${{ secrets.LLM_STATS_KEY }}
     steps:
       - uses: actions/checkout@v4
         with:
