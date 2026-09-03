@@ -956,38 +956,23 @@ main().catch((e) => {
   process.exit(1);
 });
 
-// AI-Scores aus LLM Stats: Rankings (conservative_rating 0-100) + Models (top_scores.general Fallback)
+// AI-Scores aus LLM Stats Rankings: conservative_rating (0-100)
 function loadAiScores(root) {
   const result = { source: "LLM Stats (zeroeval.com)", fetchedAt: null, count: 0, scores: {} };
-
-  // 1. Rankings (conservative_rating 0-100) — bevorzugt
   try {
     const rPath = join(root, "parsed", "llm-stats-rankings.json");
     const r = JSON.parse(readFileSync(rPath, "utf8"));
     if (r?.scores && Object.keys(r.scores).length > 0) {
       result.fetchedAt = r.fetchedAt ?? null;
+      result.source = r.source ?? result.source;
       for (const [slug, s] of Object.entries(r.scores)) {
-        result.scores[slug] = { intelligence: s.intelligence };
-        result.count++;
-      }
-    }
-  } catch (e) { /* kein Rankings-Parsed */ }
-
-  // 2. Models (top_scores.general) als Fallback für Modelle ohne Ranking
-  try {
-    const mPath = join(root, "parsed", "llm-stats-models.json");
-    const m = JSON.parse(readFileSync(mPath, "utf8"));
-    if (m?.scores && Object.keys(m.scores).length > 0) {
-      if (!result.fetchedAt) result.fetchedAt = m.fetchedAt ?? null;
-      for (const [slug, s] of Object.entries(m.scores)) {
-        if (!result.scores[slug] && s.intelligence != null) {
+        if (s.intelligence != null) {
           result.scores[slug] = { intelligence: s.intelligence };
           result.count++;
         }
       }
     }
-  } catch (e) { /* kein Models-Parsed */ }
-
+  } catch (e) { /* kein parsed */ }
   return result;
 }
 

@@ -312,30 +312,15 @@ export function parsePrivacyText(html) {
 }
 
 // ---------- Parser: LLM Stats (zeroeval.com/stats/v1) ----------
-// Single score: `conservative_rating` aus Rankings (0-100, konservative TrueSkill-Untergrenze).
-// Kompatibel mit models-Response (top_scores.general als Fallback).
+// Einziger Score: conservative_rating (0-100) aus Rankings.
 export function parseLlamaStats(raw) {
   const data = JSON.parse(raw);
-  // Support both: rankings-Response {models: [{model_id, model_name, conservative_rating, ...}]}
-  // und models-Response {models: [{id, name, top_scores: {general, ...}}]}
   const models = data?.models ?? [];
   const scores = {};
   for (const m of models) {
-    const slug = (m.model_id ?? m.id ?? m.name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
-    const name = m.model_name ?? m.name ?? slug;
-    // conservative_rating (0-100) aus Rankings, oder top_scores.general (TrueSkill 0-1000+) aus Models
-    let intel = null;
-    if (typeof m.conservative_rating === "number") {
-      intel = m.conservative_rating;
-    } else {
-      const ts = m.top_scores ?? {};
-      if (typeof ts.general === "number") intel = ts.general;
-    }
-    if (intel === null) continue;
-    scores[slug] = {
-      intelligence: intel,
-      name: name,
-    };
+    if (typeof m.conservative_rating !== "number") continue;
+    const slug = (m.model_id ?? m.model_name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+    scores[slug] = { intelligence: m.conservative_rating, name: m.model_name };
   }
   return {
     source: "LLM Stats (zeroeval.com)",
