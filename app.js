@@ -155,7 +155,7 @@ const I18N = {
     "faq.q5": "How often does this update?",
     "faq.a5": "A GitHub Action fetches all sources daily at 03:17 UTC. If parsed content changed, it commits the new latest.json. If a non-scrapable price page (GLM, MiniMax) changed, it opens a review issue for manual verification.",
     "faq.q6": "Where do the AI scores come from?",
-    "faq.a6": "Model benchmark scores (intelligence, coding, reasoning, agents) are sourced from llm-stats.com — a community-driven model catalog. We cache the data locally and only re-fetch when the cache expires (24h TTL). No API call is made if the cached data is still fresh.",
+    "faq.a6": "Model benchmark scores are sourced from llm-stats.com — a community-driven model catalog. We cache the data locally and only re-fetch when the cache expires (24h TTL). No API call is made if the cached data is still fresh.",
     "foot.product": "Product",
     "foot.plans": "Plans",
     "foot.models": "Model comparison",
@@ -675,7 +675,7 @@ function aiScoreFor(modelName, family) {
     }
     if (famScores.length >= 2) {
       const mean = famScores.reduce((a, b) => a + b, 0) / famScores.length;
-      return { intelligence: mean, coding: null, familyFallback: true };
+      return { intelligence: mean, familyFallback: true };
     }
   }
   return null;
@@ -759,7 +759,6 @@ function buildCombos() {
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
-        codingScore: score?.coding ?? null,
         scoreFallback: score?.familyFallback === true,
         tokensPer10,
         req10: row.normalizedPer10 ?? null,
@@ -891,11 +890,10 @@ function renderCell(col, c) {
   const scoreBar = c.score !== null
     ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
     : "";
-  const codingStr = c.codingScore !== null ? `<span class="muted">${c.codingScore.toFixed(1)}</span>` : "";
   switch (col) {
     case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
-    case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}<div class="muted" style="font-size:11px">${lang === "de" ? "coding" : "coding"} ${codingStr}</div></td>`;
+    case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>`;
     case "req10": {
       const mark = c.estimateNote ? "~" : "";
