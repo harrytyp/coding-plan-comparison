@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T15:49:19.048Z",
+  "generatedAt": "2026-09-03T16:29:28.025Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13617,8 +13617,8 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-03T15:49:18.956Z",
-    "count": 356,
+    "fetchedAt": "2026-09-03T16:29:27.696Z",
+    "count": 364,
     "scores": {
       "claude-fable-5-1": {
         "intelligence": 57.02
@@ -13725,10 +13725,10 @@
       "gemini-3-6-flash": {
         "intelligence": 43.69
       },
-      "seed-2-1-turbo": {
+      "deepseek-v4-pro-max": {
         "intelligence": 43.68
       },
-      "deepseek-v4-pro-max": {
+      "seed-2-1-turbo": {
         "intelligence": 43.68
       },
       "gemini-3-1-pro-preview": {
@@ -13743,10 +13743,10 @@
       "hy3": {
         "intelligence": 43.11
       },
-      "sakana-namazu": {
+      "qwen3-7-plus": {
         "intelligence": 42.9
       },
-      "qwen3-7-plus": {
+      "sakana-namazu": {
         "intelligence": 42.9
       },
       "gpt-5-4": {
@@ -14439,10 +14439,10 @@
       "ministral-3-8b-instruct-2512": {
         "intelligence": 7.88
       },
-      "mistral-large-2-2407": {
+      "llama-3-1-70b-instruct": {
         "intelligence": 7.82
       },
-      "llama-3-1-70b-instruct": {
+      "mistral-large-2-2407": {
         "intelligence": 7.82
       },
       "nova-lite": {
@@ -14687,6 +14687,30 @@
       },
       "ernie-4-5": {
         "intelligence": -13.19
+      },
+      "tencent-hy3": {
+        "intelligence": 43.11
+      },
+      "tencent-hy4-preview": {
+        "intelligence": 51.29
+      },
+      "step-3-7-flash": {
+        "intelligence": 37.25
+      },
+      "qwen-3-8-max-0902": {
+        "intelligence": 52.31
+      },
+      "qwen-3-6-max-preview": {
+        "intelligence": 39.61
+      },
+      "qwen-3-7-flash": {
+        "intelligence": 45.6
+      },
+      "longcat-2-0": {
+        "intelligence": 35.85
+      },
+      "deepseek-v4-flash": {
+        "intelligence": 36.53
       }
     }
   },
