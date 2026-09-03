@@ -163,6 +163,7 @@ const I18N = {
     "foot.json": "latest.json (API)",
     "foot.repo": "GitHub",
     "foot.sources": "sources.yml",
+    "foot.llmstats": "AI scores: llm-stats.com",
     "foot.legal": "Note",
     "foot.note": "Independent & informational. We don't sell plans and have no affiliate links. Always confirm on the official provider page.",
     "foot.legalTitle": "Legal",
@@ -333,6 +334,7 @@ const I18N = {
     "foot.json": "latest.json (API)",
     "foot.repo": "GitHub",
     "foot.sources": "sources.yml",
+    "foot.llmstats": "AI-Scores: llm-stats.com",
     "foot.legal": "Hinweis",
     "foot.note": "Unabhängig & informativ. Wir verkaufen keine Pläne und haben keine Affiliate-Links. Bitte immer auf der offiziellen Anbieterseite bestätigen.",
     "foot.legalTitle": "Rechtliches",
@@ -612,7 +614,7 @@ function saveColumns() {
 }
 function columnVisible(col) { return visibleColumns.includes(col); }
 
-/* ---------------- AI-Score (Artificial Analysis) ---------------- */
+/* ---------------- AI-Score (LLM Stats) ---------------- */
 function aiScoreFor(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
   // Bekannte AA-Umbenennungen: Feed-Name → AA-Slug (wenn AA anders heißt)

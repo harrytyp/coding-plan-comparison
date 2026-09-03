@@ -959,16 +959,16 @@ main().catch((e) => {
 // AI-Scores (Artificial Analysis Intelligence Index) aus geparster Quelle oder data/ai-scores.json
 function loadAiScores(root) {
   const result = { source: "Artificial Analysis", fetchedAt: null, count: 0, scores: {} };
-  // 1. Geparste AA-API-Quelle (automatisch, täglich aktualisiert) — bevorzugt
+  // 1. Geparste LLM-Stats-Quelle (automatisch, täglich aktualisiert) — bevorzugt
   try {
-    const parsedPath = join(root, "parsed", "aa-llm-models.json");
+    const parsedPath = join(root, "parsed", "llm-stats-models.json");
     const parsed = JSON.parse(readFileSync(parsedPath, "utf8"));
     if (parsed?.scores && Object.keys(parsed.scores).length > 0) {
-      result.source = parsed.source ?? "Artificial Analysis API";
+      result.source = parsed.source ?? "LLM Stats";
       result.fetchedAt = parsed.fetchedAt ?? null;
       result.count = parsed.count ?? Object.keys(parsed.scores).length;
       for (const [slug, s] of Object.entries(parsed.scores)) {
-        result.scores[slug] = { intelligence: s.intelligence, coding: s.coding };
+        result.scores[slug] = { intelligence: s.intelligence, coding: s.coding, topScores: s.topScores };
       }
     }
   } catch (e) {

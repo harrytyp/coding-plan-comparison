@@ -59,11 +59,12 @@ async function fetchSource(source) {
     clearTimeout(timer);
     let buf = Buffer.from(await resp.arrayBuffer());
 
-    // Pagination: wenn die Quelle paginiert ist, alle Seiten fetchen und data-Arrays mergen
+    // Pagination: unterstützt page-basierte (pagination.has_more) und cursor-basierte (next_cursor) APIs
     if (source.paginate && resp.ok) {
       try {
         const first = JSON.parse(buf.toString("utf-8"));
         if (first?.pagination?.has_more) {
+          // Page-basierte Pagination (AA Free API)
           const totalPages = first.pagination.total_pages ?? 4;
           const allData = [...(first.data ?? [])];
           for (let page = 2; page <= totalPages; page++) {
@@ -72,10 +73,7 @@ async function fetchSource(source) {
             const pc = new AbortController();
             const pt = setTimeout(() => pc.abort(), 30000);
             const pr = await fetch(pageUrl.toString(), {
-              method,
-              headers,
-              signal: pc.signal,
-              redirect: "follow",
+              method, headers, signal: pc.signal, redirect: "follow",
             });
             clearTimeout(pt);
             if (pr.ok) {
@@ -85,8 +83,31 @@ async function fetchSource(source) {
               console.log(`  ⚠ pagination page ${page}: HTTP ${pr.status} (übersprungen)`);
             }
           }
-          // Merged response: first page body, aber mit allen Daten
           const merged = { ...first, data: allData, pagination: { ...first.pagination, has_more: false } };
+          buf = Buffer.from(JSON.stringify(merged));
+        } else if (first?.next_cursor) {
+          // Cursor-basierte Pagination (LLM Stats API)
+          const allModels = [...(first.models ?? [])];
+          let cursor = first.next_cursor;
+          while (cursor) {
+            const pageUrl = new URL(url);
+            pageUrl.searchParams.set("cursor", cursor);
+            pageUrl.searchParams.set("limit", "200");
+            const pc = new AbortController();
+            const pt = setTimeout(() => pc.abort(), 30000);
+            const pr = await fetch(pageUrl.toString(), {
+              method, headers, signal: pc.signal, redirect: "follow",
+            });
+            clearTimeout(pt);
+            if (!pr.ok) {
+              console.log(`  ⚠ pagination cursor ${cursor.slice(0, 12)}: HTTP ${pr.status} (abgebrochen)`);
+              break;
+            }
+            const pb = await pr.json();
+            allModels.push(...(pb.models ?? []));
+            cursor = pb.next_cursor;
+          }
+          const merged = { ...first, models: allModels, next_cursor: null };
           buf = Buffer.from(JSON.stringify(merged));
         }
       } catch (e) {

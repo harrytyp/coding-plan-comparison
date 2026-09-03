@@ -311,26 +311,29 @@ export function parsePrivacyText(html) {
   return out;
 }
 
-// ---------- Parser: Artificial Analysis LLM Models (JSON) ----------
-// Extrahiert Intelligence Index + Coding Index pro Modell (slug-basiert).
-export function parseAaModels(raw) {
+// ---------- Parser: LLM Stats (zeroeval.com/stats/v1) ----------
+// Extrahiert top_scores je Modell (slug-basiert, Dots → Striche normalisiert).
+export function parseLlamaStats(raw) {
   const data = JSON.parse(raw);
-  const models = data?.data ?? [];
+  const models = data?.models ?? [];
   const scores = {};
   for (const m of models) {
-    const ev = m.evaluations ?? {};
-    const intel = ev.artificial_analysis_intelligence_index;
-    const coding = ev.artificial_analysis_coding_index;
-    if (intel != null || coding != null) {
-      scores[m.slug] = {
-        intelligence: intel ?? null,
-        coding: coding ?? null,
-        name: m.name,
-      };
-    }
+    const ts = m.top_scores ?? {};
+    if (Object.keys(ts).length === 0) continue;
+    // Normalisiere Slug: Dots → Striche (AA-Kompatibilität)
+    const slug = (m.id ?? m.name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+    // Beste Scores als intelligence/coding-Mapping
+    const intel = ts.general ?? ts.reasoning ?? null;
+    const coding = ts.code ?? ts.coding ?? null;
+    scores[slug] = {
+      intelligence: typeof intel === "number" ? intel : null,
+      coding: typeof coding === "number" ? coding : null,
+      name: m.name,
+      topScores: ts, // vollständige Kategorie-Scores
+    };
   }
   return {
-    source: "Artificial Analysis API (free tier)",
+    source: "LLM Stats (zeroeval.com)",
     fetchedAt: new Date().toISOString(),
     count: Object.keys(scores).length,
     scores,
@@ -349,5 +352,5 @@ export const PARSERS = {
   "kimi-goods": parseKimiGoods,
   "privacy-text": parsePrivacyText,
   fx: parseFx,
-  "aa-models": parseAaModels,
+  "llm-stats": parseLlamaStats,
 };
