@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T14:47:58.537Z",
+  "generatedAt": "2026-09-03T14:55:39.993Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13617,7 +13617,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-03T14:47:58.459Z",
+    "fetchedAt": "2026-09-03T14:55:39.809Z",
     "count": 813,
     "scores": {
       "chatgpt-4o-latest": {
