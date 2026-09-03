@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T15:09:50.368Z",
+  "generatedAt": "2026-09-03T15:10:25.373Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13617,7 +13617,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-03T15:09:50.295Z",
+    "fetchedAt": "2026-09-03T15:10:25.193Z",
     "count": 50,
     "scores": {
       "claude-fable-5-1": {
@@ -13725,10 +13725,10 @@
       "gemini-3-6-flash": {
         "intelligence": 43.69
       },
-      "deepseek-v4-pro-max": {
+      "seed-2-1-turbo": {
         "intelligence": 43.68
       },
-      "seed-2-1-turbo": {
+      "deepseek-v4-pro-max": {
         "intelligence": 43.68
       },
       "gemini-3-1-pro-preview": {
