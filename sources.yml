@@ -135,9 +135,9 @@ sources:
     note: "MiniMax Privacy (aktuell 404 — wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
 
   # ---- AI-Scores (LLM Stats) — nur 1x/Tag fetchen (cache_ttl_hours) ----
-  # Benchmark-Scores von llm-stats.com (Rankings, conservative_rating 0-100).
-  # API-Key via ${LLM_STATS_KEY} aus GitHub Secrets.
-  - id: llm-stats-models
+  # Benchmark-Scores von llm-stats.com. Rankings (conservative_rating 0-100) +
+  # Models (top_scores.general als Fallback). API-Key via ${LLM_STATS_KEY} aus GitHub Secrets.
+  - id: llm-stats-rankings
     url: "https://api.zeroeval.com/stats/v1/rankings?category=general&limit=50"
     typ: json-api
     parser: llm-stats
@@ -145,7 +145,17 @@ sources:
     headers:
       authorization: "Bearer ${LLM_STATS_KEY}"
     provides: [ai_scores]
-    note: "LLM Stats: conservative_rating (0-100) für Top-50 Modelle. API-Key aus GitHub Secrets."
+    note: "LLM Stats: conservative_rating (0-100) für Top-50 Modelle."
+  - id: llm-stats-models
+    url: "https://api.zeroeval.com/stats/v1/models?limit=200"
+    typ: json-api
+    parser: llm-stats
+    paginate: true
+    cache_ttl_hours: 24
+    headers:
+      authorization: "Bearer ${LLM_STATS_KEY}"
+    provides: [ai_scores]
+    note: "LLM Stats: general (TrueSkill) Fallback für alle Modelle."
 
   # ---- Währungskurse (täglich, für einheitliche Preis-Anzeige) ----
   # Wird 1x täglich mit-gescraped (wie die anderen Quellen) statt Client-seitiger

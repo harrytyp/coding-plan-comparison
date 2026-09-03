@@ -956,39 +956,38 @@ main().catch((e) => {
   process.exit(1);
 });
 
-// AI-Scores (Artificial Analysis Intelligence Index) aus geparster Quelle oder data/ai-scores.json
+// AI-Scores aus LLM Stats: Rankings (conservative_rating 0-100) + Models (top_scores.general Fallback)
 function loadAiScores(root) {
-  const result = { source: "Artificial Analysis", fetchedAt: null, count: 0, scores: {} };
-  // 1. Geparste LLM-Stats-Quelle (automatisch, täglich aktualisiert) — bevorzugt
+  const result = { source: "LLM Stats (zeroeval.com)", fetchedAt: null, count: 0, scores: {} };
+
+  // 1. Rankings (conservative_rating 0-100) — bevorzugt
   try {
-    const parsedPath = join(root, "parsed", "llm-stats-models.json");
-    const parsed = JSON.parse(readFileSync(parsedPath, "utf8"));
-    if (parsed?.scores && Object.keys(parsed.scores).length > 0) {
-      result.source = parsed.source ?? "LLM Stats";
-      result.fetchedAt = parsed.fetchedAt ?? null;
-      result.count = parsed.count ?? Object.keys(parsed.scores).length;
-      for (const [slug, s] of Object.entries(parsed.scores)) {
-        result.scores[slug] = { intelligence: s.intelligence, coding: s.coding, topScores: s.topScores };
-      }
-    }
-  } catch (e) {
-    // Kein parsed Source — Fallback auf manuelle Datei
-  }
-  // 2. Manuelle Overrides aus data/ai-scores.json (Modelle die AA noch nicht in der API hat, z.B. Muse Spark 1.3)
-  try {
-    const manualPath = join(root, "data", "ai-scores.json");
-    const manual = JSON.parse(readFileSync(manualPath, "utf8"));
-    const manualScores = manual.scores ?? {};
-    for (const [k, v] of Object.entries(manualScores)) {
-      // Überschreibt nur wenn der Score nicht schon da ist ODER der manuelle neuer ist
-      if (!result.scores[k]) {
-        result.scores[k] = { intelligence: v.intelligence, coding: v.coding };
+    const rPath = join(root, "parsed", "llm-stats-rankings.json");
+    const r = JSON.parse(readFileSync(rPath, "utf8"));
+    if (r?.scores && Object.keys(r.scores).length > 0) {
+      result.fetchedAt = r.fetchedAt ?? null;
+      for (const [slug, s] of Object.entries(r.scores)) {
+        result.scores[slug] = { intelligence: s.intelligence };
         result.count++;
       }
     }
-  } catch (e) {
-    // Kein manual Override — ok
-  }
+  } catch (e) { /* kein Rankings-Parsed */ }
+
+  // 2. Models (top_scores.general) als Fallback für Modelle ohne Ranking
+  try {
+    const mPath = join(root, "parsed", "llm-stats-models.json");
+    const m = JSON.parse(readFileSync(mPath, "utf8"));
+    if (m?.scores && Object.keys(m.scores).length > 0) {
+      if (!result.fetchedAt) result.fetchedAt = m.fetchedAt ?? null;
+      for (const [slug, s] of Object.entries(m.scores)) {
+        if (!result.scores[slug] && s.intelligence != null) {
+          result.scores[slug] = { intelligence: s.intelligence };
+          result.count++;
+        }
+      }
+    }
+  } catch (e) { /* kein Models-Parsed */ }
+
   return result;
 }
 
