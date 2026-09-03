@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T14:18:11.217Z",
+  "generatedAt": "2026-09-03T14:23:22.504Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13617,2215 +13617,1727 @@
   ],
   "aiScores": {
     "source": "Artificial Analysis API (free tier)",
-    "fetchedAt": "2026-09-03T14:18:11.116Z",
+    "fetchedAt": "2026-09-03T14:23:22.421Z",
     "count": 623,
     "scores": {
-      "glm-5-3-flash": {
-        "intelligence": 57.5,
-        "coding": 71.5
-      },
-      "gemini-3-8-flash": {
-        "intelligence": 58.7,
-        "coding": 76.3
-      },
-      "gemini-3-8-flash-low": {
-        "intelligence": 51.7,
-        "coding": 73.5
-      },
-      "gemini-3-8-flash-medium": {
-        "intelligence": 56.6,
-        "coding": 74.1
-      },
-      "qwen3-8-flash-next": {
-        "intelligence": 55.8,
-        "coding": 73.1
-      },
-      "quasar-438b": {
-        "intelligence": 43,
-        "coding": 61.2
-      },
-      "gpt-oss-20b": {
-        "intelligence": 15.2,
-        "coding": 20.7
-      },
-      "gpt-oss-20b-low": {
-        "intelligence": 14.4,
-        "coding": null
-      },
-      "gpt-5-6-terra-medium": {
-        "intelligence": 46.8,
-        "coding": 64.7
-      },
-      "gpt-oss-120b": {
-        "intelligence": 24.1,
-        "coding": 30.4
-      },
-      "o3": {
-        "intelligence": 31.1,
-        "coding": null
-      },
-      "gpt-5-6-sol-low": {
-        "intelligence": 50.7,
-        "coding": 69.7
-      },
-      "gpt-5-6-luna-low": {
-        "intelligence": 33.9,
-        "coding": 44.2
-      },
-      "gpt-oss-120b-low": {
-        "intelligence": 14.9,
-        "coding": 21.2
-      },
-      "gpt-5-6-terra": {
-        "intelligence": 56.6,
-        "coding": 76.7
-      },
-      "grok-1": {
-        "intelligence": 5.8,
-        "coding": null
-      },
-      "gpt-5-6-sol": {
-        "intelligence": 60.9,
-        "coding": 77.4
-      },
-      "gpt-5-6-luna": {
-        "intelligence": 52.3,
-        "coding": 71.4
-      },
-      "gpt-5-6-sol-non-reasoning": {
-        "intelligence": 41.9,
-        "coding": 65.1
-      },
-      "gpt-5-6-terra-non-reasoning": {
-        "intelligence": 34.6,
-        "coding": 52.3
-      },
-      "gpt-5-6-luna-non-reasoning": {
-        "intelligence": 26.8,
-        "coding": 39.3
-      },
-      "gpt-5-6-sol-medium": {
-        "intelligence": 55.6,
-        "coding": 76.3
-      },
-      "gpt-5-6-sol-xhigh": {
-        "intelligence": 59,
-        "coding": 78.3
-      },
-      "gpt-5-6-terra-low": {
-        "intelligence": 41.3,
-        "coding": 58.1
-      },
-      "gpt-5-5-instant-06-26": {
-        "intelligence": 29.2,
-        "coding": 39.4
-      },
-      "gpt-5-6-luna-high": {
-        "intelligence": 47,
-        "coding": 63.3
-      },
-      "gpt-5-6-terra-xhigh": {
-        "intelligence": 52.8,
-        "coding": 70.6
-      },
-      "gpt-5-6-sol-high": {
-        "intelligence": 57.3,
-        "coding": 77.2
-      },
-      "gpt-5-6-luna-xhigh": {
-        "intelligence": 50.1,
-        "coding": 68.6
-      },
-      "gpt-5-6-terra-high": {
-        "intelligence": 50.1,
-        "coding": 67.1
-      },
-      "gpt-5-3-codex": {
-        "intelligence": 45.5,
-        "coding": null
-      },
-      "gpt-5-6-luna-medium": {
-        "intelligence": 38.9,
-        "coding": 50.7
-      },
-      "llama-3-3-instruct-70b": {
-        "intelligence": 9.3,
-        "coding": 11.9
-      },
-      "llama-3-1-instruct-405b": {
-        "intelligence": 8.3,
-        "coding": null
-      },
-      "llama-3-2-instruct-90b-vision": {
-        "intelligence": 6,
-        "coding": null
-      },
-      "llama-3-2-instruct-11b-vision": {
-        "intelligence": 3,
-        "coding": null
-      },
-      "muse-spark-1-2": {
-        "intelligence": 56.8,
-        "coding": 72.2
-      },
-      "llama-4-scout": {
-        "intelligence": 10.3,
-        "coding": 8.2
-      },
-      "llama-4-maverick": {
-        "intelligence": 14.5,
-        "coding": 16.3
-      },
-      "muse-glimmer": {
-        "intelligence": 35.1,
-        "coding": 49
-      },
-      "gemma-4-26b-a4b": {
-        "intelligence": 26.1,
-        "coding": 39.3
-      },
-      "gemma-4-12b": {
-        "intelligence": 22.2,
-        "coding": 31
-      },
-      "gemma-4-31b": {
-        "intelligence": 29.7,
-        "coding": 43.4
-      },
-      "gemini-3-5-flash-medium": {
-        "intelligence": 46.7,
-        "coding": null
-      },
-      "gemma-4-26b-a4b-non-reasoning": {
-        "intelligence": 20.4,
-        "coding": null
-      },
-      "gemma-4-e2b": {
-        "intelligence": 9.5,
-        "coding": 7.2
-      },
-      "gemma-4-31b-non-reasoning": {
-        "intelligence": 22.3,
-        "coding": 33.2
-      },
-      "gemini-3-6-flash": {
-        "intelligence": 51.6,
-        "coding": 69.2
-      },
-      "gemma-4-e4b-non-reasoning": {
-        "intelligence": 8.7,
-        "coding": null
-      },
-      "gemma-4-e4b": {
-        "intelligence": 12.2,
-        "coding": 9.4
-      },
-      "gemini-3-5-flash-lite": {
-        "intelligence": 37.4,
-        "coding": 49.3
-      },
-      "diffusiongemma-26b-a4b": {
-        "intelligence": 13.5,
-        "coding": 19.7
-      },
-      "gemma-4-12b-non-reasoning": {
-        "intelligence": 13.2,
-        "coding": null
-      },
-      "gemma-3-270m": {
-        "intelligence": 2,
-        "coding": null
-      },
-      "gemini-3-7-flash": {
-        "intelligence": 56,
-        "coding": 76.1
-      },
-      "gemini-3-1-pro-preview": {
-        "intelligence": 47.7,
-        "coding": 68.8
-      },
-      "gemini-3-7-flash-low": {
-        "intelligence": 50.9,
-        "coding": 71
-      },
-      "gemini-3-7-flash-medium": {
-        "intelligence": 53.4,
-        "coding": 71.5
-      },
-      "gemma-4-e2b-non-reasoning": {
-        "intelligence": 6.2,
-        "coding": null
-      },
-      "gemini-3-5-flash-minimal": {
-        "intelligence": 35.8,
-        "coding": null
-      },
-      "claude-sonnet-5": {
-        "intelligence": 55.3,
-        "coding": 71.5
-      },
-      "claude-4-5-haiku-reasoning": {
-        "intelligence": 29.9,
-        "coding": 43.9
-      },
-      "claude-opus-5": {
-        "intelligence": 63.1,
-        "coding": 78
-      },
-      "claude-fable-5": {
-        "intelligence": 62.1,
-        "coding": 76.5
-      },
-      "claude-opus-5-xhigh": {
-        "intelligence": 62.5,
-        "coding": 77
-      },
-      "claude-opus-5-low": {
-        "intelligence": 52.5,
-        "coding": 66.9
-      },
-      "claude-opus-5-high": {
-        "intelligence": 61.5,
-        "coding": 76.5
-      },
-      "claude-4-5-haiku": {
-        "intelligence": 24.1,
-        "coding": null
-      },
-      "claude-sonnet-5-non-reasoning": {
-        "intelligence": 42.6,
-        "coding": 66.4
-      },
-      "claude-opus-5-medium": {
-        "intelligence": 58.6,
-        "coding": 74.3
-      },
-      "claude-fable-5-1-high": {
-        "intelligence": 62.5,
-        "coding": 79.1
-      },
-      "claude-fable-5-1-low": {
-        "intelligence": 58.1,
-        "coding": 75.2
-      },
-      "claude-fable-5-1": {
-        "intelligence": 65.7,
-        "coding": 81.6
-      },
-      "claude-fable-5-1-medium": {
-        "intelligence": 60.5,
-        "coding": 77.1
-      },
-      "claude-fable-5-1-xhigh": {
-        "intelligence": 64.8,
-        "coding": 80.7
-      },
-      "claude-sonnet-4-6-non-reasoning-low-effort": {
-        "intelligence": 35.1,
-        "coding": null
-      },
-      "ministral-3-14b": {
-        "intelligence": 11.2,
-        "coding": 14.4
-      },
-      "magistral-medium-2509": {
-        "intelligence": 18,
-        "coding": 21.3
-      },
-      "ministral-3-8b": {
-        "intelligence": 9,
-        "coding": 9.7
-      },
-      "ministral-3-3b": {
-        "intelligence": 7.1,
-        "coding": 4.8
-      },
-      "mistral-large-3": {
-        "intelligence": 15.9,
-        "coding": 20.1
-      },
-      "magistral-small-2509": {
-        "intelligence": 11.5,
-        "coding": 14.7
-      },
-      "devstral-small-2": {
-        "intelligence": 17.7,
-        "coding": 29.3
-      },
-      "mistral-medium-3-5": {
-        "intelligence": 30.4,
-        "coding": 46.9
-      },
-      "mistral-small-4": {
-        "intelligence": 19.7,
-        "coding": 26.6
-      },
-      "devstral-2": {
-        "intelligence": 19.2,
-        "coding": 31.3
-      },
-      "mistral-small-4-non-reasoning": {
-        "intelligence": 12.3,
-        "coding": null
-      },
-      "deepseek-v4-pro": {
-        "intelligence": 53.2,
-        "coding": 68.8
-      },
-      "deepseek-v4-flash": {
-        "intelligence": 51.8,
-        "coding": 69.1
-      },
-      "deepseek-v4-pro-0424": {
-        "intelligence": 45.3,
-        "coding": 59.4
-      },
-      "deepseek-v4-flash-non-reasoning": {
-        "intelligence": 29.3,
-        "coding": null
-      },
-      "deepseek-v4-pro-0424-non-reasoning": {
-        "intelligence": 31.9,
-        "coding": null
-      },
-      "deepseek-v4-pro-0424-high": {
-        "intelligence": 43.7,
-        "coding": 58.7
-      },
-      "llama-65b": {
-        "intelligence": 1.7,
-        "coding": null
-      },
-      "deepseek-v4-flash-vision": {
-        "intelligence": 51.5,
-        "coding": 65
-      },
-      "r1-1776": {
-        "intelligence": 6,
-        "coding": null
-      },
-      "falcon-h1r-7b": {
-        "intelligence": 9.7,
+      "glm-4-5v": {
+        "intelligence": 6.8,
         "coding": null
       },
-      "grok-4-3-medium": {
-        "intelligence": 36.9,
-        "coding": null
-      },
-      "grok-4-3-non-reasoning": {
-        "intelligence": 25,
-        "coding": 35.2
-      },
-      "grok-4-3-low": {
-        "intelligence": 36.3,
-        "coding": null
-      },
-      "grok-4-6-xhigh": {
-        "intelligence": 60,
-        "coding": 75.9
-      },
-      "grok-4-6": {
-        "intelligence": 60.9,
-        "coding": 76.8
-      },
-      "grok-4-6-low": {
-        "intelligence": 51.7,
-        "coding": 66.3
-      },
-      "grok-4-5": {
-        "intelligence": 55.8,
-        "coding": 72.4
-      },
-      "grok-4-6-medium": {
-        "intelligence": 59,
-        "coding": 74.4
-      },
-      "nova-micro": {
-        "intelligence": 4.4,
-        "coding": null
-      },
-      "nova-2-0-omni-reasoning-medium": {
-        "intelligence": 21.3,
-        "coding": null
-      },
-      "nova-2-0-pro-reasoning-medium": {
-        "intelligence": 22.1,
-        "coding": 34
-      },
-      "qwen-chat-14b": {
-        "intelligence": 1.7,
-        "coding": null
-      },
-      "nova-2-0-omni": {
-        "intelligence": 10.4,
-        "coding": null
-      },
-      "nova-2-0-lite-reasoning": {
-        "intelligence": 20.8,
-        "coding": 23
-      },
-      "nova-2-0-lite-reasoning-low": {
-        "intelligence": 18,
-        "coding": null
-      },
-      "nova-2-0-lite": {
-        "intelligence": 11.8,
-        "coding": null
-      },
-      "nova-2-0-pro": {
-        "intelligence": 14.4,
-        "coding": 20.9
-      },
-      "nova-2-0-omni-reasoning-low": {
-        "intelligence": 16.7,
-        "coding": null
-      },
-      "nova-premier": {
-        "intelligence": 12.7,
-        "coding": null
-      },
-      "nova-2-0-pro-reasoning-low": {
-        "intelligence": 19.8,
-        "coding": 25.9
-      },
-      "nova-2-0-lite-reasoning-medium": {
-        "intelligence": 19.2,
-        "coding": null
-      },
-      "phi-4": {
-        "intelligence": 4.6,
-        "coding": null
-      },
-      "phi-4-multimodal": {
-        "intelligence": 4.2,
-        "coding": null
-      },
-      "phi-4-mini": {
-        "intelligence": 5.7,
-        "coding": 3.8
-      },
-      "lfm2-5-2-6b": {
-        "intelligence": 11,
-        "coding": 7.7
-      },
-      "lfm2-5-8b-a1b": {
-        "intelligence": 8.1,
-        "coding": null
-      },
-      "lfm2-5-1-2b-thinking": {
-        "intelligence": 2.3,
-        "coding": null
-      },
-      "lfm2-8b-a1b": {
-        "intelligence": 1.3,
-        "coding": null
-      },
-      "lfm2-2-6b": {
-        "intelligence": 2.3,
-        "coding": null
-      },
-      "lfm2-5-vl-1-6b": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "lfm2-5-1-2b-instruct": {
-        "intelligence": 2.3,
-        "coding": null
-      },
-      "lfm2-24b-a2b": {
-        "intelligence": 4.6,
-        "coding": null
-      },
-      "solar-pro4": {
-        "intelligence": 41.6,
-        "coding": 52.7
-      },
-      "solar-open-100b-reasoning": {
-        "intelligence": 15.2,
-        "coding": null
-      },
-      "solar-pro-3": {
-        "intelligence": 14.5,
-        "coding": 16.2
-      },
-      "solar-open2-250b": {
-        "intelligence": 37.4,
-        "coding": 44.7
-      },
-      "minimax-m3": {
-        "intelligence": 45.4,
-        "coding": 58.6
-      },
-      "llama-3-1-nemotron-instruct-70b": {
-        "intelligence": 7.4,
-        "coding": null
-      },
-      "nvidia-nemotron-nano-9b-v2": {
-        "intelligence": 7.2,
-        "coding": null
-      },
-      "nvidia-nemotron-3-ultra-550b-a55b": {
-        "intelligence": 38.3,
-        "coding": 49.3
-      },
-      "nvidia-nemotron-3-nano-30b-a3b-reasoning": {
-        "intelligence": 14.5,
-        "coding": 14.4
-      },
-      "nemotron-3-nano-omni-30b-a3b": {
-        "intelligence": 15,
-        "coding": 13.8
-      },
-      "nvidia-nemotron-nano-12b-v2-vl": {
-        "intelligence": 4.2,
-        "coding": null
-      },
-      "llama-3-1-nemotron-ultra-253b-v1-reasoning": {
-        "intelligence": 8.9,
-        "coding": null
-      },
-      "nemotron-3-5-lightning": {
-        "intelligence": 23.6,
-        "coding": 26.8
-      },
-      "nvidia-nemotron-nano-9b-v2-reasoning": {
-        "intelligence": 8.7,
-        "coding": null
-      },
-      "nvidia-nemotron-nano-12b-v2-vl-reasoning": {
-        "intelligence": 8.8,
-        "coding": null
-      },
-      "nvidia-nemotron-3-super-120b-a12b": {
-        "intelligence": 25.7,
-        "coding": 37.7
-      },
-      "llama-nemotron-super-49b-v1-5": {
-        "intelligence": 8.5,
-        "coding": null
-      },
-      "llama-nemotron-super-49b-v1-5-reasoning": {
-        "intelligence": 12.4,
-        "coding": null
-      },
-      "nvidia-nemotron-3-nano-30b-a3b": {
-        "intelligence": 7.2,
-        "coding": null
-      },
-      "nvidia-nemotron-3-nano-4b": {
-        "intelligence": 8.6,
-        "coding": 8
-      },
-      "nemotron-cascade-2-30b-a3b": {
-        "intelligence": 17.8,
-        "coding": 25.3
-      },
-      "kimi-k2-7-code": {
-        "intelligence": 43,
-        "coding": 60.8
-      },
-      "kimi-k3": {
-        "intelligence": 59.7,
-        "coding": 76.2
-      },
-      "kimi-linear-48b-a3b-instruct": {
-        "intelligence": 8.4,
-        "coding": null
-      },
-      "kimi-k3-low": {
-        "intelligence": 48.3,
-        "coding": 72
+      "gemini-3-5-flash": {
+        "intelligence": 52,
+        "coding": 70.1
       },
-      "step-3-7-flash": {
-        "intelligence": 30.9,
-        "coding": 39.6
-      },
-      "step-3-vl-10b": {
-        "intelligence": 9.3,
-        "coding": null
-      },
-      "olmo-3-1-32b-instruct": {
-        "intelligence": 6.2,
-        "coding": null
-      },
-      "olmo-3-7b-think": {
-        "intelligence": 3.6,
-        "coding": null
-      },
-      "olmo-3-1-32b-think": {
-        "intelligence": 7.9,
-        "coding": null
-      },
-      "molmo2-8b": {
-        "intelligence": 1.6,
-        "coding": null
-      },
-      "olmo-3-7b-instruct": {
-        "intelligence": 2.4,
-        "coding": null
-      },
-      "molmo-7b-d": {
-        "intelligence": 3.4,
-        "coding": null
-      },
-      "granite-4-1-3b": {
-        "intelligence": 4.4,
-        "coding": 4.7
-      },
-      "granite-4-0-350m": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "granite-4-2-3b": {
-        "intelligence": 14.3,
-        "coding": 17.5
-      },
-      "granite-4-2-30b": {
-        "intelligence": 23.7,
-        "coding": 29.9
-      },
-      "granite-4-0-h-small": {
-        "intelligence": 4.9,
-        "coding": null
-      },
-      "granite-4-1-8b": {
-        "intelligence": 6.4,
-        "coding": 9.5
-      },
-      "granite-4-0-h-nano-1b": {
-        "intelligence": 2.2,
-        "coding": null
-      },
-      "granite-4-1-30b": {
-        "intelligence": 8.7,
-        "coding": 10.4
-      },
-      "granite-4-2-8b": {
-        "intelligence": 19.6,
-        "coding": 22.4
-      },
-      "granite-4-0-h-350m": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "granite-4-0-nano-1b": {
-        "intelligence": 1.6,
-        "coding": null
+      "mimo-v2-5-pro": {
+        "intelligence": 42.9,
+        "coding": 60.2
       },
-      "granite-4-0-micro": {
-        "intelligence": 2,
+      "jt-35b-flash": {
+        "intelligence": 29,
         "coding": null
       },
       "mercury-2": {
         "intelligence": 21.9,
         "coding": 31.1
       },
-      "reka-flash-3": {
-        "intelligence": 3.7,
-        "coding": null
-      },
-      "hermes-4-llama-3-1-70b": {
-        "intelligence": 6.7,
-        "coding": null
-      },
-      "deephermes-3-mistral-24b-preview": {
-        "intelligence": 5,
-        "coding": null
-      },
-      "deephermes-3-llama-3-1-8b-preview": {
-        "intelligence": 1.9,
-        "coding": null
-      },
-      "hermes-4-llama-3-1-405b": {
-        "intelligence": 8.6,
-        "coding": null
-      },
-      "hermes-4-llama-3-1-70b-reasoning": {
-        "intelligence": 9.9,
-        "coding": null
-      },
-      "hermes-4-llama-3-1-405b-reasoning": {
-        "intelligence": 8.8,
-        "coding": null
-      },
-      "k-exaone": {
-        "intelligence": 22.5,
-        "coding": 32.1
-      },
-      "exaone-4-0-32b-reasoning": {
-        "intelligence": 10.5,
-        "coding": null
-      },
-      "exaone-4-0-1-2b-reasoning": {
-        "intelligence": 2.5,
-        "coding": null
-      },
-      "exaone-4-5-33b": {
-        "intelligence": 20.5,
-        "coding": 23.6
-      },
-      "exaone-4-0-1-2b": {
-        "intelligence": 2.4,
-        "coding": null
-      },
-      "exaone-4-0-32b": {
-        "intelligence": 5.7,
-        "coding": null
-      },
-      "k-exaone-2-0-0803": {
-        "intelligence": 31,
-        "coding": 40.6
-      },
-      "k-exaone-non-reasoning": {
-        "intelligence": 16.9,
-        "coding": null
-      },
-      "mimo-v2-5-pro-non-reasoning": {
-        "intelligence": 28.4,
-        "coding": null
-      },
-      "mimo-v2-0206": {
-        "intelligence": 34,
-        "coding": null
-      },
-      "mimo-v2-5-0424": {
-        "intelligence": 38,
-        "coding": 56.8
-      },
-      "mimo-v2-5-pro": {
-        "intelligence": 42.9,
-        "coding": 60.2
-      },
-      "mimo-v2-omni": {
-        "intelligence": 35.9,
-        "coding": null
-      },
-      "mimo-v2-flash": {
-        "intelligence": 25.1,
-        "coding": 49.8
-      },
-      "mimo-v2-omni-0327": {
-        "intelligence": 37.3,
-        "coding": null
-      },
-      "ernie-4-5-300b-a47b": {
-        "intelligence": 8.9,
-        "coding": null
-      },
-      "ernie-5-0-thinking-preview": {
-        "intelligence": 22.3,
-        "coding": null
-      },
-      "sarvam-105b": {
-        "intelligence": 11.9,
-        "coding": null
-      },
-      "sarvam-30b": {
-        "intelligence": 6.4,
-        "coding": null
-      },
-      "hypernova-60b": {
-        "intelligence": 18.3,
-        "coding": 23.2
-      },
-      "hy3": {
-        "intelligence": 42.2,
-        "coding": 58.8
-      },
-      "kat-coder-pro-v2": {
-        "intelligence": 33.7,
-        "coding": 59.5
-      },
-      "intellect-3": {
-        "intelligence": 15.7,
-        "coding": null
-      },
-      "motif-0714": {
-        "intelligence": 45.3,
-        "coding": 62
-      },
-      "motif-3": {
-        "intelligence": 47.4,
-        "coding": 63.5
-      },
-      "motif-2-12-7b": {
-        "intelligence": 12.8,
-        "coding": null
-      },
-      "k2-v2-low": {
-        "intelligence": 8.4,
-        "coding": null
-      },
-      "k2-think-v2": {
-        "intelligence": 17.4,
-        "coding": 21
-      },
-      "k2-v2-medium": {
-        "intelligence": 12.4,
-        "coding": null
-      },
-      "k2-v2": {
-        "intelligence": 14.2,
-        "coding": null
-      },
-      "mi-dm-k-2-5-pro-dec28": {
-        "intelligence": 16.6,
-        "coding": null
-      },
-      "hyperclova-x-seed-think-32b": {
-        "intelligence": 17.2,
-        "coding": null
-      },
-      "longcat-2-0": {
-        "intelligence": 34,
-        "coding": 45.3
-      },
-      "longcat-flash-lite": {
-        "intelligence": 17.4,
-        "coding": null
-      },
-      "tri-21b-think-v0-5": {
-        "intelligence": 12.3,
-        "coding": null
-      },
-      "nanbeige4-1-3b": {
-        "intelligence": 11,
-        "coding": 9.6
-      },
-      "apertus-70b-instruct": {
-        "intelligence": 2,
-        "coding": null
-      },
-      "apertus-8b-instruct": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "minicpm-v4-6-1-3b": {
-        "intelligence": 3.8,
-        "coding": 0.7
-      },
-      "minicpm5-1b": {
-        "intelligence": 11.9,
-        "coding": null
-      },
-      "minicpm5-1b-non-reasoning": {
-        "intelligence": 11.7,
-        "coding": null
-      },
-      "trinity-large-thinking": {
-        "intelligence": 18.7,
-        "coding": 25.8
-      },
-      "jt-35b-flash": {
-        "intelligence": 29,
-        "coding": null
-      },
-      "jt-4-1-flash-236b-a21b": {
-        "intelligence": 39.9,
-        "coding": 52.4
-      },
-      "jt-mini": {
-        "intelligence": 18.8,
-        "coding": null
-      },
-      "a-x-k2": {
-        "intelligence": 35,
-        "coding": 38.8
-      },
-      "nex-n2-pro": {
-        "intelligence": 41.7,
-        "coding": 59.1
-      },
-      "inkling": {
-        "intelligence": 42.3,
-        "coding": 52.1
-      },
-      "inkling-small": {
-        "intelligence": 41.2,
-        "coding": 52.9
-      },
-      "g9v3-3b": {
-        "intelligence": 16.2,
-        "coding": 9.9
-      },
-      "g9v3-39a5b": {
-        "intelligence": 34,
-        "coding": 33.1
-      },
-      "apodex-1-1": {
-        "intelligence": 44,
-        "coding": 60.8
-      },
-      "glm-5-2": {
-        "intelligence": 52.6,
-        "coding": 68.8
-      },
-      "glm-5-2-non-reasoning": {
-        "intelligence": 34.8,
-        "coding": 46.5
-      },
-      "glm-5-3": {
-        "intelligence": 59.5,
-        "coding": 74.8
-      },
-      "north-mini-code": {
-        "intelligence": 20.2,
-        "coding": 36.5
-      },
-      "command-a": {
-        "intelligence": 7.5,
-        "coding": null
-      },
-      "command-a-plus": {
-        "intelligence": 22.8,
-        "coding": 27.8
-      },
-      "tiny-aya-global": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "apriel-v1-6-15b-thinker": {
-        "intelligence": 20.8,
-        "coding": null
-      },
-      "jamba-1-7-mini": {
-        "intelligence": 2.3,
-        "coding": null
-      },
-      "jamba-reasoning-3b": {
-        "intelligence": 3.8,
-        "coding": null
-      },
-      "jamba-1-7-large": {
-        "intelligence": 5,
-        "coding": null
-      },
       "qwen3-5-omni-plus": {
         "intelligence": 31.3,
         "coding": null
       },
-      "qwen3-6-27b-non-reasoning": {
-        "intelligence": 31.3,
-        "coding": 46.6
-      },
-      "qwen3-6-35b-a3b-non-reasoning": {
-        "intelligence": 24.6,
-        "coding": 28.1
-      },
-      "qwen3-8-27b-low": {
-        "intelligence": 42.9,
-        "coding": 58.2
-      },
-      "qwen3-6-35b-a3b": {
-        "intelligence": 32.1,
-        "coding": 41.9
-      },
-      "qwen3-6-27b": {
-        "intelligence": 37.7,
-        "coding": 53.7
-      },
-      "qwen3-next-80b-a3b-instruct": {
-        "intelligence": 13.8,
-        "coding": null
-      },
-      "qwen3-5-122b-a10b": {
-        "intelligence": 32.8,
-        "coding": 45.7
-      },
-      "qwen3-5-397b-a17b": {
-        "intelligence": 34.3,
-        "coding": 48.2
-      },
-      "qwen3-5-0-8b": {
-        "intelligence": 5.2,
-        "coding": 0
-      },
-      "qwen3-coder-next": {
+      "nova-2-0-omni-reasoning-medium": {
         "intelligence": 21.3,
-        "coding": 36.2
-      },
-      "qwen3-next-80b-a3b-reasoning": {
-        "intelligence": 16.9,
-        "coding": 17.4
-      },
-      "qwen3-5-9b": {
-        "intelligence": 21.8,
-        "coding": 28.7
-      },
-      "qwen3-8-2-4t-a95b": {
-        "intelligence": 57.7,
-        "coding": 71.9
-      },
-      "qwen3-5-397b-a17b-non-reasoning": {
-        "intelligence": 32.7,
         "coding": null
-      },
-      "qwen3-7-plus": {
-        "intelligence": 39.4,
-        "coding": 55.9
-      },
-      "qwen3-8-27b": {
-        "intelligence": 52,
-        "coding": 68.1
-      },
-      "qwen3-omni-30b-a3b-reasoning": {
-        "intelligence": 9.5,
-        "coding": null
-      },
-      "qwen3-5-35b-a3b-non-reasoning": {
-        "intelligence": 24.3,
-        "coding": 37
-      },
-      "qwen3-5-122b-a10b-non-reasoning": {
-        "intelligence": 28.2,
-        "coding": 43.3
-      },
-      "qwen3-omni-30b-a3b-instruct": {
-        "intelligence": 4.8,
-        "coding": null
-      },
-      "qwen3-5-4b": {
-        "intelligence": 20.4,
-        "coding": 22.6
-      },
-      "qwen3-8-27b-non-reasoning": {
-        "intelligence": 34.7,
-        "coding": 44.6
-      },
-      "qwen3-5-9b-non-reasoning": {
-        "intelligence": 20.6,
-        "coding": 23.5
-      },
-      "qwen3-5-2b": {
-        "intelligence": 7.4,
-        "coding": 2.9
-      },
-      "qwen3-5-0-8b-non-reasoning": {
-        "intelligence": 2.9,
-        "coding": 1.2
-      },
-      "qwen3-5-4b-non-reasoning": {
-        "intelligence": 16.1,
-        "coding": 20.3
-      },
-      "qwen3-8-max": {
-        "intelligence": 58.1,
-        "coding": 71.8
-      },
-      "qwen3-8-27b-medium": {
-        "intelligence": 44.5,
-        "coding": 56.1
-      },
-      "qwen3-5-2b-non-reasoning": {
-        "intelligence": 5.3,
-        "coding": 2.4
-      },
-      "qwen3-5-omni-flash": {
-        "intelligence": 19.2,
-        "coding": null
-      },
-      "ring-flash-2-0": {
-        "intelligence": 8,
-        "coding": null
-      },
-      "ling-3-0-flash": {
-        "intelligence": 37.8,
-        "coding": 50.6
-      },
-      "ling-3-0-tiny": {
-        "intelligence": 24.5,
-        "coding": 26.5
-      },
-      "ring-2-6-1t": {
-        "intelligence": 31.7,
-        "coding": 42.8
-      },
-      "doubao-seed-code": {
-        "intelligence": 26.5,
-        "coding": null
-      },
-      "agnes-2-5-pro-alpha": {
-        "intelligence": 39.7,
-        "coding": 58.8
-      },
-      "agnes-2-5-pro-beta": {
-        "intelligence": 49.1,
-        "coding": 62.3
-      },
-      "celeris-1": {
-        "intelligence": 12.4,
-        "coding": 14.4
-      },
-      "o1": {
-        "intelligence": 23.9,
-        "coding": 39.7
-      },
-      "o1-preview": {
-        "intelligence": 17.2,
-        "coding": 34
-      },
-      "o1-mini": {
-        "intelligence": 14,
-        "coding": null
-      },
-      "gpt-4o-2024-08-06": {
-        "intelligence": 9.4,
-        "coding": null
-      },
-      "gpt-4o-2024-05-13": {
-        "intelligence": 8.4,
-        "coding": 24.2
-      },
-      "gpt-4-turbo": {
-        "intelligence": 7.7,
-        "coding": 21.5
-      },
-      "gpt-4o": {
-        "intelligence": 11.1,
-        "coding": null
-      },
-      "gpt-4o-mini": {
-        "intelligence": 6.7,
-        "coding": 11.4
-      },
-      "gpt-35-turbo": {
-        "intelligence": 3.2,
-        "coding": 10.7
-      },
-      "gpt-4-1-nano": {
-        "intelligence": 9.6,
-        "coding": 11.1
-      },
-      "gpt-5-5-non-reasoning": {
-        "intelligence": 35.8,
-        "coding": 56.5
-      },
-      "gpt-5-2-non-reasoning": {
-        "intelligence": 26.5,
-        "coding": null
-      },
-      "gpt-5-5-medium": {
-        "intelligence": 51.4,
-        "coding": 71.5
-      },
-      "gpt-4": {
-        "intelligence": 6.8,
-        "coding": 13.1
-      },
-      "gpt-5-medium": {
-        "intelligence": 34.6,
-        "coding": null
-      },
-      "gpt-5-codex": {
-        "intelligence": 37,
-        "coding": null
-      },
-      "gpt-4-5": {
-        "intelligence": 13.6,
-        "coding": null
-      },
-      "gpt-5-4": {
-        "intelligence": 53.1,
-        "coding": 71.1
-      },
-      "gpt-4o-chatgpt-03-25": {
-        "intelligence": 12.3,
-        "coding": null
-      },
-      "gpt-5-4-low": {
-        "intelligence": 40.2,
-        "coding": null
-      },
-      "gpt-5-1": {
-        "intelligence": 37.5,
-        "coding": 49.4
-      },
-      "gpt-5-2": {
-        "intelligence": 43.3,
-        "coding": null
-      },
-      "gpt-5-4-non-reasoning": {
-        "intelligence": 28.3,
-        "coding": null
-      },
-      "gpt-5": {
-        "intelligence": 35.3,
-        "coding": 37.8
-      },
-      "gpt-4-1": {
-        "intelligence": 19.6,
-        "coding": null
-      },
-      "gpt-5-4-mini-medium": {
-        "intelligence": 30.5,
-        "coding": null
-      },
-      "o3-mini": {
-        "intelligence": 19.2,
-        "coding": null
-      },
-      "gpt-5-mini": {
-        "intelligence": 25.8,
-        "coding": 15.6
-      },
-      "gpt-5-5": {
-        "intelligence": 56.3,
-        "coding": 74.9
       },
       "gpt-5-2-codex": {
         "intelligence": 41.2,
         "coding": null
       },
-      "o3-mini-high": {
-        "intelligence": 15.7,
-        "coding": 16.3
+      "qwen3-5-122b-a10b-non-reasoning": {
+        "intelligence": 28.2,
+        "coding": 43.3
       },
-      "gpt-5-nano-minimal": {
-        "intelligence": 7.8,
+      "gemma-4-12b-non-reasoning": {
+        "intelligence": 13.2,
         "coding": null
       },
-      "gpt-5-1-codex": {
-        "intelligence": 35.6,
+      "gemini-3-5-flash-minimal": {
+        "intelligence": 35.8,
         "coding": null
-      },
-      "o3-pro": {
-        "intelligence": 33.3,
-        "coding": null
-      },
-      "gpt-5-1-non-reasoning": {
-        "intelligence": 20.7,
-        "coding": null
-      },
-      "gpt-5-nano": {
-        "intelligence": 20.1,
-        "coding": null
-      },
-      "gpt-5-1-codex-mini": {
-        "intelligence": 31.3,
-        "coding": null
-      },
-      "gpt-5-2-medium": {
-        "intelligence": 38.9,
-        "coding": null
-      },
-      "o4-mini": {
-        "intelligence": 26.1,
-        "coding": null
-      },
-      "gpt-4-1-mini": {
-        "intelligence": 14.8,
-        "coding": 20.2
-      },
-      "gpt-5-4-nano": {
-        "intelligence": 39.7,
-        "coding": 56.1
-      },
-      "gpt-5-4-mini": {
-        "intelligence": 40.9,
-        "coding": 56.1
-      },
-      "gpt-5-nano-medium": {
-        "intelligence": 19.2,
-        "coding": null
-      },
-      "gpt-5-low": {
-        "intelligence": 31.9,
-        "coding": null
-      },
-      "gpt-5-mini-minimal": {
-        "intelligence": 14.3,
-        "coding": null
-      },
-      "gpt-5-4-mini-non-reasoning": {
-        "intelligence": 16.8,
-        "coding": null
-      },
-      "gpt-5-chatgpt": {
-        "intelligence": 15.4,
-        "coding": null
-      },
-      "gpt-5-minimal": {
-        "intelligence": 17.3,
-        "coding": null
-      },
-      "o1-pro": {
-        "intelligence": 19.1,
-        "coding": null
-      },
-      "gpt-5-5-instant-05-26": {
-        "intelligence": 34.3,
-        "coding": null
-      },
-      "gpt-5-5-low": {
-        "intelligence": 44.5,
-        "coding": 60.9
-      },
-      "gpt-5-mini-medium": {
-        "intelligence": 31.6,
-        "coding": null
-      },
-      "gpt-5-4-nano-non-reasoning": {
-        "intelligence": 17.8,
-        "coding": null
-      },
-      "gpt-5-5-high": {
-        "intelligence": 54.7,
-        "coding": 71.6
-      },
-      "gpt-4o-chatgpt": {
-        "intelligence": 8.1,
-        "coding": null
-      },
-      "gpt-5-4-nano-medium": {
-        "intelligence": 30.8,
-        "coding": null
-      },
-      "llama-3-1-instruct-70b": {
-        "intelligence": 6.5,
-        "coding": null
-      },
-      "llama-3-1-instruct-8b": {
-        "intelligence": 7.4,
-        "coding": 5.4
-      },
-      "llama-3-2-instruct-3b": {
-        "intelligence": 3.9,
-        "coding": null
-      },
-      "llama-3-instruct-70b": {
-        "intelligence": 3.1,
-        "coding": null
-      },
-      "llama-3-instruct-8b": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "llama-3-2-instruct-1b": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "llama-2-chat-70b": {
-        "intelligence": 2.6,
-        "coding": null
-      },
-      "muse-spark-1-1": {
-        "intelligence": 53.2,
-        "coding": 71.3
-      },
-      "llama-2-chat-13b": {
-        "intelligence": 2.6,
-        "coding": null
-      },
-      "llama-2-chat-7b": {
-        "intelligence": 3.9,
-        "coding": null
-      },
-      "muse-spark": {
-        "intelligence": 44.3,
-        "coding": 58.6
-      },
-      "gemini-2-0-pro-experimental-02-05": {
-        "intelligence": 11.8,
-        "coding": 25.5
-      },
-      "gemini-2-0-flash-experimental": {
-        "intelligence": 10.6,
-        "coding": null
-      },
-      "gemini-1-5-pro": {
-        "intelligence": 9.9,
-        "coding": 23.6
-      },
-      "gemini-2-0-flash-lite-preview": {
-        "intelligence": 8.4,
-        "coding": null
-      },
-      "gemini-2-0-flash": {
-        "intelligence": 12.2,
-        "coding": null
-      },
-      "gemini-1-5-flash": {
-        "intelligence": 7.8,
-        "coding": null
-      },
-      "gemini-1-5-flash-8b": {
-        "intelligence": 5.2,
-        "coding": null
-      },
-      "gemini-2-5-flash": {
-        "intelligence": 14.2,
-        "coding": null
-      },
-      "gemma-3-27b": {
-        "intelligence": 7.4,
-        "coding": 10.1
-      },
-      "gemini-2-5-flash-reasoning-04-2025": {
-        "intelligence": 17.7,
-        "coding": null
-      },
-      "gemini-2-0-flash-thinking-exp-0121": {
-        "intelligence": 13.3,
-        "coding": 24.1
-      },
-      "gemini-2-5-pro-03-25": {
-        "intelligence": 23.4,
-        "coding": 46.7
-      },
-      "gemini-3-1-flash-lite-preview": {
-        "intelligence": 25.6,
-        "coding": 34.7
-      },
-      "gemini-2-5-flash-04-2025": {
-        "intelligence": 11.6,
-        "coding": null
-      },
-      "palm-2": {
-        "intelligence": 2.8,
-        "coding": 4.6
-      },
-      "gemma-3-1b": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "gemma-3-12b": {
-        "intelligence": 5.5,
-        "coding": 5.8
-      },
-      "gemini-3-pro": {
-        "intelligence": 40.6,
-        "coding": null
-      },
-      "gemini-1-0-pro": {
-        "intelligence": 2.7,
-        "coding": null
-      },
-      "gemini-2-5-flash-preview-09-2025-reasoning": {
-        "intelligence": 24.2,
-        "coding": null
-      },
-      "gemma-3-4b": {
-        "intelligence": 1,
-        "coding": 2.7
-      },
-      "gemini-2-5-flash-preview-09-2025": {
-        "intelligence": 19.1,
-        "coding": null
-      },
-      "gemini-2-5-flash-lite-preview-09-2025-reasoning": {
-        "intelligence": 15.2,
-        "coding": null
-      },
-      "gemini-3-flash-reasoning": {
-        "intelligence": 38.7,
-        "coding": null
-      },
-      "gemini-2-0-flash-thinking-exp-1219": {
-        "intelligence": 6.4,
-        "coding": null
-      },
-      "gemini-2-0-flash-lite-001": {
-        "intelligence": 8.6,
-        "coding": null
-      },
-      "gemini-3-flash": {
-        "intelligence": 27.9,
-        "coding": null
-      },
-      "gemini-2-5-flash-lite-preview-09-2025": {
-        "intelligence": 13.1,
-        "coding": null
-      },
-      "gemini-2-5-flash-lite-reasoning": {
-        "intelligence": 11.4,
-        "coding": null
-      },
-      "gemini-2-5-pro-05-06": {
-        "intelligence": 22.7,
-        "coding": null
-      },
-      "gemma-3n-e2b": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "gemini-2-5-flash-reasoning": {
-        "intelligence": 20.3,
-        "coding": null
-      },
-      "gemini-2-5-flash-lite": {
-        "intelligence": 6.7,
-        "coding": null
-      },
-      "gemini-1-5-pro-may-2024": {
-        "intelligence": 6.1,
-        "coding": 19.8
-      },
-      "gemini-3-5-flash": {
-        "intelligence": 52,
-        "coding": 70.1
-      },
-      "gemini-3-pro-low": {
-        "intelligence": 33.9,
-        "coding": null
-      },
-      "gemini-1-5-flash-may-2024": {
-        "intelligence": 4.6,
-        "coding": null
-      },
-      "gemma-3n-e4b-preview-0520": {
-        "intelligence": 4.2,
-        "coding": null
-      },
-      "gemini-1-0-ultra": {
-        "intelligence": 4.3,
-        "coding": 17.6
-      },
-      "gemini-2-5-pro": {
-        "intelligence": 25.9,
-        "coding": 33.3
-      },
-      "gemma-3n-e4b": {
-        "intelligence": 1,
-        "coding": 3.2
-      },
-      "claude-35-sonnet": {
-        "intelligence": 9.8,
-        "coding": 30.2
-      },
-      "claude-35-sonnet-june-24": {
-        "intelligence": 8.1,
-        "coding": 26
-      },
-      "claude-3-opus": {
-        "intelligence": 11.8,
-        "coding": 19.5
       },
       "claude-3-5-haiku": {
         "intelligence": 12.2,
         "coding": 15.9
       },
-      "claude-3-sonnet": {
-        "intelligence": 4.4,
-        "coding": null
-      },
-      "claude-3-haiku": {
-        "intelligence": 3.5,
-        "coding": null
-      },
-      "claude-instant": {
-        "intelligence": 1.7,
-        "coding": 7.8
-      },
-      "claude-opus-4-5-thinking": {
-        "intelligence": 41.9,
-        "coding": null
-      },
-      "claude-4-sonnet": {
-        "intelligence": 26,
-        "coding": null
-      },
-      "claude-4-1-opus-thinking": {
-        "intelligence": 34.5,
-        "coding": null
-      },
-      "claude-4-sonnet-thinking": {
-        "intelligence": 29.8,
-        "coding": 37.6
-      },
-      "claude-21": {
-        "intelligence": 3.5,
-        "coding": 14
-      },
-      "claude-opus-4-8": {
-        "intelligence": 57.3,
-        "coding": 74.3
-      },
-      "claude-4-5-sonnet": {
-        "intelligence": 29.9,
-        "coding": null
-      },
-      "claude-4-5-sonnet-thinking": {
-        "intelligence": 37.4,
-        "coding": 52.1
-      },
-      "claude-4-opus-thinking": {
-        "intelligence": 31.7,
-        "coding": null
-      },
-      "claude-sonnet-4-6-adaptive": {
-        "intelligence": 48.4,
-        "coding": 63
-      },
-      "claude-opus-4-7": {
-        "intelligence": 55,
-        "coding": 73.6
-      },
-      "claude-4-1-opus": {
-        "intelligence": 28.8,
-        "coding": null
-      },
-      "claude-opus-4-6-adaptive": {
-        "intelligence": 44.9,
-        "coding": null
-      },
-      "claude-opus-4-6": {
-        "intelligence": 38.8,
-        "coding": null
-      },
-      "claude-opus-4-5": {
-        "intelligence": 35.6,
-        "coding": null
-      },
-      "claude-sonnet-4-6": {
-        "intelligence": 36.8,
-        "coding": null
-      },
-      "claude-3-7-sonnet-thinking": {
-        "intelligence": 27.6,
-        "coding": 36.4
-      },
-      "claude-opus-4-7-non-reasoning": {
-        "intelligence": 43.9,
-        "coding": null
-      },
-      "claude-4-opus": {
-        "intelligence": 26,
-        "coding": null
-      },
-      "claude-3-7-sonnet": {
-        "intelligence": 23.9,
-        "coding": null
-      },
-      "claude-2": {
-        "intelligence": 3.3,
-        "coding": 12.9
-      },
-      "mistral-large-2": {
-        "intelligence": 9,
-        "coding": null
-      },
-      "mistral-large-2407": {
-        "intelligence": 7,
-        "coding": null
-      },
-      "pixtral-large-2411": {
-        "intelligence": 8,
-        "coding": null
-      },
-      "mistral-small-3": {
-        "intelligence": 6.7,
-        "coding": null
-      },
-      "mistral-small": {
-        "intelligence": 4.3,
-        "coding": null
-      },
-      "mistral-8x22b-instruct": {
-        "intelligence": 4,
-        "coding": null
-      },
-      "mistral-small-2402": {
+      "gpt-35-turbo": {
         "intelligence": 3.2,
-        "coding": null
+        "coding": 10.7
       },
-      "mistral-large": {
-        "intelligence": 4.1,
-        "coding": null
+      "gemini-2-0-flash-thinking-exp-0121": {
+        "intelligence": 13.3,
+        "coding": 24.1
       },
-      "mixtral-8x7b-instruct": {
-        "intelligence": 2,
-        "coding": null
-      },
-      "mistral-7b-instruct": {
-        "intelligence": 1.7,
-        "coding": null
-      },
-      "magistral-small": {
-        "intelligence": 10.6,
-        "coding": null
-      },
-      "mistral-medium-3-1": {
-        "intelligence": 14.7,
-        "coding": 20.5
-      },
-      "mistral-saba": {
-        "intelligence": 6.2,
-        "coding": null
-      },
-      "mistral-small-3-2": {
-        "intelligence": 10.7,
-        "coding": 12.5
-      },
-      "mistral-small-3-1": {
-        "intelligence": 14.9,
-        "coding": 26.3
-      },
-      "devstral-small-2505": {
-        "intelligence": 11.8,
-        "coding": null
-      },
-      "devstral-medium": {
-        "intelligence": 12.4,
-        "coding": null
-      },
-      "devstral-small": {
-        "intelligence": 9.1,
-        "coding": null
-      },
-      "mistral-medium-3": {
-        "intelligence": 12.5,
-        "coding": null
-      },
-      "magistral-medium": {
-        "intelligence": 12.5,
-        "coding": null
-      },
-      "mistral-medium": {
-        "intelligence": 3.2,
-        "coding": null
-      },
-      "deepseek-r1-distill-llama-70b": {
-        "intelligence": 9.8,
-        "coding": null
-      },
-      "deepseek-r1-distill-qwen-32b": {
-        "intelligence": 11,
-        "coding": null
-      },
-      "deepseek-v3": {
-        "intelligence": 14.2,
-        "coding": 23
-      },
-      "deepseek-r1-distill-qwen-14b": {
-        "intelligence": 9.7,
-        "coding": null
-      },
-      "deepseek-v2-5": {
-        "intelligence": 6.5,
-        "coding": null
-      },
-      "deepseek-coder-v2": {
-        "intelligence": 4.7,
-        "coding": null
-      },
-      "deepseek-r1-distill-llama-8b": {
-        "intelligence": 6.2,
-        "coding": null
-      },
-      "deepseek-llm-67b-chat": {
-        "intelligence": 2.6,
-        "coding": null
-      },
-      "deepseek-r1-distill-qwen-1-5b": {
-        "intelligence": 3.3,
-        "coding": null
-      },
-      "deepseek-v4-flash-0420-high": {
-        "intelligence": 39,
-        "coding": 52
-      },
-      "deepseek-v4-flash-0420": {
-        "intelligence": 42.1,
-        "coding": 56.2
-      },
-      "deepseek-v3-2-reasoning": {
-        "intelligence": 32.8,
-        "coding": 44.2
-      },
-      "deepseek-v3-1-reasoning": {
-        "intelligence": 21,
-        "coding": null
-      },
-      "deepseek-v3-2-0925": {
-        "intelligence": 21.7,
-        "coding": null
-      },
-      "deepseek-coder-v2-lite": {
-        "intelligence": 2.7,
-        "coding": null
-      },
-      "deepseek-v3-2-reasoning-0925": {
-        "intelligence": 25.9,
-        "coding": null
-      },
-      "deepseek-r1": {
-        "intelligence": 20.4,
-        "coding": null
-      },
-      "deepseek-r1-0120": {
-        "intelligence": 18.6,
-        "coding": 24.6
-      },
-      "deepseek-v2-5-sep-2024": {
-        "intelligence": 6.4,
-        "coding": null
-      },
-      "deepseek-v3-1-terminus": {
-        "intelligence": 21.7,
-        "coding": null
-      },
-      "deepseek-v3-1": {
-        "intelligence": 21.4,
-        "coding": null
-      },
-      "deepseek-v3-2": {
-        "intelligence": 25.1,
-        "coding": null
-      },
-      "deepseek-v3-0324": {
-        "intelligence": 15.2,
-        "coding": 21.2
-      },
-      "deepseek-v3-2-speciale": {
-        "intelligence": 22.6,
-        "coding": null
-      },
-      "deepseek-v2": {
-        "intelligence": 3.3,
-        "coding": null
-      },
-      "deepseek-v3-1-terminus-reasoning": {
-        "intelligence": 31.4,
-        "coding": 43.5
-      },
-      "deepseek-r1-qwen3-8b": {
-        "intelligence": 10.3,
-        "coding": null
-      },
-      "sonar": {
-        "intelligence": 9.4,
-        "coding": null
-      },
-      "sonar-pro": {
-        "intelligence": 9.1,
+      "qwen2-5-coder-32b-instruct": {
+        "intelligence": 6.9,
         "coding": null
       },
       "sonar-reasoning": {
         "intelligence": 11.6,
         "coding": null
       },
-      "sonar-reasoning-pro": {
-        "intelligence": 18,
-        "coding": null
-      },
-      "grok-beta": {
-        "intelligence": 7.3,
-        "coding": null
-      },
-      "grok-4-20": {
-        "intelligence": 38,
-        "coding": null
-      },
-      "grok-4-1-fast-reasoning": {
-        "intelligence": 31.3,
-        "coding": null
-      },
-      "grok-3": {
-        "intelligence": 18.6,
-        "coding": null
-      },
-      "grok-2-1212": {
-        "intelligence": 7.8,
-        "coding": null
-      },
-      "grok-4-fast": {
-        "intelligence": 16.6,
-        "coding": null
-      },
-      "grok-3-mini-reasoning": {
-        "intelligence": 22.9,
-        "coding": null
-      },
-      "grok-4-3": {
-        "intelligence": 37.9,
-        "coding": 42.2
-      },
-      "grok-build-0-1-06-16": {
-        "intelligence": 40.7,
-        "coding": 51.5
-      },
-      "grok-4-1-fast": {
-        "intelligence": 17,
-        "coding": null
-      },
-      "grok-4-20-0309-non-reasoning": {
-        "intelligence": 22.9,
-        "coding": null
-      },
-      "grok-4-fast-reasoning": {
-        "intelligence": 27.9,
-        "coding": null
-      },
-      "grok-4": {
-        "intelligence": 34.1,
-        "coding": null
-      },
-      "grok-4-20-non-reasoning": {
-        "intelligence": 22.2,
+      "gemma-3-270m": {
+        "intelligence": 2,
         "coding": null
       },
       "grok-4-20-0309": {
         "intelligence": 37.4,
         "coding": null
       },
-      "grok-code-fast-1": {
-        "intelligence": 22,
+      "gpt-5-1-codex": {
+        "intelligence": 35.6,
         "coding": null
       },
-      "grok-3-reasoning": {
-        "intelligence": 15.2,
+      "muse-spark-1-2": {
+        "intelligence": 56.8,
+        "coding": 72.2
+      },
+      "gpt-5-6-luna-low": {
+        "intelligence": 33.9,
+        "coding": 44.2
+      },
+      "claude-fable-5-1-low": {
+        "intelligence": 58.1,
+        "coding": 75.2
+      },
+      "mistral-medium-3-1": {
+        "intelligence": 14.7,
+        "coding": 20.5
+      },
+      "gpt-5-nano-minimal": {
+        "intelligence": 7.8,
         "coding": null
       },
-      "openchat-35": {
-        "intelligence": 2.6,
+      "gemini-2-5-pro-05-06": {
+        "intelligence": 22.7,
         "coding": null
       },
-      "nova-pro": {
-        "intelligence": 7.5,
+      "o3-mini-high": {
+        "intelligence": 15.7,
+        "coding": 16.3
+      },
+      "o1-preview": {
+        "intelligence": 17.2,
+        "coding": 34
+      },
+      "deepseek-v3-2-0925": {
+        "intelligence": 21.7,
         "coding": null
       },
-      "nova-lite": {
-        "intelligence": 6.7,
+      "apodex-1-1": {
+        "intelligence": 44,
+        "coding": 60.8
+      },
+      "gpt-5-6-sol-low": {
+        "intelligence": 50.7,
+        "coding": 69.7
+      },
+      "qwen3-coder-480b-a35b-instruct": {
+        "intelligence": 18.2,
         "coding": null
       },
-      "phi-3-mini": {
-        "intelligence": 4.3,
+      "gemini-3-5-flash-lite": {
+        "intelligence": 37.4,
+        "coding": 49.3
+      },
+      "qwen3-5-2b-non-reasoning": {
+        "intelligence": 5.3,
+        "coding": 2.4
+      },
+      "devstral-2": {
+        "intelligence": 19.2,
+        "coding": 31.3
+      },
+      "claude-35-sonnet": {
+        "intelligence": 9.8,
+        "coding": 30.2
+      },
+      "deepseek-v3-1-terminus-reasoning": {
+        "intelligence": 31.4,
+        "coding": 43.5
+      },
+      "qwen3-omni-30b-a3b-instruct": {
+        "intelligence": 4.8,
         "coding": null
       },
-      "lfm-40b": {
-        "intelligence": 3,
-        "coding": null
+      "grok-build-0-1-06-16": {
+        "intelligence": 40.7,
+        "coding": 51.5
       },
-      "lfm2-1-2b": {
-        "intelligence": 1,
-        "coding": null
+      "granite-4-2-3b": {
+        "intelligence": 14.3,
+        "coding": 17.5
       },
-      "solar-mini": {
-        "intelligence": 6,
-        "coding": null
+      "nova-2-0-pro-reasoning-medium": {
+        "intelligence": 22.1,
+        "coding": 34
       },
-      "solar-pro-2-preview": {
-        "intelligence": 9.9,
-        "coding": null
-      },
-      "solar-pro-2-reasoning": {
-        "intelligence": 8.8,
-        "coding": null
-      },
-      "solar-pro-2-preview-reasoning": {
-        "intelligence": 12.5,
-        "coding": null
-      },
-      "solar-pro-2": {
-        "intelligence": 7.6,
-        "coding": null
-      },
-      "dbrx": {
-        "intelligence": 2.6,
-        "coding": null
-      },
-      "minimax-m2": {
-        "intelligence": 28.9,
-        "coding": null
-      },
-      "minimax-m1-40k": {
-        "intelligence": 14.5,
-        "coding": null
-      },
-      "minimax-m2-1": {
-        "intelligence": 32.1,
-        "coding": null
-      },
-      "minimax-m2-5": {
-        "intelligence": 34.5,
-        "coding": null
-      },
-      "minimax-m2-7": {
-        "intelligence": 38.9,
-        "coding": 52.6
-      },
-      "minimax-m1-80k": {
-        "intelligence": 17.9,
-        "coding": null
-      },
-      "llama-3-3-nemotron-super-49b-reasoning": {
-        "intelligence": 12.2,
-        "coding": null
-      },
-      "llama-3-3-nemotron-super-49b": {
-        "intelligence": 8.3,
-        "coding": null
-      },
-      "llama-3-1-nemotron-nano-4b-reasoning": {
-        "intelligence": 8.4,
-        "coding": null
+      "inkling": {
+        "intelligence": 42.3,
+        "coding": 52.1
       },
       "kimi-k2-6": {
         "intelligence": 45.1,
         "coding": 61.8
       },
-      "kimi-k2-5": {
-        "intelligence": 36,
-        "coding": 46.8
+      "deepseek-r1-0120": {
+        "intelligence": 18.6,
+        "coding": 24.6
       },
-      "kimi-k2-5-non-reasoning": {
-        "intelligence": 30.1,
+      "deepseek-r1-distill-llama-8b": {
+        "intelligence": 6.2,
         "coding": null
       },
-      "kimi-k2-thinking": {
-        "intelligence": 33.5,
+      "qwen3-0.6b-instruct": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "qwen3-5-397b-a17b": {
+        "intelligence": 34.3,
+        "coding": 48.2
+      },
+      "lfm2-1-2b": {
+        "intelligence": 1,
         "coding": null
       },
       "kimi-k2-6-non-reasoning": {
         "intelligence": 35.4,
         "coding": null
       },
-      "kimi-k2": {
-        "intelligence": 19.7,
+      "magistral-small": {
+        "intelligence": 10.6,
         "coding": null
       },
-      "kimi-k2-0905": {
-        "intelligence": 24,
+      "granite-4-2-30b": {
+        "intelligence": 23.7,
+        "coding": 29.9
+      },
+      "lfm-40b": {
+        "intelligence": 3,
         "coding": null
       },
-      "step-3-5-flash-0202": {
-        "intelligence": 26,
-        "coding": null
-      },
-      "step-3-5-flash": {
-        "intelligence": 26.5,
-        "coding": null
-      },
-      "tulu3-405b": {
-        "intelligence": 8.1,
-        "coding": null
-      },
-      "olmo-3-32b-think": {
-        "intelligence": 6.1,
-        "coding": null
-      },
-      "olmo-2-7b": {
-        "intelligence": 3.5,
-        "coding": null
-      },
-      "olmo-2-32b": {
-        "intelligence": 4.7,
-        "coding": null
-      },
-      "granite-3-3-8b-instruct": {
-        "intelligence": 1.3,
-        "coding": null
-      },
-      "reka-flash": {
-        "intelligence": 6,
-        "coding": null
-      },
-      "hermes-3-llama-3-1-70b": {
-        "intelligence": 4.8,
-        "coding": null
-      },
-      "mimo-v2-flash-reasoning": {
-        "intelligence": 31.9,
-        "coding": null
-      },
-      "mimo-v2-pro": {
-        "intelligence": 41.4,
-        "coding": null
-      },
-      "sarvam-m-reasoning": {
-        "intelligence": 2.6,
-        "coding": null
-      },
-      "hy3-preview": {
-        "intelligence": 34.4,
-        "coding": null
-      },
-      "hy3-non-reasoning": {
-        "intelligence": 26.6,
-        "coding": null
-      },
-      "kat-coder-pro-v1": {
-        "intelligence": 28.9,
-        "coding": null
-      },
-      "tri-21b-think-preview": {
-        "intelligence": 13.6,
-        "coding": null
-      },
-      "glm-4.5": {
-        "intelligence": 19.7,
-        "coding": null
-      },
-      "glm-4-7-flash": {
-        "intelligence": 23.3,
-        "coding": null
-      },
-      "glm-5-1": {
-        "intelligence": 41,
-        "coding": 55.8
-      },
-      "glm-4-7": {
+      "minimax-m2-5": {
         "intelligence": 34.5,
-        "coding": 45.3
-      },
-      "glm-5": {
-        "intelligence": 40.6,
         "coding": null
       },
-      "glm-4-6v-reasoning": {
-        "intelligence": 16.9,
+      "mistral-small-4-non-reasoning": {
+        "intelligence": 12.3,
         "coding": null
       },
-      "glm-5-1-non-reasoning": {
-        "intelligence": 36.3,
-        "coding": null
+      "claude-opus-5-xhigh": {
+        "intelligence": 62.5,
+        "coding": 77
       },
-      "glm-4-6-reasoning": {
-        "intelligence": 29.3,
-        "coding": 45.8
+      "claude-3-7-sonnet-thinking": {
+        "intelligence": 27.6,
+        "coding": 36.4
       },
-      "glm-4-7-non-reasoning": {
-        "intelligence": 27.1,
-        "coding": null
-      },
-      "glm-4-5v": {
-        "intelligence": 6.8,
-        "coding": null
-      },
-      "glm-4-6": {
-        "intelligence": 23.4,
-        "coding": null
-      },
-      "glm-5v-turbo": {
-        "intelligence": 35.3,
-        "coding": null
-      },
-      "glm-4-6v": {
-        "intelligence": 10.9,
+      "mimo-v2-0206": {
+        "intelligence": 34,
         "coding": null
       },
       "glm-5-turbo": {
         "intelligence": 39.1,
         "coding": null
       },
-      "glm-5-non-reasoning": {
-        "intelligence": 33.2,
+      "ling-1t": {
+        "intelligence": 12.7,
         "coding": null
       },
-      "glm-4-7-flash-non-reasoning": {
-        "intelligence": 15.6,
+      "gpt-oss-20b-low": {
+        "intelligence": 14.4,
+        "coding": null
+      },
+      "qwen3-5-27b": {
+        "intelligence": 34.6,
+        "coding": null
+      },
+      "o3": {
+        "intelligence": 31.1,
+        "coding": null
+      },
+      "gemini-1-5-pro-may-2024": {
+        "intelligence": 6.1,
+        "coding": 19.8
+      },
+      "k-exaone-2-0-0803": {
+        "intelligence": 31,
+        "coding": 40.6
+      },
+      "qwen3-4b-instruct-reasoning": {
+        "intelligence": 8.2,
+        "coding": null
+      },
+      "glm-5-3-flash": {
+        "intelligence": 57.5,
+        "coding": 71.5
+      },
+      "deepseek-v3-1-reasoning": {
+        "intelligence": 21,
+        "coding": null
+      },
+      "llama-3-3-nemotron-super-49b-reasoning": {
+        "intelligence": 12.2,
+        "coding": null
+      },
+      "step-3-5-flash": {
+        "intelligence": 26.5,
+        "coding": null
+      },
+      "mistral-large-2407": {
+        "intelligence": 7,
+        "coding": null
+      },
+      "solar-pro4": {
+        "intelligence": 41.6,
+        "coding": 52.7
+      },
+      "dbrx": {
+        "intelligence": 2.6,
+        "coding": null
+      },
+      "glm-4.5": {
+        "intelligence": 19.7,
+        "coding": null
+      },
+      "qwen2.5-32b-instruct": {
+        "intelligence": 7.2,
+        "coding": null
+      },
+      "gemini-2-5-flash-lite": {
+        "intelligence": 6.7,
+        "coding": null
+      },
+      "hermes-3-llama-3-1-70b": {
+        "intelligence": 4.8,
+        "coding": null
+      },
+      "north-mini-code": {
+        "intelligence": 20.2,
+        "coding": 36.5
+      },
+      "sonar-reasoning-pro": {
+        "intelligence": 18,
+        "coding": null
+      },
+      "gpt-5-5": {
+        "intelligence": 56.3,
+        "coding": 74.9
+      },
+      "mistral-medium": {
+        "intelligence": 3.2,
+        "coding": null
+      },
+      "nova-2-0-omni": {
+        "intelligence": 10.4,
+        "coding": null
+      },
+      "granite-4-0-micro": {
+        "intelligence": 2,
+        "coding": null
+      },
+      "claude-3-haiku": {
+        "intelligence": 3.5,
+        "coding": null
+      },
+      "claude-opus-5-low": {
+        "intelligence": 52.5,
+        "coding": 66.9
+      },
+      "qwen3-5-9b-non-reasoning": {
+        "intelligence": 20.6,
+        "coding": 23.5
+      },
+      "mistral-7b-instruct": {
+        "intelligence": 1.7,
+        "coding": null
+      },
+      "gemini-2-5-flash-reasoning": {
+        "intelligence": 20.3,
+        "coding": null
+      },
+      "gemma-3-4b": {
+        "intelligence": 1,
+        "coding": 2.7
+      },
+      "qwen3-5-122b-a10b": {
+        "intelligence": 32.8,
+        "coding": 45.7
+      },
+      "mimo-v2-5-0424": {
+        "intelligence": 38,
+        "coding": 56.8
+      },
+      "grok-4-1-fast-reasoning": {
+        "intelligence": 31.3,
+        "coding": null
+      },
+      "hermes-4-llama-3-1-70b": {
+        "intelligence": 6.7,
+        "coding": null
+      },
+      "nvidia-nemotron-3-nano-30b-a3b": {
+        "intelligence": 7.2,
+        "coding": null
+      },
+      "claude-sonnet-5": {
+        "intelligence": 55.3,
+        "coding": 71.5
+      },
+      "grok-3": {
+        "intelligence": 18.6,
+        "coding": null
+      },
+      "glm-5v-turbo": {
+        "intelligence": 35.3,
+        "coding": null
+      },
+      "mistral-small-3-1": {
+        "intelligence": 14.9,
+        "coding": 26.3
+      },
+      "claude-opus-4-5-thinking": {
+        "intelligence": 41.9,
+        "coding": null
+      },
+      "grok-4-6-medium": {
+        "intelligence": 59,
+        "coding": 74.4
+      },
+      "qwen3-next-80b-a3b-instruct": {
+        "intelligence": 13.8,
+        "coding": null
+      },
+      "llama-nemotron-super-49b-v1-5": {
+        "intelligence": 8.5,
+        "coding": null
+      },
+      "gpt-5-6-terra-medium": {
+        "intelligence": 46.8,
+        "coding": 64.7
+      },
+      "gemini-2-5-pro": {
+        "intelligence": 25.9,
+        "coding": 33.3
+      },
+      "minimax-m2-1": {
+        "intelligence": 32.1,
+        "coding": null
+      },
+      "minimax-m3": {
+        "intelligence": 45.4,
+        "coding": 58.6
+      },
+      "grok-2-1212": {
+        "intelligence": 7.8,
+        "coding": null
+      },
+      "mimo-v2-omni-0327": {
+        "intelligence": 37.3,
+        "coding": null
+      },
+      "gpt-5-mini": {
+        "intelligence": 25.8,
+        "coding": 15.6
+      },
+      "nemotron-3-5-lightning": {
+        "intelligence": 23.6,
+        "coding": 26.8
+      },
+      "qwen3-4b-2507-instruct-reasoning": {
+        "intelligence": 11.9,
+        "coding": null
+      },
+      "gemini-1-5-pro": {
+        "intelligence": 9.9,
+        "coding": 23.6
+      },
+      "gemini-1-0-ultra": {
+        "intelligence": 4.3,
+        "coding": 17.6
+      },
+      "qwen3-1.7b-instruct": {
+        "intelligence": 1.1,
+        "coding": null
+      },
+      "gemma-3-27b": {
+        "intelligence": 7.4,
+        "coding": 10.1
+      },
+      "glm-4-7-flash": {
+        "intelligence": 23.3,
+        "coding": null
+      },
+      "phi-4-multimodal": {
+        "intelligence": 4.2,
+        "coding": null
+      },
+      "granite-3-3-8b-instruct": {
+        "intelligence": 1.3,
+        "coding": null
+      },
+      "deepseek-v2": {
+        "intelligence": 3.3,
+        "coding": null
+      },
+      "qwen3-5-9b": {
+        "intelligence": 21.8,
+        "coding": 28.7
+      },
+      "o3-mini": {
+        "intelligence": 19.2,
+        "coding": null
+      },
+      "grok-4-fast": {
+        "intelligence": 16.6,
+        "coding": null
+      },
+      "claude-sonnet-4-6": {
+        "intelligence": 36.8,
+        "coding": null
+      },
+      "ling-2-6-1t": {
+        "intelligence": 26.6,
+        "coding": null
+      },
+      "gemma-3-12b": {
+        "intelligence": 5.5,
+        "coding": 5.8
+      },
+      "nvidia-nemotron-nano-9b-v2": {
+        "intelligence": 7.2,
+        "coding": null
+      },
+      "command-a-plus": {
+        "intelligence": 22.8,
+        "coding": 27.8
+      },
+      "exaone-4-0-32b": {
+        "intelligence": 5.7,
+        "coding": null
+      },
+      "claude-opus-4-7-non-reasoning": {
+        "intelligence": 43.9,
+        "coding": null
+      },
+      "g9v3-3b": {
+        "intelligence": 16.2,
+        "coding": 9.9
+      },
+      "glm-4-5v-reasoning": {
+        "intelligence": 9,
+        "coding": null
+      },
+      "qwen3-5-4b-non-reasoning": {
+        "intelligence": 16.1,
+        "coding": 20.3
+      },
+      "qwen3-5-397b-a17b-non-reasoning": {
+        "intelligence": 32.7,
+        "coding": null
+      },
+      "qwen3-235b-a22b-instruct-2507": {
+        "intelligence": 18.4,
+        "coding": null
+      },
+      "olmo-3-7b-think": {
+        "intelligence": 3.6,
+        "coding": null
+      },
+      "hyperclova-x-seed-think-32b": {
+        "intelligence": 17.2,
+        "coding": null
+      },
+      "hypernova-60b": {
+        "intelligence": 18.3,
+        "coding": 23.2
+      },
+      "sonar-pro": {
+        "intelligence": 9.1,
+        "coding": null
+      },
+      "nova-micro": {
+        "intelligence": 4.4,
+        "coding": null
+      },
+      "sarvam-m-reasoning": {
+        "intelligence": 2.6,
+        "coding": null
+      },
+      "qwen-turbo": {
+        "intelligence": 6,
+        "coding": null
+      },
+      "qwen3-8-27b-non-reasoning": {
+        "intelligence": 34.7,
+        "coding": 44.6
+      },
+      "mistral-small-2402": {
+        "intelligence": 3.2,
+        "coding": null
+      },
+      "intellect-3": {
+        "intelligence": 15.7,
+        "coding": null
+      },
+      "gpt-oss-20b": {
+        "intelligence": 15.2,
+        "coding": 20.7
+      },
+      "minimax-m1-40k": {
+        "intelligence": 14.5,
+        "coding": null
+      },
+      "gpt-5-4-mini-medium": {
+        "intelligence": 30.5,
+        "coding": null
+      },
+      "olmo-3-1-32b-think": {
+        "intelligence": 7.9,
+        "coding": null
+      },
+      "qwen3-6-27b-non-reasoning": {
+        "intelligence": 31.3,
+        "coding": 46.6
+      },
+      "nex-n2-pro": {
+        "intelligence": 41.7,
+        "coding": 59.1
+      },
+      "gpt-4-1": {
+        "intelligence": 19.6,
+        "coding": null
+      },
+      "claude-fable-5-1-medium": {
+        "intelligence": 60.5,
+        "coding": 77.1
+      },
+      "command-a": {
+        "intelligence": 7.5,
+        "coding": null
+      },
+      "lfm2-5-vl-1-6b": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "qwen3-vl-8b-instruct": {
+        "intelligence": 8.2,
+        "coding": null
+      },
+      "jt-mini": {
+        "intelligence": 18.8,
+        "coding": null
+      },
+      "ling-mini-2-0": {
+        "intelligence": 3.4,
+        "coding": null
+      },
+      "gemini-2-0-flash-lite-preview": {
+        "intelligence": 8.4,
+        "coding": null
+      },
+      "qwen3-30b-a3b-instruct-reasoning": {
+        "intelligence": 9.2,
+        "coding": null
+      },
+      "claude-fable-5-1": {
+        "intelligence": 65.7,
+        "coding": 81.6
+      },
+      "mixtral-8x7b-instruct": {
+        "intelligence": 2,
+        "coding": null
+      },
+      "molmo2-8b": {
+        "intelligence": 1.6,
+        "coding": null
+      },
+      "mistral-small-4": {
+        "intelligence": 19.7,
+        "coding": 26.6
+      },
+      "qwen3-5-0-8b-non-reasoning": {
+        "intelligence": 2.9,
+        "coding": 1.2
+      },
+      "glm-5": {
+        "intelligence": 40.6,
+        "coding": null
+      },
+      "claude-opus-4-5": {
+        "intelligence": 35.6,
+        "coding": null
+      },
+      "qwen-chat-72b": {
+        "intelligence": 3,
+        "coding": null
+      },
+      "gemini-1-5-flash": {
+        "intelligence": 7.8,
+        "coding": null
+      },
+      "gpt-5-6-luna": {
+        "intelligence": 52.3,
+        "coding": 71.4
+      },
+      "glm-4-6v": {
+        "intelligence": 10.9,
+        "coding": null
+      },
+      "solar-pro-2-preview": {
+        "intelligence": 9.9,
+        "coding": null
+      },
+      "minicpm-v4-6-1-3b": {
+        "intelligence": 3.8,
+        "coding": 0.7
+      },
+      "qwen3-235b-a22b-instruct": {
+        "intelligence": 10.8,
+        "coding": null
+      },
+      "claude-opus-4-6": {
+        "intelligence": 38.8,
+        "coding": null
+      },
+      "mistral-small-3-2": {
+        "intelligence": 10.7,
+        "coding": 12.5
+      },
+      "deepseek-v3": {
+        "intelligence": 14.2,
+        "coding": 23
+      },
+      "kimi-k2": {
+        "intelligence": 19.7,
+        "coding": null
+      },
+      "deepseek-r1-distill-qwen-1-5b": {
+        "intelligence": 3.3,
+        "coding": null
+      },
+      "exaone-4-0-32b-reasoning": {
+        "intelligence": 10.5,
+        "coding": null
+      },
+      "solar-pro-2": {
+        "intelligence": 7.6,
+        "coding": null
+      },
+      "qwen3-14b-instruct-reasoning": {
+        "intelligence": 10.4,
+        "coding": 13.8
+      },
+      "sarvam-105b": {
+        "intelligence": 11.9,
+        "coding": null
+      },
+      "llama-3-1-instruct-405b": {
+        "intelligence": 8.3,
+        "coding": null
+      },
+      "llama-3-1-instruct-70b": {
+        "intelligence": 6.5,
+        "coding": null
+      },
+      "qwen3-5-35b-a3b": {
+        "intelligence": 29.9,
+        "coding": null
+      },
+      "mimo-v2-5-pro-non-reasoning": {
+        "intelligence": 28.4,
+        "coding": null
+      },
+      "ring-flash-2-0": {
+        "intelligence": 8,
+        "coding": null
+      },
+      "lfm2-5-1-2b-instruct": {
+        "intelligence": 2.3,
+        "coding": null
+      },
+      "gpt-5": {
+        "intelligence": 35.3,
+        "coding": 37.8
+      },
+      "mistral-large-3": {
+        "intelligence": 15.9,
+        "coding": 20.1
+      },
+      "gpt-5-4-non-reasoning": {
+        "intelligence": 28.3,
+        "coding": null
+      },
+      "gpt-5-2": {
+        "intelligence": 43.3,
+        "coding": null
+      },
+      "apertus-70b-instruct": {
+        "intelligence": 2,
+        "coding": null
+      },
+      "grok-4-1-fast": {
+        "intelligence": 17,
+        "coding": null
+      },
+      "deepseek-r1-distill-llama-70b": {
+        "intelligence": 9.8,
+        "coding": null
+      },
+      "qwen3-0.6b-instruct-reasoning": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "minimax-m2-7": {
+        "intelligence": 38.9,
+        "coding": 52.6
+      },
+      "grok-1": {
+        "intelligence": 5.8,
+        "coding": null
+      },
+      "doubao-seed-code": {
+        "intelligence": 26.5,
+        "coding": null
+      },
+      "gpt-5-1": {
+        "intelligence": 37.5,
+        "coding": 49.4
+      },
+      "gemini-3-5-flash-medium": {
+        "intelligence": 46.7,
+        "coding": null
+      },
+      "claude-4-opus": {
+        "intelligence": 26,
+        "coding": null
+      },
+      "exaone-4-5-33b": {
+        "intelligence": 20.5,
+        "coding": 23.6
+      },
+      "qwen3-5-27b-non-reasoning": {
+        "intelligence": 30,
+        "coding": null
+      },
+      "mistral-large-2": {
+        "intelligence": 9,
+        "coding": null
+      },
+      "kimi-k3-low": {
+        "intelligence": 48.3,
+        "coding": 72
+      },
+      "palm-2": {
+        "intelligence": 2.8,
+        "coding": 4.6
+      },
+      "qwen3-vl-30b-a3b-instruct": {
+        "intelligence": 9.9,
+        "coding": null
+      },
+      "grok-4-20-0309-non-reasoning": {
+        "intelligence": 22.9,
+        "coding": null
+      },
+      "deepseek-v3-2-speciale": {
+        "intelligence": 22.6,
+        "coding": null
+      },
+      "gemma-4-e4b-non-reasoning": {
+        "intelligence": 8.7,
+        "coding": null
+      },
+      "gpt-5-4-low": {
+        "intelligence": 40.2,
+        "coding": null
+      },
+      "claude-opus-4-6-adaptive": {
+        "intelligence": 44.9,
+        "coding": null
+      },
+      "jamba-1-5-mini": {
+        "intelligence": 2.3,
+        "coding": null
+      },
+      "olmo-2-32b": {
+        "intelligence": 4.7,
+        "coding": null
+      },
+      "nova-pro": {
+        "intelligence": 7.5,
+        "coding": null
+      },
+      "granite-4-0-350m": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "gemini-2-5-flash-04-2025": {
+        "intelligence": 11.6,
+        "coding": null
+      },
+      "grok-4-fast-reasoning": {
+        "intelligence": 27.9,
+        "coding": null
+      },
+      "gpt-4o-chatgpt-03-25": {
+        "intelligence": 12.3,
+        "coding": null
+      },
+      "muse-glimmer": {
+        "intelligence": 35.1,
+        "coding": 49
+      },
+      "gpt-5-6-luna-medium": {
+        "intelligence": 38.9,
+        "coding": 50.7
+      },
+      "qwen3-1.7b-instruct-reasoning": {
+        "intelligence": 2.2,
+        "coding": null
+      },
+      "gemini-3-1-flash-lite-preview": {
+        "intelligence": 25.6,
+        "coding": 34.7
+      },
+      "kimi-linear-48b-a3b-instruct": {
+        "intelligence": 8.4,
+        "coding": null
+      },
+      "llama-2-chat-70b": {
+        "intelligence": 2.6,
+        "coding": null
+      },
+      "solar-open-100b-reasoning": {
+        "intelligence": 15.2,
+        "coding": null
+      },
+      "gpt-5-3-codex": {
+        "intelligence": 45.5,
+        "coding": null
+      },
+      "mistral-medium-3": {
+        "intelligence": 12.5,
+        "coding": null
+      },
+      "lfm2-5-1-2b-thinking": {
+        "intelligence": 2.3,
+        "coding": null
+      },
+      "k2-think-v2": {
+        "intelligence": 17.4,
+        "coding": 21
+      },
+      "glm-5-1": {
+        "intelligence": 41,
+        "coding": 55.8
+      },
+      "o1": {
+        "intelligence": 23.9,
+        "coding": 39.7
+      },
+      "qwen3-max-preview": {
+        "intelligence": 19.4,
+        "coding": null
+      },
+      "nvidia-nemotron-3-ultra-550b-a55b": {
+        "intelligence": 38.3,
+        "coding": 49.3
+      },
+      "longcat-2-0": {
+        "intelligence": 34,
+        "coding": 45.3
+      },
+      "nova-lite": {
+        "intelligence": 6.7,
+        "coding": null
+      },
+      "seed-oss-36b-instruct": {
+        "intelligence": 18.5,
+        "coding": null
+      },
+      "gpt-4-5": {
+        "intelligence": 13.6,
+        "coding": null
+      },
+      "gpt-5-codex": {
+        "intelligence": 37,
         "coding": null
       },
       "glm-4-5-air": {
         "intelligence": 16.7,
         "coding": null
       },
-      "glm-4-5v-reasoning": {
-        "intelligence": 9,
+      "qwen3-5-2b": {
+        "intelligence": 7.4,
+        "coding": 2.9
+      },
+      "mimo-v2-pro": {
+        "intelligence": 41.4,
         "coding": null
+      },
+      "tri-21b-think-v0-5": {
+        "intelligence": 12.3,
+        "coding": null
+      },
+      "deepseek-v4-pro-0424-high": {
+        "intelligence": 43.7,
+        "coding": 58.7
+      },
+      "granite-4-0-h-small": {
+        "intelligence": 4.9,
+        "coding": null
+      },
+      "qwen3-30b-a3b-2507-reasoning": {
+        "intelligence": 14.6,
+        "coding": 12.1
+      },
+      "mistral-large": {
+        "intelligence": 4.1,
+        "coding": null
+      },
+      "qwen3-8-max": {
+        "intelligence": 58.1,
+        "coding": 71.8
+      },
+      "grok-4-3-medium": {
+        "intelligence": 36.9,
+        "coding": null
+      },
+      "gpt-5-medium": {
+        "intelligence": 34.6,
+        "coding": null
+      },
+      "grok-4": {
+        "intelligence": 34.1,
+        "coding": null
+      },
+      "sonar": {
+        "intelligence": 9.4,
+        "coding": null
+      },
+      "llama-3-2-instruct-11b-vision": {
+        "intelligence": 3,
+        "coding": null
+      },
+      "deepseek-r1-qwen3-8b": {
+        "intelligence": 10.3,
+        "coding": null
+      },
+      "qwen3-6-max": {
+        "intelligence": 41.1,
+        "coding": null
+      },
+      "longcat-flash-lite": {
+        "intelligence": 17.4,
+        "coding": null
+      },
+      "tri-21b-think-preview": {
+        "intelligence": 13.6,
+        "coding": null
+      },
+      "nova-2-0-lite-reasoning": {
+        "intelligence": 20.8,
+        "coding": 23
+      },
+      "gemini-2-5-pro-03-25": {
+        "intelligence": 23.4,
+        "coding": 46.7
+      },
+      "nvidia-nemotron-3-super-120b-a12b": {
+        "intelligence": 25.7,
+        "coding": 37.7
+      },
+      "grok-4-20-non-reasoning": {
+        "intelligence": 22.2,
+        "coding": null
+      },
+      "qwen3-5-4b": {
+        "intelligence": 20.4,
+        "coding": 22.6
+      },
+      "magistral-medium": {
+        "intelligence": 12.5,
+        "coding": null
+      },
+      "kimi-k2-0905": {
+        "intelligence": 24,
+        "coding": null
+      },
+      "qwen3-8-27b-medium": {
+        "intelligence": 44.5,
+        "coding": 56.1
+      },
+      "motif-2-12-7b": {
+        "intelligence": 12.8,
+        "coding": null
+      },
+      "qwen3-6-35b-a3b-non-reasoning": {
+        "intelligence": 24.6,
+        "coding": 28.1
+      },
+      "ministral-3-3b": {
+        "intelligence": 7.1,
+        "coding": 4.8
+      },
+      "lfm2-8b-a1b": {
+        "intelligence": 1.3,
+        "coding": null
+      },
+      "gemini-2-5-flash-reasoning-04-2025": {
+        "intelligence": 17.7,
+        "coding": null
+      },
+      "qwen3-7-max": {
+        "intelligence": 46.7,
+        "coding": 66
+      },
+      "glm-4-6-reasoning": {
+        "intelligence": 29.3,
+        "coding": 45.8
+      },
+      "gpt-4": {
+        "intelligence": 6.8,
+        "coding": 13.1
+      },
+      "gemini-2-5-flash": {
+        "intelligence": 14.2,
+        "coding": null
+      },
+      "llama-2-chat-13b": {
+        "intelligence": 2.6,
+        "coding": null
+      },
+      "gpt-5-5-medium": {
+        "intelligence": 51.4,
+        "coding": 71.5
+      },
+      "hermes-4-llama-3-1-70b-reasoning": {
+        "intelligence": 9.9,
+        "coding": null
+      },
+      "step-3-7-flash": {
+        "intelligence": 30.9,
+        "coding": 39.6
+      },
+      "deepseek-v3-2": {
+        "intelligence": 25.1,
+        "coding": null
+      },
+      "qwen3-vl-32b-instruct": {
+        "intelligence": 11,
+        "coding": null
+      },
+      "gpt-5-2-non-reasoning": {
+        "intelligence": 26.5,
+        "coding": null
+      },
+      "gemma-4-26b-a4b": {
+        "intelligence": 26.1,
+        "coding": 39.3
+      },
+      "deepseek-v4-pro-0424-non-reasoning": {
+        "intelligence": 31.9,
+        "coding": null
+      },
+      "nvidia-nemotron-nano-12b-v2-vl-reasoning": {
+        "intelligence": 8.8,
+        "coding": null
+      },
+      "gpt-5-6-sol-medium": {
+        "intelligence": 55.6,
+        "coding": 76.3
+      },
+      "gpt-5-5-non-reasoning": {
+        "intelligence": 35.8,
+        "coding": 56.5
+      },
+      "qwen3-5-omni-flash": {
+        "intelligence": 19.2,
+        "coding": null
+      },
+      "glm-4-7": {
+        "intelligence": 34.5,
+        "coding": 45.3
+      },
+      "nova-2-0-lite-reasoning-low": {
+        "intelligence": 18,
+        "coding": null
+      },
+      "magistral-small-2509": {
+        "intelligence": 11.5,
+        "coding": 14.7
+      },
+      "gemma-4-26b-a4b-non-reasoning": {
+        "intelligence": 20.4,
+        "coding": null
+      },
+      "claude-opus-5-high": {
+        "intelligence": 61.5,
+        "coding": 76.5
+      },
+      "ministral-3-14b": {
+        "intelligence": 11.2,
+        "coding": 14.4
+      },
+      "k-exaone": {
+        "intelligence": 22.5,
+        "coding": 32.1
+      },
+      "llama-3-2-instruct-3b": {
+        "intelligence": 3.9,
+        "coding": null
+      },
+      "gemini-2-5-flash-lite-preview-09-2025": {
+        "intelligence": 13.1,
+        "coding": null
+      },
+      "inkling-small": {
+        "intelligence": 41.2,
+        "coding": 52.9
+      },
+      "gpt-4-1-nano": {
+        "intelligence": 9.6,
+        "coding": 11.1
+      },
+      "llama-3-1-nemotron-instruct-70b": {
+        "intelligence": 7.4,
+        "coding": null
+      },
+      "llama-3-1-instruct-8b": {
+        "intelligence": 7.4,
+        "coding": 5.4
+      },
+      "lfm2-2-6b": {
+        "intelligence": 2.3,
+        "coding": null
+      },
+      "gemini-3-8-flash-medium": {
+        "intelligence": 56.6,
+        "coding": 74.1
+      },
+      "gemma-4-e2b-non-reasoning": {
+        "intelligence": 6.2,
+        "coding": null
+      },
+      "deepseek-v3-0324": {
+        "intelligence": 15.2,
+        "coding": 21.2
       },
       "command-r-plus-04-2024": {
         "intelligence": 2.6,
+        "coding": null
+      },
+      "sarvam-30b": {
+        "intelligence": 6.4,
+        "coding": null
+      },
+      "qwen2-72b-instruct": {
+        "intelligence": 5.7,
+        "coding": null
+      },
+      "gpt-4-turbo": {
+        "intelligence": 7.7,
+        "coding": 21.5
+      },
+      "nova-2-0-lite": {
+        "intelligence": 11.8,
+        "coding": null
+      },
+      "nvidia-nemotron-3-nano-30b-a3b-reasoning": {
+        "intelligence": 14.5,
+        "coding": 14.4
+      },
+      "deepseek-v4-flash-vision": {
+        "intelligence": 51.5,
+        "coding": 65
+      },
+      "deepseek-llm-67b-chat": {
+        "intelligence": 2.6,
+        "coding": null
+      },
+      "minicpm5-1b": {
+        "intelligence": 11.9,
+        "coding": null
+      },
+      "claude-3-opus": {
+        "intelligence": 11.8,
+        "coding": 19.5
+      },
+      "gemini-3-6-flash": {
+        "intelligence": 51.6,
+        "coding": 69.2
+      },
+      "gemini-3-flash": {
+        "intelligence": 27.9,
+        "coding": null
+      },
+      "jamba-1-7-large": {
+        "intelligence": 5,
+        "coding": null
+      },
+      "grok-4-5": {
+        "intelligence": 55.8,
+        "coding": 72.4
+      },
+      "mistral-saba": {
+        "intelligence": 6.2,
+        "coding": null
+      },
+      "qwen3-max": {
+        "intelligence": 24.5,
+        "coding": null
+      },
+      "gemini-2-0-flash-lite-001": {
+        "intelligence": 8.6,
+        "coding": null
+      },
+      "mistral-small": {
+        "intelligence": 4.3,
+        "coding": null
+      },
+      "gpt-5-6-sol-non-reasoning": {
+        "intelligence": 41.9,
+        "coding": 65.1
+      },
+      "gemini-3-flash-reasoning": {
+        "intelligence": 38.7,
+        "coding": null
+      },
+      "nanbeige4-1-3b": {
+        "intelligence": 11,
+        "coding": 9.6
+      },
+      "qwen3-8-27b-low": {
+        "intelligence": 42.9,
+        "coding": 58.2
+      },
+      "solar-open2-250b": {
+        "intelligence": 37.4,
+        "coding": 44.7
+      },
+      "ling-3-0-tiny": {
+        "intelligence": 24.5,
+        "coding": 26.5
+      },
+      "qwen3-30b-a3b-2507": {
+        "intelligence": 8.9,
+        "coding": null
+      },
+      "gpt-5-low": {
+        "intelligence": 31.9,
+        "coding": null
+      },
+      "celeris-1": {
+        "intelligence": 12.4,
+        "coding": 14.4
+      },
+      "qwen3-max-thinking": {
+        "intelligence": 32.5,
+        "coding": null
+      },
+      "llama-3-2-instruct-1b": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "tiny-aya-global": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "gpt-5-6-terra-high": {
+        "intelligence": 50.1,
+        "coding": 67.1
+      },
+      "glm-4-7-non-reasoning": {
+        "intelligence": 27.1,
+        "coding": null
+      },
+      "a-x-k2": {
+        "intelligence": 35,
+        "coding": 38.8
+      },
+      "exaone-4-0-1-2b": {
+        "intelligence": 2.4,
+        "coding": null
+      },
+      "llama-3-instruct-8b": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "hermes-4-llama-3-1-405b-reasoning": {
+        "intelligence": 8.8,
+        "coding": null
+      },
+      "mimo-v2-flash": {
+        "intelligence": 25.1,
+        "coding": 49.8
+      },
+      "granite-4-1-8b": {
+        "intelligence": 6.4,
+        "coding": 9.5
+      },
+      "deepseek-v4-pro": {
+        "intelligence": 53.2,
+        "coding": 68.8
+      },
+      "claude-instant": {
+        "intelligence": 1.7,
+        "coding": 7.8
+      },
+      "gemini-2-5-flash-lite-preview-09-2025-reasoning": {
+        "intelligence": 15.2,
+        "coding": null
+      },
+      "o4-mini": {
+        "intelligence": 26.1,
+        "coding": null
+      },
+      "gpt-5-2-medium": {
+        "intelligence": 38.9,
+        "coding": null
+      },
+      "magistral-medium-2509": {
+        "intelligence": 18,
+        "coding": 21.3
+      },
+      "qwen3-6-35b-a3b": {
+        "intelligence": 32.1,
+        "coding": 41.9
+      },
+      "gpt-5-6-luna-xhigh": {
+        "intelligence": 50.1,
+        "coding": 68.6
+      },
+      "gemini-2-5-flash-preview-09-2025": {
+        "intelligence": 19.1,
+        "coding": null
+      },
+      "QwQ-32B-Preview": {
+        "intelligence": 9.1,
+        "coding": null
+      },
+      "ling-flash-2-0": {
+        "intelligence": 9.6,
+        "coding": null
+      },
+      "gpt-5-4-nano-medium": {
+        "intelligence": 30.8,
+        "coding": null
+      },
+      "apertus-8b-instruct": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "deepseek-v4-flash-0420-high": {
+        "intelligence": 39,
+        "coding": 52
+      },
+      "deepseek-v2-5-sep-2024": {
+        "intelligence": 6.4,
+        "coding": null
+      },
+      "claude-4-opus-thinking": {
+        "intelligence": 31.7,
+        "coding": null
+      },
+      "gemini-3-8-flash": {
+        "intelligence": 58.7,
+        "coding": 76.3
+      },
+      "gpt-5-6-sol-high": {
+        "intelligence": 57.3,
+        "coding": 77.2
+      },
+      "gpt-4o-2024-08-06": {
+        "intelligence": 9.4,
+        "coding": null
+      },
+      "qwen3-6-27b": {
+        "intelligence": 37.7,
+        "coding": 53.7
+      },
+      "nemotron-3-nano-omni-30b-a3b": {
+        "intelligence": 15,
+        "coding": 13.8
+      },
+      "hy3-preview": {
+        "intelligence": 34.4,
+        "coding": null
+      },
+      "kimi-k2-7-code": {
+        "intelligence": 43,
+        "coding": 60.8
+      },
+      "gemini-1-0-pro": {
+        "intelligence": 2.7,
+        "coding": null
+      },
+      "agnes-2-5-pro-alpha": {
+        "intelligence": 39.7,
+        "coding": 58.8
+      },
+      "qwen3-8-2-4t-a95b": {
+        "intelligence": 57.7,
+        "coding": 71.9
+      },
+      "solar-pro-2-preview-reasoning": {
+        "intelligence": 12.5,
+        "coding": null
+      },
+      "gpt-5-nano-medium": {
+        "intelligence": 19.2,
+        "coding": null
+      },
+      "deepseek-coder-v2": {
+        "intelligence": 4.7,
+        "coding": null
+      },
+      "olmo-3-7b-instruct": {
+        "intelligence": 2.4,
+        "coding": null
+      },
+      "jt-4-1-flash-236b-a21b": {
+        "intelligence": 39.9,
+        "coding": 52.4
+      },
+      "grok-4-3-non-reasoning": {
+        "intelligence": 25,
+        "coding": 35.2
+      },
+      "claude-4-5-sonnet-thinking": {
+        "intelligence": 37.4,
+        "coding": 52.1
+      },
+      "claude-4-5-sonnet": {
+        "intelligence": 29.9,
+        "coding": null
+      },
+      "granite-4-1-3b": {
+        "intelligence": 4.4,
+        "coding": 4.7
+      },
+      "ling-2-6-flash": {
+        "intelligence": 14.2,
+        "coding": 25.3
+      },
+      "llama-4-maverick": {
+        "intelligence": 14.5,
+        "coding": 16.3
+      },
+      "jamba-1-6-large": {
+        "intelligence": 4.7,
+        "coding": null
+      },
+      "glm-5-1-non-reasoning": {
+        "intelligence": 36.3,
+        "coding": null
+      },
+      "gemini-1-5-flash-8b": {
+        "intelligence": 5.2,
+        "coding": null
+      },
+      "glm-4-6": {
+        "intelligence": 23.4,
+        "coding": null
+      },
+      "grok-4-3": {
+        "intelligence": 37.9,
+        "coding": 42.2
+      },
+      "olmo-3-1-32b-instruct": {
+        "intelligence": 6.2,
+        "coding": null
+      },
+      "mimo-v2-omni": {
+        "intelligence": 35.9,
+        "coding": null
+      },
+      "ministral-3-8b": {
+        "intelligence": 9,
+        "coding": 9.7
+      },
+      "llama-3-3-instruct-70b": {
+        "intelligence": 9.3,
+        "coding": 11.9
+      },
+      "nemotron-cascade-2-30b-a3b": {
+        "intelligence": 17.8,
+        "coding": 25.3
+      },
+      "r1-1776": {
+        "intelligence": 6,
+        "coding": null
+      },
+      "claude-opus-4-8": {
+        "intelligence": 57.3,
+        "coding": 74.3
+      },
+      "qwen3-8-flash-next": {
+        "intelligence": 55.8,
+        "coding": 73.1
+      },
+      "claude-fable-5-1-xhigh": {
+        "intelligence": 64.8,
+        "coding": 80.7
+      },
+      "gpt-5-6-terra-non-reasoning": {
+        "intelligence": 34.6,
+        "coding": 52.3
+      },
+      "minimax-m1-80k": {
+        "intelligence": 17.9,
+        "coding": null
+      },
+      "llama-3-2-instruct-90b-vision": {
+        "intelligence": 6,
+        "coding": null
+      },
+      "k-exaone-non-reasoning": {
+        "intelligence": 16.9,
+        "coding": null
+      },
+      "claude-fable-5-1-high": {
+        "intelligence": 62.5,
+        "coding": 79.1
+      },
+      "qwen3-8b-instruct-reasoning": {
+        "intelligence": 8.3,
+        "coding": 9
+      },
+      "claude-21": {
+        "intelligence": 3.5,
+        "coding": 14
+      },
+      "gpt-5-6-terra-xhigh": {
+        "intelligence": 52.8,
+        "coding": 70.6
+      },
+      "devstral-small": {
+        "intelligence": 9.1,
+        "coding": null
+      },
+      "nvidia-nemotron-3-nano-4b": {
+        "intelligence": 8.6,
+        "coding": 8
+      },
+      "gpt-4-1-mini": {
+        "intelligence": 14.8,
+        "coding": 20.2
+      },
+      "phi-4-mini": {
+        "intelligence": 5.7,
+        "coding": 3.8
+      },
+      "grok-beta": {
+        "intelligence": 7.3,
+        "coding": null
+      },
+      "grok-code-fast-1": {
+        "intelligence": 22,
+        "coding": null
+      },
+      "nova-2-0-pro": {
+        "intelligence": 14.4,
+        "coding": 20.9
+      },
+      "ring-1t": {
+        "intelligence": 16.3,
+        "coding": null
+      },
+      "granite-4-0-nano-1b": {
+        "intelligence": 1.6,
+        "coding": null
+      },
+      "motif-0714": {
+        "intelligence": 45.3,
+        "coding": 62
+      },
+      "k2-v2": {
+        "intelligence": 14.2,
+        "coding": null
+      },
+      "ernie-5-0-thinking-preview": {
+        "intelligence": 22.3,
+        "coding": null
+      },
+      "kimi-k2-5": {
+        "intelligence": 36,
+        "coding": 46.8
+      },
+      "claude-4-5-haiku-reasoning": {
+        "intelligence": 29.9,
+        "coding": 43.9
+      },
+      "granite-4-0-h-350m": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "qwen3-5-0-8b": {
+        "intelligence": 5.2,
+        "coding": 0
+      },
+      "apriel-v1-6-15b-thinker": {
+        "intelligence": 20.8,
+        "coding": null
+      },
+      "claude-4-sonnet-thinking": {
+        "intelligence": 29.8,
+        "coding": 37.6
+      },
+      "gemma-3n-e4b": {
+        "intelligence": 1,
+        "coding": 3.2
+      },
+      "qwen3-vl-235b-a22b-reasoning": {
+        "intelligence": 20.9,
+        "coding": null
+      },
+      "deepseek-r1": {
+        "intelligence": 20.4,
+        "coding": null
+      },
+      "qwen3-7-plus": {
+        "intelligence": 39.4,
+        "coding": 55.9
+      },
+      "gpt-5-4": {
+        "intelligence": 53.1,
+        "coding": 71.1
+      },
+      "gemma-3n-e2b": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "deephermes-3-mistral-24b-preview": {
+        "intelligence": 5,
+        "coding": null
+      },
+      "reka-flash": {
+        "intelligence": 6,
+        "coding": null
+      },
+      "gpt-5-6-luna-high": {
+        "intelligence": 47,
+        "coding": 63.3
+      },
+      "llama-3-instruct-70b": {
+        "intelligence": 3.1,
+        "coding": null
+      },
+      "nvidia-nemotron-nano-12b-v2-vl": {
+        "intelligence": 4.2,
+        "coding": null
+      },
+      "devstral-medium": {
+        "intelligence": 12.4,
         "coding": null
       },
       "command-r-03-2024": {
@@ -15836,132 +15348,540 @@
         "intelligence": 21.6,
         "coding": null
       },
-      "jamba-1-5-large": {
-        "intelligence": 4.8,
+      "gemini-1-5-flash-may-2024": {
+        "intelligence": 4.6,
         "coding": null
       },
-      "jamba-1-6-mini": {
-        "intelligence": 2.1,
+      "claude-35-sonnet-june-24": {
+        "intelligence": 8.1,
+        "coding": 26
+      },
+      "step-3-vl-10b": {
+        "intelligence": 9.3,
         "coding": null
       },
-      "jamba-1-5-mini": {
-        "intelligence": 2.3,
+      "deepseek-v4-flash-non-reasoning": {
+        "intelligence": 29.3,
         "coding": null
       },
-      "jamba-1-6-large": {
-        "intelligence": 4.7,
+      "llama-4-scout": {
+        "intelligence": 10.3,
+        "coding": 8.2
+      },
+      "granite-4-2-8b": {
+        "intelligence": 19.6,
+        "coding": 22.4
+      },
+      "gpt-5-4-mini-non-reasoning": {
+        "intelligence": 16.8,
         "coding": null
       },
-      "arctic-instruct": {
-        "intelligence": 3,
+      "ernie-4-5-300b-a47b": {
+        "intelligence": 8.9,
         "coding": null
       },
-      "qwen-2-5-max": {
-        "intelligence": 10.1,
+      "deepseek-v3-2-reasoning-0925": {
+        "intelligence": 25.9,
         "coding": null
       },
-      "qwen2-5-72b-instruct": {
-        "intelligence": 9.4,
-        "coding": null
-      },
-      "qwen2-5-coder-32b-instruct": {
-        "intelligence": 6.9,
-        "coding": null
-      },
-      "qwen-turbo": {
-        "intelligence": 6,
-        "coding": null
-      },
-      "qwen2-72b-instruct": {
-        "intelligence": 5.7,
-        "coding": null
-      },
-      "qwen3-6-max": {
-        "intelligence": 41.1,
-        "coding": null
-      },
-      "qwen3-coder-30b-a3b-instruct": {
-        "intelligence": 13.6,
-        "coding": null
-      },
-      "qwen3-vl-235b-a22b-instruct": {
-        "intelligence": 14.4,
-        "coding": null
-      },
-      "qwq-32b": {
-        "intelligence": 13.4,
-        "coding": null
-      },
-      "qwen3-vl-30b-a3b-reasoning": {
-        "intelligence": 13.4,
-        "coding": null
-      },
-      "qwen3-7-max": {
-        "intelligence": 46.7,
-        "coding": 66
-      },
-      "qwen3-vl-32b-instruct": {
-        "intelligence": 11,
-        "coding": null
-      },
-      "QwQ-32B-Preview": {
-        "intelligence": 9.1,
-        "coding": null
-      },
-      "qwen3-235b-a22b-instruct-reasoning": {
-        "intelligence": 13.5,
-        "coding": null
-      },
-      "qwen3-235b-a22b-instruct": {
-        "intelligence": 10.8,
-        "coding": null
-      },
-      "qwen2.5-32b-instruct": {
-        "intelligence": 7.2,
-        "coding": null
-      },
-      "qwen3-235b-a22b-instruct-2507": {
-        "intelligence": 18.4,
-        "coding": null
-      },
-      "qwen3-30b-a3b-instruct-reasoning": {
-        "intelligence": 9.2,
-        "coding": null
-      },
-      "qwen3-32b-instruct": {
-        "intelligence": 8.5,
+      "molmo-7b-d": {
+        "intelligence": 3.4,
         "coding": null
       },
       "qwen3-32b-instruct-reasoning": {
         "intelligence": 11.4,
         "coding": 15.3
       },
-      "qwen3-14b-instruct-reasoning": {
-        "intelligence": 10.4,
-        "coding": 13.8
+      "qwen3-8-27b": {
+        "intelligence": 52,
+        "coding": 68.1
       },
-      "qwen3-vl-8b-reasoning": {
-        "intelligence": 10.5,
+      "motif-3": {
+        "intelligence": 47.4,
+        "coding": 63.5
+      },
+      "qwen3-4b-2507-instruct": {
+        "intelligence": 6.9,
         "coding": null
       },
-      "qwen3-max": {
-        "intelligence": 24.5,
+      "gemma-4-e2b": {
+        "intelligence": 9.5,
+        "coding": 7.2
+      },
+      "gpt-5-5-high": {
+        "intelligence": 54.7,
+        "coding": 71.6
+      },
+      "llama-3-1-nemotron-nano-4b-reasoning": {
+        "intelligence": 8.4,
+        "coding": null
+      },
+      "gemini-3-7-flash": {
+        "intelligence": 56,
+        "coding": 76.1
+      },
+      "hy3": {
+        "intelligence": 42.2,
+        "coding": 58.8
+      },
+      "deepseek-r1-distill-qwen-14b": {
+        "intelligence": 9.7,
         "coding": null
       },
       "qwen3-8b-instruct": {
         "intelligence": 4.8,
         "coding": null
       },
-      "qwen3-30b-a3b-2507-reasoning": {
-        "intelligence": 14.6,
-        "coding": 12.1
+      "claude-3-sonnet": {
+        "intelligence": 4.4,
+        "coding": null
       },
-      "qwen3-30b-a3b-2507": {
+      "gemini-3-pro-low": {
+        "intelligence": 33.9,
+        "coding": null
+      },
+      "nova-2-0-omni-reasoning-low": {
+        "intelligence": 16.7,
+        "coding": null
+      },
+      "arctic-instruct": {
+        "intelligence": 3,
+        "coding": null
+      },
+      "gpt-4o-chatgpt": {
+        "intelligence": 8.1,
+        "coding": null
+      },
+      "jamba-1-5-large": {
+        "intelligence": 4.8,
+        "coding": null
+      },
+      "jamba-1-7-mini": {
+        "intelligence": 2.3,
+        "coding": null
+      },
+      "qwen2-5-72b-instruct": {
+        "intelligence": 9.4,
+        "coding": null
+      },
+      "o1-mini": {
+        "intelligence": 14,
+        "coding": null
+      },
+      "hy3-non-reasoning": {
+        "intelligence": 26.6,
+        "coding": null
+      },
+      "gpt-4o-mini": {
+        "intelligence": 6.7,
+        "coding": 11.4
+      },
+      "trinity-large-thinking": {
+        "intelligence": 18.7,
+        "coding": 25.8
+      },
+      "deephermes-3-llama-3-1-8b-preview": {
+        "intelligence": 1.9,
+        "coding": null
+      },
+      "solar-pro-3": {
+        "intelligence": 14.5,
+        "coding": 16.2
+      },
+      "claude-opus-5": {
+        "intelligence": 63.1,
+        "coding": 78
+      },
+      "qwen3-omni-30b-a3b-reasoning": {
+        "intelligence": 9.5,
+        "coding": null
+      },
+      "qwen-2-5-max": {
+        "intelligence": 10.1,
+        "coding": null
+      },
+      "kimi-k2-5-non-reasoning": {
+        "intelligence": 30.1,
+        "coding": null
+      },
+      "gpt-5-4-mini": {
+        "intelligence": 40.9,
+        "coding": 56.1
+      },
+      "gemini-3-1-pro-preview": {
+        "intelligence": 47.7,
+        "coding": 68.8
+      },
+      "qwen3-235b-a22b-instruct-reasoning": {
+        "intelligence": 13.5,
+        "coding": null
+      },
+      "gpt-5-mini-minimal": {
+        "intelligence": 14.3,
+        "coding": null
+      },
+      "deepseek-v2-5": {
+        "intelligence": 6.5,
+        "coding": null
+      },
+      "gemini-2-0-flash": {
+        "intelligence": 12.2,
+        "coding": null
+      },
+      "gpt-5-6-terra": {
+        "intelligence": 56.6,
+        "coding": 76.7
+      },
+      "gemma-3n-e4b-preview-0520": {
+        "intelligence": 4.2,
+        "coding": null
+      },
+      "kimi-k2-thinking": {
+        "intelligence": 33.5,
+        "coding": null
+      },
+      "mimo-v2-flash-reasoning": {
+        "intelligence": 31.9,
+        "coding": null
+      },
+      "deepseek-v4-pro-0424": {
+        "intelligence": 45.3,
+        "coding": 59.4
+      },
+      "qwen3-32b-instruct": {
+        "intelligence": 8.5,
+        "coding": null
+      },
+      "grok-4-6-low": {
+        "intelligence": 51.7,
+        "coding": 66.3
+      },
+      "gpt-4o": {
+        "intelligence": 11.1,
+        "coding": null
+      },
+      "g9v3-39a5b": {
+        "intelligence": 34,
+        "coding": 33.1
+      },
+      "gpt-5-4-nano-non-reasoning": {
+        "intelligence": 17.8,
+        "coding": null
+      },
+      "claude-4-5-haiku": {
+        "intelligence": 24.1,
+        "coding": null
+      },
+      "gpt-5-mini-medium": {
+        "intelligence": 31.6,
+        "coding": null
+      },
+      "gpt-5-minimal": {
+        "intelligence": 17.3,
+        "coding": null
+      },
+      "diffusiongemma-26b-a4b": {
+        "intelligence": 13.5,
+        "coding": 19.7
+      },
+      "gpt-5-5-instant-06-26": {
+        "intelligence": 29.2,
+        "coding": 39.4
+      },
+      "qwen-chat-14b": {
+        "intelligence": 1.7,
+        "coding": null
+      },
+      "llama-3-3-nemotron-super-49b": {
+        "intelligence": 8.3,
+        "coding": null
+      },
+      "gemini-2-0-pro-experimental-02-05": {
+        "intelligence": 11.8,
+        "coding": 25.5
+      },
+      "grok-4-20": {
+        "intelligence": 38,
+        "coding": null
+      },
+      "deepseek-coder-v2-lite": {
+        "intelligence": 2.7,
+        "coding": null
+      },
+      "gemini-2-5-flash-preview-09-2025-reasoning": {
+        "intelligence": 24.2,
+        "coding": null
+      },
+      "falcon-h1r-7b": {
+        "intelligence": 9.7,
+        "coding": null
+      },
+      "gpt-5-5-low": {
+        "intelligence": 44.5,
+        "coding": 60.9
+      },
+      "step-3-5-flash-0202": {
+        "intelligence": 26,
+        "coding": null
+      },
+      "glm-4-7-flash-non-reasoning": {
+        "intelligence": 15.6,
+        "coding": null
+      },
+      "olmo-3-32b-think": {
+        "intelligence": 6.1,
+        "coding": null
+      },
+      "qwen3-next-80b-a3b-reasoning": {
+        "intelligence": 16.9,
+        "coding": 17.4
+      },
+      "grok-4-6": {
+        "intelligence": 60.9,
+        "coding": 76.8
+      },
+      "gpt-oss-120b-low": {
+        "intelligence": 14.9,
+        "coding": 21.2
+      },
+      "o3-pro": {
+        "intelligence": 33.3,
+        "coding": null
+      },
+      "mistral-8x22b-instruct": {
+        "intelligence": 4,
+        "coding": null
+      },
+      "qwen3-max-thinking-preview": {
+        "intelligence": 25.5,
+        "coding": null
+      },
+      "devstral-small-2505": {
+        "intelligence": 11.8,
+        "coding": null
+      },
+      "gpt-5-6-terra-low": {
+        "intelligence": 41.3,
+        "coding": 58.1
+      },
+      "claude-4-1-opus-thinking": {
+        "intelligence": 34.5,
+        "coding": null
+      },
+      "gemma-4-31b": {
+        "intelligence": 29.7,
+        "coding": 43.4
+      },
+      "claude-fable-5": {
+        "intelligence": 62.1,
+        "coding": 76.5
+      },
+      "glm-5-3": {
+        "intelligence": 59.5,
+        "coding": 74.8
+      },
+      "qwen3-vl-30b-a3b-reasoning": {
+        "intelligence": 13.4,
+        "coding": null
+      },
+      "devstral-small-2": {
+        "intelligence": 17.7,
+        "coding": 29.3
+      },
+      "qwq-32b": {
+        "intelligence": 13.4,
+        "coding": null
+      },
+      "llama-3-1-nemotron-ultra-253b-v1-reasoning": {
         "intelligence": 8.9,
         "coding": null
       },
-      "qwen3-coder-480b-a35b-instruct": {
-        "intelligence": 18.2,
+      "claude-4-sonnet": {
+        "intelligence": 26,
+        "coding": null
+      },
+      "gemma-4-31b-non-reasoning": {
+        "intelligence": 22.3,
+        "coding": 33.2
+      },
+      "gpt-5-1-non-reasoning": {
+        "intelligence": 20.7,
+        "coding": null
+      },
+      "gemini-3-pro": {
+        "intelligence": 40.6,
+        "coding": null
+      },
+      "gemma-3-1b": {
+        "intelligence": 1,
+        "coding": null
+      },
+      "qwen1.5-110b-chat": {
+        "intelligence": 3.7,
+        "coding": null
+      },
+      "glm-4-6v-reasoning": {
+        "intelligence": 16.9,
+        "coding": null
+      },
+      "minicpm5-1b-non-reasoning": {
+        "intelligence": 11.7,
+        "coding": null
+      },
+      "qwen3-vl-32b-reasoning": {
+        "intelligence": 18.1,
+        "coding": null
+      },
+      "hermes-4-llama-3-1-405b": {
+        "intelligence": 8.6,
+        "coding": null
+      },
+      "granite-4-1-30b": {
+        "intelligence": 8.7,
+        "coding": 10.4
+      },
+      "gpt-5-4-nano": {
+        "intelligence": 39.7,
+        "coding": 56.1
+      },
+      "claude-sonnet-5-non-reasoning": {
+        "intelligence": 42.6,
+        "coding": 66.4
+      },
+      "qwen3-vl-235b-a22b-instruct": {
+        "intelligence": 14.4,
+        "coding": null
+      },
+      "muse-spark-1-1": {
+        "intelligence": 53.2,
+        "coding": 71.3
+      },
+      "deepseek-v3-2-reasoning": {
+        "intelligence": 32.8,
+        "coding": 44.2
+      },
+      "grok-4-6-xhigh": {
+        "intelligence": 60,
+        "coding": 75.9
+      },
+      "exaone-4-0-1-2b-reasoning": {
+        "intelligence": 2.5,
+        "coding": null
+      },
+      "gemma-4-e4b": {
+        "intelligence": 12.2,
+        "coding": 9.4
+      },
+      "deepseek-v4-flash-0420": {
+        "intelligence": 42.1,
+        "coding": 56.2
+      },
+      "claude-3-7-sonnet": {
+        "intelligence": 23.9,
+        "coding": null
+      },
+      "gpt-5-6-sol": {
+        "intelligence": 60.9,
+        "coding": 77.4
+      },
+      "solar-mini": {
+        "intelligence": 6,
+        "coding": null
+      },
+      "gpt-5-6-sol-xhigh": {
+        "intelligence": 59,
+        "coding": 78.3
+      },
+      "qwen3-coder-30b-a3b-instruct": {
+        "intelligence": 13.6,
+        "coding": null
+      },
+      "k2-v2-low": {
+        "intelligence": 8.4,
+        "coding": null
+      },
+      "granite-4-0-h-nano-1b": {
+        "intelligence": 2.2,
+        "coding": null
+      },
+      "reka-flash-3": {
+        "intelligence": 3.7,
+        "coding": null
+      },
+      "gpt-5-6-luna-non-reasoning": {
+        "intelligence": 26.8,
+        "coding": 39.3
+      },
+      "mistral-medium-3-5": {
+        "intelligence": 30.4,
+        "coding": 46.9
+      },
+      "k2-v2-medium": {
+        "intelligence": 12.4,
+        "coding": null
+      },
+      "claude-2": {
+        "intelligence": 3.3,
+        "coding": 12.9
+      },
+      "gemini-3-7-flash-low": {
+        "intelligence": 50.9,
+        "coding": 71
+      },
+      "pixtral-large-2411": {
+        "intelligence": 8,
+        "coding": null
+      },
+      "qwen3-vl-8b-reasoning": {
+        "intelligence": 10.5,
+        "coding": null
+      },
+      "phi-3-mini": {
+        "intelligence": 4.3,
+        "coding": null
+      },
+      "mi-dm-k-2-5-pro-dec28": {
+        "intelligence": 16.6,
+        "coding": null
+      },
+      "claude-sonnet-4-6-adaptive": {
+        "intelligence": 48.4,
+        "coding": 63
+      },
+      "deepseek-r1-distill-qwen-32b": {
+        "intelligence": 11,
+        "coding": null
+      },
+      "deepseek-v3-1-terminus": {
+        "intelligence": 21.7,
+        "coding": null
+      },
+      "gemini-2-0-flash-thinking-exp-1219": {
+        "intelligence": 6.4,
+        "coding": null
+      },
+      "gpt-5-nano": {
+        "intelligence": 20.1,
+        "coding": null
+      },
+      "lfm2-5-2-6b": {
+        "intelligence": 11,
+        "coding": 7.7
+      },
+      "llama-nemotron-super-49b-v1-5-reasoning": {
+        "intelligence": 12.4,
+        "coding": null
+      },
+      "lfm2-5-8b-a1b": {
+        "intelligence": 8.1,
+        "coding": null
+      },
+      "ling-3-0-flash": {
+        "intelligence": 37.8,
+        "coding": 50.6
+      },
+      "gpt-5-5-instant-05-26": {
+        "intelligence": 34.3,
         "coding": null
       },
       "qwen2-5-coder-7b-instruct": {
@@ -15972,24 +15892,92 @@
         "intelligence": 6.5,
         "coding": null
       },
-      "qwen3-max-thinking": {
-        "intelligence": 32.5,
+      "nova-premier": {
+        "intelligence": 12.7,
         "coding": null
       },
-      "qwen3-8b-instruct-reasoning": {
-        "intelligence": 8.3,
-        "coding": 9
+      "mistral-small-3": {
+        "intelligence": 6.7,
+        "coding": null
       },
-      "qwen3-235b-a22b-instruct-2507-reasoning": {
-        "intelligence": 19.9,
-        "coding": 22.1
+      "glm-5-2-non-reasoning": {
+        "intelligence": 34.8,
+        "coding": 46.5
       },
-      "qwen3-vl-235b-a22b-reasoning": {
-        "intelligence": 20.9,
+      "o1-pro": {
+        "intelligence": 19.1,
+        "coding": null
+      },
+      "jamba-1-6-mini": {
+        "intelligence": 2.1,
+        "coding": null
+      },
+      "gpt-4o-2024-05-13": {
+        "intelligence": 8.4,
+        "coding": 24.2
+      },
+      "claude-opus-4-7": {
+        "intelligence": 55,
+        "coding": 73.6
+      },
+      "gpt-5-chatgpt": {
+        "intelligence": 15.4,
+        "coding": null
+      },
+      "gemini-3-7-flash-medium": {
+        "intelligence": 53.4,
+        "coding": 71.5
+      },
+      "ring-2-6-1t": {
+        "intelligence": 31.7,
+        "coding": 42.8
+      },
+      "solar-pro-2-reasoning": {
+        "intelligence": 8.8,
+        "coding": null
+      },
+      "muse-spark": {
+        "intelligence": 44.3,
+        "coding": 58.6
+      },
+      "grok-3-reasoning": {
+        "intelligence": 15.2,
+        "coding": null
+      },
+      "openchat-35": {
+        "intelligence": 2.6,
         "coding": null
       },
       "qwen3-14b-instruct": {
         "intelligence": 6.8,
+        "coding": null
+      },
+      "phi-4": {
+        "intelligence": 4.6,
+        "coding": null
+      },
+      "qwen3-5-35b-a3b-non-reasoning": {
+        "intelligence": 24.3,
+        "coding": 37
+      },
+      "gpt-oss-120b": {
+        "intelligence": 24.1,
+        "coding": 30.4
+      },
+      "glm-5-non-reasoning": {
+        "intelligence": 33.2,
+        "coding": null
+      },
+      "nvidia-nemotron-nano-9b-v2-reasoning": {
+        "intelligence": 8.7,
+        "coding": null
+      },
+      "claude-sonnet-4-6-non-reasoning-low-effort": {
+        "intelligence": 35.1,
+        "coding": null
+      },
+      "claude-4-1-opus": {
+        "intelligence": 28.8,
         "coding": null
       },
       "qwen3-30b-a3b-instruct": {
@@ -16000,108 +15988,120 @@
         "intelligence": 40.5,
         "coding": 54.5
       },
-      "qwen3-5-35b-a3b": {
-        "intelligence": 29.9,
-        "coding": null
+      "agnes-2-5-pro-beta": {
+        "intelligence": 49.1,
+        "coding": 62.3
       },
-      "qwen3-5-27b": {
-        "intelligence": 34.6,
-        "coding": null
+      "nova-2-0-pro-reasoning-low": {
+        "intelligence": 19.8,
+        "coding": 25.9
       },
-      "qwen3-0.6b-instruct": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "qwen3-4b-instruct-reasoning": {
-        "intelligence": 8.2,
-        "coding": null
-      },
-      "qwen3-4b-2507-instruct-reasoning": {
-        "intelligence": 11.9,
-        "coding": null
-      },
-      "qwen3-1.7b-instruct": {
-        "intelligence": 1.1,
-        "coding": null
-      },
-      "qwen3-5-27b-non-reasoning": {
-        "intelligence": 30,
-        "coding": null
-      },
-      "qwen3-vl-32b-reasoning": {
-        "intelligence": 18.1,
-        "coding": null
-      },
-      "qwen3-0.6b-instruct-reasoning": {
-        "intelligence": 1,
-        "coding": null
-      },
-      "qwen3-1.7b-instruct-reasoning": {
-        "intelligence": 2.2,
-        "coding": null
-      },
-      "qwen3-vl-30b-a3b-instruct": {
-        "intelligence": 9.9,
-        "coding": null
-      },
-      "qwen3-max-thinking-preview": {
-        "intelligence": 25.5,
-        "coding": null
-      },
-      "qwen3-vl-4b-reasoning": {
-        "intelligence": 7.7,
+      "gemini-2-5-flash-lite-reasoning": {
+        "intelligence": 11.4,
         "coding": null
       },
       "qwen3-vl-4b-instruct": {
         "intelligence": 3.7,
         "coding": null
       },
-      "qwen1.5-110b-chat": {
-        "intelligence": 3.7,
+      "qwen3-235b-a22b-instruct-2507-reasoning": {
+        "intelligence": 19.9,
+        "coding": 22.1
+      },
+      "gemini-3-8-flash-low": {
+        "intelligence": 51.7,
+        "coding": 73.5
+      },
+      "tulu3-405b": {
+        "intelligence": 8.1,
         "coding": null
       },
-      "qwen3-4b-2507-instruct": {
-        "intelligence": 6.9,
+      "minimax-m2": {
+        "intelligence": 28.9,
         "coding": null
       },
-      "qwen3-vl-8b-instruct": {
-        "intelligence": 8.2,
+      "jamba-reasoning-3b": {
+        "intelligence": 3.8,
         "coding": null
       },
-      "qwen-chat-72b": {
-        "intelligence": 3,
+      "glm-5-2": {
+        "intelligence": 52.6,
+        "coding": 68.8
+      },
+      "kimi-k3": {
+        "intelligence": 59.7,
+        "coding": 76.2
+      },
+      "olmo-2-7b": {
+        "intelligence": 3.5,
         "coding": null
       },
-      "qwen3-max-preview": {
-        "intelligence": 19.4,
+      "qwen3-vl-4b-reasoning": {
+        "intelligence": 7.7,
         "coding": null
       },
-      "ling-flash-2-0": {
-        "intelligence": 9.6,
+      "quasar-438b": {
+        "intelligence": 43,
+        "coding": 61.2
+      },
+      "kat-coder-pro-v1": {
+        "intelligence": 28.9,
         "coding": null
       },
-      "ling-2-6-flash": {
-        "intelligence": 14.2,
-        "coding": 25.3
-      },
-      "ring-1t": {
-        "intelligence": 16.3,
+      "deepseek-v3-1": {
+        "intelligence": 21.4,
         "coding": null
       },
-      "ling-mini-2-0": {
-        "intelligence": 3.4,
+      "lfm2-24b-a2b": {
+        "intelligence": 4.6,
         "coding": null
       },
-      "ling-2-6-1t": {
-        "intelligence": 26.6,
+      "nova-2-0-lite-reasoning-medium": {
+        "intelligence": 19.2,
         "coding": null
       },
-      "ling-1t": {
-        "intelligence": 12.7,
+      "kat-coder-pro-v2": {
+        "intelligence": 33.7,
+        "coding": 59.5
+      },
+      "qwen3-coder-next": {
+        "intelligence": 21.3,
+        "coding": 36.2
+      },
+      "gpt-5-1-codex-mini": {
+        "intelligence": 31.3,
         "coding": null
       },
-      "seed-oss-36b-instruct": {
-        "intelligence": 18.5,
+      "gemini-2-0-flash-experimental": {
+        "intelligence": 10.6,
+        "coding": null
+      },
+      "llama-65b": {
+        "intelligence": 1.7,
+        "coding": null
+      },
+      "grok-4-3-low": {
+        "intelligence": 36.3,
+        "coding": null
+      },
+      "deepseek-v4-flash": {
+        "intelligence": 51.8,
+        "coding": 69.1
+      },
+      "gemma-4-12b": {
+        "intelligence": 22.2,
+        "coding": 31
+      },
+      "claude-opus-5-medium": {
+        "intelligence": 58.6,
+        "coding": 74.3
+      },
+      "grok-3-mini-reasoning": {
+        "intelligence": 22.9,
+        "coding": null
+      },
+      "llama-2-chat-7b": {
+        "intelligence": 3.9,
         "coding": null
       },
       "qwq-32b-preview": {

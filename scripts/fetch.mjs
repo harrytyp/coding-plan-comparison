@@ -57,7 +57,43 @@ async function fetchSource(source) {
       redirect: "follow",
     });
     clearTimeout(timer);
-    const buf = Buffer.from(await resp.arrayBuffer());
+    let buf = Buffer.from(await resp.arrayBuffer());
+
+    // Pagination: wenn die Quelle paginiert ist, alle Seiten fetchen und data-Arrays mergen
+    if (source.paginate && resp.ok) {
+      try {
+        const first = JSON.parse(buf.toString("utf-8"));
+        if (first?.pagination?.has_more) {
+          const totalPages = first.pagination.total_pages ?? 4;
+          const allData = [...(first.data ?? [])];
+          for (let page = 2; page <= totalPages; page++) {
+            const pageUrl = new URL(url);
+            pageUrl.searchParams.set("page", String(page));
+            const pc = new AbortController();
+            const pt = setTimeout(() => pc.abort(), 30000);
+            const pr = await fetch(pageUrl.toString(), {
+              method,
+              headers,
+              signal: pc.signal,
+              redirect: "follow",
+            });
+            clearTimeout(pt);
+            if (pr.ok) {
+              const pb = await pr.json();
+              allData.push(...(pb.data ?? []));
+            } else {
+              console.log(`  ⚠ pagination page ${page}: HTTP ${pr.status} (übersprungen)`);
+            }
+          }
+          // Merged response: first page body, aber mit allen Daten
+          const merged = { ...first, data: allData, pagination: { ...first.pagination, has_more: false } };
+          buf = Buffer.from(JSON.stringify(merged));
+        }
+      } catch (e) {
+        console.log(`  ⚠ pagination error: ${e.message} (fahre mit erster Seite fort)`);
+      }
+    }
+
     const hash = sha256(buf);
     // Stabiler Hash: für parsebare Quellen den strukturierten Output hashen
     // (robust gegen HTML-Nonces/Cache-Buster). Für unparsbare SPA-Quellen (kein Parser)
