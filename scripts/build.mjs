@@ -932,7 +932,7 @@ async function main() {
     pairwiseComparisons: pairwise,
     modelComparisons,
     familyComparisons,
-    aiScores: loadAiScores(ROOT),
+    aiScores: (() => { const s = loadAiScores(ROOT); const added = applyScoreAliases(s.scores, planSummaries); s.count += added.size; return s; })(),
     privacy: loadPrivacy(ROOT),
     fx: parsed["fx-rates"] ?? { base: "USD", rates: { EUR: 0.86, CNY: 6.75, GBP: 0.74, JPY: 160 } },
     statistics: {
@@ -957,6 +957,7 @@ main().catch((e) => {
 });
 
 // AI-Scores aus LLM Stats Leaderboard Index: conservative (0-100)
+// Feed-Modellnamen werden automatisch per Fuzzy-Match auf Scores gemappt.
 function loadAiScores(root) {
   const result = { source: "LLM Stats (zeroeval.com)", fetchedAt: null, count: 0, scores: {} };
   try {
@@ -974,23 +975,105 @@ function loadAiScores(root) {
     }
   } catch (e) { /* kein parsed */ }
 
-  // Aliases aus data/aliases.yml laden: Feed-Modellname → Score-Slug
-  // Dupliziert den Score unter dem Alias-Namen, damit das Frontend direkt matcht.
-  try {
-    const aliasRaw = readFileSync(join(root, "data", "aliases.yml"), "utf8");
-    const aliasData = parseYaml(aliasRaw);
-    const aliases = aliasData.aliases ?? {};
-    for (const [alias, target] of Object.entries(aliases)) {
-      const targetSlug = target.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
-      const aliasSlug = alias.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
-      if (result.scores[targetSlug] && !result.scores[aliasSlug]) {
-        result.scores[aliasSlug] = { intelligence: result.scores[targetSlug].intelligence };
-        result.count++;
+  return result;
+}
+
+// Fuzzy-Match: Feed-Modellname → Score-Slug aus vorhandenen Scores.
+// Build bereitet die Scores vor, damit das Frontend nur noch lookup braucht.
+// Algorithmus (probiert der Reihe nach):
+//   1. Direkter Slug-Match
+//   2. Compact-Match (ohne Trennzeichen)
+//   3. Prefix-Match
+//   4. Geklammerte Suffixe entfernen (z.B. "(latest)")
+//   5. Bekannte Provider-Prefixe entfernen (z.B. "tencent")
+//   6. "contributor"/"preview" etc. entfernen
+//   7. Sukzessive Kürzung von hinten
+//   8. Word-Overlap (meiste gemeinsame Wörter)
+function fuzzyScoreMatch(rawName, family, scores) {
+  const raw = (rawName ?? family ?? "").toLowerCase();
+  const keys = Object.keys(scores);
+  if (keys.length === 0) return null;
+
+  // Helfer: Slug normalisieren
+  const slug = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
+  const compact = (s) => s.replace(/[^a-z0-9]/g, "");
+  const words = (s) => s.split(/[\s-]+/).filter(Boolean);
+  const commonWords = (a, b) => words(a).filter(w => w.length > 1 && words(b).includes(w)).length;
+
+  // Kandidaten generieren
+  const candidates = [];
+  // 1. Roh-Slug
+  candidates.push(slug(raw));
+  // 2. Family-Slug
+  if (family) candidates.push(slug(family.toLowerCase()));
+  // 3. Ohne Klammern: "(latest)" → "", "(exp)" → ""
+  const noParen = raw.replace(/\([^)]*\)/g, "").trim();
+  if (noParen !== raw) candidates.push(slug(noParen));
+  // 4. Ohne bekannte Provider-Prefixe
+  const PREFIXES = ["tencent ", "alibaba ", "google ", "openai ", "anthropic ", "meta "];
+  for (const p of PREFIXES) {
+    if (noParen.startsWith(p)) candidates.push(slug(noParen.slice(p.length)));
+  }
+  // 5. Ohne "contributor" / "preview" / "highspeed" / "fast" Suffixe
+  const noSuffix = noParen.replace(/\s+(contributor|preview|highspeed|fast|latest|exp)\s*$/i, "").trim();
+  if (noSuffix !== noParen) candidates.push(slug(noSuffix));
+  // 6. Ohne Datums-Suffix (4-stellige Zahl am Ende)
+  const noDate = noParen.replace(/[\s-]+\d{4}$/, "").trim();
+  if (noDate !== noParen) candidates.push(slug(noDate));
+  // 7. Sukzessive Kürzung: letztes Wort entfernen
+  let parts = words(noParen);
+  while (parts.length > 2) {
+    parts.pop();
+    candidates.push(slug(parts.join(" ")));
+  }
+
+  // Match gegen Scores
+  for (const c of [...new Set(candidates.filter(Boolean))]) {
+    // Direct match
+    if (scores[c]) return c;
+    // Compact match
+    const cc = compact(c);
+    if (cc.length >= 4) {
+      const found = keys.find(k => compact(k) === cc);
+      if (found) return found;
+    }
+    // Prefix match: kürzeste passende Key nehmen (z.B. "deepseek-v4-flash-0423" vor "deepseek-v4-flash-vision-exp")
+    const prefix = keys.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
+      .sort((a, b) => a.length - b.length)[0];
+    if (prefix) return prefix;
+  }
+
+  // 8. Word-Overlap: finde Score-Key mit meisten gemeinsamen Wörtern
+  const rawWords = words(noParen);
+  let best = null, bestOverlap = 0;
+  for (const k of keys) {
+    const overlap = commonWords(k, noParen);
+    if (overlap >= 2 && overlap > bestOverlap) {
+      bestOverlap = overlap;
+      best = k;
+    }
+  }
+  return best;
+}
+
+// Wende Fuzzy-Match auf alle Feed-Modelle an, damit Scores direkt auffindbar sind
+function applyScoreAliases(scores, plans) {
+  const added = new Set();
+  const slug = (s) => s.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
+  const slug2 = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
+  for (const plan of plans) {
+    for (const row of plan.modelRows ?? []) {
+      const match = fuzzyScoreMatch(row.model, row.family, scores);
+      if (match) {
+        const modelSlug = slug(row.model);
+        if (!scores[modelSlug]) {
+          scores[modelSlug] = { intelligence: scores[match].intelligence };
+          added.add(modelSlug);
+        }
       }
     }
-  } catch (e) { /* kein aliases.yml */ }
-
-  return result;
+  }
+  return added;
 }
 
 // Privacy-Aussagen aus data/privacy.yml laden (selbst erhoben, offizielle Quellen)
