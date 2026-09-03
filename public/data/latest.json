@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T16:54:18.719Z",
+  "generatedAt": "2026-09-03T16:54:46.681Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13617,7 +13617,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-03T16:54:18.642Z",
+    "fetchedAt": "2026-09-03T16:54:46.316Z",
     "count": 381,
     "scores": {
       "claude-fable-5-1": {
@@ -13725,10 +13725,10 @@
       "gemini-3-6-flash": {
         "intelligence": 43.69
       },
-      "seed-2-1-turbo": {
+      "deepseek-v4-pro-max": {
         "intelligence": 43.68
       },
-      "deepseek-v4-pro-max": {
+      "seed-2-1-turbo": {
         "intelligence": 43.68
       },
       "gemini-3-1-pro-preview": {
@@ -14007,10 +14007,10 @@
       "claude-opus-4-20250514": {
         "intelligence": 27.91
       },
-      "o4-mini": {
+      "mimo-v2-omni": {
         "intelligence": 27.84
       },
-      "mimo-v2-omni": {
+      "o4-mini": {
         "intelligence": 27.84
       },
       "gpt-oss-20b-high": {
@@ -14562,10 +14562,10 @@
       "command-r-plus-04-2024": {
         "intelligence": -0.13
       },
-      "mistral-small-24b-base-2501": {
+      "granite-3-3-8b-base": {
         "intelligence": -0.26
       },
-      "granite-3-3-8b-base": {
+      "mistral-small-24b-base-2501": {
         "intelligence": -0.26
       },
       "gemma-2-27b-it": {
