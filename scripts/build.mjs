@@ -455,6 +455,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       dataTier: ov.quota ? "A" : "C",
       dataTierNote: ov.quota ? "Offizielles Quota (5h-Cap) aus Docs/Overrides" : "Keine offizielle Quota — abgeleitet",
       disclosure: "undisclosed",
+      // Keine feedModels für undisclosed — sonst entstehen erfundene modelStats
+      feedModels: null,
       sourceIds: ["overrides"],
       verifiedAt: ov.lastVerified ?? "2026-08-28",
       notes: ov.note ?? null,
@@ -828,7 +830,7 @@ async function main() {
       sourceIds: plan.sourceIds ?? [],
       verifiedAt: plan.verifiedAt ?? null,
       modelCount: modelRows.length,
-      modelStats: modelRows.length ? distribution(modelRows.map((r) => r.requestsPerMonth)) : null,
+      modelStats: plan.disclosure === "undisclosed" ? null : (modelRows.length ? distribution(modelRows.map((r) => r.requestsPerMonth)) : null),
       // Datenqualitäts-Tier für die Mengen-Basis:
       // A = offizielle Quota-Menge (usage/allowances/quotas aus Feed/Docs)
       // B = offizielle Gesamtmenge als Anker (requestEstimate normiert)

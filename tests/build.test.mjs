@@ -75,14 +75,15 @@ test("GLM nutzt Anbieter-Credit-Formel (beide Modelle, offiziell)", async () => 
     "weekly → ×4.33 monthly");
 });
 
-test("Preisdiskrepanzen aufgelöst: offizielle Preise (GLM CNY, Kimi CNY, Qwen USD)", async () => {
+test("Preisdiskrepanzen aufgelöst: offizielle Preise (GLM CNY, Kimi USD, Qwen USD)", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const glmPro = d.plans.find((p) => p.id === "glm-pro");
   // CNY 538 ≈ $75 (offiziell); nicht mehr Scouty $72 oder coding-plans $30
   assert.ok(Math.abs(glmPro.price.paidPrice - 75) < 2, "GLM Pro paid ≈ $75 (CNY 538)");
   assert.ok(glmPro.price.monthlyUsd > 70, "GLM Pro nicht mehr $30 (coding-plans falsch)");
   const kimiMod = d.plans.find((p) => p.id === "kimi-moderato");
-  assert.ok(Math.abs(kimiMod.price.paidPrice - 13.9) < 1, "Kimi Moderato ≈ ¥99 ≈ $13.9");
+  // Kimi.ai hat USD-Preise (primär): $19/Monat (kimi.com CNY ¥99 ist sekundär)
+  assert.ok(Math.abs(kimiMod.price.paidPrice - 19) < 1, "Kimi Moderato ≈ $19 (kimi.ai USD, nicht ¥99→$13.9)");
   const qwenStd = d.plans.find((p) => p.id === "qwen-token-personal-standard");
   assert.equal(qwenStd.price.paidPrice, 18, "Qwen Standard limited-time $18");
   assert.equal(qwenStd.price.advertised, 25, "Qwen Standard Original $25");

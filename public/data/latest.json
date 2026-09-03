@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-31T08:59:57.211Z",
+  "generatedAt": "2026-09-03T13:46:27.047Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -73,14 +73,14 @@
         "ocgo-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 33,
+      "modelCount": 34,
       "modelStats": {
-        "count": 33,
+        "count": 34,
         "min": 422.5352112676057,
         "max": 226586.10271903325,
-        "mean": 22759.26994936339,
-        "median": 9447.033631439728,
-        "p25": 3957.78364116095,
+        "mean": 28729.529635037088,
+        "median": 9685.475135269979,
+        "p25": 4057.069358524496,
         "p75": 18894.067262879456
       },
       "dataTier": "A",
@@ -513,6 +513,31 @@
           "rawTokensPerMonth": 933768558.4921556
         },
         {
+          "model": "Muse Spark 1.3 Contributor",
+          "family": "muse spark 1.3",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 226586.10271903325,
+          "requestsRawInWindow": 226586.10271903325,
+          "normalizedPer10": 226586.10271903322,
+          "privacy": {
+            "training": true,
+            "retentionDays": false,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 16386706948.640486
+        },
+        {
           "model": "Muse Spark 1.2 Contributor",
           "family": "muse spark 1.2",
           "allowance": 60,
@@ -590,7 +615,7 @@
         {
           "model": "Qwen3.7 Max",
           "family": "qwen3.7 max",
-          "allowance": 60,
+          "allowance": 30,
           "window": null,
           "windowNote": null,
           "costPerRequest": 0.035799375,
@@ -601,16 +626,16 @@
           },
           "creditsPerRequest": null,
           "unit": "requests",
-          "requestsPerMonth": 1676.0069135285182,
-          "requestsRawInWindow": 1676.0069135285182,
-          "normalizedPer10": 1676.0069135285182,
+          "requestsPerMonth": 838.0034567642591,
+          "requestsRawInWindow": 838.0034567642591,
+          "normalizedPer10": 838.0034567642591,
           "privacy": {
             "training": false,
             "retentionDays": true,
             "validUntil": null
           },
           "estimate": null,
-          "rawTokensPerMonth": 111655580.57926989
+          "rawTokensPerMonth": 55827790.28963494
         },
         {
           "model": "Qwen3.7 Plus",
@@ -780,8 +805,8 @@
           "requestsRawInWindow": 37788.13452575891,
           "normalizedPer10": 37788.13452575891,
           "privacy": {
-            "training": false,
-            "retentionDays": true,
+            "training": true,
+            "retentionDays": false,
             "validUntil": "2026-08-31"
           },
           "estimate": null,
@@ -805,8 +830,8 @@
           "requestsRawInWindow": 18894.067262879456,
           "normalizedPer10": 18894.067262879456,
           "privacy": {
-            "training": false,
-            "retentionDays": true,
+            "training": true,
+            "retentionDays": false,
             "validUntil": "2026-08-31"
           },
           "estimate": null,
@@ -967,15 +992,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 63,
+      "modelCount": 69,
       "modelStats": {
-        "count": 63,
+        "count": 69,
         "min": 42.01680672268907,
         "max": 10796.609864502545,
-        "mean": 1482.0607367314622,
+        "mean": 1533.1059757570806,
         "median": 420.16806722689074,
-        "p25": 184.29575956959508,
-        "p75": 1491.0979545932855
+        "p25": 184.90440442291333,
+        "p75": 1470.4801117564882
       },
       "dataTier": "B",
       "dataTierNote": "Offizielle Gesamtmenge 15,000 req/mo als Anker",
@@ -1443,6 +1468,48 @@
           "rawTokensPerMonth": 129595307.07357888
         },
         {
+          "model": "DeepSeek V4 Flash Fast",
+          "family": "deepseek v4 flash",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005279400000000002,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 541.1870396527742,
+          "requestsRawInWindow": 541.1870396527742,
+          "normalizedPer10": 5411.870396527742,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 38976290.59579279
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "family": "qwen 3.8 max 0902",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015072,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 189.5662723688201,
+          "requestsRawInWindow": 189.5662723688201,
+          "normalizedPer10": 1895.6627236882011,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 9660676.37245981
+        },
+        {
           "model": "Qwen 3.8 Max",
           "family": "qwen 3.8 max",
           "allowance": 2.8571428571428568,
@@ -1714,6 +1781,27 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 21198129.845928583
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 93.67681498829039,
+          "requestsRawInWindow": 93.67681498829039,
+          "normalizedPer10": 936.7681498829039,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4773957.845433255
         },
         {
           "model": "Claude Fable 5",
@@ -2031,6 +2119,27 @@
           "rawTokensPerMonth": 5520386.498548463
         },
         {
+          "model": "Gemini 3.8 Flash",
+          "family": "gemini 3.8 flash",
+          "allowance": 5.7142857142857135,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 576.3273539370362,
+          "requestsRawInWindow": 576.3273539370362,
+          "normalizedPer10": 5763.2735393703615,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 29370794.611339238
+        },
+        {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
           "allowance": 5.7142857142857135,
@@ -2155,6 +2264,48 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 4300227.8288752
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "family": "muse spark 1.3",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 223.91401701746526,
+          "requestsRawInWindow": 223.91401701746526,
+          "normalizedPer10": 2239.1401701746527,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 16193461.710703088
+        },
+        {
+          "model": "Muse Spark 1.3 Contributor",
+          "family": "muse spark 1.3",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10789.814415192059,
+          "requestsRawInWindow": 10789.814415192059,
+          "normalizedPer10": 107898.14415192058,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 780319378.5066897
         },
         {
           "model": "Muse Spark 1.2",
@@ -2358,15 +2509,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 63,
+      "modelCount": 69,
       "modelStats": {
-        "count": 63,
+        "count": 69,
         "min": 294.11764705882354,
         "max": 75576.26905151783,
-        "mean": 10374.425157120239,
+        "mean": 10731.741830299568,
         "median": 2941.1764705882356,
-        "p25": 1290.0703169871658,
-        "p75": 10437.685682153002
+        "p25": 1294.3308309603935,
+        "p75": 10293.36078229542
       },
       "dataTier": "A",
       "dataTierNote": "Offizielle Modell-Allowances aus Feed",
@@ -2834,6 +2985,48 @@
           "rawTokensPerMonth": 907167149.5150522
         },
         {
+          "model": "DeepSeek V4 Flash Fast",
+          "family": "deepseek v4 flash",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005279400000000002,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3788.3092775694195,
+          "requestsRawInWindow": 3788.3092775694195,
+          "normalizedPer10": 3517.4645102780128,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 272834034.1705496
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "family": "qwen 3.8 max 0902",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015072,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1326.963906581741,
+          "requestsRawInWindow": 1326.963906581741,
+          "normalizedPer10": 1232.0927637713473,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 67624734.60721868
+        },
+        {
           "model": "Qwen 3.8 Max",
           "family": "qwen 3.8 max",
           "allowance": 20,
@@ -3105,6 +3298,27 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 148386908.92150012
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 655.7377049180328,
+          "requestsRawInWindow": 655.7377049180328,
+          "normalizedPer10": 608.8558077233359,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 33417704.918032788
         },
         {
           "model": "Claude Fable 5",
@@ -3422,6 +3636,27 @@
           "rawTokensPerMonth": 38642705.48983925
         },
         {
+          "model": "Gemini 3.8 Flash",
+          "family": "gemini 3.8 flash",
+          "allowance": 40,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4034.2914775592535,
+          "requestsRawInWindow": 4034.2914775592535,
+          "normalizedPer10": 3745.8602391450827,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 205595562.2793747
+        },
+        {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
           "allowance": 40,
@@ -3546,6 +3781,48 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 30101594.802126404
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "family": "muse spark 1.3",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1567.398119122257,
+          "requestsRawInWindow": 1567.398119122257,
+          "normalizedPer10": 1455.3371579593845,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 113354231.97492163
+        },
+        {
+          "model": "Muse Spark 1.3 Contributor",
+          "family": "muse spark 1.3",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 75528.70090634441,
+          "requestsRawInWindow": 75528.70090634441,
+          "normalizedPer10": 70128.78449985554,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 5462235649.546828
         },
         {
           "model": "Muse Spark 1.2",
@@ -3749,15 +4026,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 63,
+      "modelCount": 69,
       "modelStats": {
-        "count": 63,
+        "count": 69,
         "min": 294.11764705882354,
         "max": 113293.05135951663,
-        "mean": 13873.5628246561,
+        "mean": 14536.958236516348,
         "median": 4367.5751222921035,
-        "p25": 1453.4785474086216,
-        "p75": 14011.328249043068
+        "p25": 1470.5882352941178,
+        "p75": 12786.088735455822
       },
       "dataTier": "A",
       "dataTierNote": "Offizielle Modell-Allowances aus Feed",
@@ -4225,6 +4502,48 @@
           "rawTokensPerMonth": 1360750724.2725785
         },
         {
+          "model": "DeepSeek V4 Flash Fast",
+          "family": "deepseek v4 flash",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005279400000000002,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5682.46391635413,
+          "requestsRawInWindow": 5682.46391635413,
+          "normalizedPer10": 2841.231958177065,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 409251051.25582445
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "family": "qwen 3.8 max 0902",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015072,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1990.4458598726114,
+          "requestsRawInWindow": 1990.4458598726114,
+          "normalizedPer10": 995.2229299363058,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 101437101.91082802
+        },
+        {
           "model": "Qwen 3.8 Max",
           "family": "qwen 3.8 max",
           "allowance": 30,
@@ -4496,6 +4815,27 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 222580363.3822502
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 655.7377049180328,
+          "requestsRawInWindow": 655.7377049180328,
+          "normalizedPer10": 327.8688524590164,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 33417704.918032788
         },
         {
           "model": "Claude Fable 5",
@@ -4813,6 +5153,27 @@
           "rawTokensPerMonth": 38642705.48983925
         },
         {
+          "model": "Gemini 3.8 Flash",
+          "family": "gemini 3.8 flash",
+          "allowance": 50,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5042.864346949067,
+          "requestsRawInWindow": 5042.864346949067,
+          "normalizedPer10": 2521.4321734745336,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 256994452.84921837
+        },
+        {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
           "allowance": 50,
@@ -4937,6 +5298,48 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 30101594.802126404
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "family": "muse spark 1.3",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2351.0971786833857,
+          "requestsRawInWindow": 2351.0971786833857,
+          "normalizedPer10": 1175.5485893416928,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 170031347.96238247
+        },
+        {
+          "model": "Muse Spark 1.3 Contributor",
+          "family": "muse spark 1.3",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 113293.05135951663,
+          "requestsRawInWindow": 113293.05135951663,
+          "normalizedPer10": 56646.525679758306,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8193353474.320243
         },
         {
           "model": "Muse Spark 1.2",
@@ -5140,15 +5543,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 63,
+      "modelCount": 69,
       "modelStats": {
-        "count": 63,
+        "count": 69,
         "min": 630.2521008403361,
         "max": 161949.14796753816,
-        "mean": 22230.911050971925,
+        "mean": 22996.589636356206,
         "median": 6302.5210084033615,
-        "p25": 2764.436393543927,
-        "p75": 22366.469318899286
+        "p25": 2773.5660663437,
+        "p75": 22057.201676347326
       },
       "dataTier": "B",
       "dataTierNote": "Offizielle Gesamtmenge 230,000 req/mo als Anker",
@@ -5616,6 +6019,48 @@
           "rawTokensPerMonth": 1943929606.103683
         },
         {
+          "model": "DeepSeek V4 Flash Fast",
+          "family": "deepseek v4 flash",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005279400000000002,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 8117.805594791613,
+          "requestsRawInWindow": 8117.805594791613,
+          "normalizedPer10": 811.7805594791613,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 584644358.9368919
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "family": "qwen 3.8 max 0902",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015072,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2843.494085532302,
+          "requestsRawInWindow": 2843.494085532302,
+          "normalizedPer10": 284.3494085532302,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 144910145.58689716
+        },
+        {
           "model": "Qwen 3.8 Max",
           "family": "qwen 3.8 max",
           "allowance": 42.857142857142854,
@@ -5887,6 +6332,27 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 317971947.6889288
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1405.152224824356,
+          "requestsRawInWindow": 1405.152224824356,
+          "normalizedPer10": 140.5152224824356,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 71609367.68149883
         },
         {
           "model": "Claude Fable 5",
@@ -6204,6 +6670,27 @@
           "rawTokensPerMonth": 82805797.47822694
         },
         {
+          "model": "Gemini 3.8 Flash",
+          "family": "gemini 3.8 flash",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 8644.910309055544,
+          "requestsRawInWindow": 8644.910309055544,
+          "normalizedPer10": 864.4910309055543,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 440561919.1700886
+        },
+        {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
           "allowance": 85.71428571428571,
@@ -6328,6 +6815,48 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 64503417.433128
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "family": "muse spark 1.3",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3358.710255261979,
+          "requestsRawInWindow": 3358.710255261979,
+          "normalizedPer10": 335.8710255261979,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 242901925.66054633
+        },
+        {
+          "model": "Muse Spark 1.3 Contributor",
+          "family": "muse spark 1.3",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 161847.21622788088,
+          "requestsRawInWindow": 161847.21622788088,
+          "normalizedPer10": 16184.721622788089,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 11704790677.600346
         },
         {
           "model": "Muse Spark 1.2",
@@ -6531,15 +7060,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 63,
+      "modelCount": 69,
       "modelStats": {
-        "count": 63,
+        "count": 69,
         "min": 1260.5042016806722,
         "max": 323898.2959350763,
-        "mean": 44461.82210194385,
+        "mean": 45993.17927271241,
         "median": 12605.042016806723,
-        "p25": 5528.872787087854,
-        "p75": 44732.93863779857
+        "p25": 5547.1321326874,
+        "p75": 44114.40335269465
       },
       "dataTier": "B",
       "dataTierNote": "Offizielle Gesamtmenge 370,000 req/mo als Anker",
@@ -7007,6 +7536,48 @@
           "rawTokensPerMonth": 3887859212.207366
         },
         {
+          "model": "DeepSeek V4 Flash Fast",
+          "family": "deepseek v4 flash",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.005279400000000002,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16235.611189583225,
+          "requestsRawInWindow": 16235.611189583225,
+          "normalizedPer10": 811.7805594791613,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1169288717.8737838
+        },
+        {
+          "model": "Qwen 3.8 Max 0902",
+          "family": "qwen 3.8 max 0902",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.015072,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5686.988171064604,
+          "requestsRawInWindow": 5686.988171064604,
+          "normalizedPer10": 284.3494085532302,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 289820291.1737943
+        },
+        {
           "model": "Qwen 3.8 Max",
           "family": "qwen 3.8 max",
           "allowance": 85.71428571428571,
@@ -7278,6 +7849,27 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 635943895.3778576
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2810.304449648712,
+          "requestsRawInWindow": 2810.304449648712,
+          "normalizedPer10": 140.5152224824356,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 143218735.36299765
         },
         {
           "model": "Claude Fable 5",
@@ -7595,6 +8187,27 @@
           "rawTokensPerMonth": 165611594.9564539
         },
         {
+          "model": "Gemini 3.8 Flash",
+          "family": "gemini 3.8 flash",
+          "allowance": 171.42857142857142,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.009915,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 17289.820618111087,
+          "requestsRawInWindow": 17289.820618111087,
+          "normalizedPer10": 864.4910309055543,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 881123838.3401772
+        },
+        {
           "model": "Gemini 3.7 Flash",
           "family": "gemini 3.7 flash",
           "allowance": 171.42857142857142,
@@ -7719,6 +8332,48 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 129006834.866256
+        },
+        {
+          "model": "Muse Spark 1.3",
+          "family": "muse spark 1.3",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01276,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6717.420510523958,
+          "requestsRawInWindow": 6717.420510523958,
+          "normalizedPer10": 335.8710255261979,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 485803851.32109267
+        },
+        {
+          "model": "Muse Spark 1.3 Contributor",
+          "family": "muse spark 1.3",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 323694.43245576177,
+          "requestsRawInWindow": 323694.43245576177,
+          "normalizedPer10": 16184.721622788089,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 23409581355.20069
         },
         {
           "model": "Muse Spark 1.2",
@@ -8987,589 +9642,469 @@
         "overrides"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 3,
-      "modelStats": {
-        "count": 3,
-        "min": 26730.82063619353,
-        "max": 28079.04250465059,
-        "mean": 27629.635215164904,
-        "median": 28079.04250465059,
-        "p25": 27404.93157042206,
-        "p75": 28079.04250465059
-      },
+      "modelCount": 0,
+      "modelStats": null,
       "dataTier": "A",
       "dataTierNote": "Offizielles Quota (5h-Cap) aus Docs/Overrides",
-      "modelRows": [
-        {
-          "model": "MiniMax M3",
-          "family": "minimax m3",
-          "allowance": 100,
-          "window": "month",
-          "windowNote": null,
-          "costPerRequest": 0.003741,
-          "patternUsed": {
-            "input": 510,
-            "cachedRead": 56000,
-            "output": 190
-          },
-          "creditsPerRequest": null,
-          "unit": "requests",
-          "requestsPerMonth": 26730.82063619353,
-          "requestsRawInWindow": 26730.82063619353,
-          "normalizedPer10": 26730.82063619353,
-          "privacy": null,
-          "estimate": null,
-          "rawTokensPerMonth": 1515637530.072173
-        },
-        {
-          "model": "MiniMax M2.7",
-          "family": "minimax m2.7",
-          "allowance": 100,
-          "window": "month",
-          "windowNote": null,
-          "costPerRequest": 0.003561375,
-          "patternUsed": {
-            "input": 300,
-            "cachedRead": 55000,
-            "output": 125
-          },
-          "creditsPerRequest": null,
-          "unit": "requests",
-          "requestsPerMonth": 28079.04250465059,
-          "requestsRawInWindow": 28079.04250465059,
-          "normalizedPer10": 28079.04250465059,
-          "privacy": null,
-          "estimate": null,
-          "rawTokensPerMonth": 1556280930.820259
-        },
-        {
-          "model": "MiniMax M2.5",
-          "family": "minimax m2.5",
-          "allowance": 100,
-          "window": "month",
-          "windowNote": null,
-          "costPerRequest": 0.003561375,
-          "patternUsed": {
-            "input": 300,
-            "cachedRead": 55000,
-            "output": 125
-          },
-          "creditsPerRequest": null,
-          "unit": "requests",
-          "requestsPerMonth": 28079.04250465059,
-          "requestsRawInWindow": 28079.04250465059,
-          "normalizedPer10": 28079.04250465059,
-          "privacy": null,
-          "estimate": null,
-          "rawTokensPerMonth": 1556280930.820259
-        }
-      ]
+      "modelRows": []
     }
   ],
   "pairwiseComparisons": [
     {
       "planA": "opencode-go",
       "planB": "command-code-go",
-      "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 1482.0607367314622,
-      "advantagePercent": 1435.6502864758904,
+      "meanRequestsA": 28729.529635037088,
+      "meanRequestsB": 1533.1059757570806,
+      "advantagePercent": 1773.9428382209412,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 10374.425157120239,
-      "advantagePercent": 119.37861235369857,
+      "meanRequestsA": 28729.529635037088,
+      "meanRequestsB": 10731.741830299568,
+      "advantagePercent": 167.7061197458486,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 13873.5628246561,
-      "advantagePercent": 64.04776651110566,
+      "meanRequestsA": 28729.529635037088,
+      "meanRequestsB": 14536.958236516348,
+      "advantagePercent": 97.63095668025986,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 22230.911050971925,
-      "advantagePercent": 2.3766857650594053,
-      "winner": "draw"
+      "meanRequestsA": 28729.529635037088,
+      "meanRequestsB": 22996.589636356206,
+      "advantagePercent": 24.929522548062756,
+      "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 44461.82210194385,
-      "advantagePercent": 48.8116571174703,
+      "meanRequestsA": 28729.529635037088,
+      "meanRequestsB": 45993.17927271241,
+      "advantagePercent": 37.535238725968625,
       "winner": "command-code-max20"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-lite",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 174.3013382833799,
+      "advantagePercent": 246.2566437621223,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-pro",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 54.283110286103344,
+      "advantagePercent": 42.290559372979594,
       "winner": "glm-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-max",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 80.40704726547287,
+      "advantagePercent": 75.26738258841984,
       "winner": "glm-max"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 94.69022956323182,
+      "advantagePercent": 93.29735938552625,
       "winner": "kimi-moderato"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 97.41325718500265,
+      "advantagePercent": 96.73469735509842,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 98.9809812116783,
+      "advantagePercent": 98.71367005431706,
       "winner": "kimi-allegro"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 22759.26994936339,
+      "meanRequestsA": 28729.529635037088,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.49305351232645,
+      "advantagePercent": 99.36007024068,
       "winner": "kimi-vivace"
-    },
-    {
-      "planA": "opencode-go",
-      "planB": "minimax-starter",
-      "meanRequestsA": 22759.26994936339,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 17.627323806028194,
-      "winner": "minimax-starter"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 10374.425157120239,
+      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsB": 10731.741830299568,
       "advantagePercent": 85.71428571428572,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 13873.5628246561,
-      "advantagePercent": 89.31737466818875,
+      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsB": 14536.958236516348,
+      "advantagePercent": 89.45373611994034,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 22230.911050971925,
+      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsB": 22996.589636356206,
       "advantagePercent": 93.33333333333333,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 44461.82210194385,
+      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsB": 45993.17927271241,
       "advantagePercent": 96.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-lite",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 82.13777311806685,
+      "advantagePercent": 81.52256105683315,
       "winner": "glm-lite"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-pro",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 97.02296218634447,
+      "advantagePercent": 96.92042684280553,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-max",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 98.72412665129049,
+      "advantagePercent": 98.68018293263094,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 99.65423309697982,
+      "advantagePercent": 99.64232416924537,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 99.83155391316771,
+      "advantagePercent": 99.8257522813235,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.93364252282593,
+      "advantagePercent": 99.93135703397954,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 1482.0607367314622,
+      "meanRequestsA": 1533.1059757570806,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.96698815530215,
+      "advantagePercent": 99.96585115904989,
       "winner": "kimi-vivace"
-    },
-    {
-      "planA": "command-code-go",
-      "planB": "minimax-starter",
-      "meanRequestsA": 1482.0607367314622,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 94.63597428923704,
-      "winner": "minimax-starter"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
-      "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 13873.5628246561,
-      "advantagePercent": 25.221622677321154,
+      "meanRequestsA": 10731.741830299568,
+      "meanRequestsB": 14536.958236516348,
+      "advantagePercent": 26.17615283958239,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max10",
-      "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 22230.911050971925,
-      "advantagePercent": 53.3333333333333,
+      "meanRequestsA": 10731.741830299568,
+      "meanRequestsB": 22996.589636356206,
+      "advantagePercent": 53.33333333333331,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max20",
-      "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 44461.82210194385,
-      "advantagePercent": 76.66666666666664,
+      "meanRequestsA": 10731.741830299568,
+      "meanRequestsB": 45993.17927271241,
+      "advantagePercent": 76.66666666666666,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-lite",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 25.035588173532062,
+      "advantagePercent": 29.342072602168013,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-pro",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 79.16073530441132,
+      "advantagePercent": 78.44298789963867,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-max",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 91.06888655903343,
+      "advantagePercent": 90.76128052841656,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-moderato",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 97.57963167885876,
+      "advantagePercent": 97.49626918471755,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 98.82087739217404,
+      "advantagePercent": 98.78026596926452,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegro",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.53549765978154,
+      "advantagePercent": 99.51949923785675,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-vivace",
-      "meanRequestsA": 10374.425157120239,
+      "meanRequestsA": 10731.741830299568,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.76891708711503,
+      "advantagePercent": 99.76095811334925,
       "winner": "kimi-vivace"
-    },
-    {
-      "planA": "command-code-goat",
-      "planB": "minimax-starter",
-      "meanRequestsA": 10374.425157120239,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 62.45182002465928,
-      "winner": "minimax-starter"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
-      "meanRequestsA": 13873.5628246561,
-      "meanRequestsB": 22230.911050971925,
-      "advantagePercent": 37.5933681132265,
+      "meanRequestsA": 14536.958236516348,
+      "meanRequestsB": 22996.589636356206,
+      "advantagePercent": 36.78646066052201,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max20",
-      "meanRequestsA": 13873.5628246561,
-      "meanRequestsB": 44461.82210194385,
-      "advantagePercent": 68.79668405661326,
+      "meanRequestsA": 14536.958236516348,
+      "meanRequestsB": 45993.17927271241,
+      "advantagePercent": 68.39323033026102,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-lite",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 67.20821265482473,
+      "advantagePercent": 75.20364702900201,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-pro",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 72.1319645575292,
+      "advantagePercent": 70.799392161833,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-max",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 88.05655623894108,
+      "advantagePercent": 87.48545378364271,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 96.76327782468852,
+      "advantagePercent": 96.6085067202717,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 98.42317705994355,
+      "advantagePercent": 98.34777774709434,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.37882800235947,
+      "advantagePercent": 99.34912527506303,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-vivace",
-      "meanRequestsA": 13873.5628246561,
+      "meanRequestsA": 14536.958236516348,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.69097629400568,
+      "advantagePercent": 99.67619963488042,
       "winner": "kimi-vivace"
-    },
-    {
-      "planA": "command-code-pro",
-      "planB": "minimax-starter",
-      "meanRequestsA": 13873.5628246561,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 49.78738330558413,
-      "winner": "minimax-starter"
     },
     {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
-      "meanRequestsA": 22230.911050971925,
-      "meanRequestsB": 44461.82210194385,
+      "meanRequestsA": 22996.589636356206,
+      "meanRequestsB": 45993.17927271241,
       "advantagePercent": 50,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-lite",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 167.9334032289971,
+      "advantagePercent": 177.1615841475027,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-pro",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 55.344432795167144,
+      "advantagePercent": 53.80640264208287,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-max",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 80.86189976935735,
+      "advantagePercent": 80.20274398946408,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-moderato",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 94.81349645469733,
+      "advantagePercent": 94.63486253868045,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 97.47330869751579,
+      "advantagePercent": 97.38628421985254,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegro",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.00463784238902,
+      "advantagePercent": 98.97035550969302,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-vivace",
-      "meanRequestsA": 22230.911050971925,
+      "meanRequestsA": 22996.589636356206,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.50482232953222,
+      "advantagePercent": 99.48776738574838,
       "winner": "kimi-vivace"
-    },
-    {
-      "planA": "command-code-max10",
-      "planB": "minimax-starter",
-      "meanRequestsA": 22230.911050971925,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 19.539614338555634,
-      "winner": "minimax-starter"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-lite",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 435.8668064579942,
+      "advantagePercent": 454.3231682950054,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-pro",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 10.688865590334274,
-      "winner": "glm-pro"
+      "advantagePercent": 7.612805284165736,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-max",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 61.723799538714694,
+      "advantagePercent": 60.40548797892817,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-moderato",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 89.62699290939466,
+      "advantagePercent": 89.26972507736092,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 94.94661739503158,
+      "advantagePercent": 94.7725684397051,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegro",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 98.00927568477805,
+      "advantagePercent": 97.94071101938606,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-vivace",
-      "meanRequestsA": 44461.82210194385,
+      "meanRequestsA": 45993.17927271241,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.00964465906443,
+      "advantagePercent": 98.97553477149677,
       "winner": "kimi-vivace"
-    },
-    {
-      "planA": "command-code-max20",
-      "planB": "minimax-starter",
-      "meanRequestsA": 44461.82210194385,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 60.92077132288873,
-      "winner": "command-code-max20"
     },
     {
       "planA": "glm-lite",
@@ -9620,14 +10155,6 @@
       "winner": "kimi-vivace"
     },
     {
-      "planA": "glm-lite",
-      "planB": "minimax-starter",
-      "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 69.97000572090799,
-      "winner": "minimax-starter"
-    },
-    {
       "planA": "glm-pro",
       "planB": "glm-max",
       "meanRequestsA": 49783.067246688064,
@@ -9668,14 +10195,6 @@
       "winner": "kimi-vivace"
     },
     {
-      "planA": "glm-pro",
-      "planB": "minimax-starter",
-      "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 80.17996567455204,
-      "winner": "glm-pro"
-    },
-    {
       "planA": "glm-max",
       "planB": "kimi-moderato",
       "meanRequestsA": 116160.49024227216,
@@ -9708,14 +10227,6 @@
       "winner": "kimi-vivace"
     },
     {
-      "planA": "glm-max",
-      "planB": "minimax-starter",
-      "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 320.4199199072881,
-      "winner": "glm-max"
-    },
-    {
       "planA": "kimi-moderato",
       "planB": "kimi-allegretto",
       "meanRequestsA": 428630.0174441431,
@@ -9740,14 +10251,6 @@
       "winner": "kimi-vivace"
     },
     {
-      "planA": "kimi-moderato",
-      "planB": "minimax-starter",
-      "meanRequestsA": 428630.0174441431,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 1451.3415725766934,
-      "winner": "kimi-moderato"
-    },
-    {
       "planA": "kimi-allegretto",
       "planB": "kimi-allegro",
       "meanRequestsA": 879842.7821045974,
@@ -9764,35 +10267,11 @@
       "winner": "kimi-vivace"
     },
     {
-      "planA": "kimi-allegretto",
-      "planB": "minimax-starter",
-      "meanRequestsA": 879842.7821045974,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 3084.4169322282028,
-      "winner": "kimi-allegretto"
-    },
-    {
       "planA": "kimi-allegro",
       "planB": "kimi-vivace",
       "meanRequestsA": 2233449.49182412,
       "meanRequestsB": 4489481.730864552,
       "advantagePercent": 50.25150728491732,
-      "winner": "kimi-vivace"
-    },
-    {
-      "planA": "kimi-allegro",
-      "planB": "minimax-starter",
-      "meanRequestsA": 2233449.49182412,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 7983.528698193817,
-      "winner": "kimi-allegro"
-    },
-    {
-      "planA": "kimi-vivace",
-      "planB": "minimax-starter",
-      "meanRequestsA": 4489481.730864552,
-      "meanRequestsB": 27629.635215164904,
-      "advantagePercent": 16148.791183462452,
       "winner": "kimi-vivace"
     }
   ],
@@ -9904,6 +10383,13 @@
     },
     {
       "planId": "opencode-go",
+      "family": "muse spark 1.3",
+      "modelCount": 1,
+      "normalizedPer10Median": 226586.10271903322,
+      "normalizedPer10Mean": 226586.10271903322
+    },
+    {
+      "planId": "opencode-go",
       "family": "muse spark 1.2",
       "modelCount": 1,
       "normalizedPer10Median": 226586.10271903322,
@@ -9927,8 +10413,8 @@
       "planId": "opencode-go",
       "family": "qwen3.7 max",
       "modelCount": 1,
-      "normalizedPer10Median": 1676.0069135285182,
-      "normalizedPer10Mean": 1676.0069135285182
+      "normalizedPer10Median": 838.0034567642591,
+      "normalizedPer10Mean": 838.0034567642591
     },
     {
       "planId": "opencode-go",
@@ -10080,9 +10566,16 @@
     {
       "planId": "command-code-go",
       "family": "deepseek v4 flash",
-      "modelCount": 4,
-      "normalizedPer10Median": 44985.87443542727,
-      "normalizedPer10Mean": 53983.04932251273
+      "modelCount": 5,
+      "normalizedPer10Median": 35988.699548341814,
+      "normalizedPer10Mean": 44268.813537315735
+    },
+    {
+      "planId": "command-code-go",
+      "family": "qwen 3.8 max 0902",
+      "modelCount": 1,
+      "normalizedPer10Median": 1895.6627236882011,
+      "normalizedPer10Mean": 1895.6627236882011
     },
     {
       "planId": "command-code-go",
@@ -10174,6 +10667,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 4159.595354563907,
       "normalizedPer10Mean": 4159.595354563907
+    },
+    {
+      "planId": "command-code-go",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 936.7681498829039,
+      "normalizedPer10Mean": 936.7681498829039
     },
     {
       "planId": "command-code-go",
@@ -10282,6 +10782,13 @@
     },
     {
       "planId": "command-code-go",
+      "family": "gemini 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 5763.2735393703615,
+      "normalizedPer10Mean": 5763.2735393703615
+    },
+    {
+      "planId": "command-code-go",
       "family": "gemini 3.7 flash",
       "modelCount": 1,
       "normalizedPer10Median": 6465.339360943357,
@@ -10321,6 +10828,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 843.8106488903888,
       "normalizedPer10Mean": 843.8106488903888
+    },
+    {
+      "planId": "command-code-go",
+      "family": "muse spark 1.3",
+      "modelCount": 2,
+      "normalizedPer10Median": 55068.64216104762,
+      "normalizedPer10Mean": 55068.64216104762
     },
     {
       "planId": "command-code-go",
@@ -10472,9 +10986,16 @@
     {
       "planId": "command-code-goat",
       "family": "deepseek v4 flash",
-      "modelCount": 4,
-      "normalizedPer10Median": 29238.72990232042,
-      "normalizedPer10Mean": 35086.47588278451
+      "modelCount": 5,
+      "normalizedPer10Median": 23390.983921856336,
+      "normalizedPer10Mean": 28772.67360828321
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "qwen 3.8 max 0902",
+      "modelCount": 1,
+      "normalizedPer10Median": 1232.0927637713473,
+      "normalizedPer10Mean": 1232.0927637713473
     },
     {
       "planId": "command-code-goat",
@@ -10566,6 +11087,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 2703.543870190098,
       "normalizedPer10Mean": 2703.543870190098
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 608.8558077233359,
+      "normalizedPer10Mean": 608.8558077233359
     },
     {
       "planId": "command-code-goat",
@@ -10674,6 +11202,13 @@
     },
     {
       "planId": "command-code-goat",
+      "family": "gemini 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 3745.8602391450827,
+      "normalizedPer10Mean": 3745.8602391450827
+    },
+    {
+      "planId": "command-code-goat",
       "family": "gemini 3.7 flash",
       "modelCount": 1,
       "normalizedPer10Median": 4202.1704295824975,
@@ -10713,6 +11248,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 548.4377476539205,
       "normalizedPer10Mean": 548.4377476539205
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "muse spark 1.3",
+      "modelCount": 2,
+      "normalizedPer10Median": 35792.060828907466,
+      "normalizedPer10Mean": 35792.06082890746
     },
     {
       "planId": "command-code-goat",
@@ -10864,9 +11406,16 @@
     {
       "planId": "command-code-pro",
       "family": "deepseek v4 flash",
-      "modelCount": 4,
-      "normalizedPer10Median": 20468.57286811941,
-      "normalizedPer10Mean": 23617.58407859932
+      "modelCount": 5,
+      "normalizedPer10Median": 18894.067262879456,
+      "normalizedPer10Mean": 19462.31365451487
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "qwen 3.8 max 0902",
+      "modelCount": 1,
+      "normalizedPer10Median": 995.2229299363058,
+      "normalizedPer10Mean": 995.2229299363058
     },
     {
       "planId": "command-code-pro",
@@ -10958,6 +11507,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 2183.7875611460518,
       "normalizedPer10Mean": 2183.7875611460518
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 327.8688524590164,
+      "normalizedPer10Mean": 327.8688524590164
     },
     {
       "planId": "command-code-pro",
@@ -11066,6 +11622,13 @@
     },
     {
       "planId": "command-code-pro",
+      "family": "gemini 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 2521.4321734745336,
+      "normalizedPer10Mean": 2521.4321734745336
+    },
+    {
+      "planId": "command-code-pro",
       "family": "gemini 3.7 flash",
       "modelCount": 1,
       "normalizedPer10Median": 2828.585970412719,
@@ -11105,6 +11668,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 295.33372711163616,
       "normalizedPer10Mean": 295.33372711163616
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "muse spark 1.3",
+      "modelCount": 2,
+      "normalizedPer10Median": 28911.03713455,
+      "normalizedPer10Mean": 28911.03713455
     },
     {
       "planId": "command-code-pro",
@@ -11256,9 +11826,16 @@
     {
       "planId": "command-code-max10",
       "family": "deepseek v4 flash",
-      "modelCount": 4,
-      "normalizedPer10Median": 6747.881165314089,
-      "normalizedPer10Mean": 8097.457398376907
+      "modelCount": 5,
+      "normalizedPer10Median": 5398.3049322512725,
+      "normalizedPer10Mean": 6640.322030597357
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "qwen 3.8 max 0902",
+      "modelCount": 1,
+      "normalizedPer10Median": 284.3494085532302,
+      "normalizedPer10Mean": 284.3494085532302
     },
     {
       "planId": "command-code-max10",
@@ -11350,6 +11927,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 623.9393031845862,
       "normalizedPer10Mean": 623.9393031845862
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 140.5152224824356,
+      "normalizedPer10Mean": 140.5152224824356
     },
     {
       "planId": "command-code-max10",
@@ -11458,6 +12042,13 @@
     },
     {
       "planId": "command-code-max10",
+      "family": "gemini 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 864.4910309055543,
+      "normalizedPer10Mean": 864.4910309055543
+    },
+    {
+      "planId": "command-code-max10",
       "family": "gemini 3.7 flash",
       "modelCount": 1,
       "normalizedPer10Median": 969.8009041415035,
@@ -11497,6 +12088,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 126.57159733355834,
       "normalizedPer10Mean": 126.57159733355834
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "muse spark 1.3",
+      "modelCount": 2,
+      "normalizedPer10Median": 8260.296324157143,
+      "normalizedPer10Mean": 8260.296324157143
     },
     {
       "planId": "command-code-max10",
@@ -11648,9 +12246,16 @@
     {
       "planId": "command-code-max20",
       "family": "deepseek v4 flash",
-      "modelCount": 4,
-      "normalizedPer10Median": 6747.881165314089,
-      "normalizedPer10Mean": 8097.457398376907
+      "modelCount": 5,
+      "normalizedPer10Median": 5398.3049322512725,
+      "normalizedPer10Mean": 6640.322030597357
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "qwen 3.8 max 0902",
+      "modelCount": 1,
+      "normalizedPer10Median": 284.3494085532302,
+      "normalizedPer10Mean": 284.3494085532302
     },
     {
       "planId": "command-code-max20",
@@ -11742,6 +12347,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 623.9393031845862,
       "normalizedPer10Mean": 623.9393031845862
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer10Median": 140.5152224824356,
+      "normalizedPer10Mean": 140.5152224824356
     },
     {
       "planId": "command-code-max20",
@@ -11850,6 +12462,13 @@
     },
     {
       "planId": "command-code-max20",
+      "family": "gemini 3.8 flash",
+      "modelCount": 1,
+      "normalizedPer10Median": 864.4910309055543,
+      "normalizedPer10Mean": 864.4910309055543
+    },
+    {
+      "planId": "command-code-max20",
       "family": "gemini 3.7 flash",
       "modelCount": 1,
       "normalizedPer10Median": 969.8009041415035,
@@ -11889,6 +12508,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 126.57159733355834,
       "normalizedPer10Mean": 126.57159733355834
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "muse spark 1.3",
+      "modelCount": 2,
+      "normalizedPer10Median": 8260.296324157143,
+      "normalizedPer10Mean": 8260.296324157143
     },
     {
       "planId": "command-code-max20",
@@ -12085,27 +12711,6 @@
       "modelCount": 1,
       "normalizedPer10Median": 399087.2902898671,
       "normalizedPer10Mean": 399087.2902898671
-    },
-    {
-      "planId": "minimax-starter",
-      "family": "minimax m3",
-      "modelCount": 1,
-      "normalizedPer10Median": 26730.82063619353,
-      "normalizedPer10Mean": 26730.82063619353
-    },
-    {
-      "planId": "minimax-starter",
-      "family": "minimax m2.7",
-      "modelCount": 1,
-      "normalizedPer10Median": 28079.04250465059,
-      "normalizedPer10Mean": 28079.04250465059
-    },
-    {
-      "planId": "minimax-starter",
-      "family": "minimax m2.5",
-      "modelCount": 1,
-      "normalizedPer10Median": 28079.04250465059,
-      "normalizedPer10Mean": 28079.04250465059
     }
   ],
   "familyComparisons": [
@@ -12236,6 +12841,15 @@
       "winner": "opencode-go"
     },
     {
+      "family": "muse spark 1.3",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 226586.10271903322,
+      "requestsB": 35792.060828907466,
+      "advantagePercent": 533.062465450525,
+      "winner": "opencode-go"
+    },
+    {
       "family": "muse spark 1.2",
       "planA": "opencode-go",
       "planB": "command-code-goat",
@@ -12258,8 +12872,8 @@
       "planA": "opencode-go",
       "planB": "command-code-goat",
       "requestsA": 18894.067262879456,
-      "requestsB": 29238.72990232042,
-      "advantagePercent": 35.38,
+      "requestsB": 23390.983921856336,
+      "advantagePercent": 19.22499999999999,
       "winner": "command-code-goat"
     },
     {
@@ -12407,6 +13021,15 @@
       "winner": "opencode-go"
     },
     {
+      "family": "muse spark 1.3",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 226586.10271903322,
+      "requestsB": 28911.03713455,
+      "advantagePercent": 683.7356427737853,
+      "winner": "opencode-go"
+    },
+    {
       "family": "muse spark 1.2",
       "planA": "opencode-go",
       "planB": "command-code-pro",
@@ -12429,8 +13052,8 @@
       "planA": "opencode-go",
       "planB": "command-code-pro",
       "requestsA": 18894.067262879456,
-      "requestsB": 20468.57286811941,
-      "advantagePercent": 7.692307692307676,
+      "requestsB": 18894.067262879456,
+      "advantagePercent": 0,
       "winner": "draw"
     },
     {
@@ -12590,9 +13213,18 @@
       "family": "deepseek v4 flash",
       "planA": "command-code-goat",
       "planB": "command-code-pro",
-      "requestsA": 29238.72990232042,
-      "requestsB": 20468.57286811941,
-      "advantagePercent": 42.84693950432115,
+      "requestsA": 23390.983921856336,
+      "requestsB": 18894.067262879456,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "qwen 3.8 max 0902",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 1232.0927637713473,
+      "requestsB": 995.2229299363058,
+      "advantagePercent": 23.800680903744965,
       "winner": "command-code-goat"
     },
     {
@@ -12710,6 +13342,15 @@
       "requestsA": 2703.543870190098,
       "requestsB": 2183.7875611460518,
       "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "claude fable 5.1",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 608.8558077233359,
+      "requestsB": 327.8688524590164,
+      "advantagePercent": 85.70102135561746,
       "winner": "command-code-goat"
     },
     {
@@ -12848,6 +13489,15 @@
       "winner": "command-code-goat"
     },
     {
+      "family": "gemini 3.8 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 3745.8602391450827,
+      "requestsB": 2521.4321734745336,
+      "advantagePercent": 48.560817084493976,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "gemini 3.7 flash",
       "planA": "command-code-goat",
       "planB": "command-code-pro",
@@ -12899,6 +13549,15 @@
       "requestsA": 548.4377476539205,
       "requestsB": 295.33372711163616,
       "advantagePercent": 85.70102135561748,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "muse spark 1.3",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 35792.060828907466,
+      "requestsB": 28911.03713455,
+      "advantagePercent": 23.800680903745008,
       "winner": "command-code-goat"
     },
     {
@@ -15362,7 +16021,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-08-31",
+      "verifiedAt": "2026-09-03",
       "crawled": true
     },
     {
@@ -15417,18 +16076,18 @@
   ],
   "fx": {
     "base": "USD",
-    "updatedAt": "Mon, 31 Aug 2026 00:02:31 +0000",
+    "updatedAt": "Thu, 03 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.862295,
-      "CNY": 6.735761,
-      "GBP": 0.738249,
-      "JPY": 160.045067
+      "EUR": 0.863349,
+      "CNY": 6.736468,
+      "GBP": 0.741569,
+      "JPY": 159.088772
     }
   },
   "statistics": {
     "totalPlans": 18,
-    "comparablePlans": 14,
-    "plansWithModels": 14,
+    "comparablePlans": 13,
+    "plansWithModels": 13,
     "undisclosed": 1
   },
   "warnings": [
