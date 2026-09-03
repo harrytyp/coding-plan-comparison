@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T15:47:43.455Z",
+  "generatedAt": "2026-09-03T15:48:51.527Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13617,7 +13617,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-03T15:47:43.380Z",
+    "fetchedAt": "2026-09-03T15:48:51.446Z",
     "count": 356,
     "scores": {
       "claude-fable-5-1": {
