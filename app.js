@@ -619,58 +619,63 @@ function saveColumns() {
 function columnVisible(col) { return visibleColumns.includes(col); }
 
 /* ---------------- AI-Score (LLM Stats) ---------------- */
+// Robuster Fuzzy-Match: findet Score für Feed-Modellnamen in den Scores.
 function aiScoreFor(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
-  // Bekannte Umbenennungen: Feed-Name → Score-Slug (wenn sie anders heißen)
-  const ALIASES = {
-    "qwen3-8-flash": "qwen3-8-flash-next",
-    "qwen3-8-flash-27b": "qwen3-8-27b",
-    "qwen-3-8-flash": "qwen3-8-flash-next",
-    "qwen-3-8-max-0902": "qwen3-8-max",
-    "qwen-3-6-max-preview": "qwen3-6-plus",
-    "qwen-3-7-flash": "qwen3-7-max",
-    "step-3-7-flash": "step-3-5-flash",
-    "longcat-2-0": "longcat-flash-thinking-2601",
-    "tencent-hy3": "hy3",
-    "tencent-hy4-preview": "hy4-preview",
-    "deepseek-v4-flash": "deepseek-v4-flash-0423",
-  };
-  // Normalisiere Modellname/Familie auf AA-Slug: "Grok 4.6" → "grok-4-6", "GLM-5.3" → "glm-5-3"
-  const candidates = [];
+  const keys = Object.keys(scores);
+  if (!keys.length) return null;
+
   const raw = (modelName || family || "").toLowerCase();
-  candidates.push(raw.replace(/\s+/g, "-").replace(/\./g, "-"));          // "qwen 3.8 max" → "qwen-3-8-max"
-  candidates.push(family ? family.replace(/\s+/g, "-").replace(/\./g, "-") : null);
-  candidates.push(raw.replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-"));    // "qwen3-8-max" Variante
-  candidates.push(raw.replace(/[^a-z0-9]/g, ""));                         // "qwen38max" (AA ohne Bindestriche)
-  candidates.push(raw.replace(/\s+/g, "").replace(/\./g, ""));            // "qwen38max" (Punkte weg)
-  for (const c of candidates) {
-    if (!c) continue;
-    // Alias zuerst prüfen (AA-Umbenennung)
-    const aliased = ALIASES[c] ?? null;
-    if (aliased && scores[aliased]) return scores[aliased];
-    if (scores[c]) return scores[c];
-    // Toleranz für Bindestrich-Varianten: "qwen-3-8-max" → auch "qwen3-8-max" probieren
-    // (AA-Slugs kombinieren oft Präfix+Nummer: qwen3-8-max, glm-5-3 → glm5-3).
-    const compact = c.replace(/-+/g, "");
-    if (compact.length >= 5) {
-      const compactKey = Object.keys(scores).find((k) => k.replace(/-+/g, "") === compact);
-      if (compactKey) return scores[compactKey];
-    }
-    // Prefix-Match (z.B. "grok-4-6" matcht "grok-4-6-high")
-    const keys = Object.keys(scores);
-    const exact = keys.find((k) => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"));
-    if (exact) return scores[exact];
+  const slug = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
+  const compact = (s) => s.replace(/[^a-z0-9]/g, "");
+  const words = (s) => s.split(/[\s-]+/).filter(Boolean);
+  const commonWords = (a, b) => words(a).filter(w => w.length > 1 && words(b).includes(w)).length;
+
+  // Kandidaten generieren
+  const candidates = [];
+  candidates.push(slug(raw));
+  if (family) candidates.push(slug(family.toLowerCase()));
+  const noParen = raw.replace(/\([^)]*\)/g, "").trim();
+  if (noParen !== raw) candidates.push(slug(noParen));
+  const PREFIXES = ["tencent ", "alibaba ", "google ", "openai ", "anthropic ", "meta "];
+  for (const p of PREFIXES) {
+    if (noParen.startsWith(p)) candidates.push(slug(noParen.slice(p.length)));
   }
-  // Fallback: Familien-Mittelwert (z.B. "Qwen3.8 Flash" → Mittel der qwen3-8-*-Scores),
-  // damit fehlende Einzel-Scores einen ehrlichen Näherungswert zeigen (nie "–" ohne Grund).
+  const noSuffix = noParen.replace(/\s+(contributor|preview|highspeed|fast|latest|exp)\s*$/i, "").trim();
+  if (noSuffix !== noParen) candidates.push(slug(noSuffix));
+  const noDate = noParen.replace(/[\s-]+\d{4}$/, "").trim();
+  if (noDate !== noParen) candidates.push(slug(noDate));
+  let parts = words(noParen);
+  while (parts.length > 2) { parts.pop(); candidates.push(slug(parts.join(" "))); }
+
+  // Match
+  for (const c of [...new Set(candidates.filter(Boolean))]) {
+    if (scores[c]) return scores[c];
+    const cc = compact(c);
+    if (cc.length >= 4) {
+      const found = keys.find(k => compact(k) === cc);
+      if (found) return scores[found];
+    }
+    const prefix = keys.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
+      .sort((a, b) => a.length - b.length)[0];
+    if (prefix) return scores[prefix];
+  }
+
+  // Word-Overlap Fallback
+  let best = null, bestOverlap = 0;
+  for (const k of keys) {
+    const overlap = commonWords(k, noParen);
+    if (overlap >= 2 && overlap > bestOverlap) { bestOverlap = overlap; best = k; }
+  }
+  if (best) return scores[best];
+
+  // Familien-Mittelwert
   if (family || modelName) {
     const famKey = (family || modelName).toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
-    // Prefix-Varianten: "qwen-3-8-flash" → "qwen-3", "qwen-3-8", und kompakt "qwen38"
-    // (AA-Slugs: qwen3-8-max → kompakt qwen38max — Prefix nur Familienkern, ohne Variante)
     const prefixes = [
       famKey.split("-").slice(0, 2).join("-"),
       famKey.split("-").slice(0, 3).join("-"),
-      famKey.split("-").slice(0, 3).join(""), // "qwen38" aus ["qwen","3","8"] (Variante weglassen)
+      famKey.split("-").slice(0, 3).join(""),
     ];
     let famScores = [];
     for (const prefix of prefixes) {
