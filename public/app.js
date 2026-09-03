@@ -621,11 +621,19 @@ function columnVisible(col) { return visibleColumns.includes(col); }
 /* ---------------- AI-Score (LLM Stats) ---------------- */
 function aiScoreFor(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
-  // Bekannte AA-Umbenennungen: Feed-Name → AA-Slug (wenn AA anders heißt)
+  // Bekannte Umbenennungen: Feed-Name → Score-Slug (wenn sie anders heißen)
   const ALIASES = {
-    "qwen3-8-flash": "qwen3-8-flash-next", // AA: "Qwen3.8 Flash Next"
+    "qwen3-8-flash": "qwen3-8-flash-next",
     "qwen3-8-flash-27b": "qwen3-8-27b",
     "qwen-3-8-flash": "qwen3-8-flash-next",
+    "qwen-3-8-max-0902": "qwen3-8-max",
+    "qwen-3-6-max-preview": "qwen3-6-plus",
+    "qwen-3-7-flash": "qwen3-7-max",
+    "step-3-7-flash": "step-3-5-flash",
+    "longcat-2-0": "longcat-flash-thinking-2601",
+    "tencent-hy3": "hy3",
+    "tencent-hy4-preview": "hy4-preview",
+    "deepseek-v4-flash": "deepseek-v4-flash-0423",
   };
   // Normalisiere Modellname/Familie auf AA-Slug: "Grok 4.6" → "grok-4-6", "GLM-5.3" → "glm-5-3"
   const candidates = [];

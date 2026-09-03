@@ -973,6 +973,23 @@ function loadAiScores(root) {
       }
     }
   } catch (e) { /* kein parsed */ }
+
+  // Aliases aus data/aliases.yml laden: Feed-Modellname → Score-Slug
+  // Dupliziert den Score unter dem Alias-Namen, damit das Frontend direkt matcht.
+  try {
+    const aliasRaw = readFileSync(join(root, "data", "aliases.yml"), "utf8");
+    const aliasData = parseYaml(aliasRaw);
+    const aliases = aliasData.aliases ?? {};
+    for (const [alias, target] of Object.entries(aliases)) {
+      const targetSlug = target.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+      const aliasSlug = alias.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
+      if (result.scores[targetSlug] && !result.scores[aliasSlug]) {
+        result.scores[aliasSlug] = { intelligence: result.scores[targetSlug].intelligence };
+        result.count++;
+      }
+    }
+  } catch (e) { /* kein aliases.yml */ }
+
   return result;
 }
 
