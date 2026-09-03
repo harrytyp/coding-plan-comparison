@@ -312,7 +312,9 @@ export function parsePrivacyText(html) {
 }
 
 // ---------- Parser: LLM Stats (zeroeval.com/stats/v1) ----------
-// Extrahiert top_scores je Modell (slug-basiert, Dots → Striche normalisiert).
+// Extrahiert top_scores je Modell. Der einzig wichtige Score ist `general`
+// (TrueSkill-Elo, 0-1000+), der alle Kategorien aggregiert.
+// `code` (0-1 normalisiert) wird separat als coding-Score gespeichert.
 export function parseLlamaStats(raw) {
   const data = JSON.parse(raw);
   const models = data?.models ?? [];
@@ -320,16 +322,14 @@ export function parseLlamaStats(raw) {
   for (const m of models) {
     const ts = m.top_scores ?? {};
     if (Object.keys(ts).length === 0) continue;
-    // Normalisiere Slug: Dots → Striche (AA-Kompatibilität)
     const slug = (m.id ?? m.name ?? "").toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-");
-    // Beste Scores als intelligence/coding-Mapping
-    const intel = ts.general ?? ts.reasoning ?? null;
-    const coding = ts.code ?? ts.coding ?? null;
     scores[slug] = {
-      intelligence: typeof intel === "number" ? intel : null,
-      coding: typeof coding === "number" ? coding : null,
+      // general = TrueSkill-Elo, der aggregierte Gesamtscore (einziger wichtiger Wert)
+      intelligence: typeof ts.general === "number" ? ts.general : null,
+      // code = 0-1 normalisiert, separate Coding-Metrik
+      coding: typeof ts.code === "number" ? ts.code : null,
       name: m.name,
-      topScores: ts, // vollständige Kategorie-Scores
+      topScores: ts,
     };
   }
   return {
