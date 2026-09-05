@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-04T08:00:45.387Z",
+  "generatedAt": "2026-09-05T07:42:20.961Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -805,9 +805,9 @@
           "requestsRawInWindow": 37788.13452575891,
           "normalizedPer10": 37788.13452575891,
           "privacy": {
-            "training": true,
-            "retentionDays": false,
-            "validUntil": "2026-08-31"
+            "training": false,
+            "retentionDays": true,
+            "validUntil": "2026-09-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 2721501448.545157
@@ -830,9 +830,9 @@
           "requestsRawInWindow": 18894.067262879456,
           "normalizedPer10": 18894.067262879456,
           "privacy": {
-            "training": true,
-            "retentionDays": false,
-            "validUntil": "2026-08-31"
+            "training": false,
+            "retentionDays": true,
+            "validUntil": "2026-09-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 1360750724.2725785
@@ -1017,15 +1017,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 69,
+      "modelCount": 70,
       "modelStats": {
-        "count": 69,
+        "count": 70,
         "min": 42.01680672268907,
         "max": 10796.609864502545,
-        "mean": 1533.1059757570806,
-        "median": 420.16806722689074,
-        "p25": 184.90440442291333,
-        "p75": 1470.4801117564882
+        "mean": 1511.804701913732,
+        "median": 418.0638013416407,
+        "p25": 183.99143714293598,
+        "p75": 1435.8604168176992
       },
       "dataTier": "B",
       "dataTierNote": "Offizielle Gesamtmenge 15,000 req/mo als Anker",
@@ -1997,6 +1997,27 @@
           "rawTokensPerMonth": 21412605.042016804
         },
         {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 42.01680672268907,
+          "requestsRawInWindow": 42.01680672268907,
+          "normalizedPer10": 420.1680672268907,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2141260.5042016804
+        },
+        {
           "model": "GPT-5.6 Sol",
           "family": "gpt-5.6 sol",
           "allowance": 10,
@@ -2534,15 +2555,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 69,
+      "modelCount": 70,
       "modelStats": {
-        "count": 69,
+        "count": 70,
         "min": 294.11764705882354,
         "max": 75576.26905151783,
-        "mean": 10731.741830299568,
-        "median": 2941.1764705882356,
-        "p25": 1294.3308309603935,
-        "p75": 10293.36078229542
+        "mean": 10582.632913396128,
+        "median": 2926.4466093914853,
+        "p25": 1287.940060000552,
+        "p75": 10051.022917723896
       },
       "dataTier": "A",
       "dataTierNote": "Offizielle Modell-Allowances aus Feed",
@@ -3514,6 +3535,27 @@
           "rawTokensPerMonth": 149888235.29411766
         },
         {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 294.11764705882354,
+          "requestsRawInWindow": 294.11764705882354,
+          "normalizedPer10": 273.08973728767273,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 14988823.529411765
+        },
+        {
           "model": "GPT-5.6 Sol",
           "family": "gpt-5.6 sol",
           "allowance": 70,
@@ -4051,15 +4093,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 69,
+      "modelCount": 70,
       "modelStats": {
-        "count": 69,
+        "count": 70,
         "min": 294.11764705882354,
         "max": 113293.05135951663,
-        "mean": 14536.958236516348,
-        "median": 4367.5751222921035,
-        "p25": 1470.5882352941178,
-        "p75": 12786.088735455822
+        "mean": 14333.489085238381,
+        "median": 3690.4015967624073,
+        "p25": 1444.9237034658736,
+        "p75": 12199.896497297002
       },
       "dataTier": "A",
       "dataTierNote": "Offizielle Modell-Allowances aus Feed",
@@ -5031,6 +5073,27 @@
           "rawTokensPerMonth": 149888235.29411766
         },
         {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 294.11764705882354,
+          "requestsRawInWindow": 294.11764705882354,
+          "normalizedPer10": 147.05882352941177,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 14988823.529411765
+        },
+        {
           "model": "GPT-5.6 Sol",
           "family": "gpt-5.6 sol",
           "allowance": 80,
@@ -5568,15 +5631,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 69,
+      "modelCount": 70,
       "modelStats": {
-        "count": 69,
+        "count": 70,
         "min": 630.2521008403361,
         "max": 161949.14796753816,
-        "mean": 22996.589636356206,
-        "median": 6302.5210084033615,
-        "p25": 2773.5660663437,
-        "p75": 22057.201676347326
+        "mean": 22677.07052870598,
+        "median": 6270.9570201246115,
+        "p25": 2759.87155714404,
+        "p75": 21537.90625226549
       },
       "dataTier": "B",
       "dataTierNote": "Offizielle Gesamtmenge 230,000 req/mo als Anker",
@@ -6548,6 +6611,27 @@
           "rawTokensPerMonth": 321189075.6302521
         },
         {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 630.2521008403361,
+          "requestsRawInWindow": 630.2521008403361,
+          "normalizedPer10": 63.0252100840336,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 32118907.563025206
+        },
+        {
           "model": "GPT-5.6 Sol",
           "family": "gpt-5.6 sol",
           "allowance": 150,
@@ -7085,15 +7169,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 69,
+      "modelCount": 70,
       "modelStats": {
-        "count": 69,
+        "count": 70,
         "min": 1260.5042016806722,
         "max": 323898.2959350763,
-        "mean": 45993.17927271241,
-        "median": 12605.042016806723,
-        "p25": 5547.1321326874,
-        "p75": 44114.40335269465
+        "mean": 45354.14105741196,
+        "median": 12541.914040249223,
+        "p25": 5519.74311428808,
+        "p75": 43075.81250453098
       },
       "dataTier": "B",
       "dataTierNote": "Offizielle Gesamtmenge 370,000 req/mo als Anker",
@@ -8063,6 +8147,27 @@
           "privacy": null,
           "estimate": null,
           "rawTokensPerMonth": 642378151.2605042
+        },
+        {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1260.5042016806722,
+          "requestsRawInWindow": 1260.5042016806722,
+          "normalizedPer10": 63.0252100840336,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 64237815.12605041
         },
         {
           "model": "GPT-5.6 Sol",
@@ -9679,40 +9784,40 @@
       "planA": "opencode-go",
       "planB": "command-code-go",
       "meanRequestsA": 29564.041004842184,
-      "meanRequestsB": 1533.1059757570806,
-      "advantagePercent": 1828.3755638772998,
+      "meanRequestsB": 1511.804701913732,
+      "advantagePercent": 1855.5463061742212,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
       "meanRequestsA": 29564.041004842184,
-      "meanRequestsB": 10731.741830299568,
-      "advantagePercent": 175.48222341104272,
+      "meanRequestsB": 10582.632913396128,
+      "advantagePercent": 179.36375802488865,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
       "meanRequestsA": 29564.041004842184,
-      "meanRequestsB": 14536.958236516348,
-      "advantagePercent": 103.3715755650884,
+      "meanRequestsB": 14333.489085238381,
+      "advantagePercent": 106.25850990663031,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
       "meanRequestsA": 29564.041004842184,
-      "meanRequestsB": 22996.589636356206,
-      "advantagePercent": 28.55837092515334,
+      "meanRequestsB": 22677.07052870598,
+      "advantagePercent": 30.369753744948103,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
       "meanRequestsA": 29564.041004842184,
-      "meanRequestsB": 45993.17927271241,
-      "advantagePercent": 35.72081453742333,
+      "meanRequestsB": 45354.14105741196,
+      "advantagePercent": 34.81512312752595,
       "winner": "command-code-max20"
     },
     {
@@ -9774,361 +9879,361 @@
     {
       "planA": "command-code-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 1533.1059757570806,
-      "meanRequestsB": 10731.741830299568,
+      "meanRequestsA": 1511.804701913732,
+      "meanRequestsB": 10582.632913396128,
       "advantagePercent": 85.71428571428572,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 1533.1059757570806,
-      "meanRequestsB": 14536.958236516348,
-      "advantagePercent": 89.45373611994034,
+      "meanRequestsA": 1511.804701913732,
+      "meanRequestsB": 14333.489085238381,
+      "advantagePercent": 89.45263994744522,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 1533.1059757570806,
-      "meanRequestsB": 22996.589636356206,
+      "meanRequestsA": 1511.804701913732,
+      "meanRequestsB": 22677.07052870598,
       "advantagePercent": 93.33333333333333,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 1533.1059757570806,
-      "meanRequestsB": 45993.17927271241,
+      "meanRequestsA": 1511.804701913732,
+      "meanRequestsB": 45354.14105741196,
       "advantagePercent": 96.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-lite",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 81.52256105683315,
+      "advantagePercent": 81.77929020216035,
       "winner": "glm-lite"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-pro",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 96.92042684280553,
+      "advantagePercent": 96.9632150336934,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-max",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 98.68018293263094,
+      "advantagePercent": 98.69852072872574,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 99.64232416924537,
+      "advantagePercent": 99.6472937870921,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 99.8257522813235,
+      "advantagePercent": 99.82817331315744,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.93135703397954,
+      "advantagePercent": 99.93231077275541,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 1533.1059757570806,
+      "meanRequestsA": 1511.804701913732,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.96585115904989,
+      "advantagePercent": 99.96632562971534,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
-      "meanRequestsA": 10731.741830299568,
-      "meanRequestsB": 14536.958236516348,
-      "advantagePercent": 26.17615283958239,
+      "meanRequestsA": 10582.632913396128,
+      "meanRequestsB": 14333.489085238381,
+      "advantagePercent": 26.168479632116536,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max10",
-      "meanRequestsA": 10731.741830299568,
-      "meanRequestsB": 22996.589636356206,
-      "advantagePercent": 53.33333333333331,
+      "meanRequestsA": 10582.632913396128,
+      "meanRequestsB": 22677.07052870598,
+      "advantagePercent": 53.33333333333332,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max20",
-      "meanRequestsA": 10731.741830299568,
-      "meanRequestsB": 45993.17927271241,
+      "meanRequestsA": 10582.632913396128,
+      "meanRequestsB": 45354.14105741196,
       "advantagePercent": 76.66666666666666,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-lite",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 29.342072602168013,
+      "advantagePercent": 27.544968584877537,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-pro",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 78.44298789963867,
+      "advantagePercent": 78.74250523585373,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-max",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 90.76128052841656,
+      "advantagePercent": 90.88964510108018,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-moderato",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 97.49626918471755,
+      "advantagePercent": 97.53105650964467,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 98.78026596926452,
+      "advantagePercent": 98.79721319210208,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegro",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.51949923785675,
+      "advantagePercent": 99.52617540928794,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-vivace",
-      "meanRequestsA": 10731.741830299568,
+      "meanRequestsA": 10582.632913396128,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.76095811334925,
+      "advantagePercent": 99.76427940800734,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
-      "meanRequestsA": 14536.958236516348,
-      "meanRequestsB": 22996.589636356206,
-      "advantagePercent": 36.78646066052201,
+      "meanRequestsA": 14333.489085238381,
+      "meanRequestsB": 22677.07052870598,
+      "advantagePercent": 36.793030355952716,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max20",
-      "meanRequestsA": 14536.958236516348,
-      "meanRequestsB": 45993.17927271241,
-      "advantagePercent": 68.39323033026102,
+      "meanRequestsA": 14333.489085238381,
+      "meanRequestsB": 45354.14105741196,
+      "advantagePercent": 68.39651517797635,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-lite",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 75.20364702900201,
+      "advantagePercent": 72.75137766275677,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-pro",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 70.799392161833,
+      "advantagePercent": 71.20810372287387,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-max",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 87.48545378364271,
+      "advantagePercent": 87.66061588123166,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 96.6085067202717,
+      "advantagePercent": 96.65597636611946,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 98.34777774709434,
+      "advantagePercent": 98.37090337310576,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 99.34912527506303,
+      "advantagePercent": 99.35823536024843,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-vivace",
-      "meanRequestsA": 14536.958236516348,
+      "meanRequestsA": 14333.489085238381,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.67619963488042,
+      "advantagePercent": 99.68073176494521,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
-      "meanRequestsA": 22996.589636356206,
-      "meanRequestsB": 45993.17927271241,
+      "meanRequestsA": 22677.07052870598,
+      "meanRequestsB": 45354.14105741196,
       "advantagePercent": 50,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-lite",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 177.1615841475027,
+      "advantagePercent": 173.31064696759464,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-pro",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 53.80640264208287,
+      "advantagePercent": 54.44822550540089,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-max",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 80.20274398946408,
+      "advantagePercent": 80.4778109308861,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-moderato",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 94.63486253868045,
+      "advantagePercent": 94.70940680638141,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 97.38628421985254,
+      "advantagePercent": 97.4225996973616,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegro",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 98.97035550969302,
+      "advantagePercent": 98.98466159133132,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-vivace",
-      "meanRequestsA": 22996.589636356206,
+      "meanRequestsA": 22677.07052870598,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 99.48776738574838,
+      "advantagePercent": 99.49488444573002,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-lite",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 454.3231682950054,
+      "advantagePercent": 446.62129393518927,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-pro",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 7.612805284165736,
+      "advantagePercent": 8.896451010801776,
       "winner": "draw"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-max",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 60.40548797892817,
+      "advantagePercent": 60.955621861772194,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-moderato",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 428630.0174441431,
-      "advantagePercent": 89.26972507736092,
+      "advantagePercent": 89.41881361276283,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 879842.7821045974,
-      "advantagePercent": 94.7725684397051,
+      "advantagePercent": 94.84519939472321,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegro",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 2233449.49182412,
-      "advantagePercent": 97.94071101938606,
+      "advantagePercent": 97.96932318266262,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-vivace",
-      "meanRequestsA": 45993.17927271241,
+      "meanRequestsA": 45354.14105741196,
       "meanRequestsB": 4489481.730864552,
-      "advantagePercent": 98.97553477149677,
+      "advantagePercent": 98.98976889146005,
       "winner": "kimi-vivace"
     },
     {
@@ -10765,6 +10870,13 @@
     },
     {
       "planId": "command-code-go",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer10Median": 420.1680672268907,
+      "normalizedPer10Mean": 420.1680672268907
+    },
+    {
+      "planId": "command-code-go",
       "family": "gpt-5.6 sol",
       "modelCount": 1,
       "normalizedPer10Median": 2872.737719046251,
@@ -11182,6 +11294,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 2730.897372876728,
       "normalizedPer10Mean": 2730.897372876728
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer10Median": 273.08973728767273,
+      "normalizedPer10Mean": 273.08973728767273
     },
     {
       "planId": "command-code-goat",
@@ -11605,6 +11724,13 @@
     },
     {
       "planId": "command-code-pro",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer10Median": 147.05882352941177,
+      "normalizedPer10Mean": 147.05882352941177
+    },
+    {
+      "planId": "command-code-pro",
       "family": "gpt-5.6 sol",
       "modelCount": 1,
       "normalizedPer10Median": 1149.0950876185004,
@@ -12025,6 +12151,13 @@
     },
     {
       "planId": "command-code-max10",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer10Median": 63.0252100840336,
+      "normalizedPer10Mean": 63.0252100840336
+    },
+    {
+      "planId": "command-code-max10",
       "family": "gpt-5.6 sol",
       "modelCount": 1,
       "normalizedPer10Median": 430.91065785693763,
@@ -12442,6 +12575,13 @@
       "modelCount": 1,
       "normalizedPer10Median": 630.2521008403361,
       "normalizedPer10Mean": 630.2521008403361
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer10Median": 63.0252100840336,
+      "normalizedPer10Mean": 63.0252100840336
     },
     {
       "planId": "command-code-max20",
@@ -13458,6 +13598,15 @@
       "winner": "command-code-goat"
     },
     {
+      "family": "gpt-6 astra",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 273.08973728767273,
+      "requestsB": 147.05882352941177,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "gpt-5.6 sol",
       "planA": "command-code-goat",
       "planB": "command-code-pro",
@@ -13649,7 +13798,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-04T08:00:45.288Z",
+    "fetchedAt": "2026-09-05T07:42:20.863Z",
     "count": 382,
     "scores": {
       "gpt-6-astra": {
@@ -13844,10 +13993,10 @@
       "claude-sonnet-4-6": {
         "intelligence": 37.19
       },
-      "glm-5": {
+      "step-3-5-flash": {
         "intelligence": 37.11
       },
-      "step-3-5-flash": {
+      "glm-5": {
         "intelligence": 37.11
       },
       "minimax-m2-5": {
@@ -14126,10 +14275,10 @@
       "command-a-plus-05-2026": {
         "intelligence": 24.23
       },
-      "claude-3-7-sonnet-20250219": {
+      "qwen3-235b-a22b-instruct-2507": {
         "intelligence": 24.05
       },
-      "qwen3-235b-a22b-instruct-2507": {
+      "claude-3-7-sonnet-20250219": {
         "intelligence": 24.05
       },
       "granite-4-2-30b": {
@@ -14369,10 +14518,10 @@
       "qwen-2-5-72b-instruct": {
         "intelligence": 12.53
       },
-      "gemini-2-0-flash-lite": {
+      "nova-pro": {
         "intelligence": 12.39
       },
-      "nova-pro": {
+      "gemini-2-0-flash-lite": {
         "intelligence": 12.39
       },
       "phi-4-reasoning": {
@@ -14811,7 +14960,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-04",
+      "verifiedAt": "2026-09-05",
       "crawled": true
     },
     {
@@ -14866,12 +15015,12 @@
   ],
   "fx": {
     "base": "USD",
-    "updatedAt": "Fri, 04 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Sat, 05 Sep 2026 00:02:32 +0000",
     "rates": {
-      "EUR": 0.860629,
-      "CNY": 6.73552,
-      "GBP": 0.739834,
-      "JPY": 156.019704
+      "EUR": 0.861117,
+      "CNY": 6.728858,
+      "GBP": 0.739612,
+      "JPY": 156.156625
     }
   },
   "statistics": {
