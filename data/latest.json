@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05T07:42:20.961Z",
+  "generatedAt": "2026-09-06T07:56:34.315Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13798,7 +13798,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-05T07:42:20.863Z",
+    "fetchedAt": "2026-09-06T07:56:33.969Z",
     "count": 382,
     "scores": {
       "gpt-6-astra": {
@@ -14068,10 +14068,10 @@
       "gpt-5-high-2025-08-07": {
         "intelligence": 34.14
       },
-      "qwen3-5-27b": {
+      "grok-4": {
         "intelligence": 33.9
       },
-      "grok-4": {
+      "qwen3-5-27b": {
         "intelligence": 33.9
       },
       "ernie-5-0": {
@@ -14083,10 +14083,10 @@
       "gemma-4-31b-it": {
         "intelligence": 33.21
       },
-      "deepseek-reasoner": {
+      "mai-thinking-1": {
         "intelligence": 32.86
       },
-      "mai-thinking-1": {
+      "deepseek-reasoner": {
         "intelligence": 32.86
       },
       "qwen3-6-35b-a3b": {
@@ -14185,10 +14185,10 @@
       "glm-4-5": {
         "intelligence": 27.96
       },
-      "claude-opus-4-20250514": {
+      "gemini-2-5-pro": {
         "intelligence": 27.81
       },
-      "gemini-2-5-pro": {
+      "claude-opus-4-20250514": {
         "intelligence": 27.81
       },
       "o4-mini": {
@@ -14275,10 +14275,10 @@
       "command-a-plus-05-2026": {
         "intelligence": 24.23
       },
-      "qwen3-235b-a22b-instruct-2507": {
+      "claude-3-7-sonnet-20250219": {
         "intelligence": 24.05
       },
-      "claude-3-7-sonnet-20250219": {
+      "qwen3-235b-a22b-instruct-2507": {
         "intelligence": 24.05
       },
       "granite-4-2-30b": {
@@ -14518,10 +14518,10 @@
       "qwen-2-5-72b-instruct": {
         "intelligence": 12.53
       },
-      "nova-pro": {
+      "gemini-2-0-flash-lite": {
         "intelligence": 12.39
       },
-      "gemini-2-0-flash-lite": {
+      "nova-pro": {
         "intelligence": 12.39
       },
       "phi-4-reasoning": {
@@ -14746,10 +14746,10 @@
       "command-r-plus-04-2024": {
         "intelligence": -0.21
       },
-      "mistral-small-24b-base-2501": {
+      "granite-3-3-8b-base": {
         "intelligence": -0.34
       },
-      "granite-3-3-8b-base": {
+      "mistral-small-24b-base-2501": {
         "intelligence": -0.34
       },
       "gemma-2-27b-it": {
@@ -14960,7 +14960,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-05",
+      "verifiedAt": "2026-09-06",
       "crawled": true
     },
     {
@@ -15015,12 +15015,12 @@
   ],
   "fx": {
     "base": "USD",
-    "updatedAt": "Sat, 05 Sep 2026 00:02:32 +0000",
+    "updatedAt": "Sun, 06 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.861117,
-      "CNY": 6.728858,
-      "GBP": 0.739612,
-      "JPY": 156.156625
+      "EUR": 0.861064,
+      "CNY": 6.73441,
+      "GBP": 0.739657,
+      "JPY": 156.172893
     }
   },
   "statistics": {
