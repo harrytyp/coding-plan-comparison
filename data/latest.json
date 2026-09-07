@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-06T07:56:34.315Z",
+  "generatedAt": "2026-09-07T08:21:47.625Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13798,7 +13798,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-06T07:56:33.969Z",
+    "fetchedAt": "2026-09-07T08:21:47.220Z",
     "count": 382,
     "scores": {
       "gpt-6-astra": {
@@ -13993,10 +13993,10 @@
       "claude-sonnet-4-6": {
         "intelligence": 37.19
       },
-      "step-3-5-flash": {
+      "glm-5": {
         "intelligence": 37.11
       },
-      "glm-5": {
+      "step-3-5-flash": {
         "intelligence": 37.11
       },
       "minimax-m2-5": {
@@ -14068,10 +14068,10 @@
       "gpt-5-high-2025-08-07": {
         "intelligence": 34.14
       },
-      "grok-4": {
+      "qwen3-5-27b": {
         "intelligence": 33.9
       },
-      "qwen3-5-27b": {
+      "grok-4": {
         "intelligence": 33.9
       },
       "ernie-5-0": {
@@ -14083,10 +14083,10 @@
       "gemma-4-31b-it": {
         "intelligence": 33.21
       },
-      "mai-thinking-1": {
+      "deepseek-reasoner": {
         "intelligence": 32.86
       },
-      "deepseek-reasoner": {
+      "mai-thinking-1": {
         "intelligence": 32.86
       },
       "qwen3-6-35b-a3b": {
@@ -14191,10 +14191,10 @@
       "claude-opus-4-20250514": {
         "intelligence": 27.81
       },
-      "o4-mini": {
+      "mimo-v2-omni": {
         "intelligence": 27.73
       },
-      "mimo-v2-omni": {
+      "o4-mini": {
         "intelligence": 27.73
       },
       "gpt-oss-20b-high": {
@@ -14275,10 +14275,10 @@
       "command-a-plus-05-2026": {
         "intelligence": 24.23
       },
-      "claude-3-7-sonnet-20250219": {
+      "qwen3-235b-a22b-instruct-2507": {
         "intelligence": 24.05
       },
-      "qwen3-235b-a22b-instruct-2507": {
+      "claude-3-7-sonnet-20250219": {
         "intelligence": 24.05
       },
       "granite-4-2-30b": {
@@ -14960,7 +14960,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-06",
+      "verifiedAt": "2026-09-07",
       "crawled": true
     },
     {
@@ -15015,12 +15015,12 @@
   ],
   "fx": {
     "base": "USD",
-    "updatedAt": "Sun, 06 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Mon, 07 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.861064,
-      "CNY": 6.73441,
-      "GBP": 0.739657,
-      "JPY": 156.172893
+      "EUR": 0.861072,
+      "CNY": 6.719397,
+      "GBP": 0.739722,
+      "JPY": 156.177011
     }
   },
   "statistics": {
