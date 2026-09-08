@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-07T08:21:47.625Z",
+  "generatedAt": "2026-09-08T08:07:37.351Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -13798,7 +13798,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-07T08:21:47.220Z",
+    "fetchedAt": "2026-09-08T08:07:37.274Z",
     "count": 382,
     "scores": {
       "gpt-6-astra": {
@@ -14068,10 +14068,10 @@
       "gpt-5-high-2025-08-07": {
         "intelligence": 34.14
       },
-      "qwen3-5-27b": {
+      "grok-4": {
         "intelligence": 33.9
       },
-      "grok-4": {
+      "qwen3-5-27b": {
         "intelligence": 33.9
       },
       "ernie-5-0": {
@@ -14185,16 +14185,16 @@
       "glm-4-5": {
         "intelligence": 27.96
       },
-      "gemini-2-5-pro": {
-        "intelligence": 27.81
-      },
       "claude-opus-4-20250514": {
         "intelligence": 27.81
       },
-      "mimo-v2-omni": {
-        "intelligence": 27.73
+      "gemini-2-5-pro": {
+        "intelligence": 27.81
       },
       "o4-mini": {
+        "intelligence": 27.73
+      },
+      "mimo-v2-omni": {
         "intelligence": 27.73
       },
       "gpt-oss-20b-high": {
@@ -14960,7 +14960,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-07",
+      "verifiedAt": "2026-09-08",
       "crawled": true
     },
     {
@@ -15015,12 +15015,12 @@
   ],
   "fx": {
     "base": "USD",
-    "updatedAt": "Mon, 07 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Tue, 08 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.861072,
-      "CNY": 6.719397,
-      "GBP": 0.739722,
-      "JPY": 156.177011
+      "EUR": 0.860364,
+      "CNY": 6.728426,
+      "GBP": 0.738631,
+      "JPY": 154.414743
     }
   },
   "statistics": {
