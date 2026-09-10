@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T19:37:45.561Z",
+  "generatedAt": "2026-09-10T19:38:26.315Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
@@ -14095,7 +14095,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-10T19:37:45.481Z",
+    "fetchedAt": "2026-09-10T19:38:26.233Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -14215,10 +14215,10 @@
       "ling-3-0-flash-fin": {
         "intelligence": 43.3
       },
-      "hy3": {
+      "seed-2-1-turbo": {
         "intelligence": 43.2
       },
-      "seed-2-1-turbo": {
+      "hy3": {
         "intelligence": 43.2
       },
       "deepseek-v4-pro-max": {
@@ -14236,10 +14236,10 @@
       "gemini-3-8-flash-cyber": {
         "intelligence": 42.28
       },
-      "sakana-namazu": {
+      "gpt-5-4": {
         "intelligence": 42.21
       },
-      "gpt-5-4": {
+      "sakana-namazu": {
         "intelligence": 42.21
       },
       "muse-spark": {
@@ -14341,10 +14341,10 @@
       "qwen3-6-27b": {
         "intelligence": 35.64
       },
-      "minimax-m2-7": {
+      "mimo-v2-5": {
         "intelligence": 35.56
       },
-      "mimo-v2-5": {
+      "minimax-m2-7": {
         "intelligence": 35.56
       },
       "longcat-flash-thinking-2601": {
@@ -14524,10 +14524,10 @@
       "gpt-5-mini-2025-08-07": {
         "intelligence": 27.45
       },
-      "mistral-medium-3-5": {
+      "minimax-m2": {
         "intelligence": 26.97
       },
-      "minimax-m2": {
+      "mistral-medium-3-5": {
         "intelligence": 26.97
       },
       "nemotron-3-super-120b-a12b": {
@@ -14692,10 +14692,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.77
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.64
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.64
       },
       "gpt-5-nano-2025-08-07": {
@@ -14899,10 +14899,10 @@
       "devstral-small-2507": {
         "intelligence": 9.35
       },
-      "mistral-large-latest": {
+      "gpt-4-turbo-2024-04-09": {
         "intelligence": 9.12
       },
-      "gpt-4-turbo-2024-04-09": {
+      "mistral-large-latest": {
         "intelligence": 9.12
       },
       "qwq-32b-preview": {
