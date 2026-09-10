@@ -358,6 +358,13 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     if (gp.billingCycle === "year") goodsByTier[tierKey].year = gp.priceUsd;
     goodsByTier[tierKey].waitlist = goodsByTier[tierKey].waitlist && gp.waitlist;
   }
+  // Offizielle CNY-Listenpreise (kimi.com) als Basis für die Request-Schätzung.
+  // Für internationale Käufer (kimi.ai, USD) ist der Credit-Grund der gleiche wie für den
+  // CNY-Kunden: USD-Preis in CNY umrechnen ÜBERSCHÄTZT (z.B. $19/0.14 = ¥135.71 vs. offiziell ¥99).
+  // Fallback nur, wenn kein CNY-Listenpreis existiert (z.B. Vivace fehlt in kimi.com-Docs).
+  const kimiListCny = Object.fromEntries(
+    (kimiPrices?.plans ?? []).map((pl) => [kimiTierMap[pl.name], pl.priceCny]).filter(([k, v]) => k && v != null)
+  );
   for (const [tierKey, g] of Object.entries(goodsByTier)) {
     if (!g.month) continue; // Monatspreis ist die Basis
     const yearlyMonthly = g.year ? Math.round((g.year / 12) * 100) / 100 : null;
@@ -390,10 +397,10 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       dataTier: "D",
       dataTierNote: "Keine veröffentlichte Menge (nur Waitlist) — Requests aus Preis÷Kosten abgeleitet",
       // Offizielle Umrechnung: Membership-Preis ÷ offizieller Request-Kosten (¥0.03)
-      // USD-Preis über Kurs 0.14 in CNY für die Request-Berechnung (Kimi rechnet RMB)
+      // Request-Basis: offizieller CNY-Listenpreis (sonst USD→CNY-Fallback) — Kimi rechnet RMB
       providerCost: {
         formula: "requests = monthlyPriceCNY / 0.03 (offizielles Billing-Beispiel: einfacher Request ~¥0.03)",
-        monthlyPriceCny: Math.round((g.month / USD_PER_CNY) * 100) / 100,
+        monthlyPriceCny: kimiListCny[tierKey] ?? Math.round((g.month / USD_PER_CNY) * 100) / 100,
         requestCostCny: KIMI_SIMPLE_REQUEST_CNY,
         tierMultiplier: kimiTierMult[tierKey] ?? null,
         feedModels: ["Kimi K3", "Kimi K2.7 Code", "Kimi K2.6", "Kimi K2.5"],
@@ -600,6 +607,8 @@ function modelsForPlan(plan, feeds) {
   // Kimi-Membership (providerCost mit monthlyPriceCny): offizielles Billing-Beispiel
   // "einfacher Request ~¥0.03" → requests/mo = monthlyPriceCNY / 0.03.
   // Modell-Kosten aus Feed für die Verteilung.
+  // WICHTIG: totalRequests ist BEREITS eine Request-Anzahl → als directRequests markieren,
+  // damit die generische Schleife sie NICHT noch einmal durch $/Request teilt (Doppeldivision).
   if (plan.providerCost?.monthlyPriceCny && plan.providerCost?.feedModels) {
     const oc = feeds["ocgo-pricing.json"];
     const cc = feeds["cc-pricing.json"];
@@ -611,7 +620,8 @@ function modelsForPlan(plan, feeds) {
       const pattern = match.pattern ?? FALLBACK_PATTERN;
       out.push({
         name: match.name,
-        allowance: totalRequests, // Monats-Requests aus offizieller Umrechnung
+        directRequests: totalRequests, // BEREITS Requests/Monat, keine weitere Division
+        directNote: "requests (price-based estimate: monthlyPriceCNY / ¥0.03)",
         window: "month",
         pattern,
         pricing: match,
@@ -741,13 +751,15 @@ async function main() {
       const pattern = unifiedPattern(familyOf(m.name), m.pattern);
       const cost = requestCost(m.pricing, pattern);
       const allowance = m.allowance ?? m.usage ?? null;
-      if (allowance == null || allowance <= 0) continue;
+      // directRequests sind BEREITS eine Request-Anzahl und brauchen kein Allowance-Gating
+      // (und darf nicht noch einmal durch $/Request geteilt werden).
+      if (m.directRequests == null && (allowance == null || allowance <= 0)) continue;
       let requests = null;
       let unit = "requests";
       if (m.directRequests != null) {
-        // CC mit offizieller Gesamtmenge: Requests direkt verteilt (Kosten-Anteil)
+        // CC: offizielle Gesamtmenge (Kosten-Anteil) ODER Kimi: Preis-Basis-Schätzung (CNY/¥0.03)
         requests = m.directRequests;
-        unit = "requests (official total, cost-share allocation)";
+        unit = m.directNote ?? "requests (official total, cost-share allocation)";
       } else if (m.providerCost) {
         // Anbieter-eigene Credit-Formel: Credits / Credits-pro-Request
         if (m.providerCost.creditsPerRequest > 0) {

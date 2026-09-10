@@ -34,7 +34,7 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
 ## Befehle
 ```bash
 npm run update   # fetch → parse → build
-npm test         # Invarianz- + Parser-Tests (9)
+npm test         # Invarianz- + Parser-Tests (12)
 npm run check    # Change-Detection-Report
 ```
 
@@ -44,7 +44,7 @@ npm run check    # Change-Detection-Report
 
 ## Verifikation (vor Commit/Push)
 1. `npm run update` (exit 0)
-2. `npm test` grün (9 Tests)
+2. `npm test` grün (12 Tests)
 3. `node scripts/check.mjs` — keine unerwarteten Änderungen
 4. Nach Push: Workflow-Lauf beobachten bis grün
 

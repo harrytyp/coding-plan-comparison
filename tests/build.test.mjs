@@ -150,3 +150,70 @@ test("undisclosed Pläne haben keine erfundenen Zahlen", async () => {
     }
   }
 });
+
+// --- Regressionen für Metric-Audit 2026-09-10 (13B Tokens/$-Bericht) ---
+
+// Einheit: Die Spalte ist per $10-Normalisierung (TARGET_PRICE=10), NICHT per $1.
+// Für jede Row muss gelten: normalizedPer10 = requestsPerMonth × 10 / paidPrice.
+test("Unit-Invariante: normalizedPer10 = requestsPerMonth × 10 / paidPrice", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const target = d.targetMonthlyPrice; // = 10
+  let checked = 0;
+  for (const p of d.plans) {
+    // Gleiche paid-Logik wie build.mjs: CNY → monthlyUsd, sonst bezahlter (Checkout-)Preis
+    const paid = p.price.currency === "CNY" && p.price.monthlyUsd
+      ? p.price.monthlyUsd
+      : (p.price.paidPrice ?? p.price.monthlyUsd);
+    if (!paid || paid <= 0) continue;
+    for (const r of p.modelRows ?? []) {
+      assert.ok(r.requestsPerMonth > 0, `${p.name}/${r.model}: requestsPerMonth > 0`);
+      const expectedN = (r.requestsPerMonth * target) / paid;
+      assert.ok(
+        Math.abs(r.normalizedPer10 - expectedN) < Math.max(0.01, expectedN * 1e-6),
+        `${p.name}/${r.model}: normalizedPer10=${r.normalizedPer10} ≠ requestsPerMonth(${r.requestsPerMonth})×${target}/${paid}=${expectedN}`
+      );
+      checked++;
+    }
+  }
+  assert.ok(checked > 100, `sollte >100 Rows prüfen, war ${checked}`);
+});
+
+// Kimi war 33×–168× überzeichnet: allowance war BEREITS Request-Anzahl, wurde aber noch
+// einmal durch $/Request geteilt. Nach Fix: requestsPerMonth = offizieller CNY-Listenpreis / ¥0.03.
+test("Kimi: keine Doppeldivision (requests = CNY-Listenpreis / ¥0.03)", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const moderato = d.plans.find((p) => p.id === "kimi-moderato");
+  assert.ok(moderato, "kimi-moderato vorhanden");
+  // Offizieller CNY 99 (Moderato), ¥0.03/Request → 3300 Requests/Monat, NICHT Hunderttausende
+  const expected = 99 / 0.03;
+  for (const r of moderato.modelRows ?? []) {
+    assert.ok(
+      Math.abs(r.requestsPerMonth - expected) < expected * 0.001,
+      `Kimi Moderato/${r.model}: ${r.requestsPerMonth} ≈ ${expected} (war vor Fix 33–168× zu hoch)`
+    );
+  }
+  // Kein Kimi-Wert darf mehr im Millionen-Bereich liegen (Doppeldivision wäre sofort sichtbar)
+  for (const p of d.plans) {
+    if (!p.id.startsWith("kimi-")) continue;
+    for (const r of p.modelRows ?? []) {
+      assert.ok(r.requestsPerMonth < 1_000_000,
+        `${p.name}/${r.model}: requestsPerMonth ${r.requestsPerMonth} unter 1M`);
+    }
+  }
+});
+
+ // rawTokensPerMonth ist abgeleitet (requests × tokens), kein unabhängiger Anker.
+// Invarianz-Check hält die Kette konsistent; keine unabhängigen Annahmen.
+test("Meta-Konsistenz: rawTokensPerMonth = requestsPerMonth × Tokens/Request", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  for (const p of d.plans) {
+    for (const r of p.modelRows ?? []) {
+      const pat = r.patternUsed || {};
+      const perReq = pat.input + pat.cachedRead + pat.output;
+      if (r.rawTokensPerMonth == null || !(perReq > 0)) continue;
+      const expect = r.requestsPerMonth * perReq;
+      assert.ok(Math.abs(r.rawTokensPerMonth - expect) < Math.max(1, expect * 1e-9),
+        `${p.name}/${r.model}: rawTokensPerMonth inkonsistent`);
+    }
+  }
+});

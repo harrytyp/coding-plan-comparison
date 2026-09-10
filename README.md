@@ -28,7 +28,7 @@ scripts/check.mjs    → Diff-Report: welche Quellen geändert (exit 2 = Änderu
 **Ein Befehl für alles:**
 ```bash
 npm run update   # fetch → parse → build
-npm test         # Invarianz-Tests (9)
+npm test         # Invarianz-Tests (12)
 npm run check    # Change-Detection-Report
 ```
 
@@ -97,7 +97,7 @@ cache/               Roh-Snapshots + manifest.json (committed, reproduzierbar)
 parsed/              Strukturierte Parser-Outputs (committed)
 scripts/             fetch / parse-all / build / check / yaml / parsers
 public/data/latest.json  Maschinenlesbarer Output (API-Endpunkt)
-tests/               Invarianz- + Parser-Tests (9)
+tests/               Invarianz- + Parser-Tests (12)
 ```
 
 ## Lizenz
