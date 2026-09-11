@@ -1,105 +1,93 @@
-# coding-plan-compare
+# coding-plan-comparison
 
-**Dynamische, reproduzierbare Vergleichsdatenbank für AI-Coding-Plan-Subscriptions**
-(Credit/Token-Pass-Pläne — kein reines Token-PAYG).
+**Reproducible comparison of AI coding plan subscriptions** (credit/token-pass plans, not plain token PAYG).
 
-> ⚡ **Nichts ist statisch.** Alle Daten kommen live aus offiziellen Quellen (Feeds + Docs),
-> werden deterministisch gefetcht, geparst und gebaut. Ändert sich eine Quelle (Preise,
-> Abrechnungsarten, Formeln), erkennt das System das per Change-Detection und aktualisiert.
+Live site: https://harrytyp.github.io/coding-plan-comparison/
 
-## Architektur: Fetch → Parse → Build (deterministisch)
+> Nothing here is static. All data comes live from official sources (feeds + docs), is fetched, parsed and built deterministically. When a source changes (prices, billing rules, formulas), change detection catches it and the site updates.
+
+## How it works: fetch, parse, build
 
 ```
-sources.yml          → Welche Endpoints, welche Parser
-      │
-      ▼
-scripts/fetch.mjs    → HTTP-Fetch aller Quellen → cache/<id>.<ext> + cache/manifest.json
-      │                (sha256 + contentHash + fetchedAt + changed-Flag)
-      ▼
-scripts/parse-all.mjs → Parser (HTML→strukturiert, JSON→normalisiert) → parsed/<id>.json
-      │
-      ▼
-scripts/build.mjs    → Plan-Katalog dynamisch aus parsed/* + data/overrides.yml
-      │                → Normalisierung (Token-Preise + Cache + Workload) → public/data/latest.json
-      ▼
-scripts/check.mjs    → Diff-Report: welche Quellen geändert (exit 2 = Änderung)
+sources.yml           -> which endpoints, which parser
+      |
+      v
+scripts/fetch.mjs     -> HTTP fetch of all sources -> cache/<id>.<ext> + cache/manifest.json
+      |                  (sha256 + contentHash + fetchedAt + changed flag)
+      v
+scripts/parse-all.mjs -> parsers (HTML to structured, JSON to normalized) -> parsed/<id>.json
+      |
+      v
+scripts/build.mjs     -> plan catalog from parsed/* + data/overrides.yml
+      |                  -> normalization (token prices + cache + workload) -> public/data/latest.json
+      v
+scripts/check.mjs     -> diff report: which sources changed (exit 2 = changed)
 ```
 
-**Ein Befehl für alles:**
+One command for everything:
+
 ```bash
-npm run update   # fetch → parse → build
-npm test         # Invarianz-Tests (12)
-npm run check    # Change-Detection-Report
+npm run update   # fetch -> parse -> build
+npm test         # invariance tests
+npm run check    # change-detection report
 ```
 
-**Determinismus:** build.mjs nutzt NUR `cache/` (Snapshots) + `parsed/`, nie Live-Fetch im Build.
-Gleiche Snapshots → gleiches latest.json. Die Snapshots sind im Git committed (reproduzierbar).
+**Determinism:** `build.mjs` uses only `cache/` snapshots + `parsed/`, never live fetches. Same snapshots give the same `latest.json`. Snapshots are gitignored and reproduced via `npm run update`.
 
-**Change-Detection:** Jede Quelle hat `contentHash` (Hash des **geparsten** Inhalts, robust gegen
-HTML-Nonces/Cache-Buster). `check.mjs` zeigt, was sich wirklich geändert hat (Preise, Formeln,
-Abrechnungsarten) — nicht nur flüchtige HTML-Details.
+**Change detection:** every source gets a `contentHash` (hash of the *parsed* content, robust against HTML nonces and cache busters). `check.mjs` shows what really changed (prices, formulas, billing rules), not volatile HTML details.
 
-## Quellen (sources.yml, alle live verifiziert 2026-08-28)
+**One shared YAML parser:** `scripts/yaml.mjs` is the only YAML implementation. `build.mjs`, `fetch.mjs` and `parse-all.mjs` all import it, zero runtime dependencies.
 
-| Quelle | Typ | Liefert |
-|---|---|---|
-| `ocgo-pricing` | JSON-Feed | OpenCode Go: Token-Preise, usage, multiplier, Pattern |
-| `cc-pricing` | JSON-Feed | Command Code: allowances, requestEstimate, Token-Preise |
-| `glm-coding-overview` | HTML-Docs | GLM: Quoten (5h/Woche), Credit-Formel, MCP, Off-Peak |
-| `qwen-coding-plan` | HTML-Docs | Qwen Pro: $50, 6k/45k/90k, Task-Konvertierung |
-| `qwen-token-personal` | HTML-Docs | Qwen Token: $6/18/68, Quoten, Extra Bundle |
-| `kimi-membership-pricing` | HTML-Docs | Kimi Preise (CNY): ¥49/99/199/699 |
-| `kimi-code-membership` | HTML-Docs | Kimi Quota-Regeln, Extra Usage |
-| `glm-pricing-page` | JS-SPA | ⚠️ Preise nur per API (Auth) → overrides.yml |
-| `minimax-token-plan` | JS-SPA | ⚠️ Daten nur per JS → overrides.yml |
-| `mimo-token-plan` | HTML | MiMo (Parser offen) |
+## Sources
 
-**Nicht-scrapebares** (GLM-Preise via Auth-API, MiniMax-SPA) lebt in `data/overrides.yml` mit
-`lastVerified` — der Cron-Agent prüft die Quellen und pflegt diese Datei bei Änderung.
+Defined in `sources.yml`: machine-readable price feeds (OpenCode Go, Command Code, Kimi goods API, LLM Stats leaderboard, FX rates) plus official docs (GLM, Qwen, Kimi, MiniMax, MiMo) plus provider privacy pages.
 
-## Normalisierung (die Vergleichbarkeit)
+Anything not scrapeable (GLM prices behind an auth API, MiniMax JS-SPA) lives in `data/overrides.yml` with `lastVerified`. A scheduled agent rechecks those sources and updates the file on change. `data/privacy.yml` holds manually verified data policies per provider.
+
+## Normalization (what makes plans comparable)
 
 ```
-Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
-                   + cachedRead×pattern.cachedRead + output×pattern.output, /1M
+cost per request = (0.05 x input + 0.95 x cachedWrite) x pattern.input
+                 + cachedRead x pattern.cachedRead + output x pattern.output, /1M
 ```
 
-- **"60 für 10" ist nur Schicht 1** — Grundcredits (Token-Preise) + Cache + Workload-Profil entscheiden.
-- **Anbietereigene Credit-Formeln** (GLM: `(in×6.9+cached×1.7+out×24)/10000`) kommen dynamisch aus den Docs.
-- **Pattern-Unifizierung:** geteilte Modell-Familien nutzen das OC-Pattern für beide Provider (Fairness).
-- **Fenster:** 5h-Caps = Durchsatz (nicht ×180); Wochen ×4.33 → Monat.
-- **undisclosed bleibt undisclosed** — keine erfundenen Zahlen.
+- **"60 for 10" is only layer 1.** Base credits (token prices) + cache behavior + workload profile decide what you actually get.
+- **Provider-owned credit formulas** (GLM: `(in x 6.9 + cached x 1.7 + out x 24)/10000`) are scraped from the official docs, never invented.
+- **Pattern unification:** shared model families use the most precise per-model pattern for both providers, so a cheap generic pattern cannot rig the comparison.
+- **All normalized metrics are per $10 paid** (`normalizedPer10 = requestsPerMonth x 10 / paidPrice`). Column headers say "$10" everywhere.
+- **Token/month figures are derived** (`requestsPerMonth x tokens-per-request` from the workload pattern), not independently published quotas. The field keeps its `rawTokensPerMonth` name for API compatibility; `derivedTokensPerMonth` is the honestly named alias and `methodology.derivedMetrics` says so in the JSON.
+- **Windows are caps, not volumes:** 5h caps are throughput limits (never multiplied into monthly numbers); weekly credits scale x4.33 to monthly.
+- **Data tiers:** A = official quota from feed/docs, B = official total as anchor, C = derived, D = price-based estimate (hidden by default in the UI, toggle to show). Tier-D rows carry a `~` estimate marker.
+- **undisclosed stays undisclosed.** No invented numbers; undisclosed plans get `modelStats: null`.
+- **AI scores** come from the LLM Stats leaderboard (zeroeval.com) only, matched to feed models with fuzzy matching. Family fallbacks are marked with `~`.
 
-## CI / Aktualisierung
+## CI / updates
 
-`.github/workflows/update.yml` — täglicher Cron (03:17 UTC):
-1. `fetch` alle Quellen (Snapshots + Change-Detection)
-2. `parse` + `build` + Tests
-3. Commit bei Änderung
-4. **Review-Issue** wenn SPA-Quellen (Preise) sich geändert haben → overrides.yml manuell pflegen
+`.github/workflows/update.yml`, daily 03:17 UTC:
 
-Optional: Cron-Agent (manuell) für die SPA-Preise (GLM/MiniMax), die Auth-APIs brauchen.
+1. `fetch` all sources (snapshots + change detection)
+2. `parse` + `build` + tests
+3. commit on change
+4. review issue when SPA sources changed prices, then `overrides.yml` is updated manually
 
-## Aktueller Stand (2026-08-28)
-
-- **17 Pläne** aus Quellen dynamisch aufgelöst, **6 vergleichbar** (Modell-Pricing):
-  OpenCode Go, Command Code GOAT/Pro, GLM Lite/Pro/Max
-- **94 Modell-Familien-Vergleiche** (`familyComparisons[]`) mit Pattern-Unifizierung
-- GLM-Formel + MCP + Off-Peak **live aus Docs geparst**
-- Qwen/Kimi Preise **live aus offiziellen Docs geparst** (Limited-Time + CNY korrekt)
-
-## Struktur
+## Layout
 
 ```
-sources.yml          Quellen-Definition (Endpoints + Parser)
-data/overrides.yml   Nur nicht-scrapebares (SPA/Auth) + lastVerified
-cache/               Roh-Snapshots + manifest.json (committed, reproduzierbar)
-parsed/              Strukturierte Parser-Outputs (committed)
-scripts/             fetch / parse-all / build / check / yaml / parsers
-public/data/latest.json  Maschinenlesbarer Output (API-Endpunkt)
-tests/               Invarianz- + Parser-Tests (12)
+sources.yml            source definitions (endpoints + parsers)
+data/overrides.yml     only non-scrapeable data (SPA/auth) + lastVerified
+data/privacy.yml       manually verified provider data policies
+data/ai-scores.json    AI score cache/reference
+cache/                 raw snapshots + manifest.json (gitignored, reproducible)
+parsed/                structured parser output (gitignored)
+scripts/               fetch / parse-all / build / check / yaml / parsers
+public/                website (index.html, app.js, data/latest.json)
+index.html, app.js     synced copies of public/ for legacy GitHub Pages
+tests/                 invariance + parser tests
+schema.json            schema notes for the JSON output
 ```
 
-## Lizenz
+Root `index.html`/`app.js`/`data/latest.json` are byte-identical copies of `public/` (legacy Pages serves from root). `public/index.html` uses the `__VERSION__` placeholder, which CI replaces with the commit hash on sync (cache busting). The root mirrors are committed by CI (`update.yml`), not by hand.
 
-MIT (Code). Daten: nur offizielle Quellen; Anbieter-Marken gehören ihren Inhabern.
+## License
+
+MIT (code). Data: official sources only; provider brands belong to their owners.

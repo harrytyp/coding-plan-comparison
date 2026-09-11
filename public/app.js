@@ -28,7 +28,7 @@ const I18N = {
     "hero.lead": `"60 for 10" is only the sticker price. We compare what you actually get. real token economics, provider credit formulas, cache-aware cost per request. from live official sources, reproduced daily.`,
     "hero.cta1": "Compare plans",
     "hero.cta2": "How it works",
-    "hero.sources": "11 live sources",
+    "hero.sources": "live sources",
     "hero.free": "Free · open data · no affiliate links",
     "stats.plans": "Plans tracked",
     "stats.comparable": "Directly comparable",
@@ -200,7 +200,7 @@ const I18N = {
     "hero.lead": `„60 für 10“ ist nur der Aufkleberpreis. Wir vergleichen, was du wirklich bekommst. echte Token-Ökonomie, anbietereigene Credit-Formeln, cache-bewusste Kosten pro Request. aus Live-Quellen, täglich reproduziert.`,
     "hero.cta1": "Pläne vergleichen",
     "hero.cta2": "So funktioniert's",
-    "hero.sources": "11 Live-Quellen",
+    "hero.sources": "Live-Quellen",
     "hero.free": "Kostenlos · offene Daten · keine Affiliate-Links",
     "stats.plans": "Erfasste Pläne",
     "stats.comparable": "Direkt vergleichbar",
@@ -896,7 +896,7 @@ function renderPlans() {
 // Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
 function renderCell(col, c) {
   const priceStr = c.priceDisplay ?? (c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-");
-  // Familien-Fallback-Scores mit "~" markieren (Näherungswert, kein exakter AA-Wert)
+  // Family-fallback scores are marked with "~" (approximation, family fallback from LLM Stats, not an exact model score)
   const scoreStr = c.score !== null
     ? `<span class="num strong">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>`
     : `<span class="muted">-</span>`;
@@ -1038,7 +1038,7 @@ function initSheet() {
   const sd2 = $("#sheet-done"); if (sd2) sd2.addEventListener("click", closeSheet);
 }
 
-/* ============ DASHBOARD / PARETO-PLOT (AA-Stil) ============ */
+/* ============ DASHBOARD / PARETO-PLOT ============ */
 let dashX = "tokens";
 let dashY = "score";
 let dashPareto = true;
@@ -1376,7 +1376,7 @@ async function loadData() {
   const main = $("#main");
   try {
     const resp = await fetch(DATA_URL, { cache: "no-cache" });
-    if (!resp.ok) throw new Error("HTTP " + resp.status + " für " + DATA_URL);
+    if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + DATA_URL);
     data = await resp.json();
     buildModelPrivacyMap(); // Modell-Privacy-Map aufbauen, bevor gerendert wird
     // Loading-Note entfernen

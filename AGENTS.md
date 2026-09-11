@@ -7,7 +7,7 @@ statischen Preise.
 
 ## Architektur (deterministisch)
 ```
-sources.yml (11 Endpoints)
+sources.yml (18 endpoints: feeds + docs + privacy + scores + FX)
    → scripts/fetch.mjs      HTTP-Fetch → cache/ + manifest.json (contentHash + changed)
    → scripts/parse-all.mjs  Parser → parsed/<id>.json
    → scripts/build.mjs      Plan-Katalog dynamisch + Normalisierung → public/data/latest.json
@@ -37,6 +37,12 @@ npm run update   # fetch → parse → build
 npm test         # Invarianz- + Parser-Tests (12)
 npm run check    # Change-Detection-Report
 ```
+
+## Pages-Sync
+Root `index.html`/`app.js`/`data/latest.json` sind byte-identische Kopien von `public/`
+(Legacy-Pages serviert vom Root). `public/index.html` nutzt den `__VERSION__`-Platzhalter,
+den die CI beim Sync durch den Commit-Hash ersetzt (Cache-Busting). Lokal nicht ersetzen.
+Root-Mirrors committet die CI (`update.yml`), nicht von Hand.
 
 ## Workflow
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
