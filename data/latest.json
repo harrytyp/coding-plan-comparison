@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T08:13:34.816Z",
+  "generatedAt": "2026-09-11T08:30:45.113Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -1090,7 +1090,7 @@
         "p75": 1582.4827658943823
       },
       "dataTier": "B",
-      "dataTierNote": "Offizielle Gesamtmenge 15,000 req/mo als Anker",
+      "dataTierNote": "Official total 15,000 req/mo as anchor",
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -2742,7 +2742,7 @@
         "p75": 11077.379361260677
       },
       "dataTier": "A",
-      "dataTierNote": "Offizielle Modell-Allowances aus Feed",
+      "dataTierNote": "Official per-model allowances from feed",
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -4394,7 +4394,7 @@
         "p75": 15395.679790226703
       },
       "dataTier": "A",
-      "dataTierNote": "Offizielle Modell-Allowances aus Feed",
+      "dataTierNote": "Official per-model allowances from feed",
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -6046,7 +6046,7 @@
         "p75": 23737.241488415733
       },
       "dataTier": "B",
-      "dataTierNote": "Offizielle Gesamtmenge 230,000 req/mo als Anker",
+      "dataTierNote": "Official total 230,000 req/mo as anchor",
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -7698,7 +7698,7 @@
         "p75": 47474.48297683147
       },
       "dataTier": "B",
-      "dataTierNote": "Offizielle Gesamtmenge 370,000 req/mo als Anker",
+      "dataTierNote": "Official total 370,000 req/mo as anchor",
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -14514,8 +14514,8 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-11T08:13:34.711Z",
-    "count": 391,
+    "fetchedAt": "2026-09-11T08:30:45.035Z",
+    "count": 389,
     "scores": {
       "gpt-6-astra": {
         "intelligence": 59.94
@@ -14607,10 +14607,10 @@
       "claude-mythos-5-1": {
         "intelligence": 45.22
       },
-      "qwen3-8-27b": {
+      "gpt-5-6-luna": {
         "intelligence": 45.09
       },
-      "gpt-5-6-luna": {
+      "qwen3-8-27b": {
         "intelligence": 45.09
       },
       "claude-opus-4-6": {
@@ -14958,10 +14958,10 @@
       "qwen3-vl-235b-a22b-thinking": {
         "intelligence": 26.68
       },
-      "gpt-5-codex-2025-09-15": {
+      "gpt-5-4-nano": {
         "intelligence": 26.63
       },
-      "gpt-5-4-nano": {
+      "gpt-5-codex-2025-09-15": {
         "intelligence": 26.63
       },
       "k-exaone-236b-a23b": {
@@ -15294,10 +15294,10 @@
       "deepseek-r1-distill-qwen-14b": {
         "intelligence": 10.94
       },
-      "qwen3-vl-4b-instruct": {
+      "magistral-small-2506": {
         "intelligence": 10.68
       },
-      "magistral-small-2506": {
+      "qwen3-vl-4b-instruct": {
         "intelligence": 10.68
       },
       "mistral-large-3-2509": {
@@ -15327,10 +15327,10 @@
       "mistral-large-latest": {
         "intelligence": 9.03
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
@@ -15622,73 +15622,109 @@
         "intelligence": -13.43
       },
       "muse-spark-1-3-contributor": {
-        "intelligence": 41.72
+        "intelligence": 54.41,
+        "aliasOf": "muse-spark-1-3",
+        "fallback": true
       },
       "muse-spark-1-2-contributor": {
-        "intelligence": 41.72
+        "intelligence": 39.54,
+        "aliasOf": "muse-spark-1-2",
+        "fallback": true
       },
       "deepseek-v4-pro": {
-        "intelligence": 43.13
+        "intelligence": 43.13,
+        "aliasOf": "deepseek-v4-pro-max",
+        "fallback": true
       },
       "deepseek-v4-flash": {
-        "intelligence": 39.15
+        "intelligence": 39.15,
+        "aliasOf": "deepseek-v4-flash-max",
+        "fallback": true
       },
       "tencent-hy4-preview": {
-        "intelligence": 50.97
+        "intelligence": 50.97,
+        "aliasOf": "hy4-preview",
+        "fallback": true
       },
       "tencent-hy3": {
-        "intelligence": 43.22
+        "intelligence": 43.22,
+        "aliasOf": "hy3",
+        "fallback": true
       },
       "kimi-k2-7-code-highspeed": {
-        "intelligence": 39.36
+        "intelligence": 39.36,
+        "aliasOf": "kimi-k2-7-code",
+        "fallback": true
       },
       "glm-5-2-fast": {
-        "intelligence": 37.15
+        "intelligence": 45.55,
+        "aliasOf": "glm-5-2",
+        "fallback": true
       },
       "deepseek-v4-pro-latest": {
-        "intelligence": 43.13
+        "intelligence": 43.13,
+        "aliasOf": "deepseek-v4-pro-max",
+        "fallback": true
       },
       "deepseek-v4-flash-latest": {
-        "intelligence": 39.15
+        "intelligence": 39.15,
+        "aliasOf": "deepseek-v4-flash-max",
+        "fallback": true
       },
       "deepseek-v4-flash-fast": {
-        "intelligence": 39.15
+        "intelligence": 39.15,
+        "aliasOf": "deepseek-v4-flash-max",
+        "fallback": true
       },
       "qwen-3-8-max-0902": {
-        "intelligence": 51.89
+        "intelligence": 51.89,
+        "aliasOf": "qwen3-8-max",
+        "fallback": true
       },
       "qwen-3-8-max": {
-        "intelligence": 51.89
+        "intelligence": 51.89,
+        "aliasOf": "qwen3-8-max",
+        "fallback": true
       },
       "qwen-3-8-27b": {
-        "intelligence": 45.09
-      },
-      "qwen-3-6-max-preview": {
-        "intelligence": 51.89
+        "intelligence": 45.09,
+        "aliasOf": "qwen3-8-27b",
+        "fallback": true
       },
       "qwen-3-6-plus": {
-        "intelligence": 39.43
+        "intelligence": 39.43,
+        "aliasOf": "qwen3-6-plus",
+        "fallback": true
       },
       "qwen-3-7-max": {
-        "intelligence": 45.55
+        "intelligence": 45.55,
+        "aliasOf": "qwen3-7-max",
+        "fallback": true
       },
       "qwen-3-7-plus": {
-        "intelligence": 42.63
+        "intelligence": 42.63,
+        "aliasOf": "qwen3-7-plus",
+        "fallback": true
       },
       "qwen-3-8-flash": {
-        "intelligence": 49.08
-      },
-      "qwen-3-7-flash": {
-        "intelligence": 45.55
+        "intelligence": 49.08,
+        "aliasOf": "qwen3-8-flash",
+        "fallback": true
       },
       "nemotron-3-ultra": {
-        "intelligence": 36.27
+        "intelligence": 36.27,
+        "aliasOf": "nemotron-3-ultra-550b-a55b",
+        "fallback": true
       },
       "claude-haiku-4-5": {
-        "intelligence": 25.69
+        "intelligence": 25.69,
+        "aliasOf": "claude-haiku-4-5-20251001",
+        "fallback": true
       },
       "gemini-3-1-flash-lite": {
-        "intelligence": 30.93
+        "intelligence": 30.93,
+        "aliasOf": "gemini-3-1-flash-lite-preview",
+        "fallback": true
       }
     }
   },
