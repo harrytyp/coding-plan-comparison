@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T08:13:10.785Z",
+  "generatedAt": "2026-09-11T08:13:34.816Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-11T08:12:15.151Z",
+    "fetchedAt": "2026-09-11T08:13:34.711Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -14595,10 +14595,10 @@
       "deepseek-v4-flash-vision-exp": {
         "intelligence": 46
       },
-      "glm-5-2": {
+      "qwen3-7-max": {
         "intelligence": 45.55
       },
-      "qwen3-7-max": {
+      "glm-5-2": {
         "intelligence": 45.55
       },
       "grok-4-5": {
@@ -14958,10 +14958,10 @@
       "qwen3-vl-235b-a22b-thinking": {
         "intelligence": 26.68
       },
-      "gpt-5-4-nano": {
+      "gpt-5-codex-2025-09-15": {
         "intelligence": 26.63
       },
-      "gpt-5-codex-2025-09-15": {
+      "gpt-5-4-nano": {
         "intelligence": 26.63
       },
       "k-exaone-236b-a23b": {
@@ -15108,10 +15108,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "granite-4-2-8b": {
+      "o1-pro": {
         "intelligence": 19.68
       },
-      "o1-pro": {
+      "granite-4-2-8b": {
         "intelligence": 19.68
       },
       "grok-4-1-2025-11-17": {
