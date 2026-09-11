@@ -648,26 +648,45 @@ function aiScoreFor(modelName, family) {
   let parts = words(noParen);
   while (parts.length > 2) { parts.pop(); candidates.push(slug(parts.join(" "))); }
 
-  // Match
-  for (const c of [...new Set(candidates.filter(Boolean))]) {
-    if (scores[c]) return scores[c];
+  // Match in strict phases: exact normalizations beat fuzzy prefix hits,
+  // so "Muse Spark 1.3 Contributor" resolves to muse-spark-1-3, never to the
+  // generic muse-spark key. Derived (non-exact) hits are flagged as fallback.
+  const uniq = [...new Set(candidates.filter(Boolean))];
+  // Alias entries (build-precomputed, flagged) are never fuzzy targets, only
+  // direct hits: matches always land on original leaderboard keys, never chains.
+  const solid = keys.filter((k) => !scores[k]?.fallback && !scores[k]?.familyFallback);
+  const withFallback = (entry, aliasOf) => {
+    if (!entry || (!entry.fallback && !entry.familyFallback && !aliasOf)) return entry;
+    // Transitive Auflösung: aliasOf zeigt immer auf den originalen
+    // Leaderboard-Key, nie auf einen anderen Alias (alte JSONs mit Ketten heilen).
+    let root = entry.aliasOf ?? aliasOf ?? null;
+    const seen = new Set();
+    while (root && scores[root]?.aliasOf && !seen.has(root)) { seen.add(root); root = scores[root].aliasOf; }
+    return { intelligence: entry.intelligence, fallback: true, aliasOf: root };
+  };
+  for (const c of uniq) {
+    if (scores[c]) return withFallback(scores[c], c === slug(raw) ? null : c);
+  }
+  for (const c of uniq) {
     const cc = compact(c);
     if (cc.length >= 4) {
-      const found = keys.find(k => compact(k) === cc);
-      if (found) return scores[found];
+      const found = solid.find(k => compact(k) === cc);
+      if (found) return withFallback(scores[found], found);
     }
-    const prefix = keys.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
+  }
+  for (const c of uniq) {
+    const prefix = solid.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
       .sort((a, b) => a.length - b.length)[0];
-    if (prefix) return scores[prefix];
+    if (prefix) return withFallback(scores[prefix], prefix);
   }
 
   // Word-Overlap Fallback
   let best = null, bestOverlap = 0;
-  for (const k of keys) {
+  for (const k of solid) {
     const overlap = commonWords(k, noParen);
     if (overlap >= 2 && overlap > bestOverlap) { bestOverlap = overlap; best = k; }
   }
-  if (best) return scores[best];
+  if (best) return withFallback(scores[best], best);
 
   // Familien-Mittelwert
   if (family || modelName) {
@@ -681,6 +700,7 @@ function aiScoreFor(modelName, family) {
     for (const prefix of prefixes) {
       if (!prefix || prefix.length < 3) continue;
       famScores = Object.entries(scores)
+        .filter(([k, v]) => !v?.fallback && !v?.familyFallback)
         .filter(([k]) => k.startsWith(prefix + "-") || k.replace(/-+/g, "").startsWith(prefix))
         .map(([, v]) => v?.intelligence)
         .filter((v) => typeof v === "number");
@@ -772,7 +792,7 @@ function buildCombos() {
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
-        scoreFallback: score?.familyFallback === true,
+        scoreFallback: score?.familyFallback === true || score?.fallback === true,
         tokensPer10,
         req10: row.normalizedPer10 ?? null,
         // Rohdaten: Tokens/Monat und Requests/Monat (un-normalisiert)

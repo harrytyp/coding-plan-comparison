@@ -70,8 +70,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       const hasOwnAllowances = cc.models.some((m) => (m.allowances?.[p.id] ?? null) != null);
       const dataTier = hasOwnAllowances ? "A" : (p.requestEstimate ? "B" : "C");
       const dataTierNote = hasOwnAllowances
-        ? "Offizielle Modell-Allowances aus Feed"
-        : (p.requestEstimate ? `Offizielle Gesamtmenge ${p.requestEstimate.toLocaleString()} req/mo als Anker` : "Von GOAT skaliert, kein offizieller Anker");
+        ? "Official per-model allowances from feed"
+        : (p.requestEstimate ? `Official total ${p.requestEstimate.toLocaleString()} req/mo as anchor` : "Scaled from GOAT, no official anchor");
       add({
         id,
         provider: "command-code",
@@ -851,19 +851,23 @@ function loadAiScores(root) {
 
 // Fuzzy-Match: Feed-Modellname → Score-Slug aus vorhandenen Scores.
 // Build bereitet die Scores vor, damit das Frontend nur noch lookup braucht.
-// Algorithmus (probiert der Reihe nach):
-//   1. Direkter Slug-Match
-//   2. Compact-Match (ohne Trennzeichen)
-//   3. Prefix-Match
-//   4. Geklammerte Suffixe entfernen (z.B. "(latest)")
-//   5. Bekannte Provider-Prefixe entfernen (z.B. "tencent")
-//   6. "contributor"/"preview" etc. entfernen
-//   7. Sukzessive Kürzung von hinten
-//   8. Word-Overlap (meiste gemeinsame Wörter)
+// Phasen (strikte Reihenfolge — exakte Normalisierungen schlagen unscharfe
+// Prefix-Treffer, damit z.B. "Muse Spark 1.3 Contributor" auf muse-spark-1-3
+// (54.41) zeigt und nicht auf den generischen muse-spark-Key (41.72):
+//   Phase 1: exakter Slug-Match über ALLE Kandidaten (roh, Family, ohne
+//     Klammern/Provider-Prefixe/"contributor"-Suffixe/Datum/Kürzungen)
+//   Phase 2: Compact-Match (ohne Trennzeichen) über alle Kandidaten
+//   Phase 3: Prefix-Match (kürzester Key, z.B. "deepseek-v4-flash-0423"
+//     vor "deepseek-v4-flash-vision-exp")
+//   Phase 4: Word-Overlap (meiste gemeinsame Wörter)
 function fuzzyScoreMatch(rawName, family, scores) {
   const raw = (rawName ?? family ?? "").toLowerCase();
   const keys = Object.keys(scores);
   if (keys.length === 0) return null;
+  // Alias-Einträge (fallback) sind nie Match-Ziele: Treffer landen immer auf
+  // originalen Leaderboard-Keys, sonst entstehen Ketten-Aliase (Alias → Alias)
+  // und Versions-Sprünge wie qwen-3-6 → qwen-3-8. Direkte Slug-Hits (Phase 1)
+  // bleiben erlaubt, weil der Build sie vorberechnet und flaggt.
 
   // Helfer: Slug normalisieren
   const slug = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
@@ -898,18 +902,27 @@ function fuzzyScoreMatch(rawName, family, scores) {
     candidates.push(slug(parts.join(" ")));
   }
 
-  // Match gegen Scores
-  for (const c of [...new Set(candidates.filter(Boolean))]) {
-    // Direct match
+  // Match gegen Scores — Phasen strikt nacheinander, jede über alle Kandidaten.
+  // Ein generischer Prefix-Treffer (z.B. "muse-spark") darf nie eine exakte
+  // Normalisierung (z.B. "muse-spark-1-3") verdrängen.
+  const uniq = [...new Set(candidates.filter(Boolean))];
+  const solid = keys.filter((k) => !scores[k]?.fallback);
+  // Phase 1: exakte Treffer
+  for (const c of uniq) {
     if (scores[c]) return c;
-    // Compact match
+  }
+  // Phase 2: Compact-Match (ohne Trennzeichen)
+  for (const c of uniq) {
     const cc = compact(c);
     if (cc.length >= 4) {
-      const found = keys.find(k => compact(k) === cc);
+      const found = solid.find(k => compact(k) === cc);
       if (found) return found;
     }
+  }
+  // Phase 3: Prefix-Match (kürzester Key zuerst)
+  for (const c of uniq) {
     // Prefix match: kürzeste passende Key nehmen (z.B. "deepseek-v4-flash-0423" vor "deepseek-v4-flash-vision-exp")
-    const prefix = keys.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
+    const prefix = solid.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
       .sort((a, b) => a.length - b.length)[0];
     if (prefix) return prefix;
   }
@@ -917,7 +930,7 @@ function fuzzyScoreMatch(rawName, family, scores) {
   // 8. Word-Overlap: finde Score-Key mit meisten gemeinsamen Wörtern
   const rawWords = words(noParen);
   let best = null, bestOverlap = 0;
-  for (const k of keys) {
+  for (const k of solid) {
     const overlap = commonWords(k, noParen);
     if (overlap >= 2 && overlap > bestOverlap) {
       bestOverlap = overlap;
@@ -927,18 +940,22 @@ function fuzzyScoreMatch(rawName, family, scores) {
   return best;
 }
 
-// Wende Fuzzy-Match auf alle Feed-Modelle an, damit Scores direkt auffindbar sind
+// Wende Fuzzy-Match auf alle Feed-Modelle an, damit Scores direkt auffindbar sind.
+// Jeder hinzugefügte Alias trägt Provenance (aliasOf + fallback), damit das
+// Frontend ihn mit "~" markiert statt als exakten Leaderboard-Wert auszugeben.
 function applyScoreAliases(scores, plans) {
   const added = new Set();
   const slug = (s) => s.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
-  const slug2 = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
   for (const plan of plans) {
     for (const row of plan.modelRows ?? []) {
       const match = fuzzyScoreMatch(row.model, row.family, scores);
       if (match) {
         const modelSlug = slug(row.model);
         if (!scores[modelSlug]) {
-          scores[modelSlug] = { intelligence: scores[match].intelligence };
+          // Transitive Auflösung: aliasOf zeigt immer auf den originalen
+          // Leaderboard-Key, nie auf einen anderen Alias.
+          const root = scores[match].aliasOf ?? match;
+          scores[modelSlug] = { intelligence: scores[match].intelligence, aliasOf: root, fallback: true };
           added.add(modelSlug);
         }
       }

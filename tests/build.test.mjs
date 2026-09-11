@@ -217,3 +217,73 @@ test("Meta-Konsistenz: rawTokensPerMonth = requestsPerMonth × Tokens/Request", 
     }
   }
 });
+
+// --- Regressionen für Score-Alias-Provenance 2026-09-11 (Muse Spark 1.2/1.3) ---
+// Bug: "Muse Spark 1.3 Contributor" und "1.2 Contributor" hatten beide 41.72,
+// weil der Prefix-Match den generischen muse-spark-Key griff, bevor die
+// contributor-Normalisierung (→ muse-spark-1-3) geprüft wurde. Fix-Philosophie:
+// exakte Normalisierungen schlagen Prefix-Treffer, Aliase tragen Provenance.
+
+test("Muse Spark Contributor löst auf Versions-Basis auf (nicht generisch)", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const scores = d.aiScores.scores;
+  const c13 = scores["muse-spark-1-3-contributor"];
+  const c12 = scores["muse-spark-1-2-contributor"];
+  assert.ok(c13 && c12, "beide Contributor-Aliase vorhanden");
+  assert.equal(c13.aliasOf, "muse-spark-1-3", "1.3 Contributor → muse-spark-1-3");
+  assert.equal(c12.aliasOf, "muse-spark-1-2", "1.2 Contributor → muse-spark-1-2");
+  assert.notEqual(c13.intelligence, c12.intelligence, "verschiedene Versionen, verschiedene Scores");
+  assert.equal(c13.intelligence, scores["muse-spark-1-3"].intelligence, "1.3 = 54.41");
+  assert.equal(c12.intelligence, scores["muse-spark-1-2"].intelligence, "1.2 = 39.54");
+  assert.equal(c13.fallback, true, "Alias als Schätzung geflaggt");
+});
+
+test("Score-Alias-Provenance: jeder Alias zeigt auf einen Leaderboard-Key", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const board = JSON.parse(await readFile(join(ROOT, "parsed/llm-stats-indexes.json"), "utf8"));
+  const boardKeys = new Set(Object.keys(board.scores ?? {}));
+  for (const [key, entry] of Object.entries(d.aiScores.scores)) {
+    if (boardKeys.has(key)) continue; // originaler Leaderboard-Key, kein Alias
+    assert.equal(entry.fallback, true, `${key}: Alias muss fallback=true tragen`);
+    assert.ok(entry.aliasOf, `${key}: Alias muss aliasOf tragen`);
+    assert.ok(boardKeys.has(entry.aliasOf),
+      `${key}: aliasOf=${entry.aliasOf} muss ein originaler Leaderboard-Key sein (kein Ketten-Alias)`);
+  }
+});
+
+test("Normalisierung schlägt Prefix: gestrippter Slug mit Treffer gewinnt", async () => {
+  // Generelle Form des Muse-Bugs: wenn der Alias-Slug ohne Varianten-Suffix
+  // (contributor/preview/fast/latest/exp/highspeed) direkt ein Leaderboard-Key
+  // ist, muss aliasOf genau dieser Key sein — nie ein kürzerer Prefix-Key.
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const board = JSON.parse(await readFile(join(ROOT, "parsed/llm-stats-indexes.json"), "utf8"));
+  const boardKeys = new Set(Object.keys(board.scores ?? {}));
+  for (const [key, entry] of Object.entries(d.aiScores.scores)) {
+    if (boardKeys.has(key)) continue;
+    const stripped = key.replace(/-(contributor|preview|highspeed|fast|latest|exp)$/, "");
+    if (stripped !== key && boardKeys.has(stripped)) {
+      assert.equal(entry.aliasOf, stripped,
+        `${key}: aliasOf muss ${stripped} sein, nicht ${entry.aliasOf}`);
+    }
+  }
+});
+
+test("Versions-Invariante: verschiedene Versionen teilen nie dasselbe Alias-Ziel", async () => {
+  // Zwei Aliase mit unterschiedlichem Versions-Stamm (1-2 vs 1-3) dürfen nicht
+  // auf denselben Leaderboard-Key zeigen — das war das sichtbare Symptom.
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const board = JSON.parse(await readFile(join(ROOT, "parsed/llm-stats-indexes.json"), "utf8"));
+  const boardKeys = new Set(Object.keys(board.scores ?? {}));
+  const stem = (slug) => (slug.match(/(\d+-\d+)/) ?? [])[1] ?? null;
+  const aliases = Object.entries(d.aiScores.scores).filter(([k]) => !boardKeys.has(k));
+  for (let i = 0; i < aliases.length; i++) {
+    for (let j = i + 1; j < aliases.length; j++) {
+      const [ka, ea] = aliases[i], [kb, eb] = aliases[j];
+      const sa = stem(ka), sb = stem(kb);
+      if (sa && sb && sa !== sb) {
+        assert.notEqual(ea.aliasOf, eb.aliasOf,
+          `${ka} (${sa}) und ${kb} (${sb}) teilen aliasOf=${ea.aliasOf}`);
+      }
+    }
+  }
+});

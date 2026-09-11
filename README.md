@@ -59,7 +59,7 @@ cost per request = (0.05 x input + 0.95 x cachedWrite) x pattern.input
 - **Windows are caps, not volumes:** 5h caps are throughput limits (never multiplied into monthly numbers); weekly credits scale x4.33 to monthly.
 - **Data tiers:** A = official quota from feed/docs, B = official total as anchor, C = derived, D = price-based estimate (hidden by default in the UI, toggle to show). Tier-D rows carry a `~` estimate marker.
 - **undisclosed stays undisclosed.** No invented numbers; undisclosed plans get `modelStats: null`.
-- **AI scores** come from the LLM Stats leaderboard (zeroeval.com) only, matched to feed models with fuzzy matching. Family fallbacks are marked with `~`.
+- **AI scores** come from the LLM Stats leaderboard (zeroeval.com) only, matched to feed models with fuzzy matching. Name variants (e.g. Contributor editions) resolve to their version's leaderboard entry, never to a generic base model. Every resolved alias carries `aliasOf` provenance and shows with `~`; family means are computed from original leaderboard keys only, never from aliases.
 
 ## CI / updates
 
