@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T08:30:45.113Z",
+  "generatedAt": "2026-09-12T07:57:13.495Z",
   "targetMonthlyPrice": 10,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-11T08:30:45.035Z",
+    "fetchedAt": "2026-09-12T07:57:13.396Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14958,10 +14958,10 @@
       "qwen3-vl-235b-a22b-thinking": {
         "intelligence": 26.68
       },
-      "gpt-5-4-nano": {
+      "gpt-5-codex-2025-09-15": {
         "intelligence": 26.63
       },
-      "gpt-5-codex-2025-09-15": {
+      "gpt-5-4-nano": {
         "intelligence": 26.63
       },
       "k-exaone-236b-a23b": {
@@ -15021,10 +15021,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.93
       },
-      "granite-4-2-30b": {
+      "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.83
       },
-      "grok-4-20-beta-0309-reasoning": {
+      "granite-4-2-30b": {
         "intelligence": 23.83
       },
       "qwen3-next-80b-a3b-thinking": {
@@ -15327,10 +15327,10 @@
       "mistral-large-latest": {
         "intelligence": 9.03
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
@@ -15739,7 +15739,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-11",
+      "verifiedAt": "2026-09-12",
       "crawled": true
     },
     {
@@ -15794,12 +15794,12 @@
   ],
   "fx": {
     "base": "USD",
-    "updatedAt": "Fri, 11 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Sat, 12 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.860738,
-      "CNY": 6.728034,
-      "GBP": 0.739741,
-      "JPY": 154.250058
+      "EUR": 0.862019,
+      "CNY": 6.725314,
+      "GBP": 0.739517,
+      "JPY": 153.7596
     }
   },
   "statistics": {
