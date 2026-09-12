@@ -33,12 +33,13 @@
   --warn-soft: #fef3c7;
   --danger: #dc2626;
   --danger-soft: #fee2e2;
-  --radius: 14px;
-  --radius-sm: 8px;
-  --shadow-sm: 0 1px 2px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.08);
-  --shadow-md: 0 4px 12px rgba(15,23,42,.08), 0 2px 4px rgba(15,23,42,.05);
-  --shadow-lg: 0 16px 40px rgba(15,23,42,.12);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
+  --shadow-md: 0 3px 10px rgba(15,23,42,.07), 0 1px 3px rgba(15,23,42,.05);
+  --shadow-lg: 0 12px 32px rgba(15,23,42,.10);
   --font: "Inter", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: Georgia, "Times New Roman", "Nimbus Roman", serif;
   --mono: "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Code", Menlo, monospace;
   --maxw: 1180px;
 }
@@ -77,15 +78,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body {
   margin: 0;
   font-family: var(--font);
-  background:
-    radial-gradient(1000px 500px at 85% -10%, color-mix(in oklab, var(--primary) 10%, transparent), transparent),
-    radial-gradient(800px 400px at -10% 20%, color-mix(in oklab, var(--info) 7%, transparent), transparent),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  transition: background .3s ease, color .3s ease;
 }
 a { color: var(--primary); text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -137,30 +134,27 @@ a:hover { text-decoration: underline; }
 .icon-btn:hover { background: var(--bg-muted); color: var(--text); }
 
 /* ============ HERO ============ */
-.hero { max-width: var(--maxw); margin: 0 auto; padding: 72px 24px 40px; text-align: center; }
+.hero { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px 32px; text-align: left; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--primary-soft); color: var(--primary);
-  padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 24px;
+  background: var(--bg-elev); color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 20px;
 }
-.hero h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.1; margin: 0 0 20px; letter-spacing: -0.03em; font-weight: 800; }
-.hero h1 .grad {
-  background: linear-gradient(100deg, var(--primary), color-mix(in oklab, var(--info) 70%, var(--primary)));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.hero p.lead { font-size: clamp(17px, 2.4vw, 21px); color: var(--text-muted); max-width: 720px; margin: 0 auto 32px; }
-.hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.hero-cta .btn { padding: 12px 22px; font-size: 15px; }
-.hero-meta { margin-top: 28px; font-size: 13px; color: var(--text-faint); display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+.hero h1 { font-family: var(--font-display); font-size: clamp(30px, 4.4vw, 46px); line-height: 1.12; margin: 0 0 16px; letter-spacing: 0; font-weight: 700; }
+.hero h1 .grad { background: none; color: var(--primary); -webkit-background-clip: border-box; background-clip: border-box; }
+.hero p.lead { font-size: clamp(16px, 2vw, 19px); color: var(--text-muted); max-width: 700px; margin: 0 0 28px; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-cta .btn { padding: 11px 20px; font-size: 15px; }
+.hero-meta { margin-top: 24px; font-size: 13px; color: var(--text-faint); display: flex; gap: 18px; flex-wrap: wrap; }
 .hero-meta .dot { display: inline-flex; align-items: center; gap: 5px; }
-.hero-meta .live { width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+.hero-meta .live { width: 8px; height: 8px; border-radius: 50%; background: var(--success); display: inline-block; }
 
 /* ============ SECTIONS ============ */
-section { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
-.section-head { margin-bottom: 28px; }
-.section-head h2 { font-size: clamp(24px, 3.6vw, 34px); margin: 0 0 8px; letter-spacing: -0.02em; font-weight: 800; }
-.section-head p { color: var(--text-muted); margin: 0; font-size: 16px; max-width: 720px; }
+section { max-width: var(--maxw); margin: 0 auto; padding: 44px 24px; }
+.section-head { margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+.section-head h2 { font-family: var(--font-display); font-size: clamp(24px, 3.2vw, 32px); margin: 0 0 8px; letter-spacing: 0; font-weight: 700; }
+.section-head p { color: var(--text-muted); margin: 0; font-size: 15.5px; max-width: 720px; }
 
 /* ============ STATS ============ */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
@@ -168,8 +162,8 @@ section { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 20px; box-shadow: var(--shadow-sm); text-align: left;
 }
-.stat-card .label { font-size: 13px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
-.stat-card .value { font-size: 30px; font-weight: 800; margin-top: 6px; letter-spacing: -0.02em; }
+.stat-card .label { font-size: 12.5px; color: var(--text-muted); font-weight: 600; }
+.stat-card .value { font-size: 26px; font-weight: 700; margin-top: 6px; letter-spacing: 0; }
 .stat-card .sub { font-size: 13px; color: var(--text-faint); margin-top: 2px; }
 
 /* ============ CARDS / GRIDS ============ */
@@ -178,7 +172,7 @@ section { max-width: var(--maxw); margin: 0 auto; padding: 56px 24px; }
   background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 22px; box-shadow: var(--shadow-sm); transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
-.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); }
 .card .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
 .card h3 { margin: 0; font-size: 17px; font-weight: 700; }
 .card .vendor { font-size: 13px; color: var(--text-muted); }
@@ -205,7 +199,7 @@ table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 720p
   table { min-width: 0; } /* Tabelle darf auf Mobile schrumpfen (Karten-Layout) */
 }
 thead th {
-  text-align: left; padding: 13px 16px; font-size: 12px; text-transform: uppercase; letter-spacing: .05em;
+  text-align: left; padding: 12px 16px; font-size: 12.5px; font-weight: 700;
   color: var(--text-muted); border-bottom: 1px solid var(--border); background: var(--bg-muted); position: sticky; top: 0;
 }
 tbody td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
@@ -480,6 +474,39 @@ th[data-sort].sorted { color: var(--primary); }
 .score-fill { height: 100%; background: var(--info); border-radius: 2px; }
 .privacy-badges { display: flex; gap: 4px; margin-top: 4px; flex-wrap: wrap; }
 
+/* ============ BUDGET-RECHNER ============ */
+.calc-controls {
+  display: flex; gap: 14px; flex-wrap: wrap; align-items: end;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; margin-bottom: 14px;
+}
+.calc-ctl { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--text-muted); }
+.calc-input {
+  width: 110px; padding: 9px 12px; border: 1px solid var(--border-strong); border-radius: 8px;
+  background: var(--bg-elev); color: var(--text); font-size: 15px; font-family: var(--font);
+}
+.calc-input:focus { border-color: var(--primary); outline: none; }
+.calc-range { width: 150px; accent-color: var(--primary); }
+.calc-out { font-weight: 700; min-width: 70px; font-size: 14px; color: var(--text); }
+.calc-results { display: flex; flex-direction: column; gap: 8px; }
+.calc-row {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 12px 16px;
+}
+.calc-row.calc-best { border-color: var(--success); border-left-width: 4px; }
+.calc-main { display: flex; flex-direction: column; min-width: 200px; flex: 1; }
+.calc-plan { font-weight: 700; font-size: 15px; }
+.calc-model { font-size: 13px; color: var(--text-muted); }
+.calc-nums { display: flex; flex-direction: column; align-items: flex-end; min-width: 110px; }
+.calc-nums .strong { font-weight: 700; font-size: 16px; }
+.calc-nums .muted { color: var(--text-faint); font-size: 12px; }
+@media (max-width: 760px) {
+  .calc-controls { flex-direction: column; align-items: stretch; }
+  .calc-ctl { justify-content: space-between; }
+  .calc-nums { align-items: flex-start; min-width: 0; }
+}
+
 /* ============ DASHBOARD / PARETO-PLOT ============ */
 .dashboard {
   margin-top: 40px; padding: 24px; border: 1px solid var(--border); border-radius: var(--radius);
@@ -516,8 +543,8 @@ th[data-sort].sorted { color: var(--primary); }
 /* Dashboard-Layout: Plot links, Detail-Panel rechts */
 .dash-body { display: grid; grid-template-columns: 1fr 280px; gap: 14px; }
 .dash-plot {
-  position: relative; width: 100%; height: 420px; border: 1px solid var(--border);
-  border-radius: var(--radius-sm); background: var(--bg-muted); overflow: hidden;
+  position: relative; width: 100%; height: 440px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--bg-elev); overflow: hidden;
   touch-action: manipulation; /* kein 300ms Tap-Delay auf Mobile */
 }
 #dash-svg { width: 100%; height: 100%; display: block; }
@@ -550,10 +577,13 @@ th[data-sort].sorted { color: var(--primary); }
 .dash-detail-content .dd-row .v { font-weight: 700; }
 .dash-detail-content .dd-badge { margin-top: 10px; }
 @media (max-width: 760px) {
-  .dash-plot { height: 320px; }
+  .dash-plot { height: 360px; }
   .dash-legend { margin-left: 0; }
   .dash-body { grid-template-columns: 1fr; }
   .dash-detail { min-height: 0; }
+  .dash-controls { gap: 10px; }
+  .dash-ctl { font-size: 14px; }
+  .dash-ctl select { padding: 10px 12px; font-size: 14px; min-height: 44px; }
 }
 
 /* ============ SPALTEN-PICKER ============ */
@@ -661,6 +691,7 @@ th[data-sort].sorted { color: var(--primary); }
     </a>
     <div class="nav-links">
       <a href="#pareto" data-i18n="nav.pareto">Pareto</a>
+      <a href="#calc" data-i18n="nav.calc">Calculator</a>
       <a href="#plans" data-i18n="nav.plans">Plans</a>
       <a href="#models" data-i18n="nav.models">Models</a>
       <a href="#method" data-i18n="nav.method">Methodology</a>
@@ -668,7 +699,7 @@ th[data-sort].sorted { color: var(--primary); }
     </div>
     <div class="nav-spacer"></div>
     <select id="currency-select" class="currency-select" aria-label="Currency">
-      <option value="USD" data-i18n="cur.usd">USD $</option>
+      <option value="USD">USD $</option>
       <option value="EUR">EUR €</option>
       <option value="CNY">CNY ¥</option>
       <option value="GBP">GBP £</option>
@@ -729,19 +760,21 @@ th[data-sort].sorted { color: var(--primary); }
       <label class="dash-ctl">
         <span data-i18n="dash.x">X axis</span>
         <select id="dash-x">
-          <option value="tokens" data-i18n="dash.m.tokens">Tokens / $10</option>
-          <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
+          <option value="price" data-i18n="dash.m.price" selected>Plan price / mo</option>
+          <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
+          <option value="req10" data-i18n="dash.m.req10">Requests / $</option>
           <option value="rawtokens" data-i18n="dash.m.rawtokens">Tokens / mo</option>
           <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
-          <option value="price" data-i18n="dash.m.price">Plan price / mo</option>
         </select>
       </label>
       <label class="dash-ctl">
         <span data-i18n="dash.y">Y axis</span>
         <select id="dash-y">
+          <option value="rawtokens" data-i18n="dash.m.rawtokens" selected>Tokens / mo</option>
+          <option value="rawreq" data-i18n="dash.m.rawreq">Requests / mo</option>
           <option value="score" data-i18n="dash.m.score">AI score</option>
-          <option value="tokens" data-i18n="dash.m.tokens">Tokens / $10</option>
-          <option value="req10" data-i18n="dash.m.req10">Requests / $10</option>
+          <option value="tokens" data-i18n="dash.m.tokens">Tokens / $</option>
+          <option value="req10" data-i18n="dash.m.req10">Requests / $</option>
         </select>
       </label>
       <label class="dash-ctl dash-check">
@@ -785,16 +818,16 @@ th[data-sort].sorted { color: var(--primary); }
 <section id="plans">
     <div class="section-head">
       <h2 data-i18n="plans.h2">Plans and models, compared</h2>
-      <p data-i18n="plans.sub">Every plan and model combination. Filter by budget and minimum AI score to find the most tokens per $10.</p>
+      <p data-i18n="plans.sub">Every plan and model combination. Token and request rates are per 1 paid unit in your currency — a rate, not something you can stack.</p>
     </div>
     <!-- Sortier-Leiste: IMMER sichtbar (Mobile + Desktop) -->
     <div class="sort-bar" id="sort-bar">
       <label class="sort-select" id="sort-select">
         <span data-i18n="sort.label">Sort by</span>
         <select id="sort-select-key">
-          <option value="tokens" data-i18n="sort.tokens">Tokens / $10</option>
+          <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
           <option value="score" data-i18n="sort.score">AI score</option>
-          <option value="req10" data-i18n="sort.req10">Requests / $10</option>
+          <option value="req10" data-i18n="sort.req10">Requests / $</option>
           <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
           <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
           <option value="price" data-i18n="sort.price">Plan price</option>
@@ -850,8 +883,8 @@ th[data-sort].sorted { color: var(--primary); }
           <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
           <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
           <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
-          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $10</span></label>
-          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $10</span></label>
+          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
+          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
           <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
           <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
           <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
@@ -873,9 +906,9 @@ th[data-sort].sorted { color: var(--primary); }
         <div class="sheet-section-title" data-i18n="sheet.sort">Sort by</div>
         <div class="sheet-row">
           <select id="sheet-sort-key" class="sheet-select">
-            <option value="tokens" data-i18n="sort.tokens">Tokens / $10</option>
+            <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
             <option value="score" data-i18n="sort.score">AI score</option>
-            <option value="req10" data-i18n="sort.req10">Requests / $10</option>
+            <option value="req10" data-i18n="sort.req10">Requests / $</option>
             <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
             <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
             <option value="price" data-i18n="sort.price">Plan price</option>
@@ -925,8 +958,8 @@ th[data-sort].sorted { color: var(--primary); }
           <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
           <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
           <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
-          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $10</span></label>
-          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $10</span></label>
+          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
+          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
           <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
           <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
           <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
@@ -944,8 +977,8 @@ th[data-sort].sorted { color: var(--primary); }
             <th data-sort="plan" data-i18n="plans.th.plan">Plan</th>
             <th data-sort="model" data-i18n="plans.th.model">Model</th>
             <th data-sort="score" data-i18n="plans.th.score">AI score</th>
-            <th data-sort="tokens" data-i18n="plans.th.tokens">Tokens / $10</th>
-            <th data-sort="req10" data-i18n="plans.th.req10">Requests / $10</th>
+            <th data-sort="tokens" data-i18n="plans.th.tokens">Tokens / $</th>
+            <th data-sort="req10" data-i18n="plans.th.req10">Requests / $</th>
             <th data-sort="rawtokens" data-i18n="plans.th.rawtokens">Tokens / mo</th>
             <th data-sort="rawreq" data-i18n="plans.th.rawreq">Requests / mo</th>
             <th data-sort="price" data-i18n="plans.th.price">Plan price / mo</th>
@@ -958,6 +991,29 @@ th[data-sort].sorted { color: var(--primary); }
     <p class="table-note" id="table-note"></p>
 
     
+  </section>
+
+  <!-- ===== BUDGET-RECHNER (ein Abo pro Konto, kein Stacking) ===== -->
+  <section id="calc">
+    <div class="section-head">
+      <h2 data-i18n="calc.h2">Budget calculator</h2>
+      <p data-i18n="calc.sub">One subscription per account, no stacking. Enter what you pay per month and see the most tokens each single plan buys you.</p>
+    </div>
+    <div class="calc-controls">
+      <label class="calc-ctl">
+        <span data-i18n="calc.budget">Budget / mo</span>
+        <input type="number" id="calc-budget" class="calc-input" min="0" step="1" value="20">
+        <output id="calc-budget-out" class="calc-out num"></output>
+      </label>
+      <label class="calc-ctl">
+        <span data-i18n="calc.score">Min AI score</span>
+        <input type="range" id="calc-score" class="calc-range" min="0" max="70" step="1" value="0">
+        <output id="calc-score-out" class="calc-out num"></output>
+      </label>
+    </div>
+    <div id="calc-results" class="calc-results"></div>
+    <p class="table-note" id="calc-empty" hidden></p>
+    <p class="table-note" data-i18n="calc.note">Ranked by monthly tokens.</p>
   </section>
 
   <!-- ===== METHOD ===== -->
@@ -1031,6 +1087,10 @@ th[data-sort].sorted { color: var(--primary); }
     <details>
       <summary data-i18n="faq.q6"></summary>
       <div class="faq-body" data-i18n="faq.a6"></div>
+    </details>
+    <details>
+      <summary data-i18n="faq.q7"></summary>
+      <div class="faq-body" data-i18n="faq.a7"></div>
     </details>
   </section>
 
@@ -1118,6 +1178,6 @@ th[data-sort].sorted { color: var(--primary); }
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=a4780d5"></script>
+<script src="app.js?v=per1"></script>
 </body>
 </html>

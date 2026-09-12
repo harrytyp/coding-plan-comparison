@@ -18,6 +18,7 @@ const I18N = {
   en: {
     "nav.brand": "Coding Plan Compare",
     "nav.pareto": "Pareto",
+    "nav.calc": "Calculator",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -38,7 +39,7 @@ const I18N = {
     "stats.sources": "Live sources",
     "stats.sources-sub": "official feeds & docs",
     "plans.h2": "The plans",
-    "plans.sub": "Every subscription we track, with its real meter: credits, requests, dollar-usage or prompts. Prices are the paid checkout price, not the advertised one.",
+    "plans.sub": "Every plan and model combination. Token and request rates are per 1 paid unit in your currency — a rate, not something you can stack.",
     "plans.per": "/mo",
     "plans.noPrice": "price not public",
     "plans.meter": "Meter",
@@ -62,10 +63,10 @@ const I18N = {
     "plans.th.models": "Models",
     "plans.th.avgreq": "Avg req / mo",
     "plans.th.status": "Status",
-    "plans.th.tokens": "Tokens / $10",
+    "plans.th.tokens": "Tokens / $",
     "plans.th.model": "Model",
     "plans.th.score": "AI score",
-    "plans.th.req10": "Requests / $10",
+    "plans.th.req10": "Requests / $",
     "plans.th.rawtokens": "Tokens / mo",
     "plans.th.rawreq": "Requests / mo",
     "plans.th.privacy": "Privacy",
@@ -84,9 +85,9 @@ const I18N = {
     "sheet.filter": "Filter",
     "sheet.done": "Done",
     "sort.label": "Sort by",
-    "sort.tokens": "Tokens / $10",
+    "sort.tokens": "Tokens / $",
     "sort.score": "AI score",
-    "sort.req10": "Requests / $10",
+    "sort.req10": "Requests / $",
     "sort.rawtokens": "Tokens / mo",
     "sort.rawreq": "Requests / mo",
     "sort.price": "Plan price",
@@ -95,7 +96,7 @@ const I18N = {
     "sort.desc": "desc",
     "sort.asc": "asc",
     "dash.h3": "Pareto dashboard",
-    "dash.sub": "Each dot is a plan+model combo. The Pareto line connects the best trade-offs; the green quarter is the target zone. Uses the filters above.",
+    "dash.sub": "Each dot is one plan with one model at its real monthly price. Default view: price against monthly tokens, both on a log scale. The line marks the best trade-offs.",
     "dash.x": "X axis",
     "dash.y": "Y axis",
     "dash.pareto": "Pareto line",
@@ -108,8 +109,8 @@ const I18N = {
     "dash.targetX": "min X",
     "dash.targetY": "min Y",
     "dash.clickHint": "Click a dot to see the plan and model",
-    "dash.m.tokens": "Tokens / $10",
-    "dash.m.req10": "Requests / $10",
+    "dash.m.tokens": "Tokens / $",
+    "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / mo",
     "dash.m.rawreq": "Requests / mo",
     "dash.m.score": "AI score",
@@ -118,11 +119,11 @@ const I18N = {
     "plans.badge.zeroRetention": "zero retention",
     "plans.badge.retention": "retention {d}d",
     "models.searchPh": "Filter models...",
-    "models.h2": "Model for model, per $10",
-    "models.sub": "Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, scaled to exactly $10 paid.",
+    "models.h2": "Model for model, per $1",
+    "models.sub": "Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, shown per $1 paid. One subscription per account — rates are not stackable.",
     "models.th.model": "Model family",
     "models.th.planA": "Plan A",
-    "models.th.req": "Requests / $10",
+    "models.th.req": "Requests / $",
     "models.th.planB": "Plan B",
     "models.th.winner": "Winner",
     "models.th.edge": "Edge",
@@ -156,6 +157,20 @@ const I18N = {
     "faq.a5": "A GitHub Action fetches all sources daily at 03:17 UTC. If parsed content changed, it commits the new latest.json. If a non-scrapable price page (GLM, MiniMax) changed, it opens a review issue for manual verification.",
     "faq.q6": "Where do the AI scores come from?",
     "faq.a6": "Model benchmark scores are sourced from llm-stats.com — a community-driven model catalog. We cache the data locally and only re-fetch when the cache expires (24h TTL). No API call is made if the cached data is still fresh.",
+    "faq.q7": "Can I just buy Command Code Go ten times?",
+    "faq.a7": "No. Plans are single per-account subscriptions: you pick one plan, and switching plans resets the rolling windows (per Command Code's own docs). Extra usage comes from top-up credits at model cost. That is why this site shows rates per $1 paid — Go shows what $1 buys — and why the budget calculator below compares single plans within your budget.",
+    "calc.h2": "Budget calculator",
+    "calc.sub": "One subscription per account, no stacking. Enter what you pay per month and see the most tokens each single plan buys you.",
+    "calc.budget": "Budget / mo",
+    "calc.score": "Min AI score",
+    "calc.plan": "Plan",
+    "calc.model": "Best model in budget",
+    "calc.tokensMo": "Tokens / mo",
+    "calc.reqMo": "Requests / mo",
+    "calc.price": "Price / mo",
+    "calc.leftover": "left",
+    "calc.empty": "No single plan fits this budget.",
+    "calc.note": "Ranked by monthly tokens. Rates follow your selected currency. Price-based estimates (Kimi) stay excluded unless enabled in the filters.",
     "foot.product": "Product",
     "foot.plans": "Plans",
     "foot.models": "Model comparison",
@@ -190,6 +205,7 @@ const I18N = {
   },
   de: {
     "nav.brand": "Coding Plan Compare",
+    "nav.calc": "Rechner",
     "nav.plans": "Pläne",
     "nav.models": "Modelle",
     "nav.method": "Methodik",
@@ -210,7 +226,7 @@ const I18N = {
     "stats.sources": "Live-Quellen",
     "stats.sources-sub": "offizielle Feeds & Docs",
     "plans.h2": "Die Pläne",
-    "plans.sub": "Jedes Abo mit seinem echten Meter: Credits, Requests, Dollar-Usage oder Prompts. Preise sind der bezahlte Checkout-Preis, nicht der beworbene.",
+    "plans.sub": "Jede Plan-Modell-Kombination. Token- und Request-Raten gelten pro 1 bezahlter Einheit in deiner Währung. eine Rate, nichts Stapelbares.",
     "plans.per": "/Monat",
     "plans.noPrice": "Preis nicht öffentlich",
     "plans.meter": "Meter",
@@ -234,10 +250,10 @@ const I18N = {
     "plans.th.models": "Modelle",
     "plans.th.avgreq": "Ø Requests / Monat",
     "plans.th.status": "Status",
-    "plans.th.tokens": "Tokens / $10",
+    "plans.th.tokens": "Tokens / $",
     "plans.th.model": "Modell",
     "plans.th.score": "AI-Score",
-    "plans.th.req10": "Requests / $10",
+    "plans.th.req10": "Requests / $",
     "plans.th.rawtokens": "Tokens / Monat",
     "plans.th.rawreq": "Requests / Monat",
     "plans.th.privacy": "Datenschutz",
@@ -256,9 +272,9 @@ const I18N = {
     "sheet.filter": "Filtern",
     "sheet.done": "Fertig",
     "sort.label": "Sortieren nach",
-    "sort.tokens": "Tokens / $10",
+    "sort.tokens": "Tokens / $",
     "sort.score": "AI-Score",
-    "sort.req10": "Requests / $10",
+    "sort.req10": "Requests / $",
     "sort.rawtokens": "Tokens / Monat",
     "sort.rawreq": "Requests / Monat",
     "sort.price": "Planpreis",
@@ -267,7 +283,7 @@ const I18N = {
     "sort.desc": "absteigend",
     "sort.asc": "aufsteigend",
     "dash.h3": "Pareto-Dashboard",
-    "dash.sub": "Jeder Punkt ist eine Plan+Modell-Kombination. Die Pareto-Linie verbindet die besten Kompromisse; das grüne Viertel ist die Zielzone. Nutzt die Filter oben.",
+    "dash.sub": "Jeder Punkt ist ein Plan mit einem Modell zum echten Monatspreis. Standard: Preis gegen Tokens pro Monat, beide logarithmisch. Die Linie markiert die besten Kompromisse.",
     "dash.x": "X-Achse",
     "dash.y": "Y-Achse",
     "dash.pareto": "Pareto-Linie",
@@ -280,8 +296,8 @@ const I18N = {
     "dash.targetX": "min X",
     "dash.targetY": "min Y",
     "dash.clickHint": "Klicke einen Punkt, um Plan und Modell zu sehen",
-    "dash.m.tokens": "Tokens / $10",
-    "dash.m.req10": "Requests / $10",
+    "dash.m.tokens": "Tokens / $",
+    "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / Monat",
     "dash.m.rawreq": "Requests / Monat",
     "dash.m.score": "AI-Score",
@@ -291,11 +307,11 @@ const I18N = {
     "plans.badge.retention": "Speicherung {d} T",
     "view.models": "Modell-Vergleich",
     "models.searchPh": "Modelle filtern...",
-    "models.h2": "Modell für Modell, pro 10 $",
-    "models.sub": "Mittelwerte verschleiern die Wahrheit: Billige Modelle blähen den Schnitt auf. Wir vergleichen dieselbe Modell-Familie über Pläne, skaliert auf exakt 10 $ bezahlt.",
+    "models.h2": "Modell für Modell, pro 1 $",
+    "models.sub": "Mittelwerte verschleiern die Wahrheit: Billige Modelle blähen den Schnitt auf. Wir vergleichen dieselbe Modell-Familie über Pläne, pro 1 $ bezahlt gezeigt. Ein Abo pro Konto. Raten sind nicht stapelbar.",
     "models.th.model": "Modell-Familie",
     "models.th.planA": "Plan A",
-    "models.th.req": "Requests / 10 $",
+    "models.th.req": "Requests / $",
     "models.th.planB": "Plan B",
     "models.th.winner": "Gewinner",
     "models.th.edge": "Vorsprung",
@@ -329,6 +345,20 @@ const I18N = {
     "faq.a5": "Eine GitHub Action holt täglich um 03:17 UTC alle Quellen. Wenn sich geparster Inhalt geändert hat, committed sie das neue latest.json. Wenn sich eine nicht-scrapebare Preisseite (GLM, MiniMax) geändert hat, öffnet sie ein Review-Issue zur manuellen Prüfung.",
     "faq.q6": "Woher kommen die AI-Scores?",
     "faq.a6": "Die Modell-Benchmark-Scores (Intelligenz, Coding, Reasoning, Agents) kommen von llm-stats.com — einem Community-Modell-Katalog. Wir cachen die Daten lokal und fetchen nur neu, wenn der Cache abläuft (24h TTL). Kein API-Call bei frischem Cache.",
+    "faq.q7": "Kann ich Command Code Go einfach zehnmal kaufen?",
+    "faq.a7": "Nein. Pläne sind einzelne Abos pro Konto: du wählst einen Plan, und ein Planwechsel setzt die rollierenden Fenster zurück (so steht es in Command Codes eigenen Docs). Mehr Nutzung kommt über Top-up-Credits zum Modellpreis. Darum zeigt diese Seite Raten pro 1 $ bezahlt — Go zeigt, was 1 $ kauft — und darum vergleicht der Budget-Rechner unten Einzelpläne innerhalb deines Budgets.",
+    "calc.h2": "Budget-Rechner",
+    "calc.sub": "Ein Abo pro Konto, kein Stapeln. Gib an, was du im Monat zahlst, und sieh, welche Tokens jeder einzelne Plan dafür kauft.",
+    "calc.budget": "Budget / Monat",
+    "calc.score": "Min. AI-Score",
+    "calc.plan": "Plan",
+    "calc.model": "Bestes Modell im Budget",
+    "calc.tokensMo": "Tokens / Monat",
+    "calc.reqMo": "Requests / Monat",
+    "calc.price": "Preis / Monat",
+    "calc.leftover": "übrig",
+    "calc.empty": "Kein einzelner Plan passt in dieses Budget.",
+    "calc.note": "Sortiert nach Tokens pro Monat. Raten folgen deiner gewählten Währung. Preisbasierte Schätzungen (Kimi) bleiben ausgeschlossen, solange sie in den Filtern nicht eingeblendet sind.",
     "foot.product": "Produkt",
     "foot.plans": "Pläne",
     "foot.models": "Modellvergleich",
@@ -388,6 +418,18 @@ function fmtPrice(usd) {
   const loc = lang === "de" ? "de-DE" : (currency === "EUR" ? "de-DE" : "en-US");
   const opts = { style: "currency", currency, maximumFractionDigits: currency === "JPY" ? 0 : 2 };
   try { return value.toLocaleString(loc, opts); } catch { return `${currency} ${value.toFixed(2)}`; }
+}
+// Währungssymbol für Raten-Labels ("Tokens / €"): eindeutig auch bei ¥ (CNY/JPY)
+function curSym() {
+  return { USD: "$", EUR: "€", GBP: "£", CNY: "CN¥", JPY: "JP¥" }[currency] ?? currency + " ";
+}
+function rateTokensLabel() { return `Tokens / ${curSym()}`; }
+function rateReqLabel() { return `Requests / ${curSym()}`; }
+// Raten folgen der gewählten Währung: Tokens pro 1 Einheit (1 €, 1 ¥ …).
+// USD-Rate durch den Kurs teilen: 1 Zieleinheit = 1/rate USD.
+function rateOf(usdRate) {
+  if (usdRate === null || usdRate === undefined || !isFinite(usdRate)) return null;
+  return usdRate / (exchangeRates[currency] ?? 1);
 }
 
 /* ---------------- Basis-URL (robust, egal welche URL) ----------------
@@ -485,12 +527,25 @@ function applyTheme() {
 /* ---------------- Rendering ---------------- */
 function renderAll() {
   if (!data) return;
+  syncRateLabels();
   renderStats();
   renderPlans();
   renderDashboard();
+  renderCalculator();
   renderFormula();
   bindSortHeader("plans-table", plansSort, renderPlans);
   syncFilterUI();
+}
+
+// Statische Select-Optionen mit Raten-Labels folgen der Währung
+// (applyI18n setzt sie erst auf $ zurück — danach wieder währungsgenau).
+function syncRateLabels() {
+  const map = { "sort.tokens": rateTokensLabel(), "sort.req10": rateReqLabel(), "dash.m.tokens": rateTokensLabel(), "dash.m.req10": rateReqLabel(), "plans.th.tokens": rateTokensLabel(), "plans.th.req10": rateReqLabel() };
+  for (const [key, label] of Object.entries(map)) {
+    document.querySelectorAll(`option[data-i18n="${key}"]`).forEach((el) => { el.textContent = label; });
+  }
+  document.querySelectorAll(`#col-picker-panel label span[data-i18n="plans.th.tokens"], #sheet-cols span[data-i18n="plans.th.tokens"]`).forEach((el) => { el.textContent = rateTokensLabel(); });
+  document.querySelectorAll(`#col-picker-panel label span[data-i18n="plans.th.req10"], #sheet-cols span[data-i18n="plans.th.req10"]`).forEach((el) => { el.textContent = rateReqLabel(); });
 }
 
 function syncFilterUI() {
@@ -511,10 +566,11 @@ function syncFilterUI() {
 
 /* ---------------- Filter-Toggle + aktive-Filter-Chips ---------------- */
 let filtersOpen = false;
-// Gemeinsames Re-Rendering: Tabelle + Dashboard + Filter-Chips
+// Gemeinsames Re-Rendering: Tabelle + Dashboard + Rechner + Filter-Chips
 function rerender() {
   renderPlans();
   renderDashboard();
+  renderCalculator();
   syncFilterChips();
 }
 function toggleFilters(force) {
@@ -758,7 +814,10 @@ function buildCombos() {
     for (const row of plan.modelRows ?? []) {
       const score = aiScoreFor(row.model, row.family);
       const tokensPerReq = tokensPerRequest(row);
-      const tokensPer10 = tokensPerReq && row.normalizedPer10 ? tokensPerReq * row.normalizedPer10 : null;
+      // Pro-$ Rate (USD-Basis); alte Artefakte mit normalizedPer10 bleiben lesbar (/10).
+      const norm1 = row.normalizedPer1 ?? (row.normalizedPer10 != null ? row.normalizedPer10 / 10 : null);
+      const tokensPerUsd = tokensPerReq && norm1 ? tokensPerReq * norm1 : null;
+      const reqPerUsd = norm1;
       const priv = comboPrivacy(plan, row);
       combos.push({
         planId: plan.id,
@@ -773,8 +832,11 @@ function buildCombos() {
         family: row.family,
         score: score?.intelligence ?? null,
         scoreFallback: score?.familyFallback === true,
-        tokensPer10,
-        req10: row.normalizedPer10 ?? null,
+        // Raten in der gewählten Währung (pro 1 Einheit); USD-Rohwerte für den Rechner
+        tokensPer: rateOf(tokensPerUsd),
+        reqPer: rateOf(reqPerUsd),
+        tokensPerUsd,
+        reqPerUsd,
         // Rohdaten: Tokens/Monat und Requests/Monat (un-normalisiert)
         rawTokensPerMonth: row.rawTokensPerMonth ?? null,
         rawRequestsPerMonth: row.requestsPerMonth ?? null,
@@ -805,8 +867,8 @@ function sortBy(key, dir) {
     if (key === "plan") { va = (a.planName || "").toLowerCase(); vb = (b.planName || "").toLowerCase(); }
     else if (key === "model") { va = (a.model || "").toLowerCase(); vb = (b.model || "").toLowerCase(); }
     else if (key === "score") { va = a.score ?? null; vb = b.score ?? null; }
-    else if (key === "tokens") { va = a.tokensPer10 ?? null; vb = b.tokensPer10 ?? null; }
-    else if (key === "req10") { va = a.req10 ?? null; vb = b.req10 ?? null; }
+    else if (key === "tokens") { va = a.tokensPer ?? null; vb = b.tokensPer ?? null; }
+    else if (key === "req10") { va = a.reqPer ?? null; vb = b.reqPer ?? null; }
     else if (key === "rawtokens") { va = a.rawTokensPerMonth ?? null; vb = b.rawTokensPerMonth ?? null; }
     else if (key === "rawreq") { va = a.rawRequestsPerMonth ?? null; vb = b.rawRequestsPerMonth ?? null; }
     else if (key === "price") { va = a.price ?? null; vb = b.price ?? null; }
@@ -891,6 +953,13 @@ function renderPlans() {
     return `<tr>${cells}</tr>`;
   }).join("");
   syncColumnHeaders();
+  // Ehrlichkeits-Fußnote: Raten gelten pro 1 Einheit der gewählten Währung
+  const note = $("#table-note");
+  if (note) {
+    note.textContent = lang === "de"
+      ? `Raten pro 1 ${currency} (${curSym().trim() || currency}) bezahlt — ein Abo pro Konto, kein Stapeln. Rohwerte: Tokens/Requests pro Monat.`
+      : `Rates per 1 ${currency} paid — one subscription per account, no stacking. Raw values: tokens/requests per month.`;
+  }
 }
 
 // Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
@@ -907,10 +976,10 @@ function renderCell(col, c) {
     case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
-    case "tokens": return `<td data-label="${t("plans.th.tokens")}"><span class="num">${fmtTokens(c.tokensPer10)}</span></td>`;
+    case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
     case "req10": {
       const mark = c.estimateNote ? "~" : "";
-      return `<td data-label="${t("plans.th.req10")}"><span class="num">${c.req10 ? mark + fmtNum(c.req10) : "-"}</span>${c.estimateNote ? `<div class="est-note" title="${escapeHtml(c.estimateNote)}">${t("plans.estimate")}</div>` : ""}</td>`;
+      return `<td data-label="${rateReqLabel()}"><span class="num">${c.reqPer ? mark + fmtNum(c.reqPer) : "-"}</span>${c.estimateNote ? `<div class="est-note" title="${escapeHtml(c.estimateNote)}">${t("plans.estimate")}</div>` : ""}</td>`;
     }
     case "rawtokens": return `<td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>`;
     case "rawreq": {
@@ -943,7 +1012,7 @@ function syncColumnHeaders() {
   head.innerHTML = visibleColumns.map((col) => {
     const sortKey = sortableMap[col];
     const i18nKey = `plans.th.${col}`;
-    const label = t(i18nKey) || col;
+    const label = col === "tokens" ? rateTokensLabel() : col === "req10" ? rateReqLabel() : (t(i18nKey) || col);
     const th = document.createElement("th");
     if (sortKey) {
       th.dataset.sort = sortKey;
@@ -1039,8 +1108,10 @@ function initSheet() {
 }
 
 /* ============ DASHBOARD / PARETO-PLOT (AA-Stil) ============ */
-let dashX = "tokens";
-let dashY = "score";
+// Standard: echte Kaufpunkte — Preis gegen Tokens/Monat, beide logarithmisch.
+// Keine hochgerechnete Rate als Default: die Frontier gilt nur für Kaufbares.
+let dashX = "price";
+let dashY = "rawtokens";
 let dashPareto = true;
 let dashGreen = true;
 let dashTargetX = null; // Ziel-Schwelle X (Green Target)
@@ -1049,8 +1120,8 @@ let dashTargetY = null; // Ziel-Schwelle Y (Green Target)
 // Punkt-Wert für eine Metrik
 function metricValue(combo, metric) {
   switch (metric) {
-    case "tokens": return combo.tokensPer10;
-    case "req10": return combo.req10;
+    case "tokens": return combo.tokensPer;
+    case "req10": return combo.reqPer;
     case "rawtokens": return combo.rawTokensPerMonth;
     case "rawreq": return combo.rawRequestsPerMonth;
     case "score": return combo.score;
@@ -1068,11 +1139,11 @@ function metricDir(metric) {
 function validAxes(x, y) {
   return !(metricDir(x) === "min" && metricDir(y) === "min");
 }
-// Metrik-Label (i18n)
+// Metrik-Label (i18n); Preis trägt die gewählte Währung im Label
 function metricLabel(metric) {
   const map = {
-    tokens: t("dash.m.tokens"), req10: t("dash.m.req10"), rawtokens: t("dash.m.rawtokens"),
-    rawreq: t("dash.m.rawreq"), score: t("dash.m.score"), price: t("dash.m.price"),
+    tokens: rateTokensLabel(), req10: rateReqLabel(), rawtokens: t("dash.m.rawtokens"),
+    rawreq: t("dash.m.rawreq"), score: t("dash.m.score"), price: `${t("dash.m.price")} (${currency})`,
   };
   return map[metric] ?? metric;
 }
@@ -1155,14 +1226,15 @@ function renderDashboard() {
     return;
   }
 
-  // Skalen: log für Token/Request-Metriken (riesige Spannen), linear für Score/Preis
-  const logScale = (m) => m === "tokens" || m === "req10" || m === "rawtokens" || m === "rawreq";
+  // Skalen: log für Token/Request/Preis-Metriken (riesige Spannen), linear für Score
+  const logScale = (m) => m === "tokens" || m === "req10" || m === "rawtokens" || m === "rawreq" || m === "price";
   const xLog = logScale(dashX), yLog = logScale(dashY);
   const xVals = points.map((p) => p.x), yVals = points.map((p) => p.y);
-  const xMin = xLog ? Math.min(...xVals) * 0.8 : 0;
-  const xMax = xLog ? Math.max(...xVals) * 1.2 : Math.max(...xVals) * 1.05;
-  const yMin = yLog ? Math.min(...yVals) * 0.8 : 0;
-  const yMax = yLog ? Math.max(...yVals) * 1.2 : Math.max(...yVals) * 1.05;
+  // Bildausschnitt: 10 % Luft um die Daten (log: multiplikativ), damit kein Punkt am Rand klebt
+  const xMin = xLog ? Math.min(...xVals) * 0.9 : 0;
+  const xMax = xLog ? Math.max(...xVals) * 1.1 : Math.max(...xVals) * 1.05;
+  const yMin = yLog ? Math.min(...yVals) * 0.9 : 0;
+  const yMax = yLog ? Math.max(...yVals) * 1.1 : Math.max(...yVals) * 1.05;
 
   const sx = (v) => PAD_L + (xLog ? (Math.log(v) - Math.log(xMin)) / (Math.log(xMax) - Math.log(xMin)) : (v - xMin) / (xMax - xMin)) * plotW;
   const sy = (v) => H - PAD_B - (yLog ? (Math.log(v) - Math.log(yMin)) / (Math.log(yMax) - Math.log(yMin)) : (v - yMin) / (yMax - yMin)) * plotH;
@@ -1172,11 +1244,11 @@ function renderDashboard() {
   // Zielzone (Green Target): Bereich der "besseren" Werte auf beiden Achsen
   // (Richtungsbewusst: bei price ist kleiner besser → Zielzone links unten).
   // Bei ungültiger Kombination (beide Achsen "min") keine Zielzone zeigen.
-  // Gültige Achsen sicherstellen: Y-Achse erlaubt nur max-Metriken (score/tokens/req10),
-  // X-Achse erlaubt alle außer Kombi mit zwei "min". Gespeicherte Auswahl korrigieren.
-  const ALLOWED_Y = ["score", "tokens", "req10"];
-  if (!ALLOWED_Y.includes(dashY)) { dashY = "score"; const ys = $("#dash-y"); if (ys) ys.value = "score"; }
-  if (!validAxes(dashX, dashY)) { dashX = "tokens"; const xs = $("#dash-x"); if (xs) xs.value = "tokens"; }
+  // Y-Achse: max-Metriken plus Kaufvolumen (rawtokens/rawreq); Preis bleibt X vorbehalten.
+  // Gespeicherte Auswahl korrigieren.
+  const ALLOWED_Y = ["score", "tokens", "req10", "rawtokens", "rawreq"];
+  if (!ALLOWED_Y.includes(dashY)) { dashY = "rawtokens"; const ys = $("#dash-y"); if (ys) ys.value = "rawtokens"; }
+  if (!validAxes(dashX, dashY)) { dashX = "price"; const xs = $("#dash-x"); if (xs) xs.value = "price"; }
   const axesValid = validAxes(dashX, dashY);
   const dx = metricDir(dashX), dy = metricDir(dashY);
   let targetX = dashTargetX;
@@ -1238,10 +1310,12 @@ function renderDashboard() {
   // no-training = Kreis, trainiert = Quadrat, unbekannt = Dreieck.
   // Frontier-Punkte zusätzlich größer + primary.
   const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
+  // Mobile: größere Trefferflächen (Touch), Desktop: dezent kleiner
+  const touchSize = cssW < 760;
   const dots = px.map((p, i) => {
     const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
     const color = p.combo.noTraining === true ? "var(--success)" : (p.combo.noTraining === false ? "var(--danger)" : "var(--info)");
-    const r = isFrontier ? 7 : 5; // echte Pixel (viewBox = CSS-Pixel)
+    const r = isFrontier ? (touchSize ? 10 : 7) : (touchSize ? 7.5 : 5); // echte Pixel (viewBox = CSS-Pixel)
     const cls = isFrontier ? "dash-dot dash-dot-frontier" : "dash-dot";
     const x = p.px.toFixed(2), y = p.py.toFixed(2);
     const shape = p.combo.noTraining === true ? "circle"
@@ -1300,8 +1374,9 @@ function showDashDetail(p) {
     <div class="dd-row"><span class="k">${metricLabel(dashX)}</span><span class="v">${metricFmt(dashX, p.x)}</span></div>
     <div class="dd-row"><span class="k">${metricLabel(dashY)}</span><span class="v">${metricFmt(dashY, p.y)}</span></div>
     <div class="dd-row"><span class="k">AI ${lang === "de" ? "Score" : "score"}</span><span class="v">${p.combo.score !== null ? p.combo.score.toFixed(1) : "-"}</span></div>
-    <div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtMoney(p.combo.price) : "-"}</span></div>
-    <div class="dd-row"><span class="k">${t("plans.th.tokens")}</span><span class="v">${fmtTokens(p.combo.tokensPer10)}</span></div>
+    <div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}</span></div>
+    <div class="dd-row"><span class="k">${rateTokensLabel()}</span><span class="v">${fmtTokens(p.combo.tokensPer)}</span></div>
+    <div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>
     ${priv ? `<div class="dd-badge">${priv}</div>` : ""}
   `;
 }
@@ -1336,6 +1411,14 @@ function bindDashTooltip() {
       if (p) showDashDetail(p);
     }
   });
+  // Touch: Antippen zeigt direkt das Detail-Panel (kein Hover auf Mobile)
+  svg.addEventListener("touchstart", (e) => {
+    const dot = e.target.closest(".dash-dot");
+    if (dot && svg._points) {
+      const p = svg._points[parseInt(dot.dataset.i, 10)];
+      if (p) { showDashDetail(p); e.preventDefault(); }
+    }
+  }, { passive: false });
 }
 
 // Dashboard-Controls initialisieren
@@ -1354,11 +1437,79 @@ function initDashboard() {
   bindDashTooltip();
 }
 
+/* ============ BUDGET-RECHNER (kein Stacking: ein Abo pro Konto) ============ */
+// Vergleicht EINZELPLÄNE innerhalb des Budgets: pro Plan das beste Modell
+// (meiste Tokens/Monat), sortiert nach Tokens/Monat. Budget in gewählter Währung.
+let calcBudget = 20;
+let calcScore = 0;
+function renderCalculator() {
+  const list = $("#calc-results");
+  const empty = $("#calc-empty");
+  if (!list || !data) return;
+  const rate = exchangeRates[currency] ?? 1;
+  const budgetUsd = calcBudget / rate;
+  let combos = buildCombos().filter((c) => c.price != null && c.price <= budgetUsd + 1e-9);
+  if (calcScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= calcScore);
+  if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
+  // Pro Plan nur das beste Modell (Tokens/Monat), dann Top 5
+  const best = new Map();
+  for (const c of combos) {
+    const cur = best.get(c.planId);
+    if (!cur || (c.rawTokensPerMonth ?? 0) > (cur.rawTokensPerMonth ?? 0)) best.set(c.planId, c);
+  }
+  const top = [...best.values()]
+    .filter((c) => c.rawTokensPerMonth != null)
+    .sort((a, b) => b.rawTokensPerMonth - a.rawTokensPerMonth)
+    .slice(0, 5);
+  const budgetOut = $("#calc-budget-out");
+  if (budgetOut) budgetOut.textContent = fmtPrice(budgetUsd);
+  const scoreOut = $("#calc-score-out");
+  if (scoreOut) scoreOut.textContent = calcScore === 0 ? (lang === "de" ? "keins" : "none") : String(calcScore);
+  if (!top.length) {
+    list.innerHTML = "";
+    if (empty) { empty.hidden = false; empty.textContent = t("calc.empty"); }
+    return;
+  }
+  if (empty) empty.hidden = true;
+  list.innerHTML = top.map((c, i) => {
+    const left = budgetUsd - c.price;
+    return `<div class="calc-row${i === 0 ? " calc-best" : ""}">`
+      + `<div class="calc-main"><span class="calc-plan">${escapeHtml(c.planName)}</span>`
+      + `<span class="calc-model">${escapeHtml(c.model)}</span></div>`
+      + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span>`
+      + `<span class="muted">${t("calc.tokensMo")}</span></div>`
+      + `<div class="calc-nums"><span class="num">${fmtPrice(c.price)}</span>`
+      + `<span class="muted">${left > 0.005 ? fmtPrice(left) + " " + t("calc.leftover") : t("calc.price")}</span></div>`
+      + `</div>`;
+  }).join("");
+}
+function initCalculator() {
+  const b = $("#calc-budget");
+  if (b) {
+    b.value = calcBudget;
+    b.addEventListener("input", (e) => {
+      calcBudget = Math.max(0, parseFloat(e.target.value) || 0);
+      renderCalculator();
+    });
+  }
+  const s = $("#calc-score");
+  if (s) {
+    s.value = calcScore;
+    s.addEventListener("input", (e) => {
+      calcScore = parseInt(e.target.value, 10) || 0;
+      renderCalculator();
+    });
+  }
+}
+
 function renderFormula() {
   const block = $("#formula-block");
   const m = data.methodology ?? {};
   const title = `<div style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:8px">${t("method.formula.title")}</div>`;
-  block.innerHTML = title + `<div>${escapeHtml(m.costPerRequest ?? "")}</div>`;
+  const perUnit = lang === "de"
+    ? "Requests pro 1 $ = Requests / Monat ÷ bezahlter Preis · Tokens pro 1 $ = Requests pro 1 $ × Tokens pro Request"
+    : "Requests per $1 = monthly requests ÷ paid price · Tokens per $1 = requests per $1 × tokens per request";
+  block.innerHTML = title + `<div>${escapeHtml(m.costPerRequest ?? "")}</div><div style="margin-top:10px">${escapeHtml(perUnit)}</div>`;
 }
 
 /* ---------------- Toast ---------------- */
@@ -1449,8 +1600,7 @@ function init() {
     currencySel.addEventListener("change", (e) => {
       currency = e.target.value;
       localStorage.setItem("cpc-currency", currency);
-      renderPlans();
-      renderDashboard();
+      renderAll();
     });
   }
 
@@ -1530,6 +1680,7 @@ function init() {
   });
   syncColumnPicker();
   initDashboard();
+  initCalculator();
   initSheet();
 
   // Chart-Auflösung dynamisch an Fenstergröße koppeln (debounced)

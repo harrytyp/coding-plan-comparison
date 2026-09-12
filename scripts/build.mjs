@@ -9,7 +9,11 @@
  *           + cachedRead×pattern.cachedRead + output×pattern.output, /1M
  *    (Input zu 5% normal + 95% Cache-Write; Cache-Read und Output separat)
  *  - Requests/Monat = Meter / cost  (Meter: credits | $usage | requests | prompts)
- *  - $10-Normalisierung: requests × 10 / paidPrice
+ *  - Pro-Geld-Normalisierung: requests / paidPrice (Tokens/Requests pro 1 $,
+ *    NICHT hochskaliert auf $10 — ein $1-Plan zeigt, was $1 kauft)
+ *  - Abos sind einzeln pro Konto (kein Stacking): die Rate ist eine Rate,
+ *    kein kaufbares Vielfaches. Der Budget-Rechner im Frontend vergleicht
+ *    Einzelpläne innerhalb eines Budgets.
  *  - Draw < 10%; Outlier = Tukey IQR auf log2-Ratio
  *  - Anbieter-eigene requestEstimate (Command Code) als offizielle Referenz
  *  - undisclosed bleibt undisclosed; keine direkte Credit-Umrechnung zwischen Anbietern
@@ -22,7 +26,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
-const TARGET_PRICE = 10;
+const TARGET_PRICE = 1;
 const DRAW_THRESHOLD_PERCENT = 10;
 // ai-10-usd Workload-Fallback: durchschnittliches Message-Profil
 const FALLBACK_PATTERN = { input: 800, cachedRead: 50000, output: 162 };
@@ -736,7 +740,7 @@ async function main() {
 
   for (const plan of plans) {
     const models = modelsForPlan(plan, feeds);
-    // Normalisierungs-Basis: $10 sind USD. Bei CNY-Plänen (Kimi, GLM) ist der
+    // Normalisierungs-Basis: USD. Bei CNY-Plänen (Kimi, GLM) ist der
     // paidPrice in CNY, aber die Normalisierung braucht den USD-Preis.
     // monthlyUsd (mit dokumentiertem Kurs umgerechnet) ist die korrekte Basis.
     const paid = plan.price.currency === "CNY" && plan.price.monthlyUsd
@@ -787,7 +791,7 @@ async function main() {
         windowNote = "5h rolling cap (Durchsatz), nicht Monats-Menge";
       }
       if (monthlyRequests === null) continue;
-      const normalized = (monthlyRequests * TARGET_PRICE) / paid;
+      const normalized = monthlyRequests / paid; // pro 1 $ bezahlt (TARGET_PRICE=1)
       modelRows.push({
         model: m.name,
         family: familyOf(m.name),
@@ -800,7 +804,7 @@ async function main() {
         unit,
         requestsPerMonth: monthlyRequests,
         requestsRawInWindow: requests,
-        normalizedPer10: normalized,
+        normalizedPer1: normalized,
         privacy: m.privacy ?? null,
         // Ehrlichkeit: Schätzung auf Basis offizieller Billing-Beispiele, kein offizielles Limit
         estimate: m.fromOfficialBilling === true ? "price-based estimate (official billing example, not a published limit)" : null,
@@ -877,7 +881,7 @@ async function main() {
     }
   }
 
-  // Baue Modell-Vergleichszeilen: pro Plan, pro Familie der Median der $10-normalisierten Requests
+  // Baue Modell-Vergleichszeilen: pro Plan, pro Familie der Median der pro-$ Requests
   const modelComparisons = [];
 
   for (const plan of planSummaries) {
@@ -886,7 +890,7 @@ async function main() {
     for (const r of plan.modelRows) {
       const fam = familyOf(r.model);
       const arr = famMap.get(fam) ?? [];
-      arr.push(r.normalizedPer10);
+      arr.push(r.normalizedPer1);
       famMap.set(fam, arr);
     }
     for (const [fam, vals] of famMap) {
@@ -894,8 +898,8 @@ async function main() {
         planId: plan.id,
         family: fam,
         modelCount: vals.length,
-        normalizedPer10Median: percentile(vals, 0.5),
-        normalizedPer10Mean: avg(vals),
+        normalizedPer1Median: percentile(vals, 0.5),
+        normalizedPer1Mean: avg(vals),
       });
     }
   }
@@ -909,8 +913,8 @@ async function main() {
       const bFams = new Map(modelComparisons.filter((m) => m.planId === b.id).map((m) => [m.family, m]));
       const shared = [...aFams.keys()].filter((f) => bFams.has(f));
       for (const fam of shared) {
-        const ma = aFams.get(fam).normalizedPer10Median;
-        const mb = bFams.get(fam).normalizedPer10Median;
+        const ma = aFams.get(fam).normalizedPer1Median;
+        const mb = bFams.get(fam).normalizedPer1Median;
         if (ma == null || mb == null || ma <= 0 || mb <= 0) continue;
         const advantagePct = Math.abs(ma / mb - 1) * 100;
         familyComparisons.push({
@@ -927,13 +931,13 @@ async function main() {
   }
 
   const output = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
     targetMonthlyPrice: TARGET_PRICE,
     methodology: {
       basis: "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
       costPerRequest: "(0.05×input + 0.95×cachedWrite)×pattern.input + cachedRead×pattern.cachedRead + output×pattern.output, /1M",
-      normalizedMetric: "average requests per month scaled to exactly $10 paid",
+      normalizedMetric: "requests and tokens per $1 paid (rate, not a purchasable multiple — subscriptions are single per account, no stacking)",
       fallbackPattern: FALLBACK_PATTERN,
       drawThresholdPercent: DRAW_THRESHOLD_PERCENT,
       patternUnification: "Für geteilte Modell-Familien wird das OpenCode-Go-Pattern (echte per-Modell-Tokenstatistik) für beide Provider verwendet; das CC-Feed nutzt sonst nur das generische 800/50000/162-Pattern, was Kosten verzerrt.",

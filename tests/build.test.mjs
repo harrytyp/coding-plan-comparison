@@ -13,8 +13,8 @@ const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 test("latest.json existiert und hat Schema", async () => {
   const raw = await readFile(join(ROOT, "public/data/latest.json"), "utf8");
   const d = JSON.parse(raw);
-  assert.equal(d.schemaVersion, 1);
-  assert.equal(d.targetMonthlyPrice, 10);
+  assert.equal(d.schemaVersion, 2);
+  assert.equal(d.targetMonthlyPrice, 1);
   assert.ok(Array.isArray(d.plans));
   // Dynamisch: nur Pläne mit echten Quellen (keine statischen Erfindungen)
   assert.ok(d.plans.length >= 15, "sollte ≥15 Pläne aus Quellen haben");
@@ -32,24 +32,24 @@ test("opencode-go ist vergleichbar (Feed-Modelle)", async () => {
   assert.ok(oc, "opencode-go muss existieren");
   assert.ok(oc.modelCount >= 30, "opencode-go sollte ≥30 Modelle aus Feed haben");
   assert.ok(oc.modelStats.mean > 0);
-  // $10-Normalisierung: requests pro $10 = requests (paid=10)
+  // Pro-Geld-Normalisierung: requests pro $1 = requests / paid (paid=10)
   const row = oc.modelRows[0];
-  assert.ok(Math.abs(row.normalizedPer10 - row.requestsPerMonth) < 0.001,
-    "bei paid=10 ist normalizedPer10 = requestsPerMonth");
+  assert.ok(Math.abs(row.normalizedPer1 - row.requestsPerMonth / 10) < 0.001,
+    "bei paid=10 ist normalizedPer1 = requestsPerMonth / 10");
 });
 
-test("command-code-goat ist vergleichbar und $10-normalisiert", async () => {
+test("command-code-goat ist vergleichbar und pro-$ normalisiert", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const goat = d.plans.find((p) => p.id === "command-code-goat");
   assert.ok(goat, "command-code-goat muss existieren");
   assert.equal(goat.price.paidPrice, 10.77, "bezahlter Preis muss 10.77 sein (ai-10-usd)");
   assert.ok(goat.modelCount >= 50, "GOAT sollte ≥50 Modelle haben");
-  // Normalisierung: requests × 10 / 10.77 < requests
+  // Normalisierung: requests / 10.77 < requests
   const row = goat.modelRows[0];
-  assert.ok(row.normalizedPer10 < row.requestsPerMonth,
-    "bei paid=10.77 ist normalizedPer10 < requestsPerMonth");
-  assert.ok(Math.abs(row.normalizedPer10 - row.requestsPerMonth * 10 / 10.77) < 0.01,
-    "Normalisierung = requests × 10 / paidPrice");
+  assert.ok(row.normalizedPer1 < row.requestsPerMonth,
+    "bei paid=10.77 ist normalizedPer1 < requestsPerMonth");
+  assert.ok(Math.abs(row.normalizedPer1 - row.requestsPerMonth / 10.77) < 0.01,
+    "Normalisierung = requests / paidPrice");
 });
 
 test("GLM nutzt Anbieter-Credit-Formel (beide Modelle, offiziell)", async () => {
@@ -153,11 +153,11 @@ test("undisclosed Pläne haben keine erfundenen Zahlen", async () => {
 
 // --- Regressionen für Metric-Audit 2026-09-10 (13B Tokens/$-Bericht) ---
 
-// Einheit: Die Spalte ist per $10-Normalisierung (TARGET_PRICE=10), NICHT per $1.
-// Für jede Row muss gelten: normalizedPer10 = requestsPerMonth × 10 / paidPrice.
-test("Unit-Invariante: normalizedPer10 = requestsPerMonth × 10 / paidPrice", async () => {
+// Einheit: Die Spalte ist pro-$ normalisiert (TARGET_PRICE=1), NICHT pro $10.
+// Für jede Row muss gelten: normalizedPer1 = requestsPerMonth / paidPrice.
+test("Unit-Invariante: normalizedPer1 = requestsPerMonth / paidPrice", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
-  const target = d.targetMonthlyPrice; // = 10
+  const target = d.targetMonthlyPrice; // = 1
   let checked = 0;
   for (const p of d.plans) {
     // Gleiche paid-Logik wie build.mjs: CNY → monthlyUsd, sonst bezahlter (Checkout-)Preis
@@ -169,8 +169,8 @@ test("Unit-Invariante: normalizedPer10 = requestsPerMonth × 10 / paidPrice", as
       assert.ok(r.requestsPerMonth > 0, `${p.name}/${r.model}: requestsPerMonth > 0`);
       const expectedN = (r.requestsPerMonth * target) / paid;
       assert.ok(
-        Math.abs(r.normalizedPer10 - expectedN) < Math.max(0.01, expectedN * 1e-6),
-        `${p.name}/${r.model}: normalizedPer10=${r.normalizedPer10} ≠ requestsPerMonth(${r.requestsPerMonth})×${target}/${paid}=${expectedN}`
+        Math.abs(r.normalizedPer1 - expectedN) < Math.max(0.01, expectedN * 1e-6),
+        `${p.name}/${r.model}: normalizedPer1=${r.normalizedPer1} ≠ requestsPerMonth(${r.requestsPerMonth})×${target}/${paid}=${expectedN}`
       );
       checked++;
     }
