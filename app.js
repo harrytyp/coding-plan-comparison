@@ -1281,7 +1281,6 @@ function detailGrid(c) {
   const parts = [];
   const push = (k, v) => { if (v !== null && v !== undefined && v !== "" && v !== "-") parts.push([k, v]); };
   push(t("plans.th.model"), c.model);
-  push(t("plans.note"), c.planNote ?? null);
   push(t("plans.th.score"), c.score !== null ? `${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}` : null);
   push(rateTokensLabel(), fmtTokens(c.tokensPer));
   push(rateReqLabel(), c.requestsPer10 != null ? fmtNum(c.requestsPer10) : null);
@@ -1295,7 +1294,13 @@ function detailGrid(c) {
     ? [c.noTraining === true ? t("plans.badge.noTraining") : null, c.zeroRetention === true ? t("plans.badge.zeroRetention") : null]
       .filter(Boolean).join(", ") || (lang === "de" ? "unbekannt" : "unknown")
     : (lang === "de" ? "keine Angabe" : "not stated"));
-  return `<div class="detail-grid">${parts.map(([k, v]) => `<div><div class="dg-k">${escapeHtml(k)}</div><div class="dg-v">${escapeHtml(String(v))}</div></div>`).join("")}</div>`;
+  const grid = `<div class="detail-grid">${parts.map(([k, v]) => `<div><div class="dg-k">${escapeHtml(k)}</div><div class="dg-v">${escapeHtml(String(v))}</div></div>`).join("")}</div>`;
+  // Hinweis als eigene Zeile unter dem Raster: als Grid-Zelle wuerde der lange
+  // Text eine Spalte aufziehen und die Ausrichtung der ganzen Zeile zerstoeren.
+  const note = c.planNote
+    ? `<div class="detail-note"><span class="dn-label">${escapeHtml(t("plans.note"))}</span>${escapeHtml(c.planNote)}</div>`
+    : "";
+  return grid + note;
 }
 
 // Kurzer Hinweis-Chip am Plan-Namen (z.B. "nur CLI"), voller Text im Tooltip
