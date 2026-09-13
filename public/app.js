@@ -2301,11 +2301,21 @@ function initDashboard() {
   const pSel = $("#dash-pareto");
   if (pSel) pSel.addEventListener("change", (e) => { dashPareto = e.target.checked; renderDashboard(); });
   const gSel = $("#dash-green");
-  if (gSel) { gSel.checked = dashGreen; gSel.addEventListener("change", (e) => { dashGreen = e.target.checked; renderDashboard(); }); }
+  // Schwellenfelder sind erst mit der Zielzone bedienbar: ein Feld, das "auto"
+  // zeigt und nichts tut, liest sich wie ein unfertiger Zustand.
+  const syncTargetInputs = () => {
+    for (const el of [tx, ty]) {
+      if (!el) continue;
+      el.disabled = !dashGreen;
+      el.placeholder = dashGreen ? (el === tx ? "min X" : "min Y") : "auto";
+    }
+  };
+  if (gSel) { gSel.checked = dashGreen; gSel.addEventListener("change", (e) => { dashGreen = e.target.checked; syncTargetInputs(); renderDashboard(); }); }
   // Ziel-Schwellen (Green Target)
   const tx = $("#dash-target-x"), ty = $("#dash-target-y");
   if (tx) tx.addEventListener("input", (e) => { dashTargetX = e.target.value === "" ? null : parseFloat(e.target.value); renderDashboard(); });
   if (ty) ty.addEventListener("input", (e) => { dashTargetY = e.target.value === "" ? null : parseFloat(e.target.value); renderDashboard(); });
+  syncTargetInputs();
   // Leerer Plot oder Zoom: je nach Zustand Zoom oder Filter zurücksetzen
   const rb = $("#dash-reset-btn");
   if (rb) rb.addEventListener("click", () => {
