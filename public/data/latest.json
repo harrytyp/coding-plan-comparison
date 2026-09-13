@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T08:57:26.743Z",
+  "generatedAt": "2026-09-13T09:42:06.548Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-13T08:57:26.529Z",
+    "fetchedAt": "2026-09-13T09:42:06.266Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14607,10 +14607,10 @@
       "claude-mythos-5-1": {
         "intelligence": 45.22
       },
-      "gpt-5-6-luna": {
+      "qwen3-8-27b": {
         "intelligence": 45.09
       },
-      "qwen3-8-27b": {
+      "gpt-5-6-luna": {
         "intelligence": 45.09
       },
       "claude-opus-4-6": {
@@ -14973,10 +14973,10 @@
       "sarvam-105b": {
         "intelligence": 25.7
       },
-      "nova-2-omni": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
-      "claude-haiku-4-5-20251001": {
+      "nova-2-omni": {
         "intelligence": 25.69
       },
       "step3-vl-10b": {
@@ -15021,10 +15021,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.93
       },
-      "granite-4-2-30b": {
+      "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.83
       },
-      "grok-4-20-beta-0309-reasoning": {
+      "granite-4-2-30b": {
         "intelligence": 23.83
       },
       "qwen3-next-80b-a3b-thinking": {
@@ -15108,10 +15108,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "o1-pro": {
+      "granite-4-2-8b": {
         "intelligence": 19.68
       },
-      "granite-4-2-8b": {
+      "o1-pro": {
         "intelligence": 19.68
       },
       "grok-4-1-2025-11-17": {
@@ -15294,10 +15294,10 @@
       "deepseek-r1-distill-qwen-14b": {
         "intelligence": 10.94
       },
-      "magistral-small-2506": {
+      "qwen3-vl-4b-instruct": {
         "intelligence": 10.68
       },
-      "qwen3-vl-4b-instruct": {
+      "magistral-small-2506": {
         "intelligence": 10.68
       },
       "mistral-large-3-2509": {
@@ -15327,10 +15327,10 @@
       "mistral-large-latest": {
         "intelligence": 9.03
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
