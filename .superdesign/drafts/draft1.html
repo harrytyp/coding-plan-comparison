@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Plan Compare</title>
+  <meta name="view-transition" content="same-origin">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=inter@400,600,700,800&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Menlo', 'monospace'],
+          },
+          colors: {
+            bg: 'var(--bg)',
+            'bg-elev': 'var(--bg-elev)',
+            'bg-muted': 'var(--bg-muted)',
+            text: 'var(--text)',
+            'text-muted': 'var(--text-muted)',
+            'text-faint': 'var(--text-faint)',
+            border: 'var(--border)',
+            'border-strong': 'var(--border-strong)',
+            primary: 'var(--primary)',
+            'primary-strong': 'var(--primary-strong)',
+            'primary-soft': 'var(--primary-soft)',
+            success: 'var(--success)',
+            'success-soft': 'var(--success-soft)',
+            info: 'var(--info)',
+            'info-soft': 'var(--info-soft)',
+            warn: 'var(--warn)',
+            'warn-soft': 'var(--warn-soft)',
+            danger: 'var(--danger)',
+            'danger-soft': 'var(--danger-soft)',
+          },
+          boxShadow: {
+            sm: 'var(--shadow-sm)',
+            md: 'var(--shadow-md)',
+            lg: 'var(--shadow-lg)',
+          },
+          borderRadius: {
+            DEFAULT: 'var(--radius)',
+            sm: 'var(--radius-sm)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg-elev: #ffffff;
+      --bg-muted: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-faint: #94a3b8;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --primary: #2563eb;
+      --primary-strong: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --success: #0d9488;
+      --success-soft: #ccfbf1;
+      --info: #0284c7;
+      --info-soft: #e0f2fe;
+      --warn: #d97706;
+      --warn-soft: #fef3c7;
+      --danger: #dc2626;
+      --danger-soft: #fee2e2;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
+      --shadow-md: 0 4px 6px -1px rgba(15,23,42,.07), 0 2px 4px -2px rgba(15,23,42,.05);
+      --shadow-lg: 0 10px 15px -3px rgba(15,23,42,.10), 0 4px 6px -4px rgba(15,23,42,.05);
+    }
+    
+    [data-theme="dark"] {
+      --bg: #0b1220;
+      --bg-elev: #111a2e;
+      --bg-muted: #16223a;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-faint: #64748b;
+      --border: #1e293b;
+      --border-strong: #334155;
+      --primary: #3b82f6;
+      --primary-strong: #60a5fa;
+      --primary-soft: #172a45;
+      --success: #2dd4bf;
+      --success-soft: #0f2e2a;
+      --info: #38bdf8;
+      --info-soft: #172a45;
+      --warn: #fbbf24;
+      --warn-soft: #2e2410;
+      --danger: #f87171;
+      --danger-soft: #3a1717;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.4), 0 1px 3px rgba(0,0,0,.3);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.45);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,.5);
+    }
+
+    .num {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Tab scrollbar hide */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* View Transitions */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+    ::view-transition-old(main-nav),
+    ::view-transition-new(main-nav),
+    ::view-transition-old(header),
+    ::view-transition-new(header) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+    ::view-transition-old(main-content) {
+      animation: 0.2s ease-out both fade-out;
+    }
+    ::view-transition-new(main-content) {
+      animation: 0.2s ease-in 0.05s both fade-in;
+    }
+    @keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+</head>
+<body class="bg-bg text-text antialiased font-sans m-0 p-0">
+  <div class="min-h-screen max-w-[1440px] mx-auto flex flex-col" data-sd-id="1">
+    
+    <!-- NAV -->
+    <nav class="sticky top-0 z-50 bg-bg-elev/90 backdrop-blur-md border-b border-border" style="view-transition-name: main-nav" data-sd-id="2">
+      <div class="px-4 md:px-6 h-14 flex items-center justify-between" data-sd-id="3">
+        <a href="#" class="flex items-center gap-2 group" data-sd-id="4">
+          <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm group-hover:bg-primary-strong transition-colors" data-sd-id="5">
+             <iconify-icon icon="lucide:bar-chart-2" class="text-lg"></iconify-icon>
+          </div>
+          <span class="font-bold tracking-tight text-[15px]" data-sd-id="6">Coding Plan Compare</span>
+        </a>
+        
+        <div class="flex items-center gap-3" data-sd-id="7">
+          <select class="bg-bg text-[13px] font-semibold border border-border-strong rounded-md px-2 py-1.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none pr-8 cursor-pointer relative bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2364748b%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:10px_10px] bg-no-repeat bg-[right_10px_center]" data-sd-id="8">
+            <option value="USD" data-sd-id="9">USD $</option>
+            <option value="EUR" data-sd-id="10">EUR €</option>
+          </select>
+          <button class="w-8 h-8 flex items-center justify-center text-text-muted hover:text-text rounded-md hover:bg-bg-muted transition-colors" aria-label="Toggle theme" data-sd-id="11">
+            <iconify-icon icon="lucide:moon" class="text-lg"></iconify-icon>
+          </button>
+          <div class="flex rounded-md overflow-hidden border border-border-strong bg-bg" data-sd-id="12">
+            <button class="px-2 py-1 text-[12px] font-bold bg-bg-elev text-text" data-sd-id="13">EN</button>
+            <button class="px-2 py-1 text-[12px] font-semibold text-text-muted hover:text-text hover:bg-bg-muted transition-colors" data-sd-id="14">DE</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TAB BAR -->
+      <div class="px-4 md:px-6 flex gap-1 overflow-x-auto hide-scrollbar" data-sd-id="15">
+        <button class="px-4 py-2.5 text-[14px] font-semibold text-text border-b-2 border-primary -mb-[1px] whitespace-nowrap" data-sd-id="16">
+          Overview
+        </button>
+        <button class="px-4 py-2.5 text-[14px] font-medium text-text-muted hover:text-text border-b-2 border-transparent hover:border-border-strong -mb-[1px] whitespace-nowrap transition-colors" data-sd-id="17">
+          Plans
+        </button>
+        <button class="px-4 py-2.5 text-[14px] font-medium text-text-muted hover:text-text border-b-2 border-transparent hover:border-border-strong -mb-[1px] whitespace-nowrap transition-colors" data-sd-id="18">
+          Calculator
+        </button>
+        <button class="px-4 py-2.5 text-[14px] font-medium text-text-muted hover:text-text border-b-2 border-transparent hover:border-border-strong -mb-[1px] whitespace-nowrap transition-colors" data-sd-id="19">
+          Methodology
+        </button>
+        <button class="px-4 py-2.5 text-[14px] font-medium text-text-muted hover:text-text border-b-2 border-transparent hover:border-border-strong -mb-[1px] whitespace-nowrap transition-colors" data-sd-id="20">
+          Changelog
+        </button>
+      </div>
+    </nav>
+
+    <main class="flex-1 px-4 md:px-6 py-6" style="view-transition-name: main-content" data-sd-id="21">
+      <!-- HEADER -->
+      <header class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4" style="view-transition-name: header" data-sd-id="22">
+        <div data-sd-id="23">
+          <h1 class="text-[22px] md:text-[28px] font-extrabold tracking-tight mb-2" data-sd-id="24">AI coding subscriptions, compared</h1>
+          <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-text-muted" data-sd-id="25">
+            <span class="flex items-center gap-1.5" data-sd-id="26">
+              <span class="w-2 h-2 rounded-full bg-success animate-pulse" data-sd-id="27"></span>
+              <span class="font-medium" data-sd-id="28">12 live sources</span>
+            </span>
+            <span class="flex items-center gap-1.5 before:content-['·'] before:mr-2" data-sd-id="29">
+              Updated: <span class="font-medium text-text" data-sd-id="30">Oct 24, 2023</span>
+            </span>
+            <span class="flex items-center gap-1.5 before:content-['·'] before:mr-2" data-sd-id="31">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-info-soft text-info font-semibold text-[11px] uppercase tracking-wider" data-sd-id="32">
+                Open Data
+              </span>
+              No affiliate links
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- KPI GRID -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" data-sd-id="33">
+        <div class="bg-bg-elev border border-border rounded-xl p-4 shadow-sm" data-sd-id="34">
+          <div class="text-[12px] font-semibold text-text-muted mb-1" data-sd-id="35">Plans tracked</div>
+          <div class="text-[28px] font-bold num tracking-tight" data-sd-id="36">18</div>
+          <div class="text-[12px] text-text-faint mt-1" data-sd-id="37">Across 8 providers</div>
+        </div>
+        <div class="bg-bg-elev border border-border rounded-xl p-4 shadow-sm" data-sd-id="38">
+          <div class="text-[12px] font-semibold text-text-muted mb-1" data-sd-id="39">Comparable combinations</div>
+          <div class="text-[28px] font-bold num tracking-tight" data-sd-id="40">396</div>
+          <div class="text-[12px] text-text-faint mt-1" data-sd-id="41">Plan + Model pairs</div>
+        </div>
+        <div class="bg-bg-elev border border-border rounded-xl p-4 shadow-sm" data-sd-id="42">
+          <div class="text-[12px] font-semibold text-text-muted mb-1" data-sd-id="43">Model families</div>
+          <div class="text-[28px] font-bold num tracking-tight" data-sd-id="44">24</div>
+          <div class="text-[12px] text-text-faint mt-1" data-sd-id="45">GPT-4, Claude 3, Llama...</div>
+        </div>
+        <div class="bg-bg-elev border border-border rounded-xl p-4 shadow-sm" data-sd-id="46">
+          <div class="text-[12px] font-semibold text-text-muted mb-1" data-sd-id="47">Data points</div>
+          <div class="text-[28px] font-bold num tracking-tight" data-sd-id="48">1,420</div>
+          <div class="text-[12px] text-text-faint mt-1" data-sd-id="49">Prices, limits, scores</div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT GRID -->
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6 mb-6" data-sd-id="50">
+        
+        <!-- CHART PANEL -->
+        <div class="bg-bg-elev border border-border rounded-2xl shadow-sm overflow-hidden flex flex-col" data-sd-id="51">
+          <div class="px-5 py-4 border-b border-border flex flex-wrap items-center justify-between gap-4" data-sd-id="52">
+            <div data-sd-id="53">
+              <h2 class="text-[16px] font-bold" data-sd-id="54">Positioning Overview</h2>
+              <p class="text-[13px] text-text-muted mt-0.5" data-sd-id="55">Log scale: Tokens per $1 vs AI capability score</p>
+            </div>
+            <div class="flex items-center gap-3 text-[13px]" data-sd-id="56">
+              <label class="flex items-center gap-2 cursor-pointer" data-sd-id="57">
+                <input type="checkbox" class="rounded border-border-strong text-primary focus:ring-primary" checked="" data-sd-id="58">
+                <span class="font-medium text-text-muted" data-sd-id="59">Pareto Frontier</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer" data-sd-id="60">
+                <input type="checkbox" class="rounded border-border-strong text-primary focus:ring-primary" data-sd-id="61">
+                <span class="font-medium text-text-muted" data-sd-id="62">Target Zone</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="p-5 flex-1 relative min-h-[400px] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBoNDBWMEgwem0zOS0xVjFoMzl2Mzh6IiBmaWxsPSJub25lIiBzdHJva2U9IiNlMmU4ZjAiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhKSIvPjwvc3ZnPg==')] bg-[length:40px_40px]" data-sd-id="63">
+             <!-- Y Axis Label -->
+             <div class="absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 text-[12px] font-semibold text-text-muted tracking-wider uppercase origin-center" data-sd-id="64">
+               AI Capability Score
+             </div>
+             <!-- X Axis Label -->
+             <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-[12px] font-semibold text-text-muted tracking-wider uppercase" data-sd-id="65">
+               Tokens per $1 (Log)
+             </div>
+             
+             <!-- Mock Chart Elements -->
+             <div class="absolute left-12 bottom-10 right-6 top-6" data-sd-id="66">
+                <!-- Pareto Line -->
+                <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100" data-sd-id="67">
+                  <path d="M 10,90 L 30,50 L 60,30 L 90,20" fill="none" stroke="var(--info-soft)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <path d="M 10,90 L 30,50 L 60,30 L 90,20" fill="none" stroke="var(--info)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"></path>
+                </svg>
+                
+                <!-- Dots -->
+                <div class="absolute w-3 h-3 rounded-full bg-text-faint/50 hover:bg-primary border border-bg-elev shadow-sm cursor-pointer transition-colors" style="left: 10%; bottom: 10%;" title="Basic Plan - GPT-3.5" data-sd-id="68"></div>
+                <div class="absolute w-3 h-3 rounded-full bg-text-faint/50 hover:bg-primary border border-bg-elev shadow-sm cursor-pointer transition-colors" style="left: 20%; bottom: 35%;" title="Pro Plan - Claude 3 Haiku" data-sd-id="69"></div>
+                <div class="absolute w-3 h-3 rounded-full bg-text-faint/50 hover:bg-primary border border-bg-elev shadow-sm cursor-pointer transition-colors" style="left: 45%; bottom: 42%;" title="Team Plan - Llama 3 70B" data-sd-id="70"></div>
+                <div class="absolute w-4 h-4 rounded-full bg-primary border-2 border-bg-elev shadow-md cursor-pointer z-10" style="left: 60%; bottom: 70%;" title="Enterprise - GPT-4o (Selected)" data-sd-id="71">
+                  <div class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-success ring-2 ring-bg-elev" data-sd-id="72"></div>
+                </div>
+                <div class="absolute w-3 h-3 rounded-full bg-text-faint/50 hover:bg-primary border border-bg-elev shadow-sm cursor-pointer transition-colors" style="left: 85%; bottom: 75%;" title="Ultra Plan - Claude 3 Opus" data-sd-id="73"></div>
+                <div class="absolute w-3 h-3 rounded-full bg-text-faint/50 hover:bg-primary border border-bg-elev shadow-sm cursor-pointer transition-colors" style="left: 90%; bottom: 80%;" title="Max Plan - Gemini 1.5 Pro" data-sd-id="74"></div>
+             </div>
+          </div>
+        </div>
+
+        <!-- DETAIL PANEL -->
+        <div class="bg-bg-elev border border-border rounded-2xl shadow-sm flex flex-col" data-sd-id="75">
+          <div class="px-5 py-4 border-b border-border" data-sd-id="76">
+            <div class="text-[12px] font-bold text-text-faint uppercase tracking-wider mb-1" data-sd-id="77">Selected Detail</div>
+            <h3 class="text-[18px] font-extrabold" data-sd-id="78">Enterprise</h3>
+            <p class="text-[14px] text-text-muted mt-0.5 flex items-center gap-2" data-sd-id="79">
+              <span data-sd-id="80">OpenAI</span>
+              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-semibold bg-bg-muted text-text-muted" data-sd-id="81">
+                <iconify-icon icon="lucide:external-link"></iconify-icon>
+                API
+              </span>
+            </p>
+          </div>
+          
+          <div class="p-5 flex-1 flex flex-col gap-4" data-sd-id="82">
+            <div class="flex justify-between items-baseline pb-3 border-b border-border" data-sd-id="83">
+              <span class="text-[13px] text-text-muted" data-sd-id="84">Model</span>
+              <span class="font-semibold text-[14px]" data-sd-id="85">GPT-4o</span>
+            </div>
+            <div class="flex justify-between items-baseline pb-3 border-b border-border" data-sd-id="86">
+              <span class="text-[13px] text-text-muted" data-sd-id="87">AI Score</span>
+              <span class="font-bold text-[16px] num" data-sd-id="88">82.4</span>
+            </div>
+            <div class="flex justify-between items-baseline pb-3 border-b border-border" data-sd-id="89">
+              <span class="text-[13px] text-text-muted" data-sd-id="90">Monthly Price</span>
+              <span class="font-bold text-[16px] num" data-sd-id="91">$60.00</span>
+            </div>
+            <div class="flex justify-between items-baseline pb-3 border-b border-border" data-sd-id="92">
+              <span class="text-[13px] text-text-muted" data-sd-id="93">Included Tokens</span>
+              <span class="font-semibold text-[14px] num" data-sd-id="94">100M</span>
+            </div>
+            <div class="flex justify-between items-baseline pb-3 border-b border-border" data-sd-id="95">
+              <span class="text-[13px] text-text-muted" data-sd-id="96">Tokens / $</span>
+              <span class="font-bold text-primary text-[16px] num" data-sd-id="97">1.66M</span>
+            </div>
+            
+            <div class="mt-auto pt-4" data-sd-id="98">
+              <button class="w-full py-2 bg-bg-muted hover:bg-border border border-border-strong rounded-lg text-[13px] font-bold transition-colors" data-sd-id="99">
+                View full methodology
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA TABLE -->
+      <div class="bg-bg-elev border border-border rounded-2xl shadow-sm overflow-hidden" data-sd-id="100">
+        <div class="px-5 py-4 border-b border-border flex flex-wrap items-center justify-between gap-4 bg-bg-muted/30" data-sd-id="101">
+          <h2 class="text-[16px] font-bold" data-sd-id="102">Detailed Comparison</h2>
+          <div class="flex items-center gap-2" data-sd-id="103">
+            <div class="relative" data-sd-id="104">
+              <iconify-icon icon="lucide:search" class="absolute left-3 top-1/2 -translate-y-1/2 text-text-faint"></iconify-icon>
+              <input type="text" placeholder="Filter plans, models..." class="pl-9 pr-4 py-1.5 text-[13px] bg-bg border border-border-strong rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-[200px]" data-sd-id="105">
+            </div>
+            <button class="px-3 py-1.5 text-[13px] font-semibold border border-border-strong bg-bg rounded-md hover:bg-bg-muted transition-colors flex items-center gap-2" data-sd-id="106">
+              <iconify-icon icon="lucide:sliders-horizontal"></iconify-icon>
+              Columns
+            </button>
+          </div>
+        </div>
+        
+        <div class="overflow-x-auto" data-sd-id="107">
+          <table class="w-full text-left border-collapse min-w-[800px]" data-sd-id="108">
+            <thead class="bg-bg text-[12px] font-bold text-text-muted uppercase tracking-wider border-b border-border-strong sticky top-0" data-sd-id="109">
+              <tr data-sd-id="110">
+                <th class="px-5 py-3 cursor-pointer hover:text-text transition-colors group" data-sd-id="111">
+                  Plan <iconify-icon icon="lucide:arrow-down-up" class="inline opacity-0 group-hover:opacity-100 ml-1"></iconify-icon>
+                </th>
+                <th class="px-5 py-3 cursor-pointer hover:text-text transition-colors group" data-sd-id="112">
+                  Model <iconify-icon icon="lucide:arrow-down-up" class="inline opacity-0 group-hover:opacity-100 ml-1"></iconify-icon>
+                </th>
+                <th class="px-5 py-3 text-right cursor-pointer hover:text-text transition-colors group" data-sd-id="113">
+                  AI Score <iconify-icon icon="lucide:arrow-down-up" class="inline opacity-0 group-hover:opacity-100 ml-1"></iconify-icon>
+                </th>
+                <th class="px-5 py-3 text-right cursor-pointer hover:text-text transition-colors group" data-sd-id="114">
+                  Price/mo <iconify-icon icon="lucide:arrow-down-up" class="inline opacity-0 group-hover:opacity-100 ml-1"></iconify-icon>
+                </th>
+                <th class="px-5 py-3 text-right cursor-pointer text-primary transition-colors group" data-sd-id="115">
+                  Tokens/$ <iconify-icon icon="lucide:arrow-down" class="inline ml-1"></iconify-icon>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-[14px] divide-y divide-border" data-sd-id="116">
+              <tr class="hover:bg-bg-muted/50 transition-colors group" data-sd-id="117">
+                <td class="px-5 py-3" data-sd-id="118">
+                  <div class="font-bold" data-sd-id="119">Enterprise</div>
+                  <div class="text-[12px] text-text-muted" data-sd-id="120">OpenAI</div>
+                </td>
+                <td class="px-5 py-3 font-medium" data-sd-id="121">GPT-4o</td>
+                <td class="px-5 py-3 text-right num" data-sd-id="122">
+                  <div class="flex items-center justify-end gap-2" data-sd-id="123">
+                    82.4
+                    <div class="w-12 h-1.5 bg-bg-muted rounded-full overflow-hidden" data-sd-id="124">
+                      <div class="h-full bg-primary w-[82%]" data-sd-id="125"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-3 text-right num" data-sd-id="126">$60.00</td>
+                <td class="px-5 py-3 text-right font-bold num text-primary" data-sd-id="127">1.66M</td>
+              </tr>
+              <tr class="hover:bg-bg-muted/50 transition-colors group" data-sd-id="128">
+                <td class="px-5 py-3" data-sd-id="129">
+                  <div class="font-bold" data-sd-id="130">Pro</div>
+                  <div class="text-[12px] text-text-muted" data-sd-id="131">Anthropic</div>
+                </td>
+                <td class="px-5 py-3 font-medium" data-sd-id="132">Claude 3.5 Sonnet</td>
+                <td class="px-5 py-3 text-right num" data-sd-id="133">
+                  <div class="flex items-center justify-end gap-2" data-sd-id="134">
+                    85.1
+                    <div class="w-12 h-1.5 bg-bg-muted rounded-full overflow-hidden" data-sd-id="135">
+                      <div class="h-full bg-primary w-[85%]" data-sd-id="136"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-3 text-right num" data-sd-id="137">$20.00</td>
+                <td class="px-5 py-3 text-right font-bold num text-primary" data-sd-id="138">1.25M</td>
+              </tr>
+              <tr class="hover:bg-bg-muted/50 transition-colors group" data-sd-id="139">
+                <td class="px-5 py-3" data-sd-id="140">
+                  <div class="font-bold" data-sd-id="141">Plus</div>
+                  <div class="text-[12px] text-text-muted" data-sd-id="142">OpenAI</div>
+                </td>
+                <td class="px-5 py-3 font-medium" data-sd-id="143">GPT-4o</td>
+                <td class="px-5 py-3 text-right num" data-sd-id="144">
+                  <div class="flex items-center justify-end gap-2" data-sd-id="145">
+                    82.4
+                    <div class="w-12 h-1.5 bg-bg-muted rounded-full overflow-hidden" data-sd-id="146">
+                      <div class="h-full bg-primary-strong/70 w-[82%]" data-sd-id="147"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-3 text-right num" data-sd-id="148">$20.00</td>
+                <td class="px-5 py-3 text-right font-bold num text-text" data-sd-id="149">0.80M</td>
+              </tr>
+              <tr class="hover:bg-bg-muted/50 transition-colors group" data-sd-id="150">
+                <td class="px-5 py-3" data-sd-id="151">
+                  <div class="font-bold" data-sd-id="152">Advanced</div>
+                  <div class="text-[12px] text-text-muted" data-sd-id="153">Google</div>
+                </td>
+                <td class="px-5 py-3 font-medium" data-sd-id="154">Gemini 1.5 Pro</td>
+                <td class="px-5 py-3 text-right num" data-sd-id="155">
+                  <div class="flex items-center justify-end gap-2" data-sd-id="156">
+                    81.0
+                    <div class="w-12 h-1.5 bg-bg-muted rounded-full overflow-hidden" data-sd-id="157">
+                      <div class="h-full bg-primary-strong/70 w-[81%]" data-sd-id="158"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-3 text-right num" data-sd-id="159">$19.99</td>
+                <td class="px-5 py-3 text-right font-bold num text-text" data-sd-id="160">0.75M</td>
+              </tr>
+              <tr class="hover:bg-bg-muted/50 transition-colors group opacity-75" data-sd-id="161">
+                <td class="px-5 py-3" data-sd-id="162">
+                  <div class="font-bold" data-sd-id="163">Free</div>
+                  <div class="text-[12px] text-text-muted" data-sd-id="164">Anthropic</div>
+                </td>
+                <td class="px-5 py-3 font-medium" data-sd-id="165">Claude 3 Haiku</td>
+                <td class="px-5 py-3 text-right num" data-sd-id="166">
+                  <div class="flex items-center justify-end gap-2" data-sd-id="167">
+                    68.5
+                    <div class="w-12 h-1.5 bg-bg-muted rounded-full overflow-hidden" data-sd-id="168">
+                      <div class="h-full bg-text-faint w-[68%]" data-sd-id="169"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-5 py-3 text-right num" data-sd-id="170">$0.00</td>
+                <td class="px-5 py-3 text-right font-bold num text-text-muted" data-sd-id="171">N/A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="px-5 py-3 border-t border-border flex justify-between items-center bg-bg-muted/20" data-sd-id="172">
+          <span class="text-[13px] text-text-muted font-medium" data-sd-id="173">Showing 1-5 of 396 combinations</span>
+          <div class="flex gap-1" data-sd-id="174">
+            <button class="px-3 py-1.5 border border-border-strong rounded text-[13px] font-semibold text-text-muted hover:text-text hover:bg-bg transition-colors disabled:opacity-50" disabled="" data-sd-id="175">Prev</button>
+            <button class="px-3 py-1.5 border border-border-strong rounded text-[13px] font-semibold hover:bg-bg transition-colors" data-sd-id="176">Next</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto border-t border-border bg-bg-elev/50" data-sd-id="177">
+      <div class="px-4 md:px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] text-text-muted" data-sd-id="178">
+        <div data-sd-id="179">© 2026 Coding Plan Compare · MIT license</div>
+        <div class="flex flex-wrap items-center gap-4" data-sd-id="180">
+          <a href="#" id="footer-api-link" class="hover:text-primary transition-colors font-medium flex items-center gap-1" data-sd-id="181">
+            <iconify-icon icon="lucide:file-json"></iconify-icon> latest.json (API)
+          </a>
+          <a href="#" id="footer-github-link" class="hover:text-primary transition-colors font-medium flex items-center gap-1" data-sd-id="182">
+            <iconify-icon icon="lucide:github"></iconify-icon> GitHub
+          </a>
+          <a href="#" id="footer-sources-link" class="hover:text-primary transition-colors font-medium" data-sd-id="183">sources.yml</a>
+          <a href="#" id="footer-stats-link" class="hover:text-primary transition-colors font-medium" data-sd-id="184">AI scores: llm-stats.com</a>
+          <button id="footer-legal-btn" class="hover:text-primary transition-colors font-medium" data-sd-id="185">Legal</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body></html>

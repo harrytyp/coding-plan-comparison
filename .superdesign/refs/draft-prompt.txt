@@ -1,0 +1,12 @@
+Redesign the single-page dashboard for "Coding Plan Compare" (free, open data, no affiliate links, no sales push). It compares 18 AI coding subscription plans and 396 plan+model combinations: rate = tokens per paid unit on a log scale (1M to 100M+), plus one AI score per model.
+
+Build a real dashboard, not a marketing page:
+- one horizontal tab bar as the only navigation (Overview / Plans / Calculator / Methodology / Changelog)
+- compact header: title, live-source count and snapshot date, small disclaimer chip
+- KPI row: plans tracked, directly comparable, model families, live sources
+- positioning chart: log X axis "Tokens / $" against Y axis "AI score", dots for each plan+model combination, a Pareto frontier line, collapsible axes/target controls, clicking a dot fills a detail panel next to the chart
+- dense sortable data table underneath (sticky header, tabular numerals, sortable columns, pagination, one row per plan+model combination)
+- light and dark mode, mobile reflow that turns table rows into labelled cards
+- neutral tone: plain numbers, no winner badges, no "buy this" advice
+
+Style: dense light-mode SaaS admin aesthetic (cobalt accent #2563eb on a near-white #f8fafc canvas, Inter with tabular-nums and tight tracking, soft layered shadows, rounded-2xl panels, low-saturation semantic tint badges) merged with a calm professional data dashboard look (navy ink, one accent used sparingly for the chart series and primary actions).

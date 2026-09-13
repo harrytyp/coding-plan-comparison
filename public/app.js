@@ -33,6 +33,8 @@ const I18N = {
     "top.all": "All plans",
     "more.show": "Show more",
     "hero.h1": "AI coding subscriptions, compared",
+    "hero.opendata": "Open Data",
+    "hero.free": "no affiliate links",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -119,6 +121,9 @@ const I18N = {
     "dash.pareto": "Pareto line",
     "dash.green": "Show target",
     "dash.legend.green": "Target zone",
+    "dash.legend.noTraining": "no training on your data",
+    "dash.legend.trains": "trains on your data",
+    "dash.legend.unknown": "privacy unknown",
     "dash.legend.pareto": "Pareto frontier",
     "dash.legend.frontier": "Pareto points",
     "dash.legend.shapes": "● no training · ■ trains · ▲ unknown",
@@ -130,6 +135,8 @@ const I18N = {
     "dash.emptyReset": "Reset filters",
     "dash.legendToggle": "Legend",
     "dash.controls": "Axes & target",
+    "dash.detailTitle": "Selected detail",
+    "dash.detailSub": "Click a dot to see the plan and model",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / mo",
@@ -259,6 +266,8 @@ const I18N = {
     "top.all": "Alle Pläne",
     "more.show": "Mehr anzeigen",
     "hero.h1": "KI-Coding-Abos im Vergleich",
+    "hero.opendata": "Offene Daten",
+    "hero.free": "keine Affiliate-Links",
     "nav.plans": "Pläne",
     "nav.models": "Modelle",
     "nav.method": "Methodik",
@@ -345,6 +354,9 @@ const I18N = {
     "dash.pareto": "Pareto-Linie",
     "dash.green": "Zielzone zeigen",
     "dash.legend.green": "Zielzone",
+    "dash.legend.noTraining": "trainiert nicht mit deinen Daten",
+    "dash.legend.trains": "trainiert mit deinen Daten",
+    "dash.legend.unknown": "Datenschutz unbekannt",
     "dash.legend.pareto": "Pareto-Frontier",
     "dash.legend.frontier": "Pareto-Punkte",
     "dash.legend.shapes": "● kein Training · ■ trainiert · ▲ unbekannt",
@@ -356,6 +368,8 @@ const I18N = {
     "dash.emptyReset": "Filter zurücksetzen",
     "dash.legendToggle": "Legende",
     "dash.controls": "Achsen & Ziel",
+    "dash.detailTitle": "Ausgewählter Punkt",
+    "dash.detailSub": "Punkt anklicken für Plan und Modell",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / Monat",
@@ -1022,7 +1036,8 @@ function bindSortHeader(tableId, state, renderFn) {
 
 // Privacy-Badge: "no training" grün, Retention-Zeit als Info
 function privacyBadge(c) {
-  if (!c.privacyKnown) return "";
+  // Kein Anbieter-Statement: nicht leer lassen, sonst wirkt die Spalte kaputt
+  if (!c.privacyKnown) return `<span class="muted" title="${escapeHtml(lang === "de" ? "Keine Angabe des Anbieters" : "Not stated by the provider")}">–</span>`;
   const parts = [];
   if (c.noTraining === true) parts.push(`<span class="badge badge-green" title="No training on my data">${t("plans.badge.noTraining")}</span>`);
   if (c.zeroRetention === true) parts.push(`<span class="badge badge-green" title="Zero data retention">${t("plans.badge.zeroRetention")}</span>`);
@@ -1034,6 +1049,9 @@ function privacyBadge(c) {
 let plansLimit = 25, famLimit = 12;
 const PAGE = 25;
 const FAM_PAGE = 12;
+// Zahlen rechtsbündig: Standard in Datentabellen, sonst kein sauberer Scan
+const RIGHT_COLS = new Set(["score", "tokens", "req10", "rawtokens", "rawreq", "price", "cap"]);
+let scoreMax = 70; // für proportionale Balken statt willkürlicher 0-70-Skala
 
 function renderPlans() {
   const tbody = $("#plans-tbody");
@@ -1057,6 +1075,8 @@ function renderPlans() {
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
   // Sortieren
   combos.sort(sortBy(plansSort.key, plansSort.dir));
+  // Balken-Skala: relativ zum besten Score im Datensatz
+  scoreMax = Math.max(1, ...buildCombos().map((c) => (typeof c.score === "number" ? c.score : 0)));
   // Count
   const count = $("#plans-count");
   const shown = combos.slice(0, plansLimit);
@@ -1069,7 +1089,14 @@ function renderPlans() {
   }
 
   tbody.innerHTML = shown.map((c) => {
-    const cells = visibleColumns.map((col) => renderCell(col, c)).join("");
+    const cells = visibleColumns.map((col) => {
+      const html = renderCell(col, c);
+      if (!RIGHT_COLS.has(col)) return html;
+      // Klasse ergänzen, NICHT ein zweites class-Attribut erzeugen
+      return html.replace(/^<td([^>]*)>/, (m, attrs) => (/class="/.test(attrs)
+        ? `<td${attrs.replace(/class="([^"]*)"/, 'class="$1 t-right"')}>`
+        : `<td class="t-right"${attrs}>`));
+    }).join("");
     return `<tr>${cells}</tr>`;
   }).join("");
   const moreBtn = $("#plans-more");
@@ -1088,8 +1115,9 @@ function renderCell(col, c) {
   const scoreStr = c.score !== null
     ? `<span class="num strong">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>`
     : `<span class="muted" title="${escapeHtml(t("plans.scoreNA"))}">-</span>`;
+  // Balken proportional zum Maximum im Datensatz, nicht zu einer willkürlichen 70er-Skala
   const scoreBar = c.score !== null
-    ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
+    ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / (scoreMax || 70)) * 100)}%"></div></div>`
     : "";
   // Neutraler Rechner-Rang (grau, keine Empfehlung): nur Info, wo der Plan im Budget steht
   const rankTag = calcRanks.has(c.planId)
@@ -1145,6 +1173,7 @@ function syncColumnHeaders() {
     } else {
       th.textContent = label;
     }
+    if (RIGHT_COLS.has(col)) th.classList.add("t-right");
     return th.outerHTML;
   }).join("");
   bindSortHeader("plans-table", plansSort, renderPlans);
@@ -1405,17 +1434,19 @@ function renderDashboardInner() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   const W = cssW, H = cssH;
   const PAD_L = Math.max(34, cssW * 0.05), PAD_B = Math.max(30, cssH * 0.08);
-  const PAD_T = 14, PAD_R = 12;
+  const PAD_T = 14, PAD_R = 30;
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
   const C = {
-    grid: cssVar("--border", "#e2e8f0"),
+    grid: cssVar("--chart-grid", cssVar("--border", "#e2e8f0")),
     axis: cssVar("--text-faint", "#94a3b8"),
     text: cssVar("--text-muted", "#64748b"),
     ring: cssVar("--text", "#0f172a"),
+    dot: cssVar("--chart-dot", "#94a3b8"),
+    dotStrong: cssVar("--chart-dot-strong", "#475569"),
     ok: cssVar("--success", "#0d9488"),
     bad: cssVar("--danger", "#dc2626"),
-    info: cssVar("--info", "#2563eb"),
-    primary: cssVar("--primary", "#0b57d0"),
+    info: cssVar("--info", "#0284c7"),
+    primary: cssVar("--primary", "#2563eb"),
   };
   // Hintergrund ZUERST und nur hier füllen (ein clearRect danach würde ihn wieder löschen)
   ctx.fillStyle = cssVar("--bg-elev", "#ffffff");
@@ -1443,8 +1474,14 @@ function renderDashboardInner() {
     const span = hi - lo, m = span * 0.08 || 1;
     return [lo - m, hi + m];
   };
-  const [xMin, xMax] = pad(quantile(xSorted, 0.02), quantile(xSorted, 0.98), xLog);
-  const [yMin, yMax] = pad(quantile(ySorted, 0.02), quantile(ySorted, 0.98), yLog);
+  const [xMin, xMax0] = pad(quantile(xSorted, 0.02), quantile(xSorted, 0.98), xLog);
+  const [yMin, yMax0] = pad(quantile(ySorted, 0.02), quantile(ySorted, 0.98), yLog);
+  // Lineare Achse nach oben auf einen runden Wert ziehen (58.3 -> 60), damit die
+  // Skala nicht mit einem krummen Anschlag endet. Log-Achsen bleiben wie sie sind.
+  const roundUpTo = (v, step) => Math.ceil(v / step) * step;
+  const ySpan = Math.max(1e-9, yMax0 - yMin);
+  const yMax = yLog ? yMax0 : roundUpTo(yMax0, Math.max(1, Math.round(ySpan / 5)));
+  const xMax = xMax0;
 
   const sx = (v) => PAD_L + (xLog ? (Math.log(v) - Math.log(xMin)) / (Math.log(xMax) - Math.log(xMin)) : (v - xMin) / (xMax - xMin)) * plotW;
   const sy = (v) => H - PAD_B - (yLog ? (Math.log(v) - Math.log(yMin)) / (Math.log(yMax) - Math.log(yMin)) : (v - yMin) / (yMax - yMin)) * plotH;
@@ -1486,6 +1523,13 @@ function renderDashboardInner() {
   }
   // Ticks + Grid (Mobile: höchstens 4)
   const maxTicks = cssW < 760 ? 4 : 6;
+  // Runde Schritte für lineare Achsen (23/32/41 wirkt willkürlich, 25/30/35 nicht)
+  const niceStep = (span, n) => {
+    const raw = span / Math.max(1, n);
+    const mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    for (const m of [1, 2, 2.5, 5, 10]) if (raw <= m * mag) return m * mag;
+    return 10 * mag;
+  };
   const tickVals = (log, min, max, n) => {
     if (log) {
       const out = [];
@@ -1493,19 +1537,35 @@ function renderDashboardInner() {
       while (v <= max && out.length < 8) { if (v >= min) out.push(v); v *= 10; }
       return out;
     }
+    const step = niceStep(max - min, n);
     const out = [];
-    for (let i = 0; i <= n; i++) out.push(min + ((max - min) * i) / n);
+    for (let v = Math.ceil(min / step) * step; v <= max + 1e-9; v += step) out.push(v);
     return out;
   };
-  const tickFmt = (m, v) => m === "price" ? fmtPrice(v) : (m === "score" ? v.toFixed(1) : fmtTokens(v));
+  // Rand-Tick auf eine runde Zahl runden (821M -> 800M): grosse Werte grob,
+  // kleine exakt. Liegt gerundet innerhalb der Achse, wird es beschriftet.
+  const round2 = (v) => {
+    const a = Math.abs(v);
+    const digits = a >= 1e8 ? 1 : 2;
+    const mag = Math.pow(10, Math.floor(Math.log10(a)) - (digits - 1));
+    return Math.round(v / mag) * mag;
+  };
+  const tickFmt = (m, v) => m === "price" ? fmtPrice(v) : (m === "score" ? String(Math.round(v)) : fmtTokens(round2(v)));
   const xTicks = tickVals(xLog, xMin, xMax, maxTicks);
   const yTicks = tickVals(yLog, yMin, yMax, maxTicks);
+  // Achse bis zum Rand beschriften: sonst wirkt die Skala kürzer als die Daten
+  const xStep = xLog ? 0 : niceStep(xMax - xMin, maxTicks);
+  const yStep = yLog ? 0 : niceStep(yMax - yMin, maxTicks);
+  if (xTicks.length && xMax - xTicks[xTicks.length - 1] > (xStep || (xMax - xMin) * 0.35) * 0.6) xTicks.push(xLog ? round2(xMax) : xMax);
+  if (yTicks.length && yMax - yTicks[yTicks.length - 1] > (yStep || (yMax - yMin) * 0.35) * 0.6) yTicks.push(yLog ? round2(yMax) : yMax);
   ctx.save();
   ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
   ctx.fillStyle = C.axis; ctx.textAlign = "center"; ctx.textBaseline = "top";
   for (const v of xTicks) {
     const X = sx(v);
     ctx.beginPath(); ctx.moveTo(X, PAD_T); ctx.lineTo(X, H - PAD_B); ctx.stroke();
+    // Letzter Tick klebt sonst am Rand: dann rechtsbündig beschriften
+    ctx.textAlign = X > W - PAD_R - 16 ? "right" : "center";
     ctx.fillText(tickFmt(dashX, v), X, H - PAD_B + 6);
   }
   ctx.textAlign = "right"; ctx.textBaseline = "middle";
@@ -1564,13 +1624,31 @@ function renderDashboardInner() {
     }
     ctx.restore();
   }
-  // Auswahl-Ring: zeigt, welcher Punkt aktiv ist
+  // Nichts ausgewählt? Dann den stärksten Punkt IM sichtbaren Bereich zeigen.
+  // Punkte außerhalb der Skala (Perzentil-Cut) würden im Panel stehen, aber im
+  // Plot unsichtbar sein.
+  if (!dashSelected && px.length) {
+    const inView = px.filter((p) => p.px >= PAD_L && p.px <= PAD_L + plotW && p.py >= PAD_T && p.py <= H - PAD_B);
+    const pool = inView.length ? inView : px;
+    const cand = frontier.length
+      ? pool.filter((p) => frontier.some((f) => f.combo.planId === p.combo.planId && f.combo.model === p.combo.model))
+      : [];
+    const use = cand.length ? cand : pool;
+    let best = use[0];
+    for (const p of use) if ((p.y ?? -Infinity) > (best.y ?? -Infinity)) best = p;
+    dashSelected = `${best.combo.planId}::${best.combo.model}`;
+    showDashDetail(best);
+  }
+  // Auswahl-Ring: zeigt, welcher Punkt aktiv ist (weißer Halo + Akzentring)
   if (dashSelected) {
     const sel = px.find((p) => `${p.combo.planId}::${p.combo.model}` === dashSelected);
     if (sel) {
+      const r = (sel.pr ?? 6) + 4.5;
       ctx.save();
-      ctx.strokeStyle = C.ring; ctx.lineWidth = 2.5;
-      ctx.beginPath(); ctx.arc(sel.px, sel.py, (sel.pr ?? 6) + 4.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(sel.px, sel.py, r + 1.5, 0, Math.PI * 2);
+      ctx.strokeStyle = cssVar("--bg-elev", "#ffffff"); ctx.lineWidth = 3; ctx.stroke();
+      ctx.beginPath(); ctx.arc(sel.px, sel.py, r, 0, Math.PI * 2);
+      ctx.strokeStyle = C.primary; ctx.lineWidth = 2.5; ctx.stroke();
       ctx.restore();
     } else dashSelected = null;
   }
