@@ -122,7 +122,6 @@ button { font: inherit; color: inherit; }
 
 .num, .mono { font-variant-numeric: tabular-nums; }
 td.t-right, .rail-stat b, .sl-val, .dg-v { font-variant-numeric: tabular-nums; }
-td.t-right, .rail-stat b, .sl-val, .dg-v { font-variant-numeric: tabular-nums; }
 .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .muted { color: var(--text-2); }
 .strong { font-weight: 600; }
@@ -239,7 +238,8 @@ td.t-right, .rail-stat b, .sl-val, .dg-v { font-variant-numeric: tabular-nums; }
 /* ---------------------------------------------------------------- layout */
 main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .view { display: none; }
-.view.active { display: block; }
+.view.active { display: block; animation: viewIn .18s ease-out; }
+@keyframes viewIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 .view > section { padding-top: 18px; }
 
 /* KPI strip: no boxes, just numbers on a line */
@@ -347,7 +347,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .sl-item:hover { color: var(--text); }
 .sl-item .sl-bar { width: 26px; height: 4px; border-radius: 99px; background: var(--accent); flex: none; }
 .sl-item .sl-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.sl-item .sl-val { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 600; }
+.sl-item .sl-val { font-variant-numeric: tabular-nums; color: var(--text); font-weight: 600; white-space: nowrap; flex: none; }
 
 /* ---------------------------------------------------------------- atoms */
 .btn {
@@ -663,8 +663,8 @@ main { view-transition-name: main-content; }
      die Karte breiter als das Display (Seitenversatz nach rechts). */
   .workbench > * { min-width: 0; max-width: 100%; }
   .chart-card { order: 1; }
-  .rail { order: 2; }
-  .detail-card { order: 3; }
+  .detail-card { order: 2; }
+  .rail { order: 3; }
   .tabs { scroll-behavior: smooth; }
 }
 @media (max-width: 760px) {
@@ -1374,6 +1374,6 @@ main { view-transition-name: main-content; }
 <div class="toast" id="toast"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
-<script src="app.js?v=ff096d5"></script>
+<script src="app.js?v=bab5f1e"></script>
 </body>
 </html>

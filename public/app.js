@@ -733,6 +733,17 @@ function cmdkRender(query) {
   }));
 }
 // Punkt im Chart auswählen (Palette, Shortlist, Tabelle)
+// Detail-Panel auf schmalen Displays ins Bild holen. Wird ausschliesslich nach
+// einer Nutzeraktion aufgerufen (Tippen auf Punkt, Shortlist, Palette): beim
+// Laden hatte ein automatisches Scrollen die Seite nach unten gezogen.
+function revealDetailOnNarrow() {
+  try {
+    if (!window.matchMedia || !window.matchMedia("(max-width: 900px)").matches) return;
+    const el = document.getElementById("dash-detail");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (e) { /* ignore */ }
+}
+
 function selectCombo(c) {
   const key = `${c.planId}::${c.model}`;
   const p = dashPoints.find((x) => `${x.combo.planId}::${x.combo.model}` === key);
@@ -740,6 +751,7 @@ function selectCombo(c) {
   if (p) showDashDetail(p);
   showView("overview");
   renderDashboard();
+  revealDetailOnNarrow();
 }
 function initPalette() {
   const trigger = $("#cmdk-trigger");
@@ -2135,6 +2147,7 @@ function renderShortlist(pts) {
     dashSelected = b.dataset.key;
     showDashDetail(p);
     renderDashboard();
+    revealDetailOnNarrow();
   }));
 }
 
@@ -2209,6 +2222,7 @@ function bindDashTooltip() {
     dashSelected = `${p.combo.planId}::${p.combo.model}`;
     showDashDetail(p);
     renderDashboard(); // Ring zeichnen
+    revealDetailOnNarrow(); // auf dem Phone liegt das Panel unter dem Chart
   };
   // Crosshair nur neu zeichnen, wenn sich der Punkt ändert (rAF-gebremst)
   let hoverRaf = null;
@@ -2456,10 +2470,10 @@ function showView(name) {
     window.scrollTo({ top: 0, behavior: "auto" });
     revealActiveTab();
   };
-  // Sanfter Übergang, wo der Browser View Transitions kann und Motion erlaubt ist
-  const noMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (document.startViewTransition && !noMotion) document.startViewTransition(apply);
-  else apply();
+  // Kein document.startViewTransition: der Aufruf wirft beim schnellen Wechsel
+  // "Transition was aborted" in die Konsole. Der Ansichtswechsel blendet per CSS
+  // ein (siehe .view.active), das ist ruhig und fehlerfrei.
+  apply();
 }
 function initTabs() {
   $$(".tab").forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
