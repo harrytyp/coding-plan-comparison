@@ -1325,7 +1325,43 @@ function paretoFrontier(points) {
   return frontier.sort((a, b) => a.x - b.x);
 }
 
+// Fehler im Plot nie stumm verschlucken: sichtbare Meldung im Panel, kopierbar
+function showPlotError(err) {
+  const msg = (err && (err.message || err.reason || String(err))) || "unknown error";
+  // Version mit ausgeben: unterscheidet kaputten Code von altem gecachten HTML
+  let ver = "?";
+  try {
+    const tag = document.querySelector('script[src*="app.js"]');
+    if (tag) ver = decodeURIComponent((tag.getAttribute("src").split("v=")[1] || "?").split("&")[0]);
+  } catch (e) { /* ignore */ }
+  const full = `${msg} [app.js ${ver}]`;
+  const note = $("#dash-note");
+  const plot = document.querySelector(".dash-plot");
+  if (note) note.textContent = (lang === "de" ? "Plot-Fehler: " : "Plot error: ") + full;
+  if (plot) {
+    let box = document.getElementById("dash-error");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "dash-error";
+      box.className = "dash-error";
+      plot.appendChild(box);
+    }
+    box.textContent = (lang === "de" ? "Diagramm konnte nicht gezeichnet werden: " : "Chart could not be drawn: ") + full;
+  }
+  try { console.error("[dashboard]", msg, err); } catch (e) { /* ignore */ }
+}
+
 function renderDashboard() {
+  try {
+    renderDashboardInner();
+    const box = document.getElementById("dash-error");
+    if (box) box.remove();
+  } catch (err) {
+    showPlotError(err);
+  }
+}
+
+function renderDashboardInner() {
   const canvas = $("#dash-canvas");
   const note = $("#dash-note");
   const resetBtn = $("#dash-reset-btn");

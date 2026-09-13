@@ -769,6 +769,15 @@ th[data-sort].sorted { color: var(--primary); }
 .linklike:hover { color: var(--text); }
 .more-row { display: flex; justify-content: center; padding: 14px 0 4px; }
 .more-row .btn { min-width: 200px; }
+/* Plot-Fehler sichtbar machen statt schwarzer Fläche */
+.dash-plot { position: relative; }
+.dash-error {
+  position: absolute; inset: 8px; display: flex; align-items: flex-start;
+  padding: 10px 12px; border-radius: 10px; font-size: 13px; line-height: 1.35;
+  background: var(--danger-soft, #fee2e2); color: var(--danger, #b91c1c);
+  border: 1px solid color-mix(in oklab, var(--danger, #b91c1c) 35%, transparent);
+  overflow: auto; z-index: 5;
+}
 footer { border-top: 1px solid var(--border); margin-top: 28px; background: var(--bg-elev); }
 footer .footer-inner { padding: 0; display: block; }
 
