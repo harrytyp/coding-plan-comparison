@@ -1293,7 +1293,13 @@ function renderDashboard() {
   const canvas = $("#dash-canvas");
   const note = $("#dash-note");
   const resetBtn = $("#dash-reset-btn");
-  if (!canvas || !canvas.getContext) return;
+  if (!canvas || !canvas.getContext) {
+    // Versions-Mismatch (altes HTML + neues JS oder umgekehrt): nicht schwarz bleiben
+    if (note) note.textContent = lang === "de"
+      ? "Plot startet nicht — bitte hart neu laden (Strg+Shift+R), dann passt es wieder."
+      : "Plot won't start — please hard-reload (Ctrl+Shift+R).";
+    return;
+  }
   // Achsen-Guards zuerst: ungültige Auswahl korrigieren, bevor Punkte fallen
   const ALLOWED_Y = ["score", "tokens", "req10", "rawtokens", "rawreq"];
   if (!ALLOWED_Y.includes(dashY)) { dashY = "score"; const ys = $("#dash-y"); if (ys) ys.value = "score"; }
@@ -1339,9 +1345,13 @@ function renderDashboard() {
     info: cssVar("--info", "#2563eb"),
     primary: cssVar("--primary", "#0b57d0"),
   };
+  // Expliziter Hintergrund: nie ein schwarzes Loch, auch bei Teilfehlern nicht
+  ctx.fillStyle = cssVar("--bg-elev", "#ffffff");
+  ctx.fillRect(0, 0, W, H);
 
   if (!points.length) {
-    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = cssVar("--bg-elev", "#ffffff");
+    ctx.fillRect(0, 0, W, H);
     dashPoints = [];
     if (note) note.textContent = t("dash.empty");
     if (resetBtn) { resetBtn.hidden = false; resetBtn.textContent = t("dash.emptyReset"); }
