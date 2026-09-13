@@ -2422,6 +2422,12 @@ const VIEW_ALIASES = {
   changelog: "changelog",
   legal: "legal", privacy: "legal", imprint: "legal", disclaimer: "legal",
 };
+// Aktiven Tab in Sicht holen: auf schmalen Displays laeuft die Leiste ueber
+function revealActiveTab() {
+  const tab = document.querySelector(".tab.active");
+  if (tab && tab.scrollIntoView) { try { tab.scrollIntoView({ inline: "center", block: "nearest" }); } catch (e) { /* ignore */ } }
+}
+
 function showView(name) {
   const view = VIEW_ALIASES[name] || "overview";
   const apply = () => {
@@ -2436,6 +2442,7 @@ function showView(name) {
     if (view === "overview") requestAnimationFrame(() => renderDashboard());
     try { history.replaceState(null, "", `#${view}`); } catch (e) { /* ignore */ }
     window.scrollTo({ top: 0, behavior: "auto" });
+    revealActiveTab();
   };
   // Sanfter Übergang, wo der Browser View Transitions kann und Motion erlaubt ist
   const noMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

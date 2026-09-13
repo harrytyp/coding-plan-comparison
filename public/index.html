@@ -651,6 +651,18 @@ main { view-transition-name: main-content; }
   .rail { position: static; }
   .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (max-width: 900px) {
+  /* Schmal: erst das Bild, dann die Regler. Wer die Seite oeffnet, will Daten
+     sehen, nicht zuerst Formularfelder. */
+  .workbench { display: flex; flex-direction: column; gap: 14px; }
+  /* Flex-Kinder schrumpfen nur mit min-width:0, sonst zwingt langer Inhalt
+     die Karte breiter als das Display (Seitenversatz nach rechts). */
+  .workbench > * { min-width: 0; max-width: 100%; }
+  .chart-card { order: 1; }
+  .rail { order: 2; }
+  .detail-card { order: 3; }
+  .tabs { scroll-behavior: smooth; }
+}
 @media (max-width: 760px) {
   .topbar-inner { height: 52px; padding: 0 14px; gap: 8px; }
   .brand-text { display: none; }
@@ -692,6 +704,7 @@ main { view-transition-name: main-content; }
   .sortable-table tbody td::before { content: attr(data-label); flex: none; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
   .sortable-table tbody tr.row-detail td::before { content: none; }
   .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .detail-grid .dg-v, .dash-detail-content, .dd-shortlist { overflow-wrap: anywhere; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
