@@ -32,6 +32,11 @@ const I18N = {
     "top.sub": "One row per plan, strongest model, ranked by tokens per unit paid.",
     "top.all": "All plans",
     "more.show": "Show more",
+    "fcomp.scale": "Bars share one scale, full width =",
+    "calc.th.plan": "Plan · model",
+    "calc.th.tokens": "Tokens / mo",
+    "calc.th.cost": "Price · left over",
+    "calc.nospare": "no headroom",
     "hero.h1": "AI coding subscriptions, compared",
     "hero.opendata": "Open Data",
     "hero.free": "no affiliate links",
@@ -266,6 +271,11 @@ const I18N = {
     "top.sub": "Eine Zeile pro Plan, stärkstes Modell, sortiert nach Tokens pro bezahlter Einheit.",
     "top.all": "Alle Pläne",
     "more.show": "Mehr anzeigen",
+    "fcomp.scale": "Balken teilen eine Skala, volle Breite =",
+    "calc.th.plan": "Plan · Modell",
+    "calc.th.tokens": "Tokens / Monat",
+    "calc.th.cost": "Preis · Rest",
+    "calc.nospare": "kein Spielraum",
     "hero.h1": "KI-Coding-Abos im Vergleich",
     "hero.opendata": "Offene Daten",
     "hero.free": "keine Affiliate-Links",
@@ -1938,12 +1948,10 @@ function renderCalculator() {
   list.innerHTML = top.map((c, i) => {
     const left = budgetUsd - c.price;
     return `<div class="calc-row">`
-      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}.</span><span class="calc-plan">${escapeHtml(c.planName)}</span>`
-      + `<span class="calc-model">${escapeHtml(c.model)}</span></div>`
-      + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span>`
-      + `<span class="muted">${t("calc.tokensMo")}</span></div>`
-      + `<div class="calc-nums"><span class="num">${fmtPrice(c.price)}</span>`
-      + `<span class="muted">${left > 0.005 ? fmtPrice(left) + " " + t("calc.leftover") : t("calc.price")}</span></div>`
+      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}<span class="calc-model">${escapeHtml(c.model)}</span></span></div>`
+      + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span></div>`
+      + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>`
+      + `<span class="sub">${left > 0.005 ? fmtPrice(left) + " " + t("calc.leftover") : t("calc.nospare")}</span></div>`
       + `</div>`;
   }).join("");
 }
@@ -2058,20 +2066,38 @@ function initMethodMore() {
 
 /* ============ FAMILIENVERGLEICH + CHANGELOG (reine Zahlen, kein Podest) ============ */
 function renderFamily() {
-  const tbody = $("#fcomp-tbody");
-  if (!tbody || !data) return;
+  const list = $("#fcomp-list");
+  if (!list || !data) return;
   const rows = (data.familyComparisons ?? []).slice().sort((a, b) => b.advantagePercent - a.advantagePercent);
-  if (!rows.length) { tbody.innerHTML = ""; return; }
+  if (!rows.length) { list.innerHTML = ""; return; }
   const shown = rows.slice(0, famLimit);
-  tbody.innerHTML = shown.map((r) => {
-    const win = r.winner && r.winner !== "draw"
-      ? `<span class="strong">${escapeHtml(r.winner)}</span>`
-      : `<span class="muted">${t("fcomp.winner.draw")}</span>`;
-    return `<tr><td data-label="${t("fcomp.th.family")}"><span class="strong">${escapeHtml(r.family)}</span></td>`
-      + `<td data-label="${t("fcomp.th.planA")}">${escapeHtml(r.planA)}<div class="muted num">${fmtNum(r.requestsA)} ${t("fcomp.th.reqA")}</div></td>`
-      + `<td data-label="${t("fcomp.th.planB")}">${escapeHtml(r.planB)}<div class="muted num">${fmtNum(r.requestsB)} ${t("fcomp.th.reqB")}</div></td>`
-      + `<td data-label="${t("fcomp.th.edge")}">${win}<div class="muted num">${fmtPct(r.advantagePercent)}</div></td></tr>`;
+  // planA/planB sind IDs ("opencode-go") — für die Anzeige die echten Namen nehmen
+  const nameMap = new Map((data.plans ?? []).map((p) => [p.id, p.name]));
+  const planName = (id) => nameMap.get(id) || id;
+  // Gemeinsame Skala über alle Zeilen: Balken sind dadurch zwischen Familien
+  // vergleichbar (pro Zeile normiert wäre jede Zeile "100 %").
+  const scaleMax = Math.max(1, ...shown.flatMap((r) => [Number(r.requestsA) || 0, Number(r.requestsB) || 0]));
+  const bar = (plan, val, max, isWin) => `<div class="fc-bar-row">`
+    + `<span class="fc-plan" title="${escapeHtml(plan)}">${escapeHtml(plan)}</span>`
+    + `<span class="fc-track"><span class="fc-fill${isWin ? " win" : ""}" style="width:${Math.max(1, (val / max) * 100).toFixed(1)}%"></span></span>`
+    + `<span class="fc-val num">${fmtNum(val)}</span></div>`;
+  list.innerHTML = shown.map((r) => {
+    const a = Number(r.requestsA) || 0, b = Number(r.requestsB) || 0;
+    const winA = a >= b;
+    const draw = !r.winner || r.winner === "draw";
+    const fam = String(r.family).replace(/\b\w/g, (ch) => ch.toUpperCase());
+    return `<div class="fc-row">`
+      + `<div class="fc-head">`
+      + `<span class="fc-family">${escapeHtml(fam)}</span>`
+      + (draw
+        ? `<span class="fc-delta draw">${t("fcomp.winner.draw")}</span>`
+        : `<span class="fc-delta ${winA ? "up" : "down"}">${escapeHtml(planName(r.winner))} +${fmtPct(r.advantagePercent)}</span>`)
+      + `</div>`
+      + `<div class="fc-bars">${bar(planName(r.planA), a, scaleMax, winA)}${bar(planName(r.planB), b, scaleMax, !winA)}</div>`
+      + `</div>`;
   }).join("");
+  const legend = $("#fcomp-legend");
+  if (legend) legend.textContent = `${t("fcomp.scale")} ${fmtNum(scaleMax)}`;
   const moreBtn = $("#fcomp-more");
   if (moreBtn) {
     const rest = rows.length - shown.length;

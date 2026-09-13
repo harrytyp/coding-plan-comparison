@@ -450,31 +450,71 @@ main { view-transition-name: main-content; }
 .col-picker-panel input, .sheet-cols input { accent-color: var(--primary); }
 
 /* ---------------- calculator ---------------- */
-.calc-controls { display: flex; flex-wrap: wrap; gap: 24px; padding: 18px 20px; border-bottom: 1px solid var(--border); }
-.calc-ctl { flex: 1 1 260px; display: flex; flex-direction: column; gap: 8px; }
-.calc-ctl label { font-size: 13px; font-weight: 600; color: var(--text-muted); }
-.calc-range { width: 100%; accent-color: var(--primary); }
-.calc-input {
-  padding: 7px 10px; font-size: 14px; font-variant-numeric: tabular-nums;
+.calc-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 18px 20px; border-bottom: 1px solid var(--border); }
+.calc-ctl { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.calc-ctl > span:first-child { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint); }
+.calc-money {
+  display: flex; align-items: stretch; width: 100%; max-width: 260px;
   border: 1px solid var(--border-strong); border-radius: var(--radius-sm);
-  background: var(--bg-elev); color: var(--text);
+  background: var(--bg-elev); overflow: hidden;
 }
-.calc-budget-out, .calc-score-out { font-size: 15px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.calc-money .sym {
+  display: inline-flex; align-items: center; padding: 0 12px;
+  background: var(--bg-muted); color: var(--text-muted); font-weight: 700; font-size: 13px;
+  border-right: 1px solid var(--border);
+}
+.calc-money input {
+  flex: 1 1 auto; min-width: 0; border: 0; outline: none; background: transparent;
+  padding: 9px 12px; font-size: 15px; font-weight: 700; color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.calc-range-row { display: flex; align-items: center; gap: 10px; width: 100%; }
+.calc-range-row .num { font-size: 11.5px; color: var(--text-faint); }
+.calc-range { flex: 1 1 auto; width: auto; max-width: 300px; accent-color: var(--primary); }
+.calc-out { font-size: 13px; color: var(--text-muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.calc-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) 130px 150px; gap: 14px;
+  padding: 10px 20px; border-bottom: 1px solid var(--border-strong);
+  font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--text-muted); background: var(--bg-muted);
+}
+.calc-head span:nth-child(2), .calc-head span:nth-child(3) { text-align: right; }
 .calc-results { display: flex; flex-direction: column; }
 .calc-row {
-  display: flex; align-items: center; gap: 14px; padding: 12px 20px; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: minmax(0, 1fr) 130px 150px; align-items: center;
+  gap: 14px; padding: 12px 20px; border-bottom: 1px solid var(--border);
 }
-.calc-row:hover { background: var(--bg-muted); }
+.calc-row:last-child { border-bottom: 0; }
 .calc-ranknum {
-  width: 24px; height: 24px; flex: none; border-radius: 50%; background: var(--bg-muted);
-  color: var(--text-muted); font-size: 12px; font-weight: 700; display: inline-flex;
+  width: 22px; height: 22px; flex: none; border-radius: 50%; background: var(--primary-soft);
+  color: var(--primary); font-size: 11.5px; font-weight: 800; display: inline-flex;
   align-items: center; justify-content: center; font-variant-numeric: tabular-nums;
 }
-.calc-plan { flex: 1 1 auto; min-width: 0; }
-.calc-main { font-weight: 700; }
-.calc-model { font-size: 12.5px; color: var(--text-muted); }
-.calc-nums { text-align: right; font-variant-numeric: tabular-nums; }
-.calc-nums .big { font-weight: 700; }
+.calc-main { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.calc-plan { display: flex; flex-direction: column; min-width: 0; font-weight: 700; font-size: 14px; }
+.calc-model { font-size: 12.5px; font-weight: 400; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.calc-nums { text-align: right; font-variant-numeric: tabular-nums; font-size: 14px; }
+.calc-nums .sub { display: block; font-size: 12px; font-weight: 400; color: var(--text-muted); }
+
+/* ---------------- Familienvergleich: A/B-Balken statt Tabelle ---------------- */
+.fc-list { padding: 10px 20px 6px; }
+.fc-legend { font-size: 12px; color: var(--text-faint); margin-top: 4px; font-variant-numeric: tabular-nums; }
+.fc-row { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.fc-row:last-child { border-bottom: 0; }
+.fc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 9px; }
+.fc-family { font-weight: 700; font-size: 14px; }
+.fc-plan, .fc-val { text-transform: none; }
+.fc-delta { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.fc-delta.up { background: var(--primary-soft); color: var(--primary); }
+.fc-delta.down { background: var(--bg-muted); color: var(--text-muted); }
+.fc-delta.draw { background: var(--bg-muted); color: var(--text-faint); }
+.fc-bars { display: flex; flex-direction: column; gap: 5px; }
+.fc-bar-row { display: grid; grid-template-columns: minmax(96px, 160px) minmax(0, 1fr) auto; align-items: center; gap: 10px; font-size: 12.5px; }
+.fc-plan { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fc-track { height: 8px; background: var(--bg-muted); border-radius: 99px; overflow: hidden; }
+.fc-fill { display: block; height: 100%; background: var(--border-strong); border-radius: 99px; }
+.fc-fill.win { background: var(--primary); }
+.fc-val { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 70px; text-align: right; }
 
 /* ---------------- changelog / method / faq / legal ---------------- */
 .cl-list { padding: 6px 20px 16px; }
@@ -616,7 +656,14 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
     text-transform: uppercase; letter-spacing: .05em; color: var(--text-faint);
   }
   .sortable-table tbody td:empty { display: none; }
-  .calc-row { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
+  .calc-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 4px; padding: 12px 14px; }
+  .calc-row .calc-nums:last-child { grid-column: 2; }
+  .calc-head { grid-template-columns: minmax(0, 1fr) auto; padding: 9px 14px; }
+  .calc-head span:nth-child(2) { display: none; }
+  .calc-controls { padding: 14px; gap: 14px; }
+  .fc-list { padding: 8px 14px 4px; }
+  .fc-bar-row { grid-template-columns: minmax(70px, 104px) minmax(0, 1fr) auto; gap: 8px; }
+  .fc-val { min-width: 56px; }
   .cl-row { flex-direction: column; gap: 2px; }
   .cl-date { width: auto; }
   .footer-row { padding: 18px 14px; }
@@ -993,21 +1040,10 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
     <div class="section-head">
       <h2 data-i18n="fcomp.h2">Same model, different plans</h2>
       <p data-i18n="fcomp.sub">Request rate per $1 paid for one model family across plans. Plain numbers, no podium.</p>
+      <p class="fc-legend" id="fcomp-legend"></p>
     </div>
-    <div class="table-wrap">
-      <table id="fcomp-table" class="sortable-table">
-        <thead>
-          <tr>
-            <th data-i18n="fcomp.th.family">Model family</th>
-            <th data-i18n="fcomp.th.planA">Plan A</th>
-            <th data-i18n="fcomp.th.planB">Plan B</th>
-            <th data-i18n="fcomp.th.edge">Difference</th>
-          </tr>
-        </thead>
-        <tbody id="fcomp-tbody">
-          <tr class="skel-row"><td colspan="4"><div class="skel"></div><div class="skel"></div></td></tr>
-        </tbody>
-      </table>
+    <div class="fc-list" id="fcomp-list">
+      <div class="skel-row"><div class="skel"></div><div class="skel"></div></div>
     </div>
     <div class="more-row"><button class="btn" id="fcomp-more" type="button" hidden></button></div>
   </section>
@@ -1025,15 +1061,25 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
     <div class="calc-controls">
       <label class="calc-ctl">
         <span data-i18n="calc.budget">Budget / mo</span>
-        <span class="calc-cur" id="calc-cur">$</span>
-        <input type="number" id="calc-budget" class="calc-input" min="0" step="1" value="20">
-        <output id="calc-budget-out" class="calc-out num"></output>
+        <span class="calc-money">
+          <span class="sym" id="calc-cur">$</span>
+          <input type="number" id="calc-budget" min="0" step="1" value="20">
+        </span>
       </label>
       <label class="calc-ctl">
         <span data-i18n="calc.score">Min AI score</span>
-        <input type="range" id="calc-score" class="calc-range" min="0" max="70" step="1" value="0">
+        <span class="calc-range-row">
+          <span class="num" id="calc-score-min">0</span>
+          <input type="range" id="calc-score" class="calc-range" min="0" max="70" step="1" value="0">
+          <span class="num" id="calc-score-max">70</span>
+        </span>
         <output id="calc-score-out" class="calc-out num"></output>
       </label>
+    </div>
+    <div class="calc-head">
+      <span data-i18n="calc.th.plan">Plan · model</span>
+      <span data-i18n="calc.th.tokens">Tokens / mo</span>
+      <span data-i18n="calc.th.cost">Price · left</span>
     </div>
     <div id="calc-results" class="calc-results"></div>
     <p class="table-note" id="calc-empty" hidden></p>
