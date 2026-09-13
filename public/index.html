@@ -740,6 +740,108 @@ th[data-sort].sorted { color: var(--primary); }
   font-size: 20px; cursor: pointer; box-shadow: var(--shadow-md);
 }
 
+/* ============ APP-HEADER (kompakt, ersetzt den Marketing-Hero) ============ */
+.app-header {
+  max-width: var(--maxw); margin: 0 auto; padding: 18px 20px 4px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.app-header h1 {
+  font-family: var(--font-display); font-size: clamp(20px, 2.4vw, 27px);
+  margin: 0; font-weight: 700; letter-spacing: 0;
+}
+.app-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-faint); margin-top: 4px; }
+.app-meta .dot { display: inline-flex; align-items: center; gap: 5px; }
+.app-meta .live { width: 7px; height: 7px; border-radius: 50%; background: var(--success); display: inline-block; }
+#disclaimer {
+  margin: 0; padding: 10px 14px; border-radius: 10px; font-size: 13px;
+  background: var(--warn-soft); border: 1px solid color-mix(in oklab, var(--warn) 30%, transparent);
+}
+.footer-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  max-width: var(--maxw); margin: 0 auto; padding: 18px 20px; font-size: 13px; color: var(--text-faint);
+}
+.footer-links { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.footer-links a { color: var(--text-muted); }
+.linklike {
+  border: none; background: none; padding: 0; cursor: pointer;
+  color: var(--text-muted); font: inherit; text-decoration: underline;
+}
+.linklike:hover { color: var(--text); }
+.more-row { display: flex; justify-content: center; padding: 14px 0 4px; }
+.more-row .btn { min-width: 200px; }
+footer { border-top: 1px solid var(--border); margin-top: 28px; background: var(--bg-elev); }
+footer .footer-inner { padding: 0; display: block; }
+
+/* ============ APP-SHELL / DASHBOARD ============ */
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 32px; }
+/* Eine einzige Navigation: horizontale Tab-Leiste statt zweier Menüs */
+.tabs {
+  position: sticky; top: 56px; z-index: 45;
+  display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 10px;
+  background: color-mix(in oklab, var(--bg) 94%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: 0 0 auto; padding: 8px 14px; border-radius: 8px; border: 1px solid transparent;
+  background: none; color: var(--text-muted); font-family: var(--font);
+  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.tab:hover { background: var(--bg-muted); color: var(--text); }
+.tab.active { background: var(--bg-elev); border-color: var(--border-strong); color: var(--text); box-shadow: var(--shadow-sm); }
+.view { display: none; }
+.view.active { display: block; }
+.view > section, .view > .panel { margin: 0; padding: 24px 0 0; max-width: none; }
+
+/* KPI-Kacheln: kompakt, immer im Blick */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.kpi {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.kpi .k { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+.kpi .v { font-size: 24px; font-weight: 700; margin-top: 2px; letter-spacing: 0; }
+.kpi .s { font-size: 12px; color: var(--text-faint); }
+
+/* Panels: Dashboard-Karten statt Seiten-Sektionen */
+.panel {
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 20px; box-shadow: var(--shadow-sm);
+}
+.panel + .panel { margin-top: 16px; }
+.panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+.panel-head h2 { font-family: var(--font-display); font-size: 19px; margin: 0; font-weight: 700; }
+.panel-head h3 { font-size: 16px; margin: 0; font-weight: 700; }
+.panel-head p { margin: 2px 0 0; font-size: 13.5px; color: var(--text-muted); }
+.grid-2 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; align-items: start; }
+@media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+@media (max-width: 760px) {
+  main { padding: 0 14px 24px; }
+  .tabs { top: 52px; }
+  .tab { padding: 9px 12px; font-size: 13.5px; }
+  .panel { padding: 14px 14px; }
+  .view > section, .view > .panel { padding-top: 16px; }
+  /* Kompakter Kopf, damit der Chart früher ins Bild kommt */
+  .app-header { padding: 12px 14px 2px; gap: 6px; }
+  .app-header h1 { font-size: 19px; }
+  .app-meta { font-size: 11.5px; gap: 10px; }
+  #disclaimer { font-size: 12px; padding: 8px 10px; }
+  .kpi { padding: 10px 11px; }
+  .kpi .v { font-size: 23px; }
+  .kpi-grid { gap: 8px; }
+  .panel-head { padding: 12px 14px; }
+  .panel-head h2, .panel-head h3 { font-size: 15.5px; }
+  /* Controls einklappen: der Chart gehört auf Mobile zuerst ins Bild */
+  .dash-controls.collapsed { display: none !important; }
+  .dash-target-input { width: 84px; min-height: 40px; font-size: 15px; }
+  .dash-ctl select { width: 100%; }
+  .dash-ctl { width: 100%; justify-content: space-between; }
+  .dash-note-row { flex-direction: column; align-items: flex-start; }
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 760px) {
   .nav-links { display: none; }
@@ -767,15 +869,6 @@ th[data-sort].sorted { color: var(--primary); }
       <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0b57d0"/><path d="M18 20h28v6H18zm0 10h28v6H18zm0 10h18v6H18z" fill="#fff"/></svg>
       <span class="brand-text" data-i18n="nav.brand">Coding Plan Compare</span>
     </a>
-    <div class="nav-links">
-      <a href="#pareto" data-i18n="nav.pareto">Pareto</a>
-      <a href="#calc" data-i18n="nav.calc">Calculator</a>
-      <a href="#plans" data-i18n="nav.plans">Plans</a>
-      <a href="#models" data-i18n="nav.models">Models</a>
-      <a href="#changelog" data-i18n="nav.changelog">Changelog</a>
-      <a href="#method" data-i18n="nav.method">Methodology</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
-    </div>
     <div class="nav-spacer"></div>
     <div class="nav-controls" id="nav-controls">
       <select id="currency-select" class="currency-select" aria-label="Currency">
@@ -793,67 +886,55 @@ th[data-sort].sorted { color: var(--primary); }
         <button data-lang="de">DE</button>
       </div>
     </div>
-    <button class="burger-btn" id="burger-btn" type="button" aria-expanded="false" aria-label="Menu">☰</button>
-  </div>
-  <div class="burger-panel" id="burger-panel" hidden>
-    <nav class="burger-links">
-      <a href="#pareto" data-i18n="nav.pareto">Pareto</a>
-      <a href="#calc" data-i18n="nav.calc">Calculator</a>
-      <a href="#plans" data-i18n="nav.plans">Plans</a>
-      <a href="#models" data-i18n="nav.models">Models</a>
-      <a href="#changelog" data-i18n="nav.changelog">Changelog</a>
-      <a href="#method" data-i18n="nav.method">Methodology</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
-    </nav>
-    <div class="menu-controls" id="menu-controls">
-      <label class="menu-row"><span data-i18n="menu.currency">Currency</span><span class="menu-slot" id="slot-currency"></span></label>
-      <label class="menu-row"><span data-i18n="menu.theme">Design</span><span class="menu-slot" id="slot-theme"></span></label>
-      <label class="menu-row"><span data-i18n="menu.language">Language</span><span class="menu-slot" id="slot-lang"></span></label>
-    </div>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<header class="hero">
-  <div class="hero-badge">
-    <span class="live"></span>
-    <span data-i18n="hero.live">Live data · auto-updated daily</span>
+<!-- ===== APP-HEADER (kompakt) ===== -->
+<header class="app-header">
+  <div class="app-title">
+    <h1 data-i18n="hero.h1">AI coding subscriptions, compared</h1>
+    <div class="app-meta">
+      <span class="dot"><span class="live"></span> <span id="meta-sources" data-i18n="hero.sources">live sources</span></span>
+      <span class="dot" id="meta-updated"></span>
+      <span class="dot" data-i18n="hero.free">open data · no affiliate links</span>
+    </div>
   </div>
-  <h1><span data-i18n="hero.h1a">AI Coding Subscriptions,</span><br><span class="grad" data-i18n="hero.h1b">Compared Honestly.</span></h1>
-  <p class="lead" data-i18n="hero.lead">"60 for 10" is only the sticker price. We compare what you actually get — real token economics, provider credit formulas, cache-aware cost per request — from live official sources, reproduced daily.</p>
-  <div class="hero-cta">
-    <a class="btn btn-primary" href="#plans" data-i18n="hero.cta1">Compare plans</a>
-    <a class="btn" href="#calc" data-i18n="hero.cta3">Budget calculator</a>
-    <a class="btn" href="#method" data-i18n="hero.cta2">How it works</a>
-  </div>
-  <div class="hero-meta">
-    <span class="dot"><span class="live"></span> <span id="meta-sources" data-i18n="hero.sources">live sources</span></span>
-    <span class="dot" id="meta-updated"></span>
-    <span class="dot" data-i18n="hero.free">Free · open data · no affiliate links</span>
-  </div>
-  <div class="disclaimer" id="disclaimer" style="display:none;margin-top:24px;max-width:720px;margin-left:auto;margin-right:auto;padding:12px 18px;border-radius:10px;background:var(--warn-soft);border:1px solid color-mix(in oklab, var(--warn) 30%, transparent);font-size:13.5px;color:var(--text);text-align:left">
+  <div class="disclaimer" id="disclaimer" hidden>
     <strong id="disclaimer-title"></strong> <span id="disclaimer-text"></span>
   </div>
 </header>
 
 <main id="main">
-  <!-- ===== STATS ===== -->
+  <!-- ===== EINE Navigation: Tab-Leiste ===== -->
+  <nav class="tabs" id="tabs" role="tablist">
+    <button class="tab active" type="button" role="tab" data-view="overview" data-i18n="tab.overview">Overview</button>
+    <button class="tab" type="button" role="tab" data-view="plans" data-i18n="tab.plans">Plans</button>
+    <button class="tab" type="button" role="tab" data-view="calc" data-i18n="tab.calc">Calculator</button>
+    <button class="tab" type="button" role="tab" data-view="method" data-i18n="tab.method">Methodology</button>
+    <button class="tab" type="button" role="tab" data-view="changelog" data-i18n="tab.changelog">Changelog</button>
+  </nav>
+
+  <!-- ===== VIEW: ÜBERSICHT ===== -->
+  <div class="view active" id="view-overview">
   <section id="stats">
-    <div class="stats-grid" id="stats-grid">
-      <div class="stat-card"><div class="label" data-i18n="stats.plans">Plans tracked</div><div class="value num" id="stat-plans">—</div><div class="sub" id="stat-plans-sub"></div></div>
-      <div class="stat-card"><div class="label" data-i18n="stats.comparable">Directly comparable</div><div class="value num" id="stat-comparable">—</div><div class="sub" data-i18n="stats.comparable-sub">with full model pricing</div></div>
-      <div class="stat-card"><div class="label" data-i18n="stats.models">Model families</div><div class="value num" id="stat-models">—</div><div class="sub" data-i18n="stats.models-sub">matched across plans</div></div>
-      <div class="stat-card"><div class="label" data-i18n="stats.sources">Live sources</div><div class="value num" id="stat-sources">—</div><div class="sub" data-i18n="stats.sources-sub">official feeds & docs</div></div>
+    <div class="kpi-grid" id="stats-grid">
+      <div class="kpi"><div class="k" data-i18n="stats.plans">Plans tracked</div><div class="v num" id="stat-plans">—</div><div class="s" id="stat-plans-sub"></div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.comparable">Directly comparable</div><div class="v num" id="stat-comparable">—</div><div class="s" data-i18n="stats.comparable-sub">with full model pricing</div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.models">Model families</div><div class="v num" id="stat-models">—</div><div class="s" data-i18n="stats.models-sub">matched across plans</div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.sources">Live sources</div><div class="v num" id="stat-sources">—</div><div class="s" data-i18n="stats.sources-sub">official feeds & docs</div></div>
     </div>
   </section>
 
   <!-- ===== EINE TABELLE: Plan + Modell-Kombinationen ===== -->
   
-  <!-- ===== PARETO DASHBOARD (eigene Sektion) ===== -->
-  <section id="pareto">
-    <div class="section-head">
-      <h2 data-i18n="dash.h3">Pareto dashboard</h2>
-      <p data-i18n="dash.sub">Each dot is one plan with one model. Default: tokens per money against AI score. Tap a dot for details.</p>
+  <!-- ===== PANEL: PARETO / LAGEBILD ===== -->
+  <section id="pareto" class="panel">
+    <div class="panel-head">
+      <div>
+        <h2 data-i18n="dash.h3">Positioning</h2>
+        <p data-i18n="dash.sub">One dot per plan and model. Default: tokens per money against AI score. Click a dot for details.</p>
+      </div>
+      <button class="btn" id="dash-ctrl-toggle" type="button" data-i18n="dash.controls" hidden>Axes &amp; target</button>
     </div>
     <div class="dash-controls" id="dash-controls">
       <label class="dash-ctl">
@@ -920,10 +1001,43 @@ th[data-sort].sorted { color: var(--primary); }
     </div>
   </section>
 
-<section id="plans">
-    <div class="section-head">
-      <h2 data-i18n="plans.h2">Plans and models, compared</h2>
-      <p data-i18n="plans.sub">Every plan and model combination. Token and request rates are per 1 paid unit in your currency — a rate, not something you can stack.</p>
+  <!-- ===== PANEL: BESTE RATE ===== -->
+  <section class="panel" id="top-panel">
+    <div class="panel-head">
+      <div>
+        <h3 data-i18n="top.h3">Best value right now</h3>
+        <p data-i18n="top.sub">One row per plan, strongest model, ranked by tokens per unit paid.</p>
+      </div>
+      <button class="btn" id="top-open-plans" type="button" data-i18n="top.all">All plans</button>
+    </div>
+    <div class="table-wrap">
+      <table class="sortable-table">
+        <thead>
+          <tr>
+            <th data-i18n="plans.th.plan">Plan</th>
+            <th data-i18n="plans.th.model">Model</th>
+            <th data-i18n="plans.th.score">AI score</th>
+            <th data-i18n="plans.th.tokens">Tokens / $</th>
+            <th data-i18n="plans.th.rawtokens">Tokens / mo</th>
+            <th data-i18n="plans.th.price">Plan price / mo</th>
+          </tr>
+        </thead>
+        <tbody id="top-tbody">
+          <tr class="skel-row"><td colspan="6"><div class="skel"></div><div class="skel"></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </div><!-- /view-overview -->
+
+  <!-- ===== VIEW: PLÄNE ===== -->
+  <div class="view" id="view-plans">
+  <section id="plans" class="panel">
+    <div class="panel-head">
+      <div>
+        <h2 data-i18n="plans.h2">All plans and models</h2>
+        <p data-i18n="plans.sub">Token and request rates are per 1 paid unit in your currency — a rate, not something you can stack.</p>
+      </div>
     </div>
     <!-- Sortier-Leiste: IMMER sichtbar (Mobile + Desktop) -->
     <div class="sort-bar" id="sort-bar">
@@ -1098,12 +1212,11 @@ th[data-sort].sorted { color: var(--primary); }
         </tbody>
       </table>
     </div>
-
-    
+    <div class="more-row"><button class="btn" id="plans-more" type="button" hidden></button></div>
   </section>
 
   <!-- ===== MODELLE: gleiche Familie über Pläne ===== -->
-  <section id="models">
+  <section id="models" class="panel">
     <div class="section-head">
       <h2 data-i18n="fcomp.h2">Same model, different plans</h2>
       <p data-i18n="fcomp.sub">Request rate per $1 paid for one model family across plans. Plain numbers, no podium.</p>
@@ -1123,10 +1236,15 @@ th[data-sort].sorted { color: var(--primary); }
         </tbody>
       </table>
     </div>
+    <div class="more-row"><button class="btn" id="fcomp-more" type="button" hidden></button></div>
   </section>
 
+  </div><!-- /view-plans -->
+
+  <!-- ===== VIEW: RECHNER ===== -->
+  <div class="view" id="view-calc">
   <!-- ===== BUDGET-RECHNER (ein Abo pro Konto, kein Stacking) ===== -->
-  <section id="calc">
+  <section id="calc" class="panel">
     <div class="section-head">
       <h2 data-i18n="calc.h2">Budget calculator</h2>
       <p data-i18n="calc.sub">One subscription per account, no stacking. Enter what you pay per month and see the most tokens each single plan buys you.</p>
@@ -1149,8 +1267,12 @@ th[data-sort].sorted { color: var(--primary); }
     <p class="table-note" data-i18n="calc.note">Ranked by monthly tokens.</p>
   </section>
 
+  </div><!-- /view-calc -->
+
+  <!-- ===== VIEW: CHANGELOG ===== -->
+  <div class="view" id="view-changelog">
   <!-- ===== CHANGELOG ===== -->
-  <section id="changelog">
+  <section id="changelog" class="panel">
     <div class="section-head">
       <h2 data-i18n="cl.h2">Changelog</h2>
       <p data-i18n="cl.sub">What changed for you, newest first.</p>
@@ -1158,6 +1280,10 @@ th[data-sort].sorted { color: var(--primary); }
     <div id="cl-list" class="cl-list"></div>
   </section>
 
+  </div><!-- /view-changelog -->
+
+  <!-- ===== VIEW: METHODIK ===== -->
+  <div class="view" id="view-method">
   <!-- ===== METHOD ===== -->
   <section id="method">
     <div class="section-head">
@@ -1207,7 +1333,7 @@ th[data-sort].sorted { color: var(--primary); }
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section id="faq">
+  <section id="faq" class="panel">
     <div class="section-head">
       <h2 data-i18n="faq.h2">Frequently asked questions</h2>
     </div>
@@ -1249,6 +1375,10 @@ th[data-sort].sorted { color: var(--primary); }
     </details>
   </section>
 
+  </div><!-- /view-method -->
+
+  <!-- ===== VIEW: RECHTLICHES ===== -->
+  <div class="view" id="view-legal">
   <!-- ===== LEGAL ===== -->
   <section id="legal" class="legal-section">
     <div class="section-head">
@@ -1271,7 +1401,7 @@ th[data-sort].sorted { color: var(--primary); }
       <h3 data-i18n="legal.imprint.h3">Imprint / Provider identification</h3>
       <div data-i18n="legal.imprint.body">
         <p>This website is operated by an individual maintainer on a non-commercial, informational basis.</p>
-        <p>Operator: <span class="legal-placeholder">[Name or pseudonym]</span><br>Contact: <span class="legal-placeholder">[contact email]</span></p>
+        <p>Operator: Kolja Knodel<br>Contact: <a href=https://github.com/harrytyp>GitHub: harrytyp</a></p>
         <p>As a private, non-commercial website, a full postal address is not required. If this service becomes commercial or targets the DACH region, the imprint must be extended (e.g. §5 DDG in Germany) with your full name and address.</p>
       </div>
     </div>
@@ -1285,49 +1415,21 @@ th[data-sort].sorted { color: var(--primary); }
       </div>
     </div>
   </section>
+  </div><!-- /view-legal -->
 </main>
 
-<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER (schlank, ein Block) ===== -->
 <footer>
   <div class="footer-inner">
-    <div class="col">
-      <h4 data-i18n="foot.product">Product</h4>
-      <ul>
-        <li><a href="#plans" data-i18n="foot.plans">Plans</a></li>
-        <li><a href="#models" data-i18n="foot.models">Model comparison</a></li>
-        <li><a href="#changelog" data-i18n="nav.changelog">Changelog</a></li>
-        <li><a href="#method" data-i18n="foot.method">Methodology</a></li>
-        <li><a href="#faq" data-i18n="foot.faq">FAQ</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h4 data-i18n="foot.data">Data</h4>
-      <ul>
-        <li><a href="data/latest.json" target="_blank" data-i18n="foot.json">latest.json (API)</a></li>
-        <li><a href="https://github.com/harrytyp/coding-plan-comparison" target="_blank" data-i18n="foot.repo">GitHub</a></li>
-        <li><a href="https://github.com/harrytyp/coding-plan-comparison/blob/main/sources.yml" target="_blank" data-i18n="foot.sources">sources.yml</a></li>
-        <li><small><a href="https://llm-stats.com" target="_blank" data-i18n="foot.llmstats">AI scores: llm-stats.com</a></small></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h4 data-i18n="foot.legal">Note</h4>
-      <ul>
-        <li><span data-i18n="foot.note">Independent & informational. We don't sell plans and have no affiliate links. Always confirm on the official provider page.</span></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h4 data-i18n="foot.legalTitle">Legal</h4>
-      <ul>
-        <li><a href="#privacy" data-i18n="foot.privacy">Privacy</a></li>
-        <li><a href="#imprint" data-i18n="foot.imprint">Imprint</a></li>
-        <li><a href="#disclaimer" data-i18n="foot.disclaimer">Disclaimer</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="inner">
-      <span data-i18n="foot.rights">© 2026 Coding Plan Compare · MIT License</span>
-      <span data-i18n="foot.lang">English · Deutsch</span>
+    <div class="footer-row">
+      <span data-i18n="foot.rights">© 2026 Coding Plan Compare · MIT license</span>
+      <span class="footer-links">
+        <a href="data/latest.json" target="_blank" data-i18n="foot.json">latest.json (API)</a>
+        <a href="https://github.com/harrytyp/coding-plan-comparison" target="_blank" data-i18n="foot.repo">GitHub</a>
+        <a href="https://github.com/harrytyp/coding-plan-comparison/blob/main/sources.yml" target="_blank" data-i18n="foot.sources">sources.yml</a>
+        <a href="https://llm-stats.com" target="_blank" data-i18n="foot.llmstats">AI scores: llm-stats.com</a>
+        <button class="linklike" id="open-legal" type="button" data-i18n="foot.legalTitle">Legal</button>
+      </span>
     </div>
   </div>
 </footer>

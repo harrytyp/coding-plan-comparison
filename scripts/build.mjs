@@ -816,6 +816,13 @@ async function main() {
       comparablePlans: comparablePlans.length,
       plansWithModels: planSummaries.filter((p) => p.modelCount > 0).length,
       undisclosed: planSummaries.filter((p) => p.disclosure === "undisclosed").length,
+      sourceCount: (() => {
+        // Definierte Quellen aus sources.yml (nicht nur die zwei Feeds im Build)
+        try {
+          const sy = parseYaml(readFileSync(join(ROOT, "sources.yml"), "utf8"));
+          return Array.isArray(sy.sources) ? sy.sources.length : null;
+        } catch (e) { return null; }
+      })(),
     },
     warnings,
   };

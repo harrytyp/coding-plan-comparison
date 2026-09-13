@@ -23,6 +23,16 @@ const I18N = {
     "menu.currency": "Currency",
     "menu.theme": "Design",
     "menu.language": "Language",
+    "tab.overview": "Overview",
+    "tab.plans": "Plans",
+    "tab.calc": "Calculator",
+    "tab.method": "Methodology",
+    "tab.changelog": "Changelog",
+    "top.h3": "Best value right now",
+    "top.sub": "One row per plan, strongest model, ranked by tokens per unit paid.",
+    "top.all": "All plans",
+    "more.show": "Show more",
+    "hero.h1": "AI coding subscriptions, compared",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -102,7 +112,7 @@ const I18N = {
     "sort.model": "Model",
     "sort.desc": "desc",
     "sort.asc": "asc",
-    "dash.h3": "Pareto dashboard",
+    "dash.h3": "Positioning",
     "dash.sub": "Each dot is one plan with one model. Default: tokens per money against AI score. Tap a dot for details.",
     "dash.x": "X axis",
     "dash.y": "Y axis",
@@ -119,6 +129,7 @@ const I18N = {
     "dash.empty": "No data for the plot with these filters.",
     "dash.emptyReset": "Reset filters",
     "dash.legendToggle": "Legend",
+    "dash.controls": "Axes & target",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / mo",
@@ -238,6 +249,16 @@ const I18N = {
     "menu.currency": "Währung",
     "menu.theme": "Design",
     "menu.language": "Sprache",
+    "tab.overview": "Übersicht",
+    "tab.plans": "Pläne",
+    "tab.calc": "Rechner",
+    "tab.method": "Methodik",
+    "tab.changelog": "Changelog",
+    "top.h3": "Beste Rate gerade jetzt",
+    "top.sub": "Eine Zeile pro Plan, stärkstes Modell, sortiert nach Tokens pro bezahlter Einheit.",
+    "top.all": "Alle Pläne",
+    "more.show": "Mehr anzeigen",
+    "hero.h1": "KI-Coding-Abos im Vergleich",
     "nav.plans": "Pläne",
     "nav.models": "Modelle",
     "nav.method": "Methodik",
@@ -317,7 +338,7 @@ const I18N = {
     "sort.model": "Modell",
     "sort.desc": "absteigend",
     "sort.asc": "aufsteigend",
-    "dash.h3": "Pareto-Dashboard",
+    "dash.h3": "Lagebild",
     "dash.sub": "Jeder Punkt ist ein Plan mit einem Modell. Standard: Tokens pro Geld gegen AI-Score. Punkt antippen für Details.",
     "dash.x": "X-Achse",
     "dash.y": "Y-Achse",
@@ -334,6 +355,7 @@ const I18N = {
     "dash.empty": "Keine Daten für den Plot mit diesen Filtern.",
     "dash.emptyReset": "Filter zurücksetzen",
     "dash.legendToggle": "Legende",
+    "dash.controls": "Achsen & Ziel",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / Monat",
@@ -584,9 +606,11 @@ function applyTheme() {
 /* ---------------- Rendering ---------------- */
 function renderAll() {
   if (!data) return;
+  plansLimit = PAGE; famLimit = FAM_PAGE;
   syncRateLabels();
   renderStats();
   renderCalculator();
+  renderTop();
   renderPlans();
   renderDashboard();
   renderFamily();
@@ -666,8 +690,8 @@ function renderStats() {
   $("#stat-plans").textContent = fmtNum(data.statistics?.totalPlans);
   $("#stat-comparable").textContent = fmtNum(data.statistics?.comparablePlans);
   $("#stat-models").textContent = fmtNum(data.modelComparisons?.length ?? data.statistics?.plansWithModels);
-  $("#stat-sources").textContent = fmtNum(Object.keys(data.sources ?? {}).length);
-  const srcCount = Object.keys(data.sources ?? {}).length;
+  const srcCount = data.statistics?.sourceCount ?? Object.keys(data.sources ?? {}).length;
+  $("#stat-sources").textContent = fmtNum(srcCount);
   $("#meta-sources").textContent = `${fmtNum(srcCount)} ${lang === "de" ? "Live-Quellen" : "live sources"}`;
   const date = new Date(data.generatedAt);
   $("#meta-updated").textContent = `${t("updated")}: ${date.toLocaleDateString(lang === "de" ? "de-DE" : "en-US")}`;
@@ -1006,6 +1030,11 @@ function privacyBadge(c) {
   return parts.length ? `<div class="privacy-badges">${parts.join(" ")}</div>` : "";
 }
 
+// Zeilen-Deckel: 396 Modell-Kombinationen als Endlos-Tabelle sind unbrauchbar
+let plansLimit = 25, famLimit = 12;
+const PAGE = 25;
+const FAM_PAGE = 12;
+
 function renderPlans() {
   const tbody = $("#plans-tbody");
   if (!tbody) return;
@@ -1030,18 +1059,25 @@ function renderPlans() {
   combos.sort(sortBy(plansSort.key, plansSort.dir));
   // Count
   const count = $("#plans-count");
-  const totalCombos = buildCombos().length;
-  if (count) count.textContent = `${combos.length} / ${totalCombos}`;
+  const shown = combos.slice(0, plansLimit);
+  if (count) count.textContent = `${shown.length} / ${combos.length}`;
 
   if (!combos.length) {
     tbody.innerHTML = `<tr><td colspan="${visibleColumns.length}" style="text-align:center;padding:28px;color:var(--text-faint)">${lang === "de" ? "Keine Kombinationen gefunden." : "No combinations match."}</td></tr>`;
+    const mb = $("#plans-more"); if (mb) mb.hidden = true;
     return;
   }
 
-  tbody.innerHTML = combos.map((c) => {
+  tbody.innerHTML = shown.map((c) => {
     const cells = visibleColumns.map((col) => renderCell(col, c)).join("");
     return `<tr>${cells}</tr>`;
   }).join("");
+  const moreBtn = $("#plans-more");
+  if (moreBtn) {
+    const rest = combos.length - shown.length;
+    moreBtn.hidden = rest <= 0;
+    moreBtn.textContent = `${t("more.show")} (${rest})`;
+  }
   syncColumnHeaders();
 }
 
@@ -1345,13 +1381,12 @@ function renderDashboard() {
     info: cssVar("--info", "#2563eb"),
     primary: cssVar("--primary", "#0b57d0"),
   };
-  // Expliziter Hintergrund: nie ein schwarzes Loch, auch bei Teilfehlern nicht
+  // Hintergrund ZUERST und nur hier füllen (ein clearRect danach würde ihn wieder löschen)
   ctx.fillStyle = cssVar("--bg-elev", "#ffffff");
   ctx.fillRect(0, 0, W, H);
+  ctx.font = "11px Inter, system-ui, sans-serif";
 
   if (!points.length) {
-    ctx.fillStyle = cssVar("--bg-elev", "#ffffff");
-    ctx.fillRect(0, 0, W, H);
     dashPoints = [];
     if (note) note.textContent = t("dash.empty");
     if (resetBtn) { resetBtn.hidden = false; resetBtn.textContent = t("dash.emptyReset"); }
@@ -1398,8 +1433,7 @@ function renderDashboard() {
   const tX = sx(Math.min(Math.max(targetX, xMin), xMax));
   const tY = sy(Math.min(Math.max(targetY, yMin), yMax));
 
-  ctx.clearRect(0, 0, W, H);
-  ctx.font = "11px Inter, system-ui, sans-serif";
+  // Hier KEIN clearRect: der Hintergrund wurde oben gefüllt und bleibt stehen
   // Zielzone (nur wenn eingeschaltet)
   if (dashGreen && axesValid) {
     ctx.save();
@@ -1603,6 +1637,21 @@ function initDashboard() {
   const xSel = $("#dash-x"), ySel = $("#dash-y");
   if (xSel) { xSel.value = dashX; xSel.addEventListener("change", (e) => { dashX = e.target.value; syncViewUrl(); renderDashboard(); }); }
   if (ySel) { ySel.value = dashY; ySel.addEventListener("change", (e) => { dashY = e.target.value; syncViewUrl(); renderDashboard(); }); }
+  // Mobile: Achsen/Ziel-Block eingeklappt starten, damit der Chart zuerst sichtbar ist
+  const wrap = $("#dash-controls"), ctrlBtn = $("#dash-ctrl-toggle");
+  if (wrap && ctrlBtn) {
+    const mq = window.matchMedia("(max-width: 760px)");
+    const apply = () => {
+      ctrlBtn.hidden = !mq.matches;
+      if (mq.matches) wrap.classList.add("collapsed"); else wrap.classList.remove("collapsed");
+    };
+    ctrlBtn.addEventListener("click", () => {
+      wrap.classList.toggle("collapsed");
+      if (!wrap.classList.contains("collapsed")) requestAnimationFrame(() => renderDashboard());
+    });
+    try { mq.addEventListener("change", apply); } catch (e) { /* ignore */ }
+    apply();
+  }
   const pSel = $("#dash-pareto");
   if (pSel) pSel.addEventListener("change", (e) => { dashPareto = e.target.checked; renderDashboard(); });
   const gSel = $("#dash-green");
@@ -1714,38 +1763,66 @@ function initCalculator() {
   }
 }
 
-/* ============ BURGER-MENÜ + BACK-TO-TOP (Mobile-Navigation) ============ */
-// Auf Mobile wandern Sprache, Währung und Theme ins Menü (Knoten werden
-// verschoben, keine Listener gehen verloren); auf Desktop zurück in die Nav.
-function initBurger() {
-  const btn = $("#burger-btn");
-  const panel = $("#burger-panel");
-  if (!btn || !panel) return;
-  const navControls = $("#nav-controls");
-  const slots = { "currency-select": $("#slot-currency"), "theme-toggle": $("#slot-theme"), ".lang-switch": $("#slot-lang") };
-  const mq = window.matchMedia("(max-width: 760px)");
-  const place = () => {
-    if (!navControls) return;
-    const keys = ["currency-select", "theme-toggle", ".lang-switch"];
-    for (const k of keys) {
-      const el = k.startsWith(".") ? document.querySelector(k) : document.getElementById(k);
-      if (!el) continue;
-      const target = mq.matches ? slots[k] : navControls;
-      if (target && el.parentElement !== target) target.appendChild(el);
-    }
-    if (!mq.matches) { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); }
-  };
-  try { mq.addEventListener("change", place); } catch (e) { /* ignore */ }
-  place();
-  btn.addEventListener("click", () => {
-    const open = panel.hidden;
-    panel.hidden = !open;
-    btn.setAttribute("aria-expanded", String(open));
+/* ============ TABS / VIEWS (eine Navigation, kein Scroll-Marathon) ============ */
+let currentView = "overview";
+const VIEW_ALIASES = {
+  overview: "overview", stats: "overview", pareto: "overview",
+  plans: "plans", models: "plans",
+  calc: "calc",
+  method: "method", faq: "method",
+  changelog: "changelog",
+  legal: "legal", privacy: "legal", imprint: "legal", disclaimer: "legal",
+};
+function showView(name) {
+  const view = VIEW_ALIASES[name] || "overview";
+  currentView = view;
+  $$(".view").forEach((el) => el.classList.toggle("active", el.id === `view-${view}`));
+  $$(".tab").forEach((b) => {
+    const on = b.dataset.view === view;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-selected", String(on));
   });
-  panel.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
-    panel.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-  }));
+  // Chart braucht nach dem Sichtbarwerden seine Größe: neu rendern
+  if (view === "overview") requestAnimationFrame(() => renderDashboard());
+  try { history.replaceState(null, "", `#${view}`); } catch (e) { /* ignore */ }
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+function initTabs() {
+  $$(".tab").forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
+  const more = $("#plans-more");
+  if (more) more.addEventListener("click", () => { plansLimit += PAGE; renderPlans(); });
+  const moreFam = $("#fcomp-more");
+  if (moreFam) moreFam.addEventListener("click", () => { famLimit += FAM_PAGE; renderFamily(); });
+  const legal = $("#open-legal");
+  if (legal) legal.addEventListener("click", () => showView("legal"));
+  const all = $("#top-open-plans");
+  if (all) all.addEventListener("click", () => showView("plans"));
+  // Alte Links/Fremd-Anker weiter unterstützen
+  const fromHash = () => showView((location.hash || "").replace("#", "") || "overview");
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+}
+
+// Kompakte Top-Tabelle im Übersichts-View (stärkstes Modell je Plan, nach Rate)
+function renderTop() {
+  const tbody = $("#top-tbody");
+  if (!tbody || !data) return;
+  const best = new Map();
+  for (const c of buildCombos()) {
+    if (c.tokensPer == null) continue;
+    const cur = best.get(c.planId);
+    if (!cur || c.tokensPer > cur.tokensPer) best.set(c.planId, c);
+  }
+  const rows = [...best.values()].sort((a, b) => b.tokensPer - a.tokensPer).slice(0, 6);
+  if (!rows.length) { tbody.innerHTML = ""; return; }
+  tbody.innerHTML = rows.map((c) => `<tr>`
+    + `<td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted">${escapeHtml(c.provider)}</div></td>`
+    + `<td data-label="${t("plans.th.model")}">${escapeHtml(c.model)}</td>`
+    + `<td data-label="${t("plans.th.score")}">${c.score !== null ? `<span class="num">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : "-"}</td>`
+    + `<td data-label="${rateTokensLabel()}"><span class="num strong">${fmtTokens(c.tokensPer)}</span></td>`
+    + `<td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>`
+    + `<td data-label="${t("plans.th.price")}"><span class="num">${c.priceDisplay ?? "-"}</span></td>`
+    + `</tr>`).join("");
 }
 
 function initBackTop() {
@@ -1774,7 +1851,8 @@ function renderFamily() {
   if (!tbody || !data) return;
   const rows = (data.familyComparisons ?? []).slice().sort((a, b) => b.advantagePercent - a.advantagePercent);
   if (!rows.length) { tbody.innerHTML = ""; return; }
-  tbody.innerHTML = rows.map((r) => {
+  const shown = rows.slice(0, famLimit);
+  tbody.innerHTML = shown.map((r) => {
     const win = r.winner && r.winner !== "draw"
       ? `<span class="strong">${escapeHtml(r.winner)}</span>`
       : `<span class="muted">${t("fcomp.winner.draw")}</span>`;
@@ -1783,6 +1861,12 @@ function renderFamily() {
       + `<td data-label="${t("fcomp.th.planB")}">${escapeHtml(r.planB)}<div class="muted num">${fmtNum(r.requestsB)} ${t("fcomp.th.reqB")}</div></td>`
       + `<td data-label="${t("fcomp.th.edge")}">${win}<div class="muted num">${fmtPct(r.advantagePercent)}</div></td></tr>`;
   }).join("");
+  const moreBtn = $("#fcomp-more");
+  if (moreBtn) {
+    const rest = rows.length - shown.length;
+    moreBtn.hidden = rest <= 0;
+    moreBtn.textContent = `${t("more.show")} (${rest})`;
+  }
 }
 
 function renderChangelog() {
@@ -2005,7 +2089,7 @@ function init() {
   initDashboard();
   initCalculator();
   initSheet();
-  initBurger();
+  initTabs();
   initBackTop();
   initMethodMore();
 
