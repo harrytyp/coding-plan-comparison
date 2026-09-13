@@ -137,6 +137,7 @@ const I18N = {
     "dash.controls": "Axes & target",
     "dash.detailTitle": "Selected detail",
     "dash.detailSub": "Click a dot to see the plan and model",
+    "dd.method": "How these numbers are built",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / mo",
@@ -370,6 +371,7 @@ const I18N = {
     "dash.controls": "Achsen & Ziel",
     "dash.detailTitle": "Ausgewählter Punkt",
     "dash.detailSub": "Punkt anklicken für Plan und Modell",
+    "dd.method": "Wie diese Zahlen entstehen",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / Monat",
@@ -709,7 +711,29 @@ function renderStats() {
   $("#meta-sources").textContent = `${fmtNum(srcCount)} ${lang === "de" ? "Live-Quellen" : "live sources"}`;
   const date = new Date(data.generatedAt);
   $("#meta-updated").textContent = `${t("updated")}: ${date.toLocaleDateString(lang === "de" ? "de-DE" : "en-US")}`;
+  // Anteilsbalken: zeigen das Verhältnis, nicht nur die Zahl
+  const total = Number(data.statistics?.totalPlans) || 0;
+  const comp = Number(data.statistics?.comparablePlans) || 0;
+  const undisc = Number(data.statistics?.undisclosed) || 0;
+  const meter = (id, parts) => {
+    const el = $(id);
+    if (!el || !total) return;
+    el.innerHTML = parts
+      .filter((p) => p.pct > 0)
+      .map((p) => `<span class="${p.cls}" style="width:${p.pct}%"></span>`)
+      .join("");
+  };
+  meter("#meter-plans", [
+    { cls: "on", pct: ((total - undisc) / total) * 100 },
+    { cls: "rest", pct: (undisc / total) * 100 },
+  ]);
+  meter("#meter-comparable", [
+    { cls: "on", pct: (comp / total) * 100 },
+    { cls: "rest", pct: ((total - comp) / total) * 100 },
+  ]);
   $("#stat-plans-sub").textContent = lang === "de" ? "davon " + data.statistics?.undisclosed + " ohne öffentliche Zahlen" : "of which " + data.statistics?.undisclosed + " undisclosed";
+  const csub = $("#stat-comparable-sub");
+  if (csub) csub.textContent = (lang === "de" ? "von " + total + " Plänen" : "of " + total + " plans");
   // Disclaimer-Banner
   const disc = $("#disclaimer");
   if (disc) {
@@ -1035,6 +1059,17 @@ function bindSortHeader(tableId, state, renderFn) {
 }
 
 // Privacy-Badge: "no training" grün, Retention-Zeit als Info
+// Plan-Initialen mit deterministischer Farbe: gibt der Tabelle visuelle Anker
+const AV_COLORS = ["#2563eb", "#0d9488", "#7c3aed", "#db2777", "#ea580c", "#0891b2", "#4d7c0f"];
+function planInitials(name) {
+  return String(name).replace(/[^A-Za-z0-9 ]/g, " ").split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("") || "?";
+}
+function planColor(name) {
+  let h = 7;
+  for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) % 9973;
+  return AV_COLORS[h % AV_COLORS.length];
+}
+
 function privacyBadge(c) {
   // Kein Anbieter-Statement: nicht leer lassen, sonst wirkt die Spalte kaputt
   if (!c.privacyKnown) return `<span class="muted" title="${escapeHtml(lang === "de" ? "Keine Angabe des Anbieters" : "Not stated by the provider")}">–</span>`;
@@ -1124,7 +1159,7 @@ function renderCell(col, c) {
     ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
     : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName)}">${escapeHtml(planInitials(c.planName))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
@@ -1433,8 +1468,8 @@ function renderDashboardInner() {
   const ctx = canvas.getContext("2d");
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   const W = cssW, H = cssH;
-  const PAD_L = Math.max(34, cssW * 0.05), PAD_B = Math.max(30, cssH * 0.08);
-  const PAD_T = 14, PAD_R = 30;
+  const PAD_L = Math.max(34, cssW * 0.05), PAD_B = Math.max(40, cssH * 0.1);
+  const PAD_T = 22, PAD_R = 30;
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
   const C = {
     grid: cssVar("--chart-grid", cssVar("--border", "#e2e8f0")),
@@ -1443,6 +1478,7 @@ function renderDashboardInner() {
     ring: cssVar("--text", "#0f172a"),
     dot: cssVar("--chart-dot", "#94a3b8"),
     dotStrong: cssVar("--chart-dot-strong", "#475569"),
+    dotUnknown: cssVar("--chart-dot-strong", "#94a3b8"),
     ok: cssVar("--success", "#0d9488"),
     bad: cssVar("--danger", "#dc2626"),
     info: cssVar("--info", "#0284c7"),
@@ -1493,7 +1529,7 @@ function renderDashboardInner() {
     const n = seen.get(key) ?? 0;
     seen.set(key, n + 1);
     let jx = 0, jy = 0;
-    if (n > 0) { const ang = n * 2.4, rad = 5 + 3 * n; jx = Math.cos(ang) * rad; jy = Math.sin(ang) * rad; }
+    if (n > 0) { const ang = n * 2.399, rad = 6 + 4 * Math.sqrt(n); jx = Math.cos(ang) * rad; jy = Math.sin(ang) * rad * 0.7; }
     return { ...p, px: sx(p.x) + jx, py: sy(p.y) + jy };
   });
 
@@ -1578,9 +1614,9 @@ function renderDashboardInner() {
   ctx.strokeStyle = C.axis; ctx.lineWidth = 1.5;
   ctx.beginPath(); ctx.moveTo(PAD_L, H - PAD_B); ctx.lineTo(W - PAD_R, H - PAD_B); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(PAD_L, PAD_T); ctx.lineTo(PAD_L, H - PAD_B); ctx.stroke();
-  ctx.fillStyle = C.text; ctx.font = "12px Inter, system-ui, sans-serif";
+  ctx.fillStyle = C.text; ctx.font = "600 11px Inter, system-ui, sans-serif";
   ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
-  ctx.fillText(metricLabel(dashX), PAD_L + plotW / 2, H - 6);
+  ctx.fillText(metricLabel(dashX), PAD_L + plotW / 2, H - 8);
   ctx.save();
   ctx.translate(14, PAD_T + plotH / 2); ctx.rotate(-Math.PI / 2); ctx.textAlign = "center";
   ctx.fillText(metricLabel(dashY), 0, 0);
@@ -1594,33 +1630,58 @@ function renderDashboardInner() {
   // Zeichenfläche beschneiden: nichts ragt über Achsen/Labels hinaus
   ctx.save();
   ctx.beginPath();
-  ctx.rect(PAD_L, PAD_T, plotW, plotH);
+  ctx.rect(PAD_L - 6, PAD_T - 6, plotW + 12, plotH + 12);
   ctx.clip();
-  if (frontier.length > 1) {
-    ctx.save();
-    ctx.strokeStyle = C.primary; ctx.lineWidth = 1.75; ctx.setLineDash([6, 4]);
+  // Hex-Farbe -> rgba (CSS-Variablen sind Hex-Werte, Canvas braucht Alpha)
+  const rgba = (c, a) => {
+    const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(String(c).trim());
+    return m ? `rgba(${parseInt(m[1], 16)},${parseInt(m[2], 16)},${parseInt(m[3], 16)},${a})` : c;
+  };
+  const roundRectPath = (x, y, w, h, r) => {
     ctx.beginPath();
-    frontier.forEach((p, i) => { const X = sx(p.x), Y = sy(p.y); if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); });
+    if (ctx.roundRect) { ctx.roundRect(x, y, w, h, r); return; }
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  };
+  if (frontier.length > 1) {
+    // Linie durch die GEZEICHNETEN Positionen (inkl. Jitter), sonst trifft sie
+    // die Punkte nicht, die sie verbindet
+    const fkeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
+    const fpts = px.filter((p) => fkeys.has(`${p.combo.planId}::${p.combo.model}`))
+      .sort((a, b) => a.px - b.px)
+      .map((p) => ({ x: p.px, y: p.py }));
+    // Kein Flächen-Fill: der würde mit der Zielzone verwechselt. Stattdessen ein
+    // weicher Glow unter einer klaren Linie.
+    ctx.save();
+    ctx.beginPath();
+    fpts.forEach((f, i) => (i ? ctx.lineTo(f.x, f.y) : ctx.moveTo(f.x, f.y)));
+    ctx.strokeStyle = rgba(C.primary, 0.18); ctx.lineWidth = 7; ctx.lineJoin = "round"; ctx.lineCap = "round";
+    ctx.stroke();
+    ctx.strokeStyle = C.primary; ctx.lineWidth = 2; ctx.lineJoin = "round"; ctx.lineCap = "round";
     ctx.stroke();
     ctx.restore();
   }
   for (const p of px) {
     const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
-    const r = isFrontier ? (touchSize ? 5.5 : 4.5) : (touchSize ? 4 : 3);
+    const r = isFrontier ? (touchSize ? 5.5 : 4.5) : (touchSize ? 3.6 : 2.9);
     p.pr = r;
+    const fill = isFrontier ? C.primary
+      : (p.combo.noTraining === true ? C.ok : (p.combo.noTraining === false ? C.bad : C.dotUnknown));
     ctx.save();
-    ctx.fillStyle = isFrontier ? C.primary
-      : (p.combo.noTraining === true ? C.ok : (p.combo.noTraining === false ? C.bad : C.info));
-    if (p.combo.noTraining === false) {
-      ctx.translate(p.px, p.py); ctx.rotate(Math.PI / 4);
-      ctx.fillRect(-r * 0.8, -r * 0.8, r * 1.6, r * 1.6);
-    } else if (p.combo.noTraining !== true) {
-      const h = r * 1.8;
-      ctx.beginPath();
-      ctx.moveTo(p.px, p.py - h / 2); ctx.lineTo(p.px + r, p.py + h / 2); ctx.lineTo(p.px - r, p.py + h / 2);
-      ctx.closePath(); ctx.fill();
-    } else {
-      ctx.beginPath(); ctx.arc(p.px, p.py, r, 0, Math.PI * 2); ctx.fill();
+    // Heller Rand in Kartenfarbe trennt überlappende Punkte sichtbar
+    ctx.beginPath(); ctx.arc(p.px, p.py, r + 1.1, 0, Math.PI * 2);
+    ctx.fillStyle = rgba(cssVar("--bg-elev", "#ffffff"), 0.9); ctx.fill();
+    ctx.globalAlpha = isFrontier ? 1 : 0.9;
+    ctx.fillStyle = fill;
+    ctx.beginPath(); ctx.arc(p.px, p.py, r, 0, Math.PI * 2); ctx.fill();
+    if (isFrontier) {
+      // Glanzpunkt: Frontier-Punkte bekommen Tiefe
+      ctx.globalAlpha = 0.5; ctx.fillStyle = "#ffffff";
+      ctx.beginPath(); ctx.arc(p.px - r * 0.25, p.py - r * 0.3, r * 0.45, 0, Math.PI * 2); ctx.fill();
     }
     ctx.restore();
   }
@@ -1639,16 +1700,31 @@ function renderDashboardInner() {
     dashSelected = `${best.combo.planId}::${best.combo.model}`;
     showDashDetail(best);
   }
-  // Auswahl-Ring: zeigt, welcher Punkt aktiv ist (weißer Halo + Akzentring)
+  // Auswahl: Ring + Label-Chip. Verbindet Chart und Detailspalte sichtbar.
   if (dashSelected) {
     const sel = px.find((p) => `${p.combo.planId}::${p.combo.model}` === dashSelected);
     if (sel) {
       const r = (sel.pr ?? 6) + 4.5;
       ctx.save();
       ctx.beginPath(); ctx.arc(sel.px, sel.py, r + 1.5, 0, Math.PI * 2);
-      ctx.strokeStyle = cssVar("--bg-elev", "#ffffff"); ctx.lineWidth = 3; ctx.stroke();
+      ctx.strokeStyle = rgba(cssVar("--bg-elev", "#ffffff"), 0.95); ctx.lineWidth = 4; ctx.stroke();
       ctx.beginPath(); ctx.arc(sel.px, sel.py, r, 0, Math.PI * 2);
-      ctx.strokeStyle = C.primary; ctx.lineWidth = 2.5; ctx.stroke();
+      ctx.strokeStyle = C.primary; ctx.lineWidth = 2; ctx.stroke();
+      const raw = String(sel.combo.model);
+      const label = raw.length > 22 ? raw.slice(0, 21) + "…" : raw;
+      ctx.font = "600 11px Inter, system-ui, sans-serif";
+      const bw = ctx.measureText(label).width + 16, bh = 20;
+      // Oben am Rand: Label unter den Punkt legen, damit es nicht die Achse trifft
+      const below = sel.py < PAD_T + 34;
+      let bx = sel.px + r + 10, by = below ? sel.py + r + 8 : sel.py - bh / 2;
+      if (bx + bw > W - PAD_R - 2) bx = sel.px - r - 10 - bw;
+      bx = Math.max(PAD_L + 8, Math.min(bx, W - PAD_R - bw - 2));
+      by = Math.max(PAD_T + 2, Math.min(by, H - PAD_B - bh - 2));
+      roundRectPath(bx, by, bw, bh, 6);
+      ctx.fillStyle = cssVar("--bg-elev", "#ffffff"); ctx.fill();
+      ctx.strokeStyle = rgba(C.primary, 0.4); ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = C.primary; ctx.textAlign = "left"; ctx.textBaseline = "middle";
+      ctx.fillText(label, bx + 8, by + bh / 2 + 0.5);
       ctx.restore();
     } else dashSelected = null;
   }
@@ -1690,8 +1766,13 @@ function showDashDetail(p) {
     <div class="dd-name">${escapeHtml(p.combo.model)}</div>
     <div class="dd-plan">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>
     ${rows.join("")}
-    ${priv ? `<div class="dd-badge">${priv}</div>` : ""}
+    ${priv ? `<div class="dd-badge" style="padding:0;background:none;border:0">${priv}</div>` : ""}
+    <div class="dd-foot">
+      <button class="btn" id="dd-method" type="button">${t("dd.method")}</button>
+    </div>
   `;
+  const mBtn = document.getElementById("dd-method");
+  if (mBtn) mBtn.addEventListener("click", () => showView("method"));
   // Mobile: Detail-Panel ins Bild holen (Plot ist darüber, Panel darunter)
   try {
     if (window.matchMedia && window.matchMedia("(max-width: 760px)").matches) {
@@ -1717,9 +1798,19 @@ function bindDashTooltip() {
   };
   const showTip = (p, clientX, clientY) => {
     tip.style.display = "block";
-    tip.textContent = `${p.combo.planName} · ${p.combo.model} · ${metricLabel(dashX)} ${metricFmt(dashX, p.x)} · ${metricLabel(dashY)} ${metricFmt(dashY, p.y)}`;
-    tip.style.left = `${clientX}px`;
-    tip.style.top = `${clientY}px`;
+    // Karte mit Titel, Untertitel und Wertzeilen statt einer Textzeile
+    tip.innerHTML = `<div class="tt-title">${escapeHtml(p.combo.model)}</div>`
+      + `<div class="tt-sub">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>`
+      + `<div class="tt-row"><span class="k">${escapeHtml(metricLabel(dashX))}</span><span>${escapeHtml(metricFmt(dashX, p.x))}</span></div>`
+      + `<div class="tt-row"><span class="k">${escapeHtml(metricLabel(dashY))}</span><span>${escapeHtml(metricFmt(dashY, p.y))}</span></div>`
+      + (p.combo.price !== null ? `<div class="tt-row"><span class="k">${escapeHtml(t("plans.th.price"))}</span><span>${escapeHtml(fmtPrice(p.combo.price))}</span></div>` : "");
+    const r = tip.getBoundingClientRect();
+    // Nicht aus dem Fenster laufen lassen
+    let x = clientX + 14, y = clientY + 14;
+    if (x + r.width > window.innerWidth - 8) x = clientX - r.width - 14;
+    if (y + r.height > window.innerHeight - 8) y = clientY - r.height - 14;
+    tip.style.left = `${Math.max(8, x)}px`;
+    tip.style.top = `${Math.max(8, y)}px`;
   };
   const select = (p) => {
     if (!p) return;
@@ -1889,17 +1980,23 @@ const VIEW_ALIASES = {
 };
 function showView(name) {
   const view = VIEW_ALIASES[name] || "overview";
-  currentView = view;
-  $$(".view").forEach((el) => el.classList.toggle("active", el.id === `view-${view}`));
-  $$(".tab").forEach((b) => {
-    const on = b.dataset.view === view;
-    b.classList.toggle("active", on);
-    b.setAttribute("aria-selected", String(on));
-  });
-  // Chart braucht nach dem Sichtbarwerden seine Größe: neu rendern
-  if (view === "overview") requestAnimationFrame(() => renderDashboard());
-  try { history.replaceState(null, "", `#${view}`); } catch (e) { /* ignore */ }
-  window.scrollTo({ top: 0, behavior: "auto" });
+  const apply = () => {
+    currentView = view;
+    $$(".view").forEach((el) => el.classList.toggle("active", el.id === `view-${view}`));
+    $$(".tab").forEach((b) => {
+      const on = b.dataset.view === view;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-selected", String(on));
+    });
+    // Chart braucht nach dem Sichtbarwerden seine Größe: neu rendern
+    if (view === "overview") requestAnimationFrame(() => renderDashboard());
+    try { history.replaceState(null, "", `#${view}`); } catch (e) { /* ignore */ }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+  // Sanfter Übergang, wo der Browser View Transitions kann und Motion erlaubt ist
+  const noMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (document.startViewTransition && !noMotion) document.startViewTransition(apply);
+  else apply();
 }
 function initTabs() {
   $$(".tab").forEach((b) => b.addEventListener("click", () => showView(b.dataset.view)));
