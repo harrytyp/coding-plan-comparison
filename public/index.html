@@ -669,7 +669,8 @@ main { view-transition-name: main-content; }
   .cmdk-trigger { min-width: 0; padding: 6px 8px; }
   .cmdk-trigger span, .cmdk-trigger kbd { display: none; }
   .tabs { padding: 0 6px; -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%); mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%); }
-  .tab { padding: 9px 9px 11px; font-size: 12.5px; }
+  .tab { padding: 9px 8px 11px; font-size: 12.5px; }
+  .tab svg { display: none; }
   .page-head { padding: 16px 14px 0; }
   .app-title h1 { font-size: 21px; }
   .app-meta { font-size: 12px; gap: 4px 12px; }
@@ -705,6 +706,9 @@ main { view-transition-name: main-content; }
   .sortable-table tbody tr.row-detail td::before { content: none; }
   .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .detail-grid .dg-v, .dash-detail-content, .dd-shortlist { overflow-wrap: anywhere; }
+}
+@media (max-width: 420px) {
+  .tab { padding: 9px 6px 11px; font-size: 11.8px; letter-spacing: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
