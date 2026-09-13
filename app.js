@@ -1,5 +1,5 @@
 /* ============================================================
- * Coding Plan Compare — frontend app
+ * Coding Plan Compare , frontend app
  * Dependency-free. Loads public/data/latest.json, renders the
  * whole page, i18n EN/DE, dark mode, URL state.
  * ============================================================ */
@@ -8,7 +8,7 @@
  * Sonst: "Identifier '$' has already been declared" → Seite tot. */
 (function () {
 if (typeof window !== "undefined" && window.__CPC_LOADED__) {
-  return; // bereits geladen — nichts tun
+  return; // bereits geladen , nichts tun
 }
 if (typeof window !== "undefined") window.__CPC_LOADED__ = true;
 "use strict";
@@ -38,8 +38,8 @@ const I18N = {
     "calc.th.cost": "Price · left over",
     "calc.nospare": "no headroom",
     "hero.h1": "AI coding subscriptions, compared",
-    "hero.opendata": "Open Data",
-    "hero.free": "no affiliate links",
+    "hero.scope": "Prices, quotas and token rates for AI coding plans and models",
+    "foot.trust": "Open data, no affiliate links",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -61,7 +61,7 @@ const I18N = {
     "stats.sources": "Live sources",
     "stats.sources-sub": "official feeds & docs",
     "plans.h2": "The plans",
-    "plans.sub": "Every plan and model combination. Token and request rates are per 1 paid unit in your currency — a rate, not something you can stack.",
+    "plans.sub": "Every plan and model combination. Rates are tokens or requests per 1 paid unit, in your currency.",
     "plans.per": "/mo",
     "plans.noPrice": "price not public",
     "plans.meter": "Meter",
@@ -108,7 +108,11 @@ const I18N = {
     "sheet.sort": "Sort by",
     "sheet.filter": "Filter",
     "sheet.done": "Done",
-    "sort.label": "Sort by",
+    "sort.label": "Sort",
+    "sort.by": "Sort by",
+    "sort.dir": "Direction",
+    "sort.descShort": "highest first",
+    "sort.ascShort": "lowest first",
     "sort.tokens": "Tokens / $",
     "sort.score": "AI score",
     "sort.req10": "Requests / $",
@@ -120,7 +124,7 @@ const I18N = {
     "sort.desc": "desc",
     "sort.asc": "asc",
     "dash.h3": "Positioning",
-    "dash.sub": "Each dot is one plan with one model. Default: tokens per money against AI score. Tap a dot for details.",
+    "dash.sub": "One dot per plan and model. Default axes: tokens per money against AI score.",
     "dash.x": "X axis",
     "dash.y": "Y axis",
     "dash.pareto": "Pareto line",
@@ -135,7 +139,7 @@ const I18N = {
     "dash.target": "Target:",
     "dash.targetX": "min X",
     "dash.targetY": "min Y",
-    "dash.clickHint": "Click a dot to see the plan and model",
+    "dash.clickHint": "Pick a dot to see its numbers",
     "dash.empty": "No data for the plot with these filters.",
     "dash.emptyReset": "Reset filters",
     "dash.legendToggle": "Legend",
@@ -154,7 +158,7 @@ const I18N = {
     "plans.badge.retention": "retention {d}d",
     "models.searchPh": "Filter models...",
     "models.h2": "Model for model, per $1",
-    "models.sub": "Averaging plans hides the truth: cheap models inflate the mean. We compare the same model family across plans, shown per $1 paid. One subscription per account — rates are not stackable.",
+    "models.sub": "Dieselbe Modell-Familie im Vergleich über Pläne, pro 1 $ bezahlt. Ein Abo pro Konto, also sind Raten nicht stapelbar.",
     "models.th.model": "Model family",
     "models.th.planA": "Plan A",
     "models.th.req": "Requests / $",
@@ -164,7 +168,7 @@ const I18N = {
     "models.winner.draw": "Draw",
     "models.edge": "edge",
     "fcomp.h2": "Same model, different plans",
-    "fcomp.sub": "Request rate per $1 paid for one model family across plans. Plain numbers, no podium.",
+    "fcomp.sub": "Requests per $1 paid for the same model across plans.",
     "fcomp.th.family": "Model family",
     "fcomp.th.planA": "Plan A",
     "fcomp.th.reqA": "Req / $",
@@ -203,11 +207,11 @@ const I18N = {
     "faq.q5": "How often does this update?",
     "faq.a5": "A GitHub Action fetches all sources daily at 03:17 UTC. If parsed content changed, it commits the new latest.json. If a non-scrapable price page (GLM, MiniMax) changed, it opens a review issue for manual verification.",
     "faq.q6": "Where do the AI scores come from?",
-    "faq.a6": "Model benchmark scores are sourced from llm-stats.com — a community-driven model catalog. We cache the data locally and only re-fetch when the cache expires (24h TTL). No API call is made if the cached data is still fresh.",
+    "faq.a6": "Model benchmark scores come from llm-stats.com, a community model catalog. The data is cached locally and only re-fetched when the cache expires (24h TTL).",
     "faq.q7": "Can I just buy Command Code Go ten times?",
-    "faq.a7": "No. Plans are single per-account subscriptions: you pick one plan, and switching plans resets the rolling windows (per Command Code's own docs). Extra usage comes from top-up credits at model cost. That is why this site shows rates per $1 paid — Go shows what $1 buys — and why the budget calculator below compares single plans within your budget.",
+    "faq.a7": "No. A plan is a single per-account subscription: you pick one, and switching resets the rolling windows (per Command Code's own docs). Extra usage comes from top-up credits at model cost. The rates here are therefore per $1 paid, and the budget calculator compares single plans.",
     "faq.q8": "What does “per $1” mean?",
-    "faq.a8": "It is a rate: monthly requests divided by the paid monthly price. Command Code Go at $1 shows what $1 buys; OpenCode Go at $10 shows what each $1 of its $10 buys. Rates follow your selected currency and cannot be stacked — plans are single per-account subscriptions.",
+    "faq.a8": "It is a rate: monthly requests divided by the paid monthly price. Command Code Go at $1 shows what $1 buys; OpenCode Go at $10 shows what each dollar of its $10 buys. Rates follow your selected currency and cannot be stacked, because a plan is a single per-account subscription.",
     "faq.q9": "Why does plan X rank first in the calculator?",
     "faq.a9": "The calculator lists single plans within your budget, ordered by monthly tokens for each plan's strongest model. It is a sorted list, not advice: the right plan also depends on which models you need, the privacy terms and the rate limits.",
     "calc.h2": "Budget calculator",
@@ -277,8 +281,8 @@ const I18N = {
     "calc.th.cost": "Preis · Rest",
     "calc.nospare": "kein Spielraum",
     "hero.h1": "KI-Coding-Abos im Vergleich",
-    "hero.opendata": "Offene Daten",
-    "hero.free": "keine Affiliate-Links",
+    "hero.scope": "Preise, Quoten und Token-Raten für KI-Coding-Pläne und Modelle",
+    "foot.trust": "Offene Daten, keine Affiliate-Links",
     "nav.plans": "Pläne",
     "nav.models": "Modelle",
     "nav.method": "Methodik",
@@ -300,7 +304,7 @@ const I18N = {
     "stats.sources": "Live-Quellen",
     "stats.sources-sub": "offizielle Feeds & Docs",
     "plans.h2": "Die Pläne",
-    "plans.sub": "Jede Plan-Modell-Kombination. Token- und Request-Raten gelten pro 1 bezahlter Einheit in deiner Währung. eine Rate, nichts Stapelbares.",
+    "plans.sub": "Jede Plan-Modell-Kombination. Raten sind Tokens oder Requests pro 1 bezahlter Einheit, in deiner Währung.",
     "plans.per": "/Monat",
     "plans.noPrice": "Preis nicht öffentlich",
     "plans.meter": "Meter",
@@ -347,7 +351,11 @@ const I18N = {
     "sheet.sort": "Sortieren nach",
     "sheet.filter": "Filtern",
     "sheet.done": "Fertig",
-    "sort.label": "Sortieren nach",
+    "sort.label": "Sortieren",
+    "sort.by": "Sortieren nach",
+    "sort.dir": "Richtung",
+    "sort.descShort": "höchste zuerst",
+    "sort.ascShort": "niedrigste zuerst",
     "sort.tokens": "Tokens / $",
     "sort.score": "AI-Score",
     "sort.req10": "Requests / $",
@@ -359,7 +367,7 @@ const I18N = {
     "sort.desc": "absteigend",
     "sort.asc": "aufsteigend",
     "dash.h3": "Lagebild",
-    "dash.sub": "Jeder Punkt ist ein Plan mit einem Modell. Standard: Tokens pro Geld gegen AI-Score. Punkt antippen für Details.",
+    "dash.sub": "Ein Punkt pro Plan und Modell. Standardachsen: Tokens pro Geld gegen AI-Score.",
     "dash.x": "X-Achse",
     "dash.y": "Y-Achse",
     "dash.pareto": "Pareto-Linie",
@@ -374,7 +382,7 @@ const I18N = {
     "dash.target": "Ziel:",
     "dash.targetX": "min X",
     "dash.targetY": "min Y",
-    "dash.clickHint": "Klicke einen Punkt, um Plan und Modell zu sehen",
+    "dash.clickHint": "Punkt wählen für die Zahlen",
     "dash.empty": "Keine Daten für den Plot mit diesen Filtern.",
     "dash.emptyReset": "Filter zurücksetzen",
     "dash.legendToggle": "Legende",
@@ -394,7 +402,7 @@ const I18N = {
     "view.models": "Modell-Vergleich",
     "models.searchPh": "Modelle filtern...",
     "models.h2": "Modell für Modell, pro 1 $",
-    "models.sub": "Mittelwerte verschleiern die Wahrheit: Billige Modelle blähen den Schnitt auf. Wir vergleichen dieselbe Modell-Familie über Pläne, pro 1 $ bezahlt gezeigt. Ein Abo pro Konto. Raten sind nicht stapelbar.",
+    "models.sub": "Dieselbe Modell-Familie im Vergleich über Pläne, pro 1 $ bezahlt. Ein Abo pro Konto, also sind Raten nicht stapelbar.",
     "models.th.model": "Modell-Familie",
     "models.th.planA": "Plan A",
     "models.th.req": "Requests / $",
@@ -404,7 +412,7 @@ const I18N = {
     "models.winner.draw": "Unentschieden",
     "models.edge": "Vorsprung",
     "fcomp.h2": "Gleiches Modell, andere Pläne",
-    "fcomp.sub": "Request-Rate pro 1 $ bezahlt für eine Modell-Familie über Pläne. Nackte Zahlen, kein Podest.",
+    "fcomp.sub": "Requests pro 1 $ bezahlt für dasselbe Modell über Pläne.",
     "fcomp.th.family": "Modell-Familie",
     "fcomp.th.planA": "Plan A",
     "fcomp.th.reqA": "Req / $",
@@ -443,11 +451,11 @@ const I18N = {
     "faq.q5": "Wie oft wird aktualisiert?",
     "faq.a5": "Eine GitHub Action holt täglich um 03:17 UTC alle Quellen. Wenn sich geparster Inhalt geändert hat, committed sie das neue latest.json. Wenn sich eine nicht-scrapebare Preisseite (GLM, MiniMax) geändert hat, öffnet sie ein Review-Issue zur manuellen Prüfung.",
     "faq.q6": "Woher kommen die AI-Scores?",
-    "faq.a6": "Die Modell-Benchmark-Scores (Intelligenz, Coding, Reasoning, Agents) kommen von llm-stats.com — einem Community-Modell-Katalog. Wir cachen die Daten lokal und fetchen nur neu, wenn der Cache abläuft (24h TTL). Kein API-Call bei frischem Cache.",
+    "faq.a6": "Die Modell-Benchmark-Scores (Intelligenz, Coding, Reasoning, Agents) kommen von llm-stats.com, einem Community-Modell-Katalog. Die Daten liegen lokal im Cache und werden nur bei Ablauf neu geladen (24h TTL).",
     "faq.q7": "Kann ich Command Code Go einfach zehnmal kaufen?",
-    "faq.a7": "Nein. Pläne sind einzelne Abos pro Konto: du wählst einen Plan, und ein Planwechsel setzt die rollierenden Fenster zurück (so steht es in Command Codes eigenen Docs). Mehr Nutzung kommt über Top-up-Credits zum Modellpreis. Darum zeigt diese Seite Raten pro 1 $ bezahlt — Go zeigt, was 1 $ kauft — und darum vergleicht der Budget-Rechner unten Einzelpläne innerhalb deines Budgets.",
+    "faq.a7": "Nein. Ein Plan ist ein einzelnes Abo pro Konto: du wählst einen, und ein Wechsel setzt die rollierenden Fenster zurück (so steht es in Command Codes eigenen Docs). Mehr Nutzung kommt über Top-up-Credits zum Modellpreis. Die Raten hier sind deshalb pro 1 $ bezahlt, und der Rechner vergleicht Einzelpläne.",
     "faq.q8": "Was heißt „pro 1 €“?",
-    "faq.a8": "Es ist eine Rate: Requests pro Monat geteilt durch den bezahlten Monatspreis. Command Code Go für 1 $ zeigt, was 1 $ kauft; OpenCode Go für 10 $ zeigt, was jeder einzelne Dollar seiner 10 $ kauft. Raten folgen deiner gewählten Währung und sind nicht stapelbar — Pläne sind einzelne Abos pro Konto.",
+    "faq.a8": "Es ist eine Rate: Requests pro Monat geteilt durch den bezahlten Monatspreis. Command Code Go für 1 $ zeigt, was 1 $ kauft; OpenCode Go für 10 $ zeigt, was jeder Dollar seiner 10 $ kauft. Raten folgen deiner gewählten Währung und sind nicht stapelbar, weil ein Plan ein einzelnes Abo pro Konto ist.",
     "faq.q9": "Warum steht Plan X im Rechner oben?",
     "faq.a9": "Der Rechner listet Einzelpläne innerhalb deines Budgets, sortiert nach Tokens pro Monat des jeweils stärksten Modells. Das ist eine sortierte Liste, keine Empfehlung: Der passende Plan hängt auch davon ab, welche Modelle du brauchst, von den Datenschutz-Bedingungen und den Rate-Limits.",
     "calc.h2": "Budget-Rechner",
@@ -508,7 +516,7 @@ let data = null;
  */
 let currency = "USD";
 let exchangeRates = { USD: 1 }; // USD → Zielwährung
-// Kurse kommen aus latest.json (fx-Source, 1x täglich mit-gescraped) —
+// Kurse kommen aus latest.json (fx-Source, 1x täglich mit-gescraped) ,
 // KEIN Client-seitiger Live-API-Call (Datenschutz: keine Third-Party-Verbindung).
 function loadExchangeRates() {
   const fx = data?.fx?.rates ?? null;
@@ -617,8 +625,8 @@ function applyI18n() {
   document.documentElement.lang = lang;
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
   document.title = lang === "de"
-    ? "Coding Plan Compare — KI-Coding-Abos im Vergleich"
-    : "Coding Plan Compare — AI Coding Subscriptions, Compared";
+    ? "Coding Plan Compare , KI-Coding-Abos im Vergleich"
+    : "Coding Plan Compare , AI Coding Subscriptions, Compared";
   renderAll();
   syncMethodMore();
 }
@@ -647,7 +655,7 @@ function renderAll() {
 }
 
 // Statische Select-Optionen mit Raten-Labels folgen der Währung
-// (applyI18n setzt sie erst auf $ zurück — danach wieder währungsgenau).
+// (applyI18n setzt sie erst auf $ zurück , danach wieder währungsgenau).
 function syncRateLabels() {
   const map = { "sort.tokens": rateTokensLabel(), "sort.req10": rateReqLabel(), "dash.m.tokens": rateTokensLabel(), "dash.m.req10": rateReqLabel(), "plans.th.tokens": rateTokensLabel(), "plans.th.req10": rateReqLabel() };
   for (const [key, label] of Object.entries(map)) {
@@ -718,7 +726,8 @@ function renderStats() {
   $("#stat-models").textContent = fmtNum(data.modelComparisons?.length ?? data.statistics?.plansWithModels);
   const srcCount = data.statistics?.sourceCount ?? Object.keys(data.sources ?? {}).length;
   $("#stat-sources").textContent = fmtNum(srcCount);
-  $("#meta-sources").textContent = `${fmtNum(srcCount)} ${lang === "de" ? "Live-Quellen" : "live sources"}`;
+  const ms = $("#meta-sources");
+  if (ms) ms.textContent = `${fmtNum(srcCount)} ${lang === "de" ? "Live-Quellen" : "live sources"}`;
   const date = new Date(data.generatedAt);
   $("#meta-updated").textContent = `${t("updated")}: ${date.toLocaleDateString(lang === "de" ? "de-DE" : "en-US")}`;
   // Anteilsbalken: zeigen das Verhältnis, nicht nur die Zahl
@@ -783,7 +792,7 @@ let plansMeter = "";
 let maxBudget = 300;   // Budget-Filter: max $/Monat
 let minAiScore = 0;    // AI-Score-Filter: mindestens
 let noTrainingOnly = false; // Privacy-Filter: nur "no training on my data"
-let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per Default aus — einblendbar
+let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per Default aus , einblendbar
 
 /* ---------------- Spalten-Auswahl (User-anpassbar) ---------------- */
 // Alle verfügbaren Spalten; Auswahl wird in localStorage gespeichert.
@@ -1069,20 +1078,37 @@ function bindSortHeader(tableId, state, renderFn) {
 }
 
 // Privacy-Badge: "no training" grün, Retention-Zeit als Info
-// Plan-Initialen mit deterministischer Farbe: gibt der Tabelle visuelle Anker
-const AV_COLORS = ["#2563eb", "#0d9488", "#7c3aed", "#db2777", "#ea580c", "#0891b2", "#4d7c0f"];
-function planInitials(name) {
+// Plan-Kürzel für die Tabellen-Miniatur: markenbasiert (CC, OG, GL, QW, KM, MM),
+// damit gleiche Marken gleich aussehen und nicht "GC"/"QT" herauskommt.
+const BRAND_MARKS = [
+  [/opencode/i, "OG"],
+  [/command\s*code/i, "CC"],
+  [/glm|zhipu/i, "GL"],
+  [/qwen|alibaba/i, "QW"],
+  [/kimi|moonshot/i, "KM"],
+  [/minimax/i, "MM"],
+  [/anthropic|claude/i, "AN"],
+  [/openai|gpt/i, "OA"],
+  [/google|gemini/i, "GO"],
+  [/cursor/i, "CU"],
+];
+function planInitials(name, provider) {
+  const hay = `${name} ${provider || ""}`;
+  for (const [re, mark] of BRAND_MARKS) if (re.test(hay)) return mark;
   return String(name).replace(/[^A-Za-z0-9 ]/g, " ").split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("") || "?";
 }
-function planColor(name) {
-  let h = 7;
-  for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) % 9973;
-  return AV_COLORS[h % AV_COLORS.length];
+// Farbe hängt an der Marke, nicht am Plan: gleiche Marke = gleicher Marker
+const MARK_COLORS = {
+  OG: "#2563eb", CC: "#7c3aed", GL: "#0d9488", QW: "#db2777", KM: "#ea580c",
+  MM: "#0891b2", AN: "#d97706", OA: "#059669", GO: "#4f46e5", CU: "#475569",
+};
+function planColor(name, provider) {
+  return MARK_COLORS[planInitials(name, provider)] || "#475569";
 }
 
 function privacyBadge(c) {
   // Kein Anbieter-Statement: nicht leer lassen, sonst wirkt die Spalte kaputt
-  if (!c.privacyKnown) return `<span class="muted" title="${escapeHtml(lang === "de" ? "Keine Angabe des Anbieters" : "Not stated by the provider")}">–</span>`;
+  if (!c.privacyKnown) return `<span class="muted" title="${escapeHtml(lang === "de" ? "Keine Angabe des Anbieters" : "Not stated by the provider")}">-</span>`;
   const parts = [];
   if (c.noTraining === true) parts.push(`<span class="badge badge-green" title="No training on my data">${t("plans.badge.noTraining")}</span>`);
   if (c.zeroRetention === true) parts.push(`<span class="badge badge-green" title="Zero data retention">${t("plans.badge.zeroRetention")}</span>`);
@@ -1113,9 +1139,9 @@ function renderPlans() {
   if (maxBudget < 300) combos = combos.filter((c) => (c.price ?? 0) <= maxBudget);
   // Filter: AI-Score (mindestens)
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
-  // Filter: Privacy — nur "no training on my data"
+  // Filter: Privacy , nur "no training on my data"
   if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
-  // Datenqualität: Tier-D (preisbasiert, z.B. Kimi) per Default ausblenden —
+  // Datenqualität: Tier-D (preisbasiert, z.B. Kimi) per Default ausblenden ,
   // keine veröffentlichte Menge = nicht sicher vergleichbar. Toggle zum Einblenden.
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
   // Sortieren
@@ -1169,7 +1195,7 @@ function renderCell(col, c) {
     ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
     : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName)}">${escapeHtml(planInitials(c.planName))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
@@ -1195,9 +1221,54 @@ function renderCell(col, c) {
 }
 
 // Tabellenköpfe: nur sichtbare Spalten anzeigen
+// Sortier-Popover: Chips für das Feld, Segment für die Richtung
+const SORT_FIELDS = [
+  { key: "tokens", label: () => rateTokensLabel() },
+  { key: "rawtokens", label: () => t("sort.rawtokens") },
+  { key: "score", label: () => t("sort.score") },
+  { key: "req10", label: () => t("sort.req10") },
+  { key: "rawreq", label: () => t("sort.rawreq") },
+  { key: "price", label: () => t("sort.price") },
+  { key: "plan", label: () => t("sort.plan") },
+  { key: "model", label: () => t("sort.model") },
+];
+function renderSortUI() {
+  const fields = $("#sort-fields");
+  if (fields) {
+    fields.innerHTML = SORT_FIELDS
+      .map((f) => `<button type="button" class="chip-btn${plansSort.key === f.key ? " active" : ""}" data-key="${f.key}">${escapeHtml(f.label())}</button>`)
+      .join("");
+    fields.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+      plansSort.key = b.dataset.key;
+      plansLimit = PAGE;
+      renderPlans();
+    }));
+  }
+  const seg = $("#sort-dir-seg");
+  if (seg) {
+    seg.querySelectorAll("button").forEach((b) => {
+      b.classList.toggle("active", b.dataset.dir === plansSort.dir);
+      if (b.dataset.bound) return;
+      b.dataset.bound = "1";
+      b.addEventListener("click", () => {
+        plansSort.dir = b.dataset.dir;
+        renderPlans();
+      });
+    });
+  }
+  const cur = $("#sort-current");
+  if (cur) {
+    const f = SORT_FIELDS.find((x) => x.key === plansSort.key);
+    cur.textContent = f ? f.label() : plansSort.key;
+  }
+  const curDir = $("#sort-current-dir");
+  if (curDir) curDir.textContent = plansSort.dir === "asc" ? "↑" : "↓";
+}
+
 function syncColumnHeaders() {
   const table = document.getElementById("plans-table");
   if (!table) return;
+  renderSortUI();
   // Sort-Selector (Mobile) mit aktuellem Sort-Zustand synchronisieren
   const selKey = $("#sort-select-key");
   const selDir = $("#sort-select-dir");
@@ -1306,7 +1377,7 @@ function initSheet() {
 }
 
 /* ============ DASHBOARD / PARETO-PLOT (Canvas) ============ */
-// Standard: Tokens pro Geld (X) gegen Intelligenz (Y) — ehrliche Rate, kein Kaufversprechen.
+// Standard: Tokens pro Geld (X) gegen Intelligenz (Y) , ehrliche Rate, kein Kaufversprechen.
 let dashX = "tokens";
 let dashY = "score";
 let dashPareto = true;
@@ -1316,7 +1387,7 @@ let dashTargetY = null; // Ziel-Schwelle Y (Green Target)
 let dashSelected = null; // "planId::model" des angetippten Punkts (Feedback-Ring)
 let dashPoints = []; // gerenderte Punkte in CSS-Pixeln (für Hit-Test)
 
-// Quantil für den Bildausschnitt (P2–P98 statt Min/Max: keine halbe Fläche Luft)
+// Quantil für den Bildausschnitt (P2-P98 statt Min/Max: keine halbe Fläche Luft)
 function quantile(sorted, q) {
   if (!sorted.length) return null;
   const idx = (sorted.length - 1) * q;
@@ -1372,7 +1443,7 @@ function metricFmt(metric, val) {
 // Pareto-Frontier: Punkte die in beiden Achsen nicht dominiert werden.
 // Richtungen werden respektiert: "max" = größer besser, "min" = kleiner besser.
 // Ein Punkt p dominiert q, wenn p auf beiden Achsen mindestens so gut ist
-// und auf einer besser — gemäß der jeweiligen Richtung.
+// und auf einer besser , gemäß der jeweiligen Richtung.
 function paretoFrontier(points) {
   const pts = points.filter((p) => p.x != null && p.y != null);
   if (pts.length < 2) return pts;
@@ -1442,8 +1513,8 @@ function renderDashboardInner() {
   if (!canvas || !canvas.getContext) {
     // Versions-Mismatch (altes HTML + neues JS oder umgekehrt): nicht schwarz bleiben
     if (note) note.textContent = lang === "de"
-      ? "Plot startet nicht — bitte hart neu laden (Strg+Shift+R), dann passt es wieder."
-      : "Plot won't start — please hard-reload (Ctrl+Shift+R).";
+      ? "Plot startet nicht. Bitte hart neu laden (Strg+Shift+R)."
+      : "Plot won't start. Please hard-reload (Ctrl+Shift+R).";
     return;
   }
   // Achsen-Guards zuerst: ungültige Auswahl korrigieren, bevor Punkte fallen
@@ -1510,7 +1581,7 @@ function renderDashboardInner() {
   // Skalen: log für Token/Request/Preis-Metriken (riesige Spannen), linear für Score
   const logScale = (m) => m === "tokens" || m === "req10" || m === "rawtokens" || m === "rawreq" || m === "price";
   const xLog = logScale(dashX), yLog = logScale(dashY);
-  // Bildausschnitt aus Perzentilen (P2–P98) + 4 % Luft: Daten füllen den Plot,
+  // Bildausschnitt aus Perzentilen (P2-P98) + 4 % Luft: Daten füllen den Plot,
   // keine halbe Fläche Leerraum. Linear startet am Daten-Minimum, nicht bei 0.
   const xSorted = points.map((p) => p.x).sort((a, b) => a - b);
   const ySorted = points.map((p) => p.y).sort((a, b) => a - b);
@@ -2071,7 +2142,7 @@ function renderFamily() {
   const rows = (data.familyComparisons ?? []).slice().sort((a, b) => b.advantagePercent - a.advantagePercent);
   if (!rows.length) { list.innerHTML = ""; return; }
   const shown = rows.slice(0, famLimit);
-  // planA/planB sind IDs ("opencode-go") — für die Anzeige die echten Namen nehmen
+  // planA/planB sind IDs ("opencode-go") , für die Anzeige die echten Namen nehmen
   const nameMap = new Map((data.plans ?? []).map((p) => [p.id, p.name]));
   const planName = (id) => nameMap.get(id) || id;
   // Gemeinsame Skala über alle Zeilen: Balken sind dadurch zwischen Familien
@@ -2337,7 +2408,7 @@ function init() {
     resizeTimer = setTimeout(() => renderDashboard(), 150);
   });
 
-  // Loading-Hinweis (OHNE #main zu überschreiben — die Sections enthalten die Ziel-Container
+  // Loading-Hinweis (OHNE #main zu überschreiben , die Sections enthalten die Ziel-Container
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)
   const loadingNote = document.createElement("div");
   loadingNote.id = "loading-note";

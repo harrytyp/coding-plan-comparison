@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coding Plan Compare — AI Coding Subscriptions, Compared</title>
+<title>Coding Plan Compare: AI coding subscription prices and token rates</title>
 <meta name="description" content="The independent, reproducible comparison of AI coding plan subscriptions. Live prices, real token economics, credit formulas, cache-aware cost modeling. English & Deutsch.">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coding Plan Compare">
-<meta property="og:description" content="Reproducible, live-updated comparison of AI coding plan subscriptions — real token economics, not marketing numbers.">
+<meta property="og:description" content="Compare AI coding plans and models by tokens and requests per dollar paid, with published quotas, live prices and an open dataset.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b57d0'/%3E%3Cpath d='M18 20h28v6H18zm0 10h28v6H18zm0 10h18v6H18z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
 /* =====================================================================
-   Coding Plan Compare — design system
+   Coding Plan Compare, design system
    Hand-written CSS. No Tailwind, no CDN, no external fonts.
    Dark mode via [data-theme="dark"].
    ===================================================================== */
@@ -335,6 +335,36 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 32px; }
   overflow: auto; z-index: 5;
 }
 
+/* Sortier-Popover statt nackter Selects (Selects bleiben fuer Mobil) */
+.mobile-only { display: none; }
+.pop { position: relative; }
+.pop > summary { list-style: none; cursor: pointer; user-select: none; }
+.pop > summary::-webkit-details-marker { display: none; }
+.pop[open] > summary { border-color: var(--primary); color: var(--primary); }
+.sort-cur { font-weight: 700; color: var(--text); margin-left: 2px; }
+.sort-arrow { color: var(--primary); font-weight: 700; }
+.pop-panel {
+  position: absolute; left: 0; top: calc(100% + 6px); z-index: 45; width: 290px;
+  background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); padding: 14px;
+}
+.pop-title { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--text-faint); margin: 0 0 8px; }
+.pop-title + .pop-chips { margin-bottom: 14px; }
+.pop-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip-btn {
+  border: 1px solid var(--border-strong); background: var(--bg-elev); color: var(--text-muted);
+  border-radius: 99px; padding: 5px 11px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+}
+.chip-btn:hover { color: var(--text); border-color: var(--text-muted); }
+.chip-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.seg { display: inline-flex; border: 1px solid var(--border-strong); border-radius: 99px; overflow: hidden; }
+.seg button {
+  border: 0; background: var(--bg-elev); color: var(--text-muted); cursor: pointer;
+  padding: 5px 12px; font-size: 12.5px; font-weight: 600;
+}
+.seg button + button { border-left: 1px solid var(--border); }
+.seg button.active { background: var(--primary-soft); color: var(--primary); font-weight: 700; }
+
 /* ---------------- buttons ---------------- */
 .btn {
   display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
@@ -639,6 +669,8 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
   .table-toolbar, .filter-bar, .sort-bar { padding: 10px 14px; }
   .toolbar-search input { width: 100%; }
   .toolbar-search { flex: 1 1 100%; }
+  .mobile-only { display: inline-flex; }
+  #sort-pop { display: none; }
   .btn, .filter-toggle, .currency-select, .toolbar-select { min-height: 34px; }
   /* Tabellen werden zu gelabelten Karten */
   .sortable-table thead { display: none; }
@@ -646,6 +678,8 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
   .sortable-table tbody tr {
     border: 1px solid var(--border); border-radius: var(--radius);
     margin: 10px 14px; padding: 6px 0; background: var(--bg-elev);
+    /* width:100% + Margin sprengte den Container und machte die Karten scrollbar */
+    width: auto;
   }
   .sortable-table tbody td {
     display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
@@ -673,6 +707,36 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
 }
 
 </style>
+  <link rel="canonical" href="https://harrytyp.github.io/coding-plan-comparison/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://harrytyp.github.io/coding-plan-comparison/#website",
+        "url": "https://harrytyp.github.io/coding-plan-comparison/",
+        "name": "Coding Plan Compare",
+        "inLanguage": ["en", "de"],
+        "description": "Compare AI coding plans and models by tokens and requests per dollar paid, with published quotas, live prices and an open JSON dataset."
+      },
+      {
+        "@type": "Dataset",
+        "name": "AI coding plan comparison dataset",
+        "description": "Plan prices, included token and request quotas, derived rates per dollar paid and model benchmark scores for AI coding subscriptions.",
+        "license": "https://opensource.org/licenses/MIT",
+        "creator": { "@type": "Person", "name": "Kolja Knodel", "url": "https://github.com/harrytyp" },
+        "isAccessibleForFree": true,
+        "dateModified": "2026-09-13",
+        "distribution": [{
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://harrytyp.github.io/coding-plan-comparison/data/latest.json"
+        }]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -718,9 +782,8 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
   <div class="app-title">
     <h1 data-i18n="hero.h1">AI coding subscriptions, compared</h1>
     <div class="app-meta">
-      <span class="dot"><span class="live"></span> <span id="meta-sources" data-i18n="hero.sources">live sources</span></span>
       <span class="dot" id="meta-updated"></span>
-      <span class="dot"><span class="badge" data-i18n="hero.opendata">Open Data</span> <span data-i18n="hero.free">no affiliate links</span></span>
+      <span class="dot" data-i18n="hero.scope">Prices, quotas and token rates for AI coding plans and models</span>
     </div>
   </div>
   <div class="disclaimer" id="disclaimer" hidden>
@@ -733,10 +796,10 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
   <div class="view active" id="view-overview">
   <section id="stats">
     <div class="kpi-grid" id="stats-grid">
-      <div class="kpi"><div class="k" data-i18n="stats.plans">Plans tracked</div><div class="v num" id="stat-plans">—</div><div class="s" id="stat-plans-sub"></div><div class="kpi-meter" id="meter-plans"></div></div>
-      <div class="kpi"><div class="k" data-i18n="stats.comparable">Directly comparable</div><div class="v num" id="stat-comparable">—</div><div class="s" id="stat-comparable-sub" data-i18n="stats.comparable-sub">with full model pricing</div><div class="kpi-meter" id="meter-comparable"></div></div>
-      <div class="kpi"><div class="k" data-i18n="stats.models">Model families</div><div class="v num" id="stat-models">—</div><div class="s" data-i18n="stats.models-sub">matched across plans</div></div>
-      <div class="kpi"><div class="k" data-i18n="stats.sources">Live sources</div><div class="v num" id="stat-sources">—</div><div class="s" data-i18n="stats.sources-sub">official feeds & docs</div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.plans">Plans tracked</div><div class="v num" id="stat-plans">…</div><div class="s" id="stat-plans-sub"></div><div class="kpi-meter" id="meter-plans"></div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.comparable">Directly comparable</div><div class="v num" id="stat-comparable">…</div><div class="s" id="stat-comparable-sub" data-i18n="stats.comparable-sub">with full model pricing</div><div class="kpi-meter" id="meter-comparable"></div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.models">Model families</div><div class="v num" id="stat-models">…</div><div class="s" data-i18n="stats.models-sub">matched across plans</div></div>
+      <div class="kpi"><div class="k" data-i18n="stats.sources">Live sources</div><div class="v num" id="stat-sources">…</div><div class="s" data-i18n="stats.sources-sub">official feeds & docs</div></div>
     </div>
   </section>
 
@@ -856,13 +919,30 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
     <div class="panel-head">
       <div>
         <h2 data-i18n="plans.h2">All plans and models</h2>
-        <p data-i18n="plans.sub">Token and request rates are per 1 paid unit in your currency — a rate, not something you can stack.</p>
+        <p data-i18n="plans.sub">Rates are tokens or requests per 1 paid unit, in your currency.</p>
       </div>
     </div>
     <!-- Sortier-Leiste: IMMER sichtbar (Mobile + Desktop) -->
     <div class="sort-bar" id="sort-bar">
-      <label class="sort-select" id="sort-select">
-        <span data-i18n="sort.label">Sort by</span>
+      <details class="pop" id="sort-pop">
+        <summary class="btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><path d="M3 6h13M3 12h9M3 18h5M17 10v9M17 19l3-3M17 19l-3-3"/></svg>
+          <span data-i18n="sort.label">Sort</span>
+          <span class="sort-cur" id="sort-current"></span>
+          <span class="sort-arrow" id="sort-current-dir"></span>
+        </summary>
+        <div class="pop-panel">
+          <div class="pop-title" data-i18n="sort.by">Sort by</div>
+          <div class="pop-chips" id="sort-fields"></div>
+          <div class="pop-title" data-i18n="sort.dir">Direction</div>
+          <div class="seg" id="sort-dir-seg">
+            <button type="button" data-dir="desc">↓ <span data-i18n="sort.descShort">highest first</span></button>
+            <button type="button" data-dir="asc">↑ <span data-i18n="sort.ascShort">lowest first</span></button>
+          </div>
+        </div>
+      </details>
+      <label class="sort-select mobile-only" id="sort-select">
+        <span data-i18n="sort.label">Sort</span>
         <select id="sort-select-key">
           <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
           <option value="score" data-i18n="sort.score">AI score</option>
@@ -1107,7 +1187,7 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
   <section id="method">
     <div class="section-head">
       <h2 data-i18n="method.h2">Why "60 for 10" is not the answer</h2>
-      <p data-i18n="method.sub">The sticker value hides the real economics. Here is exactly how we make plans comparable — every step reproducible.</p>
+      <p data-i18n="method.sub">The sticker value hides the real economics. Here is how plans are made comparable, every step reproducible.</p>
     </div>
 
     <div class="formula mono" id="formula-block"></div>
@@ -1121,12 +1201,12 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
       <div class="method-card">
         <div class="step-num">2</div>
         <h3 data-i18n="method.s2.t">Provider credit formulas</h3>
-        <p data-i18n="method.s2.p">Providers define their own credits (GLM: <span class="mono">(in×6.9 + cached×1.7 + out×24)/10000</span>). We scrape those formulas from the official docs — never invent them.</p>
+        <p data-i18n="method.s2.p">Providers define their own credits (GLM: <span class="mono">(in×6.9 + cached×1.7 + out×24)/10000</span>). Those formulas come from the official docs, never invented.</p>
       </div>
       <div class="method-card">
         <div class="step-num">3</div>
         <h3 data-i18n="method.s3.t">Cache-aware workload model</h3>
-        <p data-i18n="method.s3.p">Coding agents hit the cache constantly. Input is priced 5% fresh + 95% cached-write, cached-read and output at their real rates — per model, per workload pattern.</p>
+        <p data-i18n="method.s3.p">Coding agents hit the cache constantly. Input is priced 5% fresh + 95% cached-write, cached-read and output at their real rates, per model and workload pattern.</p>
       </div>
     </div>
     <details class="method-more">
@@ -1140,7 +1220,7 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
       <div class="method-card">
         <div class="step-num">5</div>
         <h3 data-i18n="method.s5.t">Fair pattern unification</h3>
-        <p data-i18n="method.s5.p">Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans — so a cheap pattern can't rig the comparison.</p>
+        <p data-i18n="method.s5.p">Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans, so a cheap pattern cannot rig the comparison.</p>
       </div>
       <div class="method-card">
         <div class="step-num">6</div>
@@ -1243,6 +1323,7 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
     <div class="footer-row">
       <span data-i18n="foot.rights">© 2026 Coding Plan Compare · MIT license</span>
       <span class="footer-links">
+        <span data-i18n="foot.trust">Open data, no affiliate links</span>
         <a href="data/latest.json" target="_blank" data-i18n="foot.json">latest.json (API)</a>
         <a href="https://github.com/harrytyp/coding-plan-comparison" target="_blank" data-i18n="foot.repo">GitHub</a>
         <a href="https://github.com/harrytyp/coding-plan-comparison/blob/main/sources.yml" target="_blank" data-i18n="foot.sources">sources.yml</a>
