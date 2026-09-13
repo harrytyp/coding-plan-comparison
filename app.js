@@ -2169,12 +2169,8 @@ function showDashDetail(p) {
   `;
   const mBtn = document.getElementById("dd-method");
   if (mBtn) mBtn.addEventListener("click", () => showView("method"));
-  // Mobile: Detail-Panel ins Bild holen (Plot ist darüber, Panel darunter)
-  try {
-    if (window.matchMedia && window.matchMedia("(max-width: 760px)").matches) {
-      document.getElementById("dash-detail")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-  } catch (e) { /* ignore */ }
+  // Kein automatisches Scrollen zum Detail-Panel: das hat die Seite beim Laden
+  // von selbst nach unten gezogen. Wer das Panel sehen will, scrollt selbst.
 }
 
 // Tooltip + Auswahl auf Canvas (Hover, Klick, Touch mit Hit-Test)
