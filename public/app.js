@@ -39,7 +39,7 @@ const I18N = {
     "calc.nospare": "no headroom",
     "hero.h1": "AI coding subscriptions, compared",
     "hero.scope": "Prices, quotas and token rates for AI coding plans and models",
-    "foot.trust": "Open data, no affiliate links",
+    "foot.scope": "Published list prices and quotas, collected from provider sources",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -52,7 +52,6 @@ const I18N = {
     "hero.cta2": "How it works",
     "hero.cta3": "Budget calculator",
     "hero.sources": "live sources",
-    "hero.free": "Free · open data · no affiliate links",
     "stats.plans": "Plans tracked",
     "stats.comparable": "Directly comparable",
     "stats.comparable-sub": "with full model pricing",
@@ -244,6 +243,7 @@ const I18N = {
     "calc.tokensMo": "Tokens / mo",
     "calc.reqMo": "Requests / mo",
     "calc.price": "Price / mo",
+    "calc.all": "all",
     "calc.leftover": "left",
     "calc.empty": "No single plan fits this budget.",
     "calc.note": "Ranked by monthly tokens. Rates follow your selected currency. Price-based estimates (Kimi) stay excluded unless enabled in the filters.",
@@ -303,7 +303,7 @@ const I18N = {
     "calc.nospare": "kein Spielraum",
     "hero.h1": "KI-Coding-Abos im Vergleich",
     "hero.scope": "Preise, Quoten und Token-Raten für KI-Coding-Pläne und Modelle",
-    "foot.trust": "Offene Daten, keine Affiliate-Links",
+    "foot.scope": "Veröffentlichte Listenpreise und Quoten aus Anbieterquellen",
     "nav.plans": "Pläne",
     "nav.models": "Modelle",
     "nav.method": "Methodik",
@@ -316,7 +316,6 @@ const I18N = {
     "hero.cta2": "So funktioniert's",
     "hero.cta3": "Budget-Rechner",
     "hero.sources": "Live-Quellen",
-    "hero.free": "Kostenlos · offene Daten · keine Affiliate-Links",
     "stats.plans": "Erfasste Pläne",
     "stats.comparable": "Direkt vergleichbar",
     "stats.comparable-sub": "mit vollständigem Modell-Pricing",
@@ -509,6 +508,7 @@ const I18N = {
     "calc.tokensMo": "Tokens / Monat",
     "calc.reqMo": "Requests / Monat",
     "calc.price": "Preis / Monat",
+    "calc.all": "alle",
     "calc.leftover": "übrig",
     "calc.empty": "Kein einzelner Plan passt in dieses Budget.",
     "calc.note": "Sortiert nach Tokens pro Monat. Raten folgen deiner gewählten Währung. Preisbasierte Schätzungen (Kimi) bleiben ausgeschlossen, solange sie in den Filtern nicht eingeblendet sind.",
@@ -2367,7 +2367,8 @@ function renderCalculator() {
   const curOut = $("#calc-cur");
   if (curOut) curOut.textContent = curSym();
   const scoreOut = $("#calc-score-out");
-  if (scoreOut) scoreOut.textContent = calcScore === 0 ? (lang === "de" ? "keins" : "none") : String(calcScore);
+  // Der Regler muss seinen aktuellen Wert zeigen, sonst bleibt der Filter blind
+  if (scoreOut) scoreOut.textContent = calcScore === 0 ? t("calc.all") : "\u2265 " + calcScore;
   if (!top.length) {
     list.innerHTML = "";
     calcRanks = new Map();
@@ -2380,10 +2381,10 @@ function renderCalculator() {
   list.innerHTML = top.map((c, i) => {
     const left = budgetUsd - c.price;
     return `<div class="calc-row">`
-      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}<span class="calc-model">${escapeHtml(c.model)}</span></span></div>`
+      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>`
-      + `<span class="sub">${left > 0.005 ? fmtPrice(left) + " " + t("calc.leftover") : t("calc.nospare")}</span></div>`
+      + `<span class="sub">${fmtPrice(Math.max(0, left))} ${t("calc.leftover")}</span></div>`
       + `</div>`;
   }).join("");
 }
