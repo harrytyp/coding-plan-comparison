@@ -26,7 +26,7 @@ const I18N = {
     "tab.overview": "Overview",
     "tab.plans": "Plans",
     "tab.calc": "Calculator",
-    "tab.method": "Methodology",
+    "tab.method": "Method",
     "tab.changelog": "Changelog",
     "top.h3": "Best value right now",
     "top.sub": "One row per plan, strongest model, ranked by tokens per unit paid.",
