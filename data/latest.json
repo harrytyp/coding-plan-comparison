@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T14:39:55.658Z",
+  "generatedAt": "2026-09-13T15:22:56.334Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-13T14:39:55.555Z",
+    "fetchedAt": "2026-09-13T15:22:56.254Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14973,10 +14973,10 @@
       "sarvam-105b": {
         "intelligence": 25.7
       },
-      "claude-haiku-4-5-20251001": {
+      "nova-2-omni": {
         "intelligence": 25.69
       },
-      "nova-2-omni": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
       "step3-vl-10b": {
@@ -15108,10 +15108,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "granite-4-2-8b": {
+      "o1-pro": {
         "intelligence": 19.68
       },
-      "o1-pro": {
+      "granite-4-2-8b": {
         "intelligence": 19.68
       },
       "grok-4-1-2025-11-17": {
