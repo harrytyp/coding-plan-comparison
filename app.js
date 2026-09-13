@@ -2422,10 +2422,15 @@ const VIEW_ALIASES = {
   changelog: "changelog",
   legal: "legal", privacy: "legal", imprint: "legal", disclaimer: "legal",
 };
-// Aktiven Tab in Sicht holen: auf schmalen Displays laeuft die Leiste ueber
+// Aktiven Tab in Sicht holen: auf schmalen Displays laeuft die Leiste ueber.
+// Es wird NUR die Leiste gescrollt (scrollLeft), nie die Seite selbst: ein
+// scrollIntoView hat beim Laden die ganze Seite nach unten gezogen.
 function revealActiveTab() {
   const tab = document.querySelector(".tab.active");
-  if (tab && tab.scrollIntoView) { try { tab.scrollIntoView({ inline: "center", block: "nearest" }); } catch (e) { /* ignore */ } }
+  const bar = tab && tab.parentElement;
+  if (!tab || !bar || bar.scrollWidth <= bar.clientWidth) return;
+  const target = tab.offsetLeft - (bar.clientWidth - tab.offsetWidth) / 2;
+  bar.scrollLeft = Math.max(0, target);
 }
 
 function showView(name) {
