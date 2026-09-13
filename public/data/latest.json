@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T14:39:55.658Z",
+  "generatedAt": "2026-09-13T15:30:41.025Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-13T14:39:55.555Z",
+    "fetchedAt": "2026-09-13T15:30:40.949Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14595,10 +14595,10 @@
       "deepseek-v4-flash-vision-exp": {
         "intelligence": 46
       },
-      "qwen3-7-max": {
+      "glm-5-2": {
         "intelligence": 45.55
       },
-      "glm-5-2": {
+      "qwen3-7-max": {
         "intelligence": 45.55
       },
       "grok-4-5": {
@@ -14607,10 +14607,10 @@
       "claude-mythos-5-1": {
         "intelligence": 45.22
       },
-      "qwen3-8-27b": {
+      "gpt-5-6-luna": {
         "intelligence": 45.09
       },
-      "gpt-5-6-luna": {
+      "qwen3-8-27b": {
         "intelligence": 45.09
       },
       "claude-opus-4-6": {
@@ -14973,10 +14973,10 @@
       "sarvam-105b": {
         "intelligence": 25.7
       },
-      "claude-haiku-4-5-20251001": {
+      "nova-2-omni": {
         "intelligence": 25.69
       },
-      "nova-2-omni": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
       "step3-vl-10b": {
