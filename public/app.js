@@ -1359,7 +1359,7 @@ function renderDashboard() {
   const pad = (lo, hi, log) => {
     if (!(hi > lo)) return [lo * 0.9 || 0.9, lo * 1.1 || 1.1];
     if (log) return [lo * 0.96, hi * 1.04];
-    const span = hi - lo, m = Math.max(span * 0.06, span || 1);
+    const span = hi - lo, m = span * 0.08 || 1;
     return [lo - m, hi + m];
   };
   const [xMin, xMax] = pad(quantile(xSorted, 0.02), quantile(xSorted, 0.98), xLog);
@@ -1446,22 +1446,27 @@ function renderDashboard() {
   ctx.fillText(metricLabel(dashY), 0, 0);
   ctx.restore();
   ctx.restore();
-  // Pareto-Linie
+  // Pareto-Linie (wird unten im geclippten Bereich gezeichnet)
   const frontier = dashPareto ? paretoFrontier(points) : [];
+  // Punkte: klein genug, dass 400 davon unterscheidbar bleiben (Trefferfläche bleibt groß)
+  const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
+  const touchSize = cssW < 760;
+  // Zeichenfläche beschneiden: nichts ragt über Achsen/Labels hinaus
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(PAD_L, PAD_T, plotW, plotH);
+  ctx.clip();
   if (frontier.length > 1) {
     ctx.save();
-    ctx.strokeStyle = C.primary; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+    ctx.strokeStyle = C.primary; ctx.lineWidth = 1.75; ctx.setLineDash([6, 4]);
     ctx.beginPath();
     frontier.forEach((p, i) => { const X = sx(p.x), Y = sy(p.y); if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); });
     ctx.stroke();
     ctx.restore();
   }
-  // Punkte: Farbe + Form (Kreis = kein Training, Quadrat = trainiert, Dreieck = unbekannt)
-  const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
-  const touchSize = cssW < 760;
   for (const p of px) {
     const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
-    const r = isFrontier ? (touchSize ? 10 : 7) : (touchSize ? 7.5 : 5);
+    const r = isFrontier ? (touchSize ? 5.5 : 4.5) : (touchSize ? 4 : 3);
     p.pr = r;
     ctx.save();
     ctx.fillStyle = isFrontier ? C.primary
@@ -1489,6 +1494,7 @@ function renderDashboard() {
       ctx.restore();
     } else dashSelected = null;
   }
+  ctx.restore(); // Clip der Zeichenfläche aufheben
   dashPoints = px;
   if (note) {
     if (dashPareto && frontier.length === 1 && points.length > 1) {
@@ -1513,15 +1519,19 @@ function showDashDetail(p) {
   const priv = p.combo.noTraining === true
     ? `<span class="badge badge-green">${t("plans.badge.noTraining")}</span>`
     : (p.combo.noTraining === false ? `<span class="badge badge-red">${lang === "de" ? "trainiert" : "trains on data"}</span>` : "");
+  // Keine doppelten Zeilen: Was schon als Achse oben steht, unten nicht wiederholen
+  const rows = [
+    `<div class="dd-row"><span class="k">${metricLabel(dashX)}</span><span class="v">${metricFmt(dashX, p.x)}</span></div>`,
+    `<div class="dd-row"><span class="k">${metricLabel(dashY)}</span><span class="v">${metricFmt(dashY, p.y)}</span></div>`,
+  ];
+  if (dashY !== "score") rows.push(`<div class="dd-row"><span class="k">AI ${lang === "de" ? "Score" : "score"}</span><span class="v">${p.combo.score !== null ? p.combo.score.toFixed(1) : "-"}</span></div>`);
+  rows.push(`<div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}</span></div>`);
+  if (dashX !== "tokens") rows.push(`<div class="dd-row"><span class="k">${rateTokensLabel()}</span><span class="v">${fmtTokens(p.combo.tokensPer)}</span></div>`);
+  rows.push(`<div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>`);
   content.innerHTML = `
     <div class="dd-name">${escapeHtml(p.combo.model)}</div>
     <div class="dd-plan">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>
-    <div class="dd-row"><span class="k">${metricLabel(dashX)}</span><span class="v">${metricFmt(dashX, p.x)}</span></div>
-    <div class="dd-row"><span class="k">${metricLabel(dashY)}</span><span class="v">${metricFmt(dashY, p.y)}</span></div>
-    <div class="dd-row"><span class="k">AI ${lang === "de" ? "Score" : "score"}</span><span class="v">${p.combo.score !== null ? p.combo.score.toFixed(1) : "-"}</span></div>
-    <div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}</span></div>
-    <div class="dd-row"><span class="k">${rateTokensLabel()}</span><span class="v">${fmtTokens(p.combo.tokensPer)}</span></div>
-    <div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>
+    ${rows.join("")}
     ${priv ? `<div class="dd-badge">${priv}</div>` : ""}
   `;
   // Mobile: Detail-Panel ins Bild holen (Plot ist darüber, Panel darunter)
