@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T08:50:12.402Z",
+  "generatedAt": "2026-09-13T08:57:26.743Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-12T23:24:28.379Z",
+    "fetchedAt": "2026-09-13T08:57:26.529Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14595,10 +14595,10 @@
       "deepseek-v4-flash-vision-exp": {
         "intelligence": 46
       },
-      "glm-5-2": {
+      "qwen3-7-max": {
         "intelligence": 45.55
       },
-      "qwen3-7-max": {
+      "glm-5-2": {
         "intelligence": 45.55
       },
       "grok-4-5": {
@@ -15108,10 +15108,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "granite-4-2-8b": {
+      "o1-pro": {
         "intelligence": 19.68
       },
-      "o1-pro": {
+      "granite-4-2-8b": {
         "intelligence": 19.68
       },
       "grok-4-1-2025-11-17": {
@@ -15294,10 +15294,10 @@
       "deepseek-r1-distill-qwen-14b": {
         "intelligence": 10.94
       },
-      "qwen3-vl-4b-instruct": {
+      "magistral-small-2506": {
         "intelligence": 10.68
       },
-      "magistral-small-2506": {
+      "qwen3-vl-4b-instruct": {
         "intelligence": 10.68
       },
       "mistral-large-3-2509": {
@@ -15822,12 +15822,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sat, 12 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Sun, 13 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.862019,
-      "CNY": 6.725314,
-      "GBP": 0.739517,
-      "JPY": 153.7596
+      "EUR": 0.861838,
+      "CNY": 6.730863,
+      "GBP": 0.739449,
+      "JPY": 153.797848
     }
   },
   "statistics": {
