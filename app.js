@@ -99,6 +99,7 @@ const I18N = {
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
     "plans.estimate": "estimate",
+    "plans.note": "Note",
     "plans.includePriceBased": "Include price-based plans (Kimi)",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
@@ -363,6 +364,7 @@ const I18N = {
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
     "plans.estimate": "Schätzung",
+    "plans.note": "Hinweis",
     "plans.includePriceBased": "Preisbasierte Pläne einblenden (Kimi)",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
@@ -1143,6 +1145,9 @@ function buildCombos() {
         meter: plan.meter,
         waitlist: plan.price?.waitlist === true,
         dataTier: plan.dataTier ?? null,
+        // Manuelle Hinweise (overrides.yml): kurzer Tag fuer Tabellen, langer Text fuer Details
+        planTag: lang === "de" ? (plan.tagDe ?? plan.tag ?? null) : (plan.tag ?? null),
+        planNote: lang === "de" ? (plan.notesDe ?? plan.notes ?? null) : (plan.notes ?? null),
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
@@ -1276,6 +1281,7 @@ function detailGrid(c) {
   const parts = [];
   const push = (k, v) => { if (v !== null && v !== undefined && v !== "" && v !== "-") parts.push([k, v]); };
   push(t("plans.th.model"), c.model);
+  push(t("plans.note"), c.planNote ?? null);
   push(t("plans.th.score"), c.score !== null ? `${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}` : null);
   push(rateTokensLabel(), fmtTokens(c.tokensPer));
   push(rateReqLabel(), c.requestsPer10 != null ? fmtNum(c.requestsPer10) : null);
@@ -1290,6 +1296,14 @@ function detailGrid(c) {
       .filter(Boolean).join(", ") || (lang === "de" ? "unbekannt" : "unknown")
     : (lang === "de" ? "keine Angabe" : "not stated"));
   return `<div class="detail-grid">${parts.map(([k, v]) => `<div><div class="dg-k">${escapeHtml(k)}</div><div class="dg-v">${escapeHtml(String(v))}</div></div>`).join("")}</div>`;
+}
+
+// Kurzer Hinweis-Chip am Plan-Namen (z.B. "nur CLI"), voller Text im Tooltip
+function noteChip(c) {
+  if (!c.planTag && !c.planNote) return "";
+  const label = c.planTag ?? (lang === "de" ? "Hinweis" : "note");
+  const tip = c.planNote ?? label;
+  return `<span class="note-chip" title="${escapeHtml(tip)}">${escapeHtml(label)}</span>`;
 }
 
 function renderPlans() {
@@ -1379,7 +1393,7 @@ function renderCell(col, c) {
     ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
     : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}${noteChip(c)}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
@@ -2171,6 +2185,7 @@ function showDashDetail(p) {
   rows.push(`<div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}</span></div>`);
   if (dashX !== "tokens") rows.push(`<div class="dd-row"><span class="k">${rateTokensLabel()}</span><span class="v">${fmtTokens(p.combo.tokensPer)}</span></div>`);
   rows.push(`<div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>`);
+  if (p.combo.planNote) rows.push(`<div class="dd-row dd-note"><span class="k">${t("plans.note")}</span><span class="v">${escapeHtml(p.combo.planNote)}</span></div>`);
   content.innerHTML = `
     <div class="dd-name">${escapeHtml(p.combo.model)}</div>
     <div class="dd-plan">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>
@@ -2405,7 +2420,7 @@ function renderCalculator() {
   list.innerHTML = top.map((c, i) => {
     const left = budgetUsd - c.price;
     return `<div class="calc-row">`
-      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
+      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}${noteChip(c)}${i === 0 ? "" : ""}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>`
       + `<span class="sub">${fmtPrice(Math.max(0, left))} ${t("calc.leftover")}</span></div>`
