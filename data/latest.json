@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T15:34:15.463Z",
+  "generatedAt": "2026-09-13T16:40:30.424Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -86,6 +86,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official usage (credits/month per model) from feed",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -1091,6 +1095,10 @@
       },
       "dataTier": "B",
       "dataTierNote": "Official total 15,000 req/mo as anchor",
+      "notes": "No API access: the $1 Go credits can only be spent in the Command Code CLI, so this plan cannot be used from your own harness or agent. Every other Command Code plan includes API access.",
+      "notesDe": "Kein API-Zugang: Die Credits des 1-$-Plans lassen sich nur in der Command-Code-CLI ausgeben, der Plan ist damit nicht in einem eigenen Harness oder Agenten nutzbar. Alle anderen Command-Code-Pläne haben API-Zugang.",
+      "tag": "CLI only",
+      "tagDe": "nur CLI",
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -2743,6 +2751,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -4395,6 +4407,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -6047,6 +6063,10 @@
       },
       "dataTier": "B",
       "dataTierNote": "Official total 230,000 req/mo as anchor",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -7699,6 +7719,10 @@
       },
       "dataTier": "B",
       "dataTierNote": "Official total 370,000 req/mo as anchor",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -9344,6 +9368,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official quotas (5h/weekly credits) from GLM docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "GLM-5.3",
@@ -9449,6 +9477,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official quotas (5h/weekly credits) from GLM docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "GLM-5.3",
@@ -9554,6 +9586,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official quotas (5h/weekly credits) from GLM docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "GLM-5.3",
@@ -9658,6 +9694,10 @@
       "modelStats": null,
       "dataTier": null,
       "dataTierNote": null,
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": []
     },
     {
@@ -9701,6 +9741,10 @@
       "modelStats": null,
       "dataTier": null,
       "dataTierNote": null,
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": []
     },
     {
@@ -9744,6 +9788,10 @@
       "modelStats": null,
       "dataTier": null,
       "dataTierNote": null,
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": []
     },
     {
@@ -9787,6 +9835,10 @@
       "modelStats": null,
       "dataTier": null,
       "dataTierNote": null,
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": []
     },
     {
@@ -9848,6 +9900,10 @@
       },
       "dataTier": "D",
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -9998,6 +10054,10 @@
       },
       "dataTier": "D",
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -10148,6 +10208,10 @@
       },
       "dataTier": "D",
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -10298,6 +10362,10 @@
       },
       "dataTier": "D",
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -10430,6 +10498,10 @@
       "modelStats": null,
       "dataTier": "A",
       "dataTierNote": "Official quota (5h cap) from docs/overrides",
+      "notes": "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Prompts = 100/5h; Modellkosten aus Feed.",
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
       "modelRows": []
     }
   ],
@@ -14514,7 +14586,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-13T15:34:15.254Z",
+    "fetchedAt": "2026-09-13T16:40:30.017Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14958,10 +15030,10 @@
       "qwen3-vl-235b-a22b-thinking": {
         "intelligence": 26.68
       },
-      "gpt-5-4-nano": {
+      "gpt-5-codex-2025-09-15": {
         "intelligence": 26.63
       },
-      "gpt-5-codex-2025-09-15": {
+      "gpt-5-4-nano": {
         "intelligence": 26.63
       },
       "k-exaone-236b-a23b": {
@@ -15108,10 +15180,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "granite-4-2-8b": {
+      "o1-pro": {
         "intelligence": 19.68
       },
-      "o1-pro": {
+      "granite-4-2-8b": {
         "intelligence": 19.68
       },
       "grok-4-1-2025-11-17": {
@@ -15822,12 +15894,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sat, 12 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Sun, 13 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.862019,
-      "CNY": 6.725314,
-      "GBP": 0.739517,
-      "JPY": 153.7596
+      "EUR": 0.861838,
+      "CNY": 6.730863,
+      "GBP": 0.739449,
+      "JPY": 153.797848
     }
   },
   "statistics": {
