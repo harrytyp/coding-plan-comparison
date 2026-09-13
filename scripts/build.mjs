@@ -10,7 +10,7 @@
  *    (Input priced 5% fresh + 95% cache-write; cache-read and output separately)
  *  - Requests/month = meter / cost  (meter: credits | $usage | requests | prompts)
  *  - Per-dollar normalization: requests / paidPrice (tokens/requests per $1,
- *    NOT scaled up to $10 — a $1 plan shows what $1 buys)
+ *    NOT scaled up to $10, a $1 plan shows what $1 buys)
  *  - Subscriptions are single per account (no stacking): the rate is a rate,
  *    not a purchasable multiple. The frontend budget calculator compares
  *    single plans within a budget.
@@ -113,7 +113,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         id,
         provider: "zhipu",
         name: `GLM Coding Plan ${tierName}`,
-        price: ov?.price ?? { monthlyUsd: null, paidPrice: null, advertisedPrice: null, billingNote: "Price not scrapeable (API auth) — see overrides.yml", altPrice: null },
+        price: ov?.price ?? { monthlyUsd: null, paidPrice: null, advertisedPrice: null, billingNote: "Price not scrapeable (API auth), see overrides.yml", altPrice: null },
         meter: "credits",
         quotas: [
           { label: "5h rolling", unit: "credits", amount: q.h5, window: "5h", refresh: "rolling", disclosure: "exact" },
@@ -254,9 +254,9 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
       models: ["Kimi K3", "Kimi K2.7 Code"],
       dataTier: "D",
-      dataTierNote: "No published quota (waitlist only) — requests derived from price / cost",
+      dataTierNote: "No published quota (waitlist only), requests derived from price / cost",
       // Offizielle Umrechnung: Membership-Preis ÷ offizieller Request-Kosten (¥0.03)
-      // Request-Basis: offizieller CNY-Listenpreis (sonst USD→CNY-Fallback) — Kimi rechnet RMB
+      // Request-Basis: offizieller CNY-Listenpreis (sonst USD→CNY-Fallback), Kimi rechnet RMB
       providerCost: {
         formula: "requests = monthlyPriceCNY / 0.03 (offizielles Billing-Beispiel: einfacher Request ~¥0.03)",
         monthlyPriceCny: kimiListCny[tierKey] ?? Math.round((g.month / USD_PER_CNY) * 100) / 100,
@@ -319,14 +319,26 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       feedModels: ov.feedModels ?? null,
       // MiniMax: offizielles 5h-Cap als Mengen-Basis (Tier A, wenn Quota vorhanden)
       dataTier: ov.quota ? "A" : "C",
-      dataTierNote: ov.quota ? "Official quota (5h cap) from docs/overrides" : "No official quota — derived",
+      dataTierNote: ov.quota ? "Official quota (5h cap) from docs/overrides" : "No official quota, derived",
       disclosure: "undisclosed",
-      // Keine feedModels für undisclosed — sonst entstehen erfundene modelStats
+      // Keine feedModels für undisclosed, sonst entstehen erfundene modelStats
       feedModels: null,
       sourceIds: ["overrides"],
       verifiedAt: ov.lastVerified ?? "2026-08-28",
       notes: ov.note ?? null,
     });
+  }
+
+  // Manuelle Notizen an bereits dynamisch gebaute Plaene haengen. Der Loop
+  // darueber ueberspringt existierende ids, deshalb hier separat: eine Notiz
+  // aus overrides.yml ist eine Ergaenzung, kein Ersatz fuer die Feed-Daten.
+  for (const ov of overridesData?.overrides ?? []) {
+    const plan = plans.find((p) => p.id === ov.id);
+    if (!plan) continue;
+    if (ov.note) plan.notes = ov.note;
+    if (ov.noteDe) plan.notesDe = ov.noteDe;
+    if (ov.tag) plan.tag = ov.tag;
+    if (ov.tagDe) plan.tagDe = ov.tagDe;
   }
 
   return plans;
@@ -391,7 +403,7 @@ function modelsForPlan(plan, feeds) {
     // (1 Credit = $1 Nutzung; "premium models get $1 of usage per credit"). Der Calculator
     // zeigt je Modell: "($allowance ÷ $costPerRequest per request)" = Modell-Limit.
     // Die requestEstimate (~75K) ist die TYPISCHE Nutzung (Plan mix), NICHT die Summe
-    // der Modell-Limits — also kein Summen-Anker, der die Limits verfälscht.
+    // der Modell-Limits, also kein Summen-Anker, der die Limits verfälscht.
     const own = cc.models.some((m) => (m.allowances?.[planId] ?? null) != null);
     const thisPlan = cc.plans?.find((p) => p.id === planId);
     // Quelle der allowances: eigene (goat/pro) oder GOAT-skaliert (go/max10/max20)
@@ -407,7 +419,7 @@ function modelsForPlan(plan, feeds) {
         .filter((x) => x.allowance != null);
     }
     if (!sourceList.length) return out;
-    // Modell-Limit je Modell: allowance (Dollar) / cost ($/request) — wie der Calculator.
+    // Modell-Limit je Modell: allowance (Dollar) / cost ($/request), wie der Calculator.
     for (const { m, allowance } of sourceList) {
       out.push({
         name: m.name,
@@ -712,11 +724,17 @@ async function main() {
       // D = preisbasiert (keine veröffentlichte Menge, Preis÷Kosten)
       dataTier: plan.dataTier ?? null,
       dataTierNote: plan.dataTierNote ?? null,
+      // Manuelle Hinweise aus overrides.yml (z.B. "kein API-Zugang"): reisen mit
+      // in den Plan-Summaries, sonst erreichen sie die Seite nicht.
+      notes: plan.notes ?? null,
+      notesDe: plan.notesDe ?? null,
+      tag: plan.tag ?? null,
+      tagDe: plan.tagDe ?? null,
       modelRows,
     });
 
     if (modelRows.length === 0 && plan.disclosure === "disclosed") {
-      warnings.push(`${plan.id}: no model pricing from feeds (meter=${plan.meter}) — raw quotas only, no request normalization`);
+      warnings.push(`${plan.id}: no model pricing from feeds (meter=${plan.meter}), raw quotas only, no request normalization`);
     }
   }
 
@@ -795,7 +813,7 @@ async function main() {
     methodology: {
       basis: "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
       costPerRequest: "(0.05×input + 0.95×cachedWrite)×pattern.input + cachedRead×pattern.cachedRead + output×pattern.output, /1M",
-      normalizedMetric: "requests and tokens per $1 paid (rate, not a purchasable multiple — subscriptions are single per account, no stacking)",
+      normalizedMetric: "requests and tokens per $1 paid (rate, not a purchasable multiple, subscriptions are single per account, no stacking)",
       derivedMetrics: "rawTokensPerMonth (alias: derivedTokensPerMonth) is derived as requestsPerMonth × tokens-per-request from the workload pattern, not an independently published quota.",
       fallbackPattern: FALLBACK_PATTERN,
       drawThresholdPercent: DRAW_THRESHOLD_PERCENT,
@@ -863,7 +881,7 @@ function loadAiScores(root) {
 
 // Fuzzy-Match: Feed-Modellname → Score-Slug aus vorhandenen Scores.
 // Build bereitet die Scores vor, damit das Frontend nur noch lookup braucht.
-// Phasen (strikte Reihenfolge — exakte Normalisierungen schlagen unscharfe
+// Phasen (strikte Reihenfolge, exakte Normalisierungen schlagen unscharfe
 // Prefix-Treffer, damit z.B. "Muse Spark 1.3 Contributor" auf muse-spark-1-3
 // (54.41) zeigt und nicht auf den generischen muse-spark-Key (41.72):
 //   Phase 1: exakter Slug-Match über ALLE Kandidaten (roh, Family, ohne
@@ -914,7 +932,7 @@ function fuzzyScoreMatch(rawName, family, scores) {
     candidates.push(slug(parts.join(" ")));
   }
 
-  // Match gegen Scores — Phasen strikt nacheinander, jede über alle Kandidaten.
+  // Match gegen Scores, Phasen strikt nacheinander, jede über alle Kandidaten.
   // Ein generischer Prefix-Treffer (z.B. "muse-spark") darf nie eine exakte
   // Normalisierung (z.B. "muse-spark-1-3") verdrängen.
   const uniq = [...new Set(candidates.filter(Boolean))];
@@ -1000,7 +1018,7 @@ function loadPrivacy(root) {
   } catch (e) {
     console.warn("WARN: privacy.yml nicht lesbar:", e.message);
   }
-  // 2. Geparste Privacy-Quellen (aus Crawl) ergänzen/überschreiben — z.B. Command Code
+  // 2. Geparste Privacy-Quellen (aus Crawl) ergänzen/überschreiben, z.B. Command Code
   //    aus der offiziellen Policy, automatisch extrahiert statt manuell.
   try {
     const parsedFile = join(root, "parsed", "privacy-command-code.json");

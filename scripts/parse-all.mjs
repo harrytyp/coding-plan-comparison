@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * parse-all.mjs — Parst alle gespeicherten Snapshots (cache/) → parsed/<sourceId>.json
+ * parse-all.mjs, Parst alle gespeicherten Snapshots (cache/) → parsed/<sourceId>.json
  *
  * Deterministisch: nutzt NUR cache/ (von fetch.mjs gefüllt), nie Live-Fetch.
- * build.mjs liest dann die parsed/*.json — die eigentliche Datenwahrheit.
+ * build.mjs liest dann die parsed/*.json, die eigentliche Datenwahrheit.
  */
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";

@@ -1,8 +1,8 @@
-# Changelog — manuell kuratiert (Nutzer-relevante Änderungen, neueste zuerst).
+# Changelog, manuell kuratiert (Nutzer-relevante Änderungen, neueste zuerst).
 # Wird von scripts/build.mjs in latest.json übernommen (Feld: changelog).
 entries:
   - date: 2026-09-13
-    text: "Raten pro 1 $ statt pro 10 $: Command Code Go zeigt, was 1 $ kauft — kein Stapeln nötig."
+    text: "Raten pro 1 $ statt pro 10 $: Command Code Go zeigt, was 1 $ kauft, kein Stapeln nötig."
   - date: 2026-09-13
     text: "Neu: Budget-Rechner vergleicht Einzelpläne innerhalb deines Budgets."
   - date: 2026-09-13

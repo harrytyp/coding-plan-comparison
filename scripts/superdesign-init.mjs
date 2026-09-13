@@ -21,7 +21,7 @@ writeFileSync(join(OUT, "theme.md"), `# Theme tokens
 
 Source: \`public/index.html\` (inline <style>). Vanilla CSS, no framework, no Tailwind.
 
-## Part 1 — Token summary
+## Part 1, Token summary
 
 ### Light (\`:root\`)
 ${(tokens(roots[0] ?? "") || []).map((t) => `- \`${t}\``).join("\n")}
@@ -33,7 +33,7 @@ ${(tokens(darks[0] ?? "") || []).map((t) => `- \`${t}\``).join("\n")}
 - Breakpoint in use: \`@media (max-width: 760px)\` (mobile shell), plus a wider table breakpoint.
 - Radius/shadows come from the tokens above; there is no spacing scale variable, paddings are literal.
 
-## Part 2 — Raw source
+## Part 2, Raw source
 
 \`\`\`css
 ${roots[0] ?? ""}

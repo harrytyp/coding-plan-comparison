@@ -1,11 +1,11 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T15:57:50.536Z",
+  "generatedAt": "2026-09-13T15:34:15.463Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
     "costPerRequest": "(0.05×input + 0.95×cachedWrite)×pattern.input + cachedRead×pattern.cachedRead + output×pattern.output, /1M",
-    "normalizedMetric": "requests and tokens per $1 paid (rate, not a purchasable multiple — subscriptions are single per account, no stacking)",
+    "normalizedMetric": "requests and tokens per $1 paid (rate, not a purchasable multiple, subscriptions are single per account, no stacking)",
     "derivedMetrics": "rawTokensPerMonth (alias: derivedTokensPerMonth) is derived as requestsPerMonth × tokens-per-request from the workload pattern, not an independently published quota.",
     "fallbackPattern": {
       "input": 800,
@@ -9847,7 +9847,7 @@
         "p75": 3300
       },
       "dataTier": "D",
-      "dataTierNote": "No published quota (waitlist only) — requests derived from price / cost",
+      "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -9997,7 +9997,7 @@
         "p75": 6633.333333333334
       },
       "dataTier": "D",
-      "dataTierNote": "No published quota (waitlist only) — requests derived from price / cost",
+      "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -10147,7 +10147,7 @@
         "p75": 23300
       },
       "dataTier": "D",
-      "dataTierNote": "No published quota (waitlist only) — requests derived from price / cost",
+      "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -10297,7 +10297,7 @@
         "p75": 47381.00000000001
       },
       "dataTier": "D",
-      "dataTierNote": "No published quota (waitlist only) — requests derived from price / cost",
+      "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "modelRows": [
         {
           "model": "Kimi K3",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-13T15:57:50.450Z",
+    "fetchedAt": "2026-09-13T15:34:15.254Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14595,10 +14595,10 @@
       "deepseek-v4-flash-vision-exp": {
         "intelligence": 46
       },
-      "qwen3-7-max": {
+      "glm-5-2": {
         "intelligence": 45.55
       },
-      "glm-5-2": {
+      "qwen3-7-max": {
         "intelligence": 45.55
       },
       "grok-4-5": {
@@ -14607,10 +14607,10 @@
       "claude-mythos-5-1": {
         "intelligence": 45.22
       },
-      "qwen3-8-27b": {
+      "gpt-5-6-luna": {
         "intelligence": 45.09
       },
-      "gpt-5-6-luna": {
+      "qwen3-8-27b": {
         "intelligence": 45.09
       },
       "claude-opus-4-6": {
@@ -14973,10 +14973,10 @@
       "sarvam-105b": {
         "intelligence": 25.7
       },
-      "claude-haiku-4-5-20251001": {
+      "nova-2-omni": {
         "intelligence": 25.69
       },
-      "nova-2-omni": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
       "step3-vl-10b": {
@@ -15021,10 +15021,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.93
       },
-      "grok-4-20-beta-0309-reasoning": {
+      "granite-4-2-30b": {
         "intelligence": 23.83
       },
-      "granite-4-2-30b": {
+      "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.83
       },
       "qwen3-next-80b-a3b-thinking": {
@@ -15294,10 +15294,10 @@
       "deepseek-r1-distill-qwen-14b": {
         "intelligence": 10.94
       },
-      "magistral-small-2506": {
+      "qwen3-vl-4b-instruct": {
         "intelligence": 10.68
       },
-      "qwen3-vl-4b-instruct": {
+      "magistral-small-2506": {
         "intelligence": 10.68
       },
       "mistral-large-3-2509": {
@@ -15796,7 +15796,7 @@
     "entries": [
       {
         "date": "2026-09-13",
-        "text": "Raten pro 1 $ statt pro 10 $: Command Code Go zeigt, was 1 $ kauft — kein Stapeln nötig."
+        "text": "Raten pro 1 $ statt pro 10 $: Command Code Go zeigt, was 1 $ kauft, kein Stapeln nötig."
       },
       {
         "date": "2026-09-13",
@@ -15822,12 +15822,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sun, 13 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Sat, 12 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.861838,
-      "CNY": 6.730863,
-      "GBP": 0.739449,
-      "JPY": 153.797848
+      "EUR": 0.862019,
+      "CNY": 6.725314,
+      "GBP": 0.739517,
+      "JPY": 153.7596
     }
   },
   "statistics": {
@@ -15838,9 +15838,9 @@
     "sourceCount": 19
   },
   "warnings": [
-    "qwen-coding-pro: no model pricing from feeds (meter=requests) — raw quotas only, no request normalization",
-    "qwen-token-personal-lite: no model pricing from feeds (meter=credits) — raw quotas only, no request normalization",
-    "qwen-token-personal-standard: no model pricing from feeds (meter=credits) — raw quotas only, no request normalization",
-    "qwen-token-personal-pro: no model pricing from feeds (meter=credits) — raw quotas only, no request normalization"
+    "qwen-coding-pro: no model pricing from feeds (meter=requests), raw quotas only, no request normalization",
+    "qwen-token-personal-lite: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
+    "qwen-token-personal-standard: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
+    "qwen-token-personal-pro: no model pricing from feeds (meter=credits), raw quotas only, no request normalization"
   ]
 }

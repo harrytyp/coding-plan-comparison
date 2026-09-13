@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * fetch.mjs — Holt alle Quellen aus sources.yml, speichert Snapshots + Manifest.
+ * fetch.mjs, Holt alle Quellen aus sources.yml, speichert Snapshots + Manifest.
  *
  * Deterministisch & aktualisierbar:
  *  - Jeder Fetch speichert: cache/<sourceId>.<ext> (Rohdaten) + sha256 + fetchedAt + httpStatus
@@ -45,11 +45,11 @@ async function fetchSource(source) {
       if (prev?.fetchedAt) {
         const ageHours = (Date.now() - new Date(prev.fetchedAt).getTime()) / 3600000;
         if (ageHours < ttlHours && prev.ok) {
-          console.log(`✓ ${id}: Cache gültig (${ageHours.toFixed(1)}h < ${ttlHours}h TTL) — übersprungen`);
+          console.log(`✓ ${id}: Cache gültig (${ageHours.toFixed(1)}h < ${ttlHours}h TTL), übersprungen`);
           return prev;
         }
       }
-    } catch { /* erster Durchlauf — kein Manifest vorhanden */ }
+    } catch { /* erster Durchlauf, kein Manifest vorhanden */ }
   }
 
   try {
@@ -135,7 +135,7 @@ async function fetchSource(source) {
     const hash = sha256(buf);
     // Stabiler Hash: für parsebare Quellen den strukturierten Output hashen
     // (robust gegen HTML-Nonces/Cache-Buster). Für unparsbare SPA-Quellen (kein Parser)
-    // KEIN contentHash — der Roh-HTML-sha ist volatil (Nonces) → nur HTTP-Status zählt.
+    // KEIN contentHash, der Roh-HTML-sha ist volatil (Nonces) → nur HTTP-Status zählt.
     let contentHash = null;
     let parsedPreview = null;
     try {
@@ -201,7 +201,7 @@ async function fetchSource(source) {
     try { manifest = JSON.parse(await readFile(MANIFEST_PATH, "utf8")); } catch {}
     if (!manifest.sources?.[id]) {
       if (source.optional) {
-        console.log(`  (optional, kein Snapshot — übersprungen, kein Fehler)`);
+        console.log(`  (optional, kein Snapshot, übersprungen, kein Fehler)`);
         return null;
       }
       throw new Error(`${id}: fetch fehlgeschlagen und kein Snapshot vorhanden: ${e.message}`);

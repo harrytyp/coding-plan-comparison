@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * check.mjs — Change-Detection & Diff-Report.
+ * check.mjs, Change-Detection & Diff-Report.
  *
  * Läuft nach fetch.mjs und zeigt, welche Quellen sich geändert haben
  * (sha256-Vergleich gegen letzten Snapshot im Manifest).
@@ -44,7 +44,7 @@ async function main() {
   if (firstRun.length) {
     console.log(`\nℹ  ${firstRun.length} Erst-Snapshot(s). Zweiter Lauf zeigt Änderungen.`);
   }
-  console.log("\n✓ Keine Änderungen — Daten aktuell.");
+  console.log("\n✓ Keine Änderungen, Daten aktuell.");
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

@@ -1,4 +1,4 @@
-# Overrides — nur für Daten, die NICHT scrapebar sind (JS-SPA, Auth-APIs, undisclosed).
+# Overrides, nur für Daten, die NICHT scrapebar sind (JS-SPA, Auth-APIs, undisclosed).
 # Alles Scrapebare kommt dynamisch aus sources.yml → cache/ → parsed/.
 # Diese Datei ist die manuelle Ergänzung; ein Cron-Agent prüft die Quellen und aktualisiert hier.
 
@@ -24,3 +24,12 @@ overrides:
     meter: prompts
     lastVerified: 2026-08-28
     note: "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Prompts = 100/5h; Modellkosten aus Feed."
+
+  # Command Code Go (1 $): laut Doku der einzige Command-Code-Plan OHNE API-Zugang.
+  # Quelle: commandcode.ai/docs/plans/go ("Go is the only plan without API access"),
+  # geprueft 2026-09-13. Darum ist der Plan an die Command-Code-CLI gebunden.
+  - id: command-code-go
+    tag: "CLI only"
+    tagDe: "nur CLI"
+    note: "No API access: the $1 Go credits can only be spent in the Command Code CLI, so this plan cannot be used from your own harness or agent. Every other Command Code plan includes API access."
+    noteDe: "Kein API-Zugang: Die Credits des 1-$-Plans lassen sich nur in der Command-Code-CLI ausgeben, der Plan ist damit nicht in einem eigenen Harness oder Agenten nutzbar. Alle anderen Command-Code-Pläne haben API-Zugang."

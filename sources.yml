@@ -93,7 +93,7 @@ sources:
     typ: html-docs
     parser: mimo
     provides: [plan_meta, plan_quotas]
-    note: "MiMo Token Plan (HTML, 372KB) — Parser zu implementieren."
+    note: "MiMo Token Plan (HTML, 372KB), Parser zu implementieren."
 
   # ---- Privacy-Quellen (Data Policy je Anbieter, für den Privacy-Filter) ----
   # Crawl-Check: HTTP-Status + HTML-Fingerprint. Text bei JS-SPA evtl. nicht
@@ -110,21 +110,21 @@ sources:
     typ: js-spa
     parser: none
     provides: [privacy]
-    note: "GLM/Zhipu Privacy (JS-SPA, Text nicht extrahierbar) — Fingerprint-Change-Detection, manuelle Pflege in privacy.yml."
+    note: "GLM/Zhipu Privacy (JS-SPA, Text nicht extrahierbar), Fingerprint-Change-Detection, manuelle Pflege in privacy.yml."
 
   - id: privacy-kimi
     url: "https://www.moonshot.cn/privacy"
     typ: js-spa
     parser: none
     provides: [privacy]
-    note: "Kimi/Moonshot Privacy (JS-SPA) — Fingerprint-Change-Detection, manuelle Pflege."
+    note: "Kimi/Moonshot Privacy (JS-SPA), Fingerprint-Change-Detection, manuelle Pflege."
 
   - id: privacy-alibaba
     url: "https://help.aliyun.com/zh/model-studio/privacy"
     typ: js-spa
     parser: none
     provides: [privacy]
-    note: "Qwen/Alibaba Model Studio Privacy (JS-SPA) — Fingerprint-Change-Detection. Kernaussage 'never use your data for model training' dokumentiert."
+    note: "Qwen/Alibaba Model Studio Privacy (JS-SPA), Fingerprint-Change-Detection. Kernaussage 'never use your data for model training' dokumentiert."
 
   - id: privacy-minimax
     url: "https://platform.minimax.io/legal/privacy"
@@ -132,9 +132,9 @@ sources:
     parser: none
     optional: true
     provides: [privacy]
-    note: "MiniMax Privacy (aktuell 404 — wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
+    note: "MiniMax Privacy (aktuell 404, wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
 
-  # ---- AI-Scores (LLM Stats Leaderboard) — nur 1x/Tag (cache_ttl_hours) ----
+  # ---- AI-Scores (LLM Stats Leaderboard), nur 1x/Tag (cache_ttl_hours) ----
   # Interner Leaderboard-Endpoint, kein Auth nötig. conservative (0-100) für alle Modelle.
   - id: llm-stats-indexes
     url: "https://api.zeroeval.com/leaderboard/indexes/compact?payloadVersion=2"

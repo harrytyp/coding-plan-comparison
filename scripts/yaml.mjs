@@ -1,5 +1,5 @@
 /**
- * yaml.mjs — Gemeinsamer YAML-Parser (block + flow maps/lists).
+ * yaml.mjs, Gemeinsamer YAML-Parser (block + flow maps/lists).
  * Ausreichend für sources.yml, data/overrides.yml.
  * Keine Runtime-Deps.
  */

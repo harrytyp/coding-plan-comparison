@@ -61,7 +61,7 @@ test("GLM nutzt Anbieter-Credit-Formel (beide Modelle, offiziell)", async () => 
   const glm53 = pro.modelRows.find((r) => r.model === "GLM-5.3");
   const flash = pro.modelRows.find((r) => r.model === "GLM-5.3-Flash");
   assert.ok(glm53 && flash, "beide GLM-Modelle müssen present sein");
-  // Formel GLM-5.3: (in×6.9 + cached×1.7 + out×24)/10000 — Pattern aus Feed (GLM-5.3: 1000/55000/200)
+  // Formel GLM-5.3: (in×6.9 + cached×1.7 + out×24)/10000, Pattern aus Feed (GLM-5.3: 1000/55000/200)
   const expected53 = (1000 * 6.9 + 55000 * 1.7 + 200 * 24) / 10000;
   assert.ok(Math.abs(glm53.creditsPerRequest - expected53) < 0.001,
     `GLM-5.3: (in×6.9 + cached×1.7 + out×24)/10000 = ${expected53}`);
@@ -254,7 +254,7 @@ test("Score-Alias-Provenance: jeder Alias zeigt auf einen Leaderboard-Key", asyn
 test("Normalisierung schlägt Prefix: gestrippter Slug mit Treffer gewinnt", async () => {
   // Generelle Form des Muse-Bugs: wenn der Alias-Slug ohne Varianten-Suffix
   // (contributor/preview/fast/latest/exp/highspeed) direkt ein Leaderboard-Key
-  // ist, muss aliasOf genau dieser Key sein — nie ein kürzerer Prefix-Key.
+  // ist, muss aliasOf genau dieser Key sein, nie ein kürzerer Prefix-Key.
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const board = JSON.parse(await readFile(join(ROOT, "parsed/llm-stats-indexes.json"), "utf8"));
   const boardKeys = new Set(Object.keys(board.scores ?? {}));
@@ -270,7 +270,7 @@ test("Normalisierung schlägt Prefix: gestrippter Slug mit Treffer gewinnt", asy
 
 test("Versions-Invariante: verschiedene Versionen teilen nie dasselbe Alias-Ziel", async () => {
   // Zwei Aliase mit unterschiedlichem Versions-Stamm (1-2 vs 1-3) dürfen nicht
-  // auf denselben Leaderboard-Key zeigen — das war das sichtbare Symptom.
+  // auf denselben Leaderboard-Key zeigen, das war das sichtbare Symptom.
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const board = JSON.parse(await readFile(join(ROOT, "parsed/llm-stats-indexes.json"), "utf8"));
   const boardKeys = new Set(Object.keys(board.scores ?? {}));

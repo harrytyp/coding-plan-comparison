@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "coding-plan-comparison schema",
-  "description": "Schema for public/data/latest.json — credit/token-pass subscriptions with base credits (token prices), cache model and workload profile.",
+  "description": "Schema for public/data/latest.json, credit/token-pass subscriptions with base credits (token prices), cache model and workload profile.",
   "type": "object",
   "required": ["meta", "plans"],
   "properties": {

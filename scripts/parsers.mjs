@@ -1,5 +1,5 @@
 /**
- * parsers.mjs — Parser für alle Quellen aus sources.yml.
+ * parsers.mjs, Parser für alle Quellen aus sources.yml.
  * Jeder Parser nimmt den rohen Snapshot (Buffer/String) und liefert strukturierte Daten.
  * Deterministisch: gleicher Input → gleicher Output. Kein Netzwerk hier.
  */
@@ -51,7 +51,7 @@ export function parseFx(raw) {
 export function parseOcgo(raw) {
   const data = JSON.parse(raw);
   return {
-    // KEIN fetchedAt — volatiler Timestamp, würde contentHash falsch-positiv machen.
+    // KEIN fetchedAt, volatiler Timestamp, würde contentHash falsch-positiv machen.
     sourceUrl: data.sourceUrl,
     monthlyCredit: data.monthlyCredit,
     monthlyCost: data.monthlyCost,
@@ -80,7 +80,7 @@ export function parseOcgo(raw) {
 export function parseCc(raw) {
   const data = JSON.parse(raw);
   return {
-    // KEIN fetchedAt — volatiler Timestamp, würde contentHash falsch-positiv machen.
+    // KEIN fetchedAt, volatiler Timestamp, würde contentHash falsch-positiv machen.
     sourceUrl: data.sourceUrl,
     plans: (data.plans ?? []).map((p) => ({
       id: p.id,
@@ -119,7 +119,7 @@ export function parseGlmOverview(html) {
   const text = htmlToText(html);
   const out = { quotas: [], formula: null, mcpPerCall: null, offPeakDiscount: null, models: [] };
 
-  // Quoten: "Lite 套餐 2,000 10,000" Tabelle — direkt im Text suchen (Section-Grenzen sind fragil)
+  // Quoten: "Lite 套餐 2,000 10,000" Tabelle, direkt im Text suchen (Section-Grenzen sind fragil)
   const quotaRe = /(Lite|Pro|Max)\s*套餐\s*([\d,]+)\s*([\d,]+)/g;
   let qm;
   const seenTiers = new Set();
@@ -143,8 +143,8 @@ export function parseGlmOverview(html) {
     while ((m = modelRe.exec(formulaSection))) {
       out.models.push({ model: `GLM-${m[1]}`, input: parseFloat(m[2]), cachedRead: parseFloat(m[3]), output: parseFloat(m[4]) });
     }
-    // MCP: "MCP 工具 联网搜索 — — 1.2"
-    const mcpRe = /MCP\s*工具\s*联网搜索\s*—\s*—\s*([\d.]+)/;
+    // MCP: "MCP 工具 联网搜索 -, 1.2"
+    const mcpRe = /MCP\s*工具\s*联网搜索\s*-\s*-\s*([\d.]+)/;
     const mcpM = mcpRe.exec(formulaSection);
     if (mcpM) out.mcpPerCall = parseFloat(mcpM[1]);
     out.formula = "模型消耗积分数=（输入 Token × Input 抵扣系数 + 缓存命中 Token × Cached Input 抵扣系数 + 输出 Token × Output 抵扣系数）/ 10000";
@@ -239,7 +239,7 @@ export function parseKimiCode(html) {
 // ---------- Parser: Kimi Goods API (kimi.ai, JSON) ----------
 // Offizielle Goods-API: Preise in USD-Cents, billingCycle (MONTH/YEAR),
 // transitionSummary.reason (REASON_SUBSCRIPTION_NEED_APPLY = nur Waitlist).
-// Stabiles, deterministisches Schema — kein volatiler Timestamp.
+// Stabiles, deterministisches Schema, kein volatiler Timestamp.
 export function parseKimiGoods(raw) {
   const data = JSON.parse(raw);
   const goods = Array.isArray(data?.goods) ? data.goods : [];
