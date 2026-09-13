@@ -59,10 +59,10 @@
   --bg-elev: #111a2e;
   --bg-muted: #16223a;
   --text: #e2e8f0;
-  --text-muted: #94a3b8;
-  --text-faint: #64748b;
-  --border: #1e293b;
-  --border-strong: #334155;
+  --text-muted: #9fb0c7;
+  --text-faint: #7d8ca3;
+  --border: #24344f;
+  --border-strong: #3b4d6b;
   --primary: #3b82f6;
   --primary-strong: #60a5fa;
   --primary-soft: #172a45;
@@ -74,9 +74,9 @@
   --warn-soft: #2e2410;
   --danger: #f87171;
   --danger-soft: #3a1717;
-  --chart-dot: #475569;
-  --chart-dot-strong: #94a3b8;
-  --chart-grid: #1e293b;
+  --chart-dot: #64748b;
+  --chart-dot-strong: #a8b8cc;
+  --chart-grid: #2a3b57;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, .45);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, .5);
@@ -526,11 +526,12 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
     -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%);
     mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent 100%);
   }
-  .tab { padding: 9px 9px; font-size: 12.5px; letter-spacing: -0.01em; }
-  .icon-btn { width: 38px; height: 38px; }
+  .tab { padding: 0 9px; font-size: 12.5px; min-height: 40px; display: inline-flex; align-items: center; letter-spacing: -0.01em; }
+  .icon-btn { width: 40px; height: 40px; }
   .dash-legend-wrap { padding: 10px 14px; }
   .dash-legend { font-size: 11.5px; gap: 6px 12px; }
   .brand-text { display: none; }
+  .lang-switch button { padding: 9px 11px; }
   .app-header { padding: 16px 14px 2px; }
   .app-header h1 { font-size: 20px; }
   .app-meta { font-size: 12px; gap: 4px 12px; margin-top: 6px; }
@@ -543,6 +544,7 @@ footer { border-top: 1px solid var(--border); background: color-mix(in oklab, va
   .panel { border-radius: var(--radius); }
   .panel-head { padding: 13px 14px; }
   .dash-controls { padding: 12px 14px; }
+  .dash-controls.collapsed { display: none !important; }
   .dash-ctl { width: 100%; }
   .dash-ctl select { width: 100%; min-width: 0; }
   .dash-plot { padding: 10px 10px 4px 4px; min-height: 320px; }

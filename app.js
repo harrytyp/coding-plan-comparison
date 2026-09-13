@@ -1438,7 +1438,7 @@ function renderDashboardInner() {
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
   const C = {
     grid: cssVar("--chart-grid", cssVar("--border", "#e2e8f0")),
-    axis: cssVar("--text-faint", "#94a3b8"),
+    axis: cssVar("--text-muted", "#94a3b8"),
     text: cssVar("--text-muted", "#64748b"),
     ring: cssVar("--text", "#0f172a"),
     dot: cssVar("--chart-dot", "#94a3b8"),
