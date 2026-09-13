@@ -29,7 +29,7 @@ const I18N = {
     "hero.lead": `"60 for 10" is only the sticker price. We compare what you actually get. real token economics, provider credit formulas, cache-aware cost per request. from live official sources, reproduced daily.`,
     "hero.cta1": "Compare plans",
     "hero.cta2": "How it works",
-    "hero.sources": "11 live sources",
+    "hero.sources": "live sources",
     "hero.free": "Free · open data · no affiliate links",
     "stats.plans": "Plans tracked",
     "stats.comparable": "Directly comparable",
@@ -216,7 +216,7 @@ const I18N = {
     "hero.lead": `„60 für 10“ ist nur der Aufkleberpreis. Wir vergleichen, was du wirklich bekommst. echte Token-Ökonomie, anbietereigene Credit-Formeln, cache-bewusste Kosten pro Request. aus Live-Quellen, täglich reproduziert.`,
     "hero.cta1": "Pläne vergleichen",
     "hero.cta2": "So funktioniert's",
-    "hero.sources": "11 Live-Quellen",
+    "hero.sources": "Live-Quellen",
     "hero.free": "Kostenlos · offene Daten · keine Affiliate-Links",
     "stats.plans": "Erfasste Pläne",
     "stats.comparable": "Direkt vergleichbar",
@@ -704,26 +704,45 @@ function aiScoreFor(modelName, family) {
   let parts = words(noParen);
   while (parts.length > 2) { parts.pop(); candidates.push(slug(parts.join(" "))); }
 
-  // Match
-  for (const c of [...new Set(candidates.filter(Boolean))]) {
-    if (scores[c]) return scores[c];
+  // Match in strict phases: exact normalizations beat fuzzy prefix hits,
+  // so "Muse Spark 1.3 Contributor" resolves to muse-spark-1-3, never to the
+  // generic muse-spark key. Derived (non-exact) hits are flagged as fallback.
+  const uniq = [...new Set(candidates.filter(Boolean))];
+  // Alias entries (build-precomputed, flagged) are never fuzzy targets, only
+  // direct hits: matches always land on original leaderboard keys, never chains.
+  const solid = keys.filter((k) => !scores[k]?.fallback && !scores[k]?.familyFallback);
+  const withFallback = (entry, aliasOf) => {
+    if (!entry || (!entry.fallback && !entry.familyFallback && !aliasOf)) return entry;
+    // Transitive Auflösung: aliasOf zeigt immer auf den originalen
+    // Leaderboard-Key, nie auf einen anderen Alias (alte JSONs mit Ketten heilen).
+    let root = entry.aliasOf ?? aliasOf ?? null;
+    const seen = new Set();
+    while (root && scores[root]?.aliasOf && !seen.has(root)) { seen.add(root); root = scores[root].aliasOf; }
+    return { intelligence: entry.intelligence, fallback: true, aliasOf: root };
+  };
+  for (const c of uniq) {
+    if (scores[c]) return withFallback(scores[c], c === slug(raw) ? null : c);
+  }
+  for (const c of uniq) {
     const cc = compact(c);
     if (cc.length >= 4) {
-      const found = keys.find(k => compact(k) === cc);
-      if (found) return scores[found];
+      const found = solid.find(k => compact(k) === cc);
+      if (found) return withFallback(scores[found], found);
     }
-    const prefix = keys.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
+  }
+  for (const c of uniq) {
+    const prefix = solid.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
       .sort((a, b) => a.length - b.length)[0];
-    if (prefix) return scores[prefix];
+    if (prefix) return withFallback(scores[prefix], prefix);
   }
 
   // Word-Overlap Fallback
   let best = null, bestOverlap = 0;
-  for (const k of keys) {
+  for (const k of solid) {
     const overlap = commonWords(k, noParen);
     if (overlap >= 2 && overlap > bestOverlap) { bestOverlap = overlap; best = k; }
   }
-  if (best) return scores[best];
+  if (best) return withFallback(scores[best], best);
 
   // Familien-Mittelwert
   if (family || modelName) {
@@ -737,6 +756,7 @@ function aiScoreFor(modelName, family) {
     for (const prefix of prefixes) {
       if (!prefix || prefix.length < 3) continue;
       famScores = Object.entries(scores)
+        .filter(([k, v]) => !v?.fallback && !v?.familyFallback)
         .filter(([k]) => k.startsWith(prefix + "-") || k.replace(/-+/g, "").startsWith(prefix))
         .map(([, v]) => v?.intelligence)
         .filter((v) => typeof v === "number");
@@ -831,7 +851,7 @@ function buildCombos() {
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
-        scoreFallback: score?.familyFallback === true,
+        scoreFallback: score?.familyFallback === true || score?.fallback === true,
         // Raten in der gewählten Währung (pro 1 Einheit); USD-Rohwerte für den Rechner
         tokensPer: rateOf(tokensPerUsd),
         reqPer: rateOf(reqPerUsd),
@@ -965,7 +985,7 @@ function renderPlans() {
 // Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
 function renderCell(col, c) {
   const priceStr = c.priceDisplay ?? (c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-");
-  // Familien-Fallback-Scores mit "~" markieren (Näherungswert, kein exakter AA-Wert)
+  // Family-fallback scores are marked with "~" (approximation, family fallback from LLM Stats, not an exact model score)
   const scoreStr = c.score !== null
     ? `<span class="num strong">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>`
     : `<span class="muted">-</span>`;
@@ -1107,7 +1127,7 @@ function initSheet() {
   const sd2 = $("#sheet-done"); if (sd2) sd2.addEventListener("click", closeSheet);
 }
 
-/* ============ DASHBOARD / PARETO-PLOT (AA-Stil) ============ */
+/* ============ DASHBOARD / PARETO-PLOT ============ */
 // Standard: echte Kaufpunkte — Preis gegen Tokens/Monat, beide logarithmisch.
 // Keine hochgerechnete Rate als Default: die Frontier gilt nur für Kaufbares.
 let dashX = "price";
@@ -1527,7 +1547,7 @@ async function loadData() {
   const main = $("#main");
   try {
     const resp = await fetch(DATA_URL, { cache: "no-cache" });
-    if (!resp.ok) throw new Error("HTTP " + resp.status + " für " + DATA_URL);
+    if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + DATA_URL);
     data = await resp.json();
     buildModelPrivacyMap(); // Modell-Privacy-Map aufbauen, bevor gerendert wird
     // Loading-Note entfernen

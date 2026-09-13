@@ -1,7 +1,15 @@
 {
-  "name": "coding-plan-compare",
+  "name": "coding-plan-comparison",
   "version": "0.2.0",
-  "description": "Dynamische, reproduzierbare Vergleichsdatenbank für AI-Coding-Plan-Subscriptions. Fetch → Parse → Build: alle Daten aus live gescrapten offiziellen Quellen, mit Change-Detection.",
+  "description": "Reproducible comparison of AI coding plan subscriptions. Fetch, parse, build: all data from live official sources, with change detection.",
+  "homepage": "https://harrytyp.github.io/coding-plan-comparison/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harrytyp/coding-plan-comparison.git"
+  },
+  "bugs": {
+    "url": "https://github.com/harrytyp/coding-plan-comparison/issues"
+  },
   "type": "module",
   "scripts": {
     "fetch": "node scripts/fetch.mjs",

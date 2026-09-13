@@ -1,181 +1,36 @@
 #!/usr/bin/env node
 /**
- * coding-plan-compare Generator
- * Baut public/data/latest.json dynamisch aus parsed/*.json (Quellen) + data/overrides.yml.
+ * coding-plan-compare generator.
+ * Builds public/data/latest.json dynamically from parsed/*.json (sources) + data/overrides.yml.
  *
- * Normalisierung (ai-10-usd-Methode, erweitert):
- *  - Kosten pro Request je Modell aus Token-Preisen + Workload-Pattern:
+ * Normalization (ai-10-usd method, extended):
+ *  - Cost per request per model from token prices + workload pattern:
  *      cost = (0.05×input + 0.95×cachedWrite)×pattern.input
  *           + cachedRead×pattern.cachedRead + output×pattern.output, /1M
- *    (Input zu 5% normal + 95% Cache-Write; Cache-Read und Output separat)
- *  - Requests/Monat = Meter / cost  (Meter: credits | $usage | requests | prompts)
- *  - Pro-Geld-Normalisierung: requests / paidPrice (Tokens/Requests pro 1 $,
- *    NICHT hochskaliert auf $10 — ein $1-Plan zeigt, was $1 kauft)
- *  - Abos sind einzeln pro Konto (kein Stacking): die Rate ist eine Rate,
- *    kein kaufbares Vielfaches. Der Budget-Rechner im Frontend vergleicht
- *    Einzelpläne innerhalb eines Budgets.
- *  - Draw < 10%; Outlier = Tukey IQR auf log2-Ratio
- *  - Anbieter-eigene requestEstimate (Command Code) als offizielle Referenz
- *  - undisclosed bleibt undisclosed; keine direkte Credit-Umrechnung zwischen Anbietern
+ *    (Input priced 5% fresh + 95% cache-write; cache-read and output separately)
+ *  - Requests/month = meter / cost  (meter: credits | $usage | requests | prompts)
+ *  - Per-dollar normalization: requests / paidPrice (tokens/requests per $1,
+ *    NOT scaled up to $10 — a $1 plan shows what $1 buys)
+ *  - Subscriptions are single per account (no stacking): the rate is a rate,
+ *    not a purchasable multiple. The frontend budget calculator compares
+ *    single plans within a budget.
+ *  - Draw < 10%; outlier = Tukey IQR on log2 ratio
+ *  - Provider-owned requestEstimate (Command Code) kept as official reference
+ *  - undisclosed stays undisclosed; no direct credit conversion between providers
  *
- * Reproduzierbar: deterministisch aus committeden Inputs (data + feeds-Snapshots).
+ * Reproducible: deterministic from committed inputs (data + feed snapshots).
  */
 import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseYaml } from "./yaml.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const TARGET_PRICE = 1;
 const DRAW_THRESHOLD_PERCENT = 10;
-// ai-10-usd Workload-Fallback: durchschnittliches Message-Profil
+// ai-10-usd workload fallback: average message profile
 const FALLBACK_PATTERN = { input: 800, cachedRead: 50000, output: 162 };
-
-// ---------- YAML-Parser (block + flow maps/lists; ausreichend für sources.yml / overrides.yml) ----------
-function parseFlow(s) {
-  s = s.trim();
-  if (s.startsWith("{") && s.endsWith("}")) {
-    const inner = s.slice(1, -1).trim();
-    const obj = {};
-    if (!inner) return obj;
-    for (const part of splitFlow(inner)) {
-      const idx = part.indexOf(":");
-      if (idx < 0) continue;
-      const k = part.slice(0, idx).trim();
-      const v = parseFlow(part.slice(idx + 1).trim());
-      obj[k] = v;
-    }
-    return obj;
-  }
-  if (s.startsWith("[") && s.endsWith("]")) {
-    const inner = s.slice(1, -1).trim();
-    if (!inner) return [];
-    return splitFlow(inner).map((p) => parseFlow(p.trim()));
-  }
-  return parseScalar(s);
-}
-
-function splitFlow(s) {
-  const parts = [];
-  let depth = 0, cur = "", inStr = null;
-  for (const ch of s) {
-    if (inStr) {
-      cur += ch;
-      if (ch === inStr) inStr = null;
-      continue;
-    }
-    if (ch === '"' || ch === "'") { inStr = ch; cur += ch; continue; }
-    if (ch === "{" || ch === "[") depth++;
-    if (ch === "}" || ch === "]") depth--;
-    if (ch === "," && depth === 0) { parts.push(cur); cur = ""; continue; }
-    cur += ch;
-  }
-  if (cur.trim()) parts.push(cur);
-  return parts;
-}
-
-function parseScalar(s) {
-  s = s.trim();
-  if (s === "null") return null;
-  if (s === "true") return true;
-  if (s === "false") return false;
-  const n = Number(s);
-  if (s !== "" && !isNaN(n)) return n;
-  if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) return s.slice(1, -1);
-  return s;
-}
-
-// Rekursiver Parser: verarbeitet eine Liste von {indent, text}-Zeilen.
-function parseBlock(lines, startIdx) {
-  const root = {};
-  let i = startIdx;
-  let lastKey = null;
-  while (i < lines.length) {
-    const { indent, text } = lines[i];
-    if (indent < lines[startIdx].indent) break; // back to parent level
-    if (indent > lines[startIdx].indent) {
-      // shouldn't happen at this level; skip
-      i++;
-      continue;
-    }
-    if (text.startsWith("- ")) {
-      // List at this indent level — collect all items
-      const arr = [];
-      const baseIndent = indent;
-      while (i < lines.length && lines[i].indent === baseIndent && lines[i].text.startsWith("- ")) {
-        const itemText = lines[i].text.slice(2).trim();
-        const itemMatch = itemText.match(/^([^:]+):\s*(.*)$/);
-        if (itemMatch && !itemText.startsWith("{") && !itemText.startsWith("[")) {
-          // block-map list item
-          const item = {};
-          const k = itemMatch[1].trim();
-          const v = itemMatch[2].trim();
-          if (v === "") {
-            const childLines = [];
-            let j = i + 1;
-            while (j < lines.length && lines[j].indent > baseIndent) { childLines.push(lines[j]); j++; }
-            item[k] = childLines.length ? parseBlock(childLines, 0) : {};
-            i = j;
-          } else {
-            item[k] = parseFlow(v);
-            i++;
-          }
-          // remaining keys of this list item (same item, deeper indent)
-          while (i < lines.length && lines[i].indent > baseIndent) {
-            const sub = lines[i];
-            const sm = sub.text.match(/^([^:]+):\s*(.*)$/);
-            if (!sm) { i++; continue; }
-            const sk = sm[1].trim();
-            const sv = sm[2].trim();
-            if (sv === "") {
-              const childLines = [];
-              let j = i + 1;
-              while (j < lines.length && lines[j].indent > sub.indent) { childLines.push(lines[j]); j++; }
-              item[sk] = childLines.length ? parseBlock(childLines, 0) : {};
-              i = j;
-            } else {
-              item[sk] = parseFlow(sv);
-              i++;
-            }
-          }
-          arr.push(item);
-        } else {
-          arr.push(parseFlow(itemText));
-          i++;
-        }
-      }
-      if (lastKey) root[lastKey] = arr;
-      else if (Array.isArray(root)) root.push(...arr);
-      else return arr; // top-level list block → array
-      lastKey = null;
-    } else {
-      const m = text.match(/^([^:]+):\s*(.*)$/);
-      if (!m) { i++; continue; }
-      const key = m[1].trim();
-      const rest = m[2].trim();
-      if (rest === "") {
-        const childLines = [];
-        let j = i + 1;
-        while (j < lines.length && lines[j].indent > indent) { childLines.push(lines[j]); j++; }
-        root[key] = childLines.length ? parseBlock(childLines, 0) : {};
-        i = j;
-      } else {
-        root[key] = parseFlow(rest);
-        i++;
-      }
-      lastKey = key;
-    }
-  }
-  return root;
-}
-
-function parseYaml(text) {
-  const lines = text.split("\n")
-    .map((raw, idx) => ({ indent: raw.match(/^\s*/)[0].length, text: raw.trim(), idx }))
-    .filter((l) => l.text && !l.text.startsWith("#"));
-  if (!lines.length) return {};
-  return parseBlock(lines, 0);
-}
 
 // ---------- Dynamischer Plan-Katalog aus geparsten Quellen + Overrides ----------
 function buildPlanCatalog(parsed, overrides, overridesData) {
@@ -196,11 +51,11 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         { label: "Weekly", unit: "usd", amount: 30, window: "week", refresh: "weekly", disclosure: "exact" },
         { label: "Monthly", unit: "usd", amount: oc.monthlyCredit ?? 60, window: "month", refresh: "monthly", disclosure: "exact" },
       ],
-      tokenPricing: { source: "ocgo-pricing", note: "Feed: usage = Credits/Monat je Modell, pattern = Token-Profil, input/output/cachedRead/cachedWrite = API-Preise" },
+      tokenPricing: { source: "ocgo-pricing", note: "Feed: usage = credits/month per model, pattern = token profile, input/output/cachedRead/cachedWrite = API prices" },
       workload: { pattern: null, taskConversion: null },
       models: (oc.models ?? []).map((m) => m.name),
       dataTier: "A",
-      dataTierNote: "Offizielle usage (Credits/Monat je Modell) aus Feed",
+      dataTierNote: "Official usage (credits/month per model) from feed",
       disclosure: "disclosed",
       sourceIds: ["ocgo-pricing"],
       verifiedAt: oc.fetchedAt ? oc.fetchedAt.slice(0, 10) : "2026-08-28",
@@ -219,21 +74,21 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       const hasOwnAllowances = cc.models.some((m) => (m.allowances?.[p.id] ?? null) != null);
       const dataTier = hasOwnAllowances ? "A" : (p.requestEstimate ? "B" : "C");
       const dataTierNote = hasOwnAllowances
-        ? "Offizielle Modell-Allowances aus Feed"
-        : (p.requestEstimate ? `Offizielle Gesamtmenge ${p.requestEstimate.toLocaleString()} req/mo als Anker` : "Von GOAT skaliert, kein offizieller Anker");
+        ? "Official per-model allowances from feed"
+        : (p.requestEstimate ? `Official total ${p.requestEstimate.toLocaleString()} req/mo as anchor` : "Scaled from GOAT, no official anchor");
       add({
         id,
         provider: "command-code",
         name: `Command Code ${p.name}`,
-        price: { monthlyUsd: p.priceMonthly, paidPrice: CC_PAID[p.id] ?? p.priceMonthly, advertisedPrice: p.priceMonthly, billingNote: CC_PAID[p.id] ? "paid $10.77 (ai-10-usd verifiziert)" : "", altPrice: null },
+        price: { monthlyUsd: p.priceMonthly, paidPrice: CC_PAID[p.id] ?? p.priceMonthly, advertisedPrice: p.priceMonthly, billingNote: CC_PAID[p.id] ? "paid $10.77 (ai-10-usd verified)" : "", altPrice: null },
         meter: "credits",
         quotas: [
           { label: "5h window", unit: "credits", amount: p.limits?.h5 ?? null, window: "5h", refresh: "rolling", disclosure: "exact" },
           { label: "Weekly", unit: "credits", amount: p.limits?.weekly ?? null, window: "week", refresh: "weekly", disclosure: "exact" },
           { label: "Monthly", unit: "credits", amount: p.creditsMonthly, window: "month", refresh: "monthly", disclosure: "exact" },
         ],
-        tokenPricing: { source: "cc-pricing", note: "allowances = Credits/Monat je Modell; requestEstimate = offizielle Request-Schätzung" },
-        workload: { pattern: null, taskConversion: p.requestEstimate ? `Offizielle requestEstimate: ${p.requestEstimate.toLocaleString()} req/mo` : null },
+        tokenPricing: { source: "cc-pricing", note: "allowances = credits/month per model; requestEstimate = official request estimate" },
+        workload: { pattern: null, taskConversion: p.requestEstimate ? `Official requestEstimate: ${p.requestEstimate.toLocaleString()} req/mo` : null },
         models: [],
         dataTier,
         dataTierNote,
@@ -258,7 +113,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         id,
         provider: "zhipu",
         name: `GLM Coding Plan ${tierName}`,
-        price: ov?.price ?? { monthlyUsd: null, paidPrice: null, advertisedPrice: null, billingNote: "Preis nicht scrapebar (API-Auth) — siehe overrides.yml", altPrice: null },
+        price: ov?.price ?? { monthlyUsd: null, paidPrice: null, advertisedPrice: null, billingNote: "Price not scrapeable (API auth) — see overrides.yml", altPrice: null },
         meter: "credits",
         quotas: [
           { label: "5h rolling", unit: "credits", amount: q.h5, window: "5h", refresh: "rolling", disclosure: "exact" },
@@ -270,12 +125,12 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
           perModel: (glm.models ?? []).map((m) => ({ model: m.model, input: m.input, cachedRead: m.cachedRead, output: m.output })),
           mcpPerCall: glm.mcpPerCall ?? null,
           offPeakDiscount: glm.offPeakDiscount ?? null,
-          note: "Offiziell verifiziert (docs.bigmodel.cn/cn/coding-plan/overview)",
+          note: "Officially verified (docs.bigmodel.cn/cn/coding-plan/overview)",
         },
         workload: { pattern: null, taskConversion: null },
         models: (glm.models ?? []).map((m) => m.model),
         dataTier: "A",
-        dataTierNote: "Offizielle Quotas (5h/Wochen-Credits) aus GLM-Docs",
+        dataTierNote: "Official quotas (5h/weekly credits) from GLM docs",
         disclosure: "disclosed",
         sourceIds: ["glm-coding-overview", ...(ov ? ["overrides"] : [])],
         verifiedAt: "2026-08-28",
@@ -329,7 +184,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         { label: "7-day rolling", unit: "credits", amount: p.quota7d, window: "rolling", refresh: "rolling", disclosure: "exact" },
       ],
       tokenPricing: null,
-      workload: { pattern: null, taskConversion: `Tiered deduction coefficients by model (offiziell); Koeffizienten nicht öffentlich. Offizieller Multiplikator: ${qwenTierMult[tierKey]}× Lite` },
+      workload: { pattern: null, taskConversion: `Tiered deduction coefficients by model (official); coefficients not published. Official multiplier: ${qwenTierMult[tierKey]}× Lite` },
       models: ["Qwen 文本与多模态", "Claude Code", "Cursor", "Qwen Code", "OpenClaw"],
       disclosure: "disclosed",
       sourceIds: ["qwen-token-personal"],
@@ -395,11 +250,11 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         { label: "7-day quota", unit: "credits", amount: null, window: "week", refresh: "weekly", disclosure: "undisclosed", shared: "Kimi Code + Kimi Membership" },
         { label: "5h rate window", unit: "credits", amount: null, window: "5h", refresh: "rolling", disclosure: "undisclosed" },
       ],
-      tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit-Balance; Extra Usage nach Verbrauch" },
+      tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit balance; extra usage pay-as-you-go" },
       workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
       models: ["Kimi K3", "Kimi K2.7 Code"],
       dataTier: "D",
-      dataTierNote: "Keine veröffentlichte Menge (nur Waitlist) — Requests aus Preis÷Kosten abgeleitet",
+      dataTierNote: "No published quota (waitlist only) — requests derived from price / cost",
       // Offizielle Umrechnung: Membership-Preis ÷ offizieller Request-Kosten (¥0.03)
       // Request-Basis: offizieller CNY-Listenpreis (sonst USD→CNY-Fallback) — Kimi rechnet RMB
       providerCost: {
@@ -425,13 +280,13 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         id: `kimi-${tierKey}`,
         provider: "moonshot",
         name: `Kimi Code ${p.name}`,
-        price: { monthlyUsd: usd, paidPrice: p.priceCny, advertisedPrice: p.priceCny, currency: "CNY", monthlyCny: p.priceCny, billingNote: `¥${p.priceCny}/Monat (offiziell, kimi.com)`, altPrice: `$${usd}/mo ≈` },
+        price: { monthlyUsd: usd, paidPrice: p.priceCny, advertisedPrice: p.priceCny, currency: "CNY", monthlyCny: p.priceCny, billingNote: `¥${p.priceCny}/month (official, kimi.com)`, altPrice: `$${usd}/mo ≈` },
         meter: "credits",
         quotas: [
           { label: "7-day quota", unit: "credits", amount: null, window: "week", refresh: "weekly", disclosure: "undisclosed", shared: "Kimi Code + Kimi Membership" },
           { label: "5h rate window", unit: "credits", amount: null, window: "5h", refresh: "rolling", disclosure: "undisclosed" },
         ],
-        tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit-Balance; Extra Usage nach Verbrauch" },
+        tokenPricing: { source: "kimi-code-membership", note: kimiCode?.extraUsage ?? "Credit balance; extra usage pay-as-you-go" },
         workload: { pattern: null, taskConversion: kimiCode?.extraUsage ?? null },
         models: ["Kimi K3", "Kimi K2.7 Code"],
         providerCost: {
@@ -464,7 +319,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       feedModels: ov.feedModels ?? null,
       // MiniMax: offizielles 5h-Cap als Mengen-Basis (Tier A, wenn Quota vorhanden)
       dataTier: ov.quota ? "A" : "C",
-      dataTierNote: ov.quota ? "Offizielles Quota (5h-Cap) aus Docs/Overrides" : "Keine offizielle Quota — abgeleitet",
+      dataTierNote: ov.quota ? "Official quota (5h cap) from docs/overrides" : "No official quota — derived",
       disclosure: "undisclosed",
       // Keine feedModels für undisclosed — sonst entstehen erfundene modelStats
       feedModels: null,
@@ -788,7 +643,7 @@ async function main() {
       } else if (window === "5h") {
         // 5h-Cap bleibt als Durchsatz-Grenze; für Monats-Vergleich NICHT nutzen
         monthlyRequests = null;
-        windowNote = "5h rolling cap (Durchsatz), nicht Monats-Menge";
+        windowNote = "5h rolling cap (throughput), not a monthly volume";
       }
       if (monthlyRequests === null) continue;
       const normalized = monthlyRequests / paid; // pro 1 $ bezahlt (TARGET_PRICE=1)
@@ -806,10 +661,13 @@ async function main() {
         requestsRawInWindow: requests,
         normalizedPer1: normalized,
         privacy: m.privacy ?? null,
-        // Ehrlichkeit: Schätzung auf Basis offizieller Billing-Beispiele, kein offizielles Limit
+        // Honesty: estimate from official billing examples, not a published limit
         estimate: m.fromOfficialBilling === true ? "price-based estimate (official billing example, not a published limit)" : null,
-        // Rohdaten: Tokens pro Monat = Requests/Monat × Tokens pro Request (aus Pattern)
+        // Derived: tokens per month = requests/month × tokens per request (from pattern).
+        // Not an independently published quota; kept as rawTokensPerMonth for API
+        // compatibility, with derivedTokensPerMonth as the honestly named alias.
         rawTokensPerMonth: monthlyRequests && pattern ? monthlyRequests * ((pattern.input || 0) + (pattern.cachedRead || 0) + (pattern.output || 0)) : null,
+        derivedTokensPerMonth: monthlyRequests && pattern ? monthlyRequests * ((pattern.input || 0) + (pattern.cachedRead || 0) + (pattern.output || 0)) : null,
       });
     }
 
@@ -858,7 +716,7 @@ async function main() {
     });
 
     if (modelRows.length === 0 && plan.disclosure === "disclosed") {
-      warnings.push(`${plan.id}: no model pricing from feeds (meter=${plan.meter}) — Rohdaten nur, keine Request-Normalisierung`);
+      warnings.push(`${plan.id}: no model pricing from feeds (meter=${plan.meter}) — raw quotas only, no request normalization`);
     }
   }
 
@@ -935,13 +793,14 @@ async function main() {
     generatedAt: new Date().toISOString(),
     targetMonthlyPrice: TARGET_PRICE,
     methodology: {
-      basis: "Rohdaten + offizielle Credit-Formeln + Workload-Profil. '60 für 10' ist nur $-Gegenwert; Vergleichbarkeit via Grundcredits (Token-Preise) + Cache-Modell + Pattern.",
+      basis: "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
       costPerRequest: "(0.05×input + 0.95×cachedWrite)×pattern.input + cachedRead×pattern.cachedRead + output×pattern.output, /1M",
       normalizedMetric: "requests and tokens per $1 paid (rate, not a purchasable multiple — subscriptions are single per account, no stacking)",
+      derivedMetrics: "rawTokensPerMonth (alias: derivedTokensPerMonth) is derived as requestsPerMonth × tokens-per-request from the workload pattern, not an independently published quota.",
       fallbackPattern: FALLBACK_PATTERN,
       drawThresholdPercent: DRAW_THRESHOLD_PERCENT,
-      patternUnification: "Für geteilte Modell-Familien wird das OpenCode-Go-Pattern (echte per-Modell-Tokenstatistik) für beide Provider verwendet; das CC-Feed nutzt sonst nur das generische 800/50000/162-Pattern, was Kosten verzerrt.",
-      fenster: "5h-Windows als Obergrenze (Cap), nicht ×180; undisclosed bleibt undisclosed; keine direkte Credit-Umrechnung zwischen Anbietern.",
+      patternUnification: "For shared model families the OpenCode-Go pattern (real per-model token statistics) is used for both providers; the CC feed otherwise reuses one generic 800/50000/162 pattern, which would skew costs.",
+      fenster: "5h windows are throughput caps, never multiplied into monthly volumes; weekly credits scale ×4.33 to monthly; undisclosed stays undisclosed; no direct credit conversion between providers.",
     },
     sources: Object.fromEntries(Object.entries(feeds).map(([k, v]) => [k, v.fetchedAt ?? null])),
     plans: planSummaries,
@@ -996,19 +855,23 @@ function loadAiScores(root) {
 
 // Fuzzy-Match: Feed-Modellname → Score-Slug aus vorhandenen Scores.
 // Build bereitet die Scores vor, damit das Frontend nur noch lookup braucht.
-// Algorithmus (probiert der Reihe nach):
-//   1. Direkter Slug-Match
-//   2. Compact-Match (ohne Trennzeichen)
-//   3. Prefix-Match
-//   4. Geklammerte Suffixe entfernen (z.B. "(latest)")
-//   5. Bekannte Provider-Prefixe entfernen (z.B. "tencent")
-//   6. "contributor"/"preview" etc. entfernen
-//   7. Sukzessive Kürzung von hinten
-//   8. Word-Overlap (meiste gemeinsame Wörter)
+// Phasen (strikte Reihenfolge — exakte Normalisierungen schlagen unscharfe
+// Prefix-Treffer, damit z.B. "Muse Spark 1.3 Contributor" auf muse-spark-1-3
+// (54.41) zeigt und nicht auf den generischen muse-spark-Key (41.72):
+//   Phase 1: exakter Slug-Match über ALLE Kandidaten (roh, Family, ohne
+//     Klammern/Provider-Prefixe/"contributor"-Suffixe/Datum/Kürzungen)
+//   Phase 2: Compact-Match (ohne Trennzeichen) über alle Kandidaten
+//   Phase 3: Prefix-Match (kürzester Key, z.B. "deepseek-v4-flash-0423"
+//     vor "deepseek-v4-flash-vision-exp")
+//   Phase 4: Word-Overlap (meiste gemeinsame Wörter)
 function fuzzyScoreMatch(rawName, family, scores) {
   const raw = (rawName ?? family ?? "").toLowerCase();
   const keys = Object.keys(scores);
   if (keys.length === 0) return null;
+  // Alias-Einträge (fallback) sind nie Match-Ziele: Treffer landen immer auf
+  // originalen Leaderboard-Keys, sonst entstehen Ketten-Aliase (Alias → Alias)
+  // und Versions-Sprünge wie qwen-3-6 → qwen-3-8. Direkte Slug-Hits (Phase 1)
+  // bleiben erlaubt, weil der Build sie vorberechnet und flaggt.
 
   // Helfer: Slug normalisieren
   const slug = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
@@ -1043,18 +906,27 @@ function fuzzyScoreMatch(rawName, family, scores) {
     candidates.push(slug(parts.join(" ")));
   }
 
-  // Match gegen Scores
-  for (const c of [...new Set(candidates.filter(Boolean))]) {
-    // Direct match
+  // Match gegen Scores — Phasen strikt nacheinander, jede über alle Kandidaten.
+  // Ein generischer Prefix-Treffer (z.B. "muse-spark") darf nie eine exakte
+  // Normalisierung (z.B. "muse-spark-1-3") verdrängen.
+  const uniq = [...new Set(candidates.filter(Boolean))];
+  const solid = keys.filter((k) => !scores[k]?.fallback);
+  // Phase 1: exakte Treffer
+  for (const c of uniq) {
     if (scores[c]) return c;
-    // Compact match
+  }
+  // Phase 2: Compact-Match (ohne Trennzeichen)
+  for (const c of uniq) {
     const cc = compact(c);
     if (cc.length >= 4) {
-      const found = keys.find(k => compact(k) === cc);
+      const found = solid.find(k => compact(k) === cc);
       if (found) return found;
     }
+  }
+  // Phase 3: Prefix-Match (kürzester Key zuerst)
+  for (const c of uniq) {
     // Prefix match: kürzeste passende Key nehmen (z.B. "deepseek-v4-flash-0423" vor "deepseek-v4-flash-vision-exp")
-    const prefix = keys.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
+    const prefix = solid.filter(k => k === c || k.startsWith(c + "-") || c.startsWith(k + "-"))
       .sort((a, b) => a.length - b.length)[0];
     if (prefix) return prefix;
   }
@@ -1062,7 +934,7 @@ function fuzzyScoreMatch(rawName, family, scores) {
   // 8. Word-Overlap: finde Score-Key mit meisten gemeinsamen Wörtern
   const rawWords = words(noParen);
   let best = null, bestOverlap = 0;
-  for (const k of keys) {
+  for (const k of solid) {
     const overlap = commonWords(k, noParen);
     if (overlap >= 2 && overlap > bestOverlap) {
       bestOverlap = overlap;
@@ -1072,18 +944,22 @@ function fuzzyScoreMatch(rawName, family, scores) {
   return best;
 }
 
-// Wende Fuzzy-Match auf alle Feed-Modelle an, damit Scores direkt auffindbar sind
+// Wende Fuzzy-Match auf alle Feed-Modelle an, damit Scores direkt auffindbar sind.
+// Jeder hinzugefügte Alias trägt Provenance (aliasOf + fallback), damit das
+// Frontend ihn mit "~" markiert statt als exakten Leaderboard-Wert auszugeben.
 function applyScoreAliases(scores, plans) {
   const added = new Set();
   const slug = (s) => s.toLowerCase().replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
-  const slug2 = (s) => s.replace(/\./g, "-").replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-").replace(/^-|-$/g, "");
   for (const plan of plans) {
     for (const row of plan.modelRows ?? []) {
       const match = fuzzyScoreMatch(row.model, row.family, scores);
       if (match) {
         const modelSlug = slug(row.model);
         if (!scores[modelSlug]) {
-          scores[modelSlug] = { intelligence: scores[match].intelligence };
+          // Transitive Auflösung: aliasOf zeigt immer auf den originalen
+          // Leaderboard-Key, nie auf einen anderen Alias.
+          const root = scores[match].aliasOf ?? match;
+          scores[modelSlug] = { intelligence: scores[match].intelligence, aliasOf: root, fallback: true };
           added.add(modelSlug);
         }
       }

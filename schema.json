@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "coding-plan-compare schema",
-  "description": "Schema für data/plans.yml — Credit/Token-Pass-Subscriptions mit Grundcredits (Token-Preise), Cache-Modell und Workload-Profil. Analog ai-10-usd + coding-plan-index.",
+  "title": "coding-plan-comparison schema",
+  "description": "Schema for public/data/latest.json — credit/token-pass subscriptions with base credits (token prices), cache model and workload profile.",
   "type": "object",
   "required": ["meta", "plans"],
   "properties": {
@@ -24,10 +24,10 @@
       "required": ["monthlyUsd"],
       "properties": {
         "monthlyUsd": { "type": ["number", "null"] },
-        "paidPrice": { "type": ["number", "null"], "description": "Bezahlter Checkout-Preis (ai-10-usd-Prinzip), kann vom beworbenen abweichen" },
+        "paidPrice": { "type": ["number", "null"], "description": "Paid checkout price; can differ from the advertised price" },
         "advertisedPrice": { "type": ["number", "null"] },
         "billingNote": { "type": "string" },
-        "altPrice": { "type": ["string", "null"], "description": "Zweitwährung, z.B. '¥39/mo'" }
+        "altPrice": { "type": ["string", "null"], "description": "Second currency, e.g. '¥39/mo'" }
       }
     },
     "quota": {
@@ -59,8 +59,8 @@
               "cachedRead": { "type": ["number", "null"] },
               "cachedWrite": { "type": ["number", "null"] },
               "multiplier": { "type": ["number", "null"] },
-              "usage": { "type": ["number", "null"], "description": "Plan-eigene Credits/Monat für dieses Modell (OpenCode Go)" },
-              "allowances": { "type": "object", "description": "Plan-spezifische Allowances (Command Code)" },
+              "usage": { "type": ["number", "null"], "description": "Plan-owned credits/month for this model (OpenCode Go)" },
+              "allowances": { "type": "object", "description": "Plan-specific allowances (Command Code)" },
               "pattern": { "type": "object", "properties": { "input": { "type": "number" }, "cachedRead": { "type": "number" }, "output": { "type": "number" } } }
             }
           }
@@ -71,14 +71,14 @@
       "type": "object",
       "properties": {
         "pattern": { "type": "object", "properties": { "input": { "type": "number" }, "cachedRead": { "type": "number" }, "output": { "type": "number" } } },
-        "taskConversion": { "type": ["string", "null"], "description": "Anbieter-eigene Umrechnung, z.B. '10,000 inference calls ≈ 1,000 user requests'" }
+        "taskConversion": { "type": ["string", "null"], "description": "Provider-owned conversion, e.g. '10,000 inference calls ≈ 1,000 user requests'" }
       }
     },
     "providerCost": {
       "type": "object",
-      "description": "Anbietereigene Credit-Formel (z.B. GLM). Formel: creditsPerRequest = (input×c_input + cachedRead×c_cached + output×c_output)/10000 auf Pattern angewendet.",
+      "description": "Provider-owned credit formula (e.g. GLM). Formula: creditsPerRequest = (input×c_input + cachedRead×c_cached + output×c_output)/10000 applied to the pattern.",
       "properties": {
-        "formula": { "type": "string", "description": "Menschlesbare Formel-Beschreibung" },
+        "formula": { "type": "string", "description": "Human-readable formula description" },
         "perModel": {
           "type": "array",
           "items": {
@@ -92,8 +92,8 @@
             }
           }
         },
-        "mcpPerCall": { "type": ["number", "null"], "description": "Credits pro MCP-Tool-Call (falls Anbieter getrennt abrechnet)" },
-        "offPeakDiscount": { "type": ["number", "null"], "description": "Off-Peak-Rabatt als Faktor (z.B. 0.5 = 50% Abzug)" },
+        "mcpPerCall": { "type": ["number", "null"], "description": "Credits per MCP tool call (if the provider bills separately)" },
+        "offPeakDiscount": { "type": ["number", "null"], "description": "Off-peak discount as a factor (e.g. 0.5 = 50% off)" },
         "note": { "type": "string" }
       }
     },
