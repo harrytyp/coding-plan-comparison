@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-13T13:52:03.995Z",
+  "generatedAt": "2026-09-13T14:15:07.098Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14514,7 +14514,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-13T13:52:03.592Z",
+    "fetchedAt": "2026-09-13T14:15:06.991Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
