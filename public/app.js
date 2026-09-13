@@ -19,6 +19,10 @@ const I18N = {
     "nav.brand": "Coding Plan Compare",
     "nav.pareto": "Pareto",
     "nav.calc": "Calculator",
+    "nav.changelog": "Changelog",
+    "menu.currency": "Currency",
+    "menu.theme": "Design",
+    "menu.language": "Language",
     "nav.plans": "Plans",
     "nav.models": "Models",
     "nav.method": "Methodology",
@@ -29,6 +33,7 @@ const I18N = {
     "hero.lead": `"60 for 10" is only the sticker price. We compare what you actually get. real token economics, provider credit formulas, cache-aware cost per request. from live official sources, reproduced daily.`,
     "hero.cta1": "Compare plans",
     "hero.cta2": "How it works",
+    "hero.cta3": "Budget calculator",
     "hero.sources": "live sources",
     "hero.free": "Free · open data · no affiliate links",
     "stats.plans": "Plans tracked",
@@ -69,6 +74,8 @@ const I18N = {
     "plans.th.req10": "Requests / $",
     "plans.th.rawtokens": "Tokens / mo",
     "plans.th.rawreq": "Requests / mo",
+    "plans.th.cap": "Included volume",
+    "plans.scoreNA": "No benchmark available",
     "plans.th.privacy": "Privacy",
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
@@ -96,7 +103,7 @@ const I18N = {
     "sort.desc": "desc",
     "sort.asc": "asc",
     "dash.h3": "Pareto dashboard",
-    "dash.sub": "Each dot is one plan with one model at its real monthly price. Default view: price against monthly tokens, both on a log scale. The line marks the best trade-offs.",
+    "dash.sub": "Each dot is one plan with one model. Default: tokens per money against AI score. Tap a dot for details.",
     "dash.x": "X axis",
     "dash.y": "Y axis",
     "dash.pareto": "Pareto line",
@@ -109,6 +116,9 @@ const I18N = {
     "dash.targetX": "min X",
     "dash.targetY": "min Y",
     "dash.clickHint": "Click a dot to see the plan and model",
+    "dash.empty": "No data for the plot with these filters.",
+    "dash.emptyReset": "Reset filters",
+    "dash.legendToggle": "Legend",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / mo",
@@ -129,6 +139,17 @@ const I18N = {
     "models.th.edge": "Edge",
     "models.winner.draw": "Draw",
     "models.edge": "edge",
+    "fcomp.h2": "Same model, different plans",
+    "fcomp.sub": "Request rate per $1 paid for one model family across plans. Plain numbers, no podium.",
+    "fcomp.th.family": "Model family",
+    "fcomp.th.planA": "Plan A",
+    "fcomp.th.reqA": "Req / $",
+    "fcomp.th.planB": "Plan B",
+    "fcomp.th.reqB": "Req / $",
+    "fcomp.th.edge": "Difference",
+    "fcomp.winner.draw": "Draw",
+    "cl.h2": "Changelog",
+    "cl.sub": "What changed for you, newest first.",
     "method.h2": "Why \"60 for 10\" is not the answer",
     "method.sub": "The sticker value hides the real economics. Here is exactly how we make plans comparable. every step reproducible.",
     "method.formula.title": "Cost per request",
@@ -144,6 +165,8 @@ const I18N = {
     "method.s5.p": "Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans. so a cheap pattern can't rig the comparison.",
     "method.s6.t": "Undisclosed stays undisclosed",
     "method.s6.p": "If a provider hides its numbers, we say so. No invented credits, no back-calculated quotas. Honesty is a feature.",
+    "method.more": "Show all steps",
+    "method.less": "Show fewer",
     "faq.h2": "Frequently asked questions",
     "faq.q1": "Is this really reproducible?",
     "faq.a1": "Yes. The pipeline fetches official feeds and docs (sources.yml), parses them deterministically, and builds latest.json from the cached snapshots only. never live-fetched during build. Same snapshots in, same JSON out. Change detection runs daily (content-hash of parsed data, robust against HTML nonces).",
@@ -159,6 +182,10 @@ const I18N = {
     "faq.a6": "Model benchmark scores are sourced from llm-stats.com — a community-driven model catalog. We cache the data locally and only re-fetch when the cache expires (24h TTL). No API call is made if the cached data is still fresh.",
     "faq.q7": "Can I just buy Command Code Go ten times?",
     "faq.a7": "No. Plans are single per-account subscriptions: you pick one plan, and switching plans resets the rolling windows (per Command Code's own docs). Extra usage comes from top-up credits at model cost. That is why this site shows rates per $1 paid — Go shows what $1 buys — and why the budget calculator below compares single plans within your budget.",
+    "faq.q8": "What does “per $1” mean?",
+    "faq.a8": "It is a rate: monthly requests divided by the paid monthly price. Command Code Go at $1 shows what $1 buys; OpenCode Go at $10 shows what each $1 of its $10 buys. Rates follow your selected currency and cannot be stacked — plans are single per-account subscriptions.",
+    "faq.q9": "Why does plan X rank first in the calculator?",
+    "faq.a9": "The calculator lists single plans within your budget, ordered by monthly tokens for each plan's strongest model. It is a sorted list, not advice: the right plan also depends on which models you need, the privacy terms and the rate limits.",
     "calc.h2": "Budget calculator",
     "calc.sub": "One subscription per account, no stacking. Enter what you pay per month and see the most tokens each single plan buys you.",
     "calc.budget": "Budget / mo",
@@ -171,6 +198,7 @@ const I18N = {
     "calc.leftover": "left",
     "calc.empty": "No single plan fits this budget.",
     "calc.note": "Ranked by monthly tokens. Rates follow your selected currency. Price-based estimates (Kimi) stay excluded unless enabled in the filters.",
+    "calc.rankTitle": "Rank in the budget calculator",
     "foot.product": "Product",
     "foot.plans": "Plans",
     "foot.models": "Model comparison",
@@ -194,7 +222,7 @@ const I18N = {
     "legal.privacy.h3": "Privacy",
     "legal.privacy.body": "<p><strong>No cookies, no trackers.</strong> This site sets no cookies and makes no connections to third parties. All data is served from this GitHub Pages site itself.</p><p><strong>Local storage (your browser only).</strong> Your preferences (language, theme, currency, visible columns) are stored in your browser's localStorage so the page can remember them between visits. This data never leaves your device. localStorage is not a cookie and is not used for tracking.</p><p><strong>GitHub Pages hosting.</strong> This site is hosted by GitHub Pages. As with any web host, GitHub's servers process technical access data (IP address, user agent, requested files) in server logs. Please refer to GitHub's privacy policy for details on their data processing.</p><p><strong>No analytics, no advertising.</strong> We do not use analytics tools, advertising networks, or third-party embeds.</p><p><strong>Contact.</strong> For any privacy request, please use the contact details in the imprint.</p>",
     "legal.imprint.h3": "Imprint / Provider identification",
-    "legal.imprint.body": "<p>This website is operated by an individual maintainer on a non-commercial, informational basis.</p><p>Operator: <span class=\"legal-placeholder\">[Name or pseudonym]</span><br>Contact: <span class=\"legal-placeholder\">[contact email]</span></p><p>As a private, non-commercial website, a full postal address is not required. If this service becomes commercial or targets the DACH region, the imprint must be extended (e.g. §5 DDG in Germany) with your full name and address.</p>",
+    "legal.imprint.body": "<p>This website is operated by an individual maintainer on a non-commercial, informational basis.</p><p>Operator: Kolja Knodel<br>Contact: <a href=https://github.com/harrytyp>GitHub: harrytyp</a></p><p>As a private, non-commercial website, a full postal address is not required. If this service becomes commercial or targets the DACH region, the imprint must be extended (e.g. §5 DDG in Germany) with your full name and address.</p>",
     "legal.disclaimer.h3": "Disclaimer",
     "legal.disclaimer.body": "<p>All prices, quotas, and conditions shown here are collected from public provider sources on a best-effort basis. They may change at any time. Always confirm current terms on the official provider website before purchasing.</p><p>This site is independent and not affiliated with, endorsed by, or sponsored by any provider shown. We do not sell plans and have no affiliate links.</p><p>Information is provided \"as is\" without warranty of any kind. We are not liable for any decisions made based on this data.</p>",
     "loading": "Loading live data…",
@@ -206,6 +234,10 @@ const I18N = {
   de: {
     "nav.brand": "Coding Plan Compare",
     "nav.calc": "Rechner",
+    "nav.changelog": "Changelog",
+    "menu.currency": "Währung",
+    "menu.theme": "Design",
+    "menu.language": "Sprache",
     "nav.plans": "Pläne",
     "nav.models": "Modelle",
     "nav.method": "Methodik",
@@ -216,6 +248,7 @@ const I18N = {
     "hero.lead": `„60 für 10“ ist nur der Aufkleberpreis. Wir vergleichen, was du wirklich bekommst. echte Token-Ökonomie, anbietereigene Credit-Formeln, cache-bewusste Kosten pro Request. aus Live-Quellen, täglich reproduziert.`,
     "hero.cta1": "Pläne vergleichen",
     "hero.cta2": "So funktioniert's",
+    "hero.cta3": "Budget-Rechner",
     "hero.sources": "Live-Quellen",
     "hero.free": "Kostenlos · offene Daten · keine Affiliate-Links",
     "stats.plans": "Erfasste Pläne",
@@ -256,6 +289,8 @@ const I18N = {
     "plans.th.req10": "Requests / $",
     "plans.th.rawtokens": "Tokens / Monat",
     "plans.th.rawreq": "Requests / Monat",
+    "plans.th.cap": "Inkl. Volumen",
+    "plans.scoreNA": "Kein Benchmark verfügbar",
     "plans.th.privacy": "Datenschutz",
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
@@ -283,7 +318,7 @@ const I18N = {
     "sort.desc": "absteigend",
     "sort.asc": "aufsteigend",
     "dash.h3": "Pareto-Dashboard",
-    "dash.sub": "Jeder Punkt ist ein Plan mit einem Modell zum echten Monatspreis. Standard: Preis gegen Tokens pro Monat, beide logarithmisch. Die Linie markiert die besten Kompromisse.",
+    "dash.sub": "Jeder Punkt ist ein Plan mit einem Modell. Standard: Tokens pro Geld gegen AI-Score. Punkt antippen für Details.",
     "dash.x": "X-Achse",
     "dash.y": "Y-Achse",
     "dash.pareto": "Pareto-Linie",
@@ -296,6 +331,9 @@ const I18N = {
     "dash.targetX": "min X",
     "dash.targetY": "min Y",
     "dash.clickHint": "Klicke einen Punkt, um Plan und Modell zu sehen",
+    "dash.empty": "Keine Daten für den Plot mit diesen Filtern.",
+    "dash.emptyReset": "Filter zurücksetzen",
+    "dash.legendToggle": "Legende",
     "dash.m.tokens": "Tokens / $",
     "dash.m.req10": "Requests / $",
     "dash.m.rawtokens": "Tokens / Monat",
@@ -317,6 +355,17 @@ const I18N = {
     "models.th.edge": "Vorsprung",
     "models.winner.draw": "Unentschieden",
     "models.edge": "Vorsprung",
+    "fcomp.h2": "Gleiches Modell, andere Pläne",
+    "fcomp.sub": "Request-Rate pro 1 $ bezahlt für eine Modell-Familie über Pläne. Nackte Zahlen, kein Podest.",
+    "fcomp.th.family": "Modell-Familie",
+    "fcomp.th.planA": "Plan A",
+    "fcomp.th.reqA": "Req / $",
+    "fcomp.th.planB": "Plan B",
+    "fcomp.th.reqB": "Req / $",
+    "fcomp.th.edge": "Unterschied",
+    "fcomp.winner.draw": "Unentschieden",
+    "cl.h2": "Changelog",
+    "cl.sub": "Was sich für dich geändert hat, Neuestes zuerst.",
     "method.h2": "Warum „60 für 10“ nicht die Antwort ist",
     "method.sub": "Der Aufkleberwert versteckt die echte Ökonomie. Hier ist genau, wie wir Pläne vergleichbar machen. jeder Schritt reproduzierbar.",
     "method.formula.title": "Kosten pro Request",
@@ -332,6 +381,8 @@ const I18N = {
     "method.s5.p": "Manche Feeds nutzen ein generisches Workload-Pattern. Für geteilte Modell-Familien verwenden wir das präziseste per-Modell-Pattern für beide Pläne. so kann ein billiges Pattern den Vergleich nicht fälschen.",
     "method.s6.t": "Nicht veröffentlicht bleibt nicht veröffentlicht",
     "method.s6.p": "Wenn ein Anbieter seine Zahlen versteckt, sagen wir das. Keine erfundenen Credits, keine rückgerechneten Kontingente. Ehrlichkeit ist ein Feature.",
+    "method.more": "Alle Schritte zeigen",
+    "method.less": "Weniger zeigen",
     "faq.h2": "Häufige Fragen",
     "faq.q1": "Ist das wirklich reproduzierbar?",
     "faq.a1": "Ja. Die Pipeline holt offizielle Feeds und Docs (sources.yml), parst sie deterministisch und baut latest.json nur aus den gecachten Snapshots. nie mit Live-Fetch im Build. Gleiche Snapshots rein, gleiches JSON raus. Change-Detection läuft täglich (Content-Hash der geparsten Daten, robust gegen HTML-Nonces).",
@@ -347,6 +398,10 @@ const I18N = {
     "faq.a6": "Die Modell-Benchmark-Scores (Intelligenz, Coding, Reasoning, Agents) kommen von llm-stats.com — einem Community-Modell-Katalog. Wir cachen die Daten lokal und fetchen nur neu, wenn der Cache abläuft (24h TTL). Kein API-Call bei frischem Cache.",
     "faq.q7": "Kann ich Command Code Go einfach zehnmal kaufen?",
     "faq.a7": "Nein. Pläne sind einzelne Abos pro Konto: du wählst einen Plan, und ein Planwechsel setzt die rollierenden Fenster zurück (so steht es in Command Codes eigenen Docs). Mehr Nutzung kommt über Top-up-Credits zum Modellpreis. Darum zeigt diese Seite Raten pro 1 $ bezahlt — Go zeigt, was 1 $ kauft — und darum vergleicht der Budget-Rechner unten Einzelpläne innerhalb deines Budgets.",
+    "faq.q8": "Was heißt „pro 1 €“?",
+    "faq.a8": "Es ist eine Rate: Requests pro Monat geteilt durch den bezahlten Monatspreis. Command Code Go für 1 $ zeigt, was 1 $ kauft; OpenCode Go für 10 $ zeigt, was jeder einzelne Dollar seiner 10 $ kauft. Raten folgen deiner gewählten Währung und sind nicht stapelbar — Pläne sind einzelne Abos pro Konto.",
+    "faq.q9": "Warum steht Plan X im Rechner oben?",
+    "faq.a9": "Der Rechner listet Einzelpläne innerhalb deines Budgets, sortiert nach Tokens pro Monat des jeweils stärksten Modells. Das ist eine sortierte Liste, keine Empfehlung: Der passende Plan hängt auch davon ab, welche Modelle du brauchst, von den Datenschutz-Bedingungen und den Rate-Limits.",
     "calc.h2": "Budget-Rechner",
     "calc.sub": "Ein Abo pro Konto, kein Stapeln. Gib an, was du im Monat zahlst, und sieh, welche Tokens jeder einzelne Plan dafür kauft.",
     "calc.budget": "Budget / Monat",
@@ -359,6 +414,7 @@ const I18N = {
     "calc.leftover": "übrig",
     "calc.empty": "Kein einzelner Plan passt in dieses Budget.",
     "calc.note": "Sortiert nach Tokens pro Monat. Raten folgen deiner gewählten Währung. Preisbasierte Schätzungen (Kimi) bleiben ausgeschlossen, solange sie in den Filtern nicht eingeblendet sind.",
+    "calc.rankTitle": "Rang im Budget-Rechner",
     "foot.product": "Produkt",
     "foot.plans": "Pläne",
     "foot.models": "Modellvergleich",
@@ -381,7 +437,7 @@ const I18N = {
     "legal.privacy.h3": "Datenschutz",
     "legal.privacy.body": "<p><strong>Keine Cookies, keine Tracker.</strong> Diese Seite setzt keine Cookies und stellt keine Verbindungen zu Dritten her. Alle Daten werden von dieser GitHub-Pages-Site selbst ausgeliefert.</p><p><strong>Lokaler Speicher (nur dein Browser).</strong> Deine Einstellungen (Sprache, Theme, Währung, sichtbare Spalten) werden im localStorage deines Browsers gespeichert, damit sich die Seite bei deinem nächsten Besuch daran erinnert. Diese Daten verlassen dein Gerät nie. localStorage ist kein Cookie und wird nicht zum Tracking verwendet.</p><p><strong>GitHub-Pages-Hosting.</strong> Diese Seite wird von GitHub Pages gehostet. Wie bei jedem Webhost verarbeiten GitHub-Server technische Zugriffsdaten (IP-Adresse, User-Agent, angeforderte Dateien) in Server-Logs. Details findest du in der Datenschutzerklärung von GitHub.</p><p><strong>Keine Analyse, keine Werbung.</strong> Wir nutzen keine Analysetools, Werbenetzwerke oder Drittanbieter-Embeds.</p><p><strong>Kontakt.</strong> Für Datenschutzanfragen nutze bitte die Kontaktdaten im Impressum.</p>",
     "legal.imprint.h3": "Impressum / Anbieterkennzeichnung",
-    "legal.imprint.body": "<p>Diese Website wird von einem einzelnen Betreiber auf nicht-kommerzieller, informativer Basis betrieben.</p><p>Betreiber: <span class=\"legal-placeholder\">[Name oder Pseudonym]</span><br>Kontakt: <span class=\"legal-placeholder\">[Kontakt-E-Mail]</span></p><p>Als private, nicht-kommerzielle Website ist eine vollständige Postanschrift nicht erforderlich. Falls dieses Angebot kommerziell wird oder die DACH-Region anvisiert, muss das Impressum (z.B. §5 DDG in Deutschland) um deinen vollständigen Namen und deine Anschrift erweitert werden.</p>",
+    "legal.imprint.body": "<p>Diese Website wird von einem einzelnen Betreiber auf nicht-kommerzieller, informativer Basis betrieben.</p><p>Betreiber: Kolja Knodel<br>Kontakt: <a href=https://github.com/harrytyp>GitHub: harrytyp</a></p><p>Als private, nicht-kommerzielle Website ist eine vollständige Postanschrift nicht erforderlich. Falls dieses Angebot kommerziell wird oder die DACH-Region anvisiert, muss das Impressum (z.B. §5 DDG in Deutschland) um deinen vollständigen Namen und deine Anschrift erweitert werden.</p>",
     "legal.disclaimer.h3": "Haftungsausschluss",
     "legal.disclaimer.body": "<p>Alle hier gezeigten Preise, Kontingente und Bedingungen werden nach bestem Bemühen aus öffentlichen Anbieterquellen gesammelt. Sie können sich jederzeit ändern. Bitte bestätige die aktuellen Konditionen vor dem Kauf immer auf der offiziellen Anbieterseite.</p><p>Diese Seite ist unabhängig und nicht mit einem der gezeigten Anbieter verbunden, von ihnen unterstützt oder gesponsert. Wir verkaufen keine Pläne und haben keine Affiliate-Links.</p><p>Die Informationen werden ohne jegliche Gewähr bereitgestellt. Wir haften nicht für Entscheidungen, die auf Grundlage dieser Daten getroffen werden.</p>",
     "foot.lang": "English · Deutsch",
@@ -516,6 +572,7 @@ function applyI18n() {
     ? "Coding Plan Compare — KI-Coding-Abos im Vergleich"
     : "Coding Plan Compare — AI Coding Subscriptions, Compared";
   renderAll();
+  syncMethodMore();
 }
 
 /* ---------------- Theme ---------------- */
@@ -529,9 +586,11 @@ function renderAll() {
   if (!data) return;
   syncRateLabels();
   renderStats();
+  renderCalculator();
   renderPlans();
   renderDashboard();
-  renderCalculator();
+  renderFamily();
+  renderChangelog();
   renderFormula();
   bindSortHeader("plans-table", plansSort, renderPlans);
   syncFilterUI();
@@ -568,9 +627,9 @@ function syncFilterUI() {
 let filtersOpen = false;
 // Gemeinsames Re-Rendering: Tabelle + Dashboard + Rechner + Filter-Chips
 function rerender() {
+  renderCalculator();
   renderPlans();
   renderDashboard();
-  renderCalculator();
   syncFilterChips();
 }
 function toggleFilters(force) {
@@ -656,8 +715,10 @@ let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per D
 
 /* ---------------- Spalten-Auswahl (User-anpassbar) ---------------- */
 // Alle verfügbaren Spalten; Auswahl wird in localStorage gespeichert.
-const ALL_COLUMNS = ["plan", "model", "score", "tokens", "req10", "rawtokens", "rawreq", "price", "privacy"];
-const DEFAULT_COLUMNS = ["plan", "model", "score", "tokens", "req10", "price", "privacy"];
+const ALL_COLUMNS = ["plan", "model", "score", "tokens", "req10", "rawtokens", "rawreq", "cap", "price", "privacy"];
+const DEFAULT_COLUMNS = ["plan", "model", "score", "tokens", "rawtokens", "cap", "price", "privacy"];
+// Mobile Default: nur das Nötigste (Karten statt Tabelle)
+const MOBILE_DEFAULT_COLUMNS = ["plan", "model", "rawtokens", "price"];
 let visibleColumns = loadColumns();
 function loadColumns() {
   try {
@@ -666,6 +727,10 @@ function loadColumns() {
       const arr = JSON.parse(stored);
       if (Array.isArray(arr) && arr.length) return arr.filter((c) => ALL_COLUMNS.includes(c));
     }
+  } catch (e) { /* fallthrough */ }
+  // Mobile ohne gespeicherte Wahl: schlanke Karten-Defaults
+  try {
+    if (window.matchMedia && window.matchMedia("(max-width: 760px)").matches) return [...MOBILE_DEFAULT_COLUMNS];
   } catch (e) { /* fallthrough */ }
   return [...DEFAULT_COLUMNS];
 }
@@ -831,6 +896,9 @@ function buildCombos() {
     // Preis: USD als Vergleichs-Basis (Sortierung/Budget), Anzeige in gewählter Währung
     const priceUsd = plan.price?.monthlyUsd ?? (plan.price?.currency === "CNY" ? plan.price?.monthlyUsd : plan.price?.paidPrice) ?? null;
     const priceDisplay = priceUsd !== null && priceUsd !== undefined ? fmtPrice(priceUsd) : null;
+    // Inklusives Monats-Volumen (Cap): ehrliche Obergrenze des Abos, keine Rate
+    const monthlyQuota = (plan.quotas ?? []).find((q) => q.window === "month" && typeof q.amount === "number");
+    const capStr = monthlyQuota ? `${fmtNum(monthlyQuota.amount)} ${monthlyQuota.unit ?? ""} / ${lang === "de" ? "Monat" : "mo"}` : null;
     for (const row of plan.modelRows ?? []) {
       const score = aiScoreFor(row.model, row.family);
       const tokensPerReq = tokensPerRequest(row);
@@ -860,6 +928,8 @@ function buildCombos() {
         // Rohdaten: Tokens/Monat und Requests/Monat (un-normalisiert)
         rawTokensPerMonth: row.rawTokensPerMonth ?? null,
         rawRequestsPerMonth: row.requestsPerMonth ?? null,
+        // Inklusives Volumen des Plans (Cap, keine Rate)
+        capStr,
         // Schätzung (kein offizielles Limit): z.B. Kimi price-based estimate
         estimateNote: row.estimate ?? null,
         // Privacy: kombinierte Aussage (Modell-Feed vorrangig, sonst Anbieter-Policy)
@@ -973,27 +1043,24 @@ function renderPlans() {
     return `<tr>${cells}</tr>`;
   }).join("");
   syncColumnHeaders();
-  // Ehrlichkeits-Fußnote: Raten gelten pro 1 Einheit der gewählten Währung
-  const note = $("#table-note");
-  if (note) {
-    note.textContent = lang === "de"
-      ? `Raten pro 1 ${currency} (${curSym().trim() || currency}) bezahlt — ein Abo pro Konto, kein Stapeln. Rohwerte: Tokens/Requests pro Monat.`
-      : `Rates per 1 ${currency} paid — one subscription per account, no stacking. Raw values: tokens/requests per month.`;
-  }
 }
 
 // Spalten-Factory: jede Spalte rendert ihre Zelle (nur sichtbare werden aufgerufen)
 function renderCell(col, c) {
   const priceStr = c.priceDisplay ?? (c.price !== null && c.price !== undefined ? fmtMoney(c.price) : "-");
-  // Family-fallback scores are marked with "~" (approximation, family fallback from LLM Stats, not an exact model score)
+  // Familien-Fallback-Scores mit "~" markieren (Näherungswert, kein exakter AA-Wert)
   const scoreStr = c.score !== null
     ? `<span class="num strong">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>`
-    : `<span class="muted">-</span>`;
+    : `<span class="muted" title="${escapeHtml(t("plans.scoreNA"))}">-</span>`;
   const scoreBar = c.score !== null
     ? `<div class="score-bar"><div class="score-fill" style="width:${Math.min(100, (c.score / 70) * 100)}%"></div></div>`
     : "";
+  // Neutraler Rechner-Rang (grau, keine Empfehlung): nur Info, wo der Plan im Budget steht
+  const rankTag = calcRanks.has(c.planId)
+    ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
+    : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
@@ -1006,6 +1073,7 @@ function renderCell(col, c) {
       const mark = c.estimateNote ? "~" : "";
       return `<td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? mark + fmtNum(c.rawRequestsPerMonth) : "-"}</span>${c.estimateNote ? `<div class="est-note" title="${escapeHtml(c.estimateNote)}">${t("plans.estimate")}</div>` : ""}</td>`;
     }
+    case "cap": return `<td data-label="${t("plans.th.cap")}"><span class="num">${c.capStr ? escapeHtml(c.capStr) : "-"}</span></td>`;
     case "price": {
       const wl = c.waitlist === true
         ? `<div class="waitlist-badge" title="${t("plans.waitlist.title")}">${t("plans.waitlist")}</div>`
@@ -1028,7 +1096,7 @@ function syncColumnHeaders() {
   if (selDir) selDir.value = plansSort.dir;
   const head = table.querySelector("thead tr");
   if (!head) return;
-  const sortableMap = { plan: "plan", model: "model", score: "score", tokens: "tokens", req10: "req10", rawtokens: "rawtokens", rawreq: "rawreq", price: "price", privacy: null };
+  const sortableMap = { plan: "plan", model: "model", score: "score", tokens: "tokens", req10: "req10", rawtokens: "rawtokens", rawreq: "rawreq", cap: null, price: "price", privacy: null };
   head.innerHTML = visibleColumns.map((col) => {
     const sortKey = sortableMap[col];
     const i18nKey = `plans.th.${col}`;
@@ -1127,15 +1195,31 @@ function initSheet() {
   const sd2 = $("#sheet-done"); if (sd2) sd2.addEventListener("click", closeSheet);
 }
 
-/* ============ DASHBOARD / PARETO-PLOT ============ */
-// Standard: echte Kaufpunkte — Preis gegen Tokens/Monat, beide logarithmisch.
-// Keine hochgerechnete Rate als Default: die Frontier gilt nur für Kaufbares.
-let dashX = "price";
-let dashY = "rawtokens";
+/* ============ DASHBOARD / PARETO-PLOT (Canvas) ============ */
+// Standard: Tokens pro Geld (X) gegen Intelligenz (Y) — ehrliche Rate, kein Kaufversprechen.
+let dashX = "tokens";
+let dashY = "score";
 let dashPareto = true;
-let dashGreen = true;
+let dashGreen = false; // Zielzone default aus (wirkt sonst beliebig)
 let dashTargetX = null; // Ziel-Schwelle X (Green Target)
 let dashTargetY = null; // Ziel-Schwelle Y (Green Target)
+let dashSelected = null; // "planId::model" des angetippten Punkts (Feedback-Ring)
+let dashPoints = []; // gerenderte Punkte in CSS-Pixeln (für Hit-Test)
+
+// Quantil für den Bildausschnitt (P2–P98 statt Min/Max: keine halbe Fläche Luft)
+function quantile(sorted, q) {
+  if (!sorted.length) return null;
+  const idx = (sorted.length - 1) * q;
+  const lo = Math.floor(idx), hi = Math.ceil(idx);
+  return lo === hi ? sorted[lo] : sorted[lo] + (sorted[hi] - sorted[lo]) * (idx - lo);
+}
+// CSS-Variablen als echte Farben für Canvas lesen
+function cssVar(name, fallback) {
+  try {
+    const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    return v || fallback;
+  } catch (e) { return fallback; }
+}
 
 // Punkt-Wert für eine Metrik
 function metricValue(combo, metric) {
@@ -1206,9 +1290,14 @@ function paretoFrontier(points) {
 }
 
 function renderDashboard() {
-  const svg = $("#dash-svg");
+  const canvas = $("#dash-canvas");
   const note = $("#dash-note");
-  if (!svg) return;
+  const resetBtn = $("#dash-reset-btn");
+  if (!canvas || !canvas.getContext) return;
+  // Achsen-Guards zuerst: ungültige Auswahl korrigieren, bevor Punkte fallen
+  const ALLOWED_Y = ["score", "tokens", "req10", "rawtokens", "rawreq"];
+  if (!ALLOWED_Y.includes(dashY)) { dashY = "score"; const ys = $("#dash-y"); if (ys) ys.value = "score"; }
+  if (!validAxes(dashX, dashY)) { dashX = "tokens"; const xs = $("#dash-x"); if (xs) xs.value = "tokens"; }
   // Gleiche Filter wie die Tabelle anwenden (Suche, Budget, AI, Privacy)
   let combos = buildCombos();
   if (plansSearch) {
@@ -1227,86 +1316,97 @@ function renderDashboard() {
     y: metricValue(c, dashY),
   })).filter((p) => p.x != null && p.y != null && p.x > 0 && p.y > 0);
 
-  // Dynamische Auflösung: viewBox an Container-Größe (CSS-Pixel) koppeln,
-  // damit auf Desktop (groß) volle Detailgenauigkeit herrscht und kein
-  // Strecken/Verzerren durch eine winzige 100×100-viewBox entsteht.
-  const rect = svg.getBoundingClientRect();
-  const cssW = Math.max(rect.width, 320);
+  // Canvas-Größe: CSS-Pixel × Gerätepixel-Verhältnis (scharf auf Retina + Mobile)
+  const rect = canvas.getBoundingClientRect();
+  const cssW = Math.max(rect.width, 300);
   const cssH = Math.max(rect.height, 240);
+  const dpr = Math.min(window.devicePixelRatio || 1, 3);
+  canvas.width = Math.round(cssW * dpr);
+  canvas.height = Math.round(cssH * dpr);
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   const W = cssW, H = cssH;
-  const PAD_L = Math.max(28, cssW * 0.045), PAD_B = Math.max(26, cssH * 0.07);
+  const PAD_L = Math.max(34, cssW * 0.05), PAD_B = Math.max(30, cssH * 0.08);
   const PAD_T = 14, PAD_R = 12;
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
-  svg.setAttribute("viewBox", `0 0 ${W.toFixed(1)} ${H.toFixed(1)}`);
-  svg.setAttribute("preserveAspectRatio", "none");
+  const C = {
+    grid: cssVar("--border", "#e2e8f0"),
+    axis: cssVar("--text-faint", "#94a3b8"),
+    text: cssVar("--text-muted", "#64748b"),
+    ring: cssVar("--text", "#0f172a"),
+    ok: cssVar("--success", "#0d9488"),
+    bad: cssVar("--danger", "#dc2626"),
+    info: cssVar("--info", "#2563eb"),
+    primary: cssVar("--primary", "#0b57d0"),
+  };
 
   if (!points.length) {
-    svg.innerHTML = "";
-    if (note) note.textContent = lang === "de" ? "Keine Daten für den Plot nach Filtern." : "No data for the plot after filtering.";
+    ctx.clearRect(0, 0, W, H);
+    dashPoints = [];
+    if (note) note.textContent = t("dash.empty");
+    if (resetBtn) { resetBtn.hidden = false; resetBtn.textContent = t("dash.emptyReset"); }
     return;
   }
+  if (resetBtn) resetBtn.hidden = true;
 
   // Skalen: log für Token/Request/Preis-Metriken (riesige Spannen), linear für Score
   const logScale = (m) => m === "tokens" || m === "req10" || m === "rawtokens" || m === "rawreq" || m === "price";
   const xLog = logScale(dashX), yLog = logScale(dashY);
-  const xVals = points.map((p) => p.x), yVals = points.map((p) => p.y);
-  // Bildausschnitt: 10 % Luft um die Daten (log: multiplikativ), damit kein Punkt am Rand klebt
-  const xMin = xLog ? Math.min(...xVals) * 0.9 : 0;
-  const xMax = xLog ? Math.max(...xVals) * 1.1 : Math.max(...xVals) * 1.05;
-  const yMin = yLog ? Math.min(...yVals) * 0.9 : 0;
-  const yMax = yLog ? Math.max(...yVals) * 1.1 : Math.max(...yVals) * 1.05;
+  // Bildausschnitt aus Perzentilen (P2–P98) + 4 % Luft: Daten füllen den Plot,
+  // keine halbe Fläche Leerraum. Linear startet am Daten-Minimum, nicht bei 0.
+  const xSorted = points.map((p) => p.x).sort((a, b) => a - b);
+  const ySorted = points.map((p) => p.y).sort((a, b) => a - b);
+  const pad = (lo, hi, log) => {
+    if (!(hi > lo)) return [lo * 0.9 || 0.9, lo * 1.1 || 1.1];
+    if (log) return [lo * 0.96, hi * 1.04];
+    const span = hi - lo, m = Math.max(span * 0.06, span || 1);
+    return [lo - m, hi + m];
+  };
+  const [xMin, xMax] = pad(quantile(xSorted, 0.02), quantile(xSorted, 0.98), xLog);
+  const [yMin, yMax] = pad(quantile(ySorted, 0.02), quantile(ySorted, 0.98), yLog);
 
   const sx = (v) => PAD_L + (xLog ? (Math.log(v) - Math.log(xMin)) / (Math.log(xMax) - Math.log(xMin)) : (v - xMin) / (xMax - xMin)) * plotW;
   const sy = (v) => H - PAD_B - (yLog ? (Math.log(v) - Math.log(yMin)) / (Math.log(yMax) - Math.log(yMin)) : (v - yMin) / (yMax - yMin)) * plotH;
 
-  const px = points.map((p) => ({ ...p, px: sx(p.x), py: sy(p.y) }));
+  // Identische Datenpunkte leicht versetzen (deterministischer Jitter), sonst verdecken sie sich
+  const seen = new Map();
+  const px = points.map((p) => {
+    const key = `${p.x.toFixed(6)}:${p.y.toFixed(6)}`;
+    const n = seen.get(key) ?? 0;
+    seen.set(key, n + 1);
+    let jx = 0, jy = 0;
+    if (n > 0) { const ang = n * 2.4, rad = 5 + 3 * n; jx = Math.cos(ang) * rad; jy = Math.sin(ang) * rad; }
+    return { ...p, px: sx(p.x) + jx, py: sy(p.y) + jy };
+  });
 
-  // Zielzone (Green Target): Bereich der "besseren" Werte auf beiden Achsen
-  // (Richtungsbewusst: bei price ist kleiner besser → Zielzone links unten).
-  // Bei ungültiger Kombination (beide Achsen "min") keine Zielzone zeigen.
-  // Y-Achse: max-Metriken plus Kaufvolumen (rawtokens/rawreq); Preis bleibt X vorbehalten.
-  // Gespeicherte Auswahl korrigieren.
-  const ALLOWED_Y = ["score", "tokens", "req10", "rawtokens", "rawreq"];
-  if (!ALLOWED_Y.includes(dashY)) { dashY = "rawtokens"; const ys = $("#dash-y"); if (ys) ys.value = "rawtokens"; }
-  if (!validAxes(dashX, dashY)) { dashX = "price"; const xs = $("#dash-x"); if (xs) xs.value = "price"; }
   const axesValid = validAxes(dashX, dashY);
   const dx = metricDir(dashX), dy = metricDir(dashY);
   let targetX = dashTargetX;
   let targetY = dashTargetY;
-  if (targetX === null || targetX === undefined) {
-    const xValsSorted = xVals.slice().sort((a, b) => a - b);
-    targetX = xValsSorted[Math.floor(xValsSorted.length / 2)]; // Median
-  }
-  if (targetY === null || targetY === undefined) {
-    const yValsSorted = yVals.slice().sort((a, b) => a - b);
-    targetY = yValsSorted[Math.floor(yValsSorted.length / 2)]; // Median
-  }
-  const tX = sx(targetX), tY = sy(targetY);
-  // Zielzone = Rechteck im "besseren" Quadranten (abhängig von beiden Richtungen).
-  // Für max/max: rechts-oben. Für min/max (Preis x Score): links-oben.
-  // Für max/min (Score x Preis): rechts-unten. Für min/min: ungültig.
-  let greenRect = "";
-  let thresholdLines = "";
-  if (dashGreen && axesValid) {
-    const betterX = (v) => (dx === "min" ? v <= tX : v >= tX);
-    const betterY = (v) => (dy === "min" ? v <= tY : v >= tY);
-    if (dx === "max" && dy === "max") {
-      greenRect = `<rect class="dash-green-region" x="${tX}" y="${PAD_T}" width="${PAD_L + plotW - tX}" height="${Math.max(0, tY - PAD_T)}"/>`;
-    } else if (dx === "min" && dy === "max") {
-      greenRect = `<rect class="dash-green-region" x="${PAD_L}" y="${PAD_T}" width="${Math.max(0, tX - PAD_L)}" height="${Math.max(0, tY - PAD_T)}"/>`;
-    } else if (dx === "max" && dy === "min") {
-      greenRect = `<rect class="dash-green-region" x="${tX}" y="${tY}" width="${PAD_L + plotW - tX}" height="${Math.max(0, H - PAD_B - tY)}"/>`;
-    }
-    thresholdLines = `<line class="dash-threshold-line" x1="${tX}" y1="${PAD_T}" x2="${tX}" y2="${H - PAD_B}"/>
-       <line class="dash-threshold-line" x1="${PAD_L}" y1="${tY}" x2="${W - PAD_R}" y2="${tY}"/>`;
-  }
+  if (targetX === null || targetX === undefined) targetX = quantile(xSorted, 0.5); // Median
+  if (targetY === null || targetY === undefined) targetY = quantile(ySorted, 0.5); // Median
+  const tX = sx(Math.min(Math.max(targetX, xMin), xMax));
+  const tY = sy(Math.min(Math.max(targetY, yMin), yMax));
 
-  // Pareto-Frontier
-  const frontier = dashPareto ? paretoFrontier(points) : [];
-  const linePath = frontier.length > 1
-    ? `<path class="dash-pareto-line" d="M${frontier.map((p) => `${sx(p.x).toFixed(2)},${sy(p.y).toFixed(2)}`).join(" L")}"/>`
-    : "";
-  const ticks = (log, min, max, n) => {
+  ctx.clearRect(0, 0, W, H);
+  ctx.font = "11px Inter, system-ui, sans-serif";
+  // Zielzone (nur wenn eingeschaltet)
+  if (dashGreen && axesValid) {
+    ctx.save();
+    ctx.fillStyle = C.ok; ctx.globalAlpha = 0.12;
+    if (dx === "max" && dy === "max") ctx.fillRect(tX, PAD_T, PAD_L + plotW - tX, Math.max(0, tY - PAD_T));
+    else if (dx === "min" && dy === "max") ctx.fillRect(PAD_L, PAD_T, Math.max(0, tX - PAD_L), Math.max(0, tY - PAD_T));
+    else if (dx === "max" && dy === "min") ctx.fillRect(tX, tY, PAD_L + plotW - tX, Math.max(0, H - PAD_B - tY));
+    ctx.restore();
+    ctx.save();
+    ctx.strokeStyle = C.ok; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(tX, PAD_T); ctx.lineTo(tX, H - PAD_B); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(PAD_L, tY); ctx.lineTo(W - PAD_R, tY); ctx.stroke();
+    ctx.restore();
+  }
+  // Ticks + Grid (Mobile: höchstens 4)
+  const maxTicks = cssW < 760 ? 4 : 6;
+  const tickVals = (log, min, max, n) => {
     if (log) {
       const out = [];
       let v = Math.pow(10, Math.ceil(Math.log10(min)));
@@ -1317,54 +1417,79 @@ function renderDashboard() {
     for (let i = 0; i <= n; i++) out.push(min + ((max - min) * i) / n);
     return out;
   };
-  const xTicks = ticks(xLog, xMin, xMax, 5);
-  const yTicks = ticks(yLog, yMin, yMax, 5);
-
-  const xGrid = xTicks.map((v) => `<line class="dash-grid-line" x1="${sx(v).toFixed(2)}" y1="${PAD_T}" x2="${sx(v).toFixed(2)}" y2="${H - PAD_B}"/>`).join("");
-  const yGrid = yTicks.map((v) => `<line class="dash-grid-line" x1="${PAD_L}" y1="${sy(v).toFixed(2)}" x2="${W - PAD_R}" y2="${sy(v).toFixed(2)}"/>`).join("");
   const tickFmt = (m, v) => m === "price" ? fmtPrice(v) : (m === "score" ? v.toFixed(1) : fmtTokens(v));
-  const xTickLabels = xTicks.map((v) => `<text class="dash-tick" x="${sx(v).toFixed(2)}" y="${H - PAD_B + 18}" text-anchor="middle">${tickFmt(dashX, v)}</text>`).join("");
-  const yTickLabels = yTicks.map((v) => `<text class="dash-tick" x="${PAD_L - 8}" y="${(sy(v) + 4).toFixed(2)}" text-anchor="end">${tickFmt(dashY, v)}</text>`).join("");
-
-  // Punkte: Farbe + FORM (Accessibility: nicht nur Farbe unterscheiden).
-  // no-training = Kreis, trainiert = Quadrat, unbekannt = Dreieck.
-  // Frontier-Punkte zusätzlich größer + primary.
+  const xTicks = tickVals(xLog, xMin, xMax, maxTicks);
+  const yTicks = tickVals(yLog, yMin, yMax, maxTicks);
+  ctx.save();
+  ctx.strokeStyle = C.grid; ctx.lineWidth = 1;
+  ctx.fillStyle = C.axis; ctx.textAlign = "center"; ctx.textBaseline = "top";
+  for (const v of xTicks) {
+    const X = sx(v);
+    ctx.beginPath(); ctx.moveTo(X, PAD_T); ctx.lineTo(X, H - PAD_B); ctx.stroke();
+    ctx.fillText(tickFmt(dashX, v), X, H - PAD_B + 6);
+  }
+  ctx.textAlign = "right"; ctx.textBaseline = "middle";
+  for (const v of yTicks) {
+    const Y = sy(v);
+    ctx.beginPath(); ctx.moveTo(PAD_L, Y); ctx.lineTo(W - PAD_R, Y); ctx.stroke();
+    ctx.fillText(tickFmt(dashY, v), PAD_L - 6, Y);
+  }
+  // Achsen
+  ctx.strokeStyle = C.axis; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(PAD_L, H - PAD_B); ctx.lineTo(W - PAD_R, H - PAD_B); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(PAD_L, PAD_T); ctx.lineTo(PAD_L, H - PAD_B); ctx.stroke();
+  ctx.fillStyle = C.text; ctx.font = "12px Inter, system-ui, sans-serif";
+  ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+  ctx.fillText(metricLabel(dashX), PAD_L + plotW / 2, H - 6);
+  ctx.save();
+  ctx.translate(14, PAD_T + plotH / 2); ctx.rotate(-Math.PI / 2); ctx.textAlign = "center";
+  ctx.fillText(metricLabel(dashY), 0, 0);
+  ctx.restore();
+  ctx.restore();
+  // Pareto-Linie
+  const frontier = dashPareto ? paretoFrontier(points) : [];
+  if (frontier.length > 1) {
+    ctx.save();
+    ctx.strokeStyle = C.primary; ctx.lineWidth = 2; ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    frontier.forEach((p, i) => { const X = sx(p.x), Y = sy(p.y); if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); });
+    ctx.stroke();
+    ctx.restore();
+  }
+  // Punkte: Farbe + Form (Kreis = kein Training, Quadrat = trainiert, Dreieck = unbekannt)
   const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
-  // Mobile: größere Trefferflächen (Touch), Desktop: dezent kleiner
   const touchSize = cssW < 760;
-  const dots = px.map((p, i) => {
+  for (const p of px) {
     const isFrontier = frontierKeys.has(`${p.combo.planId}::${p.combo.model}`);
-    const color = p.combo.noTraining === true ? "var(--success)" : (p.combo.noTraining === false ? "var(--danger)" : "var(--info)");
-    const r = isFrontier ? (touchSize ? 10 : 7) : (touchSize ? 7.5 : 5); // echte Pixel (viewBox = CSS-Pixel)
-    const cls = isFrontier ? "dash-dot dash-dot-frontier" : "dash-dot";
-    const x = p.px.toFixed(2), y = p.py.toFixed(2);
-    const shape = p.combo.noTraining === true ? "circle"
-      : (p.combo.noTraining === false ? "square" : "triangle");
-    if (shape === "square") {
-      return `<rect class="${cls}" data-i="${i}" x="${(p.px - r * 0.8).toFixed(2)}" y="${(p.py - r * 0.8).toFixed(2)}" width="${(r * 1.6).toFixed(2)}" height="${(r * 1.6).toFixed(2)}" fill="${isFrontier ? "var(--primary)" : color}" transform="rotate(45 ${x} ${y})"/>`;
-    }
-    if (shape === "triangle") {
+    const r = isFrontier ? (touchSize ? 10 : 7) : (touchSize ? 7.5 : 5);
+    p.pr = r;
+    ctx.save();
+    ctx.fillStyle = isFrontier ? C.primary
+      : (p.combo.noTraining === true ? C.ok : (p.combo.noTraining === false ? C.bad : C.info));
+    if (p.combo.noTraining === false) {
+      ctx.translate(p.px, p.py); ctx.rotate(Math.PI / 4);
+      ctx.fillRect(-r * 0.8, -r * 0.8, r * 1.6, r * 1.6);
+    } else if (p.combo.noTraining !== true) {
       const h = r * 1.8;
-      return `<path class="${cls}" data-i="${i}" d="M${x},${(p.py - h / 2).toFixed(2)} L${(p.px + r).toFixed(2)},${(p.py + h / 2).toFixed(2)} L${(p.px - r).toFixed(2)},${(p.py + h / 2).toFixed(2)} Z" fill="${isFrontier ? "var(--primary)" : color}"/>`;
+      ctx.beginPath();
+      ctx.moveTo(p.px, p.py - h / 2); ctx.lineTo(p.px + r, p.py + h / 2); ctx.lineTo(p.px - r, p.py + h / 2);
+      ctx.closePath(); ctx.fill();
+    } else {
+      ctx.beginPath(); ctx.arc(p.px, p.py, r, 0, Math.PI * 2); ctx.fill();
     }
-    return `<circle class="${cls}" data-i="${i}" cx="${x}" cy="${y}" r="${r}" fill="${isFrontier ? "var(--primary)" : color}"/>`;
-  }).join("");
-
-  svg.innerHTML = `
-    ${greenRect}
-    ${thresholdLines}
-    ${xGrid}${yGrid}
-    <line class="dash-axis-line" x1="${PAD_L}" y1="${H - PAD_B}" x2="${W - PAD_R}" y2="${H - PAD_B}"/>
-    <line class="dash-axis-line" x1="${PAD_L}" y1="${PAD_T}" x2="${PAD_L}" y2="${H - PAD_B}"/>
-    ${linePath}
-    ${dots}
-    ${xTickLabels}${yTickLabels}
-    <text class="dash-axis-label" x="${PAD_L + plotW / 2}" y="${H - 8}" text-anchor="middle">${escapeHtml(metricLabel(dashX))}</text>
-    <text class="dash-axis-label" x="16" y="${PAD_T + plotH / 2}" text-anchor="middle" transform="rotate(-90 16 ${PAD_T + plotH / 2})">${escapeHtml(metricLabel(dashY))}</text>
-  `;
-
-  // Tooltip + Punkt-Daten für Hover + Klick
-  svg._points = px;
+    ctx.restore();
+  }
+  // Auswahl-Ring: zeigt, welcher Punkt aktiv ist
+  if (dashSelected) {
+    const sel = px.find((p) => `${p.combo.planId}::${p.combo.model}` === dashSelected);
+    if (sel) {
+      ctx.save();
+      ctx.strokeStyle = C.ring; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.arc(sel.px, sel.py, (sel.pr ?? 6) + 4.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.restore();
+    } else dashSelected = null;
+  }
+  dashPoints = px;
   if (note) {
     if (dashPareto && frontier.length === 1 && points.length > 1) {
       // Genau 1 Pareto-Punkt: dieser Plan dominiert alle anderen auf beiden Achsen.
@@ -1399,62 +1524,98 @@ function showDashDetail(p) {
     <div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>
     ${priv ? `<div class="dd-badge">${priv}</div>` : ""}
   `;
+  // Mobile: Detail-Panel ins Bild holen (Plot ist darüber, Panel darunter)
+  try {
+    if (window.matchMedia && window.matchMedia("(max-width: 760px)").matches) {
+      document.getElementById("dash-detail")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  } catch (e) { /* ignore */ }
 }
 
-// Tooltip-Events (Delegation auf SVG)
+// Tooltip + Auswahl auf Canvas (Hover, Klick, Touch mit Hit-Test)
 function bindDashTooltip() {
-  const svg = $("#dash-svg");
+  const canvas = $("#dash-canvas");
   const tip = document.getElementById("dash-tooltip") || (() => { const d = document.createElement("div"); d.id = "dash-tooltip"; d.className = "dash-tooltip"; document.body.appendChild(d); return d; })();
-  if (!svg) return;
-  svg.addEventListener("mousemove", (e) => {
-    const circle = e.target.closest(".dash-dot");
-    if (circle && svg._points) {
-      const p = svg._points[parseInt(circle.dataset.i, 10)];
-      if (!p) return;
-      tip.style.display = "block";
-      tip.textContent = `${p.combo.planName} · ${p.combo.model} · ${metricLabel(dashX)} ${metricFmt(dashX, p.x)} · ${metricLabel(dashY)} ${metricFmt(dashY, p.y)}`;
-      const rect = svg.getBoundingClientRect();
-      // p.px/p.py sind jetzt in CSS-Pixel-Koordinaten (dynamische viewBox)
-      const vbx = svg.viewBox.baseVal;
-      tip.style.left = `${rect.left + (p.px / vbx.width) * rect.width}px`;
-      tip.style.top = `${rect.top + (p.py / vbx.height) * rect.height}px`;
-    } else {
-      tip.style.display = "none";
+  if (!canvas) return;
+  const pick = (clientX, clientY) => {
+    const r = canvas.getBoundingClientRect();
+    const x = clientX - r.left, y = clientY - r.top;
+    let bestP = null, bestD = 30; // Treffer-Radius in CSS-Pixeln
+    for (const p of dashPoints) {
+      const d = Math.hypot(p.px - x, p.py - y);
+      if (d < bestD) { bestD = d; bestP = p; }
     }
+    return bestP;
+  };
+  const showTip = (p, clientX, clientY) => {
+    tip.style.display = "block";
+    tip.textContent = `${p.combo.planName} · ${p.combo.model} · ${metricLabel(dashX)} ${metricFmt(dashX, p.x)} · ${metricLabel(dashY)} ${metricFmt(dashY, p.y)}`;
+    tip.style.left = `${clientX}px`;
+    tip.style.top = `${clientY}px`;
+  };
+  const select = (p) => {
+    if (!p) return;
+    dashSelected = `${p.combo.planId}::${p.combo.model}`;
+    showDashDetail(p);
+    renderDashboard(); // Ring zeichnen
+  };
+  canvas.addEventListener("mousemove", (e) => {
+    if (e.pointerType === "touch") return;
+    const p = pick(e.clientX, e.clientY);
+    if (p) showTip(p, e.clientX, e.clientY);
+    else tip.style.display = "none";
   });
-  svg.addEventListener("mouseleave", () => { tip.style.display = "none"; });
-  // Klick auf Punkt → Detail-Panel
-  svg.addEventListener("click", (e) => {
-    const circle = e.target.closest(".dash-dot");
-    if (circle && svg._points) {
-      const p = svg._points[parseInt(circle.dataset.i, 10)];
-      if (p) showDashDetail(p);
-    }
+  canvas.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+  canvas.addEventListener("click", (e) => {
+    tip.style.display = "none";
+    select(pick(e.clientX, e.clientY));
   });
-  // Touch: Antippen zeigt direkt das Detail-Panel (kein Hover auf Mobile)
-  svg.addEventListener("touchstart", (e) => {
-    const dot = e.target.closest(".dash-dot");
-    if (dot && svg._points) {
-      const p = svg._points[parseInt(dot.dataset.i, 10)];
-      if (p) { showDashDetail(p); e.preventDefault(); }
-    }
+  // Touch: Antippen wählt direkt (kein Hover auf Mobile)
+  canvas.addEventListener("touchstart", (e) => {
+    const t = e.touches[0];
+    const p = pick(t.clientX, t.clientY);
+    if (p) { e.preventDefault(); tip.style.display = "none"; select(p); }
   }, { passive: false });
 }
 
 // Dashboard-Controls initialisieren
 function initDashboard() {
   const xSel = $("#dash-x"), ySel = $("#dash-y");
-  if (xSel) xSel.addEventListener("change", (e) => { dashX = e.target.value; renderDashboard(); });
-  if (ySel) ySel.addEventListener("change", (e) => { dashY = e.target.value; renderDashboard(); });
+  if (xSel) { xSel.value = dashX; xSel.addEventListener("change", (e) => { dashX = e.target.value; syncViewUrl(); renderDashboard(); }); }
+  if (ySel) { ySel.value = dashY; ySel.addEventListener("change", (e) => { dashY = e.target.value; syncViewUrl(); renderDashboard(); }); }
   const pSel = $("#dash-pareto");
   if (pSel) pSel.addEventListener("change", (e) => { dashPareto = e.target.checked; renderDashboard(); });
   const gSel = $("#dash-green");
-  if (gSel) gSel.addEventListener("change", (e) => { dashGreen = e.target.checked; renderDashboard(); });
+  if (gSel) { gSel.checked = dashGreen; gSel.addEventListener("change", (e) => { dashGreen = e.target.checked; renderDashboard(); }); }
   // Ziel-Schwellen (Green Target)
   const tx = $("#dash-target-x"), ty = $("#dash-target-y");
   if (tx) tx.addEventListener("input", (e) => { dashTargetX = e.target.value === "" ? null : parseFloat(e.target.value); renderDashboard(); });
   if (ty) ty.addEventListener("input", (e) => { dashTargetY = e.target.value === "" ? null : parseFloat(e.target.value); renderDashboard(); });
+  // Leerer Plot: Filter zurücksetzen
+  const rb = $("#dash-reset-btn");
+  if (rb) rb.addEventListener("click", () => { resetAllFilters(); });
   bindDashTooltip();
+}
+
+// Alle Listen-Filter auf Anfang (für den Reset-Button am leeren Plot)
+function resetAllFilters() {
+  plansSearch = ""; plansMeter = ""; maxBudget = 300; minAiScore = 0; noTrainingOnly = false;
+  const ps = $("#plans-search"); if (ps) ps.value = "";
+  const pm = $("#plans-meter-filter"); if (pm) pm.value = "";
+  const pt = $("#privacy-toggle"); if (pt) pt.checked = false;
+  syncFilterUI();
+  rerender();
+}
+
+// Ansicht in der URL teilen: Achsen + Rechner (Filter bleiben lokal)
+function syncViewUrl() {
+  try {
+    const p = new URLSearchParams(location.search);
+    p.set("lang", lang);
+    p.set("dx", dashX); p.set("dy", dashY);
+    p.set("budget", String(calcBudget)); p.set("score", String(calcScore));
+    history.replaceState(null, "", `${location.pathname}?${p.toString()}`);
+  } catch (e) { /* ignore */ }
 }
 
 /* ============ BUDGET-RECHNER (kein Stacking: ein Abo pro Konto) ============ */
@@ -1462,6 +1623,8 @@ function initDashboard() {
 // (meiste Tokens/Monat), sortiert nach Tokens/Monat. Budget in gewählter Währung.
 let calcBudget = 20;
 let calcScore = 0;
+// Neutraler Rang je Plan im aktuellen Rechner-Ergebnis (grau, keine Empfehlung)
+let calcRanks = new Map();
 function renderCalculator() {
   const list = $("#calc-results");
   const empty = $("#calc-empty");
@@ -1481,20 +1644,27 @@ function renderCalculator() {
     .filter((c) => c.rawTokensPerMonth != null)
     .sort((a, b) => b.rawTokensPerMonth - a.rawTokensPerMonth)
     .slice(0, 5);
+  // Ränge für die neutrale Markierung in der Tabelle (keine Empfehlung, nur Rang)
+  calcRanks = new Map(top.map((c, i) => [c.planId, i + 1]));
   const budgetOut = $("#calc-budget-out");
   if (budgetOut) budgetOut.textContent = fmtPrice(budgetUsd);
+  const curOut = $("#calc-cur");
+  if (curOut) curOut.textContent = curSym();
   const scoreOut = $("#calc-score-out");
   if (scoreOut) scoreOut.textContent = calcScore === 0 ? (lang === "de" ? "keins" : "none") : String(calcScore);
   if (!top.length) {
     list.innerHTML = "";
+    calcRanks = new Map();
+    renderPlans();
     if (empty) { empty.hidden = false; empty.textContent = t("calc.empty"); }
     return;
   }
   if (empty) empty.hidden = true;
+  // Neutrale Liste (sortiert, kein Sieger-Podest): Zahlen, keine Beratung
   list.innerHTML = top.map((c, i) => {
     const left = budgetUsd - c.price;
-    return `<div class="calc-row${i === 0 ? " calc-best" : ""}">`
-      + `<div class="calc-main"><span class="calc-plan">${escapeHtml(c.planName)}</span>`
+    return `<div class="calc-row">`
+      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}.</span><span class="calc-plan">${escapeHtml(c.planName)}</span>`
       + `<span class="calc-model">${escapeHtml(c.model)}</span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span>`
       + `<span class="muted">${t("calc.tokensMo")}</span></div>`
@@ -1509,6 +1679,7 @@ function initCalculator() {
     b.value = calcBudget;
     b.addEventListener("input", (e) => {
       calcBudget = Math.max(0, parseFloat(e.target.value) || 0);
+      syncViewUrl();
       renderCalculator();
     });
   }
@@ -1517,9 +1688,92 @@ function initCalculator() {
     s.value = calcScore;
     s.addEventListener("input", (e) => {
       calcScore = parseInt(e.target.value, 10) || 0;
+      syncViewUrl();
       renderCalculator();
     });
   }
+}
+
+/* ============ BURGER-MENÜ + BACK-TO-TOP (Mobile-Navigation) ============ */
+// Auf Mobile wandern Sprache, Währung und Theme ins Menü (Knoten werden
+// verschoben, keine Listener gehen verloren); auf Desktop zurück in die Nav.
+function initBurger() {
+  const btn = $("#burger-btn");
+  const panel = $("#burger-panel");
+  if (!btn || !panel) return;
+  const navControls = $("#nav-controls");
+  const slots = { "currency-select": $("#slot-currency"), "theme-toggle": $("#slot-theme"), ".lang-switch": $("#slot-lang") };
+  const mq = window.matchMedia("(max-width: 760px)");
+  const place = () => {
+    if (!navControls) return;
+    const keys = ["currency-select", "theme-toggle", ".lang-switch"];
+    for (const k of keys) {
+      const el = k.startsWith(".") ? document.querySelector(k) : document.getElementById(k);
+      if (!el) continue;
+      const target = mq.matches ? slots[k] : navControls;
+      if (target && el.parentElement !== target) target.appendChild(el);
+    }
+    if (!mq.matches) { panel.hidden = true; btn.setAttribute("aria-expanded", "false"); }
+  };
+  try { mq.addEventListener("change", place); } catch (e) { /* ignore */ }
+  place();
+  btn.addEventListener("click", () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+  });
+  panel.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+    panel.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+  }));
+}
+
+function initBackTop() {
+  const b = $("#back-top");
+  if (!b) return;
+  const onScroll = () => { b.hidden = !(window.scrollY > 900); };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  b.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+// Methodik-Details: Zusammenfassungstext folgt dem Aufklapp-Zustand
+function syncMethodMore() {
+  const d = document.querySelector(".method-more");
+  const s = d?.querySelector("summary");
+  if (d && s) s.textContent = d.open ? t("method.less") : t("method.more");
+}
+function initMethodMore() {
+  const d = document.querySelector(".method-more");
+  if (d) d.addEventListener("toggle", syncMethodMore);
+}
+
+/* ============ FAMILIENVERGLEICH + CHANGELOG (reine Zahlen, kein Podest) ============ */
+function renderFamily() {
+  const tbody = $("#fcomp-tbody");
+  if (!tbody || !data) return;
+  const rows = (data.familyComparisons ?? []).slice().sort((a, b) => b.advantagePercent - a.advantagePercent);
+  if (!rows.length) { tbody.innerHTML = ""; return; }
+  tbody.innerHTML = rows.map((r) => {
+    const win = r.winner && r.winner !== "draw"
+      ? `<span class="strong">${escapeHtml(r.winner)}</span>`
+      : `<span class="muted">${t("fcomp.winner.draw")}</span>`;
+    return `<tr><td data-label="${t("fcomp.th.family")}"><span class="strong">${escapeHtml(r.family)}</span></td>`
+      + `<td data-label="${t("fcomp.th.planA")}">${escapeHtml(r.planA)}<div class="muted num">${fmtNum(r.requestsA)} ${t("fcomp.th.reqA")}</div></td>`
+      + `<td data-label="${t("fcomp.th.planB")}">${escapeHtml(r.planB)}<div class="muted num">${fmtNum(r.requestsB)} ${t("fcomp.th.reqB")}</div></td>`
+      + `<td data-label="${t("fcomp.th.edge")}">${win}<div class="muted num">${fmtPct(r.advantagePercent)}</div></td></tr>`;
+  }).join("");
+}
+
+function renderChangelog() {
+  const list = $("#cl-list");
+  if (!list || !data) return;
+  const entries = data.changelog?.entries ?? [];
+  list.innerHTML = entries.map((e) => {
+    let date = e.date;
+    try { date = new Date(e.date + "T00:00:00").toLocaleDateString(lang === "de" ? "de-DE" : "en-US"); } catch (err) { /* keep */ }
+    return `<div class="cl-row"><span class="cl-date num">${escapeHtml(date)}</span><span>${escapeHtml(e.text)}</span></div>`;
+  }).join("");
 }
 
 function renderFormula() {
@@ -1549,6 +1803,7 @@ async function loadData() {
     const resp = await fetch(DATA_URL, { cache: "no-cache" });
     if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + DATA_URL);
     data = await resp.json();
+    try { localStorage.setItem("cpc-data", JSON.stringify({ at: data.generatedAt, data })); } catch (e) { /* Quota: egal */ }
     buildModelPrivacyMap(); // Modell-Privacy-Map aufbauen, bevor gerendert wird
     // Loading-Note entfernen
     const note = document.getElementById("loading-note");
@@ -1560,6 +1815,24 @@ async function loadData() {
     renderDashboard();
   } catch (e) {
     console.error("Coding Plan Compare: Daten konnten nicht geladen werden:", e);
+    // Offline-Fallback: zuletzt gecachte Daten mit Stand-Hinweis
+    try {
+      const cached = JSON.parse(localStorage.getItem("cpc-data") || "null");
+      if (cached?.data) {
+        data = cached.data;
+        buildModelPrivacyMap();
+        const note = document.getElementById("loading-note");
+        if (note) note.remove();
+        applyI18n();
+        loadExchangeRates();
+        renderPlans();
+        renderDashboard();
+        toast(lang === "de"
+          ? `Offline: Stand vom ${new Date(cached.at).toLocaleDateString("de-DE")}`
+          : `Offline: snapshot from ${new Date(cached.at).toLocaleDateString("en-US")}`);
+        return;
+      }
+    } catch (err) { /* kein Cache */ }
     const note = document.getElementById("loading-note");
     if (note) note.remove();
     const errBox = document.createElement("div");
@@ -1593,6 +1866,16 @@ function init() {
   const storedCur = localStorage.getItem("cpc-currency");
   currency = ["USD", "EUR", "CNY", "GBP", "JPY"].includes(storedCur) ? storedCur : "USD";
   loadExchangeRates();
+
+  // Ansicht aus URL (teilbare Links): Achsen + Rechner
+  const urlDx = params.get("dx");
+  if (["tokens", "req10", "rawtokens", "rawreq", "price"].includes(urlDx)) dashX = urlDx;
+  const urlDy = params.get("dy");
+  if (["score", "tokens", "req10", "rawtokens", "rawreq"].includes(urlDy)) dashY = urlDy;
+  const urlBudget = parseFloat(params.get("budget"));
+  if (isFinite(urlBudget) && urlBudget >= 0) calcBudget = urlBudget;
+  const urlScore = parseInt(params.get("score") ?? "", 10);
+  if (isFinite(urlScore) && urlScore >= 0) calcScore = urlScore;
 
   // Events
   $$(".lang-switch button").forEach((btn) => {
@@ -1702,6 +1985,9 @@ function init() {
   initDashboard();
   initCalculator();
   initSheet();
+  initBurger();
+  initBackTop();
+  initMethodMore();
 
   // Chart-Auflösung dynamisch an Fenstergröße koppeln (debounced)
   let resizeTimer = null;

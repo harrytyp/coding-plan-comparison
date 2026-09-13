@@ -1,0 +1,15 @@
+# Changelog — manuell kuratiert (Nutzer-relevante Änderungen, neueste zuerst).
+# Wird von scripts/build.mjs in latest.json übernommen (Feld: changelog).
+entries:
+  - date: 2026-09-13
+    text: "Raten pro 1 $ statt pro 10 $: Command Code Go zeigt, was 1 $ kauft — kein Stapeln nötig."
+  - date: 2026-09-13
+    text: "Neu: Budget-Rechner vergleicht Einzelpläne innerhalb deines Budgets."
+  - date: 2026-09-13
+    text: "Pareto-Standard: Tokens pro Geld gegen AI-Score; Preise in deiner Währung."
+  - date: 2026-09-12
+    text: "AI-Scores lösen auf exakte Modell-Versionen auf (z. B. Muse Spark 1.3 statt generisch)."
+  - date: 2026-09-10
+    text: "Kimi-Zahlen korrigiert (waren 33–168× zu hoch); Spalte heißt ehrlich Tokens / $10."
+  - date: 2026-09-10
+    text: "Checkout-Preise: Command Code GOAT kostet 10,77 $, nicht 10 $."

@@ -809,6 +809,7 @@ async function main() {
     familyComparisons,
     aiScores: (() => { const s = loadAiScores(ROOT); const added = applyScoreAliases(s.scores, planSummaries); s.count += added.size; return s; })(),
     privacy: loadPrivacy(ROOT),
+    changelog: loadChangelog(ROOT),
     fx: parsed["fx-rates"] ?? { base: "USD", rates: { EUR: 0.86, CNY: 6.75, GBP: 0.74, JPY: 160 } },
     statistics: {
       totalPlans: plans.length,
@@ -966,6 +967,19 @@ function applyScoreAliases(scores, plans) {
     }
   }
   return added;
+}
+
+// Changelog aus data/changelog.yml laden (manuell kuratiert, Nutzer-relevant)
+function loadChangelog(root) {
+  try {
+    const raw = readFileSync(join(root, "data", "changelog.yml"), "utf8");
+    const parsed = parseYaml(raw);
+    const entries = (parsed.entries ?? []).filter((e) => e.date && e.text);
+    return { entries };
+  } catch (e) {
+    console.warn("WARN: changelog.yml nicht lesbar:", e.message);
+    return { entries: [] };
+  }
 }
 
 // Privacy-Aussagen aus data/privacy.yml laden (selbst erhoben, offizielle Quellen)
