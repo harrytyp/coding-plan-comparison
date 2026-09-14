@@ -1290,28 +1290,28 @@ function detailGrid(c) {
   push(t("plans.th.cap"), c.cap != null ? String(c.cap) : null);
   push(t("plans.th.volume"), c.volume ?? c.includedVolume ?? null);
   push(t("plans.meter"), c.meter ?? null);
-  push(t("plans.th.privacy"), c.privacyKnown
-    ? [c.noTraining === true ? t("plans.badge.noTraining") : null, c.zeroRetention === true ? t("plans.badge.zeroRetention") : null]
-      .filter(Boolean).join(", ") || (lang === "de" ? "unbekannt" : "unknown")
-    : (lang === "de" ? "keine Angabe" : "not stated"));
   const grid = `<div class="detail-grid">${parts.map(([k, v]) => `<div><div class="dg-k">${escapeHtml(k)}</div><div class="dg-v">${escapeHtml(String(v))}</div></div>`).join("")}</div>`;
   // Hinweis als eigene Zeile unter dem Raster: als Grid-Zelle wuerde der lange
   // Text eine Spalte aufziehen und die Ausrichtung der ganzen Zeile zerstoeren.
-  const note = c.planNote
-    ? `<div class="detail-note"><span class="dn-label">${escapeHtml(t("plans.note"))}</span>${escapeHtml(c.planNote)}</div>`
-    : "";
+  const note = c.planNote ? `<div class="detail-note">${escapeHtml(c.planNote)}</div>` : "";
   return grid + note;
 }
 
-// Kurzer Hinweis-Chip am Plan-Namen (z.B. "nur CLI"), voller Text im Tooltip
-function noteChip(c) {
-  if (!c.planTag && !c.planNote) return "";
-  const label = c.planTag ?? (lang === "de" ? "Hinweis" : "note");
-  const tip = c.planNote ?? label;
-  return `<span class="note-chip" title="${escapeHtml(tip)}">${escapeHtml(label)}</span>`;
+// Hinweis zum Plan: kleines neutrales Info-Zeichen, voller Text im Tooltip.
+// Es erscheint nur einmal pro Plan, nicht in jeder Modellzeile, und nur beim
+// ersten Aufbau der Liste (siehe resetNoteMarks).
+let notePlanSeen = new Set();
+function resetNoteMarks() { notePlanSeen = new Set(); }
+function noteMark(c) {
+  if (!c.planNote && !c.planTag) return "";
+  if (notePlanSeen.has(c.planId)) return "";
+  notePlanSeen.add(c.planId);
+  const tip = c.planNote ?? c.planTag;
+  return `<span class="note-mark" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}">i</span>`;
 }
 
 function renderPlans() {
+  resetNoteMarks(); // "i" erscheint nur beim ersten Vorkommen eines Plans
   const tbody = $("#plans-tbody");
   if (!tbody) return;
   let combos = buildCombos();
@@ -1398,7 +1398,7 @@ function renderCell(col, c) {
     ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
     : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}${noteChip(c)}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}${noteMark(c)}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
@@ -2190,7 +2190,7 @@ function showDashDetail(p) {
   rows.push(`<div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}</span></div>`);
   if (dashX !== "tokens") rows.push(`<div class="dd-row"><span class="k">${rateTokensLabel()}</span><span class="v">${fmtTokens(p.combo.tokensPer)}</span></div>`);
   rows.push(`<div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>`);
-  if (p.combo.planNote) rows.push(`<div class="dd-row dd-note"><span class="k">${t("plans.note")}</span><span class="v">${escapeHtml(p.combo.planNote)}</span></div>`);
+  if (p.combo.planNote) rows.push(`<div class="dd-note">${escapeHtml(p.combo.planNote)}</div>`);
   content.innerHTML = `
     <div class="dd-name">${escapeHtml(p.combo.model)}</div>
     <div class="dd-plan">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>
@@ -2388,6 +2388,7 @@ let calcScore = 0;
 // Neutraler Rang je Plan im aktuellen Rechner-Ergebnis (grau, keine Empfehlung)
 let calcRanks = new Map();
 function renderCalculator() {
+  resetNoteMarks(); // eigener Durchlauf: der Marker darf hier nicht fehlen
   const list = $("#calc-results");
   const empty = $("#calc-empty");
   if (!list || !data) return;
@@ -2425,7 +2426,7 @@ function renderCalculator() {
   list.innerHTML = top.map((c, i) => {
     const left = budgetUsd - c.price;
     return `<div class="calc-row">`
-      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}${noteChip(c)}${i === 0 ? "" : ""}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
+      + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}${noteMark(c)}${i === 0 ? "" : ""}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>`
       + `<span class="sub">${fmtPrice(Math.max(0, left))} ${t("calc.leftover")}</span></div>`

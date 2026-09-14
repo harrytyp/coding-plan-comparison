@@ -304,24 +304,22 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 }
 .lg.off { opacity: .26; }
 .lg.off .lg-n { display: none; }
-.note-chip {
-  display: inline-block; margin-left: 6px; padding: 1px 6px 2px; vertical-align: 1px;
-  border: 1px solid var(--data-b); border-radius: 999px; cursor: help;
-  font: 700 9.5px/1.5 var(--font-num); letter-spacing: .05em; text-transform: uppercase;
-  color: var(--data-b); background: transparent; white-space: nowrap;
+/* Plan-Hinweis: bewusst leise. Ein neutrales "i" am Namen, voller Text im
+   Tooltip, und der Text nur dort ausgeschrieben, wo man ihn ohnehin liest. */
+.note-mark {
+  display: inline-grid; place-items: center; width: 14px; height: 14px; margin-left: 5px;
+  border: 1px solid var(--line); border-radius: 50%; cursor: help; vertical-align: 1px;
+  font: 600 9.5px/1 var(--font-num); color: var(--text-3); font-style: normal;
 }
-.note-chip:hover { background: var(--surface-2); }
+.note-mark:hover { color: var(--text-2); border-color: var(--text-3); }
 .detail-note {
-  margin: 10px 0 2px; padding: 9px 12px; max-width: 780px;
-  border-left: 2px solid var(--data-b); border-radius: 0 8px 8px 0;
-  background: var(--surface-2); color: var(--text-2); font-size: 12.5px; line-height: 1.5;
+  margin: 9px 0 2px; padding-top: 8px; max-width: 680px; border-top: 1px solid var(--line-soft);
+  color: var(--text-3); font-size: 12px; line-height: 1.55;
 }
-.detail-note .dn-label {
-  display: block; margin-bottom: 2px; color: var(--data-b);
-  font: 700 9.5px/1.5 var(--font-num); letter-spacing: .05em; text-transform: uppercase;
+.dd-note {
+  margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--line-soft);
+  color: var(--text-3); font-size: 11.5px; line-height: 1.5;
 }
-.dd-row.dd-note { display: block; }
-.dd-row.dd-note .v { display: block; margin-top: 3px; color: var(--text-2); font-size: 12.5px; line-height: 1.45; }
 .chart-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px 16px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--text-2); }
 .chart-legend .lg { display: inline-flex; align-items: center; gap: 6px; }
 .dot-swatch { width: 9px; height: 9px; border-radius: 50%; flex: none; }
@@ -451,8 +449,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .sortable-table tbody tr.row-main { cursor: pointer; }
 .sortable-table tbody tr.row-main:hover { background: var(--surface-2); }
 .sortable-table tbody tr.row-main.open { background: var(--surface-2); }
-.sortable-table tbody tr.row-detail td { padding: 0 18px 16px; background: var(--surface-2); }
-.detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 20px; padding-top: 12px; border-top: 1px solid var(--line); }
+.sortable-table tbody tr.row-detail td { padding: 14px 18px 16px; background: var(--surface-2); }
+/* Aufgeklappte Zeile als ruhiges Unterpanel: eigene Karte, eigene Beschriftungen,
+   aber ohne die Optik einer zweiten Tabelle (weiche Trennung statt harter Linie). */
+.detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px 20px; border-top: 1px solid var(--line-soft); padding-top: 12px; }
 .detail-grid .dg-k { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
 .detail-grid .dg-v { font-size: 14px; font-weight: 600; margin-top: 3px; font-variant-numeric: tabular-nums; }
 .cell-head { font-weight: 600; }
