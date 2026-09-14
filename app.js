@@ -95,6 +95,7 @@ const I18N = {
     "plans.th.privacy": "Other",
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
+    "plans.attrs": "Attributes",
     "plans.noTraining": "No training on my data",
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
@@ -107,8 +108,9 @@ const I18N = {
     "attr.trains.tip": "The provider trains on your data or does not exclude it.",
     "attr.unknown": "not stated",
     "attr.unknown.tip": "No verifiable privacy statement found in the provider docs.",
+    "attr.cli": "CLI only",
     "attr.zdr": "ZDR",
-    "attr.zdr.tip": "Zero Data Retention offered: prompts and outputs are not stored.",
+    "attr.zdr.tip": "Zero Data Retention offered: prompts and outputs are not stored. Caution: enforcing ZDR can change model prices depending on the provider.",
     "attr.days": "days",
     "attr.retention.tip": "Standard retention window for request data, as stated by the provider.",
 
@@ -372,6 +374,7 @@ const I18N = {
     "plans.th.privacy": "Sonstiges",
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
+    "plans.attrs": "Attribute",
     "plans.noTraining": "Kein Training auf meinen Daten",
     "plans.waitlist": "Waitlist",
     "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
@@ -384,8 +387,9 @@ const I18N = {
     "attr.trains.tip": "Der Anbieter trainiert mit deinen Daten oder schließt es nicht aus.",
     "attr.unknown": "keine Angabe",
     "attr.unknown.tip": "Keine prüfbare Datenschutz-Aussage in den Anbieter-Docs gefunden.",
+    "attr.cli": "nur CLI",
     "attr.zdr": "ZDR",
-    "attr.zdr.tip": "Zero Data Retention möglich: Eingaben und Ausgaben werden nicht gespeichert.",
+    "attr.zdr.tip": "Zero Data Retention möglich: Eingaben und Ausgaben werden nicht gespeichert. Achtung: erzwungenes ZDR kann je nach Anbieter die Modellpreise ändern.",
     "attr.days": "Tage",
     "attr.retention.tip": "Übliche Aufbewahrungsdauer für Request-Daten laut Anbieter.",
 
@@ -880,9 +884,19 @@ function syncFilterChips() {
   if (plansMeter) chips.push({ label: meterLabel(plansMeter), clear: () => { plansMeter = ""; const el = $("#plans-meter-filter"); if (el) el.value = ""; rerender(); } });
   if (maxBudget < 300) chips.push({ label: `${t("plans.budget")} ≤ ${fmtMoney(maxBudget)}`, clear: () => { maxBudget = 300; syncFilterUI(); rerender(); } });
   if (minAiScore > 0) chips.push({ label: `${t("plans.aiScore")} ≥ ${minAiScore}`, clear: () => { minAiScore = 0; syncFilterUI(); rerender(); } });
-  if (noTrainingOnly) chips.push({ label: t("plans.noTraining"), clear: () => { noTrainingOnly = false; const el = $("#privacy-toggle"); if (el) el.checked = false; rerender(); } });
+  const attrLabel = { noTraining: "attr.noTraining", zdr: "attr.zdr", cli: "attr.cli", unknown: "attr.unknown" };
+  // Akive Attribut-Filter: der Tooltip traegt den vollen Satz samt Vorbehalt und Quelle
+  const attrTipKey = { noTraining: "attr.noTraining.tip", zdr: "attr.zdr.tip", cli: null, unknown: "attr.unknown.tip" };
+  for (const k of attrFilter) {
+    const tipKey = attrTipKey[k];
+    chips.push({
+      label: t(attrLabel[k]),
+      tip: tipKey ? t(tipKey) : null,
+      clear: () => { attrFilter.delete(k); syncAttrBoxes(); rerender(); },
+    });
+  }
   if (includePriceBased) chips.push({ label: t("plans.includePriceBased"), clear: () => { includePriceBased = false; const el = $("#tierd-toggle"); if (el) el.checked = false; rerender(); } });
-  container.innerHTML = chips.map((c) => `<span class="chip">${escapeHtml(c.label)}<button type="button" aria-label="remove">×</button></span>`).join("");
+  container.innerHTML = chips.map((c) => `<span class="chip"${c.tip ? ` title="${escapeHtml(c.tip)}"` : ""}>${escapeHtml(c.label)}<button type="button" aria-label="remove">×</button></span>`).join("");
   container.querySelectorAll(".chip button").forEach((btn, i) => {
     btn.addEventListener("click", chips[i].clear);
   });
@@ -963,7 +977,7 @@ let plansSearch = "";
 let plansMeter = "";
 let maxBudget = 300;   // Budget-Filter: max $/Monat
 let minAiScore = 0;    // AI-Score-Filter: mindestens
-let noTrainingOnly = false; // Privacy-Filter: nur "no training on my data"
+let attrFilter = new Set(); // Attribut-Filter: mehrere gleichzeitig, UND-verknuepft
 let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per Default aus , einblendbar
 
 /* ---------------- Spalten-Auswahl (User-anpassbar) ---------------- */
@@ -1351,6 +1365,21 @@ function comboAttributes(c) {
   return attrs;
 }
 
+// Attribut-Filter: jede angehakte Eigenschaft muss zutreffen
+function syncAttrBoxes() {
+  $$("input[data-attr]").forEach((el) => { el.checked = attrFilter.has(el.dataset.attr); });
+}
+
+function attrMatches(c) {
+  for (const k of attrFilter) {
+    if (k === "noTraining" && c.noTraining !== true) return false;
+    if (k === "zdr" && c.zeroRetention !== true) return false;
+    if (k === "cli" && !c.planTag) return false;
+    if (k === "unknown" && c.noTraining !== null) return false;
+  }
+  return true;
+}
+
 // Zelle "Sonstiges": die Trainings-Aussage als einziger Chip (gleiche Farbe wie
 // der Punkt im Chart), alles Weitere hinter "+n" mit Tooltip. So bleibt die
 // Spalte ruhig und die Zeilen behalten dieselbe Hoehe.
@@ -1379,7 +1408,7 @@ function renderPlans() {
   // Filter: AI-Score (mindestens)
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
   // Filter: Privacy , nur "no training on my data"
-  if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
+  if (attrFilter.size) combos = combos.filter(attrMatches);
   // Datenqualität: Tier-D (preisbasiert, z.B. Kimi) per Default ausblenden ,
   // keine veröffentlichte Menge = nicht sicher vergleichbar. Toggle zum Einblenden.
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
@@ -1575,7 +1604,7 @@ function openSheet() {
   const sbo = $("#sheet-budget-out"); if (sbo) sbo.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
   const sa = $("#sheet-ai"); if (sa) sa.value = minAiScore;
   const sao = $("#sheet-ai-out"); if (sao) sao.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
-  const sp = $("#sheet-privacy"); if (sp) sp.checked = noTrainingOnly;
+  syncAttrBoxes();
   const st = $("#sheet-tierd"); if (st) st.checked = includePriceBased;
   syncColumnPicker();
   sheet.hidden = false;
@@ -1613,7 +1642,16 @@ function initSheet() {
     const o = $("#sheet-ai-out"); if (o) o.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
     rerender();
   });
-  const sp = $("#sheet-privacy"); if (sp) sp.addEventListener("change", (e) => { noTrainingOnly = e.target.checked; rerender(); });
+  // Beide Gruppen (Leiste und mobiles Sheet) haengen an data-attr und bleiben synchron
+  $$("input[data-attr]").forEach((el) => {
+    el.checked = attrFilter.has(el.dataset.attr);
+    el.addEventListener("change", (e) => {
+      const k = e.target.dataset.attr;
+      if (e.target.checked) attrFilter.add(k); else attrFilter.delete(k);
+      syncAttrBoxes();
+      rerender();
+    });
+  });
   const st2 = $("#sheet-tierd"); if (st2) st2.addEventListener("change", (e) => { includePriceBased = e.target.checked; rerender(); });
   // Sheet-Spalten
   document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
@@ -1802,7 +1840,7 @@ function renderDashboardInner() {
   if (plansMeter) combos = combos.filter((c) => c.meter === plansMeter);
   if (maxBudget < 300) combos = combos.filter((c) => (c.price ?? 0) <= maxBudget);
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
-  if (noTrainingOnly) combos = combos.filter((c) => c.noTraining === true);
+  if (attrFilter.size) combos = combos.filter(attrMatches);
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
 
   const points = combos.map((c) => ({
@@ -2411,10 +2449,9 @@ function initDashboard() {
 
 // Alle Listen-Filter auf Anfang (für den Reset-Button am leeren Plot)
 function resetAllFilters() {
-  plansSearch = ""; plansMeter = ""; maxBudget = 300; minAiScore = 0; noTrainingOnly = false;
+  plansSearch = ""; plansMeter = ""; maxBudget = 300; minAiScore = 0; attrFilter.clear();
   const ps = $("#plans-search"); if (ps) ps.value = "";
   const pm = $("#plans-meter-filter"); if (pm) pm.value = "";
-  const pt = $("#privacy-toggle"); if (pt) pt.checked = false;
   syncFilterUI();
   rerender();
 }
@@ -2831,12 +2868,6 @@ function init() {
     rerender();
   });
 
-  // Privacy-Filter: "No training on my data"
-  const privacyToggle = $("#privacy-toggle");
-  if (privacyToggle) privacyToggle.addEventListener("change", (e) => {
-    noTrainingOnly = e.target.checked;
-    rerender();
-  });
   // Tier-D-Filter: preisbasierte Pläne (Kimi) einblenden
   const tierdToggle = $("#tierd-toggle");
   if (tierdToggle) tierdToggle.addEventListener("change", (e) => {

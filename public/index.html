@@ -647,6 +647,8 @@ footer { margin-top: auto; }
 .sheet-section { padding: 12px 18px; border-top: 1px solid var(--line-soft); }
 .sheet-section-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 8px; }
 .sheet-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: 13.5px; }
+.attr-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; }
+.attr-filter-title { font: 700 10.5px/1 var(--font-num); text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
 .sheet-check { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--text-2); }
 .sheet-slider-row { display: flex; flex-direction: column; gap: 6px; padding: 6px 0; }
 .sheet-slider-label { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--text-3); }
@@ -1043,10 +1045,13 @@ main { view-transition-name: main-content; }
         <input type="range" id="ai-slider" min="0" max="70" step="1" value="0">
         <output id="ai-value" class="num">0</output>
       </div>
-      <label class="privacy-filter" id="privacy-filter">
-        <input type="checkbox" id="privacy-toggle">
-        <span data-i18n="plans.noTraining">No training on my data</span>
-      </label>
+      <div class="attr-filter" id="attr-filter">
+        <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
+        <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
+        <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
+        <label class="privacy-filter"><input type="checkbox" data-attr="cli"><span data-i18n="attr.cli">CLI only</span></label>
+        <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
+      </div>
       <label class="privacy-filter" id="tierd-filter">
         <input type="checkbox" id="tierd-toggle">
         <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
@@ -1118,10 +1123,11 @@ main { view-transition-name: main-content; }
           <input type="range" id="sheet-ai" class="sheet-range" min="0" max="70" step="1" value="0">
           <output id="sheet-ai-out" class="sheet-out num"></output>
         </div>
-        <label class="sheet-check">
-          <input type="checkbox" id="sheet-privacy">
-          <span data-i18n="plans.noTraining">No training on my data</span>
-        </label>
+        <div class="sheet-section-title" data-i18n="plans.attrs">Attributes</div>
+        <label class="sheet-check"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
+        <label class="sheet-check"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
+        <label class="sheet-check"><input type="checkbox" data-attr="cli"><span data-i18n="attr.cli">CLI only</span></label>
+        <label class="sheet-check"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
         <label class="sheet-check">
           <input type="checkbox" id="sheet-tierd">
           <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>

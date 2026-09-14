@@ -10,7 +10,7 @@ privacy:
     training: false
     trainingNote: "Trainiert nicht auf deinen Quellcode; weist Provider an, Inhalte nicht zu trainieren."
     zeroRetention: true
-    zeroRetentionNote: "Zero Data Retention Option: Eingaben/Ausgaben werden nie gespeichert."
+    zeroRetentionNote: "Zero Data Retention Option: Eingaben/Ausgaben werden nie gespeichert. Auf Anfrage erzwingbar (CMD_ZDR=1); laut Docs kann das den Modellpreis je Anbieter aendern."
     retentionDays: 30
     retentionNote: "Request-Daten werden standardmäßig bis zu 30 Tage aufbewahrt (Betrieb/Sicherheit)."
     sourceUrl: "https://commandcode.ai/privacy"
