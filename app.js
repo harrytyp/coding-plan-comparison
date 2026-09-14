@@ -92,7 +92,7 @@ const I18N = {
     "plans.th.rawreq": "Requests / mo",
     "plans.th.cap": "Included volume",
     "plans.scoreNA": "No benchmark available",
-    "plans.th.privacy": "Privacy",
+    "plans.th.privacy": "Other",
     "plans.budget": "Max $/mo",
     "plans.aiScore": "Min AI score",
     "plans.noTraining": "No training on my data",
@@ -100,6 +100,17 @@ const I18N = {
     "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
     "plans.estimate": "estimate",
     "plans.note": "Note",
+    "attr.noTraining": "no training",
+    "attr.noTraining.tip": "The provider states it does not train on your data.",
+    "attr.trains": "trains",
+    "attr.trains.tip": "The provider trains on your data or does not exclude it.",
+    "attr.unknown": "not stated",
+    "attr.unknown.tip": "No verifiable privacy statement found in the provider docs.",
+    "attr.zdr": "ZDR",
+    "attr.zdr.tip": "Zero Data Retention offered: prompts and outputs are not stored.",
+    "attr.days": "days",
+    "attr.retention.tip": "Standard retention window for request data, as stated by the provider.",
+
     "plans.includePriceBased": "Include price-based plans (Kimi)",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
@@ -357,7 +368,7 @@ const I18N = {
     "plans.th.rawreq": "Requests / Monat",
     "plans.th.cap": "Inkl. Volumen",
     "plans.scoreNA": "Kein Benchmark verfügbar",
-    "plans.th.privacy": "Datenschutz",
+    "plans.th.privacy": "Sonstiges",
     "plans.budget": "Max $/Monat",
     "plans.aiScore": "Min. AI-Score",
     "plans.noTraining": "Kein Training auf meinen Daten",
@@ -365,6 +376,17 @@ const I18N = {
     "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
     "plans.estimate": "Schätzung",
     "plans.note": "Hinweis",
+    "attr.noTraining": "kein Training",
+    "attr.noTraining.tip": "Der Anbieter erklärt, nicht mit deinen Daten zu trainieren.",
+    "attr.trains": "trainiert",
+    "attr.trains.tip": "Der Anbieter trainiert mit deinen Daten oder schließt es nicht aus.",
+    "attr.unknown": "keine Angabe",
+    "attr.unknown.tip": "Keine prüfbare Datenschutz-Aussage in den Anbieter-Docs gefunden.",
+    "attr.zdr": "ZDR",
+    "attr.zdr.tip": "Zero Data Retention möglich: Eingaben und Ausgaben werden nicht gespeichert.",
+    "attr.days": "Tage",
+    "attr.retention.tip": "Übliche Aufbewahrungsdauer für Request-Daten laut Anbieter.",
+
     "plans.includePriceBased": "Preisbasierte Pläne einblenden (Kimi)",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
@@ -1098,10 +1120,13 @@ function buildModelPrivacyMap() {
 function comboPrivacy(plan, row) {
   const modelPriv = modelPrivacyByName.get(row.model.toLowerCase()) ?? modelPrivacyMap.get(row.family);
   if (modelPriv) {
+    // Training steht pro Modell (Feed), ZDR und Aufbewahrung sind Anbieter-Politik
+    // und gelten unabhaengig vom Modell: beides gehoert in dieselbe Aussage.
+    const pp = providerPrivacy(plan.provider);
     return {
       noTraining: modelPriv.training === false,
-      retentionDays: typeof modelPriv.retentionDays === "number" ? modelPriv.retentionDays : null,
-      zeroRetention: null,
+      retentionDays: typeof modelPriv.retentionDays === "number" ? modelPriv.retentionDays : (pp?.retentionDays ?? null),
+      zeroRetention: pp?.zeroRetention === true ? true : (pp?.zeroRetention === false ? false : null),
       source: "model",
       known: true,
     };
@@ -1257,15 +1282,6 @@ function planColor(name, provider) {
   return MARK_COLORS[planInitials(name, provider)] || "#475569";
 }
 
-function privacyBadge(c) {
-  // Kein Anbieter-Statement: nicht leer lassen, sonst wirkt die Spalte kaputt
-  if (!c.privacyKnown) return `<span class="muted" title="${escapeHtml(lang === "de" ? "Keine Angabe des Anbieters" : "Not stated by the provider")}">-</span>`;
-  const parts = [];
-  if (c.noTraining === true) parts.push(`<span class="badge badge-green" title="No training on my data">${t("plans.badge.noTraining")}</span>`);
-  if (c.zeroRetention === true) parts.push(`<span class="badge badge-green" title="Zero data retention">${t("plans.badge.zeroRetention")}</span>`);
-  if (typeof c.retentionDays === "number" && c.retentionDays !== false) parts.push(`<span class="badge badge-gray" title="Data retention">${t("plans.badge.retention").replace("{d}", String(c.retentionDays))}</span>`);
-  return parts.length ? `<div class="privacy-badges">${parts.join(" ")}</div>` : "";
-}
 
 // Zeilen-Deckel: 396 Modell-Kombinationen als Endlos-Tabelle sind unbrauchbar
 let plansLimit = 25, famLimit = 12;
@@ -1281,6 +1297,7 @@ function detailGrid(c) {
   const parts = [];
   const push = (k, v) => { if (v !== null && v !== undefined && v !== "" && v !== "-") parts.push([k, v]); };
   push(t("plans.th.model"), c.model);
+  push(t("plans.th.privacy"), comboAttributes(c).map((a) => a.label).join(", ") || null);
   push(t("plans.th.score"), c.score !== null ? `${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}` : null);
   push(rateTokensLabel(), fmtTokens(c.tokensPer));
   push(rateReqLabel(), c.requestsPer10 != null ? fmtNum(c.requestsPer10) : null);
@@ -1308,6 +1325,34 @@ function noteMark(c) {
   notePlanSeen.add(c.planId);
   const tip = c.planNote ?? c.planTag;
   return `<span class="note-mark" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}">i</span>`;
+}
+
+// Attribute einer Kombination: alles, was den Plan jenseits von Preis und Rate
+// ausmacht (Training, Zero Retention, Aufbewahrung, CLI-Bindung). Bewusst eine
+// gemeinsame Liste statt einer Sonderkategorie pro Eigenschaft.
+function comboAttributes(c) {
+  const attrs = [];
+  if (c.noTraining === true) attrs.push({ tone: "ok", label: t("attr.noTraining"), tip: t("attr.noTraining.tip") });
+  else if (c.noTraining === false) attrs.push({ tone: "warn", label: t("attr.trains"), tip: t("attr.trains.tip") });
+  else attrs.push({ tone: "unknown", label: t("attr.unknown"), tip: t("attr.unknown.tip") });
+  // Reihenfolge = Wichtigkeit: erst was auf einen Blick entscheidet, dann Details
+  if (c.planTag) attrs.push({ tone: "plain", label: c.planTag, tip: c.planNote ?? c.planTag });
+  if (c.zeroRetention === true) attrs.push({ tone: "plain", label: t("attr.zdr"), tip: t("attr.zdr.tip") });
+  if (typeof c.retentionDays === "number") {
+    attrs.push({ tone: "plain", label: `${c.retentionDays} ${t("attr.days")}`, tip: t("attr.retention.tip") });
+  }
+  return attrs;
+}
+
+// Zelle "Sonstiges": die Trainings-Aussage als einziger Chip (gleiche Farbe wie
+// der Punkt im Chart), alles Weitere hinter "+n" mit Tooltip. So bleibt die
+// Spalte ruhig und die Zeilen behalten dieselbe Hoehe.
+function attrCell(c) {
+  const attrs = comboAttributes(c);
+  if (!attrs.length) return "-";
+  const [head, ...rest] = attrs;
+  return `<span class="attr attr-${head.tone}" title="${escapeHtml(head.tip)}">${escapeHtml(head.label)}</span>`
+    + (rest.length ? `<span class="attr attr-more" title="${escapeHtml(rest.map((r) => r.label).join(", "))}">+${rest.length}</span>` : "");
 }
 
 function renderPlans() {
@@ -1418,7 +1463,7 @@ function renderCell(col, c) {
         : "";
       return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${wl}</td>`;
     }
-    case "privacy": return `<td data-label="${t("plans.th.privacy")}">${privacyBadge(c)}</td>`;
+    case "privacy": return `<td data-label="${t("plans.th.privacy")}">${attrCell(c)}</td>`;
     default: return "";
   }
 }
@@ -2178,9 +2223,7 @@ function showDashDetail(p) {
   if (!p) { content.hidden = true; if (empty) empty.style.display = ""; return; }
   if (empty) empty.style.display = "none";
   content.hidden = false;
-  const priv = p.combo.noTraining === true
-    ? `<span class="badge badge-green">${t("plans.badge.noTraining")}</span>`
-    : (p.combo.noTraining === false ? `<span class="badge badge-red">${lang === "de" ? "trainiert" : "trains on data"}</span>` : "");
+  const priv = comboAttributes(p.combo).map((a) => `<span class="attr attr-${a.tone}" title="${escapeHtml(a.tip)}">${escapeHtml(a.label)}</span>`).join("");
   // Keine doppelten Zeilen: Was schon als Achse oben steht, unten nicht wiederholen
   const rows = [
     `<div class="dd-row"><span class="k">${metricLabel(dashX)}</span><span class="v">${metricFmt(dashX, p.x)}</span></div>`,
@@ -2195,7 +2238,7 @@ function showDashDetail(p) {
     <div class="dd-name">${escapeHtml(p.combo.model)}</div>
     <div class="dd-plan">${escapeHtml(p.combo.planName)} · ${escapeHtml(p.combo.provider)}</div>
     ${rows.join("")}
-    ${priv ? `<div class="dd-badge" style="padding:0;background:none;border:0">${priv}</div>` : ""}
+    ${priv ? `<div class="dd-badges">${priv}</div>` : ""}
     <div class="dd-foot">
       <button class="btn" id="dd-method" type="button">${t("dd.method")}</button>
     </div>
