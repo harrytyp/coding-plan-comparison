@@ -18,6 +18,8 @@ overrides:
   # MiniMax Token Plan: JS-SPA, Preise/Quoten nicht direkt scrapebar (bisher).
   # Werte aus coding-plans-Tabelle (Rohdaten, zu verifizieren).
   - id: minimax-starter
+    provider: minimax
+    name: MiniMax Token Plan
     price: { monthlyUsd: 10, paidPrice: 10, advertisedPrice: 10 }
     quota: { label: "5h", unit: prompts, amount: 100, window: "5h", refresh: rolling, disclosure: exact }
     feedModels: ["MiniMax M3", "MiniMax M2.7", "MiniMax M2.5"]

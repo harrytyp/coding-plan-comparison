@@ -100,6 +100,7 @@ const I18N = {
     "plans.waitlist.title": "Currently waitlist only - not purchasable yet",
     "plans.estimate": "estimate",
     "plans.note": "Note",
+    "attr.source": "Source",
     "attr.noTraining": "no training",
     "attr.noTraining.tip": "The provider states it does not train on your data.",
     "attr.trains": "trains",
@@ -376,6 +377,7 @@ const I18N = {
     "plans.waitlist.title": "Aktuell nur Waitlist - noch nicht kaufbar",
     "plans.estimate": "Schätzung",
     "plans.note": "Hinweis",
+    "attr.source": "Quelle",
     "attr.noTraining": "kein Training",
     "attr.noTraining.tip": "Der Anbieter erklärt, nicht mit deinen Daten zu trainieren.",
     "attr.trains": "trainiert",
@@ -1124,7 +1126,9 @@ function comboPrivacy(plan, row) {
     // und gelten unabhaengig vom Modell: beides gehoert in dieselbe Aussage.
     const pp = providerPrivacy(plan.provider);
     return {
-      noTraining: modelPriv.training === false,
+      // training === null heisst "unbekannt", nicht "trainiert": sonst faerbt
+      // jede Modellzeile ohne Aussage den Punkt als Training-Fall ein.
+      noTraining: modelPriv.training === false ? true : (modelPriv.training === true ? false : null),
       retentionDays: typeof modelPriv.retentionDays === "number" ? modelPriv.retentionDays : (pp?.retentionDays ?? null),
       zeroRetention: pp?.zeroRetention === true ? true : (pp?.zeroRetention === false ? false : null),
       source: "model",
@@ -1331,15 +1335,18 @@ function noteMark(c) {
 // ausmacht (Training, Zero Retention, Aufbewahrung, CLI-Bindung). Bewusst eine
 // gemeinsame Liste statt einer Sonderkategorie pro Eigenschaft.
 function comboAttributes(c) {
+  // Jede Aussage nennt ihre Quelle im Tooltip: die Anbieter-URL aus privacy.yml
+  const src = providerPrivacy(c.provider)?.sourceUrl;
+  const withSrc = (tip) => (src ? `${tip} ${t("attr.source")}: ${src}` : tip);
   const attrs = [];
-  if (c.noTraining === true) attrs.push({ tone: "ok", label: t("attr.noTraining"), tip: t("attr.noTraining.tip") });
-  else if (c.noTraining === false) attrs.push({ tone: "warn", label: t("attr.trains"), tip: t("attr.trains.tip") });
-  else attrs.push({ tone: "unknown", label: t("attr.unknown"), tip: t("attr.unknown.tip") });
+  if (c.noTraining === true) attrs.push({ tone: "ok", label: t("attr.noTraining"), tip: withSrc(t("attr.noTraining.tip")) });
+  else if (c.noTraining === false) attrs.push({ tone: "warn", label: t("attr.trains"), tip: withSrc(t("attr.trains.tip")) });
+  else attrs.push({ tone: "unknown", label: t("attr.unknown"), tip: withSrc(t("attr.unknown.tip")) });
   // Reihenfolge = Wichtigkeit: erst was auf einen Blick entscheidet, dann Details
   if (c.planTag) attrs.push({ tone: "plain", label: c.planTag, tip: c.planNote ?? c.planTag });
-  if (c.zeroRetention === true) attrs.push({ tone: "plain", label: t("attr.zdr"), tip: t("attr.zdr.tip") });
+  if (c.zeroRetention === true) attrs.push({ tone: "plain", label: t("attr.zdr"), tip: withSrc(t("attr.zdr.tip")) });
   if (typeof c.retentionDays === "number") {
-    attrs.push({ tone: "plain", label: `${c.retentionDays} ${t("attr.days")}`, tip: t("attr.retention.tip") });
+    attrs.push({ tone: "plain", label: `${c.retentionDays} ${t("attr.days")}`, tip: withSrc(t("attr.retention.tip")) });
   }
   return attrs;
 }
