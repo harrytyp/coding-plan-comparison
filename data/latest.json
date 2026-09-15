@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-14T08:58:50.949Z",
+  "generatedAt": "2026-09-15T08:43:38.203Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -14586,7 +14586,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-14T08:58:50.818Z",
+    "fetchedAt": "2026-09-15T08:43:37.372Z",
     "count": 389,
     "scores": {
       "gpt-6-astra": {
@@ -14667,10 +14667,10 @@
       "deepseek-v4-flash-vision-exp": {
         "intelligence": 46
       },
-      "glm-5-2": {
+      "qwen3-7-max": {
         "intelligence": 45.55
       },
-      "qwen3-7-max": {
+      "glm-5-2": {
         "intelligence": 45.55
       },
       "grok-4-5": {
@@ -14679,10 +14679,10 @@
       "claude-mythos-5-1": {
         "intelligence": 45.22
       },
-      "gpt-5-6-luna": {
+      "qwen3-8-27b": {
         "intelligence": 45.09
       },
-      "qwen3-8-27b": {
+      "gpt-5-6-luna": {
         "intelligence": 45.09
       },
       "claude-opus-4-6": {
@@ -15093,10 +15093,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.93
       },
-      "grok-4-20-beta-0309-reasoning": {
+      "granite-4-2-30b": {
         "intelligence": 23.83
       },
-      "granite-4-2-30b": {
+      "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.83
       },
       "qwen3-next-80b-a3b-thinking": {
@@ -15366,10 +15366,10 @@
       "deepseek-r1-distill-qwen-14b": {
         "intelligence": 10.94
       },
-      "qwen3-vl-4b-instruct": {
+      "magistral-small-2506": {
         "intelligence": 10.68
       },
-      "magistral-small-2506": {
+      "qwen3-vl-4b-instruct": {
         "intelligence": 10.68
       },
       "mistral-large-3-2509": {
@@ -15399,10 +15399,10 @@
       "mistral-large-latest": {
         "intelligence": 9.03
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
@@ -15811,7 +15811,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-14",
+      "verifiedAt": "2026-09-15",
       "crawled": true
     },
     {
@@ -15909,12 +15909,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Mon, 14 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Tue, 15 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.862246,
-      "CNY": 6.715584,
-      "GBP": 0.739483,
-      "JPY": 153.611729
+      "EUR": 0.865688,
+      "CNY": 6.725199,
+      "GBP": 0.740963,
+      "JPY": 154.389032
     }
   },
   "statistics": {
