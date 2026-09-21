@@ -354,11 +354,15 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   if (fbPricing?.plans?.length) {
     const freebucksNote = (fbFaq?.freebucksPerDay ?? []).map((b) => `${b.regions}: ${b.perDay}`).join("; ");
     const fbPlans = [
-      { name: "Free", monthlyUsd: 0, maxSpendUsd: fbPricing.freeTierMonthlyUsd, tag: "ad-funded", tagDe: "werbefinanziert" },
+      { name: "Free", monthlyUsd: 0, maxSpendUsd: fbPricing.freeTierMonthlyUsd, adFunded: true },
       ...fbPricing.plans,
     ];
     for (const p of fbPlans) {
       const isFree = p.monthlyUsd === 0;
+      // Kein API-Zugang: die Terms erlauben Inferenz NUR ueber ein offizielles
+      // Freebuff-Produkt (keine direkten Endpoint-Aufrufe, keine Wrapper/Skripte,
+      // ein Mensch muss jede Session starten und anwesend bleiben). Der Free-Tarif
+      // wird ueber Textanzeigen finanziert.
       add({
         id: `freebuff-${p.name.toLowerCase()}`,
         provider: "freebuff",
@@ -368,7 +372,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
           paidPrice: p.monthlyUsd,
           advertisedPrice: p.monthlyUsd,
           billingNote: isFree
-            ? `$0 (supported by text ads). Up to $${p.maxSpendUsd} of usage a month; daily Freebucks by region (${freebucksNote})`
+            ? `$0 (supported by text ads). Up to $${p.maxSpendUsd} of usage a month; daily Freebucks by region (${freebucksNote}). Region spoofing by VPN or proxy is prohibited by the Terms`
             : `$${p.dailyUsd}/day + $${p.flexibleMonthlyUsd}/mo flexible, $${p.maxSpendUsd} max spend/mo${fbPricing.yearlyDiscountPercent ? `; yearly ~${fbPricing.yearlyDiscountPercent}% off` : ""}`,
           altPrice: null,
         },
@@ -382,12 +386,12 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         feedModels: FREEBUFF_MODELS,
         dataTier: "A",
         dataTierNote: "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
-        // Kein veröffentlichtes Request-Limit, Freibetrag je Region, Limits laut Seite anpassbar
+        // Kein veröffentlichter Request-Zaehler, Freibetrag je Region, Limits laut Seite anpassbar
         disclosure: "partial",
-        tag: p.tag ?? null,
-        tagDe: p.tagDe ?? null,
-        notes: "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
-        notesDe: "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
+        tag: "no API",
+        tagDe: "kein API",
+        notes: "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions, requests here are derived from the monthly USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
+        notesDe: "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
         sourceIds: ["freebuff-pricing", "freebuff-faq"],
         verifiedAt: "2026-09-21",
       });

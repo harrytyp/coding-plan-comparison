@@ -349,6 +349,9 @@ test("Freebuff: Tarife, Dollar-Volumen, keine Infinity-Rate bei Preis 0", async 
       assert.ok(Math.abs(r.normalizedPer1 - expected) < Math.max(1e-6, expected * 1e-6),
         `${p.name}/${r.model}: Rate pro $`);
     }
+    // Kein API-Zugang ist ein Attribut, nicht nur Prosa: der Filter "no API" muss greifen
+    assert.equal(plan.tag, "no API", `${p.name}: Tag no API`);
+    assert.ok(/terms-of-service/.test(plan.notes ?? ""), `${p.name}: Note nennt die Quelle`);
   }
 
   for (const p of d.plans) {
