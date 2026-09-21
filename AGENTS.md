@@ -29,6 +29,11 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
 - "60 für 10" ist nur $-Gegenwert; Grundcredits (Token-Preise) + Cache + Workload entscheiden.
 - Anbietereigene Credit-Formeln (GLM) kommen dynamisch aus den Docs.
 - Pattern-Unifizierung: geteilte Familien nutzen OC-Pattern für beide Provider.
+- Tarif-Namen und Tier-Maps kommen aus der Quelle, nie hart kodieren: Qwen fügte einen
+  Tarif ein, kimi.ai benannte seine Checkout-Titel um, beides ließ Tarife still aus dem
+  Katalog fallen. Die Tests koppeln Parser-Output an den Katalog, damit das auffällt.
+- Pläne ohne Preis ($0, werbefinanziert) haben keine Rate pro $: `normalizedPer1` bleibt null
+  statt Infinity, sonst kippen Familien-Median und Pareto-Front. Ihre Zeilen sortieren am Ende.
 - Fenster: 5h = Durchsatz (nicht ×180), Wochen ×4.33 → Monat.
 
 ## Befehle
