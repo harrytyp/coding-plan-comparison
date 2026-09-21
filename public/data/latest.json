@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T06:56:13.733Z",
+  "generatedAt": "2026-09-21T06:56:41.129Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -16336,7 +16336,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T06:38:15.693Z",
+    "fetchedAt": "2026-09-21T06:56:41.031Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -16489,10 +16489,10 @@
       "muse-spark": {
         "intelligence": 41.7
       },
-      "minimax-m3": {
+      "gpt-5-2-2025-12-11": {
         "intelligence": 41.37
       },
-      "gpt-5-2-2025-12-11": {
+      "minimax-m3": {
         "intelligence": 41.37
       },
       "laguna-s-2-1": {
@@ -16795,10 +16795,10 @@
       "exaone-4-5-33b": {
         "intelligence": 25.99
       },
-      "sarvam-105b": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
-      "claude-haiku-4-5-20251001": {
+      "sarvam-105b": {
         "intelligence": 25.69
       },
       "nova-2-omni": {
@@ -16933,10 +16933,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "o1-pro": {
+      "granite-4-2-8b": {
         "intelligence": 19.68
       },
-      "granite-4-2-8b": {
+      "o1-pro": {
         "intelligence": 19.68
       },
       "grok-4-1-2025-11-17": {
@@ -17152,10 +17152,10 @@
       "mistral-large-latest": {
         "intelligence": 9.02
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
