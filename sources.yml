@@ -71,6 +71,13 @@ sources:
     provides: [quota_rules, extra_usage, rate_limits]
     note: "Kimi Code: 7d-Quota (kein Rollover), 5h-Rate-Window, Extra Usage (RMB, nach Verbrauch)."
 
+  - id: kimi-ai-pricing
+    url: "https://www.kimi.ai/help/membership/membership-pricing"
+    typ: html-docs
+    parser: none
+    provides: [plan_prices, tier_names]
+    note: "Internationale kimi.ai-Preistabelle (USD): Moderato $19 / Allegretto $39 / Allegro $99 / Vivace $199 (Jahr $180/$372/$948/$1908). Belegt das Mapping der Goods-Checkout-Titel Plus/Pro/Max/Ultra auf diese Tarife; wird per Fingerprint auf Änderungen überwacht (Tarif-Umbenennung)."
+
   # ---- Nicht-scrapebar (Auth/JS) → manuell in overrides.yml, Cron-Agent prüft ----
   - id: glm-pricing-page
     url: "https://open.bigmodel.cn/glm-coding"

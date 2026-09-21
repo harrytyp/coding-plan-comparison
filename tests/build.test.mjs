@@ -287,3 +287,32 @@ test("Versions-Invariante: verschiedene Versionen teilen nie dasselbe Alias-Ziel
     }
   }
 });
+
+// --- Regression 2026-09-21: stiller Tarif-Verlust bei Quellen-Umbenennung ---
+// Qwen fügte einen "Essential"-Tarif ein, Kimi benannte die kimi.ai-Checkout-Titel
+// in Plus/Pro/Max/Ultra um. Beide Male fiel ein Tarif still aus dem Katalog
+// (hart kodierte Namenslisten). Dieser Test koppelt Parser-Output an den Katalog.
+test("Kein Tarif fällt still weg: jeder geparste Tarif steht im Katalog", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const byId = new Map(d.plans.map((p) => [p.id, p]));
+
+  // Qwen Token Personal: Preis + 7d-Quota müssen 1:1 aus den Docs kommen
+  const qwen = JSON.parse(await readFile(join(ROOT, "parsed/qwen-token-personal.json"), "utf8"));
+  const qwenSlug = { Lite: "lite", Essential: "essential", Standard: "standard", Pro: "pro" };
+  for (const p of qwen.plans) {
+    const id = `qwen-token-personal-${qwenSlug[p.name]}`;
+    const plan = byId.get(id);
+    assert.ok(plan, `Qwen-Tarif "${p.name}" fehlt im Katalog (${id})`);
+    assert.equal(plan.price.paidPrice, p.limitedPrice, `${p.name}: Limited-Preis`);
+    assert.equal(plan.price.advertised, p.originalPrice, `${p.name}: Original-Preis`);
+    assert.equal(plan.quotas[0].amount, p.quota7d, `${p.name}: 7d-Quota`);
+  }
+
+  // Kimi: die internationalen kimi.ai-USD-Preise müssen im Katalog stehen.
+  // Greift das Tier-Mapping nicht, fällt der Build auf die CNY-Liste zurück
+  // (¥99/¥199/¥699) und dieser Vergleich schlägt fehl.
+  const goods = JSON.parse(await readFile(join(ROOT, "parsed/kimi-goods.json"), "utf8"));
+  const goodsMonthly = goods.plans.filter((g) => g.billingCycle === "month").map((g) => g.priceUsd).sort((a, b) => a - b);
+  const kimiPaid = d.plans.filter((p) => p.id.startsWith("kimi-")).map((p) => p.price.paidPrice).sort((a, b) => a - b);
+  assert.deepEqual(kimiPaid, goodsMonthly, "Kimi: jeder kimi.ai-Monatspreis muss im Katalog stehen");
+});

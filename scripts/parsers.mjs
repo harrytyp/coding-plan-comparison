@@ -185,17 +185,21 @@ export function parseQwenDocs(html) {
 export function parseQwenTokenPersonal(html) {
   const text = htmlToText(html);
   const out = { plans: [], extraBundle: null };
-  // Spaltenweise Tabelle: "Lite plan Standard plan Pro plan ... Original price $8/month Limited-time $6/month Original price $25/month Limited-time $18/month ..."
-  // Extrahiere "Original price $X/month Limited-time $Y/month" Sequenz + "N Credits" Quoten
   const prices = [...text.matchAll(/Original price \$([\d.]+)\/month\s*Limited-time \$([\d.]+)\/month/g)].map((m) => ({ original: parseFloat(m[1]), limited: parseFloat(m[2]) }));
-  // Quoten: "2,500 Credits" / "10,000 Credits" / "40,000 Credits" nach dem Pricing-Block
+  // Tier-Namen dynamisch aus der Preistabelle (Namensliste steht VOR dem ersten
+  // "Original price"-Block). Positional hart kodierte Namen waren der Bug: als
+  // Qwen einen "Essential"-Tarif zwischen Lite und Standard einfügte, wanderten
+  // die Preise in die falschen Tarife und der Pro-Tarif fiel raus.
+  const tableHead = prices.length ? text.slice(0, text.indexOf("Original price")) : "";
+  const names = [...tableHead.matchAll(/([A-Z][a-z]+) plan\b/g)].map((m) => m[1]);
+  // Quoten: Block reicht von "7-day quota" bis "Concurrent Agents" (nicht fixe 200
+  // Zeichen, sonst fehlt der letzte Tarif sobald ein Tarif dazukommt).
   const quotaIdx = text.indexOf("7-day quota");
-  const quotaText = quotaIdx >= 0 ? text.slice(quotaIdx, quotaIdx + 200) : text;
+  const quotaEnd = text.indexOf("Concurrent Agents", quotaIdx);
+  const quotaText = quotaIdx >= 0 ? text.slice(quotaIdx, quotaEnd > quotaIdx ? quotaEnd : quotaIdx + 400) : text;
   const quotas = [...quotaText.matchAll(/([\d,]+)\s*Credits/g)].map((m) => parseInt(m[1].replace(/,/g, ""), 10));
-  const names = ["Lite", "Standard", "Pro"];
   prices.forEach((p, i) => {
-    if (i >= names.length) return;
-    out.plans.push({ name: names[i], originalPrice: p.original, limitedPrice: p.limited, quota7d: quotas[i] ?? null });
+    out.plans.push({ name: names[i] ?? `Plan ${i + 1}`, originalPrice: p.original, limitedPrice: p.limited, quota7d: quotas[i] ?? null });
   });
   const bundle = /\$([\d.]+)\/bundle\/month\s*([\d,]+)\s*Credits\/bundle/.exec(text);
   if (bundle) out.extraBundle = { price: parseFloat(bundle[1]), credits: parseInt(bundle[2].replace(/,/g, ""), 10) };

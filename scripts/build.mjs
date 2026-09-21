@@ -169,8 +169,9 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   // sind NICHT die Credit-Kosten → keine Requests-Normalisierung möglich.
   // Ehrlich: Rohdaten mit offiziellen Multiplikatoren (Lite 1× / Standard 4× / Pro 16×).
   const qwenTok = parsed["qwen-token-personal"];
-  const qwenTierMap = { Lite: "lite", Standard: "standard", Pro: "pro" };
-  const qwenTierMult = { lite: 1, standard: 4, pro: 16 };
+  // Offizielle Multiplikatoren aus der Doku ("2.25x/4x/16x Lite usage"), Stand 2026-09-21.
+  const qwenTierMap = { Lite: "lite", Essential: "essential", Standard: "standard", Pro: "pro" };
+  const qwenTierMult = { lite: 1, essential: 2.25, standard: 4, pro: 16 };
   for (const p of qwenTok?.plans ?? []) {
     const tierKey = qwenTierMap[p.name];
     if (!tierKey) continue;
@@ -196,7 +197,16 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   const kimiPrices = parsed["kimi-membership-pricing"]; // Fallback (kimi.com, CNY)
   const kimiGoods = parsed["kimi-goods"];               // Primär (kimi.ai, USD, Monat/Jahr, Waitlist)
   const kimiCode = parsed["kimi-code-membership"];
-  const kimiTierMap = { Moderato: "moderato", Allegretto: "allegretto", Allegro: "allegro", Vivace: "vivace" };
+  // Tarifnamen: kimi.com (CN) = Andante/Moderato/Allegretto/Allegro/Vivace,
+  // die internationale Goods-API (kimi.ai) liefert DIESELBEN Tarife unter den
+  // Checkout-Titeln Plus/Pro/Max/Ultra. Preis-Identität belegt die Zuordnung:
+  // $19/$39/$99/$199 bzw. Jahrespreise $180/$372/$948/$1908 entsprechen exakt der
+  // internationalen Preistabelle (https://www.kimi.ai/help/membership/membership-pricing).
+  const kimiTierMap = {
+    Moderato: "moderato", Allegretto: "allegretto", Allegro: "allegro", Vivace: "vivace",
+    Plus: "moderato", Pro: "allegretto", Max: "allegro", Ultra: "vivace",
+  };
+  const kimiTierLabel = { moderato: "Moderato", allegretto: "Allegretto", allegro: "Allegro", vivace: "Vivace" };
   // Offizielle relative Credits (Index): Andante 1×, Moderato 4×, Allegretto 20×, Allegro 60×
   const kimiTierMult = { moderato: 4, allegretto: 20, allegro: 60, vivace: 120 };
   // Offizielle Billing-Beispiele (kimi.com/code/docs): einfacher Request ~¥0.03,
@@ -233,7 +243,7 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     add({
       id: `kimi-${tierKey}`,
       provider: "moonshot",
-      name: `Kimi Code ${g.name}`,
+      name: `Kimi Code ${kimiTierLabel[tierKey] ?? g.name}`,
       price: {
         monthlyUsd: g.month,
         paidPrice: g.month,
@@ -265,8 +275,11 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         feedModels: ["Kimi K3", "Kimi K2.7 Code", "Kimi K2.6", "Kimi K2.5"],
       },
       disclosure: g.waitlist ? "partial" : "disclosed",
-      sourceIds: ["kimi-goods", "kimi-code-membership"],
-      verifiedAt: "2026-08-31",
+      sourceIds: ["kimi-goods", "kimi-code-membership", "kimi-ai-pricing"],
+      verifiedAt: "2026-09-21",
+      // kimi.ai (international) benennt die Tarife im Checkout anders als kimi.com (CN).
+      notes: g.name === kimiTierLabel[tierKey] ? null : `Sold on kimi.ai as "${g.name}" (identical tier and price as ${kimiTierLabel[tierKey]} on kimi.com).`,
+      notesDe: g.name === kimiTierLabel[tierKey] ? null : `Auf kimi.ai heißt der Tarif "${g.name}" (gleicher Tarif und Preis wie ${kimiTierLabel[tierKey]} auf kimi.com).`,
     });
   }
 
