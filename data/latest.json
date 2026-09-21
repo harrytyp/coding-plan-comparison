@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T06:42:13.664Z",
+  "generatedAt": "2026-09-21T06:56:41.129Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -10898,7 +10898,7 @@
         "altPrice": null,
         "yearlyUsd": null,
         "waitlist": null,
-        "billingNote": "$0 (supported by text ads). Up to $31 of usage a month; daily Freebucks by region (US: 100; CA, GB, AU, NZ, IE, NO, SE, DK, FI, NL, AT, LU, IS: 70; DE, FR, ES, IT, PT, BE, CH, LI, MT, KR: 40; Everywhere else, and any VPN: 25)"
+        "billingNote": "$0 (supported by text ads). Up to $31 of usage a month; daily Freebucks by region (US: 100; CA, GB, AU, NZ, IE, NO, SE, DK, FI, NL, AT, LU, IS: 70; DE, FR, ES, IT, PT, BE, CH, LI, MT, KR: 40; Everywhere else, and any VPN: 25). Region spoofing by VPN or proxy is prohibited by the Terms"
       },
       "meter": "dollar_usage",
       "quotas": [
@@ -10935,10 +10935,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
-      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
-      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
-      "tag": "ad-funded",
-      "tagDe": "werbefinanziert",
+      "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions, requests here are derived from the monthly USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "tag": "no API",
+      "tagDe": "kein API",
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -11102,10 +11102,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
-      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
-      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
-      "tag": null,
-      "tagDe": null,
+      "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions, requests here are derived from the monthly USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "tag": "no API",
+      "tagDe": "kein API",
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -11269,10 +11269,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
-      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
-      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
-      "tag": null,
-      "tagDe": null,
+      "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions, requests here are derived from the monthly USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "tag": "no API",
+      "tagDe": "kein API",
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -11436,10 +11436,10 @@
       },
       "dataTier": "A",
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
-      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
-      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
-      "tag": null,
-      "tagDe": null,
+      "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions, requests here are derived from the monthly USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "tag": "no API",
+      "tagDe": "kein API",
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -16336,7 +16336,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T06:42:13.257Z",
+    "fetchedAt": "2026-09-21T06:56:41.031Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -16480,10 +16480,10 @@
       "gemini-3-5-flash": {
         "intelligence": 42.6
       },
-      "sakana-namazu": {
+      "gpt-5-4": {
         "intelligence": 42.14
       },
-      "gpt-5-4": {
+      "sakana-namazu": {
         "intelligence": 42.14
       },
       "muse-spark": {
@@ -16795,10 +16795,10 @@
       "exaone-4-5-33b": {
         "intelligence": 25.99
       },
-      "sarvam-105b": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
-      "claude-haiku-4-5-20251001": {
+      "sarvam-105b": {
         "intelligence": 25.69
       },
       "nova-2-omni": {
@@ -16870,10 +16870,10 @@
       "grok-4-3": {
         "intelligence": 22.27
       },
-      "nemotron-3-5-lightning-30b-a3b": {
+      "deepseek-v3-1": {
         "intelligence": 22.06
       },
-      "deepseek-v3-1": {
+      "nemotron-3-5-lightning-30b-a3b": {
         "intelligence": 22.06
       },
       "gemma-4-12b-it": {

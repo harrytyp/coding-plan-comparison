@@ -108,7 +108,7 @@ const I18N = {
     "attr.trains.tip": "The provider trains on your data or does not exclude it.",
     "attr.unknown": "not stated",
     "attr.unknown.tip": "No verifiable privacy statement found in the provider docs.",
-    "attr.cli": "CLI only",
+    "attr.cli": "no API",
     "attr.zdr": "ZDR",
     "attr.zdr.tip": "Zero Data Retention offered: prompts and outputs are not stored. Caution: enforcing ZDR can change model prices depending on the provider.",
     "attr.days": "days",
@@ -387,7 +387,7 @@ const I18N = {
     "attr.trains.tip": "Der Anbieter trainiert mit deinen Daten oder schließt es nicht aus.",
     "attr.unknown": "keine Angabe",
     "attr.unknown.tip": "Keine prüfbare Datenschutz-Aussage in den Anbieter-Docs gefunden.",
-    "attr.cli": "nur CLI",
+    "attr.cli": "kein API",
     "attr.zdr": "ZDR",
     "attr.zdr.tip": "Zero Data Retention möglich: Eingaben und Ausgaben werden nicht gespeichert. Achtung: erzwungenes ZDR kann je nach Anbieter die Modellpreise ändern.",
     "attr.days": "Tage",
@@ -1375,7 +1375,7 @@ function attrMatches(c) {
   for (const k of attrFilter) {
     if (k === "noTraining" && c.noTraining !== true) return false;
     if (k === "zdr" && c.zeroRetention !== true) return false;
-    if (k === "cli" && !/cli/i.test(c.planTag ?? "")) return false;
+    if (k === "cli" && !/(cli|no api|kein api)/i.test(c.planTag ?? "")) return false;
     if (k === "unknown" && c.noTraining !== null) return false;
   }
   return true;
