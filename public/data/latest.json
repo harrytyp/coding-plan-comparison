@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T06:38:27.354Z",
+  "generatedAt": "2026-09-21T06:39:03.402Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -16336,7 +16336,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T06:38:15.693Z",
+    "fetchedAt": "2026-09-21T06:39:02.731Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -16480,19 +16480,19 @@
       "gemini-3-5-flash": {
         "intelligence": 42.6
       },
-      "gpt-5-4": {
+      "sakana-namazu": {
         "intelligence": 42.14
       },
-      "sakana-namazu": {
+      "gpt-5-4": {
         "intelligence": 42.14
       },
       "muse-spark": {
         "intelligence": 41.7
       },
-      "minimax-m3": {
+      "gpt-5-2-2025-12-11": {
         "intelligence": 41.37
       },
-      "gpt-5-2-2025-12-11": {
+      "minimax-m3": {
         "intelligence": 41.37
       },
       "laguna-s-2-1": {
@@ -16825,10 +16825,10 @@
       "qwen3-vl-235b-a22b-instruct": {
         "intelligence": 24.68
       },
-      "laguna-xs-2-1": {
+      "glm-4-5-air": {
         "intelligence": 24.38
       },
-      "glm-4-5-air": {
+      "laguna-xs-2-1": {
         "intelligence": 24.38
       },
       "claude-sonnet-4-20250514": {
