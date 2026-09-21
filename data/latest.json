@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T06:56:41.129Z",
+  "generatedAt": "2026-09-21T08:59:53.788Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -16336,7 +16336,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T06:56:41.031Z",
+    "fetchedAt": "2026-09-21T08:59:53.689Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -16480,10 +16480,10 @@
       "gemini-3-5-flash": {
         "intelligence": 42.6
       },
-      "gpt-5-4": {
+      "sakana-namazu": {
         "intelligence": 42.14
       },
-      "sakana-namazu": {
+      "gpt-5-4": {
         "intelligence": 42.14
       },
       "muse-spark": {
@@ -16795,10 +16795,10 @@
       "exaone-4-5-33b": {
         "intelligence": 25.99
       },
-      "claude-haiku-4-5-20251001": {
+      "sarvam-105b": {
         "intelligence": 25.69
       },
-      "sarvam-105b": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.69
       },
       "nova-2-omni": {
@@ -16870,10 +16870,10 @@
       "grok-4-3": {
         "intelligence": 22.27
       },
-      "deepseek-v3-1": {
+      "nemotron-3-5-lightning-30b-a3b": {
         "intelligence": 22.06
       },
-      "nemotron-3-5-lightning-30b-a3b": {
+      "deepseek-v3-1": {
         "intelligence": 22.06
       },
       "gemma-4-12b-it": {
