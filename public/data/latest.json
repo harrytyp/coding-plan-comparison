@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T06:33:43.892Z",
+  "generatedAt": "2026-09-21T06:34:11.896Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -15099,7 +15099,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T06:32:30.896Z",
+    "fetchedAt": "2026-09-21T06:34:11.795Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -15243,19 +15243,19 @@
       "gemini-3-5-flash": {
         "intelligence": 42.6
       },
-      "gpt-5-4": {
+      "sakana-namazu": {
         "intelligence": 42.14
       },
-      "sakana-namazu": {
+      "gpt-5-4": {
         "intelligence": 42.14
       },
       "muse-spark": {
         "intelligence": 41.7
       },
-      "minimax-m3": {
+      "gpt-5-2-2025-12-11": {
         "intelligence": 41.37
       },
-      "gpt-5-2-2025-12-11": {
+      "minimax-m3": {
         "intelligence": 41.37
       },
       "laguna-s-2-1": {
@@ -15609,10 +15609,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.93
       },
-      "granite-4-2-30b": {
+      "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.83
       },
-      "grok-4-20-beta-0309-reasoning": {
+      "granite-4-2-30b": {
         "intelligence": 23.83
       },
       "qwen3-next-80b-a3b-thinking": {
@@ -15633,10 +15633,10 @@
       "grok-4-3": {
         "intelligence": 22.27
       },
-      "deepseek-v3-1": {
+      "nemotron-3-5-lightning-30b-a3b": {
         "intelligence": 22.06
       },
-      "nemotron-3-5-lightning-30b-a3b": {
+      "deepseek-v3-1": {
         "intelligence": 22.06
       },
       "gemma-4-12b-it": {
@@ -15915,10 +15915,10 @@
       "mistral-large-latest": {
         "intelligence": 9.02
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
