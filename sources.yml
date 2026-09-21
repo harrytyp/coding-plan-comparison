@@ -141,6 +141,20 @@ sources:
     provides: [privacy]
     note: "MiniMax Privacy (aktuell 404, wird vom Crawler als Down gemeldet). Optional: Fehler bricht den Update-Lauf nicht ab."
 
+  # ---- Freebuff (werbefinanziert): Gratis-Tarif + bezahlte Tarife ----
+  - id: freebuff-pricing
+    url: "https://freebuff.com/pricing"
+    typ: html-docs
+    parser: freebuff-pricing
+    provides: [plan_meta, plan_prices, usage_volume, included_hours]
+    note: "Tarife Starter $8 / Plus $25 / Pro $60, je mit 'max spend / mo' als offiziellem Dollar-Volumen ($50/$83/$132) und Stunden je Modell und Tag. Gratis-Tarif: 'Up to $31 of usage a month on any model - free for everyone, forever'."
+  - id: freebuff-faq
+    url: "https://freebuff.com/"
+    typ: html-docs
+    parser: freebuff-faq
+    provides: [freebucks, model_catalog, privacy_note]
+    note: "Homepage-FAQ als schema.org-JSON-LD (stabil): Freebucks pro Tag je Region (US 100 / 70 / 40 / 25), Limited-Mode-Werte, Modell-Katalog, Datenhinweis. Werbefinanzierung ('supported by text ads')."
+
   # ---- AI-Scores (LLM Stats Leaderboard), nur 1x/Tag (cache_ttl_hours) ----
   # Interner Leaderboard-Endpoint, kein Auth nötig. conservative (0-100) für alle Modelle.
   - id: llm-stats-indexes

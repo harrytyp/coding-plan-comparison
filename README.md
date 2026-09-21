@@ -40,7 +40,7 @@ npm run check    # change-detection report
 
 ## Sources
 
-Defined in `sources.yml`: machine-readable price feeds (OpenCode Go, Command Code, Kimi goods API, LLM Stats leaderboard, FX rates) plus official docs (GLM, Qwen, Kimi, MiniMax, MiMo) plus provider privacy pages.
+Defined in `sources.yml`: machine-readable price feeds (OpenCode Go, Command Code, Kimi goods API, LLM Stats leaderboard, FX rates) plus official docs (GLM, Qwen, Kimi, MiniMax, MiMo, Freebuff) plus provider privacy pages.
 
 Anything not scrapeable (GLM prices behind an auth API, MiniMax JS-SPA) lives in `data/overrides.yml` with `lastVerified`. A scheduled agent rechecks those sources and updates the file on change. `data/privacy.yml` holds manually verified data policies per provider.
 
@@ -57,6 +57,7 @@ cost per request = (0.05 x input + 0.95 x cachedWrite) x pattern.input
 - **All normalized metrics are per $10 paid** (`normalizedPer10 = requestsPerMonth x 10 / paidPrice`). Column headers say "$10" everywhere.
 - **Token/month figures are derived** (`requestsPerMonth x tokens-per-request` from the workload pattern), not independently published quotas. The field keeps its `rawTokensPerMonth` name for API compatibility; `derivedTokensPerMonth` is the honestly named alias and `methodology.derivedMetrics` says so in the JSON.
 - **Windows are caps, not volumes:** 5h caps are throughput limits (never multiplied into monthly numbers); weekly credits scale x4.33 to monthly.
+- **Ad-funded plans (Freebuff):** the allowance is an official monthly USD volume ("$31 of usage a month"), not tokens. Requests come from that volume at feed token prices, and a $0 plan carries `normalizedPer1: null` instead of an Infinity rate (no invented per-dollar value for free usage).
 - **Data tiers:** A = official quota from feed/docs, B = official total as anchor, C = derived, D = price-based estimate (hidden by default in the UI, toggle to show). Tier-D rows carry a `~` estimate marker.
 - **undisclosed stays undisclosed.** No invented numbers; undisclosed plans get `modelStats: null`.
 - **AI scores** come from the LLM Stats leaderboard (zeroeval.com) only, matched to feed models with fuzzy matching. Name variants (e.g. Contributor editions) resolve to their version's leaderboard entry, never to a generic base model. Every resolved alias carries `aliasOf` provenance and shows with `~`; family means are computed from original leaderboard keys only, never from aliases.

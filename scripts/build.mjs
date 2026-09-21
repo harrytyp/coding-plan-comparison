@@ -342,6 +342,58 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     });
   }
 
+  // --- Freebuff (werbefinanziert): Gratis-Tarif + drei bezahlte Tarife ---
+  // Quelle: freebuff.com/pricing ("Up to $31 of usage a month on any model - free for
+  // everyone, forever"; je Tarif "<X> max spend / mo") + Homepage-FAQ (JSON-LD).
+  // Mengen-Basis ist ein USD-Volumen (wie OpenCode Go), nicht Token/Credits:
+  // Requests = Volumen ÷ $/Request aus den Feed-Tokenpreisen. Modelle ohne Tokenpreis
+  // im Feed (z.B. Solar Pro 4) bekommen KEINE Zeile, statt erfundener Werte.
+  const fbPricing = parsed["freebuff-pricing"];
+  const fbFaq = parsed["freebuff-faq"];
+  const FREEBUFF_MODELS = ["GLM-5.3-Flash", "DeepSeek V4.1 Flash", "MiMo V2.5", "Muse Spark 1.2", "GPT 5.6 Luna"];
+  if (fbPricing?.plans?.length) {
+    const freebucksNote = (fbFaq?.freebucksPerDay ?? []).map((b) => `${b.regions}: ${b.perDay}`).join("; ");
+    const fbPlans = [
+      { name: "Free", monthlyUsd: 0, maxSpendUsd: fbPricing.freeTierMonthlyUsd, tag: "ad-funded", tagDe: "werbefinanziert" },
+      ...fbPricing.plans,
+    ];
+    for (const p of fbPlans) {
+      const isFree = p.monthlyUsd === 0;
+      add({
+        id: `freebuff-${p.name.toLowerCase()}`,
+        provider: "freebuff",
+        name: `Freebuff ${p.name}`,
+        price: {
+          monthlyUsd: p.monthlyUsd,
+          paidPrice: p.monthlyUsd,
+          advertisedPrice: p.monthlyUsd,
+          billingNote: isFree
+            ? `$0 (supported by text ads). Up to $${p.maxSpendUsd} of usage a month; daily Freebucks by region (${freebucksNote})`
+            : `$${p.dailyUsd}/day + $${p.flexibleMonthlyUsd}/mo flexible, $${p.maxSpendUsd} max spend/mo${fbPricing.yearlyDiscountPercent ? `; yearly ~${fbPricing.yearlyDiscountPercent}% off` : ""}`,
+          altPrice: null,
+        },
+        meter: "dollar_usage",
+        quotas: [
+          { label: "Monthly", unit: "usd", amount: p.maxSpendUsd, window: "month", refresh: "monthly", disclosure: "exact" },
+        ],
+        tokenPricing: null,
+        workload: { pattern: null, taskConversion: null },
+        models: [],
+        feedModels: FREEBUFF_MODELS,
+        dataTier: "A",
+        dataTierNote: "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
+        // Kein veröffentlichtes Request-Limit, Freibetrag je Region, Limits laut Seite anpassbar
+        disclosure: "partial",
+        tag: p.tag ?? null,
+        tagDe: p.tagDe ?? null,
+        notes: "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
+        notesDe: "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
+        sourceIds: ["freebuff-pricing", "freebuff-faq"],
+        verifiedAt: "2026-09-21",
+      });
+    }
+  }
+
   // Manuelle Notizen an bereits dynamisch gebaute Plaene haengen. Der Loop
   // darueber ueberspringt existierende ids, deshalb hier separat: eine Notiz
   // aus overrides.yml ist eine Ergaenzung, kein Ersatz fuer die Feed-Daten.
@@ -671,7 +723,9 @@ async function main() {
         windowNote = "5h rolling cap (throughput), not a monthly volume";
       }
       if (monthlyRequests === null) continue;
-      const normalized = monthlyRequests / paid; // pro 1 $ bezahlt (TARGET_PRICE=1)
+      // Preis 0 (Freebuff-Gratis-Tarif): keine Rate pro $ möglich. Ehrlich null statt
+      // Infinity (würde die Familien-Mediane und die Pareto-Front verfälschen).
+      const normalized = paid > 0 ? monthlyRequests / paid : null; // pro 1 $ bezahlt (TARGET_PRICE=1)
       modelRows.push({
         model: m.name,
         family: familyOf(m.name),
@@ -777,6 +831,7 @@ async function main() {
     if (!plan.modelRows?.length) continue;
     const famMap = new Map();
     for (const r of plan.modelRows) {
+      if (typeof r.normalizedPer1 !== "number") continue; // Gratis-Tarif: keine Rate pro $
       const fam = familyOf(r.model);
       const arr = famMap.get(fam) ?? [];
       arr.push(r.normalizedPer1);

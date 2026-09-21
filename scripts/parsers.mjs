@@ -265,6 +265,92 @@ export function parseKimiGoods(raw) {
   return { source: "kimi.ai GoodsService ListGoods", plans };
 }
 
+// ---------- Parser: Freebuff Pricing (HTML) ----------
+// Werbefinanzierter Gratis-Tarif + drei bezahlte Tarife. Mengen-Basis ist ein
+// DOLLAR-Volumen ("Up to $31 of usage a month ... free", "$50 max spend / mo"),
+// nicht Token oder Requests. Karten stehen als <section><h3>Name</h3>... im HTML.
+export function parseFreebuffPricing(html) {
+  const text = htmlToText(html);
+  const out = { freeTierMonthlyUsd: null, yearlyDiscountPercent: null, plans: [] };
+  const free = /Up to \$ ?([\d.]+) of usage a month/i.exec(text);
+  if (free) out.freeTierMonthlyUsd = parseFloat(free[1]);
+  const yearly = /Save ~ ?([\d.]+)%/.exec(text);
+  if (yearly) out.yearlyDiscountPercent = parseFloat(yearly[1]);
+
+  const cardRe = /<h3[^>]*>([A-Za-z]+)<\/h3>([\s\S]*?)<\/section>/g;
+  let m;
+  while ((m = cardRe.exec(html))) {
+    const name = m[1];
+    const card = m[2];
+    const cardText = htmlToText(card);
+    const price = /\$ ?([\d.]+) \/month/.exec(cardText);
+    if (!price) continue; // keine Preis-Karte (z.B. Feature-Spalte)
+    const spend = /\$ ?([\d.]+) max spend \/ mo/.exec(cardText);
+    const daily = /\$([\d.]+) daily \+ flexible \$ ?([\d.]+) \/ mo/.exec(cardText);
+    // "Per day": Stunden je Modell, z.B. "GLM 5.3 Flash 30 hrs" / "or DeepSeek V4.1 Flash 10 hrs"
+    const includedHours = [...cardText.matchAll(/([\w][\w.\- ]*?) ([\d,]+) hrs/g)]
+      .map((h) => ({ model: h[1].replace(/^.*?\bor /, "").trim(), hours: parseInt(h[2].replace(/,/g, ""), 10) }));
+    out.plans.push({
+      name,
+      monthlyUsd: parseFloat(price[1]),
+      maxSpendUsd: spend ? parseFloat(spend[1]) : null,
+      dailyUsd: daily ? parseFloat(daily[1]) : null,
+      flexibleMonthlyUsd: daily ? parseFloat(daily[2]) : null,
+      includedHours,
+    });
+  }
+  return out;
+}
+
+// ---------- Parser: Freebuff FAQ (Homepage, JSON-LD FAQPage) ----------
+// Die Homepage liefert die FAQ als schema.org-JSON-LD: stabil, kein HTML-Scraping.
+// Nur die fuer den Vergleich relevanten Antworten werden extrahiert.
+export function parseFreebuffFaq(html) {
+  const out = {
+    adFunded: null,
+    freebucksPerDay: [],
+    limitedAccessFreebucks: null,
+    limitedAccessSessions: null,
+    limitedAccessSubscriptions: {},
+    models: [],
+    dataNote: null,
+  };
+  const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+  let faq = null;
+  for (const b of blocks) {
+    try {
+      const j = JSON.parse(b);
+      if (j?.["@type"] === "FAQPage") { faq = j; break; }
+    } catch { /* anderes JSON-LD */ }
+  }
+  if (!faq) return out;
+  const answer = (q) => faq.mainEntity?.find((e) => e.name === q)?.acceptedAnswer?.text ?? null;
+
+  out.adFunded = answer("How can it be free?");
+  const freebucks = answer("How do Freebucks work?");
+  if (freebucks) {
+    // "- US: 100 Freebucks a day" / "- CA, GB, ...: 70" / "- Everywhere else, and any VPN: 25"
+    for (const m of freebucks.matchAll(/^- (.+?): ([\d,]+)(?: Freebucks a day)?$/gm)) {
+      out.freebucksPerDay.push({ regions: m[1], perDay: parseInt(m[2].replace(/,/g, ""), 10) });
+    }
+  }
+  const limited = answer("What is limited mode?");
+  if (limited) {
+    const perDay = /free limited-access allowance is ([\d,]+) Freebucks a day/.exec(limited);
+    if (perDay) out.limitedAccessFreebucks = parseInt(perDay[1].replace(/,/g, ""), 10);
+    const sessions = /with ([\d,]+) one-hour sessions per day/.exec(limited);
+    if (sessions) out.limitedAccessSessions = parseInt(sessions[1].replace(/,/g, ""), 10);
+    const subs = /include ([\d,]+) a day on Starter, ([\d,]+) on Plus, or ([\d,]+) on Pro/.exec(limited);
+    if (subs) out.limitedAccessSubscriptions = { Starter: parseInt(subs[1], 10), Plus: parseInt(subs[2], 10), Pro: parseInt(subs[3], 10) };
+  }
+  const models = answer("What models do you use?");
+  if (models) {
+    out.models = [...models.matchAll(/^- ([^:]+):/gm)].map((m) => m[1].trim());
+  }
+  out.dataNote = answer("Does Freebuff collect my data?");
+  return out;
+}
+
 // ---------- Parser: Privacy-Policy-Text (z.B. Command Code) ----------
 // Extrahiert strukturierte Privacy-Aussagen aus Policy-Text.
 // Deterministisch: sucht nach dokumentierten Mustern; unbekannt bleibt unbekannt.
@@ -346,6 +432,8 @@ export const PARSERS = {
   "kimi-pricing": parseKimiPricing,
   "kimi-code": parseKimiCode,
   "kimi-goods": parseKimiGoods,
+  "freebuff-pricing": parseFreebuffPricing,
+  "freebuff-faq": parseFreebuffFaq,
   "privacy-text": parsePrivacyText,
   fx: parseFx,
   "llm-stats": parseLlamaStats,

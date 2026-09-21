@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T06:34:11.896Z",
+  "generatedAt": "2026-09-21T06:38:27.354Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -10884,6 +10884,674 @@
       "tag": null,
       "tagDe": null,
       "modelRows": []
+    },
+    {
+      "id": "freebuff-free",
+      "name": "Freebuff Free",
+      "provider": "freebuff",
+      "price": {
+        "monthlyUsd": 0,
+        "paidPrice": 0,
+        "advertised": 0,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "$0 (supported by text ads). Up to $31 of usage a month; daily Freebucks by region (US: 100; CA, GB, AU, NZ, IE, NO, SE, DK, FI, NL, AT, LU, IS: 70; DE, FR, ES, IT, PT, BE, CH, LI, MT, KR: 40; Everywhere else, and any VPN: 25)"
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "usd",
+          "amount": 31,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 31
+      },
+      "officialConversion": null,
+      "disclosure": "partial",
+      "sourceIds": [
+        "freebuff-pricing",
+        "freebuff-faq"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 5,
+      "modelStats": {
+        "count": 5,
+        "min": 16315.78947368421,
+        "max": 117069.48640483385,
+        "mean": 59755.15238035567,
+        "median": 67186.82271348071,
+        "p25": 20509.427720807143,
+        "p75": 77694.23558897243
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
+      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
+      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
+      "tag": "ad-funded",
+      "tagDe": "werbefinanziert",
+      "modelRows": [
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 31,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16315.78947368421,
+          "requestsRawInWindow": 16315.78947368421,
+          "normalizedPer1": null,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 916947368.4210526,
+          "derivedTokensPerMonth": 916947368.4210526
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "family": "deepseek v4.1 flash",
+          "allowance": 31,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0004614,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 67186.82271348071,
+          "requestsRawInWindow": 67186.82271348071,
+          "normalizedPer1": null,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4838794971.824881,
+          "derivedTokensPerMonth": 4838794971.824881
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 31,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 77694.23558897243,
+          "requestsRawInWindow": 77694.23558897243,
+          "normalizedPer1": null,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 5642543859.649122,
+          "derivedTokensPerMonth": 5642543859.649122
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 31,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 117069.48640483385,
+          "requestsRawInWindow": 117069.48640483385,
+          "normalizedPer1": null,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8466465256.797584,
+          "derivedTokensPerMonth": 8466465256.797584
+        },
+        {
+          "model": "GPT 5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 31,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 20509.427720807143,
+          "requestsRawInWindow": 20509.427720807143,
+          "normalizedPer1": null,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1050492887.8597419,
+          "derivedTokensPerMonth": 1050492887.8597419
+        }
+      ]
+    },
+    {
+      "id": "freebuff-starter",
+      "name": "Freebuff Starter",
+      "provider": "freebuff",
+      "price": {
+        "monthlyUsd": 8,
+        "paidPrice": 8,
+        "advertised": 8,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "$1.5/day + $3/mo flexible, $50 max spend/mo; yearly ~22% off"
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "usd",
+          "amount": 50,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 50
+      },
+      "officialConversion": null,
+      "disclosure": "partial",
+      "sourceIds": [
+        "freebuff-pricing",
+        "freebuff-faq"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 5,
+      "modelStats": {
+        "count": 5,
+        "min": 26315.78947368421,
+        "max": 188821.75226586103,
+        "mean": 96379.27803283172,
+        "median": 108365.8430862592,
+        "p25": 33079.72213033411,
+        "p75": 125313.28320802005
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
+      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
+      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 50,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 26315.78947368421,
+          "requestsRawInWindow": 26315.78947368421,
+          "normalizedPer1": 3289.4736842105262,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1478947368.4210527,
+          "derivedTokensPerMonth": 1478947368.4210527
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "family": "deepseek v4.1 flash",
+          "allowance": 50,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0004614,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 108365.8430862592,
+          "requestsRawInWindow": 108365.8430862592,
+          "normalizedPer1": 13545.7303857824,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 7804508019.072388,
+          "derivedTokensPerMonth": 7804508019.072388
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 50,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 125313.28320802005,
+          "requestsRawInWindow": 125313.28320802005,
+          "normalizedPer1": 15664.160401002506,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 9100877192.982456,
+          "derivedTokensPerMonth": 9100877192.982456
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 50,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 188821.75226586103,
+          "requestsRawInWindow": 188821.75226586103,
+          "normalizedPer1": 23602.719033232628,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 13655589123.86707,
+          "derivedTokensPerMonth": 13655589123.86707
+        },
+        {
+          "model": "GPT 5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 50,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 33079.72213033411,
+          "requestsRawInWindow": 33079.72213033411,
+          "normalizedPer1": 4134.965266291763,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1694343367.515713,
+          "derivedTokensPerMonth": 1694343367.515713
+        }
+      ]
+    },
+    {
+      "id": "freebuff-plus",
+      "name": "Freebuff Plus",
+      "provider": "freebuff",
+      "price": {
+        "monthlyUsd": 25,
+        "paidPrice": 25,
+        "advertised": 25,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "$2.5/day + $5/mo flexible, $83 max spend/mo; yearly ~22% off"
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "usd",
+          "amount": 83,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 83
+      },
+      "officialConversion": null,
+      "disclosure": "partial",
+      "sourceIds": [
+        "freebuff-pricing",
+        "freebuff-faq"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 5,
+      "modelStats": {
+        "count": 5,
+        "min": 43684.21052631579,
+        "max": 313444.1087613293,
+        "mean": 159989.60153450066,
+        "median": 179887.2995231903,
+        "p25": 54912.33873635461,
+        "p75": 208020.05012531328
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
+      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
+      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 83,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 43684.21052631579,
+          "requestsRawInWindow": 43684.21052631579,
+          "normalizedPer1": 1747.3684210526314,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2455052631.578947,
+          "derivedTokensPerMonth": 2455052631.578947
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "family": "deepseek v4.1 flash",
+          "allowance": 83,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0004614,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 179887.2995231903,
+          "requestsRawInWindow": 179887.2995231903,
+          "normalizedPer1": 7195.4919809276125,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 12955483311.660166,
+          "derivedTokensPerMonth": 12955483311.660166
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 83,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 208020.05012531328,
+          "requestsRawInWindow": 208020.05012531328,
+          "normalizedPer1": 8320.80200501253,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 15107456140.350878,
+          "derivedTokensPerMonth": 15107456140.350878
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 83,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 313444.1087613293,
+          "requestsRawInWindow": 313444.1087613293,
+          "normalizedPer1": 12537.764350453173,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 22668277945.619335,
+          "derivedTokensPerMonth": 22668277945.619335
+        },
+        {
+          "model": "GPT 5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 83,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 54912.33873635461,
+          "requestsRawInWindow": 54912.33873635461,
+          "normalizedPer1": 2196.4935494541846,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2812609990.076083,
+          "derivedTokensPerMonth": 2812609990.076083
+        }
+      ]
+    },
+    {
+      "id": "freebuff-pro",
+      "name": "Freebuff Pro",
+      "provider": "freebuff",
+      "price": {
+        "monthlyUsd": 60,
+        "paidPrice": 60,
+        "advertised": 60,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "$4/day + $8/mo flexible, $132 max spend/mo; yearly ~22% off"
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "usd",
+          "amount": 132,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 132
+      },
+      "officialConversion": null,
+      "disclosure": "partial",
+      "sourceIds": [
+        "freebuff-pricing",
+        "freebuff-faq"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 5,
+      "modelStats": {
+        "count": 5,
+        "min": 69473.68421052632,
+        "max": 498489.4259818731,
+        "mean": 254441.29400667577,
+        "median": 286085.82574772433,
+        "p25": 87330.46642408204,
+        "p75": 330827.06766917295
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
+      "notes": "Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions. Requests here are derived from the monthly USD volume at feed token prices. Fair-use limits can stop sessions even with allowance left.",
+      "notesDe": "Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstündige Modell-Sessions. Die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Fair-Use-Limits können Sessions auch bei Rest-Guthaben stoppen.",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "GLM-5.3-Flash",
+          "family": "glm-5.3 flash",
+          "allowance": 132,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0019,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 69473.68421052632,
+          "requestsRawInWindow": 69473.68421052632,
+          "normalizedPer1": 1157.8947368421054,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 3904421052.6315794,
+          "derivedTokensPerMonth": 3904421052.6315794
+        },
+        {
+          "model": "DeepSeek V4.1 Flash",
+          "family": "deepseek v4.1 flash",
+          "allowance": 132,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0004614,
+          "patternUsed": {
+            "input": 410,
+            "cachedRead": 71300,
+            "output": 310
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 286085.82574772433,
+          "requestsRawInWindow": 286085.82574772433,
+          "normalizedPer1": 4768.097095795406,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 20603901170.351105,
+          "derivedTokensPerMonth": 20603901170.351105
+        },
+        {
+          "model": "MiMo V2.5",
+          "family": "mimo v2.5",
+          "allowance": 132,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 330827.06766917295,
+          "requestsRawInWindow": 330827.06766917295,
+          "normalizedPer1": 5513.784461152883,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 24026315789.473686,
+          "derivedTokensPerMonth": 24026315789.473686
+        },
+        {
+          "model": "Muse Spark 1.2 Contributor",
+          "family": "muse spark 1.2",
+          "allowance": 132,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0002648,
+          "patternUsed": {
+            "input": 620,
+            "cachedRead": 71400,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 498489.4259818731,
+          "requestsRawInWindow": 498489.4259818731,
+          "normalizedPer1": 8308.157099697886,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 36050755287.00906,
+          "derivedTokensPerMonth": 36050755287.00906
+        },
+        {
+          "model": "GPT 5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 132,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 87330.46642408204,
+          "requestsRawInWindow": 87330.46642408204,
+          "normalizedPer1": 1455.5077737347008,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4473066490.241482,
+          "derivedTokensPerMonth": 4473066490.241482
+        }
+      ]
     }
   ],
   "pairwiseComparisons": [
@@ -10984,6 +11652,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "opencode-go",
+      "planB": "freebuff-free",
+      "meanRequestsA": 34692.294008728626,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 41.94258967343272,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 34692.294008728626,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 64.00440559752829,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 34692.294008728626,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 78.31590698646282,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 34692.294008728626,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 86.36530515057889,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "command-code-go",
       "planB": "command-code-goat",
       "meanRequestsA": 2166.925978007074,
@@ -11072,6 +11772,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "command-code-go",
+      "planB": "freebuff-free",
+      "meanRequestsA": 2166.925978007074,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 96.3736583513099,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 2166.925978007074,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 97.75166817781214,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 2166.925978007074,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 98.64558323964586,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 2166.925978007074,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 99.14835915826217,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
       "meanRequestsA": 15168.48184604952,
@@ -11152,6 +11884,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "command-code-goat",
+      "planB": "freebuff-free",
+      "meanRequestsA": 15168.48184604952,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 74.61560845916925,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 15168.48184604952,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 84.26167724468495,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 15168.48184604952,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 90.51908267752104,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 15168.48184604952,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 94.0385141078352,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
       "meanRequestsA": 19812.616986154735,
@@ -11224,6 +11988,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "command-code-pro",
+      "planB": "freebuff-free",
+      "meanRequestsA": 19812.616986154735,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 66.84366753841955,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 19812.616986154735,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 79.44307387382011,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 19812.616986154735,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 87.61630956254224,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 19812.616986154735,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 92.2132855582652,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
       "meanRequestsA": 32503.88967010611,
@@ -11288,6 +12084,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "command-code-max10",
+      "planB": "freebuff-free",
+      "meanRequestsA": 32503.88967010611,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 45.60487526964844,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 32503.88967010611,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 66.27502266718203,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 32503.88967010611,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 79.68374859468797,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 32503.88967010611,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 87.22538737393258,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "command-code-max20",
       "planB": "glm-lite",
       "meanRequestsA": 65007.77934021222,
@@ -11344,6 +12172,38 @@
       "winner": "command-code-max20"
     },
     {
+      "planA": "command-code-max20",
+      "planB": "freebuff-free",
+      "meanRequestsA": 65007.77934021222,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 8.790249460703127,
+      "winner": "draw"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 65007.77934021222,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 32.55004533436405,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 65007.77934021222,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 59.36749718937594,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 65007.77934021222,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 74.45077474786517,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "glm-lite",
       "planB": "glm-pro",
       "meanRequestsA": 8297.177874448013,
@@ -11392,6 +12252,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "glm-lite",
+      "planB": "freebuff-free",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 86.1147071943947,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 91.39111846052471,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 94.81392678344862,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 96.73906002292603,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "glm-pro",
       "planB": "glm-max",
       "meanRequestsA": 49783.067246688064,
@@ -11432,6 +12324,38 @@
       "winner": "draw"
     },
     {
+      "planA": "glm-pro",
+      "planB": "freebuff-free",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 16.68824316636819,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 48.34671076314827,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 68.88356070069173,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 80.43436013755617,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "glm-max",
       "planB": "kimi-moderato",
       "meanRequestsA": 116160.49024227216,
@@ -11464,6 +12388,38 @@
       "winner": "glm-max"
     },
     {
+      "planA": "glm-max",
+      "planB": "freebuff-free",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 94.39409927847424,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 20.524341552654036,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 27.394974968280707,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 54.34684032096438,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "kimi-moderato",
       "planB": "kimi-allegretto",
       "meanRequestsA": 3300,
@@ -11488,6 +12444,38 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "kimi-moderato",
+      "planB": "freebuff-free",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 94.47746366874823,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 96.5760274746239,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 97.93736594856861,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 98.7030407100848,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "kimi-allegretto",
       "planB": "kimi-allegro",
       "meanRequestsA": 6633.333333333334,
@@ -11504,12 +12492,156 @@
       "winner": "kimi-vivace"
     },
     {
+      "planA": "kimi-allegretto",
+      "planB": "freebuff-free",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 88.8991441422313,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 93.1174693681834,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 95.85389720974904,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 97.3929808212816,
+      "winner": "freebuff-pro"
+    },
+    {
       "planA": "kimi-allegro",
       "planB": "kimi-vivace",
       "meanRequestsA": 23300,
       "meanRequestsB": 47381.00000000001,
       "advantagePercent": 50.82417002595978,
       "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "freebuff-free",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 61.00754650964657,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 75.82467883598088,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 85.43655351565114,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 90.84268137726549,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "freebuff-free",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 20.708092754230222,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 50.83901750762274,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 70.38495030579683,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 81.37841572258438,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 37.999999999999986,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 62.65060240963856,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 76.51515151515152,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 39.75903614457832,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 62.12121212121213,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 37.12121212121213,
+      "winner": "freebuff-pro"
     }
   ],
   "modelComparisons": [
@@ -14130,6 +15262,111 @@
       "modelCount": 1,
       "normalizedPer1Median": 238.0954773869347,
       "normalizedPer1Mean": 238.0954773869347
+    },
+    {
+      "planId": "freebuff-starter",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 3289.4736842105262,
+      "normalizedPer1Mean": 3289.4736842105262
+    },
+    {
+      "planId": "freebuff-starter",
+      "family": "deepseek v4.1 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 13545.7303857824,
+      "normalizedPer1Mean": 13545.7303857824
+    },
+    {
+      "planId": "freebuff-starter",
+      "family": "mimo v2.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 15664.160401002506,
+      "normalizedPer1Mean": 15664.160401002506
+    },
+    {
+      "planId": "freebuff-starter",
+      "family": "muse spark 1.2",
+      "modelCount": 1,
+      "normalizedPer1Median": 23602.719033232628,
+      "normalizedPer1Mean": 23602.719033232628
+    },
+    {
+      "planId": "freebuff-starter",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 4134.965266291763,
+      "normalizedPer1Mean": 4134.965266291763
+    },
+    {
+      "planId": "freebuff-plus",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 1747.3684210526314,
+      "normalizedPer1Mean": 1747.3684210526314
+    },
+    {
+      "planId": "freebuff-plus",
+      "family": "deepseek v4.1 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 7195.4919809276125,
+      "normalizedPer1Mean": 7195.4919809276125
+    },
+    {
+      "planId": "freebuff-plus",
+      "family": "mimo v2.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 8320.80200501253,
+      "normalizedPer1Mean": 8320.80200501253
+    },
+    {
+      "planId": "freebuff-plus",
+      "family": "muse spark 1.2",
+      "modelCount": 1,
+      "normalizedPer1Median": 12537.764350453173,
+      "normalizedPer1Mean": 12537.764350453173
+    },
+    {
+      "planId": "freebuff-plus",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 2196.4935494541846,
+      "normalizedPer1Mean": 2196.4935494541846
+    },
+    {
+      "planId": "freebuff-pro",
+      "family": "glm-5.3 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 1157.8947368421054,
+      "normalizedPer1Mean": 1157.8947368421054
+    },
+    {
+      "planId": "freebuff-pro",
+      "family": "deepseek v4.1 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 4768.097095795406,
+      "normalizedPer1Mean": 4768.097095795406
+    },
+    {
+      "planId": "freebuff-pro",
+      "family": "mimo v2.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 5513.784461152883,
+      "normalizedPer1Mean": 5513.784461152883
+    },
+    {
+      "planId": "freebuff-pro",
+      "family": "muse spark 1.2",
+      "modelCount": 1,
+      "normalizedPer1Median": 8308.157099697886,
+      "normalizedPer1Mean": 8308.157099697886
+    },
+    {
+      "planId": "freebuff-pro",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 1455.5077737347008,
+      "normalizedPer1Mean": 1455.5077737347008
     }
   ],
   "familyComparisons": [
@@ -15099,7 +16336,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T06:34:11.795Z",
+    "fetchedAt": "2026-09-21T06:38:15.693Z",
     "count": 391,
     "scores": {
       "gpt-6-astra": {
@@ -15243,19 +16480,19 @@
       "gemini-3-5-flash": {
         "intelligence": 42.6
       },
-      "sakana-namazu": {
+      "gpt-5-4": {
         "intelligence": 42.14
       },
-      "gpt-5-4": {
+      "sakana-namazu": {
         "intelligence": 42.14
       },
       "muse-spark": {
         "intelligence": 41.7
       },
-      "gpt-5-2-2025-12-11": {
+      "minimax-m3": {
         "intelligence": 41.37
       },
-      "minimax-m3": {
+      "gpt-5-2-2025-12-11": {
         "intelligence": 41.37
       },
       "laguna-s-2-1": {
@@ -15609,10 +16846,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.93
       },
-      "grok-4-20-beta-0309-reasoning": {
+      "granite-4-2-30b": {
         "intelligence": 23.83
       },
-      "granite-4-2-30b": {
+      "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.83
       },
       "qwen3-next-80b-a3b-thinking": {
@@ -15633,10 +16870,10 @@
       "grok-4-3": {
         "intelligence": 22.27
       },
-      "nemotron-3-5-lightning-30b-a3b": {
+      "deepseek-v3-1": {
         "intelligence": 22.06
       },
-      "deepseek-v3-1": {
+      "nemotron-3-5-lightning-30b-a3b": {
         "intelligence": 22.06
       },
       "gemma-4-12b-it": {
@@ -15915,10 +17152,10 @@
       "mistral-large-latest": {
         "intelligence": 9.02
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
@@ -16398,6 +17635,19 @@
       "sourceUrl": "https://platform.minimax.io/protocol/privacy-policy",
       "verifiedAt": "2026-09-14",
       "note": "API-Policy nennt keine Trainings-Aussage, deshalb bleibt training offen. Speicherung laut Policy in US-Rechenzentren."
+    },
+    {
+      "provider": "freebuff",
+      "scope": "provider",
+      "training": false,
+      "trainingNote": "Nur Modelle mit dem Label 'May use data for AI training' duerfen zum Training genutzt werden. Zitat Policy: 'A general notice that data is collected or stored does not by itself permit these uses.'",
+      "zeroRetention": false,
+      "zeroRetentionNote": "Keine Zero-Retention-Zusage: Aufbewahrung 'for as long as reasonably necessary', inklusive Werbung und Betrugsabwehr.",
+      "retentionDays": null,
+      "retentionNote": "Keine feste Frist veroeffentlicht. Daten aus Trainings-gelabelten Modellen koennen nach Deidentifizierung oder Aufnahme ins Modell nicht mehr entfernt werden.",
+      "sourceUrl": "https://freebuff.com/privacy-policy",
+      "verifiedAt": "2026-09-21",
+      "note": "Zitat Policy zum Label: Prompt- und Projektdaten 'may be retained and used by Company or the applicable third-party provider for AI training, development, evaluation, testing, fine-tuning, quality improvement, safety research'. Laut FAQ sind DeepSeek V4.1 Flash und Muse Spark 1.2 so gelabelt, die Modell-Privacy aus dem Feed hat Vorrang. Werbefinanzierung: 'Freebuff is supported by text ads.' Daten laufen fuer 'Codebase Evaluation' auch an Partner, die sie nicht fuer eigene Zwecke oder zum Training nutzen duerfen."
     }
   ],
   "changelog": {
@@ -16439,11 +17689,11 @@
     }
   },
   "statistics": {
-    "totalPlans": 19,
-    "comparablePlans": 13,
-    "plansWithModels": 13,
+    "totalPlans": 23,
+    "comparablePlans": 17,
+    "plansWithModels": 17,
     "undisclosed": 1,
-    "sourceCount": 20
+    "sourceCount": 22
   },
   "warnings": [
     "qwen-coding-pro: no model pricing from feeds (meter=requests), raw quotas only, no request normalization",

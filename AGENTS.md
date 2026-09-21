@@ -7,7 +7,7 @@ statischen Preise.
 
 ## Architektur (deterministisch)
 ```
-sources.yml (18 endpoints: feeds + docs + privacy + scores + FX)
+sources.yml (feeds + docs + privacy + scores + FX)
    → scripts/fetch.mjs      HTTP-Fetch → cache/ + manifest.json (contentHash + changed)
    → scripts/parse-all.mjs  Parser → parsed/<id>.json
    → scripts/build.mjs      Plan-Katalog dynamisch + Normalisierung → public/data/latest.json
@@ -34,7 +34,7 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
 ## Befehle
 ```bash
 npm run update   # fetch → parse → build
-npm test         # Invarianz- + Parser-Tests (16)
+npm test         # Invarianz- + Parser-Tests
 npm run check    # Change-Detection-Report
 ```
 
@@ -50,7 +50,7 @@ Root-Mirrors committet die CI (`update.yml`), nicht von Hand.
 
 ## Verifikation (vor Commit/Push)
 1. `npm run update` (exit 0)
-2. `npm test` grün (16 Tests)
+2. `npm test` grün
 3. `node scripts/check.mjs` — keine unerwarteten Änderungen
 4. Nach Push: Workflow-Lauf beobachten bis grün
 

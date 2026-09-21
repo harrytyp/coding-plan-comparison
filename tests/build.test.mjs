@@ -316,3 +316,48 @@ test("Kein Tarif fällt still weg: jeder geparste Tarif steht im Katalog", async
   const kimiPaid = d.plans.filter((p) => p.id.startsWith("kimi-")).map((p) => p.price.paidPrice).sort((a, b) => a - b);
   assert.deepEqual(kimiPaid, goodsMonthly, "Kimi: jeder kimi.ai-Monatspreis muss im Katalog stehen");
 });
+
+// --- Freebuff 2026-09-21: werbefinanzierter Gratis-Tarif + bezahlte Tarife ---
+// Mengen-Basis ist ein offizielles Dollar-Volumen, keine Request-Zahl. Preis 0 darf
+// keine Infinity-Rate erzeugen (das würde Familien-Mediane und Pareto-Front verfälschen).
+test("Freebuff: Tarife, Dollar-Volumen, keine Infinity-Rate bei Preis 0", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const fb = JSON.parse(await readFile(join(ROOT, "parsed/freebuff-pricing.json"), "utf8"));
+  const plans = d.plans.filter((p) => p.provider === "freebuff");
+  assert.equal(plans.length, fb.plans.length + 1, "Gratis-Tarif plus bezahlte Tarife");
+
+  const free = plans.find((p) => p.id === "freebuff-free");
+  assert.ok(free, "Gratis-Tarif vorhanden");
+  assert.equal(free.price.paidPrice, 0, "Gratis-Tarif kostet $0");
+  assert.equal(free.quotas[0].amount, fb.freeTierMonthlyUsd, "Volumen des Gratis-Tarifs kommt aus der Quelle");
+  assert.ok(free.modelRows.length > 0, "Gratis-Tarif hat Modell-Zeilen (Volumen ÷ Tokenpreis)");
+  for (const r of free.modelRows) {
+    assert.equal(r.normalizedPer1, null, `${r.model}: ohne Preis keine Rate pro $`);
+    assert.ok(r.requestsPerMonth > 0, `${r.model}: Anfragen pro Monat > 0`);
+  }
+  assert.ok(!d.modelComparisons.some((m) => m.planId === "freebuff-free"),
+    "Gratis-Tarif darf nicht in die Familien-Mediane laufen");
+
+  for (const p of fb.plans) {
+    const plan = plans.find((x) => x.id === `freebuff-${p.name.toLowerCase()}`);
+    assert.ok(plan, `${p.name} im Katalog`);
+    assert.equal(plan.price.paidPrice, p.monthlyUsd, `${p.name}: Preis aus der Quelle`);
+    assert.equal(plan.quotas[0].amount, p.maxSpendUsd, `${p.name}: Dollar-Volumen aus der Quelle`);
+    assert.ok(plan.modelRows.length > 0, `${p.name}: Modell-Zeilen`);
+    for (const r of plan.modelRows) {
+      const expected = r.requestsPerMonth / p.monthlyUsd;
+      assert.ok(Math.abs(r.normalizedPer1 - expected) < Math.max(1e-6, expected * 1e-6),
+        `${p.name}/${r.model}: Rate pro $`);
+    }
+  }
+
+  for (const p of d.plans) {
+    for (const r of p.modelRows ?? []) {
+      if (r.normalizedPer1 === null) continue;
+      assert.ok(Number.isFinite(r.normalizedPer1), `${p.id}/${r.model}: endliche Rate`);
+    }
+  }
+  for (const m of d.modelComparisons ?? []) {
+    assert.ok(Number.isFinite(m.normalizedPer1Median), `${m.planId}/${m.family}: endlicher Median`);
+  }
+});

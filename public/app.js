@@ -1281,6 +1281,7 @@ const BRAND_MARKS = [
   [/qwen|alibaba/i, "QW"],
   [/kimi|moonshot/i, "KM"],
   [/minimax/i, "MM"],
+  [/freebuff/i, "FB"],
   [/anthropic|claude/i, "AN"],
   [/openai|gpt/i, "OA"],
   [/google|gemini/i, "GO"],
@@ -1294,7 +1295,7 @@ function planInitials(name, provider) {
 // Farbe hängt an der Marke, nicht am Plan: gleiche Marke = gleicher Marker
 const MARK_COLORS = {
   OG: "#2563eb", CC: "#7c3aed", GL: "#0d9488", QW: "#db2777", KM: "#ea580c",
-  MM: "#0891b2", AN: "#d97706", OA: "#059669", GO: "#4f46e5", CU: "#475569",
+  MM: "#0891b2", FB: "#65a30d", AN: "#d97706", OA: "#059669", GO: "#4f46e5", CU: "#475569",
 };
 function planColor(name, provider) {
   return MARK_COLORS[planInitials(name, provider)] || "#475569";

@@ -79,3 +79,16 @@ privacy:
     sourceUrl: "https://platform.minimax.io/protocol/privacy-policy"
     verifiedAt: 2026-09-14
     note: "API-Policy nennt keine Trainings-Aussage, deshalb bleibt training offen. Speicherung laut Policy in US-Rechenzentren."
+
+
+  - provider: freebuff
+    scope: provider
+    training: false
+    trainingNote: "Nur Modelle mit dem Label 'May use data for AI training' duerfen zum Training genutzt werden. Zitat Policy: 'A general notice that data is collected or stored does not by itself permit these uses.'"
+    zeroRetention: false
+    zeroRetentionNote: "Keine Zero-Retention-Zusage: Aufbewahrung 'for as long as reasonably necessary', inklusive Werbung und Betrugsabwehr."
+    retentionDays: null
+    retentionNote: "Keine feste Frist veroeffentlicht. Daten aus Trainings-gelabelten Modellen koennen nach Deidentifizierung oder Aufnahme ins Modell nicht mehr entfernt werden."
+    sourceUrl: "https://freebuff.com/privacy-policy"
+    verifiedAt: 2026-09-21
+    note: "Zitat Policy zum Label: Prompt- und Projektdaten 'may be retained and used by Company or the applicable third-party provider for AI training, development, evaluation, testing, fine-tuning, quality improvement, safety research'. Laut FAQ sind DeepSeek V4.1 Flash und Muse Spark 1.2 so gelabelt, die Modell-Privacy aus dem Feed hat Vorrang. Werbefinanzierung: 'Freebuff is supported by text ads.' Daten laufen fuer 'Codebase Evaluation' auch an Partner, die sie nicht fuer eigene Zwecke oder zum Training nutzen duerfen."
