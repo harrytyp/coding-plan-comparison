@@ -1375,7 +1375,7 @@ function attrMatches(c) {
   for (const k of attrFilter) {
     if (k === "noTraining" && c.noTraining !== true) return false;
     if (k === "zdr" && c.zeroRetention !== true) return false;
-    if (k === "cli" && !c.planTag) return false;
+    if (k === "cli" && !/cli/i.test(c.planTag ?? "")) return false;
     if (k === "unknown" && c.noTraining !== null) return false;
   }
   return true;
