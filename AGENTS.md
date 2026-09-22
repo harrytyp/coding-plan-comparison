@@ -49,6 +49,11 @@ Root `index.html`/`app.js`/`data/latest.json` sind byte-identische Kopien von `p
 den die CI beim Sync durch den Commit-Hash ersetzt (Cache-Busting). Lokal nicht ersetzen.
 Root-Mirrors committet die CI (`update.yml`), nicht von Hand.
 
+**Vorschau:** `public/preview/index.html` spiegelt die CI nach `preview/` (erreichbar unter
+`/preview/`). Sie lädt `../app.js`, `../data/latest.json` und `../fonts/` von der Hauptseite,
+dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bleibt
+`public/index.html`; die Vorschau ist eine eingefrorene Kopie für Design-Abnahmen.
+
 ## Workflow
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.

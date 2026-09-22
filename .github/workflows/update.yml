@@ -94,7 +94,11 @@ jobs:
           # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen
           VERSION=$(git rev-parse --short HEAD)
           sed -i "s/__VERSION__/$VERSION/g" ./index.html
-          git add index.html app.js data/latest.json .nojekyll fonts
+          # Vorschau-Fassung (public/preview/index.html) unter /preview/ ausliefern
+          mkdir -p preview
+          cp public/preview/index.html ./preview/index.html
+          sed -i "s/__VERSION__/$VERSION/g" ./preview/index.html
+          git add index.html app.js data/latest.json .nojekyll fonts preview
           if git diff --cached --quiet; then
             echo "Website unverändert"
           else

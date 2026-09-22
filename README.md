@@ -83,11 +83,12 @@ parsed/                structured parser output (gitignored)
 scripts/               fetch / parse-all / build / check / yaml / parsers
 public/                website (index.html, app.js, data/latest.json)
 index.html, app.js     synced copies of public/ for legacy GitHub Pages
+preview/               synced copy of public/preview/ (design preview at /preview/)
 tests/                 invariance + parser tests
 schema.json            schema notes for the JSON output
 ```
 
-Root `index.html`/`app.js`/`data/latest.json` are byte-identical copies of `public/` (legacy Pages serves from root). `public/index.html` uses the `__VERSION__` placeholder, which CI replaces with the commit hash on sync (cache busting). The root mirrors are committed by CI (`update.yml`), not by hand.
+Root `index.html`/`app.js`/`data/latest.json` are byte-identical copies of `public/` (legacy Pages serves from root). `public/index.html` uses the `__VERSION__` placeholder, which CI replaces with the commit hash on sync (cache busting). The root mirrors are committed by CI (`update.yml`), not by hand. The same run mirrors `public/preview/index.html` to `preview/`, which is the frozen design-preview build served at `/preview/` (it loads `../app.js`, `../data/latest.json` and `../fonts/` from the main page, so no assets are duplicated).
 
 ## License
 
