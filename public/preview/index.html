@@ -333,6 +333,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .attr-warn { color: var(--data-b); }
 .attr-unknown { color: var(--text-3); }
 .attr-more { color: var(--text-3); border-style: dashed; }
+.attr-extra { display: none; }
 .dd-badges { display: flex; flex-wrap: wrap; gap: 2px 0; margin-top: 10px; }
 .chart-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px 16px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--text-2); }
 .chart-legend .lg { display: inline-flex; align-items: center; gap: 6px; }
@@ -745,6 +746,10 @@ main { view-transition-name: main-content; }
   .sortable-table tbody tr.row-detail td::before { content: none; }
   .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .detail-grid .dg-v, .dash-detail-content, .dd-shortlist { overflow-wrap: anywhere; }
+  /* Tags auf dem Handy vollständig: Zusatz-Chips statt "+n", Zeile bricht um */
+  .attr-extra { display: inline-block; }
+  .attr-more { display: none; }
+  .sortable-table tbody td.td-attrs { flex-wrap: wrap; gap: 6px 4px; }
 }
 @media (max-width: 420px) {
   .tab { padding: 9px 6px 11px; font-size: 11.8px; letter-spacing: 0; }
@@ -786,7 +791,7 @@ main { view-transition-name: main-content; }
   </script>
 </head>
 <body>
-<div style="background:#10261f;color:#6ee7c7;font:600 12.5px/1.4 Inter,system-ui,sans-serif;padding:7px 18px;text-align:center">Vorschau-Fassung: Kontrast, Zeilenlaenge und Fokusringe. Die Daten und app.js kommen unveraendert von der Hauptseite. <a href="../" style="color:#6ee7c7;text-decoration:underline">zur Hauptseite</a></div>
+<div style="background:#10261f;color:#6ee7c7;font:600 12.5px/1.4 Inter,system-ui,sans-serif;padding:7px 18px;text-align:center">Vorschau-Fassung dieser Seite. Daten und app.js kommen unveraendert von der Hauptseite. <a href="../" style="color:#6ee7c7;text-decoration:underline">zur Hauptseite</a></div>
 
 
 <!-- ===== NAV ===== -->
@@ -1053,7 +1058,7 @@ main { view-transition-name: main-content; }
         <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
         <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
         <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="privacy-filter"><input type="checkbox" data-attr="cli"><span data-i18n="attr.cli">no API</span></label>
+        <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
         <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
       </div>
       <label class="privacy-filter" id="tierd-filter">
@@ -1130,7 +1135,7 @@ main { view-transition-name: main-content; }
         <div class="sheet-section-title" data-i18n="plans.attrs">Attributes</div>
         <label class="sheet-check"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
         <label class="sheet-check"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="sheet-check"><input type="checkbox" data-attr="cli"><span data-i18n="attr.cli">no API</span></label>
+        <label class="sheet-check"><input type="checkbox" id="sheet-noapi"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
         <label class="sheet-check"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
         <label class="sheet-check">
           <input type="checkbox" id="sheet-tierd">

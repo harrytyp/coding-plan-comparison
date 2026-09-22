@@ -35,6 +35,10 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
 - Pläne ohne Preis ($0, werbefinanziert) haben keine Rate pro $: `normalizedPer1` bleibt null
   statt Infinity, sonst kippen Familien-Median und Pareto-Front. Ihre Zeilen sortieren am Ende.
 - Fenster: 5h = Durchsatz (nicht ×180), Wochen ×4.33 → Monat.
+- **Standard-Ausschlüsse (Website):** Tier D (preisbasiert, Kimi) und Pläne ohne API-Zugang
+  (Tag `no API` / `CLI only` aus overrides.yml) sind in Tabelle, Chart und Rechner per Default
+  ausgeblendet, per Schalter einblendbar. Ohne API-Zugang sind die Token-Raten nicht vergleichbar,
+  deshalb steht der Ausschluss als sichtbarer Chip in der Filterzeile.
 
 ## Befehle
 ```bash
