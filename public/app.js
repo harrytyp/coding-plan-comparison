@@ -999,7 +999,7 @@ function isNoApi(c) { return /(cli|no api|kein api)/i.test(c.planTag ?? ""); }
 const ALL_COLUMNS = ["plan", "model", "score", "tokens", "req10", "rawtokens", "rawreq", "cap", "price", "privacy"];
 const DEFAULT_COLUMNS = ["plan", "model", "score", "tokens", "rawtokens", "cap", "price", "privacy"];
 // Mobile Default: nur das Nötigste (Karten statt Tabelle)
-const MOBILE_DEFAULT_COLUMNS = ["plan", "model", "rawtokens", "price"];
+const MOBILE_DEFAULT_COLUMNS = ["plan", "model", "rawtokens", "price", "privacy"];
 let visibleColumns = loadColumns();
 function loadColumns() {
   try {
