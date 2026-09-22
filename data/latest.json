@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-21T08:59:53.788Z",
+  "generatedAt": "2026-09-22T08:35:13.282Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -74,14 +74,14 @@
         "ocgo-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 36,
+      "modelCount": 40,
       "modelStats": {
-        "count": 36,
+        "count": 40,
         "min": 422.5352112676057,
         "max": 226586.10271903325,
-        "mean": 34692.294008728626,
+        "mean": 35421.42992156376,
         "median": 16063.489529219045,
-        "p25": 4255.640793251588,
+        "p25": 3957.78364116095,
         "p75": 31811.64875778523
       },
       "dataTier": "A",
@@ -298,6 +298,58 @@
           "estimate": null,
           "rawTokensPerMonth": 5146941109.205259,
           "derivedTokensPerMonth": 5146941109.205259
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 60,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 150375.93984962406,
+          "requestsRawInWindow": 150375.93984962406,
+          "normalizedPer1": 15037.593984962406,
+          "privacy": {
+            "training": false,
+            "retentionDays": true,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 10921052631.578947,
+          "derivedTokensPerMonth": 10921052631.578947
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00092075,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 16291.06706489275,
+          "requestsRawInWindow": 16291.06706489275,
+          "normalizedPer1": 1629.106706489275,
+          "privacy": {
+            "training": false,
+            "retentionDays": true,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 1418870486.016834,
+          "derivedTokensPerMonth": 1418870486.016834
         },
         {
           "model": "MiMo V2.5",
@@ -925,6 +977,58 @@
           "derivedTokensPerMonth": 1561939924.0088892
         },
         {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 845.0704225352114,
+          "requestsRawInWindow": 845.0704225352114,
+          "normalizedPer1": 84.50704225352113,
+          "privacy": {
+            "training": false,
+            "retentionDays": 30,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 27895774.647887327,
+          "derivedTokensPerMonth": 27895774.647887327
+        },
+        {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0355,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 422.5352112676057,
+          "requestsRawInWindow": 422.5352112676057,
+          "normalizedPer1": 42.25352112676057,
+          "privacy": {
+            "training": false,
+            "retentionDays": 30,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 13947887.323943663,
+          "derivedTokensPerMonth": 13947887.323943663
+        },
+        {
           "model": "Grok 4.6",
           "family": "grok 4.6",
           "allowance": 15,
@@ -1083,15 +1187,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 75,
+      "modelCount": 80,
       "modelStats": {
-        "count": 75,
+        "count": 80,
         "min": 42.01680672268907,
-        "max": 18577.00167193015,
-        "mean": 2166.925978007074,
-        "median": 497.2057039438356,
-        "p25": 186.68514604862213,
-        "p75": 1842.5267536531856
+        "max": 23988.54278553527,
+        "mean": 2388.3228592811097,
+        "median": 503.9602501864589,
+        "p25": 188.46588767433093,
+        "p75": 2050.5977467517932
       },
       "dataTier": "B",
       "dataTierNote": "Official total 15,000 req/mo as anchor",
@@ -1915,6 +2019,28 @@
           "derivedTokensPerMonth": 495662153.750389
         },
         {
+          "model": "Step 5 Preview",
+          "family": "step 5",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0037374,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 764.4733925035738,
+          "requestsRawInWindow": 764.4733925035738,
+          "normalizedPer1": 764.4733925035738,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 38959093.02876713,
+          "derivedTokensPerMonth": 38959093.02876713
+        },
+        {
           "model": "Step 3.7 Flash",
           "family": "step 3.7 flash",
           "allowance": 2.8571428571428568,
@@ -1957,6 +2083,72 @@
           "estimate": null,
           "rawTokensPerMonth": 129014455.33024478,
           "derivedTokensPerMonth": 129014455.33024478
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3110.323162576591,
+          "requestsRawInWindow": 3110.323162576591,
+          "normalizedPer1": 3110.323162576591,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 270893595.8446082,
+          "derivedTokensPerMonth": 270893595.8446082
+        },
+        {
+          "model": "MiMo V2.6 Pro UltraSpeed",
+          "family": "mimo v2.6 pro ultraspeed",
+          "allowance": 1.4285714285714284,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.006689399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 213.5574832677712,
+          "requestsRawInWindow": 213.5574832677712,
+          "normalizedPer1": 213.5574832677712,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 10883316.462292155,
+          "derivedTokensPerMonth": 10883316.462292155
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 9.571428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 23988.54278553527,
+          "requestsRawInWindow": 23988.54278553527,
+          "normalizedPer1": 23988.54278553527,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1742167919.7994988,
+          "derivedTokensPerMonth": 1742167919.7994988
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -2663,6 +2855,28 @@
           "derivedTokensPerMonth": 15846516.21980892
         },
         {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 5,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01065,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 469.4835680751174,
+          "requestsRawInWindow": 469.4835680751174,
+          "normalizedPer1": 469.4835680751174,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 15497652.582159625,
+          "derivedTokensPerMonth": 15497652.582159625
+        },
+        {
           "model": "Grok 4.6",
           "family": "grok 4.6",
           "allowance": 2.8571428571428568,
@@ -2805,15 +3019,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 75,
+      "modelCount": 80,
       "modelStats": {
-        "count": 75,
+        "count": 80,
         "min": 294.11764705882354,
-        "max": 130039.01170351106,
-        "mean": 15168.48184604952,
-        "median": 3480.43992760685,
-        "p25": 1306.7960223403552,
-        "p75": 12897.687275572302
+        "max": 167919.79949874687,
+        "mean": 16718.26001496778,
+        "median": 3527.721751305213,
+        "p25": 1319.2612137203166,
+        "p75": 14354.184227262556
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
@@ -3637,6 +3851,28 @@
           "derivedTokensPerMonth": 3469635076.2527237
         },
         {
+          "model": "Step 5 Preview",
+          "family": "step 5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0037374,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5351.313747525017,
+          "requestsRawInWindow": 5351.313747525017,
+          "normalizedPer1": 496.8722142548762,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 272713651.2013699,
+          "derivedTokensPerMonth": 272713651.2013699
+        },
+        {
           "model": "Step 3.7 Flash",
           "family": "step 3.7 flash",
           "allowance": 20,
@@ -3679,6 +3915,72 @@
           "estimate": null,
           "rawTokensPerMonth": 903101187.3117137,
           "derivedTokensPerMonth": 903101187.3117137
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 21772.26213803614,
+          "requestsRawInWindow": 21772.26213803614,
+          "normalizedPer1": 2021.5656581277756,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1896255170.9122577,
+          "derivedTokensPerMonth": 1896255170.9122577
+        },
+        {
+          "model": "MiMo V2.6 Pro UltraSpeed",
+          "family": "mimo v2.6 pro ultraspeed",
+          "allowance": 10,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.006689399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1494.9023828743984,
+          "requestsRawInWindow": 1494.9023828743984,
+          "normalizedPer1": 138.80244966336105,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 76183215.23604509,
+          "derivedTokensPerMonth": 76183215.23604509
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 67,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 167919.79949874687,
+          "requestsRawInWindow": 167919.79949874687,
+          "normalizedPer1": 15591.439136373898,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 12195175438.59649,
+          "derivedTokensPerMonth": 12195175438.59649
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -4385,6 +4687,28 @@
           "derivedTokensPerMonth": 110925613.53866245
         },
         {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 35,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01065,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3286.3849765258215,
+          "requestsRawInWindow": 3286.3849765258215,
+          "normalizedPer1": 305.142523354301,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 108483568.07511736,
+          "derivedTokensPerMonth": 108483568.07511736
+        },
+        {
           "model": "Grok 4.6",
           "family": "grok 4.6",
           "allowance": 20,
@@ -4527,15 +4851,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 75,
+      "modelCount": 80,
       "modelStats": {
-        "count": 75,
+        "count": 80,
         "min": 294.11764705882354,
-        "max": 151712.18032076288,
-        "mean": 19812.616986154735,
-        "median": 5028.494803888702,
-        "p25": 1580.3645401822703,
-        "p75": 17860.424575608165
+        "max": 192982.45614035087,
+        "mean": 21585.365635109025,
+        "median": 5035.679575418884,
+        "p25": 1869.0712396582862,
+        "p75": 21464.8223270714
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
@@ -5359,6 +5683,28 @@
           "derivedTokensPerMonth": 4163562091.5032682
         },
         {
+          "model": "Step 5 Preview",
+          "family": "step 5",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0037374,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 8026.970621287526,
+          "requestsRawInWindow": 8026.970621287526,
+          "normalizedPer1": 401.3485310643763,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 409070476.8020549,
+          "derivedTokensPerMonth": 409070476.8020549
+        },
+        {
           "model": "Step 3.7 Flash",
           "family": "step 3.7 flash",
           "allowance": 30,
@@ -5401,6 +5747,72 @@
           "estimate": null,
           "rawTokensPerMonth": 1354651780.9675703,
           "derivedTokensPerMonth": 1354651780.9675703
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 32658.393207054214,
+          "requestsRawInWindow": 32658.393207054214,
+          "normalizedPer1": 1632.9196603527107,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2844382756.3683867,
+          "derivedTokensPerMonth": 2844382756.3683867
+        },
+        {
+          "model": "MiMo V2.6 Pro UltraSpeed",
+          "family": "mimo v2.6 pro ultraspeed",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.006689399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2989.804765748797,
+          "requestsRawInWindow": 2989.804765748797,
+          "normalizedPer1": 149.49023828743984,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 152366430.47209018,
+          "derivedTokensPerMonth": 152366430.47209018
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 77,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 192982.45614035087,
+          "requestsRawInWindow": 192982.45614035087,
+          "normalizedPer1": 9649.122807017544,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 14015350877.192982,
+          "derivedTokensPerMonth": 14015350877.192982
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -6107,6 +6519,28 @@
           "derivedTokensPerMonth": 110925613.53866245
         },
         {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 45,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01065,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4225.352112676056,
+          "requestsRawInWindow": 4225.352112676056,
+          "normalizedPer1": 211.26760563380282,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 139478873.23943663,
+          "derivedTokensPerMonth": 139478873.23943663
+        },
+        {
           "model": "Grok 4.6",
           "family": "grok 4.6",
           "allowance": 30,
@@ -6249,15 +6683,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 75,
+      "modelCount": 80,
       "modelStats": {
-        "count": 75,
+        "count": 80,
         "min": 630.2521008403361,
-        "max": 278655.02507895225,
-        "mean": 32503.88967010611,
-        "median": 7458.085559157535,
-        "p25": 2800.277190729332,
-        "p75": 27637.901304797786
+        "max": 359828.14178302896,
+        "mean": 35824.84288921668,
+        "median": 7559.403752796883,
+        "p25": 2826.988315114964,
+        "p75": 30758.966201276904
       },
       "dataTier": "B",
       "dataTierNote": "Official total 230,000 req/mo as anchor",
@@ -7081,6 +7515,28 @@
           "derivedTokensPerMonth": 7434932306.255836
         },
         {
+          "model": "Step 5 Preview",
+          "family": "step 5",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0037374,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 11467.100887553608,
+          "requestsRawInWindow": 11467.100887553608,
+          "normalizedPer1": 114.67100887553607,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 584386395.431507,
+          "derivedTokensPerMonth": 584386395.431507
+        },
+        {
           "model": "Step 3.7 Flash",
           "family": "step 3.7 flash",
           "allowance": 42.857142857142854,
@@ -7123,6 +7579,72 @@
           "estimate": null,
           "rawTokensPerMonth": 1935216829.9536717,
           "derivedTokensPerMonth": 1935216829.9536717
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 46654.847438648874,
+          "requestsRawInWindow": 46654.847438648874,
+          "normalizedPer1": 466.54847438648875,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4063403937.6691236,
+          "derivedTokensPerMonth": 4063403937.6691236
+        },
+        {
+          "model": "MiMo V2.6 Pro UltraSpeed",
+          "family": "mimo v2.6 pro ultraspeed",
+          "allowance": 21.428571428571427,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.006689399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3203.362249016568,
+          "requestsRawInWindow": 3203.362249016568,
+          "normalizedPer1": 32.03362249016568,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 163249746.93438235,
+          "derivedTokensPerMonth": 163249746.93438235
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 143.57142857142856,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 359828.14178302896,
+          "requestsRawInWindow": 359828.14178302896,
+          "normalizedPer1": 3598.2814178302897,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 26132518796.992477,
+          "derivedTokensPerMonth": 26132518796.992477
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -7829,6 +8351,28 @@
           "derivedTokensPerMonth": 237697743.2971338
         },
         {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 75,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01065,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7042.2535211267605,
+          "requestsRawInWindow": 7042.2535211267605,
+          "normalizedPer1": 70.4225352112676,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 232464788.73239437,
+          "derivedTokensPerMonth": 232464788.73239437
+        },
+        {
           "model": "Grok 4.6",
           "family": "grok 4.6",
           "allowance": 42.857142857142854,
@@ -7971,15 +8515,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 75,
+      "modelCount": 80,
       "modelStats": {
-        "count": 75,
+        "count": 80,
         "min": 1260.5042016806722,
-        "max": 557310.0501579045,
-        "mean": 65007.77934021222,
-        "median": 14916.17111831507,
-        "p25": 5600.554381458664,
-        "p75": 55275.80260959557
+        "max": 719656.2835660579,
+        "mean": 71649.68577843336,
+        "median": 15118.807505593766,
+        "p25": 5653.976630229928,
+        "p75": 61517.93240255381
       },
       "dataTier": "B",
       "dataTierNote": "Official total 370,000 req/mo as anchor",
@@ -8803,6 +9347,28 @@
           "derivedTokensPerMonth": 14869864612.511671
         },
         {
+          "model": "Step 5 Preview",
+          "family": "step 5",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0037374,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 22934.201775107216,
+          "requestsRawInWindow": 22934.201775107216,
+          "normalizedPer1": 114.67100887553607,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1168772790.863014,
+          "derivedTokensPerMonth": 1168772790.863014
+        },
+        {
           "model": "Step 3.7 Flash",
           "family": "step 3.7 flash",
           "allowance": 85.71428571428571,
@@ -8845,6 +9411,72 @@
           "estimate": null,
           "rawTokensPerMonth": 3870433659.9073434,
           "derivedTokensPerMonth": 3870433659.9073434
+        },
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0009186,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 93309.69487729775,
+          "requestsRawInWindow": 93309.69487729775,
+          "normalizedPer1": 466.54847438648875,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8126807875.338247,
+          "derivedTokensPerMonth": 8126807875.338247
+        },
+        {
+          "model": "MiMo V2.6 Pro UltraSpeed",
+          "family": "mimo v2.6 pro ultraspeed",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.006689399999999999,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6406.724498033136,
+          "requestsRawInWindow": 6406.724498033136,
+          "normalizedPer1": 32.03362249016568,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 326499493.8687647,
+          "derivedTokensPerMonth": 326499493.8687647
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 287.1428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 719656.2835660579,
+          "requestsRawInWindow": 719656.2835660579,
+          "normalizedPer1": 3598.2814178302897,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 52265037593.984955,
+          "derivedTokensPerMonth": 52265037593.984955
         },
         {
           "model": "MiMo V2.5 Pro",
@@ -9549,6 +10181,28 @@
           "estimate": null,
           "rawTokensPerMonth": 475395486.5942676,
           "derivedTokensPerMonth": 475395486.5942676
+        },
+        {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 150,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.01065,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 14084.507042253521,
+          "requestsRawInWindow": 14084.507042253521,
+          "normalizedPer1": 70.4225352112676,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 464929577.46478873,
+          "derivedTokensPerMonth": 464929577.46478873
         },
         {
           "model": "Grok 4.6",
@@ -11558,649 +12212,649 @@
     {
       "planA": "opencode-go",
       "planB": "command-code-go",
-      "meanRequestsA": 34692.294008728626,
-      "meanRequestsB": 2166.925978007074,
-      "advantagePercent": 1500.9911903236862,
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 2388.3228592811097,
+      "advantagePercent": 1383.1089433287796,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 34692.294008728626,
-      "meanRequestsB": 15168.48184604952,
-      "advantagePercent": 128.71302718909794,
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 16718.26001496778,
+      "advantagePercent": 111.87270618982552,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 34692.294008728626,
-      "meanRequestsB": 19812.616986154735,
-      "advantagePercent": 75.10202732416403,
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 21585.365635109025,
+      "advantagePercent": 64.09928152409935,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 34692.294008728626,
-      "meanRequestsB": 32503.88967010611,
-      "advantagePercent": 6.732746021579072,
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 35824.84288921668,
+      "advantagePercent": 1.1260704447481285,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 34692.294008728626,
-      "meanRequestsB": 65007.77934021222,
-      "advantagePercent": 46.63362698921046,
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 71649.68577843336,
+      "advantagePercent": 50.56303522237406,
       "winner": "command-code-max20"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-lite",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 318.1216135617269,
+      "advantagePercent": 326.90937156653695,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-pro",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 30.31306440637883,
+      "advantagePercent": 28.84843807224383,
       "winner": "glm-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-max",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 70.13417045987664,
+      "advantagePercent": 69.50647345953307,
       "winner": "glm-max"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 3300,
-      "advantagePercent": 951.2816366281403,
+      "advantagePercent": 973.376664289811,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 422.99940716676315,
+      "advantagePercent": 433.99140585271994,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 23300,
-      "advantagePercent": 48.89396570269797,
+      "advantagePercent": 52.02330438439382,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 26.78015658443549,
+      "advantagePercent": 25.24127831501287,
       "winner": "kimi-vivace"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-free",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 41.94258967343272,
+      "advantagePercent": 40.722383743416835,
       "winner": "freebuff-free"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-starter",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 64.00440559752829,
+      "advantagePercent": 63.24787792091844,
       "winner": "freebuff-starter"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-plus",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 78.31590698646282,
+      "advantagePercent": 77.86016742224002,
       "winner": "freebuff-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-pro",
-      "meanRequestsA": 34692.294008728626,
+      "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 86.36530515057889,
+      "advantagePercent": 86.07874163671153,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 2166.925978007074,
-      "meanRequestsB": 15168.48184604952,
+      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsB": 16718.26001496778,
       "advantagePercent": 85.71428571428572,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 2166.925978007074,
-      "meanRequestsB": 19812.616986154735,
-      "advantagePercent": 89.06289876031347,
+      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsB": 21585.365635109025,
+      "advantagePercent": 88.93545330825225,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 2166.925978007074,
-      "meanRequestsB": 32503.88967010611,
+      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsB": 35824.84288921668,
       "advantagePercent": 93.33333333333333,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 2166.925978007074,
-      "meanRequestsB": 65007.77934021222,
+      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsB": 71649.68577843336,
       "advantagePercent": 96.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-lite",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 73.8835781178039,
+      "advantagePercent": 71.21523853747685,
       "winner": "glm-lite"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-pro",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 95.64726301963398,
+      "advantagePercent": 95.20253975624614,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-max",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 98.13454129412885,
+      "advantagePercent": 97.94394560981978,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 3300,
-      "advantagePercent": 34.33557642402807,
+      "advantagePercent": 27.62658002178455,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 67.33277420089838,
+      "advantagePercent": 63.995132774656646,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 23300,
-      "advantagePercent": 90.6998885064074,
+      "advantagePercent": 89.7496872992227,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 95.42659298451474,
+      "advantagePercent": 94.9593236544583,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-free",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 96.3736583513099,
+      "advantagePercent": 96.00315158753362,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-starter",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 97.75166817781214,
+      "advantagePercent": 97.52195398427085,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-plus",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 98.64558323964586,
+      "advantagePercent": 98.50720119534388,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-pro",
-      "meanRequestsA": 2166.925978007074,
+      "meanRequestsA": 2388.3228592811097,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 99.14835915826217,
+      "advantagePercent": 99.06134620616321,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
-      "meanRequestsA": 15168.48184604952,
-      "meanRequestsB": 19812.616986154735,
-      "advantagePercent": 23.440291322194263,
+      "meanRequestsA": 16718.26001496778,
+      "meanRequestsB": 21585.365635109025,
+      "advantagePercent": 22.54817315776575,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max10",
-      "meanRequestsA": 15168.48184604952,
-      "meanRequestsB": 32503.88967010611,
-      "advantagePercent": 53.33333333333332,
+      "meanRequestsA": 16718.26001496778,
+      "meanRequestsB": 35824.84288921668,
+      "advantagePercent": 53.33333333333334,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max20",
-      "meanRequestsA": 15168.48184604952,
-      "meanRequestsB": 65007.77934021222,
-      "advantagePercent": 76.66666666666666,
+      "meanRequestsA": 16718.26001496778,
+      "meanRequestsB": 71649.68577843336,
+      "advantagePercent": 76.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-lite",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 82.81495317537274,
+      "advantagePercent": 101.49333023766225,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-pro",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 69.53084113743787,
+      "advantagePercent": 66.41777829372295,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-max",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 86.94178905890195,
+      "advantagePercent": 85.6076192687384,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-moderato",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 3300,
-      "advantagePercent": 359.6509650318037,
+      "advantagePercent": 406.61393984750845,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 128.67058059371135,
+      "advantagePercent": 152.03407057740367,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegro",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 23300,
-      "advantagePercent": 34.899219544851846,
+      "advantagePercent": 28.247811094558894,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-vivace",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 67.98615089160313,
+      "advantagePercent": 64.71526558120813,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-free",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 74.61560845916925,
+      "advantagePercent": 72.02206111273534,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-starter",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 84.26167724468495,
+      "advantagePercent": 82.65367788989592,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-plus",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 90.51908267752104,
+      "advantagePercent": 89.55040836740717,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-pro",
-      "meanRequestsA": 15168.48184604952,
+      "meanRequestsA": 16718.26001496778,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 94.0385141078352,
+      "advantagePercent": 93.42942344314238,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
-      "meanRequestsA": 19812.616986154735,
-      "meanRequestsB": 32503.88967010611,
-      "advantagePercent": 39.04539675946403,
+      "meanRequestsA": 21585.365635109025,
+      "meanRequestsB": 35824.84288921668,
+      "advantagePercent": 39.74749393358471,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max20",
-      "meanRequestsA": 19812.616986154735,
-      "meanRequestsB": 65007.77934021222,
-      "advantagePercent": 69.52269837973202,
+      "meanRequestsA": 21585.365635109025,
+      "meanRequestsB": 71649.68577843336,
+      "advantagePercent": 69.87374696679237,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-lite",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 138.78742008375724,
+      "advantagePercent": 160.15310219614926,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-pro",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 60.20209665270713,
+      "advantagePercent": 56.641149633975104,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-max",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 82.94375570830306,
+      "advantagePercent": 81.4176355574179,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 3300,
-      "advantagePercent": 500.38233291377986,
+      "advantagePercent": 554.1019889426977,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 198.68266813298595,
+      "advantagePercent": 225.40752213732196,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 23300,
-      "advantagePercent": 14.967309072297274,
-      "winner": "kimi-allegro"
+      "advantagePercent": 7.358945772064274,
+      "winner": "draw"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-vivace",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 58.184468487041784,
+      "advantagePercent": 54.44299268671193,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-free",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 66.84366753841955,
+      "advantagePercent": 63.87698001719907,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-starter",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 79.44307387382011,
+      "advantagePercent": 77.60372761066343,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-plus",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 87.61630956254224,
+      "advantagePercent": 86.50826964497796,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-pro",
-      "meanRequestsA": 19812.616986154735,
+      "meanRequestsA": 21585.365635109025,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 92.2132855582652,
+      "advantagePercent": 91.51656348888766,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
-      "meanRequestsA": 32503.88967010611,
-      "meanRequestsB": 65007.77934021222,
+      "meanRequestsA": 35824.84288921668,
+      "meanRequestsB": 71649.68577843336,
       "advantagePercent": 50,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-lite",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 291.7463282329415,
+      "advantagePercent": 331.7714219378478,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-pro",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 34.70894529450974,
+      "advantagePercent": 28.038096343692022,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-max",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 72.01811941193274,
+      "advantagePercent": 69.15918414729659,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-moderato",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 3300,
-      "advantagePercent": 884.9663536395791,
+      "advantagePercent": 985.6012996732327,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 390.0083869865243,
+      "advantagePercent": 440.0730083801509,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegro",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 23300,
-      "advantagePercent": 39.50167240388889,
+      "advantagePercent": 53.754690511659554,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-vivace",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 31.398894767721018,
+      "advantagePercent": 24.389854816874546,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-free",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 45.60487526964844,
+      "advantagePercent": 40.0472738130043,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-starter",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 66.27502266718203,
+      "advantagePercent": 62.82930976406267,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-plus",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 79.68374859468797,
+      "advantagePercent": 77.60801793015824,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-pro",
-      "meanRequestsA": 32503.88967010611,
+      "meanRequestsA": 35824.84288921668,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 87.22538737393258,
+      "advantagePercent": 85.92019309244799,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-lite",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 683.492656465883,
+      "advantagePercent": 763.5428438756956,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-pro",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 30.582109410980518,
+      "advantagePercent": 43.923807312615956,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-max",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 44.03623882386549,
+      "advantagePercent": 38.31836829459318,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-moderato",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 3300,
-      "advantagePercent": 1869.9327072791582,
+      "advantagePercent": 2071.2025993464654,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 880.0167739730485,
+      "advantagePercent": 980.1460167603018,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegro",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 23300,
-      "advantagePercent": 179.00334480777778,
+      "advantagePercent": 207.5093810233191,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-vivace",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 37.202210464557965,
+      "advantagePercent": 51.22029036625091,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-free",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 8.790249460703127,
-      "winner": "draw"
+      "advantagePercent": 19.905452373991395,
+      "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-starter",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 32.55004533436405,
+      "advantagePercent": 25.658619528125325,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-plus",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 59.36749718937594,
+      "advantagePercent": 55.21603586031647,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-pro",
-      "meanRequestsA": 65007.77934021222,
+      "meanRequestsA": 71649.68577843336,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 74.45077474786517,
+      "advantagePercent": 71.84038618489596,
       "winner": "freebuff-pro"
     },
     {
@@ -12703,6 +13357,20 @@
     },
     {
       "planId": "opencode-go",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 15037.593984962406,
+      "normalizedPer1Mean": 15037.593984962406
+    },
+    {
+      "planId": "opencode-go",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 1629.106706489275,
+      "normalizedPer1Mean": 1629.106706489275
+    },
+    {
+      "planId": "opencode-go",
       "family": "mimo v2.5",
       "modelCount": 1,
       "normalizedPer1Median": 15037.593984962406,
@@ -12819,6 +13487,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 2150.6918058642195,
       "normalizedPer1Mean": 2150.6918058642195
+    },
+    {
+      "planId": "opencode-go",
+      "family": "grok 4.7",
+      "modelCount": 2,
+      "normalizedPer1Median": 63.38028169014085,
+      "normalizedPer1Mean": 63.38028169014085
     },
     {
       "planId": "opencode-go",
@@ -13039,6 +13714,13 @@
     },
     {
       "planId": "command-code-go",
+      "family": "step 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 764.4733925035738,
+      "normalizedPer1Mean": 764.4733925035738
+    },
+    {
+      "planId": "command-code-go",
       "family": "step 3.7 flash",
       "modelCount": 1,
       "normalizedPer1Median": 1217.7227367100782,
@@ -13050,6 +13732,27 @@
       "modelCount": 1,
       "normalizedPer1Median": 2531.5814789498995,
       "normalizedPer1Mean": 2531.5814789498995
+    },
+    {
+      "planId": "command-code-go",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 3110.323162576591,
+      "normalizedPer1Mean": 3110.323162576591
+    },
+    {
+      "planId": "command-code-go",
+      "family": "mimo v2.6 pro ultraspeed",
+      "modelCount": 1,
+      "normalizedPer1Median": 213.5574832677712,
+      "normalizedPer1Mean": 213.5574832677712
+    },
+    {
+      "planId": "command-code-go",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 23988.54278553527,
+      "normalizedPer1Mean": 23988.54278553527
     },
     {
       "planId": "command-code-go",
@@ -13260,6 +13963,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 310.94769082471095,
       "normalizedPer1Mean": 310.94769082471095
+    },
+    {
+      "planId": "command-code-go",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 469.4835680751174,
+      "normalizedPer1Mean": 469.4835680751174
     },
     {
       "planId": "command-code-go",
@@ -13494,6 +14204,13 @@
     },
     {
       "planId": "command-code-goat",
+      "family": "step 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 496.8722142548762,
+      "normalizedPer1Mean": 496.8722142548762
+    },
+    {
+      "planId": "command-code-goat",
       "family": "step 3.7 flash",
       "modelCount": 1,
       "normalizedPer1Median": 791.4632457725672,
@@ -13505,6 +14222,27 @@
       "modelCount": 1,
       "normalizedPer1Median": 1645.4104320008637,
       "normalizedPer1Mean": 1645.4104320008637
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 2021.5656581277756,
+      "normalizedPer1Mean": 2021.5656581277756
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "mimo v2.6 pro ultraspeed",
+      "modelCount": 1,
+      "normalizedPer1Median": 138.80244966336105,
+      "normalizedPer1Mean": 138.80244966336105
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 15591.439136373898,
+      "normalizedPer1Mean": 15591.439136373898
     },
     {
       "planId": "command-code-goat",
@@ -13715,6 +14453,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 202.10156321011857,
       "normalizedPer1Mean": 202.10156321011857
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 305.142523354301,
+      "normalizedPer1Mean": 305.142523354301
     },
     {
       "planId": "command-code-goat",
@@ -13949,6 +14694,13 @@
     },
     {
       "planId": "command-code-pro",
+      "family": "step 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 401.3485310643763,
+      "normalizedPer1Mean": 401.3485310643763
+    },
+    {
+      "planId": "command-code-pro",
       "family": "step 3.7 flash",
       "modelCount": 1,
       "normalizedPer1Median": 639.3044367727911,
@@ -13960,6 +14712,27 @@
       "modelCount": 1,
       "normalizedPer1Median": 1329.0802764486975,
       "normalizedPer1Mean": 1329.0802764486975
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 1632.9196603527107,
+      "normalizedPer1Mean": 1632.9196603527107
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "mimo v2.6 pro ultraspeed",
+      "modelCount": 1,
+      "normalizedPer1Median": 149.49023828743984,
+      "normalizedPer1Mean": 149.49023828743984
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 9649.122807017544,
+      "normalizedPer1Mean": 9649.122807017544
     },
     {
       "planId": "command-code-pro",
@@ -14170,6 +14943,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 108.83169178864884,
       "normalizedPer1Mean": 108.83169178864884
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 211.26760563380282,
+      "normalizedPer1Mean": 211.26760563380282
     },
     {
       "planId": "command-code-pro",
@@ -14404,6 +15184,13 @@
     },
     {
       "planId": "command-code-max10",
+      "family": "step 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 114.67100887553607,
+      "normalizedPer1Mean": 114.67100887553607
+    },
+    {
+      "planId": "command-code-max10",
       "family": "step 3.7 flash",
       "modelCount": 1,
       "normalizedPer1Median": 182.65841050651173,
@@ -14415,6 +15202,27 @@
       "modelCount": 1,
       "normalizedPer1Median": 379.7372218424849,
       "normalizedPer1Mean": 379.7372218424849
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 466.54847438648875,
+      "normalizedPer1Mean": 466.54847438648875
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "mimo v2.6 pro ultraspeed",
+      "modelCount": 1,
+      "normalizedPer1Median": 32.03362249016568,
+      "normalizedPer1Mean": 32.03362249016568
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 3598.2814178302897,
+      "normalizedPer1Mean": 3598.2814178302897
     },
     {
       "planId": "command-code-max10",
@@ -14625,6 +15433,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 46.64215362370665,
       "normalizedPer1Mean": 46.64215362370665
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 70.4225352112676,
+      "normalizedPer1Mean": 70.4225352112676
     },
     {
       "planId": "command-code-max10",
@@ -14859,6 +15674,13 @@
     },
     {
       "planId": "command-code-max20",
+      "family": "step 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 114.67100887553607,
+      "normalizedPer1Mean": 114.67100887553607
+    },
+    {
+      "planId": "command-code-max20",
       "family": "step 3.7 flash",
       "modelCount": 1,
       "normalizedPer1Median": 182.65841050651173,
@@ -14870,6 +15692,27 @@
       "modelCount": 1,
       "normalizedPer1Median": 379.7372218424849,
       "normalizedPer1Mean": 379.7372218424849
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 466.54847438648875,
+      "normalizedPer1Mean": 466.54847438648875
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "mimo v2.6 pro ultraspeed",
+      "modelCount": 1,
+      "normalizedPer1Median": 32.03362249016568,
+      "normalizedPer1Mean": 32.03362249016568
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 3598.2814178302897,
+      "normalizedPer1Mean": 3598.2814178302897
     },
     {
       "planId": "command-code-max20",
@@ -15080,6 +15923,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 46.64215362370665,
       "normalizedPer1Mean": 46.64215362370665
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 70.4225352112676,
+      "normalizedPer1Mean": 70.4225352112676
     },
     {
       "planId": "command-code-max20",
@@ -15434,6 +16284,24 @@
       "winner": "opencode-go"
     },
     {
+      "family": "mimo v2.6 flash",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 15037.593984962406,
+      "requestsB": 15591.439136373898,
+      "advantagePercent": 3.5522388059701537,
+      "winner": "draw"
+    },
+    {
+      "family": "mimo v2.6 pro",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 1629.106706489275,
+      "requestsB": 2021.5656581277756,
+      "advantagePercent": 19.41361390171057,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "mimo v2.5",
       "planA": "opencode-go",
       "planB": "command-code-goat",
@@ -15542,6 +16410,15 @@
       "winner": "draw"
     },
     {
+      "family": "grok 4.7",
+      "planA": "opencode-go",
+      "planB": "command-code-goat",
+      "requestsA": 63.38028169014085,
+      "requestsB": 305.142523354301,
+      "advantagePercent": 79.22928571428571,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "grok 4.6",
       "planA": "opencode-go",
       "planB": "command-code-goat",
@@ -15621,6 +16498,24 @@
       "requestsB": 143.8641922025608,
       "advantagePercent": 300,
       "winner": "opencode-go"
+    },
+    {
+      "family": "mimo v2.6 flash",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 15037.593984962406,
+      "requestsB": 9649.122807017544,
+      "advantagePercent": 55.84415584415585,
+      "winner": "opencode-go"
+    },
+    {
+      "family": "mimo v2.6 pro",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 1629.106706489275,
+      "requestsB": 1632.9196603527107,
+      "advantagePercent": 0.23350529459680303,
+      "winner": "draw"
     },
     {
       "family": "mimo v2.5",
@@ -15729,6 +16624,15 @@
       "requestsB": 1433.794537242813,
       "advantagePercent": 50,
       "winner": "opencode-go"
+    },
+    {
+      "family": "grok 4.7",
+      "planA": "opencode-go",
+      "planB": "command-code-pro",
+      "requestsA": 63.38028169014085,
+      "requestsB": 211.26760563380282,
+      "advantagePercent": 70,
+      "winner": "command-code-pro"
     },
     {
       "family": "grok 4.6",
@@ -16010,6 +16914,15 @@
       "winner": "command-code-goat"
     },
     {
+      "family": "step 5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 496.8722142548762,
+      "requestsB": 401.3485310643763,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "step 3.7 flash",
       "planA": "command-code-goat",
       "planB": "command-code-pro",
@@ -16025,6 +16938,33 @@
       "requestsA": 1645.4104320008637,
       "requestsB": 1329.0802764486975,
       "advantagePercent": 23.800680903744986,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "mimo v2.6 pro",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2021.5656581277756,
+      "requestsB": 1632.9196603527107,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "mimo v2.6 pro ultraspeed",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 138.80244966336105,
+      "requestsB": 149.49023828743984,
+      "advantagePercent": 7.149489322191272,
+      "winner": "draw"
+    },
+    {
+      "family": "mimo v2.6 flash",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 15591.439136373898,
+      "requestsB": 9649.122807017544,
+      "advantagePercent": 61.58400559514767,
       "winner": "command-code-goat"
     },
     {
@@ -16298,6 +17238,15 @@
       "winner": "command-code-goat"
     },
     {
+      "family": "grok 4.7",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 305.142523354301,
+      "requestsB": 211.26760563380282,
+      "advantagePercent": 44.434127721035786,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "grok 4.6",
       "planA": "command-code-goat",
       "planB": "command-code-pro",
@@ -16336,278 +17285,287 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-21T08:59:53.689Z",
-    "count": 391,
+    "fetchedAt": "2026-09-22T08:35:12.582Z",
+    "count": 395,
     "scores": {
       "gpt-6-astra": {
-        "intelligence": 59.58
+        "intelligence": 59.71
       },
       "claude-fable-5-1": {
-        "intelligence": 55.7
+        "intelligence": 55.59
       },
       "gpt-5-6-sol": {
-        "intelligence": 54.92
+        "intelligence": 54.93
       },
       "claude-mythos-preview": {
-        "intelligence": 54.86
+        "intelligence": 54.78
       },
       "claude-opus-5": {
-        "intelligence": 54.64
-      },
-      "muse-spark-1-3": {
-        "intelligence": 54.29
+        "intelligence": 54.56
       },
       "claude-fable-5": {
-        "intelligence": 54.27
+        "intelligence": 54.16
+      },
+      "muse-spark-1-3": {
+        "intelligence": 54.01
       },
       "kimi-k3": {
-        "intelligence": 52.98
+        "intelligence": 52.7
       },
       "glm-5-3": {
-        "intelligence": 52.71
+        "intelligence": 52.44
       },
       "atria-dawn-preview": {
-        "intelligence": 52.33
+        "intelligence": 51.86
       },
       "qwen3-8-max": {
-        "intelligence": 52.01
+        "intelligence": 51.8
       },
       "deepseek-v4-pro-0813": {
-        "intelligence": 51.98
+        "intelligence": 51.57
       },
       "deepseek-v4-1-flash": {
-        "intelligence": 51.84
-      },
-      "hy4-preview": {
-        "intelligence": 50.99
-      },
-      "claude-opus-4-8": {
-        "intelligence": 50.78
+        "intelligence": 51.55
       },
       "gpt-5-6-terra": {
-        "intelligence": 50.77
+        "intelligence": 50.78
+      },
+      "hy4-preview": {
+        "intelligence": 50.69
+      },
+      "claude-opus-4-8": {
+        "intelligence": 50.54
       },
       "gemini-3-8-flash": {
-        "intelligence": 50.49
+        "intelligence": 50.09
       },
       "glm-5-3-flash": {
-        "intelligence": 50.23
+        "intelligence": 49.84
+      },
+      "mimo-v2-6-pro": {
+        "intelligence": 49.77
       },
       "muse-spark-1-1": {
-        "intelligence": 49.71
+        "intelligence": 49.47
       },
       "qwen3-8-flash-next": {
-        "intelligence": 49.15
+        "intelligence": 49.05
       },
       "qwen3-8-flash": {
-        "intelligence": 49.1
+        "intelligence": 49
+      },
+      "grok-4-7": {
+        "intelligence": 48.49
       },
       "gemini-3-7-flash": {
-        "intelligence": 48.69
+        "intelligence": 48.23
       },
       "claude-sonnet-5": {
-        "intelligence": 48.31
+        "intelligence": 48.16
       },
       "gpt-5-5": {
-        "intelligence": 48.11
-      },
-      "grok-4-6": {
-        "intelligence": 46.74
+        "intelligence": 47.97
       },
       "seed-2-1-pro": {
-        "intelligence": 46.27
+        "intelligence": 46.23
+      },
+      "grok-4-6": {
+        "intelligence": 46.15
+      },
+      "mimo-v2-6-flash": {
+        "intelligence": 45.62
       },
       "deepseek-v4-flash-vision-exp": {
-        "intelligence": 46.01
-      },
-      "glm-5-2": {
-        "intelligence": 45.6
-      },
-      "qwen3-7-max": {
         "intelligence": 45.52
       },
-      "grok-4-5": {
-        "intelligence": 45.36
+      "qwen3-7-max": {
+        "intelligence": 45.49
       },
-      "qwen3-8-27b": {
-        "intelligence": 45.1
-      },
-      "gpt-5-6-luna": {
-        "intelligence": 45.08
+      "glm-5-2": {
+        "intelligence": 45.48
       },
       "claude-mythos-5-1": {
-        "intelligence": 45.06
+        "intelligence": 45.3
+      },
+      "gpt-5-6-luna": {
+        "intelligence": 45.25
+      },
+      "qwen3-8-27b": {
+        "intelligence": 45.05
+      },
+      "grok-4-5": {
+        "intelligence": 44.9
       },
       "claude-opus-4-6": {
-        "intelligence": 44.93
+        "intelligence": 44.85
       },
       "gpt-5-5-pro": {
-        "intelligence": 44.81
+        "intelligence": 44.77
       },
       "deepseek-v4-flash-0731": {
-        "intelligence": 44.71
+        "intelligence": 44.25
       },
       "claude-opus-4-7": {
-        "intelligence": 44.09
+        "intelligence": 44.01
       },
       "kimi-k2-6": {
-        "intelligence": 43.7
+        "intelligence": 43.67
       },
       "gemini-3-1-pro-preview": {
-        "intelligence": 43.34
+        "intelligence": 43.29
       },
       "gemini-3-6-flash": {
-        "intelligence": 43.33
-      },
-      "hy3": {
-        "intelligence": 43.18
-      },
-      "seed-2-1-turbo": {
         "intelligence": 43.17
       },
-      "deepseek-v4-pro-max": {
-        "intelligence": 43.11
+      "seed-2-1-turbo": {
+        "intelligence": 43.12
       },
-      "ling-3-0-flash-fin": {
-        "intelligence": 43.03
+      "deepseek-v4-pro-max": {
+        "intelligence": 43.08
+      },
+      "hy3": {
+        "intelligence": 43.05
       },
       "gpt-5-2-pro-2025-12-11": {
-        "intelligence": 42.95
+        "intelligence": 42.94
+      },
+      "ling-3-0-flash-fin": {
+        "intelligence": 42.9
       },
       "qwen3-7-plus": {
-        "intelligence": 42.61
+        "intelligence": 42.59
       },
       "gemini-3-5-flash": {
-        "intelligence": 42.6
+        "intelligence": 42.54
       },
       "sakana-namazu": {
-        "intelligence": 42.14
+        "intelligence": 42.12
       },
       "gpt-5-4": {
-        "intelligence": 42.14
+        "intelligence": 42.07
       },
       "muse-spark": {
-        "intelligence": 41.7
+        "intelligence": 41.67
       },
       "gpt-5-2-2025-12-11": {
-        "intelligence": 41.37
+        "intelligence": 41.35
       },
       "minimax-m3": {
-        "intelligence": 41.37
-      },
-      "laguna-s-2-1": {
-        "intelligence": 40.88
+        "intelligence": 41.28
       },
       "grok-4-heavy": {
         "intelligence": 40.68
       },
-      "gemini-3-8-flash-cyber": {
-        "intelligence": 40.34
+      "laguna-s-2-1": {
+        "intelligence": 40.63
       },
-      "muse-spark-1-2": {
-        "intelligence": 39.79
+      "gemini-3-8-flash-cyber": {
+        "intelligence": 39.55
+      },
+      "kimi-k2-7-code": {
+        "intelligence": 39.55
       },
       "seed-2-0-pro": {
         "intelligence": 39.48
       },
       "qwen3-6-plus": {
-        "intelligence": 39.42
-      },
-      "kimi-k2-7-code": {
-        "intelligence": 39.35
+        "intelligence": 39.41
       },
       "glm-5-1": {
-        "intelligence": 39.24
+        "intelligence": 39.19
       },
       "deepseek-v4-flash-max": {
-        "intelligence": 39.14
+        "intelligence": 39.12
+      },
+      "muse-spark-1-2": {
+        "intelligence": 38.81
       },
       "kimi-k2-5": {
-        "intelligence": 38.83
+        "intelligence": 38.8
       },
       "qwen3-5-397b-a17b": {
-        "intelligence": 38.71
+        "intelligence": 38.7
       },
       "gemini-3-pro-preview": {
-        "intelligence": 38.58
+        "intelligence": 38.56
       },
       "inkling-small": {
-        "intelligence": 38.47
+        "intelligence": 38.41
       },
       "claude-opus-4-5-20251101": {
-        "intelligence": 38.24
-      },
-      "gemini-3-5-flash-cyber": {
-        "intelligence": 37.51
+        "intelligence": 38.23
       },
       "inkling": {
-        "intelligence": 37.37
+        "intelligence": 37.29
+      },
+      "gemini-3-5-flash-cyber": {
+        "intelligence": 37.19
       },
       "step-3-5-flash": {
         "intelligence": 37.16
       },
       "glm-5": {
-        "intelligence": 37.12
+        "intelligence": 37.11
       },
       "claude-sonnet-4-6": {
-        "intelligence": 37.04
+        "intelligence": 37
       },
       "minimax-m2-5": {
         "intelligence": 36.92
       },
       "gemini-3-flash-preview": {
-        "intelligence": 36.84
+        "intelligence": 36.82
       },
       "gpt-5-1-thinking-2025-11-12": {
-        "intelligence": 36.57
+        "intelligence": 36.56
       },
       "gpt-5-3-codex": {
-        "intelligence": 36.49
+        "intelligence": 36.5
       },
       "gpt-5-1-instant-2025-11-12": {
         "intelligence": 36.47
       },
-      "ling-3-0-flash": {
-        "intelligence": 36.36
-      },
       "gpt-5-1-2025-11-13": {
         "intelligence": 36.34
       },
+      "ling-3-0-flash": {
+        "intelligence": 36.31
+      },
       "nemotron-3-ultra-550b-a55b": {
-        "intelligence": 36.27
-      },
-      "deepseek-v4-flash-0423": {
-        "intelligence": 36.13
-      },
-      "kimi-k2-thinking-0905": {
-        "intelligence": 35.97
-      },
-      "mimo-v2-pro": {
-        "intelligence": 35.65
-      },
-      "qwen3-6-27b": {
-        "intelligence": 35.55
+        "intelligence": 36.22
       },
       "mimo-v2-5": {
-        "intelligence": 35.48
+        "intelligence": 36.16
+      },
+      "deepseek-v4-flash-0423": {
+        "intelligence": 36.11
+      },
+      "kimi-k2-thinking-0905": {
+        "intelligence": 35.96
+      },
+      "mimo-v2-pro": {
+        "intelligence": 35.63
+      },
+      "qwen3-6-27b": {
+        "intelligence": 35.54
       },
       "minimax-m2-7": {
-        "intelligence": 35.47
+        "intelligence": 35.43
       },
       "longcat-flash-thinking-2601": {
         "intelligence": 35.32
       },
-      "solar-pro4": {
-        "intelligence": 35.23
-      },
       "gpt-5-1-high-2025-11-12": {
-        "intelligence": 35.21
+        "intelligence": 35.2
+      },
+      "solar-pro4": {
+        "intelligence": 35.18
       },
       "qwen3-5-122b-a10b": {
-        "intelligence": 35.04
+        "intelligence": 35.03
       },
       "muse-glimmer-30b": {
-        "intelligence": 34.95
+        "intelligence": 34.93
       },
       "gpt-5-2-codex": {
         "intelligence": 34.35
@@ -16616,16 +17574,16 @@
         "intelligence": 34.29
       },
       "seed-1-8": {
-        "intelligence": 34.2
+        "intelligence": 34.17
       },
       "gpt-5-high-2025-08-07": {
         "intelligence": 33.97
       },
       "qwen3-5-27b": {
-        "intelligence": 33.96
+        "intelligence": 33.94
       },
       "deepseek-v3-2-speciale": {
-        "intelligence": 33.91
+        "intelligence": 33.89
       },
       "gpt-5-2025-08-07": {
         "intelligence": 33.8
@@ -16637,37 +17595,37 @@
         "intelligence": 33.42
       },
       "deepseek-v3-2": {
-        "intelligence": 33.23
+        "intelligence": 33.22
       },
       "gemma-4-31b-it": {
-        "intelligence": 33.11
+        "intelligence": 33.1
       },
       "mai-thinking-1": {
-        "intelligence": 32.98
+        "intelligence": 32.99
       },
       "qwen3-max-thinking": {
-        "intelligence": 32.93
+        "intelligence": 32.91
       },
       "deepseek-reasoner": {
         "intelligence": 32.59
       },
       "qwen3-6-35b-a3b": {
-        "intelligence": 32.44
+        "intelligence": 32.43
       },
       "gpt-5-5-instant": {
-        "intelligence": 32.26
+        "intelligence": 32.24
       },
       "claude-sonnet-4-5-20250929": {
-        "intelligence": 32.13
+        "intelligence": 32.12
       },
       "seed-2-0-lite": {
         "intelligence": 31.91
       },
       "minimax-m2-1": {
-        "intelligence": 31.9
+        "intelligence": 31.89
       },
       "grok-4-fast": {
-        "intelligence": 31.69
+        "intelligence": 31.68
       },
       "grok-3-mini": {
         "intelligence": 31.31
@@ -16679,7 +17637,7 @@
         "intelligence": 31.07
       },
       "gemini-3-1-flash-lite-preview": {
-        "intelligence": 30.92
+        "intelligence": 30.9
       },
       "qwen3-5-35b-a3b": {
         "intelligence": 30.87
@@ -16694,31 +17652,31 @@
         "intelligence": 30.37
       },
       "glm-5v-turbo": {
-        "intelligence": 30.32
+        "intelligence": 30.3
       },
       "step-3-7-flash": {
-        "intelligence": 30.23
+        "intelligence": 30.11
       },
       "gpt-5-4-mini": {
-        "intelligence": 30.11
+        "intelligence": 30.1
       },
       "gemini-2-5-pro-preview-06-05": {
         "intelligence": 29.93
       },
       "claude-opus-4-1-20250805": {
-        "intelligence": 29.87
+        "intelligence": 29.86
       },
       "gemini-3-5-flash-lite": {
-        "intelligence": 29.84
-      },
-      "gemma-4-26b-a4b-it": {
-        "intelligence": 29.58
+        "intelligence": 29.81
       },
       "gpt-5-medium-2025-08-07": {
         "intelligence": 29.57
       },
+      "gemma-4-26b-a4b-it": {
+        "intelligence": 29.56
+      },
       "gpt-5-3-chat-latest": {
-        "intelligence": 29.55
+        "intelligence": 29.54
       },
       "gpt-5-1-codex": {
         "intelligence": 29.53
@@ -16733,7 +17691,7 @@
         "intelligence": 28.99
       },
       "gpt-oss-120b": {
-        "intelligence": 28.76
+        "intelligence": 28.73
       },
       "longcat-flash-thinking": {
         "intelligence": 28.61
@@ -16744,38 +17702,38 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.05
       },
-      "mai-code-1-1-flash": {
-        "intelligence": 27.98
-      },
       "seed-2-0-mini": {
-        "intelligence": 27.83
+        "intelligence": 27.82
       },
       "gemini-2-5-pro": {
         "intelligence": 27.81
       },
+      "mai-code-1-1-flash": {
+        "intelligence": 27.81
+      },
       "claude-opus-4-20250514": {
-        "intelligence": 27.71
+        "intelligence": 27.7
       },
       "glm-4-5": {
-        "intelligence": 27.7
+        "intelligence": 27.69
       },
       "gpt-oss-20b-high": {
         "intelligence": 27.62
       },
       "mimo-v2-omni": {
-        "intelligence": 27.57
+        "intelligence": 27.56
       },
       "o4-mini": {
         "intelligence": 27.47
       },
       "gpt-5-mini-2025-08-07": {
-        "intelligence": 27.33
+        "intelligence": 27.32
       },
       "mistral-medium-3-5": {
-        "intelligence": 26.88
+        "intelligence": 26.87
       },
       "minimax-m2": {
-        "intelligence": 26.86
+        "intelligence": 26.84
       },
       "nemotron-3-super-120b-a12b": {
         "intelligence": 26.8
@@ -16787,7 +17745,7 @@
         "intelligence": 26.63
       },
       "gpt-5-4-nano": {
-        "intelligence": 26.62
+        "intelligence": 26.61
       },
       "k-exaone-236b-a23b": {
         "intelligence": 26.21
@@ -16795,11 +17753,14 @@
       "exaone-4-5-33b": {
         "intelligence": 25.99
       },
+      "mimo-v2-5-pro": {
+        "intelligence": 25.73
+      },
       "sarvam-105b": {
         "intelligence": 25.69
       },
       "claude-haiku-4-5-20251001": {
-        "intelligence": 25.69
+        "intelligence": 25.68
       },
       "nova-2-omni": {
         "intelligence": 25.68
@@ -16817,25 +17778,22 @@
         "intelligence": 24.85
       },
       "qwen3-5-9b": {
-        "intelligence": 24.74
-      },
-      "mimo-v2-5-pro": {
-        "intelligence": 24.7
+        "intelligence": 24.73
       },
       "qwen3-vl-235b-a22b-instruct": {
-        "intelligence": 24.68
+        "intelligence": 24.67
       },
       "laguna-xs-2-1": {
         "intelligence": 24.38
       },
       "glm-4-5-air": {
-        "intelligence": 24.38
+        "intelligence": 24.37
       },
       "claude-sonnet-4-20250514": {
         "intelligence": 24.2
       },
       "qwen3-235b-a22b-instruct-2507": {
-        "intelligence": 24.17
+        "intelligence": 24.16
       },
       "deepseek-r1-0528": {
         "intelligence": 24.1
@@ -16847,37 +17805,37 @@
         "intelligence": 23.93
       },
       "granite-4-2-30b": {
-        "intelligence": 23.83
-      },
-      "grok-4-20-beta-0309-reasoning": {
-        "intelligence": 23.83
+        "intelligence": 23.82
       },
       "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.81
+      },
+      "grok-4-20-beta-0309-reasoning": {
+        "intelligence": 23.79
       },
       "mercury-2": {
         "intelligence": 23.56
       },
       "qwen3-vl-32b-thinking": {
-        "intelligence": 23.55
+        "intelligence": 23.54
       },
       "glm-4-7-flash": {
-        "intelligence": 23.48
+        "intelligence": 23.47
       },
       "u2": {
-        "intelligence": 23.37
+        "intelligence": 23.36
       },
       "grok-4-3": {
-        "intelligence": 22.27
+        "intelligence": 22.25
       },
       "nemotron-3-5-lightning-30b-a3b": {
-        "intelligence": 22.06
+        "intelligence": 22.05
       },
       "deepseek-v3-1": {
-        "intelligence": 22.06
+        "intelligence": 22.05
       },
       "gemma-4-12b-it": {
-        "intelligence": 22
+        "intelligence": 21.99
       },
       "north-mini-code-1-0": {
         "intelligence": 21.97
@@ -16886,7 +17844,7 @@
         "intelligence": 21.88
       },
       "gemini-2-5-flash": {
-        "intelligence": 21.78
+        "intelligence": 21.77
       },
       "qwen3-max": {
         "intelligence": 21.73
@@ -16933,22 +17891,22 @@
       "longcat-flash-chat": {
         "intelligence": 19.8
       },
-      "granite-4-2-8b": {
-        "intelligence": 19.68
-      },
       "o1-pro": {
         "intelligence": 19.68
       },
+      "granite-4-2-8b": {
+        "intelligence": 19.67
+      },
       "grok-4-1-2025-11-17": {
-        "intelligence": 19.56
+        "intelligence": 19.55
       },
       "sarvam-30b": {
         "intelligence": 19.55
       },
-      "qwen3-5-4b": {
-        "intelligence": 19.52
-      },
       "gpt-5-nano-2025-08-07": {
+        "intelligence": 19.51
+      },
+      "qwen3-5-4b": {
         "intelligence": 19.51
       },
       "diffusiongemma-26b-a4b-it": {
@@ -17021,13 +17979,13 @@
         "intelligence": 15.88
       },
       "deepseek-v3": {
-        "intelligence": 15.66
+        "intelligence": 15.65
       },
       "qwen3-235b-a22b": {
         "intelligence": 15.56
       },
       "granite-4-2-3b": {
-        "intelligence": 15.49
+        "intelligence": 15.48
       },
       "phi-4-reasoning-plus": {
         "intelligence": 15.01
@@ -17054,7 +18012,7 @@
         "intelligence": 14.14
       },
       "gpt-4-1-mini-2025-04-14": {
-        "intelligence": 14.02
+        "intelligence": 14.01
       },
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.86
@@ -17152,10 +18110,10 @@
       "mistral-large-latest": {
         "intelligence": 9.02
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
@@ -17210,7 +18168,7 @@
         "intelligence": 7
       },
       "gemma-4-e2b-it": {
-        "intelligence": 6.74
+        "intelligence": 6.73
       },
       "qwen2-5-vl-7b": {
         "intelligence": 6.52
@@ -17222,7 +18180,7 @@
         "intelligence": 5.77
       },
       "gemma-3-12b-it": {
-        "intelligence": 5.57
+        "intelligence": 5.56
       },
       "phi-4": {
         "intelligence": 5.41
@@ -17339,7 +18297,7 @@
         "intelligence": -1.1
       },
       "llama-3-2-11b-instruct": {
-        "intelligence": -1.29
+        "intelligence": -1.3
       },
       "claude-3-haiku-20240307": {
         "intelligence": -1.46
@@ -17447,112 +18405,117 @@
         "intelligence": -13.43
       },
       "muse-spark-1-3-contributor": {
-        "intelligence": 54.29,
+        "intelligence": 54.01,
         "aliasOf": "muse-spark-1-3",
         "fallback": true
       },
       "muse-spark-1-2-contributor": {
-        "intelligence": 39.79,
+        "intelligence": 38.81,
         "aliasOf": "muse-spark-1-2",
         "fallback": true
       },
       "deepseek-v4-pro": {
-        "intelligence": 43.11,
+        "intelligence": 43.08,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "deepseek-v4-flash": {
-        "intelligence": 39.14,
+        "intelligence": 39.12,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "tencent-hy4-preview": {
-        "intelligence": 50.99,
+        "intelligence": 50.69,
         "aliasOf": "hy4-preview",
         "fallback": true
       },
       "tencent-hy3": {
-        "intelligence": 43.18,
+        "intelligence": 43.05,
         "aliasOf": "hy3",
         "fallback": true
       },
       "kimi-k2-7-code-highspeed": {
-        "intelligence": 39.35,
+        "intelligence": 39.55,
         "aliasOf": "kimi-k2-7-code",
         "fallback": true
       },
       "glm-5-3-flashx": {
-        "intelligence": 52.71,
+        "intelligence": 52.44,
         "aliasOf": "glm-5-3",
         "fallback": true
       },
       "glm-5-2-fast": {
-        "intelligence": 45.6,
+        "intelligence": 45.48,
         "aliasOf": "glm-5-2",
         "fallback": true
       },
       "deepseek-v4-pro-latest": {
-        "intelligence": 43.11,
+        "intelligence": 43.08,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "deepseek-v4-flash-latest": {
-        "intelligence": 39.14,
+        "intelligence": 39.12,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "deepseek-v4-flash-fast": {
-        "intelligence": 39.14,
+        "intelligence": 39.12,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "qwen-3-8-max-0902": {
-        "intelligence": 52.01,
+        "intelligence": 51.8,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-max": {
-        "intelligence": 52.01,
+        "intelligence": 51.8,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-27b": {
-        "intelligence": 45.1,
+        "intelligence": 45.05,
         "aliasOf": "qwen3-8-27b",
         "fallback": true
       },
       "qwen-3-6-plus": {
-        "intelligence": 39.42,
+        "intelligence": 39.41,
         "aliasOf": "qwen3-6-plus",
         "fallback": true
       },
       "qwen-3-7-max": {
-        "intelligence": 45.52,
+        "intelligence": 45.49,
         "aliasOf": "qwen3-7-max",
         "fallback": true
       },
       "qwen-3-7-plus": {
-        "intelligence": 42.61,
+        "intelligence": 42.59,
         "aliasOf": "qwen3-7-plus",
         "fallback": true
       },
       "qwen-3-8-flash": {
-        "intelligence": 49.1,
+        "intelligence": 49,
         "aliasOf": "qwen3-8-flash",
         "fallback": true
       },
+      "mimo-v2-6-pro-ultraspeed": {
+        "intelligence": 49.77,
+        "aliasOf": "mimo-v2-6-pro",
+        "fallback": true
+      },
       "nemotron-3-ultra": {
-        "intelligence": 36.27,
+        "intelligence": 36.22,
         "aliasOf": "nemotron-3-ultra-550b-a55b",
         "fallback": true
       },
       "claude-haiku-4-5": {
-        "intelligence": 25.69,
+        "intelligence": 25.68,
         "aliasOf": "claude-haiku-4-5-20251001",
         "fallback": true
       },
       "gemini-3-1-flash-lite": {
-        "intelligence": 30.92,
+        "intelligence": 30.9,
         "aliasOf": "gemini-3-1-flash-lite-preview",
         "fallback": true
       }
@@ -17569,7 +18532,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-21",
+      "verifiedAt": "2026-09-22",
       "crawled": true
     },
     {
@@ -17680,12 +18643,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Mon, 21 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Tue, 22 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.871295,
-      "CNY": 6.704712,
-      "GBP": 0.747411,
-      "JPY": 156.918661
+      "EUR": 0.87176,
+      "CNY": 6.710202,
+      "GBP": 0.747749,
+      "JPY": 157.353588
     }
   },
   "statistics": {
