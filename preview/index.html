@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Coding Plan Compare: AI coding subscription prices and token rates</title>
 <meta name="description" content="The independent, reproducible comparison of AI coding plan subscriptions. Live prices, real token economics, credit formulas, cache-aware cost modeling. English & Deutsch.">
@@ -18,12 +19,12 @@
    Dark is the default surface; light via [data-theme="light"].
    ========================================================================== */
 
-@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/SpaceGrotesk-500.woff2') format('woff2');}
-@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/SpaceGrotesk-700.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/Inter-400.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('fonts/Inter-500.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/Inter-600.woff2') format('woff2');}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/Inter-700.woff2') format('woff2');}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/SpaceGrotesk-500.woff2') format('woff2');}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/SpaceGrotesk-700.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/Inter-400.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/Inter-500.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/Inter-600.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/Inter-700.woff2') format('woff2');}
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -36,7 +37,7 @@
   --line-soft: #182130;
   --text: #e9eef5;
   --text-2: #98a7b9;
-  --text-3: #62748a;
+  --text-3: #7d8ea3;
   --accent: #6ee7c7;
   --accent-2: #3fbf9c;
   --accent-ink: #06231c;
@@ -75,8 +76,8 @@
   --line-soft: #edf1f6;
   --text: #0c1219;
   --text-2: #4e5c70;
-  --text-3: #7a8798;
-  --accent: #0e8f70;
+  --text-3: #5f6f80;
+  --accent: #0c7a5f;
   --accent-2: #0b7359;
   --accent-ink: #ffffff;
   --accent-soft: #e4f5ef;
@@ -88,7 +89,7 @@
   --warn-soft: #fef3c7;
   --danger: #b91c1c;
   --danger-soft: #fee2e2;
-  --ok: #0e8f70;
+  --ok: #0c7a5f;
   --ok-soft: #e4f5ef;
   --info: #1f7fb8;
   --info-soft: #e3f1f9;
@@ -112,8 +113,8 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
 ::-webkit-scrollbar-track { background: transparent; }
 
-h1, h2, h3, h4 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
-p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--accent); }
 button { font: inherit; color: inherit; }
@@ -266,10 +267,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
   gap: 12px; padding: 15px 18px; border-bottom: 1px solid var(--line-soft);
 }
 .panel-head h2, .panel-head h3 { font-family: var(--font-display); font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; }
-.panel-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; }
+.panel-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; max-width: 75ch; }
 .section-head { padding: 15px 18px; border-bottom: 1px solid var(--line-soft); }
 .section-head h2 { font-family: var(--font-display); font-size: 15.5px; font-weight: 700; }
-.section-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; }
+.section-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; max-width: 75ch; }
 
 /* ------------------------------------------------- workbench (overview) */
 .workbench { display: grid; grid-template-columns: 264px minmax(0, 1fr) 320px; gap: 18px; align-items: start; margin-top: 18px; }
@@ -613,6 +614,7 @@ footer { margin-top: auto; }
 .cmdk-input { display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-bottom: 1px solid var(--line-soft); }
 .cmdk-input svg { width: 16px; height: 16px; color: var(--text-3); flex: none; }
 .cmdk-input input { flex: 1 1 auto; background: none; border: 0; outline: none; color: var(--text); font-size: 15px; font-family: var(--font-text); }
+.cmdk-input:focus-within, .calc-money:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 .cmdk-list { max-height: 52vh; overflow-y: auto; padding: 6px; }
 .cmdk-item {
   display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; cursor: pointer;
@@ -784,6 +786,8 @@ main { view-transition-name: main-content; }
   </script>
 </head>
 <body>
+<div style="background:#10261f;color:#6ee7c7;font:600 12.5px/1.4 Inter,system-ui,sans-serif;padding:7px 18px;text-align:center">Vorschau-Fassung: Kontrast, Zeilenlaenge und Fokusringe. Die Daten und app.js kommen unveraendert von der Hauptseite. <a href="../" style="color:#6ee7c7;text-decoration:underline">zur Hauptseite</a></div>
+
 
 <!-- ===== NAV ===== -->
 <nav class="nav">
@@ -1411,6 +1415,6 @@ main { view-transition-name: main-content; }
 <div class="toast" id="toast"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
-<script src="app.js?v=e6af6ed"></script>
+<script src="../app.js?v=e6af6ed"></script>
 </body>
 </html>

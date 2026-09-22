@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-22T08:35:13.282Z",
+  "generatedAt": "2026-09-22T17:15:06.268Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -10704,7 +10704,7 @@
         {
           "label": "7-day rolling",
           "unit": "credits",
-          "amount": 2500,
+          "amount": 11500,
           "window": "rolling",
           "refresh": "rolling",
           "disclosure": "exact"
@@ -10751,7 +10751,7 @@
         {
           "label": "7-day rolling",
           "unit": "credits",
-          "amount": 5625,
+          "amount": 25500,
           "window": "rolling",
           "refresh": "rolling",
           "disclosure": "exact"
@@ -10798,7 +10798,7 @@
         {
           "label": "7-day rolling",
           "unit": "credits",
-          "amount": 10000,
+          "amount": 45000,
           "window": "rolling",
           "refresh": "rolling",
           "disclosure": "exact"
@@ -10845,7 +10845,7 @@
         {
           "label": "7-day rolling",
           "unit": "credits",
-          "amount": 40000,
+          "amount": 180000,
           "window": "rolling",
           "refresh": "rolling",
           "disclosure": "exact"
@@ -17285,7 +17285,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-22T08:35:12.582Z",
+    "fetchedAt": "2026-09-22T17:15:06.171Z",
     "count": 395,
     "scores": {
       "gpt-6-astra": {
@@ -17459,10 +17459,10 @@
       "laguna-s-2-1": {
         "intelligence": 40.63
       },
-      "gemini-3-8-flash-cyber": {
+      "kimi-k2-7-code": {
         "intelligence": 39.55
       },
-      "kimi-k2-7-code": {
+      "gemini-3-8-flash-cyber": {
         "intelligence": 39.55
       },
       "seed-2-0-pro": {
@@ -17705,10 +17705,10 @@
       "seed-2-0-mini": {
         "intelligence": 27.82
       },
-      "gemini-2-5-pro": {
+      "mai-code-1-1-flash": {
         "intelligence": 27.81
       },
-      "mai-code-1-1-flash": {
+      "gemini-2-5-pro": {
         "intelligence": 27.81
       },
       "claude-opus-4-20250514": {
@@ -17897,10 +17897,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.67
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.55
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.55
       },
       "gpt-5-nano-2025-08-07": {
@@ -18110,10 +18110,10 @@
       "mistral-large-latest": {
         "intelligence": 9.02
       },
-      "nova-2-sonic": {
+      "qwq-32b-preview": {
         "intelligence": 9
       },
-      "qwq-32b-preview": {
+      "nova-2-sonic": {
         "intelligence": 9
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
