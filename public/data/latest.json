@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-22T23:13:45.775Z",
+  "generatedAt": "2026-09-22T23:17:26.575Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -17747,7 +17747,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-22T23:13:45.683Z",
+    "fetchedAt": "2026-09-22T23:17:26.456Z",
     "count": 398,
     "scores": {
       "claude-opus-5-5": {
@@ -17867,10 +17867,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -17891,10 +17891,10 @@
       "deepseek-v4-pro-max": {
         "intelligence": 43
       },
-      "gemini-3-6-flash": {
+      "hy3": {
         "intelligence": 42.92
       },
-      "hy3": {
+      "gemini-3-6-flash": {
         "intelligence": 42.92
       },
       "gpt-5-2-pro-2025-12-11": {
@@ -18173,10 +18173,10 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.04
       },
-      "seed-2-0-mini": {
+      "gemini-2-5-pro": {
         "intelligence": 27.8
       },
-      "gemini-2-5-pro": {
+      "seed-2-0-mini": {
         "intelligence": 27.8
       },
       "mai-code-1-1-flash": {
@@ -18368,10 +18368,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
       "qwen3-5-4b": {
@@ -18488,10 +18488,10 @@
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.85
       },
-      "llama-3-3-70b-instruct": {
+      "gemma-4-e4b-it": {
         "intelligence": 13.8
       },
-      "gemma-4-e4b-it": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.8
       },
       "devstral-medium-2507": {
@@ -18671,10 +18671,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
