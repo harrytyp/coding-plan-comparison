@@ -60,6 +60,14 @@ nächsten Push weg (und die Seite hat dann neues Markup ohne Logik).
 dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bleibt
 `public/index.html`; die Vorschau ist eine eingefrorene Kopie für Design-Abnahmen.
 
+- `node scripts/build-preview.mjs` erzeugt `public/preview/index.html` neu. **Nach jeder
+  Änderung an `public/index.html` laufen lassen**, sonst zeigt die Vorschau altes Markup.
+- `public/preview/preview.css` und `preview.js` sind die Gestaltungs- und Bewegungsschicht
+  der Vorschau (eigene Tokens, Typo, Layout, Animation). Sie liegen **nur** in der Vorschau;
+  die Hauptseite bleibt unberührt, bis die Schicht bewusst übernommen wird.
+- `app.js` bleibt in beiden Fassungen identisch. Die Vorschau darf app.js nicht patchen;
+  Korrekturen an dessen Verhalten gehören in `public/app.js` und damit in beide Fassungen.
+
 ## Workflow
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.

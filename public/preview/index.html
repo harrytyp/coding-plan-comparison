@@ -789,9 +789,10 @@ main { view-transition-name: main-content; }
     ]
   }
   </script>
+  <link rel="stylesheet" href="preview.css">
 </head>
 <body>
-<div style="background:#10261f;color:#6ee7c7;font:600 12.5px/1.4 Inter,system-ui,sans-serif;padding:7px 18px;text-align:center">Vorschau-Fassung dieser Seite. Daten und app.js kommen unveraendert von der Hauptseite. <a href="../" style="color:#6ee7c7;text-decoration:underline">zur Hauptseite</a></div>
+<div style="background:var(--surface-2);color:var(--text-2);border-bottom:1px solid var(--line);font:400 11px/1.6 'Space Mono',ui-monospace,monospace;letter-spacing:.04em;padding:6px 18px;text-align:center">Preview build: same data and app.js as the main page, different presentation layer. <a href="../" style="color:var(--accent);text-decoration:underline">Back to the main page</a></div>
 
 
 <!-- ===== NAV ===== -->
@@ -1421,5 +1422,6 @@ main { view-transition-name: main-content; }
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="../app.js?v=__VERSION__"></script>
+<script src="preview.js" defer></script>
 </body>
 </html>
