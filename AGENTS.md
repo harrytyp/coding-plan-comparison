@@ -51,7 +51,9 @@ npm run check    # Change-Detection-Report
 Root `index.html`/`app.js`/`data/latest.json` sind byte-identische Kopien von `public/`
 (Legacy-Pages serviert vom Root). `public/index.html` nutzt den `__VERSION__`-Platzhalter,
 den die CI beim Sync durch den Commit-Hash ersetzt (Cache-Busting). Lokal nicht ersetzen.
-Root-Mirrors committet die CI (`update.yml`), nicht von Hand.
+Root-Mirrors committet die CI (`update.yml`), nicht von Hand. **Änderungen immer in `public/`
+machen:** die Root-Kopien werden bei jedem CI-Lauf überschrieben, ein Edit dort ist nach dem
+nächsten Push weg (und die Seite hat dann neues Markup ohne Logik).
 
 **Vorschau:** `public/preview/index.html` spiegelt die CI nach `preview/` (erreichbar unter
 `/preview/`). Sie lädt `../app.js`, `../data/latest.json` und `../fonts/` von der Hauptseite,
