@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-22T17:15:06.268Z",
+  "generatedAt": "2026-09-22T23:11:49.237Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -1187,15 +1187,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 80,
+      "modelCount": 83,
       "modelStats": {
-        "count": 80,
+        "count": 83,
         "min": 42.01680672268907,
         "max": 23988.54278553527,
-        "mean": 2388.3228592811097,
-        "median": 503.9602501864589,
+        "mean": 2357.153089219057,
+        "median": 497.2057039438356,
         "p25": 188.46588767433093,
-        "p75": 2050.5977467517932
+        "p75": 2210.9256574844953
       },
       "dataTier": "B",
       "dataTierNote": "Official total 15,000 req/mo as anchor",
@@ -2261,6 +2261,28 @@
           "derivedTokensPerMonth": 2141260.5042016804
         },
         {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 166.1129568106312,
+          "requestsRawInWindow": 166.1129568106312,
+          "normalizedPer1": 166.1129568106312,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8465448.504983388,
+          "derivedTokensPerMonth": 8465448.504983388
+        },
+        {
           "model": "Claude Opus 5",
           "family": "claude opus 5",
           "allowance": 2.8571428571428568,
@@ -2435,6 +2457,50 @@
           "estimate": null,
           "rawTokensPerMonth": 2141260.5042016804,
           "derivedTokensPerMonth": 2141260.5042016804
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 210.08403361344537,
+          "requestsRawInWindow": 210.08403361344537,
+          "normalizedPer1": 210.08403361344537,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 10706302.521008402,
+          "derivedTokensPerMonth": 10706302.521008402
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4201.680672268907,
+          "requestsRawInWindow": 4201.680672268907,
+          "normalizedPer1": 4201.680672268907,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 214126050.42016804,
+          "derivedTokensPerMonth": 214126050.42016804
         },
         {
           "model": "GPT-5.6 Sol",
@@ -3019,15 +3085,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 80,
+      "modelCount": 83,
       "modelStats": {
-        "count": 80,
+        "count": 83,
         "min": 294.11764705882354,
         "max": 167919.79949874687,
-        "mean": 16718.26001496778,
-        "median": 3527.721751305213,
+        "mean": 16500.071624533415,
+        "median": 3480.43992760685,
         "p25": 1319.2612137203166,
-        "p75": 14354.184227262556
+        "p75": 15476.479602391471
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
@@ -4093,6 +4159,28 @@
           "derivedTokensPerMonth": 14988823.529411765
         },
         {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1162.7906976744187,
+          "requestsRawInWindow": 1162.7906976744187,
+          "normalizedPer1": 107.96571009047527,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 59258139.53488372,
+          "derivedTokensPerMonth": 59258139.53488372
+        },
+        {
           "model": "Claude Opus 5",
           "family": "claude opus 5",
           "allowance": 20,
@@ -4267,6 +4355,50 @@
           "estimate": null,
           "rawTokensPerMonth": 14988823.529411765,
           "derivedTokensPerMonth": 14988823.529411765
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1470.5882352941178,
+          "requestsRawInWindow": 1470.5882352941178,
+          "normalizedPer1": 136.5448686438364,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 74944117.64705883,
+          "derivedTokensPerMonth": 74944117.64705883
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 29411.76470588235,
+          "requestsRawInWindow": 29411.76470588235,
+          "normalizedPer1": 2730.897372876727,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1498882352.9411764,
+          "derivedTokensPerMonth": 1498882352.9411764
         },
         {
           "model": "GPT-5.6 Sol",
@@ -4851,15 +4983,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 80,
+      "modelCount": 83,
       "modelStats": {
-        "count": 80,
+        "count": 83,
         "min": 294.11764705882354,
         "max": 192982.45614035087,
-        "mean": 21585.365635109025,
-        "median": 5035.679575418884,
-        "p25": 1869.0712396582862,
-        "p75": 21464.8223270714
+        "mean": 21368.437069885716,
+        "median": 5028.494803888702,
+        "p25": 1580.3645401822703,
+        "p75": 23081.811375942336
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
@@ -5925,6 +6057,28 @@
           "derivedTokensPerMonth": 14988823.529411765
         },
         {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1162.7906976744187,
+          "requestsRawInWindow": 1162.7906976744187,
+          "normalizedPer1": 58.139534883720934,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 59258139.53488372,
+          "derivedTokensPerMonth": 59258139.53488372
+        },
+        {
           "model": "Claude Opus 5",
           "family": "claude opus 5",
           "allowance": 20,
@@ -6099,6 +6253,50 @@
           "estimate": null,
           "rawTokensPerMonth": 14988823.529411765,
           "derivedTokensPerMonth": 14988823.529411765
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1470.5882352941178,
+          "requestsRawInWindow": 1470.5882352941178,
+          "normalizedPer1": 73.52941176470588,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 74944117.64705883,
+          "derivedTokensPerMonth": 74944117.64705883
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 44117.647058823524,
+          "requestsRawInWindow": 44117.647058823524,
+          "normalizedPer1": 2205.882352941176,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2248323529.4117646,
+          "derivedTokensPerMonth": 2248323529.4117646
         },
         {
           "model": "GPT-5.6 Sol",
@@ -6683,15 +6881,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 80,
+      "modelCount": 83,
       "modelStats": {
-        "count": 80,
+        "count": 83,
         "min": 630.2521008403361,
         "max": 359828.14178302896,
-        "mean": 35824.84288921668,
-        "median": 7559.403752796883,
+        "mean": 35357.29633828589,
+        "median": 7458.085559157535,
         "p25": 2826.988315114964,
-        "p75": 30758.966201276904
+        "p75": 33163.884862267434
       },
       "dataTier": "B",
       "dataTierNote": "Official total 230,000 req/mo as anchor",
@@ -7757,6 +7955,28 @@
           "derivedTokensPerMonth": 32118907.563025206
         },
         {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2491.694352159468,
+          "requestsRawInWindow": 2491.694352159468,
+          "normalizedPer1": 24.916943521594682,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 126981727.57475081,
+          "derivedTokensPerMonth": 126981727.57475081
+        },
+        {
           "model": "Claude Opus 5",
           "family": "claude opus 5",
           "allowance": 42.857142857142854,
@@ -7931,6 +8151,50 @@
           "estimate": null,
           "rawTokensPerMonth": 32118907.563025206,
           "derivedTokensPerMonth": 32118907.563025206
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3151.2605042016808,
+          "requestsRawInWindow": 3151.2605042016808,
+          "normalizedPer1": 31.51260504201681,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 160594537.81512606,
+          "derivedTokensPerMonth": 160594537.81512606
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 63025.210084033606,
+          "requestsRawInWindow": 63025.210084033606,
+          "normalizedPer1": 630.2521008403361,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 3211890756.3025208,
+          "derivedTokensPerMonth": 3211890756.3025208
         },
         {
           "model": "GPT-5.6 Sol",
@@ -8515,15 +8779,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 80,
+      "modelCount": 83,
       "modelStats": {
-        "count": 80,
+        "count": 83,
         "min": 1260.5042016806722,
         "max": 719656.2835660579,
-        "mean": 71649.68577843336,
-        "median": 15118.807505593766,
+        "mean": 70714.59267657177,
+        "median": 14916.17111831507,
         "p25": 5653.976630229928,
-        "p75": 61517.93240255381
+        "p75": 66327.76972453487
       },
       "dataTier": "B",
       "dataTierNote": "Official total 370,000 req/mo as anchor",
@@ -9589,6 +9853,28 @@
           "derivedTokensPerMonth": 64237815.12605041
         },
         {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 4983.388704318936,
+          "requestsRawInWindow": 4983.388704318936,
+          "normalizedPer1": 24.916943521594682,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 253963455.14950162,
+          "derivedTokensPerMonth": 253963455.14950162
+        },
+        {
           "model": "Claude Opus 5",
           "family": "claude opus 5",
           "allowance": 85.71428571428571,
@@ -9763,6 +10049,50 @@
           "estimate": null,
           "rawTokensPerMonth": 64237815.12605041,
           "derivedTokensPerMonth": 64237815.12605041
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 6302.5210084033615,
+          "requestsRawInWindow": 6302.5210084033615,
+          "normalizedPer1": 31.51260504201681,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 321189075.6302521,
+          "derivedTokensPerMonth": 321189075.6302521
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 126050.42016806721,
+          "requestsRawInWindow": 126050.42016806721,
+          "normalizedPer1": 630.2521008403361,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 6423781512.6050415,
+          "derivedTokensPerMonth": 6423781512.6050415
         },
         {
           "model": "GPT-5.6 Sol",
@@ -12213,40 +12543,40 @@
       "planA": "opencode-go",
       "planB": "command-code-go",
       "meanRequestsA": 35421.42992156376,
-      "meanRequestsB": 2388.3228592811097,
-      "advantagePercent": 1383.1089433287796,
+      "meanRequestsB": 2357.153089219057,
+      "advantagePercent": 1402.7208068738187,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
       "meanRequestsA": 35421.42992156376,
-      "meanRequestsB": 16718.26001496778,
-      "advantagePercent": 111.87270618982552,
+      "meanRequestsB": 16500.071624533415,
+      "advantagePercent": 114.67440098197387,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
       "meanRequestsA": 35421.42992156376,
-      "meanRequestsB": 21585.365635109025,
-      "advantagePercent": 64.09928152409935,
+      "meanRequestsB": 21368.437069885716,
+      "advantagePercent": 65.7651881872201,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
       "meanRequestsA": 35421.42992156376,
-      "meanRequestsB": 35824.84288921668,
-      "advantagePercent": 1.1260704447481285,
+      "meanRequestsB": 35357.29633828589,
+      "advantagePercent": 0.18138712492115072,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
       "meanRequestsA": 35421.42992156376,
-      "meanRequestsB": 71649.68577843336,
-      "advantagePercent": 50.56303522237406,
+      "meanRequestsB": 70714.59267657177,
+      "advantagePercent": 49.90930643753943,
       "winner": "command-code-max20"
     },
     {
@@ -12340,521 +12670,521 @@
     {
       "planA": "command-code-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 2388.3228592811097,
-      "meanRequestsB": 16718.26001496778,
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 16500.071624533415,
       "advantagePercent": 85.71428571428572,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 2388.3228592811097,
-      "meanRequestsB": 21585.365635109025,
-      "advantagePercent": 88.93545330825225,
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 21368.437069885716,
+      "advantagePercent": 88.96899627469261,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 2388.3228592811097,
-      "meanRequestsB": 35824.84288921668,
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 35357.29633828589,
       "advantagePercent": 93.33333333333333,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 2388.3228592811097,
-      "meanRequestsB": 71649.68577843336,
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 70714.59267657177,
       "advantagePercent": 96.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-lite",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 71.21523853747685,
+      "advantagePercent": 71.59090566832194,
       "winner": "glm-lite"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-pro",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 95.20253975624614,
+      "advantagePercent": 95.26515094472032,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-max",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 97.94394560981978,
+      "advantagePercent": 97.97077897630871,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 3300,
-      "advantagePercent": 27.62658002178455,
+      "advantagePercent": 28.571118508513415,
       "winner": "kimi-moderato"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 63.995132774656646,
+      "advantagePercent": 64.46502880574285,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 23300,
-      "advantagePercent": 89.7496872992227,
+      "advantagePercent": 89.8834631363989,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 94.9593236544583,
+      "advantagePercent": 95.02510903269442,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-free",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 96.00315158753362,
+      "advantagePercent": 96.05531406862589,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-starter",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 97.52195398427085,
+      "advantagePercent": 97.55429472254804,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-plus",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 98.50720119534388,
+      "advantagePercent": 98.52668356780003,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-pro",
-      "meanRequestsA": 2388.3228592811097,
+      "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 99.06134620616321,
+      "advantagePercent": 99.07359648581365,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
-      "meanRequestsA": 16718.26001496778,
-      "meanRequestsB": 21585.365635109025,
-      "advantagePercent": 22.54817315776575,
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 21368.437069885716,
+      "advantagePercent": 22.78297392284825,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max10",
-      "meanRequestsA": 16718.26001496778,
-      "meanRequestsB": 35824.84288921668,
-      "advantagePercent": 53.33333333333334,
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 35357.29633828589,
+      "advantagePercent": 53.333333333333336,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max20",
-      "meanRequestsA": 16718.26001496778,
-      "meanRequestsB": 71649.68577843336,
-      "advantagePercent": 76.66666666666667,
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 70714.59267657177,
+      "advantagePercent": 76.66666666666666,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-lite",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 101.49333023766225,
+      "advantagePercent": 98.86366032174665,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-pro",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 66.41777829372295,
+      "advantagePercent": 66.85605661304221,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-max",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 85.6076192687384,
+      "advantagePercent": 85.79545283416094,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-moderato",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 3300,
-      "advantagePercent": 406.61393984750845,
+      "advantagePercent": 400.00217044040653,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 152.03407057740367,
+      "advantagePercent": 148.7447983598002,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegro",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 23300,
-      "advantagePercent": 28.247811094558894,
+      "advantagePercent": 29.184241954792213,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-vivace",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 64.71526558120813,
+      "advantagePercent": 65.17576322886092,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-free",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 72.02206111273534,
+      "advantagePercent": 72.38719848038114,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-starter",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 82.65367788989592,
+      "advantagePercent": 82.88006305783631,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-plus",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 89.55040836740717,
+      "advantagePercent": 89.68678497460019,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-pro",
-      "meanRequestsA": 16718.26001496778,
+      "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 93.42942344314238,
+      "advantagePercent": 93.51517540069557,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
-      "meanRequestsA": 21585.365635109025,
-      "meanRequestsB": 35824.84288921668,
-      "advantagePercent": 39.74749393358471,
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 35357.29633828589,
+      "advantagePercent": 39.56427871226295,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max20",
-      "meanRequestsA": 21585.365635109025,
-      "meanRequestsB": 71649.68577843336,
-      "advantagePercent": 69.87374696679237,
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 70714.59267657177,
+      "advantagePercent": 69.78213935613147,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-lite",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 160.15310219614926,
+      "advantagePercent": 157.53861605994913,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-pro",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 56.641149633975104,
+      "advantagePercent": 57.076897323341804,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-max",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 81.4176355574179,
+      "advantagePercent": 81.6043845671465,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 3300,
-      "advantagePercent": 554.1019889426977,
+      "advantagePercent": 547.5283960571429,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 225.40752213732196,
+      "advantagePercent": 222.13724225958362,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 23300,
-      "advantagePercent": 7.358945772064274,
+      "advantagePercent": 8.289969657142848,
       "winner": "draw"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-vivace",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 54.44299268671193,
+      "advantagePercent": 54.900831409455876,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-free",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 63.87698001719907,
+      "advantagePercent": 64.2400090725724,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-starter",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 77.60372761066343,
+      "advantagePercent": 77.8288056249949,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-plus",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 86.50826964497796,
+      "advantagePercent": 86.64385881023789,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-pro",
-      "meanRequestsA": 21585.365635109025,
+      "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 91.51656348888766,
+      "advantagePercent": 91.60182031249808,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
-      "meanRequestsA": 35824.84288921668,
-      "meanRequestsB": 71649.68577843336,
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 70714.59267657177,
       "advantagePercent": 50,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-lite",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 331.7714219378478,
+      "advantagePercent": 326.13641497517136,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-pro",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 28.038096343692022,
+      "advantagePercent": 28.97726417080475,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-max",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 69.15918414729659,
+      "advantagePercent": 69.56168464463062,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-moderato",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 3300,
-      "advantagePercent": 985.6012996732327,
+      "advantagePercent": 971.4332223722996,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 440.0730083801509,
+      "advantagePercent": 433.02456791385754,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegro",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 23300,
-      "advantagePercent": 53.754690511659554,
+      "advantagePercent": 51.74805295401668,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-vivace",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 24.389854816874546,
+      "advantagePercent": 25.376635490416245,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-free",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 40.0472738130043,
+      "advantagePercent": 40.82971102938816,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-starter",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 62.82930976406267,
+      "advantagePercent": 63.314420838220656,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-plus",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 77.60801793015824,
+      "advantagePercent": 77.9002535170004,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-pro",
-      "meanRequestsA": 35824.84288921668,
+      "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 85.92019309244799,
+      "advantagePercent": 86.10394728720479,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-lite",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 763.5428438756956,
+      "advantagePercent": 752.2728299503427,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-pro",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 43.923807312615956,
+      "advantagePercent": 42.0454716583905,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-max",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 38.31836829459318,
+      "advantagePercent": 39.12336928926122,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-moderato",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 3300,
-      "advantagePercent": 2071.2025993464654,
+      "advantagePercent": 2042.8664447445992,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 980.1460167603018,
+      "advantagePercent": 966.0491358277151,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegro",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 23300,
-      "advantagePercent": 207.5093810233191,
+      "advantagePercent": 203.49610590803334,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-vivace",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 51.22029036625091,
+      "advantagePercent": 49.24672901916751,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-free",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 19.905452373991395,
+      "advantagePercent": 18.34057794122368,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-starter",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 25.658619528125325,
+      "advantagePercent": 26.62884167644132,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-plus",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 55.21603586031647,
+      "advantagePercent": 55.80050703400079,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-pro",
-      "meanRequestsA": 71649.68577843336,
+      "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 71.84038618489596,
+      "advantagePercent": 72.2078945744096,
       "winner": "freebuff-pro"
     },
     {
@@ -13791,6 +14121,13 @@
     },
     {
       "planId": "command-code-go",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 166.1129568106312,
+      "normalizedPer1Mean": 166.1129568106312
+    },
+    {
+      "planId": "command-code-go",
       "family": "claude opus 5",
       "modelCount": 1,
       "normalizedPer1Median": 84.03361344537814,
@@ -13844,6 +14181,20 @@
       "modelCount": 1,
       "normalizedPer1Median": 42.01680672268907,
       "normalizedPer1Mean": 42.01680672268907
+    },
+    {
+      "planId": "command-code-go",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 210.08403361344537,
+      "normalizedPer1Mean": 210.08403361344537
+    },
+    {
+      "planId": "command-code-go",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 4201.680672268907,
+      "normalizedPer1Mean": 4201.680672268907
     },
     {
       "planId": "command-code-go",
@@ -14281,6 +14632,13 @@
     },
     {
       "planId": "command-code-goat",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 107.96571009047527,
+      "normalizedPer1Mean": 107.96571009047527
+    },
+    {
+      "planId": "command-code-goat",
       "family": "claude opus 5",
       "modelCount": 1,
       "normalizedPer1Median": 54.61794745753455,
@@ -14334,6 +14692,20 @@
       "modelCount": 1,
       "normalizedPer1Median": 27.308973728767274,
       "normalizedPer1Mean": 27.308973728767274
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 136.5448686438364,
+      "normalizedPer1Mean": 136.5448686438364
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 2730.897372876727,
+      "normalizedPer1Mean": 2730.897372876727
     },
     {
       "planId": "command-code-goat",
@@ -14771,6 +15143,13 @@
     },
     {
       "planId": "command-code-pro",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 58.139534883720934,
+      "normalizedPer1Mean": 58.139534883720934
+    },
+    {
+      "planId": "command-code-pro",
       "family": "claude opus 5",
       "modelCount": 1,
       "normalizedPer1Median": 29.411764705882355,
@@ -14824,6 +15203,20 @@
       "modelCount": 1,
       "normalizedPer1Median": 14.705882352941178,
       "normalizedPer1Mean": 14.705882352941178
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 73.52941176470588,
+      "normalizedPer1Mean": 73.52941176470588
+    },
+    {
+      "planId": "command-code-pro",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 2205.882352941176,
+      "normalizedPer1Mean": 2205.882352941176
     },
     {
       "planId": "command-code-pro",
@@ -15261,6 +15654,13 @@
     },
     {
       "planId": "command-code-max10",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 24.916943521594682,
+      "normalizedPer1Mean": 24.916943521594682
+    },
+    {
+      "planId": "command-code-max10",
       "family": "claude opus 5",
       "modelCount": 1,
       "normalizedPer1Median": 12.605042016806722,
@@ -15314,6 +15714,20 @@
       "modelCount": 1,
       "normalizedPer1Median": 6.302521008403361,
       "normalizedPer1Mean": 6.302521008403361
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 31.51260504201681,
+      "normalizedPer1Mean": 31.51260504201681
+    },
+    {
+      "planId": "command-code-max10",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 630.2521008403361,
+      "normalizedPer1Mean": 630.2521008403361
     },
     {
       "planId": "command-code-max10",
@@ -15751,6 +16165,13 @@
     },
     {
       "planId": "command-code-max20",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 24.916943521594682,
+      "normalizedPer1Mean": 24.916943521594682
+    },
+    {
+      "planId": "command-code-max20",
       "family": "claude opus 5",
       "modelCount": 1,
       "normalizedPer1Median": 12.605042016806722,
@@ -15804,6 +16225,20 @@
       "modelCount": 1,
       "normalizedPer1Median": 6.302521008403361,
       "normalizedPer1Mean": 6.302521008403361
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 31.51260504201681,
+      "normalizedPer1Mean": 31.51260504201681
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 630.2521008403361,
+      "normalizedPer1Mean": 630.2521008403361
     },
     {
       "planId": "command-code-max20",
@@ -17013,6 +17448,15 @@
       "winner": "command-code-goat"
     },
     {
+      "family": "claude opus 5.5",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 107.96571009047527,
+      "requestsB": 58.139534883720934,
+      "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
       "family": "claude opus 5",
       "planA": "command-code-goat",
       "planB": "command-code-pro",
@@ -17082,6 +17526,24 @@
       "requestsA": 27.308973728767274,
       "requestsB": 14.705882352941178,
       "advantagePercent": 85.70102135561746,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-6 sol",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 136.5448686438364,
+      "requestsB": 73.52941176470588,
+      "advantagePercent": 85.7010213556175,
+      "winner": "command-code-goat"
+    },
+    {
+      "family": "gpt-6 luna",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 2730.897372876727,
+      "requestsB": 2205.882352941176,
+      "advantagePercent": 23.800680903744965,
       "winner": "command-code-goat"
     },
     {
@@ -17285,344 +17747,353 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-22T17:15:06.171Z",
-    "count": 395,
+    "fetchedAt": "2026-09-22T23:11:49.115Z",
+    "count": 398,
     "scores": {
+      "claude-opus-5-5": {
+        "intelligence": 59.7
+      },
       "gpt-6-astra": {
-        "intelligence": 59.71
-      },
-      "claude-fable-5-1": {
-        "intelligence": 55.59
-      },
-      "gpt-5-6-sol": {
-        "intelligence": 54.93
-      },
-      "claude-mythos-preview": {
-        "intelligence": 54.78
+        "intelligence": 59.49
       },
       "claude-opus-5": {
-        "intelligence": 54.56
+        "intelligence": 54.75
+      },
+      "claude-fable-5-1": {
+        "intelligence": 54.54
+      },
+      "gpt-5-6-sol": {
+        "intelligence": 54.44
+      },
+      "claude-mythos-preview": {
+        "intelligence": 54.33
       },
       "claude-fable-5": {
-        "intelligence": 54.16
+        "intelligence": 53.95
       },
       "muse-spark-1-3": {
-        "intelligence": 54.01
+        "intelligence": 53.83
       },
       "kimi-k3": {
-        "intelligence": 52.7
+        "intelligence": 52.49
       },
       "glm-5-3": {
-        "intelligence": 52.44
+        "intelligence": 52.09
       },
       "atria-dawn-preview": {
-        "intelligence": 51.86
-      },
-      "qwen3-8-max": {
-        "intelligence": 51.8
-      },
-      "deepseek-v4-pro-0813": {
         "intelligence": 51.57
       },
-      "deepseek-v4-1-flash": {
-        "intelligence": 51.55
+      "qwen3-8-max": {
+        "intelligence": 51.49
       },
-      "gpt-5-6-terra": {
-        "intelligence": 50.78
+      "deepseek-v4-1-flash": {
+        "intelligence": 51.35
+      },
+      "deepseek-v4-pro-0813": {
+        "intelligence": 51.08
       },
       "hy4-preview": {
-        "intelligence": 50.69
+        "intelligence": 50.42
+      },
+      "gpt-5-6-terra": {
+        "intelligence": 50.34
       },
       "claude-opus-4-8": {
-        "intelligence": 50.54
-      },
-      "gemini-3-8-flash": {
-        "intelligence": 50.09
-      },
-      "glm-5-3-flash": {
-        "intelligence": 49.84
+        "intelligence": 50.27
       },
       "mimo-v2-6-pro": {
-        "intelligence": 49.77
+        "intelligence": 49.96
+      },
+      "gemini-3-8-flash": {
+        "intelligence": 49.72
+      },
+      "glm-5-3-flash": {
+        "intelligence": 49.45
+      },
+      "gpt-6-sol": {
+        "intelligence": 49.39
       },
       "muse-spark-1-1": {
-        "intelligence": 49.47
+        "intelligence": 49.24
       },
       "qwen3-8-flash-next": {
-        "intelligence": 49.05
+        "intelligence": 48.77
       },
       "qwen3-8-flash": {
-        "intelligence": 49
+        "intelligence": 48.72
       },
       "grok-4-7": {
-        "intelligence": 48.49
-      },
-      "gemini-3-7-flash": {
-        "intelligence": 48.23
+        "intelligence": 48.04
       },
       "claude-sonnet-5": {
-        "intelligence": 48.16
+        "intelligence": 47.9
       },
       "gpt-5-5": {
-        "intelligence": 47.97
+        "intelligence": 47.78
+      },
+      "gemini-3-7-flash": {
+        "intelligence": 47.66
       },
       "seed-2-1-pro": {
-        "intelligence": 46.23
+        "intelligence": 46.11
       },
       "grok-4-6": {
-        "intelligence": 46.15
+        "intelligence": 45.8
       },
       "mimo-v2-6-flash": {
-        "intelligence": 45.62
-      },
-      "deepseek-v4-flash-vision-exp": {
-        "intelligence": 45.52
+        "intelligence": 45.66
       },
       "qwen3-7-max": {
-        "intelligence": 45.49
+        "intelligence": 45.4
       },
       "glm-5-2": {
-        "intelligence": 45.48
+        "intelligence": 45.27
       },
-      "claude-mythos-5-1": {
-        "intelligence": 45.3
+      "deepseek-v4-flash-vision-exp": {
+        "intelligence": 45.07
       },
       "gpt-5-6-luna": {
-        "intelligence": 45.25
+        "intelligence": 44.86
       },
       "qwen3-8-27b": {
-        "intelligence": 45.05
-      },
-      "grok-4-5": {
-        "intelligence": 44.9
+        "intelligence": 44.8
       },
       "claude-opus-4-6": {
-        "intelligence": 44.85
+        "intelligence": 44.74
       },
       "gpt-5-5-pro": {
-        "intelligence": 44.77
+        "intelligence": 44.71
       },
-      "deepseek-v4-flash-0731": {
-        "intelligence": 44.25
+      "grok-4-5": {
+        "intelligence": 44.57
+      },
+      "claude-mythos-5-1": {
+        "intelligence": 44.52
+      },
+      "gpt-6-luna": {
+        "intelligence": 44.52
       },
       "claude-opus-4-7": {
-        "intelligence": 44.01
+        "intelligence": 43.89
+      },
+      "deepseek-v4-flash-0731": {
+        "intelligence": 43.84
       },
       "kimi-k2-6": {
-        "intelligence": 43.67
+        "intelligence": 43.59
       },
       "gemini-3-1-pro-preview": {
-        "intelligence": 43.29
-      },
-      "gemini-3-6-flash": {
-        "intelligence": 43.17
+        "intelligence": 43.19
       },
       "seed-2-1-turbo": {
-        "intelligence": 43.12
+        "intelligence": 43.04
       },
       "deepseek-v4-pro-max": {
-        "intelligence": 43.08
+        "intelligence": 43
+      },
+      "gemini-3-6-flash": {
+        "intelligence": 42.92
       },
       "hy3": {
-        "intelligence": 43.05
+        "intelligence": 42.92
       },
       "gpt-5-2-pro-2025-12-11": {
-        "intelligence": 42.94
+        "intelligence": 42.91
       },
       "ling-3-0-flash-fin": {
-        "intelligence": 42.9
+        "intelligence": 42.77
       },
       "qwen3-7-plus": {
-        "intelligence": 42.59
+        "intelligence": 42.51
       },
       "gemini-3-5-flash": {
-        "intelligence": 42.54
+        "intelligence": 42.41
       },
       "sakana-namazu": {
-        "intelligence": 42.12
+        "intelligence": 42.1
       },
       "gpt-5-4": {
-        "intelligence": 42.07
+        "intelligence": 41.95
       },
       "muse-spark": {
-        "intelligence": 41.67
+        "intelligence": 41.62
       },
       "gpt-5-2-2025-12-11": {
-        "intelligence": 41.35
+        "intelligence": 41.3
       },
       "minimax-m3": {
-        "intelligence": 41.28
+        "intelligence": 41.18
       },
       "grok-4-heavy": {
         "intelligence": 40.68
       },
       "laguna-s-2-1": {
-        "intelligence": 40.63
-      },
-      "kimi-k2-7-code": {
-        "intelligence": 39.55
-      },
-      "gemini-3-8-flash-cyber": {
-        "intelligence": 39.55
+        "intelligence": 40.34
       },
       "seed-2-0-pro": {
-        "intelligence": 39.48
+        "intelligence": 39.47
       },
       "qwen3-6-plus": {
-        "intelligence": 39.41
+        "intelligence": 39.36
+      },
+      "kimi-k2-7-code": {
+        "intelligence": 39.29
       },
       "glm-5-1": {
-        "intelligence": 39.19
+        "intelligence": 39.1
       },
       "deepseek-v4-flash-max": {
-        "intelligence": 39.12
+        "intelligence": 39.06
       },
-      "muse-spark-1-2": {
-        "intelligence": 38.81
+      "gemini-3-8-flash-cyber": {
+        "intelligence": 38.94
       },
       "kimi-k2-5": {
-        "intelligence": 38.8
+        "intelligence": 38.75
       },
       "qwen3-5-397b-a17b": {
-        "intelligence": 38.7
+        "intelligence": 38.67
       },
       "gemini-3-pro-preview": {
-        "intelligence": 38.56
+        "intelligence": 38.52
+      },
+      "muse-spark-1-2": {
+        "intelligence": 38.35
       },
       "inkling-small": {
-        "intelligence": 38.41
+        "intelligence": 38.34
       },
       "claude-opus-4-5-20251101": {
-        "intelligence": 38.23
+        "intelligence": 38.18
       },
       "inkling": {
-        "intelligence": 37.29
-      },
-      "gemini-3-5-flash-cyber": {
-        "intelligence": 37.19
+        "intelligence": 37.21
       },
       "step-3-5-flash": {
-        "intelligence": 37.16
+        "intelligence": 37.15
       },
       "glm-5": {
-        "intelligence": 37.11
+        "intelligence": 37.06
       },
       "claude-sonnet-4-6": {
-        "intelligence": 37
-      },
-      "minimax-m2-5": {
         "intelligence": 36.92
       },
+      "minimax-m2-5": {
+        "intelligence": 36.86
+      },
       "gemini-3-flash-preview": {
-        "intelligence": 36.82
+        "intelligence": 36.78
+      },
+      "gemini-3-5-flash-cyber": {
+        "intelligence": 36.62
       },
       "gpt-5-1-thinking-2025-11-12": {
-        "intelligence": 36.56
-      },
-      "gpt-5-3-codex": {
-        "intelligence": 36.5
+        "intelligence": 36.55
       },
       "gpt-5-1-instant-2025-11-12": {
-        "intelligence": 36.47
+        "intelligence": 36.45
+      },
+      "gpt-5-3-codex": {
+        "intelligence": 36.42
       },
       "gpt-5-1-2025-11-13": {
-        "intelligence": 36.34
+        "intelligence": 36.32
       },
       "ling-3-0-flash": {
-        "intelligence": 36.31
+        "intelligence": 36.25
       },
       "nemotron-3-ultra-550b-a55b": {
-        "intelligence": 36.22
+        "intelligence": 36.18
       },
       "mimo-v2-5": {
-        "intelligence": 36.16
+        "intelligence": 36.08
       },
       "deepseek-v4-flash-0423": {
-        "intelligence": 36.11
+        "intelligence": 36.06
       },
       "kimi-k2-thinking-0905": {
-        "intelligence": 35.96
+        "intelligence": 35.93
       },
       "mimo-v2-pro": {
-        "intelligence": 35.63
+        "intelligence": 35.59
       },
       "qwen3-6-27b": {
-        "intelligence": 35.54
+        "intelligence": 35.5
       },
       "minimax-m2-7": {
-        "intelligence": 35.43
+        "intelligence": 35.33
       },
       "longcat-flash-thinking-2601": {
-        "intelligence": 35.32
+        "intelligence": 35.3
       },
       "gpt-5-1-high-2025-11-12": {
-        "intelligence": 35.2
+        "intelligence": 35.22
       },
       "solar-pro4": {
-        "intelligence": 35.18
+        "intelligence": 35.15
       },
       "qwen3-5-122b-a10b": {
-        "intelligence": 35.03
+        "intelligence": 35
       },
       "muse-glimmer-30b": {
-        "intelligence": 34.93
-      },
-      "gpt-5-2-codex": {
-        "intelligence": 34.35
+        "intelligence": 34.87
       },
       "glm-4-7": {
-        "intelligence": 34.29
+        "intelligence": 34.28
+      },
+      "gpt-5-2-codex": {
+        "intelligence": 34.26
       },
       "seed-1-8": {
-        "intelligence": 34.17
+        "intelligence": 34.15
       },
       "gpt-5-high-2025-08-07": {
         "intelligence": 33.97
       },
       "qwen3-5-27b": {
-        "intelligence": 33.94
+        "intelligence": 33.92
       },
       "deepseek-v3-2-speciale": {
-        "intelligence": 33.89
+        "intelligence": 33.88
       },
       "gpt-5-2025-08-07": {
-        "intelligence": 33.8
+        "intelligence": 33.77
       },
       "grok-4": {
-        "intelligence": 33.69
+        "intelligence": 33.68
       },
       "ernie-5-0": {
         "intelligence": 33.42
       },
       "deepseek-v3-2": {
-        "intelligence": 33.22
+        "intelligence": 33.21
       },
       "gemma-4-31b-it": {
-        "intelligence": 33.1
+        "intelligence": 33.08
       },
       "mai-thinking-1": {
-        "intelligence": 32.99
+        "intelligence": 32.96
       },
       "qwen3-max-thinking": {
-        "intelligence": 32.91
+        "intelligence": 32.89
       },
       "deepseek-reasoner": {
-        "intelligence": 32.59
+        "intelligence": 32.57
       },
       "qwen3-6-35b-a3b": {
-        "intelligence": 32.43
+        "intelligence": 32.4
       },
       "gpt-5-5-instant": {
-        "intelligence": 32.24
+        "intelligence": 32.21
       },
       "claude-sonnet-4-5-20250929": {
-        "intelligence": 32.12
+        "intelligence": 32.1
       },
       "seed-2-0-lite": {
         "intelligence": 31.91
       },
       "minimax-m2-1": {
-        "intelligence": 31.89
+        "intelligence": 31.87
       },
       "grok-4-fast": {
         "intelligence": 31.68
@@ -17634,160 +18105,160 @@
         "intelligence": 31.23
       },
       "o3-2025-04-16": {
-        "intelligence": 31.07
+        "intelligence": 31.05
       },
       "gemini-3-1-flash-lite-preview": {
-        "intelligence": 30.9
+        "intelligence": 30.88
       },
       "qwen3-5-35b-a3b": {
-        "intelligence": 30.87
-      },
-      "nova-2-pro": {
         "intelligence": 30.84
       },
+      "nova-2-pro": {
+        "intelligence": 30.82
+      },
       "mimo-v2-flash": {
-        "intelligence": 30.7
+        "intelligence": 30.69
       },
       "grok-3": {
         "intelligence": 30.37
       },
       "glm-5v-turbo": {
-        "intelligence": 30.3
-      },
-      "step-3-7-flash": {
-        "intelligence": 30.11
+        "intelligence": 30.26
       },
       "gpt-5-4-mini": {
-        "intelligence": 30.1
+        "intelligence": 30.05
+      },
+      "step-3-7-flash": {
+        "intelligence": 29.99
       },
       "gemini-2-5-pro-preview-06-05": {
-        "intelligence": 29.93
+        "intelligence": 29.91
       },
       "claude-opus-4-1-20250805": {
         "intelligence": 29.86
       },
       "gemini-3-5-flash-lite": {
-        "intelligence": 29.81
+        "intelligence": 29.69
       },
       "gpt-5-medium-2025-08-07": {
         "intelligence": 29.57
       },
       "gemma-4-26b-a4b-it": {
-        "intelligence": 29.56
-      },
-      "gpt-5-3-chat-latest": {
-        "intelligence": 29.54
+        "intelligence": 29.55
       },
       "gpt-5-1-codex": {
-        "intelligence": 29.53
+        "intelligence": 29.52
+      },
+      "gpt-5-3-chat-latest": {
+        "intelligence": 29.46
       },
       "gpt-5-1-codex-high": {
         "intelligence": 29.42
       },
       "mai-code-1-flash": {
-        "intelligence": 29.12
+        "intelligence": 29.09
       },
       "glm-4-6": {
         "intelligence": 28.99
       },
       "gpt-oss-120b": {
-        "intelligence": 28.73
+        "intelligence": 28.68
       },
       "longcat-flash-thinking": {
-        "intelligence": 28.61
+        "intelligence": 28.6
       },
       "deepseek-v3-2-exp": {
         "intelligence": 28.16
       },
       "qwen3-235b-a22b-thinking-2507": {
-        "intelligence": 28.05
-      },
-      "seed-2-0-mini": {
-        "intelligence": 27.82
-      },
-      "mai-code-1-1-flash": {
-        "intelligence": 27.81
+        "intelligence": 28.04
       },
       "gemini-2-5-pro": {
-        "intelligence": 27.81
+        "intelligence": 27.8
+      },
+      "seed-2-0-mini": {
+        "intelligence": 27.8
+      },
+      "mai-code-1-1-flash": {
+        "intelligence": 27.77
       },
       "claude-opus-4-20250514": {
         "intelligence": 27.7
       },
       "glm-4-5": {
-        "intelligence": 27.69
+        "intelligence": 27.68
       },
       "gpt-oss-20b-high": {
         "intelligence": 27.62
       },
       "mimo-v2-omni": {
-        "intelligence": 27.56
+        "intelligence": 27.54
       },
       "o4-mini": {
-        "intelligence": 27.47
+        "intelligence": 27.46
       },
       "gpt-5-mini-2025-08-07": {
         "intelligence": 27.32
       },
       "mistral-medium-3-5": {
-        "intelligence": 26.87
+        "intelligence": 26.86
       },
       "minimax-m2": {
-        "intelligence": 26.84
+        "intelligence": 26.83
       },
       "nemotron-3-super-120b-a12b": {
-        "intelligence": 26.8
+        "intelligence": 26.79
       },
       "qwen3-vl-235b-a22b-thinking": {
-        "intelligence": 26.68
+        "intelligence": 26.66
       },
       "gpt-5-codex-2025-09-15": {
         "intelligence": 26.63
       },
       "gpt-5-4-nano": {
-        "intelligence": 26.61
+        "intelligence": 26.57
       },
       "k-exaone-236b-a23b": {
         "intelligence": 26.21
       },
       "exaone-4-5-33b": {
-        "intelligence": 25.99
+        "intelligence": 25.98
       },
       "mimo-v2-5-pro": {
-        "intelligence": 25.73
+        "intelligence": 25.7
       },
       "sarvam-105b": {
         "intelligence": 25.69
       },
-      "claude-haiku-4-5-20251001": {
-        "intelligence": 25.68
-      },
       "nova-2-omni": {
-        "intelligence": 25.68
+        "intelligence": 25.67
+      },
+      "claude-haiku-4-5-20251001": {
+        "intelligence": 25.66
       },
       "step3-vl-10b": {
-        "intelligence": 25.47
+        "intelligence": 25.46
       },
       "gpt-oss-120b-high": {
         "intelligence": 25.43
       },
       "nova-2-lite": {
-        "intelligence": 25.38
+        "intelligence": 25.37
       },
       "chatgpt-4o-latest": {
         "intelligence": 24.85
       },
       "qwen3-5-9b": {
-        "intelligence": 24.73
+        "intelligence": 24.72
       },
       "qwen3-vl-235b-a22b-instruct": {
         "intelligence": 24.67
       },
       "laguna-xs-2-1": {
-        "intelligence": 24.38
+        "intelligence": 24.36
       },
       "glm-4-5-air": {
-        "intelligence": 24.37
+        "intelligence": 24.35
       },
       "claude-sonnet-4-20250514": {
         "intelligence": 24.2
@@ -17799,22 +18270,22 @@
         "intelligence": 24.1
       },
       "command-a-plus-05-2026": {
-        "intelligence": 24.03
+        "intelligence": 24.02
       },
       "claude-3-7-sonnet-20250219": {
-        "intelligence": 23.93
+        "intelligence": 23.92
       },
       "granite-4-2-30b": {
-        "intelligence": 23.82
-      },
-      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.81
       },
+      "qwen3-next-80b-a3b-thinking": {
+        "intelligence": 23.8
+      },
       "grok-4-20-beta-0309-reasoning": {
-        "intelligence": 23.79
+        "intelligence": 23.73
       },
       "mercury-2": {
-        "intelligence": 23.56
+        "intelligence": 23.55
       },
       "qwen3-vl-32b-thinking": {
         "intelligence": 23.54
@@ -17823,25 +18294,25 @@
         "intelligence": 23.47
       },
       "u2": {
-        "intelligence": 23.36
+        "intelligence": 23.34
       },
       "grok-4-3": {
-        "intelligence": 22.25
-      },
-      "nemotron-3-5-lightning-30b-a3b": {
-        "intelligence": 22.05
+        "intelligence": 22.21
       },
       "deepseek-v3-1": {
         "intelligence": 22.05
       },
+      "nemotron-3-5-lightning-30b-a3b": {
+        "intelligence": 22.04
+      },
       "gemma-4-12b-it": {
-        "intelligence": 21.99
+        "intelligence": 21.98
       },
       "north-mini-code-1-0": {
-        "intelligence": 21.97
+        "intelligence": 21.96
       },
       "kimi-k2-instruct": {
-        "intelligence": 21.88
+        "intelligence": 21.87
       },
       "gemini-2-5-flash": {
         "intelligence": 21.77
@@ -17853,22 +18324,22 @@
         "intelligence": 21.65
       },
       "kimi-k2-instruct-0905": {
-        "intelligence": 21.58
+        "intelligence": 21.57
       },
       "o3-mini": {
-        "intelligence": 21.48
+        "intelligence": 21.46
       },
       "minimax-m1-80k": {
-        "intelligence": 21.45
+        "intelligence": 21.44
       },
       "qwen3-coder-480b-a35b-instruct": {
-        "intelligence": 21.08
+        "intelligence": 21.07
       },
       "nemotron-3-nano-30b-a3b": {
-        "intelligence": 21.04
+        "intelligence": 21.03
       },
       "o1-2024-12-17": {
-        "intelligence": 20.93
+        "intelligence": 20.92
       },
       "grok-code-fast-1": {
         "intelligence": 20.73
@@ -17877,10 +18348,10 @@
         "intelligence": 20.58
       },
       "minimax-m1-40k": {
-        "intelligence": 20.53
+        "intelligence": 20.52
       },
       "qwen3-vl-32b-instruct": {
-        "intelligence": 20.27
+        "intelligence": 20.26
       },
       "gpt-4-5": {
         "intelligence": 20.17
@@ -17895,22 +18366,22 @@
         "intelligence": 19.68
       },
       "granite-4-2-8b": {
-        "intelligence": 19.67
-      },
-      "sarvam-30b": {
-        "intelligence": 19.55
+        "intelligence": 19.66
       },
       "grok-4-1-2025-11-17": {
-        "intelligence": 19.55
+        "intelligence": 19.54
       },
-      "gpt-5-nano-2025-08-07": {
-        "intelligence": 19.51
+      "sarvam-30b": {
+        "intelligence": 19.54
       },
       "qwen3-5-4b": {
         "intelligence": 19.51
       },
+      "gpt-5-nano-2025-08-07": {
+        "intelligence": 19.5
+      },
       "diffusiongemma-26b-a4b-it": {
-        "intelligence": 19.43
+        "intelligence": 19.42
       },
       "llama-3-1-nemotron-ultra-253b-v1": {
         "intelligence": 19.11
@@ -17919,10 +18390,10 @@
         "intelligence": 19.06
       },
       "lfm-2-5-2-6b": {
-        "intelligence": 19.02
+        "intelligence": 19
       },
       "mistral-small-latest": {
-        "intelligence": 19
+        "intelligence": 18.99
       },
       "longcat-flash-lite": {
         "intelligence": 18.66
@@ -17934,7 +18405,7 @@
         "intelligence": 18.43
       },
       "qwen3-vl-30b-a3b-thinking": {
-        "intelligence": 18.25
+        "intelligence": 18.24
       },
       "qwen3-14b": {
         "intelligence": 18.1
@@ -17943,7 +18414,7 @@
         "intelligence": 18.01
       },
       "gpt-oss-20b": {
-        "intelligence": 17.96
+        "intelligence": 17.95
       },
       "qwen3-30b-a3b": {
         "intelligence": 17.28
@@ -17958,13 +18429,13 @@
         "intelligence": 16.57
       },
       "gemini-2-0-flash": {
-        "intelligence": 16.5
+        "intelligence": 16.49
       },
       "ministral-8b-latest": {
         "intelligence": 16.47
       },
       "qwen3-vl-30b-a3b-instruct": {
-        "intelligence": 16.4
+        "intelligence": 16.39
       },
       "qwen3-vl-8b-thinking": {
         "intelligence": 16.24
@@ -17976,13 +18447,13 @@
         "intelligence": 16
       },
       "claude-3-5-sonnet-20240620": {
-        "intelligence": 15.88
+        "intelligence": 15.87
       },
       "deepseek-v3": {
         "intelligence": 15.65
       },
       "qwen3-235b-a22b": {
-        "intelligence": 15.56
+        "intelligence": 15.55
       },
       "granite-4-2-3b": {
         "intelligence": 15.48
@@ -17997,7 +18468,7 @@
         "intelligence": 14.73
       },
       "llama-4-maverick": {
-        "intelligence": 14.68
+        "intelligence": 14.67
       },
       "deepseek-r1-distill-llama-70b": {
         "intelligence": 14.47
@@ -18015,10 +18486,10 @@
         "intelligence": 14.01
       },
       "qwen3-vl-8b-instruct": {
-        "intelligence": 13.86
+        "intelligence": 13.85
       },
       "gemma-4-e4b-it": {
-        "intelligence": 13.81
+        "intelligence": 13.8
       },
       "llama-3-3-70b-instruct": {
         "intelligence": 13.8
@@ -18027,7 +18498,7 @@
         "intelligence": 13.55
       },
       "kimi-k2-base": {
-        "intelligence": 13.46
+        "intelligence": 13.45
       },
       "deepseek-v3-0324": {
         "intelligence": 13.37
@@ -18036,7 +18507,7 @@
         "intelligence": 13.1
       },
       "magistral-medium": {
-        "intelligence": 13.07
+        "intelligence": 13.06
       },
       "deepseek-r1-distill-qwen-32b": {
         "intelligence": 13.05
@@ -18084,7 +18555,7 @@
         "intelligence": 10.67
       },
       "mistral-large-3-2509": {
-        "intelligence": 10.44
+        "intelligence": 10.43
       },
       "gemini-2-5-flash-lite": {
         "intelligence": 10.42
@@ -18114,7 +18585,7 @@
         "intelligence": 9
       },
       "nova-2-sonic": {
-        "intelligence": 9
+        "intelligence": 8.99
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
         "intelligence": 8.91
@@ -18123,7 +18594,7 @@
         "intelligence": 8.81
       },
       "mistral-large-3-675b-instruct-2512-eagle": {
-        "intelligence": 8.72
+        "intelligence": 8.71
       },
       "grok-2-mini": {
         "intelligence": 8.58
@@ -18135,7 +18606,7 @@
         "intelligence": 8.43
       },
       "gemma-3-27b-it": {
-        "intelligence": 8.27
+        "intelligence": 8.26
       },
       "deepseek-v2-5": {
         "intelligence": 8.06
@@ -18201,13 +18672,13 @@
         "intelligence": 4.29
       },
       "mistral-small-3-1-24b-instruct-2503": {
-        "intelligence": 4.2
+        "intelligence": 4.19
       },
       "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
-        "intelligence": 4.04
+        "intelligence": 4.03
       },
       "qwen3-5-2b": {
         "intelligence": 3.83
@@ -18369,7 +18840,7 @@
         "intelligence": -5.43
       },
       "granite-4-0-tiny-preview": {
-        "intelligence": -5.49
+        "intelligence": -5.5
       },
       "jamba-1-5-mini": {
         "intelligence": -5.68
@@ -18381,7 +18852,7 @@
         "intelligence": -6.15
       },
       "qwen3-5-0-8b": {
-        "intelligence": -6.16
+        "intelligence": -6.17
       },
       "ministral-3-3b-base-2512": {
         "intelligence": -6.41
@@ -18396,7 +18867,7 @@
         "intelligence": -10.22
       },
       "gemma-3-1b-it": {
-        "intelligence": -10.52
+        "intelligence": -10.53
       },
       "gemma-3n-e2b-it": {
         "intelligence": -10.58
@@ -18405,117 +18876,117 @@
         "intelligence": -13.43
       },
       "muse-spark-1-3-contributor": {
-        "intelligence": 54.01,
+        "intelligence": 53.83,
         "aliasOf": "muse-spark-1-3",
         "fallback": true
       },
       "muse-spark-1-2-contributor": {
-        "intelligence": 38.81,
+        "intelligence": 38.35,
         "aliasOf": "muse-spark-1-2",
         "fallback": true
       },
       "deepseek-v4-pro": {
-        "intelligence": 43.08,
+        "intelligence": 43,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "deepseek-v4-flash": {
-        "intelligence": 39.12,
+        "intelligence": 39.06,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "tencent-hy4-preview": {
-        "intelligence": 50.69,
+        "intelligence": 50.42,
         "aliasOf": "hy4-preview",
         "fallback": true
       },
       "tencent-hy3": {
-        "intelligence": 43.05,
+        "intelligence": 42.92,
         "aliasOf": "hy3",
         "fallback": true
       },
       "kimi-k2-7-code-highspeed": {
-        "intelligence": 39.55,
+        "intelligence": 39.29,
         "aliasOf": "kimi-k2-7-code",
         "fallback": true
       },
       "glm-5-3-flashx": {
-        "intelligence": 52.44,
+        "intelligence": 52.09,
         "aliasOf": "glm-5-3",
         "fallback": true
       },
       "glm-5-2-fast": {
-        "intelligence": 45.48,
+        "intelligence": 45.27,
         "aliasOf": "glm-5-2",
         "fallback": true
       },
       "deepseek-v4-pro-latest": {
-        "intelligence": 43.08,
+        "intelligence": 43,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "deepseek-v4-flash-latest": {
-        "intelligence": 39.12,
+        "intelligence": 39.06,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "deepseek-v4-flash-fast": {
-        "intelligence": 39.12,
+        "intelligence": 39.06,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "qwen-3-8-max-0902": {
-        "intelligence": 51.8,
+        "intelligence": 51.49,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-max": {
-        "intelligence": 51.8,
+        "intelligence": 51.49,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-27b": {
-        "intelligence": 45.05,
+        "intelligence": 44.8,
         "aliasOf": "qwen3-8-27b",
         "fallback": true
       },
       "qwen-3-6-plus": {
-        "intelligence": 39.41,
+        "intelligence": 39.36,
         "aliasOf": "qwen3-6-plus",
         "fallback": true
       },
       "qwen-3-7-max": {
-        "intelligence": 45.49,
+        "intelligence": 45.4,
         "aliasOf": "qwen3-7-max",
         "fallback": true
       },
       "qwen-3-7-plus": {
-        "intelligence": 42.59,
+        "intelligence": 42.51,
         "aliasOf": "qwen3-7-plus",
         "fallback": true
       },
       "qwen-3-8-flash": {
-        "intelligence": 49,
+        "intelligence": 48.72,
         "aliasOf": "qwen3-8-flash",
         "fallback": true
       },
       "mimo-v2-6-pro-ultraspeed": {
-        "intelligence": 49.77,
+        "intelligence": 49.96,
         "aliasOf": "mimo-v2-6-pro",
         "fallback": true
       },
       "nemotron-3-ultra": {
-        "intelligence": 36.22,
+        "intelligence": 36.18,
         "aliasOf": "nemotron-3-ultra-550b-a55b",
         "fallback": true
       },
       "claude-haiku-4-5": {
-        "intelligence": 25.68,
+        "intelligence": 25.66,
         "aliasOf": "claude-haiku-4-5-20251001",
         "fallback": true
       },
       "gemini-3-1-flash-lite": {
-        "intelligence": 30.9,
+        "intelligence": 30.88,
         "aliasOf": "gemini-3-1-flash-lite-preview",
         "fallback": true
       }

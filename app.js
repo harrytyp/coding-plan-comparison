@@ -115,8 +115,6 @@ const I18N = {
     "attr.retention.tip": "Standard retention window for request data, as stated by the provider.",
 
     "plans.includePriceBased": "Include price-based plans (Kimi)",
-    "plans.includeNoApi": "Include no-API plans",
-    "plans.noApiHidden": "no API hidden",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
     "filters.toggle": "Filters",
@@ -396,8 +394,6 @@ const I18N = {
     "attr.retention.tip": "Übliche Aufbewahrungsdauer für Request-Daten laut Anbieter.",
 
     "plans.includePriceBased": "Preisbasierte Pläne einblenden (Kimi)",
-    "plans.includeNoApi": "Pläne ohne API einblenden",
-    "plans.noApiHidden": "kein API ausgeblendet",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
     "filters.toggle": "Filter",
@@ -900,13 +896,6 @@ function syncFilterChips() {
     });
   }
   if (includePriceBased) chips.push({ label: t("plans.includePriceBased"), clear: () => { includePriceBased = false; const el = $("#tierd-toggle"); if (el) el.checked = false; rerender(); } });
-  // Ausgeblendete No-API-Zeilen sichtbar machen: der Chip schaltet sie ein, sein x schaltet sie wieder aus
-  if (includeNoApi) {
-    chips.push({ label: t("plans.includeNoApi"), clear: () => { includeNoApi = false; syncNoApiBoxes(); rerender(); } });
-  } else {
-    const hidden = buildCombos().filter(isNoApi).length;
-    if (hidden) chips.push({ label: `${t("plans.noApiHidden")} (${hidden})`, clear: () => { includeNoApi = true; syncNoApiBoxes(); rerender(); } });
-  }
   container.innerHTML = chips.map((c) => `<span class="chip"${c.tip ? ` title="${escapeHtml(c.tip)}"` : ""}>${escapeHtml(c.label)}<button type="button" aria-label="remove">×</button></span>`).join("");
   container.querySelectorAll(".chip button").forEach((btn, i) => {
     btn.addEventListener("click", chips[i].clear);
@@ -990,9 +979,6 @@ let maxBudget = 300;   // Budget-Filter: max $/Monat
 let minAiScore = 0;    // AI-Score-Filter: mindestens
 let attrFilter = new Set(); // Attribut-Filter: mehrere gleichzeitig, UND-verknuepft
 let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per Default aus , einblendbar
-let includeNoApi = false; // Pläne ohne API-Zugang (CLI-only, Freebuff) per Default aus, einblendbar
-// "no API" steht als manueller Tag aus overrides.yml am Plan, nicht in den Zahlen
-function isNoApi(c) { return /(cli|no api|kein api)/i.test(c.planTag ?? ""); }
 
 /* ---------------- Spalten-Auswahl (User-anpassbar) ---------------- */
 // Alle verfügbaren Spalten; Auswahl wird in localStorage gespeichert.
@@ -1385,12 +1371,6 @@ function syncAttrBoxes() {
   $$("input[data-attr]").forEach((el) => { el.checked = attrFilter.has(el.dataset.attr); });
 }
 
-// "Ohne API": Leiste und mobiles Sheet bleiben synchron
-function syncNoApiBoxes() {
-  const bar = $("#noapi-toggle"); if (bar) bar.checked = includeNoApi;
-  const sheet = $("#sheet-noapi"); if (sheet) sheet.checked = includeNoApi;
-}
-
 function attrMatches(c) {
   for (const k of attrFilter) {
     if (k === "noTraining" && c.noTraining !== true) return false;
@@ -1408,9 +1388,7 @@ function attrCell(c) {
   const attrs = comboAttributes(c);
   if (!attrs.length) return "-";
   const [head, ...rest] = attrs;
-  // Alle Chips stehen im DOM: Desktop zeigt Kopf + "+n", Mobile zeigt alle auf einen Blick
   return `<span class="attr attr-${head.tone}" title="${escapeHtml(head.tip)}">${escapeHtml(head.label)}</span>`
-    + rest.map((r) => `<span class="attr attr-${r.tone} attr-extra" title="${escapeHtml(r.tip)}">${escapeHtml(r.label)}</span>`).join("")
     + (rest.length ? `<span class="attr attr-more" title="${escapeHtml(rest.map((r) => r.label).join(", "))}">+${rest.length}</span>` : "");
 }
 
@@ -1435,8 +1413,6 @@ function renderPlans() {
   // Datenqualität: Tier-D (preisbasiert, z.B. Kimi) per Default ausblenden ,
   // keine veröffentlichte Menge = nicht sicher vergleichbar. Toggle zum Einblenden.
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
-  // Ohne API-Zugang sind die Token-Raten nicht vergleichbar , gleiche Logik wie Tier D
-  if (!includeNoApi) combos = combos.filter((c) => !isNoApi(c));
   // Sortieren
   combos.sort(sortBy(plansSort.key, plansSort.dir));
   // Balken-Skala: relativ zum besten Score im Datensatz
@@ -1524,7 +1500,7 @@ function renderCell(col, c) {
         : "";
       return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${wl}</td>`;
     }
-    case "privacy": return `<td class="td-attrs" data-label="${t("plans.th.privacy")}">${attrCell(c)}</td>`;
+    case "privacy": return `<td data-label="${t("plans.th.privacy")}">${attrCell(c)}</td>`;
     default: return "";
   }
 }
@@ -1631,7 +1607,6 @@ function openSheet() {
   const sao = $("#sheet-ai-out"); if (sao) sao.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
   syncAttrBoxes();
   const st = $("#sheet-tierd"); if (st) st.checked = includePriceBased;
-  syncNoApiBoxes();
   syncColumnPicker();
   sheet.hidden = false;
   if (overlay) overlay.hidden = false;
@@ -1679,7 +1654,6 @@ function initSheet() {
     });
   });
   const st2 = $("#sheet-tierd"); if (st2) st2.addEventListener("change", (e) => { includePriceBased = e.target.checked; rerender(); });
-  const sn = $("#sheet-noapi"); if (sn) sn.addEventListener("change", (e) => { includeNoApi = e.target.checked; syncNoApiBoxes(); rerender(); });
   // Sheet-Spalten
   document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
     box.addEventListener("change", () => {
@@ -1869,8 +1843,6 @@ function renderDashboardInner() {
   if (minAiScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= minAiScore);
   if (attrFilter.size) combos = combos.filter(attrMatches);
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
-  // Ohne API-Zugang sind die Token-Raten nicht vergleichbar , gleiche Logik wie Tier D
-  if (!includeNoApi) combos = combos.filter((c) => !isNoApi(c));
 
   const points = combos.map((c) => ({
     combo: c,
@@ -2513,8 +2485,6 @@ function renderCalculator() {
   let combos = buildCombos().filter((c) => c.price != null && c.price <= budgetUsd + 1e-9);
   if (calcScore > 0) combos = combos.filter((c) => (c.score ?? 0) >= calcScore);
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
-  // Ohne API-Zugang sind die Token-Raten nicht vergleichbar , gleiche Logik wie Tier D
-  if (!includeNoApi) combos = combos.filter((c) => !isNoApi(c));
   // Pro Plan nur das beste Modell (Tokens/Monat), dann Top 5
   const best = new Map();
   for (const c of combos) {
@@ -2903,13 +2873,6 @@ function init() {
   const tierdToggle = $("#tierd-toggle");
   if (tierdToggle) tierdToggle.addEventListener("change", (e) => {
     includePriceBased = e.target.checked;
-    rerender();
-  });
-
-  // No-API-Filter: Pläne ohne API-Zugang einblenden
-  const noapiToggle = $("#noapi-toggle");
-  if (noapiToggle) noapiToggle.addEventListener("change", (e) => {
-    includeNoApi = e.target.checked;
     rerender();
   });
 

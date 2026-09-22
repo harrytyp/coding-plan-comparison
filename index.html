@@ -36,7 +36,7 @@
   --line-soft: #182130;
   --text: #e9eef5;
   --text-2: #98a7b9;
-  --text-3: #62748a;
+  --text-3: #7d8ea3;
   --accent: #6ee7c7;
   --accent-2: #3fbf9c;
   --accent-ink: #06231c;
@@ -75,8 +75,8 @@
   --line-soft: #edf1f6;
   --text: #0c1219;
   --text-2: #4e5c70;
-  --text-3: #7a8798;
-  --accent: #0e8f70;
+  --text-3: #5f6f80;
+  --accent: #0c7a5f;
   --accent-2: #0b7359;
   --accent-ink: #ffffff;
   --accent-soft: #e4f5ef;
@@ -88,7 +88,7 @@
   --warn-soft: #fef3c7;
   --danger: #b91c1c;
   --danger-soft: #fee2e2;
-  --ok: #0e8f70;
+  --ok: #0c7a5f;
   --ok-soft: #e4f5ef;
   --info: #1f7fb8;
   --info-soft: #e3f1f9;
@@ -112,8 +112,8 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
 ::-webkit-scrollbar-track { background: transparent; }
 
-h1, h2, h3, h4 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; }
-p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
 a { color: inherit; text-decoration: none; }
 a:hover { color: var(--accent); }
 button { font: inherit; color: inherit; }
@@ -266,10 +266,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
   gap: 12px; padding: 15px 18px; border-bottom: 1px solid var(--line-soft);
 }
 .panel-head h2, .panel-head h3 { font-family: var(--font-display); font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; }
-.panel-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; }
+.panel-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; max-width: 75ch; }
 .section-head { padding: 15px 18px; border-bottom: 1px solid var(--line-soft); }
 .section-head h2 { font-family: var(--font-display); font-size: 15.5px; font-weight: 700; }
-.section-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; }
+.section-head p { font-size: 12.5px; color: var(--text-3); margin-top: 3px; max-width: 75ch; }
 
 /* ------------------------------------------------- workbench (overview) */
 .workbench { display: grid; grid-template-columns: 264px minmax(0, 1fr) 320px; gap: 18px; align-items: start; margin-top: 18px; }
@@ -332,6 +332,7 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .attr-warn { color: var(--data-b); }
 .attr-unknown { color: var(--text-3); }
 .attr-more { color: var(--text-3); border-style: dashed; }
+.attr-extra { display: none; }
 .dd-badges { display: flex; flex-wrap: wrap; gap: 2px 0; margin-top: 10px; }
 .chart-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 10px 16px; border-bottom: 1px solid var(--line-soft); font-size: 12px; color: var(--text-2); }
 .chart-legend .lg { display: inline-flex; align-items: center; gap: 6px; }
@@ -613,6 +614,7 @@ footer { margin-top: auto; }
 .cmdk-input { display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-bottom: 1px solid var(--line-soft); }
 .cmdk-input svg { width: 16px; height: 16px; color: var(--text-3); flex: none; }
 .cmdk-input input { flex: 1 1 auto; background: none; border: 0; outline: none; color: var(--text); font-size: 15px; font-family: var(--font-text); }
+.cmdk-input:focus-within, .calc-money:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 .cmdk-list { max-height: 52vh; overflow-y: auto; padding: 6px; }
 .cmdk-item {
   display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; cursor: pointer;
@@ -743,6 +745,10 @@ main { view-transition-name: main-content; }
   .sortable-table tbody tr.row-detail td::before { content: none; }
   .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .detail-grid .dg-v, .dash-detail-content, .dd-shortlist { overflow-wrap: anywhere; }
+  /* Tags auf dem Handy vollständig: Zusatz-Chips statt "+n", Zeile bricht um */
+  .attr-extra { display: inline-block; }
+  .attr-more { display: none; }
+  .sortable-table tbody td.td-attrs { flex-wrap: wrap; gap: 6px 4px; }
 }
 @media (max-width: 420px) {
   .tab { padding: 9px 6px 11px; font-size: 11.8px; letter-spacing: 0; }
@@ -1049,7 +1055,7 @@ main { view-transition-name: main-content; }
         <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
         <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
         <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="privacy-filter"><input type="checkbox" data-attr="cli"><span data-i18n="attr.cli">no API</span></label>
+        <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
         <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
       </div>
       <label class="privacy-filter" id="tierd-filter">
@@ -1126,7 +1132,7 @@ main { view-transition-name: main-content; }
         <div class="sheet-section-title" data-i18n="plans.attrs">Attributes</div>
         <label class="sheet-check"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
         <label class="sheet-check"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="sheet-check"><input type="checkbox" data-attr="cli"><span data-i18n="attr.cli">no API</span></label>
+        <label class="sheet-check"><input type="checkbox" id="sheet-noapi"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
         <label class="sheet-check"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
         <label class="sheet-check">
           <input type="checkbox" id="sheet-tierd">
@@ -1411,6 +1417,6 @@ main { view-transition-name: main-content; }
 <div class="toast" id="toast"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
-<script src="app.js?v=e6af6ed"></script>
+<script src="app.js?v=1b985ea"></script>
 </body>
 </html>
