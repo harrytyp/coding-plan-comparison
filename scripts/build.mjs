@@ -398,6 +398,123 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     }
   }
 
+  // --- Xiaomi MiMo Token Plan (Monats-Credits + Credits pro Token je Modell) ---
+  const mimo = parsed["mimo-token-plan"];
+  if (mimo?.plans?.length && mimo?.models?.length) {
+    const coeffs = mimo.models.map((m) => ({ model: m.name, input: m.input, cachedRead: m.cachedRead, output: m.output }));
+    for (const p of mimo.plans) {
+      add({
+        id: `mimo-${p.name.toLowerCase()}`,
+        provider: "xiaomi",
+        name: `MiMo Token Plan ${p.name}`,
+        price: {
+          monthlyUsd: p.monthlyUsd,
+          paidPrice: p.monthlyUsd,
+          advertisedPrice: p.monthlyUsd,
+          currency: "USD",
+          yearlyUsd: p.yearlyUsd ?? null,
+          altPrice: null,
+          billingNote: "Individual edition; annual auto-renewal 12% off, first purchase 12% off; off-peak (UTC 16-24) 0.8x credits",
+        },
+        meter: "credits",
+        quotas: [{ label: "Monthly", unit: "credits", amount: p.monthlyCredits, window: "month", refresh: "monthly", disclosure: "exact" }],
+        tokenPricing: { source: "mimo-token-plan", note: mimo.note ?? "Credits pro Token je Modell" },
+        providerCost: {
+          formula: "Credits = cache-miss input x c_in + cache-hit input x c_hit + output x c_out",
+          divisor: 1,
+          perModel: coeffs,
+          offPeakDiscount: 0.2,
+          note: `Official per-model credit rates (mimo.mi.com docs, ${mimo.updatedAt ?? "2026-09-21"})`,
+        },
+        workload: { pattern: null, taskConversion: mimo.taskConversion ?? null },
+        models: coeffs.map((c) => c.model),
+        dataTier: "A",
+        dataTierNote: `Official monthly credits and per-model credit rates from MiMo docs (${mimo.updatedAt ?? "2026-09-21"}); model token prices not in the feeds yet, so cost per request stays empty`,
+        disclosure: "disclosed",
+        sourceIds: ["mimo-token-plan"],
+        verifiedAt: "2026-09-21",
+        priceSource: "official docs",
+      });
+    }
+  }
+
+  // --- StepFun Step Plan (Monats-Credits, Credits an den API-Preis gekoppelt) ---
+  const stepfun = parsed["stepfun-step-plan"];
+  if (stepfun?.plans?.length && stepfun?.creditsPerUsd) {
+    const feedModels = ["Step 3.7 Flash", "Step 3.5 Flash"];
+    for (const p of stepfun.plans) {
+      add({
+        id: `stepfun-${p.name.toLowerCase().replace(/\s+/g, "-")}`,
+        provider: "stepfun",
+        name: `Step Plan ${p.name}`,
+        price: {
+          monthlyUsd: p.monthlyUsd,
+          paidPrice: p.monthlyUsd,
+          advertisedPrice: p.monthlyUsd,
+          currency: "USD",
+          yearlyUsd: p.yearlyUsd ?? null,
+          altPrice: null,
+          billingNote: `Quarterly $${p.quarterlyUsd}, yearly $${p.yearlyUsd}; credits are issued monthly and do not roll over`,
+        },
+        meter: "credits",
+        quotas: [{ label: "Monthly", unit: "credits", amount: p.monthlyCredits, window: "month", refresh: "monthly", disclosure: "exact" }],
+        tokenPricing: { source: "stepfun-step-plan", note: stepfun.note ?? "1 $ Modellnutzung ~ 7M Credits" },
+        providerCost: {
+          formula: `Credits = USD usage x ${stepfun.creditsPerUsd}`,
+          creditsFromUsd: stepfun.creditsPerUsd,
+          feedModels,
+          note: "Official conversion from the Step Plan docs (1 $ of model usage is about 7M Credits)",
+        },
+        workload: { pattern: null, taskConversion: null },
+        models: feedModels,
+        dataTier: "A",
+        dataTierNote: "Official monthly credits and official USD->credits conversion from StepFun docs",
+        disclosure: "disclosed",
+        sourceIds: ["stepfun-step-plan"],
+        verifiedAt: "2026-09-23",
+        priceSource: "official docs",
+      });
+    }
+  }
+
+  // --- Cerebras Code (Tageslimit in Tokens, 1 Credit = 1 Token) ---
+  const cerebras = parsed["cerebras-code"];
+  if (cerebras?.plans?.length) {
+    for (const p of cerebras.plans) {
+      add({
+        id: `cerebras-code-${p.name.toLowerCase()}`,
+        provider: "cerebras",
+        name: `Cerebras Code ${p.name}`,
+        price: {
+          monthlyUsd: p.monthlyUsd,
+          paidPrice: p.monthlyUsd,
+          advertisedPrice: p.monthlyUsd,
+          currency: "USD",
+          yearlyUsd: null,
+          altPrice: null,
+          billingNote: "Daily token limit, no weekly window; rate limits subject to change",
+        },
+        meter: "tokens",
+        quotas: [{ label: "Daily", unit: "tokens", amount: p.tokensPerDay, window: "day", refresh: "daily", disclosure: "exact" }],
+        tokenPricing: { source: "cerebras-code", note: cerebras.note ?? "Tageslimit in Tokens" },
+        providerCost: {
+          formula: "Credits = tokens (1 credit per token), daily limit",
+          divisor: 1,
+          perModel: [{ model: cerebras.model ?? "Qwen3-Coder", input: 1, cachedRead: 1, output: 1 }],
+          note: "Allowance is published in tokens per day; modelled as 1 credit per token",
+        },
+        workload: { pattern: null, taskConversion: null },
+        models: [cerebras.model ?? "Qwen3-Coder"],
+        dataTier: "A",
+        dataTierNote: "Official daily token limit from the Cerebras Code announcement; model token prices are not in the feeds",
+        disclosure: "disclosed",
+        sourceIds: ["cerebras-code"],
+        verifiedAt: "2026-09-23",
+        priceSource: "official announcement",
+      });
+    }
+  }
+
   // Manuelle Notizen an bereits dynamisch gebaute Plaene haengen. Der Loop
   // darueber ueberspringt existierende ids, deshalb hier separat: eine Notiz
   // aus overrides.yml ist eine Ergaenzung, kein Ersatz fuer die Feed-Daten.
@@ -424,6 +541,7 @@ function validatePlan(p) {
 
 // ---------- Kostenmodell (ai-10-usd) ----------
 function requestCost(model, pattern) {
+  if (!model) return null; // Modell ohne Feed-Preis (z.B. nicht im ocgo/cc-Feed gelistet)
   const input = typeof model.input === "number" ? model.input : null;
   const cachedRead = typeof model.cachedRead === "number" ? model.cachedRead : null;
   const output = typeof model.output === "number" ? model.output : null;
@@ -515,15 +633,29 @@ function modelsForPlan(plan, feeds) {
   // providerCost: anbietereigene Credit-Formel (z.B. GLM) als Daten im Plan.
   // Formel: creditsPerRequest = (input×c_input + cachedRead×c_cached + output×c_output) / 10000
   // Angewendet auf das Pattern (aus Feed oder Fallback).
-  if (plan.providerCost?.perModel) {
+  if (plan.providerCost?.perModel || plan.providerCost?.creditsFromUsd) {
     const oc = feeds["ocgo-pricing.json"];
     const cc = feeds["cc-pricing.json"];
     const allModels = [...(oc?.models ?? []), ...(cc?.models ?? [])];
-    for (const pc of plan.providerCost.perModel) {
+    // Divisor: GLM rechnet Credits = (Tokens × Koeffizient)/10000, MiMo dagegen
+    // direkt in Credits pro Token (Divisor 1). Default bleibt 10000.
+    const divisor = plan.providerCost.divisor ?? 10000;
+    // creditsFromUsd: Anbieter veroeffentlicht "1 $ Modellnutzung = N Credits"
+    // (StepFun: 7M). Dann kommt der Credit-Preis aus dem API-Preis des Modells.
+    const perModel = plan.providerCost.perModel
+      ?? (plan.providerCost.feedModels ?? []).map((name) => ({ model: name, creditsFromUsd: plan.providerCost.creditsFromUsd }));
+    for (const pc of perModel) {
       // find model pricing in feeds
       const match = allModels.find((m) => m.name && m.name.toLowerCase().includes(pc.model.toLowerCase()));
       const pattern = match?.pattern ?? FALLBACK_PATTERN;
-      const creditCostPerReq = (pattern.input * pc.input + pattern.cachedRead * pc.cachedRead + pattern.output * pc.output) / 10000;
+      let creditCostPerReq;
+      if (pc.creditsFromUsd) {
+        const usdCost = requestCost(match, pattern);
+        if (usdCost === null || !(usdCost > 0)) continue;
+        creditCostPerReq = usdCost * pc.creditsFromUsd;
+      } else {
+        creditCostPerReq = (pattern.input * pc.input + pattern.cachedRead * pc.cachedRead + pattern.output * pc.output) / divisor;
+      }
       if (!(creditCostPerReq > 0)) continue;
       for (const q of plan.quotas) {
         if (typeof q.amount !== "number" || q.amount <= 0) continue;
@@ -721,6 +853,10 @@ async function main() {
       if (window === "week") {
         monthlyRequests = requests * 4.33;
         windowNote = "weekly×4.33→monthly";
+      } else if (window === "day") {
+        // Tageslimits sind die Monatsbasis: 365.25/12 = 30.44 Tage
+        monthlyRequests = requests * 30.44;
+        windowNote = "daily×30.44→monthly";
       } else if (window === "5h") {
         // 5h-Cap bleibt als Durchsatz-Grenze; für Monats-Vergleich NICHT nutzen
         monthlyRequests = null;

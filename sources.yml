@@ -96,11 +96,25 @@ sources:
     note: "MiniMax Token Plan ist JS-SPA; Daten evtl. per API. Erstmal overrides."
 
   - id: mimo-token-plan
-    url: "https://mimo.mi.com/token-plan"
+    url: "https://mimo.mi.com/docs/en-US/price/token-plan"
     typ: html-docs
     parser: mimo
+    provides: [plan_meta, plan_quotas, token_pricing]
+    note: "MiMo Token Plan Docs: Preise, Monats-Credits, Credits pro Token je Modell (Update 2026-09-21)."
+
+  - id: stepfun-step-plan
+    url: "https://platform.stepfun.ai/docs/en/step-plan/overview"
+    typ: html-docs
+    parser: stepfun
+    provides: [plan_meta, plan_quotas, token_pricing]
+    note: "Step Plan Docs: Monats-Credits je Tarif, offizielle Umrechnung 1 $ Nutzung ~ 7M Credits."
+
+  - id: cerebras-code
+    url: "https://www.cerebras.ai/blog/introducing-cerebras-code"
+    typ: html-docs
+    parser: cerebras
     provides: [plan_meta, plan_quotas]
-    note: "MiMo Token Plan (HTML, 372KB), Parser zu implementieren."
+    note: "Cerebras Code Pro/Max: Token pro Tag, offizielle Ankuendigung."
 
   # ---- Privacy-Quellen (Data Policy je Anbieter, für den Privacy-Filter) ----
   # Crawl-Check: HTTP-Status + HTML-Fingerprint. Text bei JS-SPA evtl. nicht

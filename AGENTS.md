@@ -28,6 +28,15 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
 ```
 - "60 für 10" ist nur $-Gegenwert; Grundcredits (Token-Preise) + Cache + Workload entscheiden.
 - Anbietereigene Credit-Formeln (GLM) kommen dynamisch aus den Docs.
+- **Drei Rechenwege für Credit-Pläne** (`modelsForPlan`, `providerCost`):
+  1. `perModel` mit Koeffizienten und `divisor` (Default 10000): Credits = (Tokens × Koeff.)/divisor.
+     GLM nutzt 10000, MiMo 1 (Credits direkt pro Token).
+  2. `creditsFromUsd` + `feedModels`: Anbieter veröffentlicht "1 $ Modellnutzung = N Credits"
+     (StepFun: 7M). Credits pro Request = $-Kosten aus dem Feed × N.
+  3. `allowance` in Tokens mit `window: "day"` (Cerebras): Tageslimit × 30.44 = Monat.
+  Alle drei Wege brauchen keine geschätzten Zahlen, nur die veröffentlichten Werte.
+- **Modelle ohne Feed-Preis** (nicht im ocgo/cc-Feed): Zeile entsteht trotzdem, `costPerRequest`
+  bleibt null. `requestCost()` muss dafür null-sicher bleiben.
 - Pattern-Unifizierung: geteilte Familien nutzen OC-Pattern für beide Provider.
 - Tarif-Namen und Tier-Maps kommen aus der Quelle, nie hart kodieren: Qwen fügte einen
   Tarif ein, kimi.ai benannte seine Checkout-Titel um, beides ließ Tarife still aus dem

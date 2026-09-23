@@ -317,6 +317,66 @@ test("Kein Tarif fällt still weg: jeder geparste Tarif steht im Katalog", async
   assert.deepEqual(kimiPaid, goodsMonthly, "Kimi: jeder kimi.ai-Monatspreis muss im Katalog stehen");
 });
 
+
+// --- Neue Anbieter 2026-09-23: MiMo, StepFun, Cerebras ---
+// Aufnahme nur, solange der Anbieter die Zahlen selbst veroeffentlicht: Credits pro
+// Monat bzw. Token pro Tag. Die Tests koppeln die geparsten Tarife an den Katalog und
+// rechnen die Rate unabhaengig nach (haendisch, aus den Quelldaten).
+test("MiMo Token Plan: Tarife und Credits pro Modell aus den Docs, Rate nachgerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/mimo-token-plan.json"), "utf8"));
+  assert.ok(src.plans.length >= 4, "vier Tarife aus den Docs");
+  assert.ok(src.models.length >= 2, "Credits pro Token je Modell aus den Docs");
+  const byId = new Map(d.plans.map((p) => [p.id, p]));
+  for (const p of src.plans) {
+    const plan = byId.get(`mimo-${p.name.toLowerCase()}`);
+    assert.ok(plan, `MiMo-Tarif "${p.name}" fehlt im Katalog`);
+    assert.equal(plan.price.monthlyUsd, p.monthlyUsd, `${p.name}: Monatspreis`);
+    assert.equal(plan.quotas[0].amount, p.monthlyCredits, `${p.name}: Monats-Credits`);
+  }
+  // Anker: Lite hat 4,1 Mrd Credits, mimo-v2.6-pro kostet 300 Credits pro Cache-Miss-Token.
+  const lite = byId.get("mimo-lite");
+  const row = lite.modelRows.find((r) => /V2\.6 Pro/.test(r.model));
+  assert.ok(row, "v2.6-pro-Zeile vorhanden");
+  const pat = row.patternUsed;
+  const expected = pat.input * 300 + pat.cachedRead * 2.5 + pat.output * 600;
+  assert.equal(row.creditsPerRequest, expected, "Credits pro Request aus der Verbrauchstabelle");
+  assert.ok(Math.abs(row.requestsPerMonth - lite.quotas[0].amount / expected) < 1, "Requests = Credits / Credits pro Request");
+});
+
+test("StepFun: Credits an den offiziellen Kurs gekoppelt (1 $ Nutzung ~ 7M Credits)", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/stepfun-step-plan.json"), "utf8"));
+  assert.equal(src.creditsPerUsd, 7e6, "Kurs aus den Docs");
+  const byId = new Map(d.plans.map((p) => [p.id, p]));
+  for (const p of src.plans) {
+    const plan = byId.get(`stepfun-${p.name.toLowerCase().replace(/\s+/g, "-")}`);
+    assert.ok(plan, `Step-Tarif "${p.name}" fehlt im Katalog`);
+    assert.equal(plan.quotas[0].amount, p.monthlyCredits, `${p.name}: Monats-Credits`);
+    for (const r of plan.modelRows) {
+      assert.ok(Math.abs(r.creditsPerRequest - r.costPerRequest * src.creditsPerUsd) < 1,
+        `${p.name}/${r.model}: Credits pro Request = $-Kosten x Kurs`);
+    }
+  }
+});
+
+test("Cerebras Code: Tageslimit in Tokens wird auf den Monat gerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/cerebras-code.json"), "utf8"));
+  const byId = new Map(d.plans.map((p) => [p.id, p]));
+  for (const p of src.plans) {
+    const plan = byId.get(`cerebras-code-${p.name.toLowerCase()}`);
+    assert.ok(plan, `Cerebras-Tarif "${p.name}" fehlt im Katalog`);
+    assert.equal(plan.quotas[0].amount, p.tokensPerDay, `${p.name}: Token pro Tag aus der Quelle`);
+    assert.equal(plan.quotas[0].window, "day", `${p.name}: Tagesfenster`);
+    const r = plan.modelRows[0];
+    assert.ok(r, `${p.name}: Modellzeile`);
+    const tokensPerMonth = r.requestsPerMonth * (r.patternUsed.input + r.patternUsed.cachedRead + r.patternUsed.output);
+    assert.ok(Math.abs(tokensPerMonth - p.tokensPerDay * 30.44) / (p.tokensPerDay * 30.44) < 0.01,
+      `${p.name}: Monats-Tokens = Tageslimit x 30,44`);
+  }
+});
+
 // --- Freebuff 2026-09-21: werbefinanzierter Gratis-Tarif + bezahlte Tarife ---
 // Mengen-Basis ist ein offizielles Dollar-Volumen, keine Request-Zahl. Preis 0 darf
 // keine Infinity-Rate erzeugen (das würde Familien-Mediane und Pareto-Front verfälschen).

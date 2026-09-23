@@ -206,6 +206,96 @@ export function parseQwenTokenPersonal(html) {
   return out;
 }
 
+
+// ---------- Parser: Xiaomi MiMo Token Plan (HTML-Docs) ----------
+// Zwei Tabellen: Tarife (Monat/Jahr, Credits) und Verbrauchsregeln
+// (Credits pro Token je Modell: Cache-Hit, Cache-Miss, Output).
+export function parseMimo(html) {
+  const text = htmlToText(html);
+  const out = { plans: [], models: [], updatedAt: null, taskConversion: null, note: null };
+  const monthly = text.slice(text.indexOf("Monthly Plan"), text.indexOf("Annual Package"));
+  const annual = text.slice(text.indexOf("Annual Package"), text.indexOf("Team Edition"));
+  const tierNames = ["Lite", "Standard", "Pro", "Max"];
+  const prices = [...monthly.matchAll(/\$([\d.]+)\/month/g)].map((m) => parseFloat(m[1]));
+  const credits = [...monthly.matchAll(/([\d.]+) billion Credits/g)].map((m) => Math.round(parseFloat(m[1]) * 1e9));
+  const yearly = [...annual.matchAll(/\$([\d,.]+)\/year|USD ([\d,.]+)\/year/g)].map((m) => parseFloat((m[1] ?? m[2]).replace(/,/g, "")));
+  const yearlyCredits = [...annual.matchAll(/([\d.]+) billion Credits/g)].map((m) => Math.round(parseFloat(m[1]) * 1e9));
+  tierNames.forEach((name, i) => {
+    if (prices[i] == null || credits[i] == null) return;
+    out.plans.push({
+      name,
+      monthlyUsd: prices[i],
+      monthlyCredits: credits[i],
+      yearlyUsd: yearly[i] ?? null,
+      yearlyCredits: yearlyCredits[i] ?? null,
+    });
+  });
+  // Verbrauchsregeln: "mimo-v2.6-pro 2.5 Credits 300 Credits 600 Credits"
+  const re = /mimo-v2\.(\d+)(?:-(pro|flash))?\s+([\d.]+) Credits\s+([\d.]+) Credits\s+([\d.]+) Credits/g;
+  let m;
+  const seen = new Set();
+  while ((m = re.exec(text))) {
+    const version = `V2.${m[1]}`;
+    const variant = m[2] ? ` ${m[2][0].toUpperCase()}${m[2].slice(1)}` : "";
+    const name = `MiMo ${version}${variant}`;
+    if (seen.has(name)) continue;
+    seen.add(name);
+    // Nur die aktuellen Flaggschiffe (Docs: "all plans support the latest flagship
+    // models mimo-v2.6-pro, mimo-v2.6-flash"); aeltere Versionen laufen aus.
+    if (m[1] !== "6") continue;
+    out.models.push({ name, apiId: `mimo-v2.${m[1]}${m[2] ? "-" + m[2] : ""}`, cachedRead: parseFloat(m[3]), input: parseFloat(m[4]), output: parseFloat(m[5]) });
+  }
+  const upd = /Update Time\s*([A-Z][a-z]+ \d{1,2}, \d{4})/.exec(text);
+  if (upd) out.updatedAt = upd[1];
+  const rounds = [...text.matchAll(/approximately\s*([\d,]+)\s*rounds of medium-to-complex tasks/g)].map((x) => x[1]);
+  if (rounds.length) out.taskConversion = `official scenario estimate (mimo-v2.6-flash baseline): ${rounds.join(" / ")} rounds of medium-to-complex tasks per tier`;
+  out.note = "Individual edition. Off-peak (UTC 16:00-24:00) deducts 0.8x credits.";
+  return out;
+}
+
+// ---------- Parser: StepFun Step Plan (HTML-Docs) ----------
+export function parseStepfun(html) {
+  const text = htmlToText(html);
+  const out = { plans: [], creditsPerUsd: null, models: [], note: null };
+  const re = /(Flash (?:Mini|Plus|Pro|Max))\s+[^0-9$]*?([\d,.]+)M\s+\$([\d.]+)\s+\$([\d.]+)\s+\$([\d.]+)/g;
+  let m;
+  while ((m = re.exec(text))) {
+    out.plans.push({
+      name: m[1],
+      monthlyCredits: Math.round(parseFloat(m[2].replace(/,/g, "")) * 1e6),
+      monthlyUsd: parseFloat(m[3]),
+      quarterlyUsd: parseFloat(m[4]),
+      yearlyUsd: parseFloat(m[5]),
+    });
+  }
+  const conv = /\$1\s*[≈~]\s*7M Credits/.exec(text);
+  out.creditsPerUsd = conv ? 7e6 : null;
+  // Modellliste (Slug-Liste in den Docs)
+  const models = [...text.matchAll(/step-[\d.]+(?:-flash)?(?:-[\d]+)?/g)].map((x) => x[0]);
+  out.models = [...new Set(models)].slice(0, 8);
+  out.note = "Credits sind monatlich, kein Zeitfenster, kein Rollover. 1 $ Modellnutzung ~ 7M Credits.";
+  return out;
+}
+
+// ---------- Parser: Cerebras Code (HTML, offizielle Ankuendigung) ----------
+export function parseCerebras(html) {
+  const text = htmlToText(html);
+  const out = { plans: [], model: null, note: null };
+  const re = /Cerebras Code (Pro|Max)\s*-\s*\(\$([\d.]+)\/month\)([\s\S]{0,400}?)(?=Cerebras Code (?:Pro|Max)|$)/g;
+  let m;
+  while ((m = re.exec(text))) {
+    const seg = m[3];
+    const t = /up to ([\d.]+)\s*(million|m)\s*tokens\/day/i.exec(seg);
+    if (!t) continue;
+    const tokensPerDay = Math.round(parseFloat(t[1]) * 1e6);
+    out.plans.push({ name: m[1], monthlyUsd: parseFloat(m[2]), tokensPerDay });
+  }
+  const model = /Qwen3-Coder/.exec(text);
+  if (model) out.model = "Qwen3-Coder-480B";
+  out.note = "Tageslimit fuer gesendete Tokens (Ankuendigung: 'All rate limits listed are subject to change').";
+  return out;
+}
+
 // ---------- Parser: Kimi Membership Pricing (HTML) ----------
 export function parseKimiPricing(html) {
   const text = htmlToText(html);
@@ -429,6 +519,9 @@ export const PARSERS = {
   "glm-overview": parseGlmOverview,
   "qwen-docs": parseQwenDocs,
   "qwen-token-personal": parseQwenTokenPersonal,
+  mimo: parseMimo,
+  stepfun: parseStepfun,
+  cerebras: parseCerebras,
   "kimi-pricing": parseKimiPricing,
   "kimi-code": parseKimiCode,
   "kimi-goods": parseKimiGoods,
