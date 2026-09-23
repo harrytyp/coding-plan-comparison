@@ -87,6 +87,15 @@ sources:
     auth: required
     note: "GLM Preise nur per JS/API (401 ohne Auth). Quoten+Formel kommen aus glm-coding-overview; Preise als overrides + manuelle Verifikation."
 
+  # GitHub Copilot Business/Enterprise: Preise und AI-Credits stehen in der
+  # Plantabelle der Docs (die Individual-Seite listet nur Pro/Pro+/Max).
+  - id: copilot-plans
+    url: "https://docs.github.com/en/copilot/get-started/plans"
+    typ: html-docs
+    parser: copilot-plans
+    provides: [plan_meta, plan_quotas]
+    note: "Copilot Business 19 $/Sitz mit 1.900 AI-Credits pro Nutzer, Enterprise 39 $/Sitz mit 3.900."
+
   - id: minimax-token-plan
     url: "https://platform.minimax.io/subscribe/token-plan"
     typ: js-spa

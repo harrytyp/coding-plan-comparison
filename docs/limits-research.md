@@ -214,6 +214,20 @@ Damit sind alle Pläne mit veröffentlichter Menge integriert. Die verbleibenden
 fünf Zeilen ohne Rate (vier Qwen-Token-Tarife, MiniMax) haben eine
 nachvollziehbare Begründung, keine geratene Zahl.
 
+
+## Letzter Nachtrag 2026-09-23: Copilot Business und Enterprise
+
+Die Docs-Plantabelle nennt für die Firmentarife erstmals Mengen: **Copilot
+Business 19 $ pro Sitz und Monat mit 1.900 AI-Credits pro Nutzer**, **Copilot
+Enterprise 39 $ pro Sitz und Monat mit 3.900 AI-Credits pro Nutzer**. Credits
+sind wie bei den Einzeltarifen 0,01 $ wert, die Modellpreise kommen aus derselben
+Copilot-Doku. Beide Tarife sind damit in der Rangliste (564 Requests pro Dollar
+auf dem günstigsten Modell), die Quelle ist als eigener Feed in `sources.yml`
+angebunden und wird bei jedem Lauf neu geparst. Copilot Free und Student nennen
+nur "an allowance of GitHub AI Credits" ohne Zahl und bleiben draußen.
+
+Katalogstand danach: 78 Pläne, 25 Anbieter, 52 mit Modellzeilen.
+
 ## Messverfahren (fuer eigene Messungen)
 
 ## Messverfahren (das ist der Weg zu echten Zahlen)

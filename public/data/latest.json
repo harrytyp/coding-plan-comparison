@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T15:57:51.844Z",
+  "generatedAt": "2026-09-23T16:02:51.739Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -19502,6 +19502,1572 @@
       ]
     },
     {
+      "id": "copilot-business",
+      "name": "GitHub Copilot Business",
+      "provider": "github",
+      "price": {
+        "monthlyUsd": 19,
+        "paidPrice": 19,
+        "advertised": 19,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "19 $ pro Sitz und Monat; 1,900 AI-Credits pro Nutzer"
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "USD credits",
+          "amount": 19,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 19
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "copilot-plans",
+        "copilot-models"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 33,
+      "modelStats": {
+        "count": 33,
+        "min": 279.4117647058823,
+        "max": 27941.176470588234,
+        "mean": 3584.7904170258357,
+        "median": 1122.2681630242173,
+        "p25": 622.9508196721312,
+        "p75": 3740.893876747391
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official seat price and 1,900 AI credits per user per month from the GitHub Copilot docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "GPT-5 mini",
+          "family": "gpt-5 mini",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.001774,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10710.259301014656,
+          "requestsRawInWindow": 10710.259301014656,
+          "normalizedPer1": 563.6978579481398,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 545816234.4983089,
+          "derivedTokensPerMonth": 545816234.4983089
+        },
+        {
+          "model": "GPT-5.3-Codex",
+          "family": "gpt-5.3-codex",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.012418,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1530.0370430020937,
+          "requestsRawInWindow": 1530.0370430020937,
+          "normalizedPer1": 80.52826542116283,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 77973747.7854727,
+          "derivedTokensPerMonth": 77973747.7854727
+        },
+        {
+          "model": "GPT-5.4",
+          "family": "gpt-5.4",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.01693,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1122.2681630242173,
+          "requestsRawInWindow": 1122.2681630242173,
+          "normalizedPer1": 59.06674542232722,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 57193030.124040164,
+          "derivedTokensPerMonth": 57193030.124040164
+        },
+        {
+          "model": "GPT-5.4 mini",
+          "family": "gpt-5.4 mini",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.005079,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3740.893876747391,
+          "requestsRawInWindow": 3740.893876747391,
+          "normalizedPer1": 196.88915140775742,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 190643433.74680054,
+          "derivedTokensPerMonth": 190643433.74680054
+        },
+        {
+          "model": "GPT-5.4 nano",
+          "family": "gpt-5.4 nano",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0013625,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 13944.954128440368,
+          "requestsRawInWindow": 13944.954128440368,
+          "normalizedPer1": 733.9449541284404,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 710662752.293578,
+          "derivedTokensPerMonth": 710662752.293578
+        },
+        {
+          "model": "GPT-5.5",
+          "family": "gpt-5.5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.03386,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 561.1340815121087,
+          "requestsRawInWindow": 561.1340815121087,
+          "normalizedPer1": 29.53337271116361,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 28596515.062020082,
+          "derivedTokensPerMonth": 28596515.062020082
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 12570.29440952696,
+          "requestsRawInWindow": 12570.29440952696,
+          "normalizedPer1": 661.594442606682,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 643850479.6559708,
+          "derivedTokensPerMonth": 643850479.6559708
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "family": "gpt-5.6 sol",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0272,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 698.529411764706,
+          "requestsRawInWindow": 698.529411764706,
+          "normalizedPer1": 36.76470588235295,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 35598455.88235295,
+          "derivedTokensPerMonth": 35598455.88235295
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "family": "gpt-5.6 terra",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.013924,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1364.5504165469692,
+          "requestsRawInWindow": 1364.5504165469692,
+          "normalizedPer1": 71.81844297615628,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 69540218.32806665,
+          "derivedTokensPerMonth": 69540218.32806665
+        },
+        {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 279.4117647058823,
+          "requestsRawInWindow": 279.4117647058823,
+          "normalizedPer1": 14.705882352941174,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 14239382.352941174,
+          "derivedTokensPerMonth": 14239382.352941174
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 27941.176470588234,
+          "requestsRawInWindow": 27941.176470588234,
+          "normalizedPer1": 1470.5882352941176,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1423938235.2941177,
+          "derivedTokensPerMonth": 1423938235.2941177
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1397.058823529412,
+          "requestsRawInWindow": 1397.058823529412,
+          "normalizedPer1": 73.5294117647059,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 71196911.7647059,
+          "derivedTokensPerMonth": 71196911.7647059
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "family": "claude haiku 4.5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2794.117647058824,
+          "requestsRawInWindow": 2794.117647058824,
+          "normalizedPer1": 147.0588235294118,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 142393823.5294118,
+          "derivedTokensPerMonth": 142393823.5294118
+        },
+        {
+          "model": "Claude Sonnet 4",
+          "family": "claude sonnet 4",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0204,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 931.3725490196077,
+          "requestsRawInWindow": 931.3725490196077,
+          "normalizedPer1": 49.01960784313725,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 47464607.84313725,
+          "derivedTokensPerMonth": 47464607.84313725
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "family": "claude sonnet 4.6",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0204,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 931.3725490196077,
+          "requestsRawInWindow": 931.3725490196077,
+          "normalizedPer1": 49.01960784313725,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 47464607.84313725,
+          "derivedTokensPerMonth": 47464607.84313725
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "family": "claude opus 4.7",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 558.8235294117646,
+          "requestsRawInWindow": 558.8235294117646,
+          "normalizedPer1": 29.411764705882348,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 28478764.705882348,
+          "derivedTokensPerMonth": 28478764.705882348
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "family": "claude opus 4.8",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 558.8235294117646,
+          "requestsRawInWindow": 558.8235294117646,
+          "normalizedPer1": 29.411764705882348,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 28478764.705882348,
+          "derivedTokensPerMonth": 28478764.705882348
+        },
+        {
+          "model": "Claude Opus 5",
+          "family": "claude opus 5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 558.8235294117646,
+          "requestsRawInWindow": 558.8235294117646,
+          "normalizedPer1": 29.411764705882348,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 28478764.705882348,
+          "derivedTokensPerMonth": 28478764.705882348
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1104.6511627906978,
+          "requestsRawInWindow": 1104.6511627906978,
+          "normalizedPer1": 58.139534883720934,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 56295232.55813954,
+          "derivedTokensPerMonth": 56295232.55813954
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "family": "claude sonnet 5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1397.058823529412,
+          "requestsRawInWindow": 1397.058823529412,
+          "normalizedPer1": 73.5294117647059,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 71196911.7647059,
+          "derivedTokensPerMonth": 71196911.7647059
+        },
+        {
+          "model": "Claude Opus 4.8 (fast mode) (preview)",
+          "family": "claude opus 4.8 (fast mode) (preview)",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 279.4117647058823,
+          "requestsRawInWindow": 279.4117647058823,
+          "normalizedPer1": 14.705882352941174,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 14239382.352941174,
+          "derivedTokensPerMonth": 14239382.352941174
+        },
+        {
+          "model": "Claude Fable 5",
+          "family": "claude fable 5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 279.4117647058823,
+          "requestsRawInWindow": 279.4117647058823,
+          "normalizedPer1": 14.705882352941174,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 14239382.352941174,
+          "derivedTokensPerMonth": 14239382.352941174
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 622.9508196721312,
+          "requestsRawInWindow": 622.9508196721312,
+          "normalizedPer1": 32.78688524590164,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 31746819.672131147,
+          "derivedTokensPerMonth": 31746819.672131147
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "family": "gemini 3.5 flash",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.010158,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1870.4469383736955,
+          "requestsRawInWindow": 1870.4469383736955,
+          "normalizedPer1": 98.44457570387871,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 95321716.87340027,
+          "derivedTokensPerMonth": 95321716.87340027
+        },
+        {
+          "model": "Gemini 3.6 Flash 1",
+          "family": "gemini 3.6 flash 1",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0049575,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3832.576903681291,
+          "requestsRawInWindow": 3832.576903681291,
+          "normalizedPer1": 201.71457387796266,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 195315784.16540593,
+          "derivedTokensPerMonth": 195315784.16540593
+        },
+        {
+          "model": "Gemini 3.7 Flash 1",
+          "family": "gemini 3.7 flash 1",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0049575,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3832.576903681291,
+          "requestsRawInWindow": 3832.576903681291,
+          "normalizedPer1": 201.71457387796266,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 195315784.16540593,
+          "derivedTokensPerMonth": 195315784.16540593
+        },
+        {
+          "model": "Gemini 3.8 Flash 1",
+          "family": "gemini 3.8 flash 1",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0049575,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3832.576903681291,
+          "requestsRawInWindow": 3832.576903681291,
+          "normalizedPer1": 201.71457387796266,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 195315784.16540593,
+          "derivedTokensPerMonth": 195315784.16540593
+        },
+        {
+          "model": "MAI-Code-1.1-Flash",
+          "family": "mai-code-1.1-flash",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0013544000000000002,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 14028.352037802715,
+          "requestsRawInWindow": 14028.352037802715,
+          "normalizedPer1": 738.3343177790903,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 714912876.550502,
+          "derivedTokensPerMonth": 714912876.550502
+        },
+        {
+          "model": "Grok 4.5",
+          "family": "grok 4.5",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.027572,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 689.1048890178442,
+          "requestsRawInWindow": 689.1048890178442,
+          "normalizedPer1": 36.268678369360224,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 35118163.35412738,
+          "derivedTokensPerMonth": 35118163.35412738
+        },
+        {
+          "model": "Grok 4.6",
+          "family": "grok 4.6",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1070.4225352112678,
+          "requestsRawInWindow": 1070.4225352112678,
+          "normalizedPer1": 56.338028169014095,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 35334647.88732395,
+          "derivedTokensPerMonth": 35334647.88732395
+        },
+        {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1070.4225352112678,
+          "requestsRawInWindow": 1070.4225352112678,
+          "normalizedPer1": 56.338028169014095,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 35334647.88732395,
+          "derivedTokensPerMonth": 35334647.88732395
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "family": "kimi k2.7 code",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0120765,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1573.3035233718379,
+          "requestsRawInWindow": 1573.3035233718379,
+          "normalizedPer1": 82.80544859851778,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 88215128.55545895,
+          "derivedTokensPerMonth": 88215128.55545895
+        },
+        {
+          "model": "Kimi K3",
+          "family": "kimi k3",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0306,
+          "patternUsed": {
+            "input": 1050,
+            "cachedRead": 76500,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 620.9150326797386,
+          "requestsRawInWindow": 620.9150326797386,
+          "normalizedPer1": 32.67973856209151,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 48338235.29411765,
+          "derivedTokensPerMonth": 48338235.29411765
+        }
+      ]
+    },
+    {
+      "id": "copilot-enterprise",
+      "name": "GitHub Copilot Enterprise",
+      "provider": "github",
+      "price": {
+        "monthlyUsd": 39,
+        "paidPrice": 39,
+        "advertised": 39,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "39 $ pro Sitz und Monat; 3,900 AI-Credits pro Nutzer"
+      },
+      "meter": "dollar_usage",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "USD credits",
+          "amount": 39,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 39
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "copilot-plans",
+        "copilot-models"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 33,
+      "modelStats": {
+        "count": 33,
+        "min": 573.5294117647059,
+        "max": 57352.94117647059,
+        "mean": 7358.254013895134,
+        "median": 2303.6030714707617,
+        "p25": 1278.688524590164,
+        "p75": 7678.67690490254
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official seat price and 3,900 AI credits per user per month from the GitHub Copilot docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "GPT-5 mini",
+          "family": "gpt-5 mini",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.001774,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 21984.21645997745,
+          "requestsRawInWindow": 21984.21645997745,
+          "normalizedPer1": 563.6978579481398,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1120359639.2333708,
+          "derivedTokensPerMonth": 1120359639.2333708
+        },
+        {
+          "model": "GPT-5.3-Codex",
+          "family": "gpt-5.3-codex",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.012418,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3140.60235142535,
+          "requestsRawInWindow": 3140.60235142535,
+          "normalizedPer1": 80.52826542116283,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 160051377.0333387,
+          "derivedTokensPerMonth": 160051377.0333387
+        },
+        {
+          "model": "GPT-5.4",
+          "family": "gpt-5.4",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.01693,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2303.6030714707617,
+          "requestsRawInWindow": 2303.6030714707617,
+          "normalizedPer1": 59.06674542232722,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 117396219.72829296,
+          "derivedTokensPerMonth": 117396219.72829296
+        },
+        {
+          "model": "GPT-5.4 mini",
+          "family": "gpt-5.4 mini",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.005079,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7678.67690490254,
+          "requestsRawInWindow": 7678.67690490254,
+          "normalizedPer1": 196.88915140775742,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 391320732.42764324,
+          "derivedTokensPerMonth": 391320732.42764324
+        },
+        {
+          "model": "GPT-5.4 nano",
+          "family": "gpt-5.4 nano",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0013625,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 28623.853211009173,
+          "requestsRawInWindow": 28623.853211009173,
+          "normalizedPer1": 733.9449541284404,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1458728807.3394494,
+          "derivedTokensPerMonth": 1458728807.3394494
+        },
+        {
+          "model": "GPT-5.5",
+          "family": "gpt-5.5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.03386,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1151.8015357353809,
+          "requestsRawInWindow": 1151.8015357353809,
+          "normalizedPer1": 29.53337271116361,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 58698109.86414648,
+          "derivedTokensPerMonth": 58698109.86414648
+        },
+        {
+          "model": "GPT-5.6 Luna",
+          "family": "gpt-5.6 luna",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0015115,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 25802.1832616606,
+          "requestsRawInWindow": 25802.1832616606,
+          "normalizedPer1": 661.594442606682,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1321587826.662256,
+          "derivedTokensPerMonth": 1321587826.662256
+        },
+        {
+          "model": "GPT-5.6 Sol",
+          "family": "gpt-5.6 sol",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0272,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1433.8235294117649,
+          "requestsRawInWindow": 1433.8235294117649,
+          "normalizedPer1": 36.76470588235294,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 73070514.70588236,
+          "derivedTokensPerMonth": 73070514.70588236
+        },
+        {
+          "model": "GPT-5.6 Terra",
+          "family": "gpt-5.6 terra",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.013924,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2800.919276070095,
+          "requestsRawInWindow": 2800.919276070095,
+          "normalizedPer1": 71.81844297615628,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 142740448.14708418,
+          "derivedTokensPerMonth": 142740448.14708418
+        },
+        {
+          "model": "GPT-6 Astra",
+          "family": "gpt-6 astra",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 573.5294117647059,
+          "requestsRawInWindow": 573.5294117647059,
+          "normalizedPer1": 14.705882352941176,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 29228205.88235294,
+          "derivedTokensPerMonth": 29228205.88235294
+        },
+        {
+          "model": "GPT-6 Luna",
+          "family": "gpt-6 luna",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.00068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 57352.94117647059,
+          "requestsRawInWindow": 57352.94117647059,
+          "normalizedPer1": 1470.5882352941176,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2922820588.235294,
+          "derivedTokensPerMonth": 2922820588.235294
+        },
+        {
+          "model": "GPT-6 Sol",
+          "family": "gpt-6 sol",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2867.6470588235297,
+          "requestsRawInWindow": 2867.6470588235297,
+          "normalizedPer1": 73.52941176470588,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 146141029.4117647,
+          "derivedTokensPerMonth": 146141029.4117647
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "family": "claude haiku 4.5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 5735.2941176470595,
+          "requestsRawInWindow": 5735.2941176470595,
+          "normalizedPer1": 147.05882352941177,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 292282058.8235294,
+          "derivedTokensPerMonth": 292282058.8235294
+        },
+        {
+          "model": "Claude Sonnet 4",
+          "family": "claude sonnet 4",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0204,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1911.7647058823527,
+          "requestsRawInWindow": 1911.7647058823527,
+          "normalizedPer1": 49.01960784313725,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 97427352.94117646,
+          "derivedTokensPerMonth": 97427352.94117646
+        },
+        {
+          "model": "Claude Sonnet 4.6",
+          "family": "claude sonnet 4.6",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0204,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1911.7647058823527,
+          "requestsRawInWindow": 1911.7647058823527,
+          "normalizedPer1": 49.01960784313725,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 97427352.94117646,
+          "derivedTokensPerMonth": 97427352.94117646
+        },
+        {
+          "model": "Claude Opus 4.7",
+          "family": "claude opus 4.7",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1147.0588235294117,
+          "requestsRawInWindow": 1147.0588235294117,
+          "normalizedPer1": 29.41176470588235,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 58456411.76470588,
+          "derivedTokensPerMonth": 58456411.76470588
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "family": "claude opus 4.8",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1147.0588235294117,
+          "requestsRawInWindow": 1147.0588235294117,
+          "normalizedPer1": 29.41176470588235,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 58456411.76470588,
+          "derivedTokensPerMonth": 58456411.76470588
+        },
+        {
+          "model": "Claude Opus 5",
+          "family": "claude opus 5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1147.0588235294117,
+          "requestsRawInWindow": 1147.0588235294117,
+          "normalizedPer1": 29.41176470588235,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 58456411.76470588,
+          "derivedTokensPerMonth": 58456411.76470588
+        },
+        {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2267.4418604651164,
+          "requestsRawInWindow": 2267.4418604651164,
+          "normalizedPer1": 58.139534883720934,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 115553372.09302326,
+          "derivedTokensPerMonth": 115553372.09302326
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "family": "claude sonnet 5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2867.6470588235297,
+          "requestsRawInWindow": 2867.6470588235297,
+          "normalizedPer1": 73.52941176470588,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 146141029.4117647,
+          "derivedTokensPerMonth": 146141029.4117647
+        },
+        {
+          "model": "Claude Opus 4.8 (fast mode) (preview)",
+          "family": "claude opus 4.8 (fast mode) (preview)",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 573.5294117647059,
+          "requestsRawInWindow": 573.5294117647059,
+          "normalizedPer1": 14.705882352941176,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 29228205.88235294,
+          "derivedTokensPerMonth": 29228205.88235294
+        },
+        {
+          "model": "Claude Fable 5",
+          "family": "claude fable 5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 573.5294117647059,
+          "requestsRawInWindow": 573.5294117647059,
+          "normalizedPer1": 14.705882352941176,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 29228205.88235294,
+          "derivedTokensPerMonth": 29228205.88235294
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1278.688524590164,
+          "requestsRawInWindow": 1278.688524590164,
+          "normalizedPer1": 32.786885245901644,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 65164524.59016394,
+          "derivedTokensPerMonth": 65164524.59016394
+        },
+        {
+          "model": "Gemini 3.5 Flash",
+          "family": "gemini 3.5 flash",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.010158,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3839.33845245127,
+          "requestsRawInWindow": 3839.33845245127,
+          "normalizedPer1": 98.44457570387871,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 195660366.21382162,
+          "derivedTokensPerMonth": 195660366.21382162
+        },
+        {
+          "model": "Gemini 3.6 Flash 1",
+          "family": "gemini 3.6 flash 1",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0049575,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7866.868381240544,
+          "requestsRawInWindow": 7866.868381240544,
+          "normalizedPer1": 201.71457387796266,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 400911346.44478065,
+          "derivedTokensPerMonth": 400911346.44478065
+        },
+        {
+          "model": "Gemini 3.7 Flash 1",
+          "family": "gemini 3.7 flash 1",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0049575,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7866.868381240544,
+          "requestsRawInWindow": 7866.868381240544,
+          "normalizedPer1": 201.71457387796266,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 400911346.44478065,
+          "derivedTokensPerMonth": 400911346.44478065
+        },
+        {
+          "model": "Gemini 3.8 Flash 1",
+          "family": "gemini 3.8 flash 1",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0049575,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 7866.868381240544,
+          "requestsRawInWindow": 7866.868381240544,
+          "normalizedPer1": 201.71457387796266,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 400911346.44478065,
+          "derivedTokensPerMonth": 400911346.44478065
+        },
+        {
+          "model": "MAI-Code-1.1-Flash",
+          "family": "mai-code-1.1-flash",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0013544000000000002,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 28795.038393384522,
+          "requestsRawInWindow": 28795.038393384522,
+          "normalizedPer1": 738.3343177790903,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1467452746.603662,
+          "derivedTokensPerMonth": 1467452746.603662
+        },
+        {
+          "model": "Grok 4.5",
+          "family": "grok 4.5",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.027572,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1414.4784564050487,
+          "requestsRawInWindow": 1414.4784564050487,
+          "normalizedPer1": 36.268678369360224,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 72084651.0953141,
+          "derivedTokensPerMonth": 72084651.0953141
+        },
+        {
+          "model": "Grok 4.6",
+          "family": "grok 4.6",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2197.1830985915494,
+          "requestsRawInWindow": 2197.1830985915494,
+          "normalizedPer1": 56.33802816901409,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 72529014.08450705,
+          "derivedTokensPerMonth": 72529014.08450705
+        },
+        {
+          "model": "Grok 4.7",
+          "family": "grok 4.7",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.01775,
+          "patternUsed": {
+            "input": 390,
+            "cachedRead": 32500,
+            "output": 120
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2197.1830985915494,
+          "requestsRawInWindow": 2197.1830985915494,
+          "normalizedPer1": 56.33802816901409,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 72529014.08450705,
+          "derivedTokensPerMonth": 72529014.08450705
+        },
+        {
+          "model": "Kimi K2.7 Code",
+          "family": "kimi k2.7 code",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0120765,
+          "patternUsed": {
+            "input": 870,
+            "cachedRead": 55000,
+            "output": 200
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 3229.4124953421933,
+          "requestsRawInWindow": 3229.4124953421933,
+          "normalizedPer1": 82.80544859851777,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 181073158.61383677,
+          "derivedTokensPerMonth": 181073158.61383677
+        },
+        {
+          "model": "Kimi K3",
+          "family": "kimi k3",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0306,
+          "patternUsed": {
+            "input": 1050,
+            "cachedRead": 76500,
+            "output": 300
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1274.5098039215686,
+          "requestsRawInWindow": 1274.5098039215686,
+          "normalizedPer1": 32.6797385620915,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 99220588.23529412,
+          "derivedTokensPerMonth": 99220588.23529412
+        }
+      ]
+    },
+    {
       "id": "ollama-pro",
       "name": "Ollama Cloud Pro",
       "provider": "ollama",
@@ -21163,6 +22729,22 @@
     },
     {
       "planA": "opencode-go",
+      "planB": "copilot-business",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 888.1032306193111,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 381.38362517351067,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
       "planB": "ollama-pro",
       "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 25357.27489679682,
@@ -21547,6 +23129,22 @@
     },
     {
       "planA": "command-code-go",
+      "planB": "copilot-business",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 34.24572108807696,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 67.96586411983235,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "command-code-go",
       "planB": "ollama-pro",
       "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 25357.27489679682,
@@ -21923,6 +23521,22 @@
     },
     {
       "planA": "command-code-goat",
+      "planB": "copilot-business",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 360.27995238346176,
+      "winner": "command-code-goat"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 124.23895116117372,
+      "winner": "command-code-goat"
+    },
+    {
+      "planA": "command-code-goat",
       "planB": "ollama-pro",
       "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 25357.27489679682,
@@ -22291,6 +23905,22 @@
     },
     {
       "planA": "command-code-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 496.08609106956646,
+      "winner": "command-code-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 190.40091616209656,
+      "winner": "command-code-pro"
+    },
+    {
+      "planA": "command-code-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 25357.27489679682,
@@ -22651,6 +24281,22 @@
     },
     {
       "planA": "command-code-max10",
+      "planB": "copilot-business",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 886.3141836788465,
+      "winner": "command-code-max10"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 380.51203820251504,
+      "winner": "command-code-max10"
+    },
+    {
+      "planA": "command-code-max10",
       "planB": "ollama-pro",
       "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 25357.27489679682,
@@ -23003,6 +24649,22 @@
     },
     {
       "planA": "command-code-max20",
+      "planB": "copilot-business",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1872.628367357693,
+      "winner": "command-code-max20"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 861.0240764050301,
+      "winner": "command-code-max20"
+    },
+    {
+      "planA": "command-code-max20",
       "planB": "ollama-pro",
       "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 25357.27489679682,
@@ -23347,6 +25009,22 @@
     },
     {
       "planA": "glm-lite",
+      "planB": "copilot-business",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 131.45503388540817,
+      "winner": "glm-lite"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 12.76014471340401,
+      "winner": "glm-lite"
+    },
+    {
+      "planA": "glm-lite",
       "planB": "ollama-pro",
       "meanRequestsA": 8297.177874448013,
       "meanRequestsB": 25357.27489679682,
@@ -23683,6 +25361,22 @@
     },
     {
       "planA": "glm-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1288.7302033124486,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 576.560868280424,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 49783.067246688064,
       "meanRequestsB": 25357.27489679682,
@@ -24011,6 +25705,22 @@
     },
     {
       "planA": "glm-max",
+      "planB": "copilot-business",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 3140.370474395714,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 1478.6420259876559,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
       "planB": "ollama-pro",
       "meanRequestsA": 116160.49024227216,
       "meanRequestsB": 25357.27489679682,
@@ -24331,6 +26041,22 @@
     },
     {
       "planA": "qwen-coding-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 2410.6070238457505,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 1123.1162423863916,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 90000,
       "meanRequestsB": 25357.27489679682,
@@ -24643,6 +26369,22 @@
     },
     {
       "planA": "kimi-moderato",
+      "planB": "copilot-business",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 7.944409125655816,
+      "winner": "draw"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 55.15240444583232,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "kimi-moderato",
       "planB": "ollama-pro",
       "meanRequestsA": 3300,
       "meanRequestsB": 25357.27489679682,
@@ -24947,6 +26689,22 @@
     },
     {
       "planA": "kimi-allegretto",
+      "planB": "copilot-business",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 85.04103620196459,
+      "winner": "kimi-allegretto"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 9.851802875965943,
+      "winner": "draw"
+    },
+    {
+      "planA": "kimi-allegretto",
       "planB": "ollama-pro",
       "meanRequestsA": 6633.333333333334,
       "meanRequestsB": 25357.27489679682,
@@ -25243,6 +27001,22 @@
     },
     {
       "planA": "kimi-allegro",
+      "planB": "copilot-business",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 549.9682628400665,
+      "winner": "kimi-allegro"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 216.6512049733658,
+      "winner": "kimi-allegro"
+    },
+    {
+      "planA": "kimi-allegro",
       "planB": "ollama-pro",
       "meanRequestsA": 23300,
       "meanRequestsB": 25357.27489679682,
@@ -25531,6 +27305,22 @@
     },
     {
       "planA": "kimi-vivace",
+      "planB": "copilot-business",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1221.7230155203947,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 543.9163408945515,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-vivace",
       "planB": "ollama-pro",
       "meanRequestsA": 47381.00000000001,
       "meanRequestsB": 25357.27489679682,
@@ -25811,6 +27601,22 @@
     },
     {
       "planA": "claude-max-20x",
+      "planB": "copilot-business",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 4521.80436583124,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 2151.648280789579,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
       "planB": "ollama-pro",
       "meanRequestsA": 165682,
       "meanRequestsB": 25357.27489679682,
@@ -26083,6 +27889,22 @@
     },
     {
       "planA": "kiro-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 3231.5,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 9.855260027138414,
+      "winner": "draw"
+    },
+    {
+      "planA": "kiro-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 3231.5,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 56.083331808093064,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "kiro-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 3231.5,
       "meanRequestsB": 25357.27489679682,
@@ -26347,6 +28169,22 @@
     },
     {
       "planA": "kiro-pro-plus",
+      "planB": "copilot-business",
+      "meanRequestsA": 6462.9,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 80.28669038236333,
+      "winner": "kiro-pro-plus"
+    },
+    {
+      "planA": "kiro-pro-plus",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 6462.9,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 12.168022634233221,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "kiro-pro-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 6462.9,
       "meanRequestsB": 25357.27489679682,
@@ -26603,6 +28441,22 @@
     },
     {
       "planA": "kiro-pro-max",
+      "planB": "copilot-business",
+      "meanRequestsA": 16157.3,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 350.71812073758827,
+      "winner": "kiro-pro-max"
+    },
+    {
+      "planA": "kiro-pro-max",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 16157.3,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 119.5806229234405,
+      "winner": "kiro-pro-max"
+    },
+    {
+      "planA": "kiro-pro-max",
       "planB": "ollama-pro",
       "meanRequestsA": 16157.3,
       "meanRequestsB": 25357.27489679682,
@@ -26851,6 +28705,22 @@
     },
     {
       "planA": "kiro-power",
+      "planB": "copilot-business",
+      "meanRequestsA": 32314.6,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 801.4362414751765,
+      "winner": "kiro-power"
+    },
+    {
+      "planA": "kiro-power",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 32314.6,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 339.161245846881,
+      "winner": "kiro-power"
+    },
+    {
+      "planA": "kiro-power",
       "planB": "ollama-pro",
       "meanRequestsA": 32314.6,
       "meanRequestsB": 25357.27489679682,
@@ -27091,6 +28961,22 @@
     },
     {
       "planA": "amazon-q-free",
+      "planB": "copilot-business",
+      "meanRequestsA": 50,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 98.6052183200857,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "amazon-q-free",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 50,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 99.320490976452,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "amazon-q-free",
       "planB": "ollama-pro",
       "meanRequestsA": 50,
       "meanRequestsB": 25357.27489679682,
@@ -27323,6 +29209,22 @@
     },
     {
       "planA": "jetbrains-ai-free",
+      "planB": "copilot-business",
+      "meanRequestsA": 278.7277701778386,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 92.22471224945171,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "jetbrains-ai-free",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 278.7277701778386,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 96.21203930101494,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "jetbrains-ai-free",
       "planB": "ollama-pro",
       "meanRequestsA": 278.7277701778386,
       "meanRequestsB": 25357.27489679682,
@@ -27547,6 +29449,22 @@
     },
     {
       "planA": "jetbrains-ai-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 929.092567259462,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 74.08237416483905,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "jetbrains-ai-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 929.092567259462,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 87.37346433671645,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "jetbrains-ai-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 929.092567259462,
       "meanRequestsB": 25357.27489679682,
@@ -27763,6 +29681,22 @@
     },
     {
       "planA": "jetbrains-ai-ultimate",
+      "planB": "copilot-business",
+      "meanRequestsA": 3251.8239854081166,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 9.288309576936681,
+      "winner": "draw"
+    },
+    {
+      "planA": "jetbrains-ai-ultimate",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 3251.8239854081166,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 55.8071251785076,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "jetbrains-ai-ultimate",
       "planB": "ollama-pro",
       "meanRequestsA": 3251.8239854081166,
       "meanRequestsB": 25357.27489679682,
@@ -27971,6 +29905,22 @@
     },
     {
       "planA": "gemini-code-assist-individual",
+      "planB": "copilot-business",
+      "meanRequestsA": 7305,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 103.77760343548007,
+      "winner": "gemini-code-assist-individual"
+    },
+    {
+      "planA": "gemini-code-assist-individual",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 7305,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 0.7237316596378829,
+      "winner": "draw"
+    },
+    {
+      "planA": "gemini-code-assist-individual",
       "planB": "ollama-pro",
       "meanRequestsA": 7305,
       "meanRequestsB": 25357.27489679682,
@@ -28171,6 +30121,22 @@
     },
     {
       "planA": "gemini-code-assist-standard",
+      "planB": "copilot-business",
+      "meanRequestsA": 45660,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1173.714630097744,
+      "winner": "gemini-code-assist-standard"
+    },
+    {
+      "planA": "gemini-code-assist-standard",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 45660,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 520.5276403040293,
+      "winner": "gemini-code-assist-standard"
+    },
+    {
+      "planA": "gemini-code-assist-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 45660,
       "meanRequestsB": 25357.27489679682,
@@ -28363,6 +30329,22 @@
     },
     {
       "planA": "gemini-code-assist-enterprise",
+      "planB": "copilot-business",
+      "meanRequestsA": 60880,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1598.2861734636585,
+      "winner": "gemini-code-assist-enterprise"
+    },
+    {
+      "planA": "gemini-code-assist-enterprise",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 60880,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 727.3701870720391,
+      "winner": "gemini-code-assist-enterprise"
+    },
+    {
+      "planA": "gemini-code-assist-enterprise",
       "planB": "ollama-pro",
       "meanRequestsA": 60880,
       "meanRequestsB": 25357.27489679682,
@@ -28547,6 +30529,22 @@
     },
     {
       "planA": "augment-standard",
+      "planB": "copilot-business",
+      "meanRequestsA": 1858.185134518924,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 48.1647483296781,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "augment-standard",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 1858.185134518924,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 74.7469286734329,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "augment-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 1858.185134518924,
       "meanRequestsB": 25357.27489679682,
@@ -28723,6 +30721,22 @@
     },
     {
       "planA": "augment-business",
+      "planB": "copilot-business",
+      "meanRequestsA": 9290.92567259462,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 159.1762583516095,
+      "winner": "augment-business"
+    },
+    {
+      "planA": "augment-business",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 9290.92567259462,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 26.265356632835424,
+      "winner": "augment-business"
+    },
+    {
+      "planA": "augment-business",
       "planB": "ollama-pro",
       "meanRequestsA": 9290.92567259462,
       "meanRequestsB": 25357.27489679682,
@@ -28891,6 +30905,22 @@
     },
     {
       "planA": "cursor-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 2616.5465037326767,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 27.009777438996675,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "cursor-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 2616.5465037326767,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 64.44066080361375,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "cursor-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 2616.5465037326767,
       "meanRequestsB": 25357.27489679682,
@@ -29051,6 +31081,22 @@
     },
     {
       "planA": "cursor-ultra",
+      "planB": "copilot-business",
+      "meanRequestsA": 52330.930074653545,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1359.8044512200668,
+      "winner": "cursor-ultra"
+    },
+    {
+      "planA": "cursor-ultra",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 52330.930074653545,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 611.1867839277251,
+      "winner": "cursor-ultra"
+    },
+    {
+      "planA": "cursor-ultra",
       "planB": "ollama-pro",
       "meanRequestsA": 52330.930074653545,
       "meanRequestsB": 25357.27489679682,
@@ -29203,6 +31249,22 @@
     },
     {
       "planA": "freebuff-free",
+      "planB": "copilot-business",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1566.9078364121565,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 712.083304918743,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "freebuff-free",
       "planB": "ollama-pro",
       "meanRequestsA": 59755.15238035567,
       "meanRequestsB": 25357.27489679682,
@@ -29347,6 +31409,22 @@
     },
     {
       "planA": "freebuff-starter",
+      "planB": "copilot-business",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 2588.5610264712195,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 1209.8117821270048,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-starter",
       "planB": "ollama-pro",
       "meanRequestsA": 96379.27803283172,
       "meanRequestsB": 25357.27489679682,
@@ -29483,6 +31561,22 @@
     },
     {
       "planA": "freebuff-plus",
+      "planB": "copilot-business",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 4363.011303942225,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 2074.287558330828,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 159989.60153450066,
       "meanRequestsB": 25357.27489679682,
@@ -29611,6 +31705,22 @@
     },
     {
       "planA": "freebuff-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 6997.80110988402,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 3357.903104815293,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 254441.29400667577,
       "meanRequestsB": 25357.27489679682,
@@ -29731,6 +31841,22 @@
     },
     {
       "planA": "mimo-lite",
+      "planB": "copilot-business",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 190.70957295962216,
+      "winner": "mimo-lite"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 41.627740672636484,
+      "winner": "mimo-lite"
+    },
+    {
+      "planA": "mimo-lite",
       "planB": "ollama-pro",
       "meanRequestsA": 10421.328912833265,
       "meanRequestsB": 25357.27489679682,
@@ -29843,6 +31969,22 @@
     },
     {
       "planA": "mimo-standard",
+      "planB": "copilot-business",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 679.9525128184983,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 279.9768652192685,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "mimo-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 27959.662936869732,
       "meanRequestsB": 25357.27489679682,
@@ -29947,6 +32089,22 @@
     },
     {
       "planA": "mimo-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 2594.381407918449,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 1212.647352575655,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 96587.92650918636,
       "meanRequestsB": 25357.27489679682,
@@ -30043,6 +32201,22 @@
     },
     {
       "planA": "mimo-max",
+      "planB": "copilot-business",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 5714.191459192442,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 2732.5548134527294,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-max",
       "planB": "ollama-pro",
       "meanRequestsA": 208426.5782566653,
       "meanRequestsB": 25357.27489679682,
@@ -30131,6 +32305,22 @@
     },
     {
       "planA": "stepfun-flash-mini",
+      "planB": "copilot-business",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 945.8921664856026,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "stepfun-flash-mini",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 409.53720931349886,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "stepfun-flash-mini",
       "planB": "ollama-pro",
       "meanRequestsA": 37493.04215659978,
       "meanRequestsB": 25357.27489679682,
@@ -30211,6 +32401,22 @@
     },
     {
       "planA": "stepfun-flash-plus",
+      "planB": "copilot-business",
+      "meanRequestsA": 149972.16862639913,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 4083.5686659424105,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "stepfun-flash-plus",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 149972.16862639913,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 1938.1488372539955,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "stepfun-flash-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 149972.16862639913,
       "meanRequestsB": 25357.27489679682,
@@ -30283,6 +32489,22 @@
     },
     {
       "planA": "stepfun-flash-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 749860.8431319958,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 20817.843329712057,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "stepfun-flash-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 749860.8431319958,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 10090.744186269978,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "stepfun-flash-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 749860.8431319958,
       "meanRequestsB": 25357.27489679682,
@@ -30347,6 +32569,22 @@
     },
     {
       "planA": "stepfun-flash-max",
+      "planB": "copilot-business",
+      "meanRequestsA": 3749304.215659979,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 104489.21664856028,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "stepfun-flash-max",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 3749304.215659979,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 50853.72093134989,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "stepfun-flash-max",
       "planB": "ollama-pro",
       "meanRequestsA": 3749304.215659979,
       "meanRequestsB": 25357.27489679682,
@@ -30403,6 +32641,22 @@
     },
     {
       "planA": "cerebras-code-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 14335.387151210707,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 299.8947074597525,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "cerebras-code-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 14335.387151210707,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 94.82049850603332,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "cerebras-code-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 14335.387151210707,
       "meanRequestsB": 25357.27489679682,
@@ -30451,6 +32705,22 @@
     },
     {
       "planA": "cerebras-code-max",
+      "planB": "copilot-business",
+      "meanRequestsA": 71676.93575605353,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 1899.4735372987623,
+      "winner": "cerebras-code-max"
+    },
+    {
+      "planA": "cerebras-code-max",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 71676.93575605353,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 874.1024925301664,
+      "winner": "cerebras-code-max"
+    },
+    {
+      "planA": "cerebras-code-max",
       "planB": "ollama-pro",
       "meanRequestsA": 71676.93575605353,
       "meanRequestsB": 25357.27489679682,
@@ -30491,6 +32761,22 @@
     },
     {
       "planA": "copilot-pro",
+      "planB": "copilot-business",
+      "meanRequestsA": 2830.0976976519746,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 21.052631578947402,
+      "winner": "copilot-business"
+    },
+    {
+      "planA": "copilot-pro",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 2830.0976976519746,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 61.53846153846154,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "copilot-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 2830.0976976519746,
       "meanRequestsB": 25357.27489679682,
@@ -30523,6 +32809,22 @@
     },
     {
       "planA": "copilot-pro-plus",
+      "planB": "copilot-business",
+      "meanRequestsA": 13207.122589042548,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 268.42105263157885,
+      "winner": "copilot-pro-plus"
+    },
+    {
+      "planA": "copilot-pro-plus",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 13207.122589042548,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 79.48717948717947,
+      "winner": "copilot-pro-plus"
+    },
+    {
+      "planA": "copilot-pro-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 13207.122589042548,
       "meanRequestsB": 25357.27489679682,
@@ -30547,6 +32849,22 @@
     },
     {
       "planA": "copilot-max",
+      "planB": "copilot-business",
+      "meanRequestsA": 37734.63596869301,
+      "meanRequestsB": 3584.7904170258357,
+      "advantagePercent": 952.6315789473686,
+      "winner": "copilot-max"
+    },
+    {
+      "planA": "copilot-max",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 37734.63596869301,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 412.82051282051293,
+      "winner": "copilot-max"
+    },
+    {
+      "planA": "copilot-max",
       "planB": "ollama-pro",
       "meanRequestsA": 37734.63596869301,
       "meanRequestsB": 25357.27489679682,
@@ -30567,6 +32885,62 @@
       "meanRequestsA": 37734.63596869301,
       "meanRequestsB": 422621.2482799468,
       "advantagePercent": 91.07128756013296,
+      "winner": "ollama-team"
+    },
+    {
+      "planA": "copilot-business",
+      "planB": "copilot-enterprise",
+      "meanRequestsA": 3584.7904170258357,
+      "meanRequestsB": 7358.254013895134,
+      "advantagePercent": 51.28205128205126,
+      "winner": "copilot-enterprise"
+    },
+    {
+      "planA": "copilot-business",
+      "planB": "ollama-pro",
+      "meanRequestsA": 3584.7904170258357,
+      "meanRequestsB": 25357.27489679682,
+      "advantagePercent": 85.86287197021052,
+      "winner": "ollama-pro"
+    },
+    {
+      "planA": "copilot-business",
+      "planB": "ollama-max",
+      "meanRequestsA": 3584.7904170258357,
+      "meanRequestsB": 126786.37448398408,
+      "advantagePercent": 97.1725743940421,
+      "winner": "ollama-max"
+    },
+    {
+      "planA": "copilot-business",
+      "planB": "ollama-team",
+      "meanRequestsA": 3584.7904170258357,
+      "meanRequestsB": 422621.2482799468,
+      "advantagePercent": 99.15177231821262,
+      "winner": "ollama-team"
+    },
+    {
+      "planA": "copilot-enterprise",
+      "planB": "ollama-pro",
+      "meanRequestsA": 7358.254013895134,
+      "meanRequestsB": 25357.27489679682,
+      "advantagePercent": 70.98168457043212,
+      "winner": "ollama-pro"
+    },
+    {
+      "planA": "copilot-enterprise",
+      "planB": "ollama-max",
+      "meanRequestsA": 7358.254013895134,
+      "meanRequestsB": 126786.37448398408,
+      "advantagePercent": 94.19633691408642,
+      "winner": "ollama-max"
+    },
+    {
+      "planA": "copilot-enterprise",
+      "planB": "ollama-team",
+      "meanRequestsA": 7358.254013895134,
+      "meanRequestsB": 422621.2482799468,
+      "advantagePercent": 98.25890107422592,
       "winner": "ollama-team"
     },
     {
@@ -35013,6 +37387,468 @@
       "normalizedPer1Mean": 65.35947712418302
     },
     {
+      "planId": "copilot-business",
+      "family": "gpt-5 mini",
+      "modelCount": 1,
+      "normalizedPer1Median": 563.6978579481398,
+      "normalizedPer1Mean": 563.6978579481398
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.3-codex",
+      "modelCount": 1,
+      "normalizedPer1Median": 80.52826542116283,
+      "normalizedPer1Mean": 80.52826542116283
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.4",
+      "modelCount": 1,
+      "normalizedPer1Median": 59.06674542232722,
+      "normalizedPer1Mean": 59.06674542232722
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.4 mini",
+      "modelCount": 1,
+      "normalizedPer1Median": 196.88915140775742,
+      "normalizedPer1Mean": 196.88915140775742
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.4 nano",
+      "modelCount": 1,
+      "normalizedPer1Median": 733.9449541284404,
+      "normalizedPer1Mean": 733.9449541284404
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.53337271116361,
+      "normalizedPer1Mean": 29.53337271116361
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 661.594442606682,
+      "normalizedPer1Mean": 661.594442606682
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 36.76470588235295,
+      "normalizedPer1Mean": 36.76470588235295
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-5.6 terra",
+      "modelCount": 1,
+      "normalizedPer1Median": 71.81844297615628,
+      "normalizedPer1Mean": 71.81844297615628
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer1Median": 14.705882352941174,
+      "normalizedPer1Mean": 14.705882352941174
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 1470.5882352941176,
+      "normalizedPer1Mean": 1470.5882352941176
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 73.5294117647059,
+      "normalizedPer1Mean": 73.5294117647059
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude haiku 4.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 147.0588235294118,
+      "normalizedPer1Mean": 147.0588235294118
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude sonnet 4",
+      "modelCount": 1,
+      "normalizedPer1Median": 49.01960784313725,
+      "normalizedPer1Mean": 49.01960784313725
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude sonnet 4.6",
+      "modelCount": 1,
+      "normalizedPer1Median": 49.01960784313725,
+      "normalizedPer1Mean": 49.01960784313725
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude opus 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.411764705882348,
+      "normalizedPer1Mean": 29.411764705882348
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude opus 4.8",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.411764705882348,
+      "normalizedPer1Mean": 29.411764705882348
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude opus 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.411764705882348,
+      "normalizedPer1Mean": 29.411764705882348
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 58.139534883720934,
+      "normalizedPer1Mean": 58.139534883720934
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude sonnet 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 73.5294117647059,
+      "normalizedPer1Mean": 73.5294117647059
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude opus 4.8 (fast mode) (preview)",
+      "modelCount": 1,
+      "normalizedPer1Median": 14.705882352941174,
+      "normalizedPer1Mean": 14.705882352941174
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude fable 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 14.705882352941174,
+      "normalizedPer1Mean": 14.705882352941174
+    },
+    {
+      "planId": "copilot-business",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer1Median": 32.78688524590164,
+      "normalizedPer1Mean": 32.78688524590164
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gemini 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 98.44457570387871,
+      "normalizedPer1Mean": 98.44457570387871
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gemini 3.6 flash 1",
+      "modelCount": 1,
+      "normalizedPer1Median": 201.71457387796266,
+      "normalizedPer1Mean": 201.71457387796266
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gemini 3.7 flash 1",
+      "modelCount": 1,
+      "normalizedPer1Median": 201.71457387796266,
+      "normalizedPer1Mean": 201.71457387796266
+    },
+    {
+      "planId": "copilot-business",
+      "family": "gemini 3.8 flash 1",
+      "modelCount": 1,
+      "normalizedPer1Median": 201.71457387796266,
+      "normalizedPer1Mean": 201.71457387796266
+    },
+    {
+      "planId": "copilot-business",
+      "family": "mai-code-1.1-flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 738.3343177790903,
+      "normalizedPer1Mean": 738.3343177790903
+    },
+    {
+      "planId": "copilot-business",
+      "family": "grok 4.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 36.268678369360224,
+      "normalizedPer1Mean": 36.268678369360224
+    },
+    {
+      "planId": "copilot-business",
+      "family": "grok 4.6",
+      "modelCount": 1,
+      "normalizedPer1Median": 56.338028169014095,
+      "normalizedPer1Mean": 56.338028169014095
+    },
+    {
+      "planId": "copilot-business",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 56.338028169014095,
+      "normalizedPer1Mean": 56.338028169014095
+    },
+    {
+      "planId": "copilot-business",
+      "family": "kimi k2.7 code",
+      "modelCount": 1,
+      "normalizedPer1Median": 82.80544859851778,
+      "normalizedPer1Mean": 82.80544859851778
+    },
+    {
+      "planId": "copilot-business",
+      "family": "kimi k3",
+      "modelCount": 1,
+      "normalizedPer1Median": 32.67973856209151,
+      "normalizedPer1Mean": 32.67973856209151
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5 mini",
+      "modelCount": 1,
+      "normalizedPer1Median": 563.6978579481398,
+      "normalizedPer1Mean": 563.6978579481398
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.3-codex",
+      "modelCount": 1,
+      "normalizedPer1Median": 80.52826542116283,
+      "normalizedPer1Mean": 80.52826542116283
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.4",
+      "modelCount": 1,
+      "normalizedPer1Median": 59.06674542232722,
+      "normalizedPer1Mean": 59.06674542232722
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.4 mini",
+      "modelCount": 1,
+      "normalizedPer1Median": 196.88915140775742,
+      "normalizedPer1Mean": 196.88915140775742
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.4 nano",
+      "modelCount": 1,
+      "normalizedPer1Median": 733.9449541284404,
+      "normalizedPer1Mean": 733.9449541284404
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.53337271116361,
+      "normalizedPer1Mean": 29.53337271116361
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 661.594442606682,
+      "normalizedPer1Mean": 661.594442606682
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 36.76470588235294,
+      "normalizedPer1Mean": 36.76470588235294
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-5.6 terra",
+      "modelCount": 1,
+      "normalizedPer1Median": 71.81844297615628,
+      "normalizedPer1Mean": 71.81844297615628
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-6 astra",
+      "modelCount": 1,
+      "normalizedPer1Median": 14.705882352941176,
+      "normalizedPer1Mean": 14.705882352941176
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-6 luna",
+      "modelCount": 1,
+      "normalizedPer1Median": 1470.5882352941176,
+      "normalizedPer1Mean": 1470.5882352941176
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gpt-6 sol",
+      "modelCount": 1,
+      "normalizedPer1Median": 73.52941176470588,
+      "normalizedPer1Mean": 73.52941176470588
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude haiku 4.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 147.05882352941177,
+      "normalizedPer1Mean": 147.05882352941177
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude sonnet 4",
+      "modelCount": 1,
+      "normalizedPer1Median": 49.01960784313725,
+      "normalizedPer1Mean": 49.01960784313725
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude sonnet 4.6",
+      "modelCount": 1,
+      "normalizedPer1Median": 49.01960784313725,
+      "normalizedPer1Mean": 49.01960784313725
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude opus 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.41176470588235,
+      "normalizedPer1Mean": 29.41176470588235
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude opus 4.8",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.41176470588235,
+      "normalizedPer1Mean": 29.41176470588235
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude opus 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 29.41176470588235,
+      "normalizedPer1Mean": 29.41176470588235
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 58.139534883720934,
+      "normalizedPer1Mean": 58.139534883720934
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude sonnet 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 73.52941176470588,
+      "normalizedPer1Mean": 73.52941176470588
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude opus 4.8 (fast mode) (preview)",
+      "modelCount": 1,
+      "normalizedPer1Median": 14.705882352941176,
+      "normalizedPer1Mean": 14.705882352941176
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude fable 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 14.705882352941176,
+      "normalizedPer1Mean": 14.705882352941176
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer1Median": 32.786885245901644,
+      "normalizedPer1Mean": 32.786885245901644
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gemini 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 98.44457570387871,
+      "normalizedPer1Mean": 98.44457570387871
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gemini 3.6 flash 1",
+      "modelCount": 1,
+      "normalizedPer1Median": 201.71457387796266,
+      "normalizedPer1Mean": 201.71457387796266
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gemini 3.7 flash 1",
+      "modelCount": 1,
+      "normalizedPer1Median": 201.71457387796266,
+      "normalizedPer1Mean": 201.71457387796266
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gemini 3.8 flash 1",
+      "modelCount": 1,
+      "normalizedPer1Median": 201.71457387796266,
+      "normalizedPer1Mean": 201.71457387796266
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "mai-code-1.1-flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 738.3343177790903,
+      "normalizedPer1Mean": 738.3343177790903
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "grok 4.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 36.268678369360224,
+      "normalizedPer1Mean": 36.268678369360224
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "grok 4.6",
+      "modelCount": 1,
+      "normalizedPer1Median": 56.33802816901409,
+      "normalizedPer1Mean": 56.33802816901409
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "grok 4.7",
+      "modelCount": 1,
+      "normalizedPer1Median": 56.33802816901409,
+      "normalizedPer1Mean": 56.33802816901409
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "kimi k2.7 code",
+      "modelCount": 1,
+      "normalizedPer1Median": 82.80544859851777,
+      "normalizedPer1Mean": 82.80544859851777
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "kimi k3",
+      "modelCount": 1,
+      "normalizedPer1Median": 32.6797385620915,
+      "normalizedPer1Mean": 32.6797385620915
+    },
+    {
       "planId": "ollama-pro",
       "family": "deepseek-v4.1-flash",
       "modelCount": 1,
@@ -36463,7 +39299,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T15:57:51.363Z",
+    "fetchedAt": "2026-09-23T16:02:27.197Z",
     "count": 410,
     "scores": {
       "claude-opus-5-5": {
@@ -36583,10 +39419,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -37204,10 +40040,10 @@
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.85
       },
-      "gemma-4-e4b-it": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.8
       },
-      "llama-3-3-70b-instruct": {
+      "gemma-4-e4b-it": {
         "intelligence": 13.8
       },
       "devstral-medium-2507": {
@@ -37387,10 +40223,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -37899,11 +40735,11 @@
     }
   },
   "statistics": {
-    "totalPlans": 76,
-    "comparablePlans": 50,
-    "plansWithModels": 50,
+    "totalPlans": 78,
+    "comparablePlans": 52,
+    "plansWithModels": 52,
     "undisclosed": 1,
-    "sourceCount": 27
+    "sourceCount": 28
   },
   "warnings": [
     "qwen-token-personal-lite: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",

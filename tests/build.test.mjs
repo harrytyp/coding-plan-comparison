@@ -511,6 +511,23 @@ test("Qwen Coding Plan Pro: offizielle Request-Quote als Rate", async () => {
   }
 });
 
+// GitHub Copilot Business/Enterprise: Preis pro Sitz, Credits pro Nutzer (Docs-Tabelle).
+test("Copilot Business und Enterprise: Credits pro Nutzer, Rate nachgerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/copilot-plans.json"), "utf8"));
+  assert.equal(src.plans.length, 2, "Business und Enterprise aus der Docs-Tabelle");
+  for (const p of src.plans) {
+    const plan = d.plans.find((x) => x.id === `copilot-${p.name.toLowerCase()}`);
+    assert.ok(plan, `copilot-${p.name.toLowerCase()} fehlt`);
+    assert.equal(plan.price.monthlyUsd, p.priceUsd, `${p.name}: Preis pro Sitz`);
+    // Credits x 0,01 $ = Nutzungsvolumen in Dollar
+    assert.equal(plan.quotas[0].amount, +(p.creditsPerUser * 0.01).toFixed(2), `${p.name}: Dollar-Volumen`);
+    assert.ok(plan.modelRows.length >= 30, `${p.name}: Modellpreise aus der Copilot-Doku`);
+    const row = plan.modelRows[0];
+    assert.ok(Math.abs(row.requestsPerMonth - plan.quotas[0].amount / row.costPerRequest) < 1, `${p.name}: Requests = Volumen / Kosten pro Request`);
+  }
+});
+
 test("Cerebras Code: Tageslimit in Tokens wird auf den Monat gerechnet", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const src = JSON.parse(await readFile(join(ROOT, "parsed/cerebras-code.json"), "utf8"));

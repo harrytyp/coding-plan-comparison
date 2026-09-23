@@ -574,6 +574,43 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     }
   }
 
+  // --- GitHub Copilot Business/Enterprise (Preis pro Sitz, Credits pro Nutzer) ---
+  // Quelle: Docs-Plantabelle. Credits sind wie bei den Individual-Tarifen
+  // 0,01 $ wert, die Modellpreise kommen aus derselben Copilot-Doku.
+  const cpBiz = parsed["copilot-plans"];
+  if (cpBiz?.plans?.length && cpModels?.models?.length) {
+    const priceList = cpModels.models;
+    for (const p of cpBiz.plans) {
+      const usd = +(p.creditsPerUser * (cpBilling?.creditValueUsd ?? 0.01)).toFixed(2);
+      add({
+        id: `copilot-${p.name.toLowerCase()}`,
+        provider: "github",
+        name: `GitHub Copilot ${p.name}`,
+        price: {
+          monthlyUsd: p.priceUsd,
+          paidPrice: p.priceUsd,
+          advertisedPrice: p.priceUsd,
+          currency: "USD",
+          yearlyUsd: null,
+          altPrice: null,
+          billingNote: `${p.priceUsd} $ pro Sitz und Monat; ${p.creditsPerUser.toLocaleString()} AI-Credits pro Nutzer`,
+        },
+        meter: "dollar_usage",
+        quotas: [{ label: "Monthly", unit: "USD credits", amount: usd, window: "month", refresh: "monthly", disclosure: "exact" }],
+        tokenPricing: { source: "copilot-models", note: "Token-Preise von GitHub fuer alle Copilot-Modelle" },
+        localModelPricing: priceList,
+        workload: { pattern: null, taskConversion: null },
+        models: priceList.map((m) => m.model),
+        dataTier: "A",
+        dataTierNote: `Official seat price and ${p.creditsPerUser.toLocaleString()} AI credits per user per month from the GitHub Copilot docs`,
+        disclosure: "disclosed",
+        sourceIds: ["copilot-plans", "copilot-models"],
+        verifiedAt: "2026-09-23",
+        priceSource: "official docs",
+      });
+    }
+  }
+
   // --- Ollama Cloud (Dollar-Credits, eigene Token-Preise je Modell) ---
   const ollama = parsed["ollama-pricing"];
   if (ollama?.plans?.length && ollama?.models?.length) {

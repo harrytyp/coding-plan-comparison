@@ -633,10 +633,32 @@ export function parseLlamaStats(raw) {
 }
 
 // ---------- Registry ----------
+// GitHub Copilot Business/Enterprise aus der Plantabelle der Docs.
+// Roh-HTML: <th scope="row">Copilot Business</th><td>$19 USD per granted seat per month</td>
+//           <td>Total per user per month: 1,900</td>
+export function parseCopilotPlans(html) {
+  const flat = String(html)
+    .replace(/<\/t[dh]>/g, " | ")
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ");
+  const plans = [];
+  for (const name of ["Business", "Enterprise"]) {
+    const re = new RegExp(
+      `Copilot ${name} \\| \\$([0-9]+) USD per granted seat per month \\| Total per user per month: ([0-9,]+)`,
+      "i",
+    );
+    const m = re.exec(flat);
+    if (!m) continue;
+    plans.push({ name, priceUsd: Number(m[1]), creditsPerUser: Number(m[2].replace(/,/g, "")), seats: true });
+  }
+  return { plans, note: "GitHub Copilot Business/Enterprise: Preis pro Sitz und AI-Credits pro Nutzer aus der Docs-Plantabelle" };
+}
+
 export const PARSERS = {
   ocgo: parseOcgo,
   cc: parseCc,
   "glm-overview": parseGlmOverview,
+  "copilot-plans": parseCopilotPlans,
   "qwen-docs": parseQwenDocs,
   "qwen-token-personal": parseQwenTokenPersonal,
   "copilot-billing": parseCopilotBilling,
