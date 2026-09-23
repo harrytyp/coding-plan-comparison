@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-22T23:51:31.732Z",
+  "generatedAt": "2026-09-23T07:59:57.360Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -17747,7 +17747,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-22T23:51:31.632Z",
+    "fetchedAt": "2026-09-23T07:59:56.912Z",
     "count": 398,
     "scores": {
       "claude-opus-5-5": {
@@ -17891,10 +17891,10 @@
       "deepseek-v4-pro-max": {
         "intelligence": 43
       },
-      "hy3": {
+      "gemini-3-6-flash": {
         "intelligence": 42.92
       },
-      "gemini-3-6-flash": {
+      "hy3": {
         "intelligence": 42.92
       },
       "gpt-5-2-pro-2025-12-11": {
@@ -18173,10 +18173,10 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.04
       },
-      "gemini-2-5-pro": {
+      "seed-2-0-mini": {
         "intelligence": 27.8
       },
-      "seed-2-0-mini": {
+      "gemini-2-5-pro": {
         "intelligence": 27.8
       },
       "mai-code-1-1-flash": {
@@ -19003,7 +19003,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-22",
+      "verifiedAt": "2026-09-23",
       "crawled": true
     },
     {
@@ -19114,12 +19114,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Tue, 22 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Wed, 23 Sep 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.87176,
-      "CNY": 6.710202,
-      "GBP": 0.747749,
-      "JPY": 157.353588
+      "EUR": 0.873207,
+      "CNY": 6.71347,
+      "GBP": 0.749328,
+      "JPY": 157.415417
     }
   },
   "statistics": {
