@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T15:42:04.906Z",
+  "generatedAt": "2026-09-23T15:50:54.279Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -15341,6 +15341,158 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Cursor publishes the price and the two usage pools but no included amount for Pro Plus either, so it stays a reference row. Source: cursor.com/docs/account/pricing (read 2026-09-23).",
       "notesDe": "Cursor nennt Preis und die zwei Pools, aber auch fuer Pro Plus keine enthaltene Menge, deshalb bleibt der Tarif eine Referenzzeile. Quelle: cursor.com/docs/account/pricing (gelesen 2026-09-23).",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "google-ai-pro",
+      "name": "Google AI Pro (Antigravity, Gemini CLI)",
+      "provider": "google",
+      "price": {
+        "monthlyUsd": 25.19,
+        "paidPrice": 25.19,
+        "advertised": 25.19,
+        "currency": "EUR",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "21,99 EUR pro Monat in Deutschland (umgerechnet mit dem Kurs der Seite)"
+      },
+      "meter": "requests",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "No official quota, derived",
+      "notes": "Antigravity and Gemini CLI quotas depend on the Google AI plan: AI Pro gets a high quota refreshed every five hours until the weekly limit is reached. Google publishes no amount. AI credits can be bought for overage and are consumed at Gemini consumption pricing. Source: antigravity.google/docs/plans and gemini.google/subscriptions (read 2026-09-23).",
+      "notesDe": "Die Kontingente von Antigravity und Gemini CLI haengen am Google-AI-Tarif: AI Pro bekommt ein hohes Kontingent, das alle fuenf Stunden erneuert wird, bis das Wochenlimit erreicht ist. Google nennt keine Menge. Fuer Mehrverbrauch lassen sich AI-Credits kaufen, die zu Gemini-Verbrauchspreisen abgerechnet werden. Quelle: antigravity.google/docs/plans und gemini.google/subscriptions (gelesen 2026-09-23).",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "google-ai-ultra-5x",
+      "name": "Google AI Ultra (5x)",
+      "provider": "google",
+      "price": {
+        "monthlyUsd": 114.51,
+        "paidPrice": 114.51,
+        "advertised": 114.51,
+        "currency": "EUR",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "99,99 EUR pro Monat, 5-fache Limits von AI Pro"
+      },
+      "meter": "requests",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "No official quota, derived",
+      "notes": "Five times the AI Pro usage limits, the highest quota in Antigravity, refreshed every five hours, highest weekly limits, plus third-party models. No amount published. Source: antigravity.google/docs/plans and gemini.google/subscriptions (read 2026-09-23).",
+      "notesDe": "Fuenffache Nutzungslimits von AI Pro, das hoechste Kontingent in Antigravity, alle fuenf Stunden erneuert, hoechste Wochenlimits, dazu Fremdmodelle. Keine Menge veroeffentlicht. Quelle: antigravity.google/docs/plans und gemini.google/subscriptions (gelesen 2026-09-23).",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "google-ai-ultra-20x",
+      "name": "Google AI Ultra (20x)",
+      "provider": "google",
+      "price": {
+        "monthlyUsd": 251.94,
+        "paidPrice": 251.94,
+        "advertised": 251.94,
+        "currency": "EUR",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "219,99 EUR pro Monat, 20-fache Limits von AI Pro"
+      },
+      "meter": "requests",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "No official quota, derived",
+      "notes": "Twenty times the AI Pro usage limits, no amount published. Source: gemini.google/subscriptions (read 2026-09-23).",
+      "notesDe": "Zwanzigfache Nutzungslimits von AI Pro, keine Menge veroeffentlicht. Quelle: gemini.google/subscriptions (gelesen 2026-09-23).",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "cline-pass",
+      "name": "ClinePass",
+      "provider": "cline",
+      "price": {
+        "monthlyUsd": 9.99,
+        "paidPrice": 9.99,
+        "advertised": 9.99,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "credits",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "No official quota, derived",
+      "notes": "ClinePass costs $9.99 per month and offers 2 to 5 times the usage on popular open coding models compared to the standard API rate. The amount is relative, not an absolute quota, so no rate is computed. Source: docs.cline.bot/getting-started/clinepass (read 2026-09-23).",
+      "notesDe": "ClinePass kostet 9,99 $ pro Monat und bietet das Zwei- bis Fuenffache an Nutzung bei populaeren offenen Coding-Modellen gegenueber dem Standard-API-Preis. Die Angabe ist relativ, keine absolute Quote, deshalb wird keine Rate berechnet. Quelle: docs.cline.bot/getting-started/clinepass (gelesen 2026-09-23).",
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -35881,7 +36033,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T15:42:04.797Z",
+    "fetchedAt": "2026-09-23T15:50:54.192Z",
     "count": 410,
     "scores": {
       "claude-opus-5-5": {
@@ -36001,10 +36153,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -36502,10 +36654,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
       "qwen3-5-4b": {
@@ -36622,10 +36774,10 @@
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.85
       },
-      "llama-3-3-70b-instruct": {
+      "gemma-4-e4b-it": {
         "intelligence": 13.8
       },
-      "gemma-4-e4b-it": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.8
       },
       "devstral-medium-2507": {
@@ -36805,10 +36957,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -37317,7 +37469,7 @@
     }
   },
   "statistics": {
-    "totalPlans": 72,
+    "totalPlans": 76,
     "comparablePlans": 49,
     "plansWithModels": 49,
     "undisclosed": 1,
