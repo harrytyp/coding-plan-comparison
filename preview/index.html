@@ -1463,6 +1463,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
         <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
         <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
+        <label class="privacy-filter"><input type="checkbox" id="training-toggle"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
         <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
       </div>
       <label class="privacy-filter" id="tierd-filter">
@@ -1489,82 +1490,6 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 
     </div>
     
-    <!-- ===== MOBILE BOTTOM-SHEET: Filter & Columns konsolidiert ===== -->
-    <div class="sheet-overlay" id="sheet-overlay" hidden></div>
-    <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Filters and columns" hidden>
-      <div class="sheet-handle" id="sheet-handle"></div>
-      <button class="sheet-close" id="sheet-close" type="button" aria-label="Close">×</button>
-      <div class="sheet-title" data-i18n="sheet.title">Customize list</div>
-
-      <div class="sheet-section">
-        <div class="sheet-section-title" data-i18n="sheet.sort">Sort by</div>
-        <div class="sheet-row">
-          <select id="sheet-sort-key" class="sheet-select" data-i18n-aria="sheet.sortKeyAria">
-            <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
-            <option value="score" data-i18n="sort.score">AI score</option>
-            <option value="req10" data-i18n="sort.req10">Requests / $</option>
-            <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
-            <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
-            <option value="price" data-i18n="sort.price">Plan price</option>
-            <option value="plan" data-i18n="sort.plan">Plan</option>
-            <option value="model" data-i18n="sort.model">Model</option>
-          </select>
-          <select id="sheet-sort-dir" class="sheet-select" data-i18n-aria="sheet.sortDirAria">
-            <option value="desc" data-i18n="sort.desc">↓ desc</option>
-            <option value="asc" data-i18n="sort.asc">↑ asc</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="sheet-section">
-        <div class="sheet-section-title" data-i18n="sheet.filter">Filter</div>
-        <input type="search" id="sheet-search" class="sheet-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="sheet.searchAria">
-        <select id="sheet-meter" class="sheet-select" data-i18n-aria="sheet.meterAria">
-          <option value="" data-i18n="plans.allMeters">All meters</option>
-          <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
-          <option value="credits" data-i18n="plans.meter.credits">Credits</option>
-          <option value="requests" data-i18n="plans.meter.requests">Requests</option>
-          <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
-        </select>
-        <div class="sheet-slider-row">
-          <span class="sheet-slider-label" data-i18n="plans.budget">Max $/mo</span>
-          <input type="range" id="sheet-budget" class="sheet-range" min="0" max="300" step="5" value="300" data-i18n-aria="sheet.budgetAria">
-          <output id="sheet-budget-out" class="sheet-out num"></output>
-        </div>
-        <div class="sheet-slider-row">
-          <span class="sheet-slider-label" data-i18n="plans.aiScore">Min AI score</span>
-          <input type="range" id="sheet-ai" class="sheet-range" min="0" max="70" step="1" value="0" data-i18n-aria="sheet.aiAria">
-          <output id="sheet-ai-out" class="sheet-out num"></output>
-        </div>
-        <div class="sheet-section-title" data-i18n="plans.attrs">Attributes</div>
-        <label class="sheet-check"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
-        <label class="sheet-check"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="sheet-check"><input type="checkbox" id="sheet-noapi"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
-        <label class="sheet-check"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
-        <label class="sheet-check">
-          <input type="checkbox" id="sheet-tierd">
-          <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
-        </label>
-      </div>
-
-      <div class="sheet-section">
-        <div class="sheet-section-title" data-i18n="plans.columns.title">Show columns</div>
-        <div class="sheet-cols" id="sheet-cols">
-          <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
-          <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
-          <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
-          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
-          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
-          <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
-          <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
-          <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
-          <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
-          <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
-        </div>
-      </div>
-
-      <button class="btn btn-primary sheet-done" id="sheet-done" type="button" data-i18n="sheet.done">Done</button>
-    </div>
     
 <div class="table-wrap" id="plans-table-wrap">
       <table id="plans-table" class="sortable-table">
@@ -1822,12 +1747,92 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   </div>
 </div>
 
+<!-- Fixe Overlays gehoeren auf Body-Ebene: #main traegt view-transition-name und ist
+     damit Containing Block fuer position:fixed, sonst landet das Sheet unter dem Fold. -->
+<!-- ===== MOBILE BOTTOM-SHEET: Filter & Columns konsolidiert ===== -->
+<div class="sheet-overlay" id="sheet-overlay" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Filters and columns" hidden>
+  <div class="sheet-handle" id="sheet-handle"></div>
+  <button class="sheet-close" id="sheet-close" type="button" aria-label="Close">×</button>
+  <div class="sheet-title" data-i18n="sheet.title">Customize list</div>
+
+  <div class="sheet-section">
+    <div class="sheet-section-title" data-i18n="sheet.sort">Sort by</div>
+    <div class="sheet-row">
+      <select id="sheet-sort-key" class="sheet-select" data-i18n-aria="sheet.sortKeyAria">
+        <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
+        <option value="score" data-i18n="sort.score">AI score</option>
+        <option value="req10" data-i18n="sort.req10">Requests / $</option>
+        <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
+        <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
+        <option value="price" data-i18n="sort.price">Plan price</option>
+        <option value="plan" data-i18n="sort.plan">Plan</option>
+        <option value="model" data-i18n="sort.model">Model</option>
+      </select>
+      <select id="sheet-sort-dir" class="sheet-select" data-i18n-aria="sheet.sortDirAria">
+        <option value="desc" data-i18n="sort.desc">↓ desc</option>
+        <option value="asc" data-i18n="sort.asc">↑ asc</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="sheet-section">
+    <div class="sheet-section-title" data-i18n="sheet.filter">Filter</div>
+    <input type="search" id="sheet-search" class="sheet-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="sheet.searchAria">
+    <select id="sheet-meter" class="sheet-select" data-i18n-aria="sheet.meterAria">
+      <option value="" data-i18n="plans.allMeters">All meters</option>
+      <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
+      <option value="credits" data-i18n="plans.meter.credits">Credits</option>
+      <option value="requests" data-i18n="plans.meter.requests">Requests</option>
+      <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
+    </select>
+    <div class="sheet-slider-row">
+      <span class="sheet-slider-label" data-i18n="plans.budget">Max $/mo</span>
+      <input type="range" id="sheet-budget" class="sheet-range" min="0" max="300" step="5" value="300" data-i18n-aria="sheet.budgetAria">
+      <output id="sheet-budget-out" class="sheet-out num"></output>
+    </div>
+    <div class="sheet-slider-row">
+      <span class="sheet-slider-label" data-i18n="plans.aiScore">Min AI score</span>
+      <input type="range" id="sheet-ai" class="sheet-range" min="0" max="70" step="1" value="0" data-i18n-aria="sheet.aiAria">
+      <output id="sheet-ai-out" class="sheet-out num"></output>
+    </div>
+    <div class="sheet-section-title" data-i18n="plans.attrs">Attributes</div>
+    <label class="sheet-check"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
+    <label class="sheet-check"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
+    <label class="sheet-check"><input type="checkbox" id="sheet-noapi"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
+    <label class="sheet-check"><input type="checkbox" id="sheet-training"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
+    <label class="sheet-check"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
+    <label class="sheet-check">
+      <input type="checkbox" id="sheet-tierd">
+      <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
+    </label>
+  </div>
+
+  <div class="sheet-section">
+    <div class="sheet-section-title" data-i18n="plans.columns.title">Show columns</div>
+    <div class="sheet-cols" id="sheet-cols">
+      <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
+      <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
+      <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
+      <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
+      <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
+      <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
+      <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
+      <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
+      <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
+      <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
+    </div>
+  </div>
+
+  <button class="btn btn-primary sheet-done" id="sheet-done" type="button" data-i18n="sheet.done">Done</button>
+</div>
+
 <div class="toast" id="toast"></div>
 <div class="sr-only" id="a11y-status" role="status" aria-live="polite"></div>
 <div class="sr-only" id="chart-status" role="status" aria-live="polite"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
-<script src="../app.js?v=9f38815"></script>
+<script src="../app.js?v=50b9b9a"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,

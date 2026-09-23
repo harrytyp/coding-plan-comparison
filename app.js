@@ -137,6 +137,8 @@ const I18N = {
 
     "plans.includePriceBased": "Include price-based plans (Kimi)",
     "plans.includeNoApi": "Include no-API plans",
+    "plans.includeTraining": "Include models that train on your data",
+    "plans.trainingHidden": "training hidden",
     "plans.noApiHidden": "no API hidden",
     "plans.columns": "Columns",
     "plans.columns.title": "Show columns",
@@ -439,6 +441,8 @@ const I18N = {
 
     "plans.includePriceBased": "Preisbasierte Pläne einblenden (Kimi)",
     "plans.includeNoApi": "Pläne ohne API einblenden",
+    "plans.includeTraining": "Modelle einblenden, die auf den Daten trainieren",
+    "plans.trainingHidden": "Training ausgeblendet",
     "plans.noApiHidden": "kein API ausgeblendet",
     "plans.columns": "Spalten",
     "plans.columns.title": "Spalten anzeigen",
@@ -969,8 +973,13 @@ function syncFilterChips() {
   if (includeNoApi) {
     chips.push({ label: t("plans.includeNoApi"), clear: () => { includeNoApi = false; syncNoApiBoxes(); rerender(); } });
   } else {
-    const hidden = buildCombos().filter(isNoApi).length;
-    if (hidden) chips.push({ label: `${t("plans.noApiHidden")} (${hidden})`, clear: () => { includeNoApi = true; syncNoApiBoxes(); rerender(); } });
+    if (hiddenNoApiCount) chips.push({ label: `${t("plans.noApiHidden")} (${hiddenNoApiCount})`, clear: () => { includeNoApi = true; syncNoApiBoxes(); rerender(); } });
+  }
+  // Ausgeblendete Trainings-Zeilen: gleiche Logik wie bei No-API
+  if (includeTraining) {
+    chips.push({ label: t("plans.includeTraining"), clear: () => { includeTraining = false; syncTrainingBoxes(); rerender(); } });
+  } else {
+    if (hiddenTrainingCount) chips.push({ label: `${t("plans.trainingHidden")} (${hiddenTrainingCount})`, clear: () => { includeTraining = true; syncTrainingBoxes(); rerender(); } });
   }
   // U3: ausgeblendete Spalten sichtbar machen (das x stellt die Voreinstellung wieder her)
   const hiddenCols = ALL_COLUMNS.length - visibleColumns.length;
@@ -1061,6 +1070,9 @@ let minAiScore = 0;    // AI-Score-Filter: mindestens
 let attrFilter = new Set(); // Attribut-Filter: mehrere gleichzeitig, UND-verknuepft
 let includePriceBased = false; // Tier-D (preisbasierte Mengen, z.B. Kimi) per Default aus , einblendbar
 let includeNoApi = false; // Pläne ohne API-Zugang (CLI-only, Freebuff) per Default aus, einblendbar
+let includeTraining = false; // Modelle, die auf den Daten trainieren, per Default aus, einblendbar
+let hiddenNoApiCount = 0;   // wie viele Zeilen der aktuelle Filter gerade ausblendet (fuer die Chips)
+let hiddenTrainingCount = 0;
 // "no API" steht als manueller Tag aus overrides.yml am Plan, nicht in den Zahlen
 function isNoApi(c) { return /(cli|no api|kein api)/i.test(c.planTag ?? ""); }
 
@@ -1463,6 +1475,10 @@ function syncNoApiBoxes() {
   const bar = $("#noapi-toggle"); if (bar) bar.checked = includeNoApi;
   const sheet = $("#sheet-noapi"); if (sheet) sheet.checked = includeNoApi;
 }
+function syncTrainingBoxes() {
+  const bar = $("#training-toggle"); if (bar) bar.checked = includeTraining;
+  const sheet = $("#sheet-training"); if (sheet) sheet.checked = includeTraining;
+}
 
 function attrMatches(c) {
   for (const k of attrFilter) {
@@ -1509,7 +1525,12 @@ function renderPlans() {
   // keine veröffentlichte Menge = nicht sicher vergleichbar. Toggle zum Einblenden.
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
   // Ohne API-Zugang sind die Token-Raten nicht vergleichbar , gleiche Logik wie Tier D
+  hiddenNoApiCount = combos.filter(isNoApi).length;
   if (!includeNoApi) combos = combos.filter((c) => !isNoApi(c));
+  // Modelle, die auf den Daten trainieren, per Default aus , "unbekannt" bleibt sichtbar,
+  // weil dazu keine Aussage existiert und die Zeile sonst stillschweigend verschwindet.
+  hiddenTrainingCount = combos.filter((c) => c.noTraining === false).length;
+  if (!includeTraining) combos = combos.filter((c) => c.noTraining !== false);
   // Sortieren
   combos.sort(sortBy(plansSort.key, plansSort.dir));
   // Balken-Skala: relativ zum besten Score im Datensatz
@@ -1711,6 +1732,7 @@ function openSheet() {
   syncAttrBoxes();
   const st = $("#sheet-tierd"); if (st) st.checked = includePriceBased;
   syncNoApiBoxes();
+  syncTrainingBoxes();
   syncColumnPicker();
   sheet.hidden = false;
   if (overlay) overlay.hidden = false;
@@ -1759,6 +1781,7 @@ function initSheet() {
   });
   const st2 = $("#sheet-tierd"); if (st2) st2.addEventListener("change", (e) => { includePriceBased = e.target.checked; rerender(); });
   const sn = $("#sheet-noapi"); if (sn) sn.addEventListener("change", (e) => { includeNoApi = e.target.checked; syncNoApiBoxes(); rerender(); });
+  const str = $("#sheet-training"); if (str) str.addEventListener("change", (e) => { includeTraining = e.target.checked; syncTrainingBoxes(); rerender(); });
   // Sheet-Spalten
   document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
     box.addEventListener("change", () => {
@@ -3034,6 +3057,13 @@ function init() {
   const noapiToggle = $("#noapi-toggle");
   if (noapiToggle) noapiToggle.addEventListener("change", (e) => {
     includeNoApi = e.target.checked;
+    rerender();
+  });
+
+  // Modelle mit Training per Default aus, per Schalter einblendbar
+  const trainingToggle = $("#training-toggle");
+  if (trainingToggle) trainingToggle.addEventListener("change", (e) => {
+    includeTraining = e.target.checked;
     rerender();
   });
 
