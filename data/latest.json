@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T13:19:51.565Z",
+  "generatedAt": "2026-09-23T13:41:26.827Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -12536,6 +12536,962 @@
           "derivedTokensPerMonth": 4473066490.241482
         }
       ]
+    },
+    {
+      "id": "mimo-lite",
+      "name": "MiMo Token Plan Lite",
+      "provider": "xiaomi",
+      "price": {
+        "monthlyUsd": 6,
+        "paidPrice": 6,
+        "advertised": 6,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 63.36,
+        "waitlist": null,
+        "billingNote": "Individual edition; annual auto-renewal 12% off, first purchase 12% off; off-peak (UTC 16-24) 0.8x credits"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 4100000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 4100000000
+      },
+      "officialConversion": "official scenario estimate (mimo-v2.6-flash baseline): 200 / 1600 / 5600 / 12800 rounds of medium-to-complex tasks per tier",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "mimo-token-plan"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 6456.692913385827,
+        "max": 14385.964912280702,
+        "mean": 10421.328912833265,
+        "median": 10421.328912833265,
+        "p25": 8439.010913109545,
+        "p75": 12403.646912556984
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 4100000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.00092075,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": 635000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 6456.692913385827,
+          "requestsRawInWindow": 6456.692913385827,
+          "normalizedPer1": 1076.1154855643044,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 562345669.2913386,
+          "derivedTokensPerMonth": 562345669.2913386
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 4100000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": 285000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 14385.964912280702,
+          "requestsRawInWindow": 14385.964912280702,
+          "normalizedPer1": 2397.66081871345,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1044780701.754386,
+          "derivedTokensPerMonth": 1044780701.754386
+        }
+      ]
+    },
+    {
+      "id": "mimo-standard",
+      "name": "MiMo Token Plan Standard",
+      "provider": "xiaomi",
+      "price": {
+        "monthlyUsd": 16,
+        "paidPrice": 16,
+        "advertised": 16,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 168.96,
+        "waitlist": null,
+        "billingNote": "Individual edition; annual auto-renewal 12% off, first purchase 12% off; off-peak (UTC 16-24) 0.8x credits"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 11000000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 11000000000
+      },
+      "officialConversion": "official scenario estimate (mimo-v2.6-flash baseline): 200 / 1600 / 5600 / 12800 rounds of medium-to-complex tasks per tier",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "mimo-token-plan"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 17322.834645669293,
+        "max": 38596.491228070176,
+        "mean": 27959.662936869732,
+        "median": 27959.662936869732,
+        "p25": 22641.248791269514,
+        "p75": 33278.07708246996
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 11000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.00092075,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": 635000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 17322.834645669293,
+          "requestsRawInWindow": 17322.834645669293,
+          "normalizedPer1": 1082.6771653543308,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1508732283.464567,
+          "derivedTokensPerMonth": 1508732283.464567
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 11000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": 285000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 38596.491228070176,
+          "requestsRawInWindow": 38596.491228070176,
+          "normalizedPer1": 2412.280701754386,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2803070175.4385967,
+          "derivedTokensPerMonth": 2803070175.4385967
+        }
+      ]
+    },
+    {
+      "id": "mimo-pro",
+      "name": "MiMo Token Plan Pro",
+      "provider": "xiaomi",
+      "price": {
+        "monthlyUsd": 50,
+        "paidPrice": 50,
+        "advertised": 50,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 528,
+        "waitlist": null,
+        "billingNote": "Individual edition; annual auto-renewal 12% off, first purchase 12% off; off-peak (UTC 16-24) 0.8x credits"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 38000000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 38000000000
+      },
+      "officialConversion": "official scenario estimate (mimo-v2.6-flash baseline): 200 / 1600 / 5600 / 12800 rounds of medium-to-complex tasks per tier",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "mimo-token-plan"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 59842.51968503937,
+        "max": 133333.33333333334,
+        "mean": 96587.92650918636,
+        "median": 96587.92650918636,
+        "p25": 78215.22309711286,
+        "p75": 114960.62992125985
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 38000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.00092075,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": 635000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 59842.51968503937,
+          "requestsRawInWindow": 59842.51968503937,
+          "normalizedPer1": 1196.8503937007874,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 5211984251.968504,
+          "derivedTokensPerMonth": 5211984251.968504
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 38000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": 285000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 133333.33333333334,
+          "requestsRawInWindow": 133333.33333333334,
+          "normalizedPer1": 2666.666666666667,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 9683333333.333334,
+          "derivedTokensPerMonth": 9683333333.333334
+        }
+      ]
+    },
+    {
+      "id": "mimo-max",
+      "name": "MiMo Token Plan Max",
+      "provider": "xiaomi",
+      "price": {
+        "monthlyUsd": 100,
+        "paidPrice": 100,
+        "advertised": 100,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 1056,
+        "waitlist": null,
+        "billingNote": "Individual edition; annual auto-renewal 12% off, first purchase 12% off; off-peak (UTC 16-24) 0.8x credits"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 82000000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 82000000000
+      },
+      "officialConversion": "official scenario estimate (mimo-v2.6-flash baseline): 200 / 1600 / 5600 / 12800 rounds of medium-to-complex tasks per tier",
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "mimo-token-plan"
+      ],
+      "verifiedAt": "2026-09-21",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 129133.85826771654,
+        "max": 287719.29824561405,
+        "mean": 208426.5782566653,
+        "median": 208426.5782566653,
+        "p25": 168780.21826219093,
+        "p75": 248072.93825113965
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "MiMo V2.6 Pro",
+          "family": "mimo v2.6 pro",
+          "allowance": 82000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.00092075,
+          "patternUsed": {
+            "input": 790,
+            "cachedRead": 86000,
+            "output": 305
+          },
+          "creditsPerRequest": 635000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 129133.85826771654,
+          "requestsRawInWindow": 129133.85826771654,
+          "normalizedPer1": 1291.3385826771655,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 11246913385.826773,
+          "derivedTokensPerMonth": 11246913385.826773
+        },
+        {
+          "model": "MiMo V2.6 Flash",
+          "family": "mimo v2.6 flash",
+          "allowance": 82000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.000399,
+          "patternUsed": {
+            "input": 830,
+            "cachedRead": 71500,
+            "output": 295
+          },
+          "creditsPerRequest": 285000,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 287719.29824561405,
+          "requestsRawInWindow": 287719.29824561405,
+          "normalizedPer1": 2877.1929824561403,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 20895614035.08772,
+          "derivedTokensPerMonth": 20895614035.08772
+        }
+      ]
+    },
+    {
+      "id": "stepfun-flash-mini",
+      "name": "Step Plan Flash Mini",
+      "provider": "stepfun",
+      "price": {
+        "monthlyUsd": 6.99,
+        "paidPrice": 6.99,
+        "advertised": 6.99,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 69.99,
+        "waitlist": null,
+        "billingNote": "Quarterly $18.99, yearly $69.99; credits are issued monthly and do not roll over"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 400000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 400000000
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "stepfun-step-plan"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 24354.454734201565,
+        "max": 50631.629578998,
+        "mean": 37493.04215659978,
+        "median": 37493.04215659978,
+        "p25": 30923.748445400674,
+        "p75": 44062.33586779889
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "Step 3.7 Flash",
+          "family": "step 3.7 flash",
+          "allowance": 400000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0023463000000000004,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 16424.100000000002,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 24354.454734201565,
+          "requestsRawInWindow": 24354.454734201565,
+          "normalizedPer1": 3484.185226638278,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1241151722.16438,
+          "derivedTokensPerMonth": 1241151722.16438
+        },
+        {
+          "model": "Step 3.5 Flash",
+          "family": "step 3.5 flash",
+          "allowance": 400000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0011286,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 7900.2,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 50631.629578998,
+          "requestsRawInWindow": 50631.629578998,
+          "normalizedPer1": 7243.437708011158,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 2580289106.604896,
+          "derivedTokensPerMonth": 2580289106.604896
+        }
+      ]
+    },
+    {
+      "id": "stepfun-flash-plus",
+      "name": "Step Plan Flash Plus",
+      "provider": "stepfun",
+      "price": {
+        "monthlyUsd": 9.99,
+        "paidPrice": 9.99,
+        "advertised": 9.99,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 95.99,
+        "waitlist": null,
+        "billingNote": "Quarterly $26.99, yearly $95.99; credits are issued monthly and do not roll over"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 1600000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 1600000000
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "stepfun-step-plan"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 97417.81893680626,
+        "max": 202526.518315992,
+        "mean": 149972.16862639913,
+        "median": 149972.16862639913,
+        "p25": 123694.9937816027,
+        "p75": 176249.34347119555
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "Step 3.7 Flash",
+          "family": "step 3.7 flash",
+          "allowance": 1600000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0023463000000000004,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 16424.100000000002,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 97417.81893680626,
+          "requestsRawInWindow": 97417.81893680626,
+          "normalizedPer1": 9751.533427107734,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4964606888.65752,
+          "derivedTokensPerMonth": 4964606888.65752
+        },
+        {
+          "model": "Step 3.5 Flash",
+          "family": "step 3.5 flash",
+          "allowance": 1600000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0011286,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 7900.2,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 202526.518315992,
+          "requestsRawInWindow": 202526.518315992,
+          "normalizedPer1": 20272.924756355555,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 10321156426.419584,
+          "derivedTokensPerMonth": 10321156426.419584
+        }
+      ]
+    },
+    {
+      "id": "stepfun-flash-pro",
+      "name": "Step Plan Flash Pro",
+      "provider": "stepfun",
+      "price": {
+        "monthlyUsd": 29,
+        "paidPrice": 29,
+        "advertised": 29,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 289,
+        "waitlist": null,
+        "billingNote": "Quarterly $79, yearly $289; credits are issued monthly and do not roll over"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 8000000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 8000000000
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "stepfun-step-plan"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 487089.0946840313,
+        "max": 1012632.5915799601,
+        "mean": 749860.8431319958,
+        "median": 749860.8431319958,
+        "p25": 618474.9689080135,
+        "p75": 881246.7173559779
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "Step 3.7 Flash",
+          "family": "step 3.7 flash",
+          "allowance": 8000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0023463000000000004,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 16424.100000000002,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 487089.0946840313,
+          "requestsRawInWindow": 487089.0946840313,
+          "normalizedPer1": 16796.1756787597,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 24823034443.287605,
+          "derivedTokensPerMonth": 24823034443.287605
+        },
+        {
+          "model": "Step 3.5 Flash",
+          "family": "step 3.5 flash",
+          "allowance": 8000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0011286,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 7900.2,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 1012632.5915799601,
+          "requestsRawInWindow": 1012632.5915799601,
+          "normalizedPer1": 34918.36522689518,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 51605782132.09792,
+          "derivedTokensPerMonth": 51605782132.09792
+        }
+      ]
+    },
+    {
+      "id": "stepfun-flash-max",
+      "name": "Step Plan Flash Max",
+      "provider": "stepfun",
+      "price": {
+        "monthlyUsd": 99,
+        "paidPrice": 99,
+        "advertised": 99,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": 989,
+        "waitlist": null,
+        "billingNote": "Quarterly $269, yearly $989; credits are issued monthly and do not roll over"
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 40000000000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 40000000000
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "stepfun-step-plan"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 2,
+      "modelStats": {
+        "count": 2,
+        "min": 2435445.4734201566,
+        "max": 5063162.9578998005,
+        "mean": 3749304.215659979,
+        "median": 3749304.215659979,
+        "p25": 3092374.8445400675,
+        "p75": 4406233.58677989
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "Step 3.7 Flash",
+          "family": "step 3.7 flash",
+          "allowance": 40000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0023463000000000004,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 16424.100000000002,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 2435445.4734201566,
+          "requestsRawInWindow": 2435445.4734201566,
+          "normalizedPer1": 24600.45932747633,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 124115172216.43802,
+          "derivedTokensPerMonth": 124115172216.43802
+        },
+        {
+          "model": "Step 3.5 Flash",
+          "family": "step 3.5 flash",
+          "allowance": 40000000000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0011286,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 7900.2,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 5063162.9578998005,
+          "requestsRawInWindow": 5063162.9578998005,
+          "normalizedPer1": 51143.06018080607,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 258028910660.48962,
+          "derivedTokensPerMonth": 258028910660.48962
+        }
+      ]
+    },
+    {
+      "id": "cerebras-code-pro",
+      "name": "Cerebras Code Pro",
+      "provider": "cerebras",
+      "price": {
+        "monthlyUsd": 50,
+        "paidPrice": 50,
+        "advertised": 50,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Daily token limit, no weekly window; rate limits subject to change"
+      },
+      "meter": "tokens",
+      "quotas": [
+        {
+          "label": "Daily",
+          "unit": "tokens",
+          "amount": 24000000,
+          "window": "day",
+          "refresh": "daily",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cerebras-code"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 1,
+      "modelStats": {
+        "count": 1,
+        "min": 14335.387151210707,
+        "max": 14335.387151210707,
+        "mean": 14335.387151210707,
+        "median": 14335.387151210707,
+        "p25": 14335.387151210707,
+        "p75": 14335.387151210707
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official daily token limit from the Cerebras Code announcement; model token prices are not in the feeds",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "Qwen3-Coder-480B",
+          "family": "qwen3-coder-480b",
+          "allowance": 24000000,
+          "window": "day",
+          "windowNote": "daily×30.44→monthly",
+          "costPerRequest": null,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 50962,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 14335.387151210707,
+          "requestsRawInWindow": 470.9391311173031,
+          "normalizedPer1": 286.70774302421415,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 730560000,
+          "derivedTokensPerMonth": 730560000
+        }
+      ]
+    },
+    {
+      "id": "cerebras-code-max",
+      "name": "Cerebras Code Max",
+      "provider": "cerebras",
+      "price": {
+        "monthlyUsd": 200,
+        "paidPrice": 200,
+        "advertised": 200,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Daily token limit, no weekly window; rate limits subject to change"
+      },
+      "meter": "tokens",
+      "quotas": [
+        {
+          "label": "Daily",
+          "unit": "tokens",
+          "amount": 120000000,
+          "window": "day",
+          "refresh": "daily",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "disclosed",
+      "sourceIds": [
+        "cerebras-code"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 1,
+      "modelStats": {
+        "count": 1,
+        "min": 71676.93575605353,
+        "max": 71676.93575605353,
+        "mean": 71676.93575605353,
+        "median": 71676.93575605353,
+        "p25": 71676.93575605353,
+        "p75": 71676.93575605353
+      },
+      "dataTier": "A",
+      "dataTierNote": "Official daily token limit from the Cerebras Code announcement; model token prices are not in the feeds",
+      "notes": null,
+      "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": [
+        {
+          "model": "Qwen3-Coder-480B",
+          "family": "qwen3-coder-480b",
+          "allowance": 120000000,
+          "window": "day",
+          "windowNote": "daily×30.44→monthly",
+          "costPerRequest": null,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": 50962,
+          "unit": "requests (provider credit formula)",
+          "requestsPerMonth": 71676.93575605353,
+          "requestsRawInWindow": 2354.6956555865154,
+          "normalizedPer1": 358.3846787802676,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 3652800000,
+          "derivedTokensPerMonth": 3652800000
+        }
+      ]
     }
   ],
   "pairwiseComparisons": [
@@ -12668,6 +13624,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "opencode-go",
+      "planB": "mimo-lite",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 239.89359915455992,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "mimo-standard",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 26.68761423033599,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "mimo-pro",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 63.32726956490274,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "mimo-max",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 83.005320042272,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 5.525324475894433,
+      "winner": "draw"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 76.3813311189736,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 95.27626622379472,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.05525324475894,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 147.09084971292324,
+      "winner": "opencode-go"
+    },
+    {
+      "planA": "opencode-go",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 50.581830057415345,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "command-code-go",
       "planB": "command-code-goat",
       "meanRequestsA": 2357.153089219057,
@@ -12788,6 +13824,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "command-code-go",
+      "planB": "mimo-lite",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 77.38145385358331,
+      "winner": "mimo-lite"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "mimo-standard",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 91.56945098179014,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "mimo-pro",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 97.55957791578136,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "mimo-max",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 98.86907269267915,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 93.71309194016914,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 98.42827298504228,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 99.68565459700845,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.9371309194017,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 83.55710198576686,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "command-code-go",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 96.71142039715338,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
       "meanRequestsA": 16500.071624533415,
@@ -12900,6 +14016,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "command-code-goat",
+      "planB": "mimo-lite",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 58.32982302491698,
+      "winner": "command-code-goat"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "mimo-standard",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 40.986156872530934,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "mimo-pro",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 82.91704541046948,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "mimo-max",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 92.08350884875415,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 55.99164358118387,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 88.99791089529597,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 97.7995821790592,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.55991643581183,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 15.100286099632033,
+      "winner": "command-code-goat"
+    },
+    {
+      "planA": "command-code-goat",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 76.97994278007359,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
       "meanRequestsA": 21368.437069885716,
@@ -13004,6 +14200,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "command-code-pro",
+      "planB": "mimo-lite",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 105.04522262579887,
+      "winner": "command-code-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "mimo-standard",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 23.574053384929496,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "mimo-pro",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 77.87669966405855,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "mimo-max",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 89.74773886871006,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 43.006926510165044,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 85.75173162754126,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 97.15034632550825,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.43006926510165,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 49.06076023263193,
+      "winner": "command-code-pro"
+    },
+    {
+      "planA": "command-code-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 70.18784795347361,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
       "meanRequestsA": 35357.29633828589,
@@ -13100,6 +14376,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "command-code-max10",
+      "planB": "mimo-lite",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 239.27819219625067,
+      "winner": "command-code-max10"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "mimo-standard",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 26.45823527314799,
+      "winner": "command-code-max10"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "mimo-pro",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 63.39366873672032,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "mimo-max",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 83.03609039018747,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 5.696379102536886,
+      "winner": "draw"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 76.42409477563422,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 95.28481895512685,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.05696379102537,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 146.6434702134972,
+      "winner": "command-code-max10"
+    },
+    {
+      "planA": "command-code-max10",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 50.67130595730055,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "command-code-max20",
       "planB": "glm-lite",
       "meanRequestsA": 70714.59267657177,
@@ -13188,6 +14544,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "command-code-max20",
+      "planB": "mimo-lite",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 578.5563843925013,
+      "winner": "command-code-max20"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "mimo-standard",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 152.91647054629598,
+      "winner": "command-code-max20"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "mimo-pro",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 26.787337473440644,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "mimo-max",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 66.07218078037494,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 88.60724179492622,
+      "winner": "command-code-max20"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 52.84818955126844,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 90.56963791025369,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 98.11392758205074,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 393.2869404269944,
+      "winner": "command-code-max20"
+    },
+    {
+      "planA": "command-code-max20",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 1.3426119146010995,
+      "winner": "draw"
+    },
+    {
       "planA": "glm-lite",
       "planB": "glm-pro",
       "meanRequestsA": 8297.177874448013,
@@ -13268,6 +14704,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "glm-lite",
+      "planB": "mimo-lite",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 20.382727156509606,
+      "winner": "mimo-lite"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "mimo-standard",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 70.32447103106266,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "mimo-pro",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 91.40971529846551,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "mimo-max",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 96.01913635782549,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 77.8700862954982,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 94.46752157387455,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 98.8935043147749,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.77870086295498,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 42.12100596287512,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "glm-lite",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 88.42420119257503,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "glm-pro",
       "planB": "glm-max",
       "meanRequestsA": 49783.067246688064,
@@ -13340,6 +14856,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "glm-pro",
+      "planB": "mimo-lite",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 377.7036370609423,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "mimo-standard",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 78.05317381362397,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "mimo-pro",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 48.458291790793076,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "mimo-max",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 76.11481814695289,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 32.77948222701077,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 66.8051294432473,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 93.36102588864946,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 98.6722051777299,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 247.27396422274924,
+      "winner": "glm-pro"
+    },
+    {
+      "planA": "glm-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 30.54520715545014,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "glm-max",
       "planB": "kimi-moderato",
       "meanRequestsA": 116160.49024227216,
@@ -13404,6 +15000,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "glm-max",
+      "planB": "mimo-lite",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 1014.6418198088655,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "mimo-standard",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 315.4574055651226,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "mimo-pro",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 20.263985821482855,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "mimo-max",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 44.267909009556725,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 209.81879186302515,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 22.545302034243708,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 84.50906040684875,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 96.90181208136975,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 710.3059165197484,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 62.0611833039497,
+      "winner": "glm-max"
+    },
+    {
       "planA": "kimi-moderato",
       "planB": "kimi-allegretto",
       "meanRequestsA": 3300,
@@ -13460,6 +15136,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "kimi-moderato",
+      "planB": "mimo-lite",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 68.3341728525981,
+      "winner": "mimo-lite"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "mimo-standard",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 88.19728260869564,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "mimo-pro",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 96.58342391304348,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "mimo-max",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 98.4167086426299,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 91.19836692307692,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 97.79959173076924,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 99.55991834615384,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.91198366923076,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 76.98004270696453,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "kimi-moderato",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 95.3960085413929,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "kimi-allegretto",
       "planB": "kimi-allegro",
       "meanRequestsA": 6633.333333333334,
@@ -13508,6 +15264,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "kimi-allegretto",
+      "planB": "mimo-lite",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 36.34848886532344,
+      "winner": "mimo-lite"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "mimo-standard",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 76.27534584980236,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "mimo-pro",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 93.13233695652174,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "mimo-max",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 96.81742444326618,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 82.30782846153846,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 95.57695711538462,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 99.11539142307693,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.82307828461539,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 53.72756059278727,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "kimi-allegretto",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 90.74551211855746,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "kimi-allegro",
       "planB": "kimi-vivace",
       "meanRequestsA": 23300,
@@ -13548,6 +15384,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "kimi-allegro",
+      "planB": "mimo-lite",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 123.57993107104983,
+      "winner": "kimi-allegro"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "mimo-standard",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 16.66566205533596,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "mimo-pro",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 75.87690217391305,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "mimo-max",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 88.8210034464475,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 37.855136153846146,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 84.46378403846153,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 96.89275680769231,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.37855136153846,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 62.534849978098975,
+      "winner": "kimi-allegro"
+    },
+    {
+      "planA": "kimi-allegro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 67.4930300043802,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "kimi-vivace",
       "planB": "freebuff-free",
       "meanRequestsA": 47381.00000000001,
@@ -13580,6 +15496,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "kimi-vivace",
+      "planB": "mimo-lite",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 354.65410790031814,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "mimo-standard",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 69.4619856719368,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "mimo-pro",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 50.94521467391304,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "mimo-max",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 77.26729460498409,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 26.37278085384618,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 68.40680478653846,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 93.68136095730769,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 98.73627219146154,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 230.51775651554976,
+      "winner": "kimi-vivace"
+    },
+    {
+      "planA": "kimi-vivace",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 33.89644869689005,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "freebuff-free",
       "planB": "freebuff-starter",
       "meanRequestsA": 59755.15238035567,
@@ -13604,6 +15600,86 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "freebuff-free",
+      "planB": "mimo-lite",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 473.3928261948497,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "mimo-standard",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 113.71914430898946,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "mimo-pro",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 38.13393191055569,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "mimo-max",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 71.33035869025751,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 59.37664415379311,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 60.15583896155172,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 92.03116779231034,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 98.40623355846206,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 316.83668358624686,
+      "winner": "freebuff-free"
+    },
+    {
+      "planA": "freebuff-free",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 59755.15238035567,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 16.632663282750602,
+      "winner": "cerebras-code-max"
+    },
+    {
       "planA": "freebuff-starter",
       "planB": "freebuff-plus",
       "meanRequestsA": 96379.27803283172,
@@ -13620,12 +15696,612 @@
       "winner": "freebuff-pro"
     },
     {
+      "planA": "freebuff-starter",
+      "planB": "mimo-lite",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 824.8271390239511,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "mimo-standard",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 244.70829727256364,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "mimo-pro",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 0.21601921057369244,
+      "winner": "draw"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "mimo-max",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 53.75864304880245,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 157.0591034738598,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 35.73522413153505,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 87.14704482630701,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 97.4294089652614,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 572.3172315907208,
+      "winner": "freebuff-starter"
+    },
+    {
+      "planA": "freebuff-starter",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 96379.27803283172,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 34.46344631814418,
+      "winner": "freebuff-starter"
+    },
+    {
       "planA": "freebuff-plus",
       "planB": "freebuff-pro",
       "meanRequestsA": 159989.60153450066,
       "meanRequestsB": 254441.29400667577,
       "advantagePercent": 37.12121212121213,
       "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "mimo-lite",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 1435.213050779759,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "mimo-standard",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 472.2157734724557,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "mimo-pro",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 65.64140811044767,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "mimo-max",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 23.23934746101205,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 326.7181117666073,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 6.6795279416518305,
+      "winner": "draw"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 78.66409441166964,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 95.73281888233393,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 1016.0466044405964,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-plus",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 159989.60153450066,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 123.20932088811931,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "mimo-lite",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 2341.5436470232316,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "mimo-standard",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 810.0299047995682,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "mimo-pro",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 163.42970928408548,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "mimo-max",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 22.077182351161582,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 578.63603317099,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 69.65900829274752,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 66.0681983414505,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 93.2136396682901,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 1674.917491399503,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "freebuff-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 254441.29400667577,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 254.98349827990063,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "mimo-standard",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 62.72727272727272,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "mimo-pro",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 89.21052631578948,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "mimo-max",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 95,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 72.20463234403391,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 93.05115808600848,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 98.61023161720169,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.72204632344034,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 27.303470754515878,
+      "winner": "cerebras-code-pro"
+    },
+    {
+      "planA": "mimo-lite",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 10421.328912833265,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 85.46069415090317,
+      "winner": "cerebras-code-max"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "mimo-pro",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 71.05263157894737,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "mimo-max",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 86.58536585365853,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 25.427062386432464,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 81.35676559660811,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 96.27135311932162,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99.25427062386433,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 95.03946870739641,
+      "winner": "mimo-standard"
+    },
+    {
+      "planA": "mimo-standard",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 27959.662936869732,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 60.99210625852072,
+      "winner": "cerebras-code-max"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "mimo-max",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 53.65853658536586,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 157.6156026650515,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 35.59609933373712,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 87.11921986674741,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 97.42384397334949,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 573.7727100800968,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 96587.92650918636,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 34.75454201601937,
+      "winner": "mimo-pro"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 455.9073531193217,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 38.97683827983043,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 72.20463234403391,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 94.44092646880678,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 1353.9305849096825,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "mimo-max",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 208426.5782566653,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 190.78611698193652,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "stepfun-flash-mini",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 75,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "stepfun-flash-mini",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 95,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "stepfun-flash-mini",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 99,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "stepfun-flash-mini",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 161.54188764572902,
+      "winner": "stepfun-flash-mini"
+    },
+    {
+      "planA": "stepfun-flash-mini",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 37493.04215659978,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 47.69162247085419,
+      "winner": "cerebras-code-max"
+    },
+    {
+      "planA": "stepfun-flash-plus",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 149972.16862639913,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 80,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "stepfun-flash-plus",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 149972.16862639913,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 96,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "stepfun-flash-plus",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 149972.16862639913,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 946.1675505829161,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "stepfun-flash-plus",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 149972.16862639913,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 109.23351011658325,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "stepfun-flash-pro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 749860.8431319958,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 80,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "stepfun-flash-pro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 749860.8431319958,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 5130.837752914582,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "stepfun-flash-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 749860.8431319958,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 946.1675505829163,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "stepfun-flash-max",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 3749304.215659979,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 26054.188764572904,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "stepfun-flash-max",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 3749304.215659979,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 5130.837752914582,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "cerebras-code-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 14335.387151210707,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 80,
+      "winner": "cerebras-code-max"
     }
   ],
   "modelComparisons": [
@@ -16652,6 +19328,132 @@
       "modelCount": 1,
       "normalizedPer1Median": 1455.5077737347008,
       "normalizedPer1Mean": 1455.5077737347008
+    },
+    {
+      "planId": "mimo-lite",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 1076.1154855643044,
+      "normalizedPer1Mean": 1076.1154855643044
+    },
+    {
+      "planId": "mimo-lite",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 2397.66081871345,
+      "normalizedPer1Mean": 2397.66081871345
+    },
+    {
+      "planId": "mimo-standard",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 1082.6771653543308,
+      "normalizedPer1Mean": 1082.6771653543308
+    },
+    {
+      "planId": "mimo-standard",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 2412.280701754386,
+      "normalizedPer1Mean": 2412.280701754386
+    },
+    {
+      "planId": "mimo-pro",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 1196.8503937007874,
+      "normalizedPer1Mean": 1196.8503937007874
+    },
+    {
+      "planId": "mimo-pro",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 2666.666666666667,
+      "normalizedPer1Mean": 2666.666666666667
+    },
+    {
+      "planId": "mimo-max",
+      "family": "mimo v2.6 pro",
+      "modelCount": 1,
+      "normalizedPer1Median": 1291.3385826771655,
+      "normalizedPer1Mean": 1291.3385826771655
+    },
+    {
+      "planId": "mimo-max",
+      "family": "mimo v2.6 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 2877.1929824561403,
+      "normalizedPer1Mean": 2877.1929824561403
+    },
+    {
+      "planId": "stepfun-flash-mini",
+      "family": "step 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 3484.185226638278,
+      "normalizedPer1Mean": 3484.185226638278
+    },
+    {
+      "planId": "stepfun-flash-mini",
+      "family": "step 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 7243.437708011158,
+      "normalizedPer1Mean": 7243.437708011158
+    },
+    {
+      "planId": "stepfun-flash-plus",
+      "family": "step 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 9751.533427107734,
+      "normalizedPer1Mean": 9751.533427107734
+    },
+    {
+      "planId": "stepfun-flash-plus",
+      "family": "step 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 20272.924756355555,
+      "normalizedPer1Mean": 20272.924756355555
+    },
+    {
+      "planId": "stepfun-flash-pro",
+      "family": "step 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 16796.1756787597,
+      "normalizedPer1Mean": 16796.1756787597
+    },
+    {
+      "planId": "stepfun-flash-pro",
+      "family": "step 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 34918.36522689518,
+      "normalizedPer1Mean": 34918.36522689518
+    },
+    {
+      "planId": "stepfun-flash-max",
+      "family": "step 3.7 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 24600.45932747633,
+      "normalizedPer1Mean": 24600.45932747633
+    },
+    {
+      "planId": "stepfun-flash-max",
+      "family": "step 3.5 flash",
+      "modelCount": 1,
+      "normalizedPer1Median": 51143.06018080607,
+      "normalizedPer1Mean": 51143.06018080607
+    },
+    {
+      "planId": "cerebras-code-pro",
+      "family": "qwen3-coder-480b",
+      "modelCount": 1,
+      "normalizedPer1Median": 286.70774302421415,
+      "normalizedPer1Mean": 286.70774302421415
+    },
+    {
+      "planId": "cerebras-code-max",
+      "family": "qwen3-coder-480b",
+      "modelCount": 1,
+      "normalizedPer1Median": 358.3846787802676,
+      "normalizedPer1Mean": 358.3846787802676
     }
   ],
   "familyComparisons": [
@@ -17747,8 +20549,8 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T13:19:51.463Z",
-    "count": 398,
+    "fetchedAt": "2026-09-23T13:41:26.751Z",
+    "count": 399,
     "scores": {
       "claude-opus-5-5": {
         "intelligence": 59.7
@@ -17867,10 +20669,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -18989,6 +21791,11 @@
         "intelligence": 30.88,
         "aliasOf": "gemini-3-1-flash-lite-preview",
         "fallback": true
+      },
+      "qwen3-coder-480b": {
+        "intelligence": 21.07,
+        "aliasOf": "qwen3-coder-480b-a35b-instruct",
+        "fallback": true
       }
     }
   },
@@ -19123,11 +21930,11 @@
     }
   },
   "statistics": {
-    "totalPlans": 23,
-    "comparablePlans": 17,
-    "plansWithModels": 17,
+    "totalPlans": 33,
+    "comparablePlans": 27,
+    "plansWithModels": 27,
     "undisclosed": 1,
-    "sourceCount": 22
+    "sourceCount": 24
   },
   "warnings": [
     "qwen-coding-pro: no model pricing from feeds (meter=requests), raw quotas only, no request normalization",

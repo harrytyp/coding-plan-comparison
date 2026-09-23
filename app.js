@@ -92,6 +92,7 @@ const I18N = {
     "plans.allStatus": "All statuses",
     "plans.meter.dollar": "Dollar usage",
     "plans.meter.credits": "Credits",
+    "plans.meter.tokens": "Tokens",
     "plans.meter.requests": "Requests",
     "plans.meter.prompts": "Prompts",
     "plans.status.disclosed": "Verified",
@@ -396,6 +397,7 @@ const I18N = {
     "plans.allStatus": "Alle Status",
     "plans.meter.dollar": "Dollar-Usage",
     "plans.meter.credits": "Credits",
+    "plans.meter.tokens": "Tokens",
     "plans.meter.requests": "Requests",
     "plans.meter.prompts": "Prompts",
     "plans.status.disclosed": "Verifiziert",
@@ -1042,6 +1044,7 @@ function meterLabel(meter) {
   const map = {
     dollar_usage: lang === "de" ? "Dollar-Usage" : "Dollar usage",
     credits: lang === "de" ? "Credits" : "Credits",
+    tokens: "Tokens",
     requests: lang === "de" ? "Requests" : "Requests",
     prompts: lang === "de" ? "Prompts" : "Prompts",
     gpu: "GPU",
