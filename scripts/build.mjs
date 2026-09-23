@@ -344,6 +344,9 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       // Gemessene Plaene: eigene Modellpreise (Anbieterliste) + Messblock. Sie
       // bekommen Modellzeilen, weil die Menge gemessen ist und nicht geraten.
       measured: ov.measured ?? null,
+      creditPlan: ov.creditPlan ?? null,
+      requestPlan: ov.requestPlan ?? null,
+      dollarPlan: ov.dollarPlan ?? null,
       localModelPricing: ov.localModelPricing ?? null,
       models: ov.measured && ov.localModelPricing ? ov.localModelPricing.map((m) => m.model) : [],
       // Keine feedModels für undisclosed, sonst entstehen erfundene modelStats
@@ -717,6 +720,53 @@ function modelsForPlan(plan, feeds) {
   // Plan-eigene Modellpreise: GitHub Copilot veroeffentlicht die Token-Preise aller
   // Modelle im eigenen Doku-Repo. Allowance ist ein Dollar-Volumen (AI Credits x 0,01 $),
   // die Rate kommt aus allowance / Kosten pro Request.
+  // Dollar-Plaene: die Menge ist ein offizielles USD-Volumen (Credits = 1 USD,
+  // enthaltene Nutzung in Dollar), die Modellpreise kommen aus der Plan-Quelle.
+  // Requests = Volumen / Kosten pro Request bei den Preisen des Plans.
+  if (plan.dollarPlan?.usd > 0 && plan.dollarPlan.models?.length) {
+    for (const lm of plan.dollarPlan.models) {
+      out.push({
+        name: lm.model,
+        allowance: plan.dollarPlan.usd,
+        window: "month",
+        pattern: FALLBACK_PATTERN,
+        pricing: lm,
+        usageInUsd: true,
+      });
+    }
+    return out;
+  }
+
+  // Kiro: offizielle Credit-Multiplikatoren je Modell (relativ zu Auto = 1 Credit
+  // pro Task). Requests = Credits des Tarifs / Multiplikator.
+  if (plan.creditPlan?.credits > 0 && plan.creditPlan.multipliers?.length) {
+    for (const m of plan.creditPlan.multipliers) {
+      if (!(m.credits > 0)) continue;
+      out.push({
+        name: m.model,
+        directRequests: Math.round(plan.creditPlan.credits / m.credits),
+        directNote: `requests (official credit multiplier ${m.credits}x Auto)`,
+        window: "month",
+        pattern: FALLBACK_PATTERN,
+        pricing: null,
+      });
+    }
+    return out;
+  }
+
+  // Plaene mit offizieller Request-Menge (Amazon Q Free: 50 agentische Requests).
+  if (plan.requestPlan?.requests > 0) {
+    out.push({
+      name: plan.requestPlan.label ?? "Agent requests",
+      directRequests: plan.requestPlan.requests,
+      directNote: plan.requestPlan.note ?? "requests (official monthly limit)",
+      window: "month",
+      pattern: FALLBACK_PATTERN,
+      pricing: null,
+    });
+    return out;
+  }
+
   // Gemessene Plaene: die Menge kommt aus einer Drittmessung in sichtbaren
   // Tokens, die Modellpreise vom Anbieter selbst. Requests = gemessene Token
   // geteilt durch unser Muster (FALLBACK_PATTERN), damit die Zeile mit allen

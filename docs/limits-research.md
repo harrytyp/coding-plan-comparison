@@ -89,6 +89,60 @@ ist ueber die Tarife hinweg gleich gemessen, die Wochenskalierung nicht), sie
 bleiben Referenzplaene ohne Rate. Wer ein Konto hat, kann mit
 `tools/measure-quota/` nachmessen und die Zahl beisteuern.
 
+
+## Zweite Welle 2026-09-23: alle populären Pläne durchgearbeitet
+
+Katalogstand danach: 72 Pläne, 24 Anbieter, 49 mit Modellzeilen (also in der
+Rangliste), 17 Referenzzeilen ohne Rate.
+
+**Integriert, weil der Anbieter die Menge selbst nennt:**
+
+- **Kiro** (Pro 20 $/1.000 Credits, Pro+ 40 $/2.000, Pro Max 100 $/5.000,
+  Power 200 $/10.000): Credits offiziell (kiro.dev/docs/billing) und
+  Credit-Multiplikatoren je Modell offiziell (kiro.dev/docs/models, Auto = 1
+  Credit pro Task). Damit ist Requests/Monat = Credits / Multiplikator, zum
+  Beispiel 455 Requests auf Opus 5 oder 20.000 auf Qwen3 Coder Next im Pro-Tarif.
+- **Amazon Q Developer**: Free-Tier mit 50 agentischen Requests pro Monat
+  offiziell. Pro (19 $) nennt nur "erhöhte Limits", bleibt Referenz.
+- **JetBrains AI** (Free 3, Pro 10, Ultimate 35 AI Credits pro 30 Tage): Credits
+  offiziell, und laut Doku entspricht ein Credit 1 $ Modellnutzung, die
+  Credit-Zahl dem Abopreis. Gerechnet gegen Anthropics Listenpreise, weil
+  JetBrains keine eigenen Token-Preise veröffentlicht.
+- **Gemini Code Assist** (Individual kostenlos, Standard 19 $, Enterprise 45 $ pro
+  Nutzer und Monat bei Jahresvorauszahlung): Agent-Modus und Gemini CLI mit
+  offiziellen 1.500 bzw. 2.000 Requests pro Nutzer und Tag, dazu 6.000 Code- und
+  960 Chat-Requests pro Tag. Monat = Tagesquote × 30,44.
+- **Augment Code** (Standard 20 $ mit 20 $ Nutzung, Business 100 $ mit 100 $
+  Nutzung, pauschal bis 50 Sitze): Dollar-Volumen offiziell. Die Token-Rate ist
+  eine Obergrenze, weil das Kontingent auch Context Engine und Compute abdeckt.
+- **Cursor** (Pro 20 $, Ultra 200 $): Cursor veröffentlicht die Token-Preise aller
+  Modelle und beide Pools, aber nicht die enthaltene Menge. Mehrere unabhängige
+  Berichte nennen rund 20 $ für Pro (drei Quellen) und rund 400 $ für Ultra (eine
+  Quelle). Diese Zeilen tragen `disclosure: reported` und sagen in der Notiz, dass
+  die Zahl drittseitig ist. Pro Plus bleibt Referenz.
+
+**Nicht integriert, mit Grund:**
+
+- **OpenAI Codex** (Plus 20 $, Pro 100/200 $): OpenAI veröffentlicht Nachrichten-
+  Bereiche pro 5-Stunden-Fenster je Modell, keine Token. Ein Codex-Task löst viele
+  Modellaufrufe aus, eine Umrechnung in unser Request-Muster wäre geraten.
+- **Claude Pro und Max 5x**: Für Max 20x gibt es eine gemessene Wochenmenge, für
+  diese beiden Tarife nicht (die 5h-Fenstergröße ist über die Tarife hinweg gleich
+  gemessen, die Wochenskalierung nicht).
+- **Devin Desktop / Windsurf** (Pro 20 $, Max 200 $, Teams 80 $ + 40 $/Sitz):
+  Quota laut Doku tokenbasiert mit Tages- und Wochenkontingent, Menge nicht
+  veröffentlicht.
+- **Factory Droid** (Pro 20 $, Plus 100 $, Max 200 $): drei rollierende Limits,
+  keine Mengen veröffentlicht.
+- **Trae** (Pro 20 $, Pro+ 60 $, Ultra 200 $): "Basic usage" ohne Zahl.
+- **Zed Pro** (10 $): kein festes Guthaben, Nutzung zu Standardraten.
+- **Volcengine Ark Coding Plan** (ByteDance, Lite/Pro, ab 9,9 ¥): Doku nennt
+  5h-/Wochen-/Monatsfenster und Modell-Koeffizienten, die Mengen stehen nur im
+  Konto, nicht auf der öffentlichen Seite.
+- **Qoder, Replit, Warp, Cline Pass, Kilo Pass, Meta Muse Code, Fireworks
+  FirePass**: keine offizielle Menge auffindbar (Preise teils nicht einmal
+  offiziell bestätigt), deshalb nicht im Katalog statt mit geratenen Zahlen.
+
 ## Messverfahren (fuer eigene Messungen)
 
 ## Messverfahren (das ist der Weg zu echten Zahlen)

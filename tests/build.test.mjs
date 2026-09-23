@@ -425,6 +425,75 @@ test("Claude Max 20x: gemessene Monatsmenge, Rate aus dem Muster nachgerechnet",
   }
 });
 
+// --- Zweite Welle 2026-09-23: offizielle Credits, Requests und Dollar-Volumina ---
+test("Kiro: Requests pro Monat = Credits des Tarifs / offizieller Multiplikator", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const plan = d.plans.find((p) => p.id === "kiro-pro");
+  assert.ok(plan, "kiro-pro fehlt");
+  assert.equal(plan.disclosure, "disclosed");
+  assert.equal(plan.quotas[0].amount, 1000, "1.000 Credits pro Monat laut kiro.dev/docs/billing");
+  const byModel = new Map(plan.modelRows.map((r) => [r.model, r]));
+  // Multiplikatoren laut kiro.dev/docs/models (Auto = 1 Credit pro Task)
+  assert.equal(Math.round(byModel.get("Claude Opus 5").requestsPerMonth), Math.round(1000 / 2.2));
+  assert.equal(Math.round(byModel.get("Claude Sonnet 5").requestsPerMonth), Math.round(1000 / 1.3));
+  assert.equal(Math.round(byModel.get("Auto (Kiro router)").requestsPerMonth), 1000);
+  assert.equal(Math.round(byModel.get("Qwen3 Coder Next").requestsPerMonth), 20000);
+});
+
+test("Amazon Q Developer: 50 agentische Requests im Free-Tier", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const plan = d.plans.find((p) => p.id === "amazon-q-free");
+  assert.ok(plan, "amazon-q-free fehlt");
+  assert.equal(plan.quotas[0].amount, 50);
+  assert.equal(plan.modelRows.length, 1);
+  assert.equal(plan.modelRows[0].requestsPerMonth, 50);
+  // Pro nennt keine Zahl und darf keine erfundene Rate bekommen
+  const pro = d.plans.find((p) => p.id === "amazon-q-pro");
+  assert.ok(pro, "amazon-q-pro fehlt");
+  assert.equal((pro.modelRows ?? []).length, 0);
+});
+
+test("JetBrains AI: 1 AI Credit = 1 USD Modellnutzung", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const expected = { "jetbrains-ai-free": 3, "jetbrains-ai-pro": 10, "jetbrains-ai-ultimate": 35 };
+  for (const [id, credits] of Object.entries(expected)) {
+    const plan = d.plans.find((p) => p.id === id);
+    assert.ok(plan, `${id} fehlt`);
+    assert.equal(plan.meter, "dollar_usage");
+    assert.equal(plan.quotas[0].amount, credits, `${id}: Credits pro 30 Tage`);
+    const row = plan.modelRows[0];
+    assert.ok(row, `${id}: Modellzeile`);
+    assert.ok(Math.abs(row.requestsPerMonth - credits / row.costPerRequest) < 1, `${id}: Requests = Credits / Kosten pro Request`);
+  }
+});
+
+test("Gemini Code Assist: offizielle Tagesquote wird auf den Monat gerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const cases = { "gemini-code-assist-standard": 1500, "gemini-code-assist-enterprise": 2000 };
+  for (const [id, perDay] of Object.entries(cases)) {
+    const plan = d.plans.find((p) => p.id === id);
+    assert.ok(plan, `${id} fehlt`);
+    assert.equal(plan.meter, "requests");
+    assert.equal(plan.quotas[0].amount, perDay, `${id}: Requests pro Tag`);
+    assert.equal(plan.modelRows[0].requestsPerMonth, Math.round(perDay * 30.44), `${id}: Monat = Tag x 30,44`);
+  }
+});
+
+test("Augment und Cursor: Dollar-Volumen, Cursor als berichtet gekennzeichnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const augment = d.plans.find((p) => p.id === "augment-standard");
+  assert.equal(augment.quotas[0].amount, 20, "Augment Standard: 20 $ Nutzung");
+  assert.equal(augment.meter, "dollar_usage");
+  assert.ok(augment.modelRows.length >= 3);
+  for (const id of ["cursor-pro", "cursor-ultra"]) {
+    const plan = d.plans.find((p) => p.id === id);
+    assert.ok(plan, `${id} fehlt`);
+    assert.equal(plan.disclosure, "reported", `${id}: drittseitige Menge muss als berichtet gekennzeichnet sein`);
+    assert.ok(plan.notes.includes("not publish") || plan.notes.includes("does not publish"), `${id}: Hinweis auf fehlende Anbieterangabe`);
+    assert.ok(plan.modelRows.length >= 10, `${id}: Modellpreise aus der Cursor-Doku`);
+  }
+});
+
 test("Cerebras Code: Tageslimit in Tokens wird auf den Monat gerechnet", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const src = JSON.parse(await readFile(join(ROOT, "parsed/cerebras-code.json"), "utf8"));
