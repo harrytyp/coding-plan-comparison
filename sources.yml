@@ -109,6 +109,27 @@ sources:
     provides: [plan_meta, plan_quotas, token_pricing]
     note: "Step Plan Docs: Monats-Credits je Tarif, offizielle Umrechnung 1 $ Nutzung ~ 7M Credits."
 
+  - id: ollama-pricing
+    url: "https://ollama.com/pricing"
+    typ: html-docs
+    parser: ollama
+    provides: [plan_meta, plan_quotas, token_pricing]
+    note: "Ollama Cloud: Tarife mit Dollar-Credits und eigene Token-Preise je Modell."
+
+  - id: copilot-billing
+    url: "https://docs.github.com/copilot/concepts/billing/usage-based-billing-for-individuals"
+    typ: html-docs
+    parser: copilot-billing
+    provides: [plan_meta, plan_quotas]
+    note: "GitHub Copilot: AI-Credit-Kontingent je Tarif (1 Credit = 0,01 $), Reset monatlich."
+
+  - id: copilot-models
+    url: "https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing"
+    typ: html-docs
+    parser: copilot-models
+    provides: [token_pricing]
+    note: "GitHub Copilot: offizielle Token-Preise je Modell (Input, Cached, Cache-Write, Output)."
+
   - id: cerebras-code
     url: "https://www.cerebras.ai/blog/introducing-cerebras-code"
     typ: html-docs

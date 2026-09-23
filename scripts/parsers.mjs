@@ -296,6 +296,126 @@ export function parseCerebras(html) {
   return out;
 }
 
+
+// ---------- Parser: GitHub Copilot (AI-Credits + Modellpreise) ----------
+// Beide Doku-Seiten sind serverseitig gerendert, die Tabellen sind direkt lesbar.
+// 1 AI-Credit = 0,01 $ (offizielle Doku), Preise je 1M Token.
+function tableRows(tbl) {
+  return [...tbl.matchAll(/<tr[\s\S]*?<\/tr>/g)].map((r) =>
+    [...r[0].matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/g)].map((c) => htmlToText(c[1])));
+}
+function htmlTables(html) {
+  return [...html.matchAll(/<table[\s\S]*?<\/table>/g)].map((m) => m[0]);
+}
+function firstNumber(s) {
+  // Tausenderkommas ("1,000 Credits") gehoeren zur Zahl, nicht zum Trenner.
+  const m = /([\d,]+(?:\.\d+)?)/.exec(String(s ?? ""));
+  return m ? parseFloat(m[1].replace(/,/g, "")) : null;
+}
+
+export function parseCopilotBilling(html) {
+  const out = { plans: [], creditValueUsd: 0.01 };
+  for (const tbl of htmlTables(html)) {
+    for (const cells of tableRows(tbl)) {
+      const name = /^Copilot (Pro\+?|Max)$/.exec(cells[0] ?? "");
+      if (!name) continue;
+      const price = firstNumber(cells[1]);
+      const base = firstNumber(cells[2]);
+      const flex = firstNumber(cells[3]);
+      const total = firstNumber(cells[4]);
+      if (price === null || total === null) continue;
+      out.plans.push({ name: name[1], priceUsd: price, baseCredits: base, flexCredits: flex, totalCredits: total });
+    }
+  }
+  return out;
+}
+
+export function parseCopilotModels(html) {
+  const out = { models: [], creditValueUsd: 0.01 };
+  for (const tbl of htmlTables(html)) {
+    const rows = tableRows(tbl);
+    const head = (rows[0] ?? []).map((h) => h.toLowerCase());
+    if (head[0] !== "model") continue;
+    const at = (label) => head.findIndex((h) => h.startsWith(label));
+    const iStatus = at("release status"), iTier = at("tier");
+    const iIn = at("input"), iCached = at("cached"), iWrite = at("cache write"), iOut = at("output");
+    if (iIn < 0 || iOut < 0) continue;
+    for (const cells of rows.slice(1)) {
+      const model = cells[0];
+      const status = iStatus >= 0 ? cells[iStatus] : "GA";
+      const tier = iTier >= 0 ? cells[iTier] : "Default";
+      // Nur GA-Modelle, und von den Kontext-Staffeln nur die Standard-Stufe:
+      // die Langkontext-Dublette waere eine zweite Zeile mit demselben Namen.
+      if (!model || status !== "GA") continue;
+      if (tier && tier !== "Default") continue;
+      const input = firstNumber(cells[iIn]);
+      const output = firstNumber(cells[iOut]);
+      const cachedRead = iCached >= 0 ? firstNumber(cells[iCached]) : null;
+      const cacheWrite = iWrite >= 0 ? firstNumber(cells[iWrite]) : null;
+      if (input === null || output === null || cachedRead === null) continue;
+      out.models.push({
+        model,
+        input,
+        cachedRead,
+        cachedWrite: cacheWrite === null ? input : cacheWrite,
+        output,
+        source: "copilot-models",
+      });
+    }
+  }
+  return out;
+}
+
+
+// ---------- Parser: Ollama Cloud (Tarife mit Dollar-Credits + Modellpreise) ----------
+// Karten sind serverseitig gerendert. Die Pro-Karte hat Tabs: die Namen stehen in
+// id="plan-header-<name>", der Monatspreis im Span data-billing="month" (der
+// Jahrespreis steckt in data-billing="year" und darf nicht mitgezaehlt werden).
+// Die Credit-Posten ("$60 of usage credits per month") werden positionell zugeordnet.
+export function parseOllama(html) {
+  const out = { plans: [], models: [] };
+  const cards = html.split(/<div class="flex flex-col border border-neutral-200 rounded-2xl p-6">/).slice(1);
+  for (const card of cards) {
+    const h2 = /<h2[^>]*>([^<]+)<\/h2>/.exec(card);
+    if (!h2) continue;
+    const credits = [...card.matchAll(/\$([\d,]+)\s*of usage credits/g)].map((m) => parseFloat(m[1].replace(/,/g, "")));
+    // Tabs (Pro-Karte: Pro und Max) ueber die plan-header-Segmente, Preis jeweils
+    // der erste Monatspreis im Segment (der Jahrespreis folgt danach).
+    const segs = card.split(/id="plan-header-([a-z0-9-]+)"/).slice(1);
+    let pairs = [];
+    for (let i = 0; i < segs.length; i += 2) {
+      const name = segs[i];
+      const txt = htmlToText(segs[i + 1] ?? "");
+      const m = /\$([\d,]+)\s*\/\s*mo\./.exec(txt);
+      pairs.push({ name, monthlyUsd: m ? parseFloat(m[1].replace(/,/g, "")) : null, creditsUsd: credits[pairs.length] ?? null });
+    }
+    if (!pairs.length) {
+      const price = /\$([\d,]+)\s*\/\s*mo\./.exec(htmlToText(card));
+      pairs = price ? [{ name: h2[1].trim().toLowerCase(), monthlyUsd: parseFloat(price[1].replace(/,/g, "")), creditsUsd: credits[0] ?? null }] : [];
+    }
+    for (const p of pairs) {
+      if (!(p.monthlyUsd > 0) || !(p.creditsUsd > 0)) continue; // Free und "Custom" fallen raus
+      out.plans.push({ name: p.name.charAt(0).toUpperCase() + p.name.slice(1), monthlyUsd: p.monthlyUsd, creditsUsd: p.creditsUsd });
+    }
+  }
+  // Modellpreise je 1M Token (Off-Peak-Varianten ueberspringen)
+  for (const tbl of htmlTables(html)) {
+    const rows = tableRows(tbl);
+    const head = (rows[0] ?? []).map((h) => h.toLowerCase());
+    if (head[0] !== "model" || !head.includes("input")) continue;
+    for (const cells of rows.slice(1)) {
+      if (/off-peak/i.test(String(cells[0] ?? ""))) continue;
+      const name = String(cells[0] ?? "").trim();
+      const input = firstNumber(cells[1]);
+      const cachedRead = firstNumber(cells[2]);
+      const output = firstNumber(cells[3]);
+      if (!name || input === null || output === null || cachedRead === null) continue;
+      out.models.push({ model: name, input, cachedRead, cachedWrite: input, output, source: "ollama-pricing" });
+    }
+  }
+  return out;
+}
+
 // ---------- Parser: Kimi Membership Pricing (HTML) ----------
 export function parseKimiPricing(html) {
   const text = htmlToText(html);
@@ -519,6 +639,9 @@ export const PARSERS = {
   "glm-overview": parseGlmOverview,
   "qwen-docs": parseQwenDocs,
   "qwen-token-personal": parseQwenTokenPersonal,
+  "copilot-billing": parseCopilotBilling,
+  "copilot-models": parseCopilotModels,
+  ollama: parseOllama,
   mimo: parseMimo,
   stepfun: parseStepfun,
   cerebras: parseCerebras,

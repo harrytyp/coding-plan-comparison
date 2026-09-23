@@ -515,6 +515,75 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     }
   }
 
+  // --- GitHub Copilot (AI Credits: 1 Credit = 0,01 $, Modellpreise aus der Doku) ---
+  const cpBilling = parsed["copilot-billing"];
+  const cpModels = parsed["copilot-models"];
+  if (cpBilling?.plans?.length && cpModels?.models?.length) {
+    const priceList = cpModels.models;
+    for (const p of cpBilling.plans) {
+      const usd = +(p.totalCredits * (cpBilling.creditValueUsd ?? 0.01)).toFixed(2);
+      add({
+        id: `copilot-${p.name.toLowerCase().replace("+", "-plus")}`,
+        provider: "github",
+        name: `GitHub Copilot ${p.name}`,
+        price: {
+          monthlyUsd: p.priceUsd,
+          paidPrice: p.priceUsd,
+          advertisedPrice: p.priceUsd,
+          currency: "USD",
+          yearlyUsd: null,
+          altPrice: null,
+          billingNote: `${p.totalCredits} AI credits per month (${p.baseCredits} base + ${p.flexCredits} flex, 1 credit = $0.01); unused credits do not roll over; completions are not billed`,
+        },
+        meter: "dollar_usage",
+        quotas: [{ label: "Monthly", unit: "USD credits", amount: usd, window: "month", refresh: "monthly", disclosure: "exact" }],
+        tokenPricing: { source: "copilot-models", note: "Token prices published by GitHub for every model Copilot offers" },
+        localModelPricing: priceList,
+        workload: { pattern: null, taskConversion: null },
+        models: priceList.map((m) => m.model),
+        dataTier: "A",
+        dataTierNote: `Official AI credit allowance (${p.totalCredits} credits = $${usd}) and official per-model token prices from the GitHub Copilot docs`,
+        disclosure: "disclosed",
+        sourceIds: ["copilot-billing", "copilot-models"],
+        verifiedAt: "2026-09-23",
+        priceSource: "official docs",
+      });
+    }
+  }
+
+  // --- Ollama Cloud (Dollar-Credits, eigene Token-Preise je Modell) ---
+  const ollama = parsed["ollama-pricing"];
+  if (ollama?.plans?.length && ollama?.models?.length) {
+    for (const p of ollama.plans) {
+      add({
+        id: `ollama-${p.name.toLowerCase()}`,
+        provider: "ollama",
+        name: `Ollama Cloud ${p.name}`,
+        price: {
+          monthlyUsd: p.monthlyUsd,
+          paidPrice: p.monthlyUsd,
+          advertisedPrice: p.monthlyUsd,
+          currency: "USD",
+          yearlyUsd: p.name === "Pro" ? 200 : null,
+          altPrice: null,
+          billingNote: `$${p.creditsUsd} of usage credits per month; usage credits do not roll over`,
+        },
+        meter: "dollar_usage",
+        quotas: [{ label: "Monthly", unit: "USD credits", amount: p.creditsUsd, window: "month", refresh: "monthly", disclosure: "exact" }],
+        tokenPricing: { source: "ollama-pricing", note: "Model prices published by Ollama (per 1M tokens)" },
+        localModelPricing: ollama.models,
+        workload: { pattern: null, taskConversion: null },
+        models: ollama.models.map((m) => m.model),
+        dataTier: "A",
+        dataTierNote: `Official credit allowance ($${p.creditsUsd}) and official model prices from the Ollama pricing page`,
+        disclosure: "disclosed",
+        sourceIds: ["ollama-pricing"],
+        verifiedAt: "2026-09-23",
+        priceSource: "official pricing page",
+      });
+    }
+  }
+
   // Manuelle Notizen an bereits dynamisch gebaute Plaene haengen. Der Loop
   // darueber ueberspringt existierende ids, deshalb hier separat: eine Notiz
   // aus overrides.yml ist eine Ergaenzung, kein Ersatz fuer die Feed-Daten.
@@ -633,6 +702,29 @@ function modelsForPlan(plan, feeds) {
   // providerCost: anbietereigene Credit-Formel (z.B. GLM) als Daten im Plan.
   // Formel: creditsPerRequest = (input×c_input + cachedRead×c_cached + output×c_output) / 10000
   // Angewendet auf das Pattern (aus Feed oder Fallback).
+  // Plan-eigene Modellpreise: GitHub Copilot veroeffentlicht die Token-Preise aller
+  // Modelle im eigenen Doku-Repo. Allowance ist ein Dollar-Volumen (AI Credits x 0,01 $),
+  // die Rate kommt aus allowance / Kosten pro Request.
+  if (plan.localModelPricing?.length) {
+    const oc = feeds["ocgo-pricing.json"];
+    const cc = feeds["cc-pricing.json"];
+    const allModels = [...(oc?.models ?? []), ...(cc?.models ?? [])];
+    const monthly = plan.quotas.find((q) => q.window === "month")?.amount ?? null;
+    if (!(monthly > 0)) return out;
+    for (const lm of plan.localModelPricing) {
+      const match = allModels.find((m) => m.name && m.name.toLowerCase().includes(lm.model.toLowerCase()));
+      out.push({
+        name: lm.model,
+        pricing: lm, // Preis aus der Plan-Quelle, nicht aus dem Feed
+        pattern: match?.pattern ?? FALLBACK_PATTERN,
+        allowance: monthly,
+        window: "month",
+        planLocalPrice: true,
+      });
+    }
+    return out;
+  }
+
   if (plan.providerCost?.perModel || plan.providerCost?.creditsFromUsd) {
     const oc = feeds["ocgo-pricing.json"];
     const cc = feeds["cc-pricing.json"];

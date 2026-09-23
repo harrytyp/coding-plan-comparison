@@ -35,6 +35,9 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
      (StepFun: 7M). Credits pro Request = $-Kosten aus dem Feed × N.
   3. `allowance` in Tokens mit `window: "day"` (Cerebras): Tageslimit × 30.44 = Monat.
   Alle drei Wege brauchen keine geschätzten Zahlen, nur die veröffentlichten Werte.
+  4. `localModelPricing`: der Anbieter veröffentlicht die Token-Preise selbst (GitHub Copilot
+     für alle Copilot-Modelle, Ollama Cloud für seine Cloud-Modelle). Allowance ist dann ein
+     Dollar-Volumen, die Rate kommt aus `allowance / Kosten pro Request`.
 - **Modelle ohne Feed-Preis** (nicht im ocgo/cc-Feed): Zeile entsteht trotzdem, `costPerRequest`
   bleibt null. `requestCost()` muss dafür null-sicher bleiben.
 - Pattern-Unifizierung: geteilte Familien nutzen OC-Pattern für beide Provider.

@@ -318,6 +318,45 @@ test("Kein Tarif fällt still weg: jeder geparste Tarif steht im Katalog", async
 });
 
 
+// --- GitHub Copilot + Ollama Cloud (Dollar-Credits, Preise aus der Anbieter-Doku) ---
+test("GitHub Copilot: AI-Credit-Kontingent und Modellpreise aus der Doku, Rate nachgerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const billing = JSON.parse(await readFile(join(ROOT, "parsed/copilot-billing.json"), "utf8"));
+  const models = JSON.parse(await readFile(join(ROOT, "parsed/copilot-models.json"), "utf8"));
+  assert.equal(billing.creditValueUsd, 0.01, "1 AI-Credit = 0,01 $");
+  assert.ok(models.models.length > 20, "Modellpreise aus der Copilot-Doku");
+  const byId = new Map(d.plans.map((p) => [p.id, p]));
+  for (const p of billing.plans) {
+    const id = `copilot-${p.name.toLowerCase().replace("+", "-plus")}`;
+    const plan = byId.get(id);
+    assert.ok(plan, `Copilot-Tarif "${p.name}" fehlt im Katalog`);
+    assert.equal(plan.price.monthlyUsd, p.priceUsd, `${p.name}: Monatspreis`);
+    assert.equal(plan.quotas[0].amount, +(p.totalCredits * 0.01).toFixed(2), `${p.name}: Credit-Volumen in Dollar`);
+  }
+  // Anker: Copilot Pro hat 15 $ Volumen, die Rate folgt Volumen / Kosten pro Request.
+  const pro = byId.get("copilot-pro");
+  const row = pro.modelRows.find((r) => /GPT-5\.4$/.test(r.model));
+  assert.ok(row, "GPT-5.4-Zeile vorhanden");
+  assert.ok(Math.abs(row.requestsPerMonth - 15 / row.costPerRequest) < 1, "Requests = Volumen / Kosten pro Request");
+  assert.ok(Math.abs(row.normalizedPer1 - row.requestsPerMonth / 10) < 0.01, "Rate pro $ = Requests / Preis");
+});
+
+test("Ollama Cloud: Tarife und eigene Modellpreise, Rate nachgerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/ollama-pricing.json"), "utf8"));
+  assert.ok(src.plans.length >= 3, "Pro, Max und Team aus der Tarifkarte");
+  assert.ok(src.models.length >= 10, "Modellpreise von der Ollama-Preisseite");
+  const byId = new Map(d.plans.map((p) => [p.id, p]));
+  for (const p of src.plans) {
+    const plan = byId.get(`ollama-${p.name.toLowerCase()}`);
+    assert.ok(plan, `Ollama-Tarif "${p.name}" fehlt im Katalog`);
+    assert.equal(plan.quotas[0].amount, p.creditsUsd, `${p.name}: Credit-Volumen`);
+    const r = plan.modelRows[0];
+    assert.ok(r, `${p.name}: Modellzeile`);
+    assert.ok(Math.abs(r.requestsPerMonth - p.creditsUsd / r.costPerRequest) < 1, `${p.name}: Requests = Volumen / Kosten pro Request`);
+  }
+});
+
 // --- Neue Anbieter 2026-09-23: MiMo, StepFun, Cerebras ---
 // Aufnahme nur, solange der Anbieter die Zahlen selbst veroeffentlicht: Credits pro
 // Monat bzw. Token pro Tag. Die Tests koppeln die geparsten Tarife an den Katalog und
