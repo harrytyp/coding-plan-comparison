@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T14:41:01.842Z",
+  "generatedAt": "2026-09-23T15:04:37.718Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -12107,28 +12107,156 @@
         "waitlist": null,
         "billingNote": "Monthly only; 20x the Pro allowance"
       },
-      "meter": "prompts",
-      "quotas": [],
+      "meter": "tokens",
+      "quotas": [
+        {
+          "label": "Monthly (measured)",
+          "unit": "tokens",
+          "amount": 8443500000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "measured"
+        }
+      ],
       "windowCaps": {
         "h5": null,
         "weekly": null,
-        "monthly": null
+        "monthly": 8443500000
       },
       "officialConversion": null,
-      "disclosure": "reference",
+      "disclosure": "measured",
       "sourceIds": [
         "overrides"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 0,
-      "modelStats": null,
-      "dataTier": "C",
-      "dataTierNote": "Anthropic publishes multipliers only (20x Pro), no token count. Third-party ranges in the note.",
-      "notes": "Anthropic states 20x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 200-900 prompts per 5h, 240-480 Sonnet hours plus 24-40 Opus hours per week. Community tracker models 220,000 tokens per 5h window (local_estimate, 2026-07-05).",
-      "notesDe": "Anthropic nennt das Zwanzigfache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 200-900 Prompts pro 5h, 240-480 Sonnet-Stunden plus 24-40 Opus-Stunden pro Woche. Der Community-Tracker modelliert 220.000 Token pro 5h-Fenster (local_estimate, 2026-07-05).",
-      "tag": null,
-      "tagDe": null,
-      "modelRows": []
+      "modelCount": 5,
+      "modelStats": {
+        "count": 5,
+        "min": 165682,
+        "max": 165682,
+        "mean": 165682,
+        "median": 165682,
+        "p25": 165682,
+        "p75": 165682
+      },
+      "dataTier": "M",
+      "dataTierNote": "Measured (third party): 37,363 responses with rate-limit headers (45,884 requests total), one Max 20x account, Apr 1-22 2026; cross-validated against two further datasets (215K and 101K calls, Max 20x and Max 5x)",
+      "notes": "Measured, not published: Anthropic discloses no token count. Source: github.com/ArkNill/claude-code-hidden-problem-analysis. A third-party proxy measurement on one Max 20x account puts 1% of the five-hour window at 1.6-2.1M visible tokens (97% of them cache reads) and the weekly cap at about 1.95B visible tokens in the week of Apr 7-13 2026, when 99% was reached. Cross-validated against two independent datasets (215K and 101K calls). Monthly volume = weekly x 4.33. Model prices are Anthropic's own list prices, read 2026-09-23.",
+      "notesDe": "Gemessen, nicht veroeffentlicht: Anthropic nennt keine Token-Zahl. Quelle: github.com/ArkNill/claude-code-hidden-problem-analysis. Eine Drittmessung per Proxy auf einem Max-20x-Konto ergibt 1 % des Fuenf-Stunden-Fensters bei 1,6-2,1 Mio sichtbaren Token (97 % davon Cache-Reads) und das Wochenlimit bei rund 1,95 Mrd sichtbaren Token in der Woche 7. bis 13. April 2026, als 99 % erreicht wurden. Gegen zwei unabhaengige Datensaetze kreuzvalidiert (215K und 101K Calls). Monatsmenge = Woche x 4,33. Modellpreise sind Anthropics eigene Listenpreise, gelesen 2026-09-23.",
+      "tag": "measured",
+      "tagDe": "gemessen",
+      "modelRows": [
+        {
+          "model": "Claude Opus 5.5",
+          "family": "claude opus 5.5",
+          "allowance": null,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0172,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "measured (third party, one account, Apr 2026)",
+          "requestsPerMonth": 165682,
+          "requestsRawInWindow": 165682,
+          "normalizedPer1": 828.41,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8443486084,
+          "derivedTokensPerMonth": 8443486084
+        },
+        {
+          "model": "Claude Opus 5",
+          "family": "claude opus 5",
+          "allowance": null,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.034,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "measured (third party, one account, Apr 2026)",
+          "requestsPerMonth": 165682,
+          "requestsRawInWindow": 165682,
+          "normalizedPer1": 828.41,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8443486084,
+          "derivedTokensPerMonth": 8443486084
+        },
+        {
+          "model": "Claude Sonnet 5",
+          "family": "claude sonnet 5",
+          "allowance": null,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0136,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "measured (third party, one account, Apr 2026)",
+          "requestsPerMonth": 165682,
+          "requestsRawInWindow": 165682,
+          "normalizedPer1": 828.41,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8443486084,
+          "derivedTokensPerMonth": 8443486084
+        },
+        {
+          "model": "Claude Haiku 4.5",
+          "family": "claude haiku 4.5",
+          "allowance": null,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0068,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "measured (third party, one account, Apr 2026)",
+          "requestsPerMonth": 165682,
+          "requestsRawInWindow": 165682,
+          "normalizedPer1": 828.41,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8443486084,
+          "derivedTokensPerMonth": 8443486084
+        },
+        {
+          "model": "Claude Fable 5.1",
+          "family": "claude fable 5.1",
+          "allowance": null,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0305,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "measured (third party, one account, Apr 2026)",
+          "requestsPerMonth": 165682,
+          "requestsRawInWindow": 165682,
+          "normalizedPer1": 828.41,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 8443486084,
+          "derivedTokensPerMonth": 8443486084
+        }
+      ]
     },
     {
       "id": "cursor-pro",
@@ -17719,6 +17847,14 @@
     },
     {
       "planA": "opencode-go",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 165682,
+      "advantagePercent": 78.62083393394347,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "opencode-go",
       "planB": "freebuff-free",
       "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 59755.15238035567,
@@ -17967,6 +18103,14 @@
     },
     {
       "planA": "command-code-go",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 165682,
+      "advantagePercent": 98.57730285171651,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "command-code-go",
       "planB": "freebuff-free",
       "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 59755.15238035567,
@@ -18207,6 +18351,14 @@
     },
     {
       "planA": "command-code-goat",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 165682,
+      "advantagePercent": 90.04111996201554,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "command-code-goat",
       "planB": "freebuff-free",
       "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 59755.15238035567,
@@ -18439,6 +18591,14 @@
     },
     {
       "planA": "command-code-pro",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 165682,
+      "advantagePercent": 87.10274075042206,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "command-code-pro",
       "planB": "freebuff-free",
       "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 59755.15238035567,
@@ -18663,6 +18823,14 @@
     },
     {
       "planA": "command-code-max10",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 165682,
+      "advantagePercent": 78.65954277574758,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "command-code-max10",
       "planB": "freebuff-free",
       "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 59755.15238035567,
@@ -18879,6 +19047,14 @@
     },
     {
       "planA": "command-code-max20",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 165682,
+      "advantagePercent": 57.319085551495164,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "command-code-max20",
       "planB": "freebuff-free",
       "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 59755.15238035567,
@@ -19087,6 +19263,14 @@
     },
     {
       "planA": "glm-lite",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 165682,
+      "advantagePercent": 94.9921066413684,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "glm-lite",
       "planB": "freebuff-free",
       "meanRequestsA": 8297.177874448013,
       "meanRequestsB": 59755.15238035567,
@@ -19287,6 +19471,14 @@
     },
     {
       "planA": "glm-pro",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 165682,
+      "advantagePercent": 69.95263984821038,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "glm-pro",
       "planB": "freebuff-free",
       "meanRequestsA": 49783.067246688064,
       "meanRequestsB": 59755.15238035567,
@@ -19479,6 +19671,14 @@
     },
     {
       "planA": "glm-max",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 165682,
+      "advantagePercent": 29.889492979157563,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "glm-max",
       "planB": "freebuff-free",
       "meanRequestsA": 116160.49024227216,
       "meanRequestsB": 59755.15238035567,
@@ -19663,6 +19863,14 @@
     },
     {
       "planA": "kimi-moderato",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 3300,
+      "meanRequestsB": 165682,
+      "advantagePercent": 98.00823263842783,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "kimi-moderato",
       "planB": "freebuff-free",
       "meanRequestsA": 3300,
       "meanRequestsB": 59755.15238035567,
@@ -19839,6 +20047,14 @@
     },
     {
       "planA": "kimi-allegretto",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 6633.333333333334,
+      "meanRequestsB": 165682,
+      "advantagePercent": 95.99634641461756,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "kimi-allegretto",
       "planB": "freebuff-free",
       "meanRequestsA": 6633.333333333334,
       "meanRequestsB": 59755.15238035567,
@@ -20007,6 +20223,14 @@
     },
     {
       "planA": "kimi-allegro",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 23300,
+      "meanRequestsB": 165682,
+      "advantagePercent": 85.93691529556621,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "kimi-allegro",
       "planB": "freebuff-free",
       "meanRequestsA": 23300,
       "meanRequestsB": 59755.15238035567,
@@ -20167,6 +20391,14 @@
     },
     {
       "planA": "kimi-vivace",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 47381.00000000001,
+      "meanRequestsB": 165682,
+      "advantagePercent": 71.40244564889366,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "kimi-vivace",
       "planB": "freebuff-free",
       "meanRequestsA": 47381.00000000001,
       "meanRequestsB": 59755.15238035567,
@@ -20323,6 +20555,166 @@
       "meanRequestsA": 47381.00000000001,
       "meanRequestsB": 422621.2482799468,
       "advantagePercent": 88.78877950580124,
+      "winner": "ollama-team"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "freebuff-free",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 177.26814073771396,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 71.90624725738269,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 3.557980275531736,
+      "winner": "draw"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 34.88399725099141,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "mimo-lite",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 1489.8356283138917,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "mimo-standard",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 492.57509782608696,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "mimo-pro",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 71.5348967391304,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "mimo-max",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 20.508218584305414,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 341.90065801538464,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 10.475164503846157,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 77.90496709923077,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 95.58099341984615,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 1055.7553224923347,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 131.15106449846695,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "copilot-pro",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 2830.0976976519746,
+      "advantagePercent": 5754.285530052906,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "copilot-pro-plus",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 13207.122589042548,
+      "advantagePercent": 1154.4897564399084,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "copilot-max",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 37734.63596869301,
+      "advantagePercent": 339.0714147539678,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "ollama-pro",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 25357.27489679682,
+      "advantagePercent": 553.3904004839625,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "ollama-max",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 126786.37448398408,
+      "advantagePercent": 30.678080096792492,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "claude-max-20x",
+      "planB": "ollama-team",
+      "meanRequestsA": 165682,
+      "meanRequestsB": 422621.2482799468,
+      "advantagePercent": 60.79657597096224,
       "winner": "ollama-team"
     },
     {
@@ -24767,6 +25159,41 @@
       "normalizedPer1Mean": 238.0954773869347
     },
     {
+      "planId": "claude-max-20x",
+      "family": "claude opus 5.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 828.41,
+      "normalizedPer1Mean": 828.41
+    },
+    {
+      "planId": "claude-max-20x",
+      "family": "claude opus 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 828.41,
+      "normalizedPer1Mean": 828.41
+    },
+    {
+      "planId": "claude-max-20x",
+      "family": "claude sonnet 5",
+      "modelCount": 1,
+      "normalizedPer1Median": 828.41,
+      "normalizedPer1Mean": 828.41
+    },
+    {
+      "planId": "claude-max-20x",
+      "family": "claude haiku 4.5",
+      "modelCount": 1,
+      "normalizedPer1Median": 828.41,
+      "normalizedPer1Mean": 828.41
+    },
+    {
+      "planId": "claude-max-20x",
+      "family": "claude fable 5.1",
+      "modelCount": 1,
+      "normalizedPer1Median": 828.41,
+      "normalizedPer1Mean": 828.41
+    },
+    {
       "planId": "freebuff-starter",
       "family": "glm-5.3 flash",
       "modelCount": 1,
@@ -27141,7 +27568,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T14:41:01.241Z",
+    "fetchedAt": "2026-09-23T15:04:37.641Z",
     "count": 408,
     "scores": {
       "claude-opus-5-5": {
@@ -27261,10 +27688,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -27567,10 +27994,10 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.04
       },
-      "seed-2-0-mini": {
+      "gemini-2-5-pro": {
         "intelligence": 27.8
       },
-      "gemini-2-5-pro": {
+      "seed-2-0-mini": {
         "intelligence": 27.8
       },
       "mai-code-1-1-flash": {
@@ -27762,10 +28189,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
       "qwen3-5-4b": {
@@ -28065,10 +28492,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -28568,8 +28995,8 @@
   },
   "statistics": {
     "totalPlans": 50,
-    "comparablePlans": 33,
-    "plansWithModels": 33,
+    "comparablePlans": 34,
+    "plansWithModels": 34,
     "undisclosed": 1,
     "sourceCount": 27
   },
