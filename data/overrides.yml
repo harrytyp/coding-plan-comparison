@@ -101,16 +101,37 @@ overrides:
     note: "Anthropic states 5x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 50-225 prompts per 5h, 140-240 Sonnet hours plus 15-35 Opus hours per week. Community tracker models 88,000 tokens per 5h window (local_estimate, 2026-07-05)."
     noteDe: "Anthropic nennt das Fünffache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 50-225 Prompts pro 5h, 140-240 Sonnet-Stunden plus 15-35 Opus-Stunden pro Woche. Der Community-Tracker modelliert 88.000 Token pro 5h-Fenster (local_estimate, 2026-07-05)."
 
+  # Anthropic Claude Max 20x: gemessene Quote. Kein Anbieter veroeffentlicht die
+  # Token-Zahl, deshalb kommt sie aus einer Drittmessung (Proxy-Header + lokale
+  # Tokenlogs), die gegen zwei weitere Datensaetze kreuzvalidiert ist.
+  # Quelle: github.com/ArkNill/claude-code-hidden-problem-analysis
+  #   (02_RATELIMIT-HEADERS.md, DATASET-ARKNILL-20260422.md, CROSS-VALIDATION-20260422.md)
   - id: claude-max-20x
     provider: anthropic
     name: Claude Max 20x
     price: { monthlyUsd: 200, paidPrice: 200, advertisedPrice: 200, currency: USD, billingNote: "Monthly only; 20x the Pro allowance" }
-    meter: prompts
-    disclosure: reference
-    dataTierNote: "Anthropic publishes multipliers only (20x Pro), no token count. Third-party ranges in the note."
+    meter: tokens
+    disclosure: measured
+    tag: "measured"
+    tagDe: "gemessen"
+    measured:
+      perPercentTokens: 1850000
+      perWindowTokens: 185000000
+      weeklyVisibleTokens: 1950000000
+      monthlyTokens: 8443500000
+      source: "github.com/ArkNill/claude-code-hidden-problem-analysis (02_RATELIMIT-HEADERS.md, DATASET-ARKNILL-20260422.md)"
+      method: "Proxy captured the anthropic-ratelimit-unified-* headers on every response: 1% of the 5h window costs 1.6-2.1M visible tokens. The week of Apr 7-13 2026 reached 99% of the weekly cap after about 1.95B visible tokens. Monthly = weekly x 4.33."
+      sample: "37,363 responses with rate-limit headers (45,884 requests total), one Max 20x account, Apr 1-22 2026; cross-validated against two further datasets (215K and 101K calls, Max 20x and Max 5x)"
+      directNote: "measured (third party, one account, Apr 2026)"
     lastVerified: 2026-09-23
-    note: "Anthropic states 20x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 200-900 prompts per 5h, 240-480 Sonnet hours plus 24-40 Opus hours per week. Community tracker models 220,000 tokens per 5h window (local_estimate, 2026-07-05)."
-    noteDe: "Anthropic nennt das Zwanzigfache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 200-900 Prompts pro 5h, 240-480 Sonnet-Stunden plus 24-40 Opus-Stunden pro Woche. Der Community-Tracker modelliert 220.000 Token pro 5h-Fenster (local_estimate, 2026-07-05)."
+    localModelPricing:
+      - { model: "Claude Opus 5.5", input: 4, cachedWrite: 5, cachedRead: 0.2, output: 20 }
+      - { model: "Claude Opus 5", input: 5, cachedWrite: 6.25, cachedRead: 0.5, output: 25 }
+      - { model: "Claude Sonnet 5", input: 2, cachedWrite: 2.5, cachedRead: 0.2, output: 10 }
+      - { model: "Claude Haiku 4.5", input: 1, cachedWrite: 1.25, cachedRead: 0.1, output: 5 }
+      - { model: "Claude Fable 5.1", input: 10, cachedWrite: 12.5, cachedRead: 0.25, output: 50 }
+    note: "Measured, not published: Anthropic discloses no token count. Source: github.com/ArkNill/claude-code-hidden-problem-analysis. A third-party proxy measurement on one Max 20x account puts 1% of the five-hour window at 1.6-2.1M visible tokens (97% of them cache reads) and the weekly cap at about 1.95B visible tokens in the week of Apr 7-13 2026, when 99% was reached. Cross-validated against two independent datasets (215K and 101K calls). Monthly volume = weekly x 4.33. Model prices are Anthropic's own list prices, read 2026-09-23."
+    noteDe: "Gemessen, nicht veroeffentlicht: Anthropic nennt keine Token-Zahl. Quelle: github.com/ArkNill/claude-code-hidden-problem-analysis. Eine Drittmessung per Proxy auf einem Max-20x-Konto ergibt 1 % des Fuenf-Stunden-Fensters bei 1,6-2,1 Mio sichtbaren Token (97 % davon Cache-Reads) und das Wochenlimit bei rund 1,95 Mrd sichtbaren Token in der Woche 7. bis 13. April 2026, als 99 % erreicht wurden. Gegen zwei unabhaengige Datensaetze kreuzvalidiert (215K und 101K Calls). Monatsmenge = Woche x 4,33. Modellpreise sind Anthropics eigene Listenpreise, gelesen 2026-09-23."
 
   # Cursor: Preis offiziell, enthaltenes Volumen nicht veröffentlicht.
   - id: cursor-pro

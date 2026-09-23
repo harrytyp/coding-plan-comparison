@@ -399,6 +399,32 @@ test("StepFun: Credits an den offiziellen Kurs gekoppelt (1 $ Nutzung ~ 7M Credi
   }
 });
 
+// --- Gemessene Quote (Dritte) 2026-09-23: Claude Max 20x ---
+// Kein Anbieter veroeffentlicht die Token-Zahl. Die Menge kommt aus einer
+// Drittmessung (Proxy-Header + Tokenlogs, gegen zwei weitere Datensaetze
+// kreuzvalidiert). Requests = gemessene Token / unser Muster, damit die Zeile
+// mit den uebrigen Plaenen auf derselben Skala vergleichbar bleibt.
+test("Claude Max 20x: gemessene Monatsmenge, Rate aus dem Muster nachgerechnet", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const plan = d.plans.find((p) => p.id === "claude-max-20x");
+  assert.ok(plan, "claude-max-20x fehlt");
+  assert.equal(plan.disclosure, "measured");
+  assert.equal(plan.dataTier, "M");
+  assert.equal(plan.tag, "measured");
+  assert.ok(plan.notes.includes("ArkNill"), "Quelle muss in der Notiz stehen");
+  assert.ok(plan.dataTierNote.includes("37,363"), "Stichprobe muss dokumentiert sein");
+  const quota = plan.quotas.find((q) => q.window === "month");
+  assert.ok(quota.amount > 0, "Monatsmenge fehlt");
+  const tokensPerRequest = 800 + 50_000 + 162; // FALLBACK_PATTERN
+  const expected = Math.round(quota.amount / tokensPerRequest);
+  assert.equal(plan.modelCount, 5, "fuenf Modellzeilen (Opus 5.5/5, Sonnet 5, Haiku 4.5, Fable 5.1)");
+  for (const row of plan.modelRows) {
+    assert.equal(row.requestsPerMonth, expected, `${row.model}: Requests = gemessene Token / Muster`);
+    assert.ok(row.costPerRequest > 0, `${row.model}: Kosten pro Request aus Anthropics Listenpreis`);
+    assert.ok(Math.abs(row.normalizedPer1 - expected / plan.price.monthlyUsd) < 0.5, `${row.model}: Rate pro Dollar`);
+  }
+});
+
 test("Cerebras Code: Tageslimit in Tokens wird auf den Monat gerechnet", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const src = JSON.parse(await readFile(join(ROOT, "parsed/cerebras-code.json"), "utf8"));

@@ -105,6 +105,17 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.
 
+## Gemessene Plaene (Tier M)
+
+Wo kein Anbieter eine Quote veroeffentlicht und eine Drittmessung vorliegt, steht der
+Plan mit `disclosure: measured` und `dataTier: M` im Katalog: `measured.monthlyTokens`
+(gemessene sichtbare Token pro Monat), `measured.source`/`method`/`sample` als
+Nachweis, `localModelPricing` mit den Listenpreisen des Anbieters. Die Modellzeilen
+rechnet `modelsForPlan` ueber `directRequests = monthlyTokens / FALLBACK_PATTERN`,
+damit die Rate mit den uebrigen Plaenen auf derselben Skala liegt. Chip "measured"
+plus Notiz mit Quelle und Stichprobe sind Pflicht. Bisher: Claude Max 20x
+(`data/overrides.yml`).
+
 ## Quoten messen statt schaetzen
 
 Fuer Plaene ohne veroeffentlichte Quote (Claude, Codex, Cursor, Devin) fuehrt

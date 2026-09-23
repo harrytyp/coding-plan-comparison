@@ -324,19 +324,28 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       provider: ov.provider ?? "unknown",
       name: ov.name ?? ov.id,
       price: ov.price ?? { monthlyUsd: null, paidPrice: null, advertisedPrice: null },
-      meter: ov.meter ?? "credits",
-      quotas: ov.quotas ?? (ov.quota ? [ov.quota] : []),
+      meter: ov.measured ? "tokens" : (ov.meter ?? "credits"),
+      quotas: ov.measured
+        ? [{ label: "Monthly (measured)", unit: "tokens", amount: ov.measured.monthlyTokens, window: "month", refresh: "monthly", disclosure: "measured" }]
+        : (ov.quotas ?? (ov.quota ? [ov.quota] : [])),
       tokenPricing: null,
       workload: { pattern: null, taskConversion: null },
       models: [],
       feedModels: ov.feedModels ?? null,
       // MiniMax: offizielles 5h-Cap als Mengen-Basis (Tier A, wenn Quota vorhanden)
-      dataTier: (ov.quotas ?? ov.quota) ? "A" : "C",
-      dataTierNote: ov.dataTierNote ?? ((ov.quotas ?? ov.quota) ? "Official quota from docs/overrides" : "No official quota, derived"),
+      dataTier: ov.measured ? "M" : ((ov.quotas ?? ov.quota) ? "A" : "C"),
+      dataTierNote: ov.measured
+        ? `Measured (third party): ${ov.measured.sample}`
+        : (ov.dataTierNote ?? ((ov.quotas ?? ov.quota) ? "Official quota from docs/overrides" : "No official quota, derived")),
       // Referenz-Plaene (grosse Anbieter ohne veroeffentlichte Token-Quote) tragen
       // disclosure "reference" und bewusst keine Modellzeilen: sie stehen in der Liste,
       // aber nicht in der Token-pro-Dollar-Rangliste.
       disclosure: ov.disclosure ?? "undisclosed",
+      // Gemessene Plaene: eigene Modellpreise (Anbieterliste) + Messblock. Sie
+      // bekommen Modellzeilen, weil die Menge gemessen ist und nicht geraten.
+      measured: ov.measured ?? null,
+      localModelPricing: ov.localModelPricing ?? null,
+      models: ov.measured && ov.localModelPricing ? ov.localModelPricing.map((m) => m.model) : [],
       // Keine feedModels für undisclosed, sonst entstehen erfundene modelStats
       feedModels: null,
       sourceIds: ["overrides"],
@@ -708,6 +717,27 @@ function modelsForPlan(plan, feeds) {
   // Plan-eigene Modellpreise: GitHub Copilot veroeffentlicht die Token-Preise aller
   // Modelle im eigenen Doku-Repo. Allowance ist ein Dollar-Volumen (AI Credits x 0,01 $),
   // die Rate kommt aus allowance / Kosten pro Request.
+  // Gemessene Plaene: die Menge kommt aus einer Drittmessung in sichtbaren
+  // Tokens, die Modellpreise vom Anbieter selbst. Requests = gemessene Token
+  // geteilt durch unser Muster (FALLBACK_PATTERN), damit die Zeile mit allen
+  // anderen Plaenen auf derselben Skala vergleichbar bleibt.
+  if (plan.measured?.monthlyTokens > 0 && plan.localModelPricing?.length) {
+    const tokensPerRequest = FALLBACK_PATTERN.input + FALLBACK_PATTERN.cachedRead + FALLBACK_PATTERN.output;
+    const requests = Math.round(plan.measured.monthlyTokens / tokensPerRequest);
+    for (const lm of plan.localModelPricing) {
+      out.push({
+        name: lm.model,
+        directRequests: requests,
+        directNote: plan.measured.directNote ?? "measured (third party)",
+        window: "month",
+        pattern: FALLBACK_PATTERN,
+        pricing: lm,
+        measured: true,
+      });
+    }
+    return out;
+  }
+
   if (plan.localModelPricing?.length) {
     const oc = feeds["ocgo-pricing.json"];
     const cc = feeds["cc-pricing.json"];

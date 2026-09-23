@@ -40,6 +40,57 @@ ein Nachrichtenbereich oder gar nichts. Nachgeprueft an den offiziellen Seiten:
 - **token-monitor** (2.300 Sterne) liest die Limits zur Laufzeit aus den
   Anbieter-Endpunkten und liefert keine Tabelle mit.
 
+## Gemessene Datensaetze (Dritte, auf GitHub veroeffentlicht)
+
+Es gibt sie, die geteilten Messungen. Gefunden ueber die GitHub-Suche nach
+Proxy-Telemetrie (`anthropic-ratelimit-unified`, `q5h_pct`) und die Bug-Threads
+in anthropics/claude-code (#16157, #41930):
+
+- **ArkNill, claude-code-hidden-problem-analysis** (119 Sterne, 2026-05-13):
+  Proxy auf TLS-Ebene (`cc-relay`), **45.884 Requests, davon 37.363 mit
+  Rate-Limit-Headern**, ein **Max-20x-Konto**, 1. bis 22. April 2026,
+  **5,22 Mrd sichtbare Token**, davon 96,96 % Cache-Read. Kernzahl: **1 % des
+  5h-Fensters kostet 1,6 bis 2,1 Mio sichtbare Token**. Die Woche 7. bis
+  13. April erreichte **99 % des Wochenlimits** nach rund 1,95 Mrd sichtbaren
+  Token. Dokumente: `02_RATELIMIT-HEADERS.md`, `DATASET-ARKNILL-20260422.md`,
+  `CROSS-VALIDATION-20260422.md`.
+- **seanGSISG** (215K Calls, Max 20x, Dez bis Apr, JSONL): per-1 % 1,62 bis
+  1,72 Mio Token, unabhaengig derselbe Bereich.
+- **cnighswonger, claude-code-cache-fix** (433 Sterne): 101K Calls auf **Max 5x**,
+  Interceptor, `quota-analysis.mjs` testet die Gewichte (Cache-Read 0x/0,1x/1x)
+  und waehlt die Hypothese mit der kleinsten Streuung ueber die Fenster. Dasselbe
+  Verfahren wie unser Messwerkzeug, unabhaengig entstanden.
+- **fgrosswig** (Max 5x, Gateway, Maerz bis April): 88 Mio Token an einem Tag
+  bei 90 % Auslastung, 3,2 Mrd Token am 26. Maerz ohne Limit (vor der
+  Gewichtsumstellung). Nur als Randnotiz brauchbar, Einzeltag.
+- **Commandershadow9** (Max 5x, JSONL, Maerz bis April): 34- bis 143-fache
+  Kapazitaetsreduktion nach dem Cache-Fix, keine absolute Quote.
+
+Die drei Hauptdatensaetze konvergieren auf denselben per-1 %-Wert, obwohl
+Konten, Tarife (5x und 20x), Regionen und Erfassungsmethoden verschieden sind.
+Das ist die belastbarste Zahl, die es gibt, und sie ist gemessen, nicht geraten.
+
+## Was daraus im Katalog steht
+
+**Claude Max 20x** (200 $) ist als gemessener Plan drin (`disclosure: measured`,
+Tier M): Monatsmenge 8,44 Mrd sichtbare Token, das ist die gemessene Woche
+(1,95 Mrd) mal 4,33. Requests pro Monat = gemessene Token geteilt durch unser
+Muster (50.962 Token pro Request, 98 % davon Cache-Read) = **165.682**, also
+**828 Requests pro Dollar**. Modellzeilen mit Anthropics eigenen Listenpreisen
+(Opus 5.5, Opus 5, Sonnet 5, Haiku 4.5, Fable 5.1), gelesen am 2026-09-23.
+
+Grenzen, die dabeistehen: ein Konto, April 2026, Messung waehrend der
+Cache-Regression (die Zahlen sind nach dem Fix v2.1.91, aber der Zeitraum war
+von der Regression gepraegt), 97 % Cache-Read-Anteil. Deshalb steht der Plan mit
+Chip "measured" in der Liste, nicht als offizielle Quote.
+
+Fuer **Max 5x** und **Pro** gibt es keine Wochenmessung (die 5h-Fenstergroesse
+ist ueber die Tarife hinweg gleich gemessen, die Wochenskalierung nicht), sie
+bleiben Referenzplaene ohne Rate. Wer ein Konto hat, kann mit
+`tools/measure-quota/` nachmessen und die Zahl beisteuern.
+
+## Messverfahren (fuer eigene Messungen)
+
 ## Messverfahren (das ist der Weg zu echten Zahlen)
 
 Weil der Anbieter den Nenner verbirgt, den Zaehler aber zeigt, laesst sich die
