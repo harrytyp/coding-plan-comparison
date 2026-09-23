@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T14:04:22.903Z",
+  "generatedAt": "2026-09-23T14:22:31.168Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -11862,9 +11862,496 @@
       "modelCount": 0,
       "modelStats": null,
       "dataTier": "A",
-      "dataTierNote": "Official quota (5h cap) from docs/overrides",
+      "dataTierNote": "Official quota from docs/overrides",
       "notes": "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Prompts = 100/5h; Modellkosten aus Feed.",
       "notesDe": null,
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "chatgpt-plus-codex",
+      "name": "ChatGPT Plus (Codex)",
+      "provider": "openai",
+      "price": {
+        "monthlyUsd": 20,
+        "paidPrice": 20,
+        "advertised": 20,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "messages",
+      "quotas": [
+        {
+          "label": "5h",
+          "unit": "messages",
+          "amount": 150,
+          "min": 15,
+          "max": 150,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "official estimate"
+        }
+      ],
+      "windowCaps": {
+        "h5": 150,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official 5h message estimates per model from developers.openai.com/codex/pricing (read 2026-09-23)",
+      "notes": "OpenAI publishes local messages per five-hour period as ranges, not fixed limits. GPT-6 Astra 5-45, GPT-6 Sol 15-150, GPT-6 Luna 350-3,000, GPT-5.6 Sol 10-100, GPT-5.6 Terra 25-200, GPT-5.6 Luna 250-2,000, GPT-5.4 20-100, GPT-5.4 mini 60-350. Local messages and cloud chats share the allowance, weekly limits may also apply. Source: developers.openai.com/codex/pricing",
+      "notesDe": "OpenAI veröffentlicht lokale Nachrichten pro Fünf-Stunden-Fenster als Bereiche, nicht als feste Limits. GPT-6 Astra 5-45, GPT-6 Sol 15-150, GPT-6 Luna 350-3.000, GPT-5.6 Sol 10-100, GPT-5.6 Terra 25-200, GPT-5.6 Luna 250-2.000, GPT-5.4 20-100, GPT-5.4 mini 60-350. Lokale Nachrichten und Cloud-Chats teilen sich das Kontingent, zusätzlich können Wochenlimits gelten. Quelle: developers.openai.com/codex/pricing",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "chatgpt-pro-codex-5x",
+      "name": "ChatGPT Pro 5x (Codex)",
+      "provider": "openai",
+      "price": {
+        "monthlyUsd": 100,
+        "paidPrice": 100,
+        "advertised": 100,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "messages",
+      "quotas": [
+        {
+          "label": "5h",
+          "unit": "messages",
+          "amount": 500,
+          "min": 50,
+          "max": 500,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "official estimate"
+        }
+      ],
+      "windowCaps": {
+        "h5": 500,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official 5h message estimates per model (5x the Plus ranges) from developers.openai.com/codex/pricing (read 2026-09-23)",
+      "notes": "5x the Plus ranges per OpenAI: GPT-6 Astra 25-225, GPT-6 Sol 70-700, GPT-6 Luna 1,750-14,000, GPT-5.6 Sol 50-500, GPT-5.6 Terra 125-1,000, GPT-5.6 Luna 1,250-10,000. Source: developers.openai.com/codex/pricing",
+      "notesDe": "Das Fünffache der Plus-Bereiche laut OpenAI: GPT-6 Astra 25-225, GPT-6 Sol 70-700, GPT-6 Luna 1.750-14.000, GPT-5.6 Sol 50-500, GPT-5.6 Terra 125-1.000, GPT-5.6 Luna 1.250-10.000. Quelle: developers.openai.com/codex/pricing",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "chatgpt-pro-codex-20x",
+      "name": "ChatGPT Pro 20x (Codex)",
+      "provider": "openai",
+      "price": {
+        "monthlyUsd": 200,
+        "paidPrice": 200,
+        "advertised": 200,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "messages",
+      "quotas": [
+        {
+          "label": "5h",
+          "unit": "messages",
+          "amount": 2000,
+          "min": 200,
+          "max": 2000,
+          "window": "5h",
+          "refresh": "rolling",
+          "disclosure": "official estimate"
+        }
+      ],
+      "windowCaps": {
+        "h5": 2000,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official 5h message estimates per model (20x the Plus ranges) from developers.openai.com/codex/pricing (read 2026-09-23)",
+      "notes": "20x the Plus ranges per OpenAI: GPT-6 Astra 100-900, GPT-6 Sol 300-3,000, GPT-6 Luna 7,000-56,000, GPT-5.6 Sol 200-2,000, GPT-5.6 Terra 500-4,000, GPT-5.6 Luna 5,000-40,000. Source: developers.openai.com/codex/pricing",
+      "notesDe": "Das Zwanzigfache der Plus-Bereiche laut OpenAI: GPT-6 Astra 100-900, GPT-6 Sol 300-3.000, GPT-6 Luna 7.000-56.000, GPT-5.6 Sol 200-2.000, GPT-5.6 Terra 500-4.000, GPT-5.6 Luna 5.000-40.000. Quelle: developers.openai.com/codex/pricing",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "claude-pro",
+      "name": "Claude Pro",
+      "provider": "anthropic",
+      "price": {
+        "monthlyUsd": 20,
+        "paidPrice": 20,
+        "advertised": 20,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Annual billing available at a discount (no amount published); usage credits can extend beyond the plan"
+      },
+      "meter": "prompts",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "Anthropic publishes no token count. Third-party measured ranges in the note.",
+      "notes": "Anthropic publishes no token count: rolling five-hour session limit plus a weekly limit, shared across Claude Code, claude.ai and Cowork. Third-party measurements (truefoundry.com/blog/claude-code-limits-explained, read 2026-09-23): about 10-45 prompts per 5h and 40-80 Sonnet hours per week. Community tracker Claude-Code-Usage-Monitor (plans.py, last updated 2026-07-05, labelled local_estimate) models 19,000 tokens per 5h window. Treat both as estimates, not limits.",
+      "notesDe": "Anthropic veröffentlicht keine Token-Zahl: rollierendes Fünf-Stunden-Fenster plus Wochenlimit, geteilt von Claude Code, claude.ai und Cowork. Drittseitige Messungen (truefoundry.com/blog/claude-code-limits-explained, gelesen 2026-09-23): etwa 10-45 Prompts pro 5h und 40-80 Sonnet-Stunden pro Woche. Der Community-Tracker Claude-Code-Usage-Monitor (plans.py, zuletzt 2026-07-05 aktualisiert, als local_estimate gekennzeichnet) modelliert 19.000 Token pro 5h-Fenster. Beides sind Schätzungen, keine Limits.",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "claude-max-5x",
+      "name": "Claude Max 5x",
+      "provider": "anthropic",
+      "price": {
+        "monthlyUsd": 100,
+        "paidPrice": 100,
+        "advertised": 100,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Monthly only; 5x the Pro allowance"
+      },
+      "meter": "prompts",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "Anthropic publishes multipliers only (5x Pro), no token count. Third-party ranges in the note.",
+      "notes": "Anthropic states 5x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 50-225 prompts per 5h, 140-240 Sonnet hours plus 15-35 Opus hours per week. Community tracker models 88,000 tokens per 5h window (local_estimate, 2026-07-05).",
+      "notesDe": "Anthropic nennt das Fünffache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 50-225 Prompts pro 5h, 140-240 Sonnet-Stunden plus 15-35 Opus-Stunden pro Woche. Der Community-Tracker modelliert 88.000 Token pro 5h-Fenster (local_estimate, 2026-07-05).",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "claude-max-20x",
+      "name": "Claude Max 20x",
+      "provider": "anthropic",
+      "price": {
+        "monthlyUsd": 200,
+        "paidPrice": 200,
+        "advertised": 200,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": "Monthly only; 20x the Pro allowance"
+      },
+      "meter": "prompts",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "Anthropic publishes multipliers only (20x Pro), no token count. Third-party ranges in the note.",
+      "notes": "Anthropic states 20x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 200-900 prompts per 5h, 240-480 Sonnet hours plus 24-40 Opus hours per week. Community tracker models 220,000 tokens per 5h window (local_estimate, 2026-07-05).",
+      "notesDe": "Anthropic nennt das Zwanzigfache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 200-900 Prompts pro 5h, 240-480 Sonnet-Stunden plus 24-40 Opus-Stunden pro Woche. Der Community-Tracker modelliert 220.000 Token pro 5h-Fenster (local_estimate, 2026-07-05).",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "cursor-pro",
+      "name": "Cursor Pro (Individual)",
+      "provider": "cursor",
+      "price": {
+        "monthlyUsd": 20,
+        "paidPrice": 20,
+        "advertised": 20,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "dollar_usage",
+      "quotas": [],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": null
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "C",
+      "dataTierNote": "Cursor does not publish the included amount. Two usage pools, dollar-denominated.",
+      "notes": "Cursor publishes two monthly pools (Cursor Models: Grok/Composer; Other Models at provider prices) but not the included amount. Third-party figure (rankllms.com/coding-plans, verified 2026-09-13): about $20 of usage credits, beyond that API price plus 20 percent. Source: cursor.com/pricing and cursor.com/help/models-and-usage/usage-limits",
+      "notesDe": "Cursor nennt zwei Monats-Pools (Cursor Models: Grok/Composer; Other Models zu Anbieterpreisen), aber nicht die enthaltene Menge. Drittseitige Angabe (rankllms.com/coding-plans, geprüft 2026-09-13): etwa 20 $ Nutzungsguthaben, darüber API-Preis plus 20 Prozent. Quelle: cursor.com/pricing und cursor.com/help/models-and-usage/usage-limits",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "kiro-pro",
+      "name": "Kiro Pro",
+      "provider": "kiro",
+      "price": {
+        "monthlyUsd": 20,
+        "paidPrice": 20,
+        "advertised": 20,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 1000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 1000
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
+      "notes": "Credits do not roll over. Add-on credits cost $0.04 each; Kiro publishes per-model credit multipliers relative to Auto (for example Claude Opus 5 2.2x, Qwen3 Coder Next 0.05x) but no credit-to-token rate, so no tokens-per-dollar is computed. Source: kiro.dev/pricing and kiro.dev/docs/billing",
+      "notesDe": "Credits verfallen monatlich. Zusatz-Credits kosten je 0,04 $; Kiro veröffentlicht Credit-Multiplikatoren je Modell relativ zu Auto (zum Beispiel Claude Opus 5 2,2x, Qwen3 Coder Next 0,05x), aber keinen Kurs Credit zu Token, deshalb wird keine Rate pro Dollar berechnet. Quelle: kiro.dev/pricing und kiro.dev/docs/billing",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "kiro-pro-plus",
+      "name": "Kiro Pro+",
+      "provider": "kiro",
+      "price": {
+        "monthlyUsd": 40,
+        "paidPrice": 40,
+        "advertised": 40,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 2000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 2000
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
+      "notes": "Same limits model as Kiro Pro: credits do not roll over, no published credit-to-token rate. Source: kiro.dev/pricing",
+      "notesDe": "Gleiches Modell wie Kiro Pro: Credits verfallen monatlich, kein veröffentlichter Kurs Credit zu Token. Quelle: kiro.dev/pricing",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "kiro-pro-max",
+      "name": "Kiro Pro Max",
+      "provider": "kiro",
+      "price": {
+        "monthlyUsd": 100,
+        "paidPrice": 100,
+        "advertised": 100,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 5000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 5000
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
+      "notes": "Same limits model as Kiro Pro. Source: kiro.dev/pricing",
+      "notesDe": "Gleiches Modell wie Kiro Pro. Quelle: kiro.dev/pricing",
+      "tag": null,
+      "tagDe": null,
+      "modelRows": []
+    },
+    {
+      "id": "kiro-power",
+      "name": "Kiro Power",
+      "provider": "kiro",
+      "price": {
+        "monthlyUsd": 200,
+        "paidPrice": 200,
+        "advertised": 200,
+        "currency": "USD",
+        "monthlyCny": null,
+        "altPrice": null,
+        "yearlyUsd": null,
+        "waitlist": null,
+        "billingNote": null
+      },
+      "meter": "credits",
+      "quotas": [
+        {
+          "label": "Monthly",
+          "unit": "credits",
+          "amount": 10000,
+          "window": "month",
+          "refresh": "monthly",
+          "disclosure": "exact"
+        }
+      ],
+      "windowCaps": {
+        "h5": null,
+        "weekly": null,
+        "monthly": 10000
+      },
+      "officialConversion": null,
+      "disclosure": "reference",
+      "sourceIds": [
+        "overrides"
+      ],
+      "verifiedAt": "2026-09-23",
+      "modelCount": 0,
+      "modelStats": null,
+      "dataTier": "A",
+      "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
+      "notes": "Same limits model as Kiro Pro. Source: kiro.dev/pricing",
+      "notesDe": "Gleiches Modell wie Kiro Pro. Quelle: kiro.dev/pricing",
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -26654,7 +27141,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T14:04:22.787Z",
+    "fetchedAt": "2026-09-23T14:22:30.719Z",
     "count": 408,
     "scores": {
       "claude-opus-5-5": {
@@ -27080,10 +27567,10 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.04
       },
-      "seed-2-0-mini": {
+      "gemini-2-5-pro": {
         "intelligence": 27.8
       },
-      "gemini-2-5-pro": {
+      "seed-2-0-mini": {
         "intelligence": 27.8
       },
       "mai-code-1-1-flash": {
@@ -27578,10 +28065,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -28080,7 +28567,7 @@
     }
   },
   "statistics": {
-    "totalPlans": 39,
+    "totalPlans": 50,
     "comparablePlans": 33,
     "plansWithModels": 33,
     "undisclosed": 1,
