@@ -1275,9 +1275,17 @@ function buildCombos() {
     // Preis: USD als Vergleichs-Basis (Sortierung/Budget), Anzeige in gewählter Währung
     const priceUsd = plan.price?.monthlyUsd ?? (plan.price?.currency === "CNY" ? plan.price?.monthlyUsd : plan.price?.paidPrice) ?? null;
     const priceDisplay = priceUsd !== null && priceUsd !== undefined ? fmtPrice(priceUsd) : null;
-    // Inklusives Monats-Volumen (Cap): ehrliche Obergrenze des Abos, keine Rate
-    const monthlyQuota = (plan.quotas ?? []).find((q) => q.window === "month" && typeof q.amount === "number");
-    const capStr = monthlyQuota ? `${fmtNum(monthlyQuota.amount)} ${monthlyQuota.unit ?? ""} / ${lang === "de" ? "Monat" : "mo"}` : null;
+    // Inklusives Volumen (Cap): ehrliche Obergrenze des Abos, keine Rate.
+    // Monatsfenster zuerst; Tarife mit Tagesquote (Gemini Code Assist, Cerebras)
+    // sollen ihre Zahl trotzdem zeigen, sonst steht dort nur ein Strich.
+    const windows = lang === "de"
+      ? { month: "Monat", week: "Woche", day: "Tag", "5h": "5 h", rolling: "rollierend" }
+      : { month: "mo", week: "week", day: "day", "5h": "5h", rolling: "rolling" };
+    const quotaAmounts = (plan.quotas ?? []).filter((q) => typeof q.amount === "number" && q.amount > 0);
+    const monthlyQuota = quotaAmounts.find((q) => q.window === "month") ?? quotaAmounts[0] ?? null;
+    const capStr = monthlyQuota
+      ? `${fmtNum(monthlyQuota.amount)} ${monthlyQuota.unit ?? ""} / ${windows[monthlyQuota.window] ?? monthlyQuota.window}`
+      : null;
     for (const row of plan.modelRows ?? []) {
       const score = aiScoreFor(row.model, row.family);
       const tokensPerReq = tokensPerRequest(row);

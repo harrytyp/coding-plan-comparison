@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T16:03:55.800Z",
+  "generatedAt": "2026-09-23T16:08:20.033Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -39299,7 +39299,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T16:03:55.674Z",
+    "fetchedAt": "2026-09-23T16:08:19.914Z",
     "count": 410,
     "scores": {
       "claude-opus-5-5": {
@@ -39419,10 +39419,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -39920,10 +39920,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
       "qwen3-5-4b": {
@@ -40223,10 +40223,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
