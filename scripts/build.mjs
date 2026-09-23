@@ -325,15 +325,18 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       name: ov.name ?? ov.id,
       price: ov.price ?? { monthlyUsd: null, paidPrice: null, advertisedPrice: null },
       meter: ov.meter ?? "credits",
-      quotas: ov.quota ? [ov.quota] : [],
+      quotas: ov.quotas ?? (ov.quota ? [ov.quota] : []),
       tokenPricing: null,
       workload: { pattern: null, taskConversion: null },
       models: [],
       feedModels: ov.feedModels ?? null,
       // MiniMax: offizielles 5h-Cap als Mengen-Basis (Tier A, wenn Quota vorhanden)
-      dataTier: ov.quota ? "A" : "C",
-      dataTierNote: ov.quota ? "Official quota (5h cap) from docs/overrides" : "No official quota, derived",
-      disclosure: "undisclosed",
+      dataTier: (ov.quotas ?? ov.quota) ? "A" : "C",
+      dataTierNote: ov.dataTierNote ?? ((ov.quotas ?? ov.quota) ? "Official quota from docs/overrides" : "No official quota, derived"),
+      // Referenz-Plaene (grosse Anbieter ohne veroeffentlichte Token-Quote) tragen
+      // disclosure "reference" und bewusst keine Modellzeilen: sie stehen in der Liste,
+      // aber nicht in der Token-pro-Dollar-Rangliste.
+      disclosure: ov.disclosure ?? "undisclosed",
       // Keine feedModels für undisclosed, sonst entstehen erfundene modelStats
       feedModels: null,
       sourceIds: ["overrides"],

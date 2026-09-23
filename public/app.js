@@ -66,6 +66,10 @@ const I18N = {
     "plans.meter": "Meter",
     "plans.quota": "Quota",
     "plans.source": "Source",
+    "ref.title": "Reference plans without a published token quota ({n})",
+    "ref.intro": "Tracked with their official price and, where the vendor publishes one, their quota (messages per five hours or credits per month). They are not ranked by tokens per dollar: without a published token quota any rate would be invented. Third-party measurements are quoted with their source and date.",
+    "ref.noQuota": "quota not published",
+    "ref.perMonth": "per month",
     "plans.searchPh": "Filter plans...",
     "a11y.skip": "Skip to content",
     "a11y.status": "{n} of {total} plans shown",
@@ -371,6 +375,10 @@ const I18N = {
     "plans.meter": "Meter",
     "plans.quota": "Kontingent",
     "plans.source": "Quelle",
+    "ref.title": "Referenzpläne ohne veröffentlichte Token-Quote ({n})",
+    "ref.intro": "Geführt mit ihrem offiziellen Preis und, wo der Anbieter eine veröffentlicht, mit ihrer Quote (Nachrichten pro fünf Stunden oder Credits pro Monat). Sie stehen nicht in der Rangliste nach Token pro Dollar: ohne veröffentlichte Token-Quote wäre jede Rate erfunden. Drittseitige Messungen sind mit Quelle und Datum zitiert.",
+    "ref.noQuota": "Quote nicht veröffentlicht",
+    "ref.perMonth": "pro Monat",
     "plans.searchPh": "Pläne filtern...",
     "a11y.skip": "Zum Inhalt springen",
     "a11y.status": "{n} von {total} Plänen sichtbar",
@@ -1506,6 +1514,42 @@ function attrCell(c) {
     + (rest.length ? `<span class="attr attr-more" title="${escapeHtml(rest.map((r) => r.label).join(", "))}">+${rest.length}</span>` : "");
 }
 
+// Referenz-Plaene (grosse Anbieter ohne veroeffentlichte Token-Quote): eigene
+// Karten unter der Tabelle. Keine Modellzeilen heisst keine Rate, deshalb
+// bewusst ausserhalb der Rangliste, aber mit Preis und offizieller Quote sichtbar.
+function renderReferencePlans() {
+  const box = $("#reference-plans");
+  if (!box) return;
+  const refs = (data.plans || []).filter((p) => p.disclosure === "reference");
+  const list = $("#reference-plans-list");
+  if (!list) return;
+  if (!refs.length) { box.hidden = true; return; }
+  box.hidden = false;
+  const ttl = $("#reference-plans-title");
+  if (ttl) ttl.textContent = t("ref.title").replace("{n}", refs.length);
+  const intro = $("#reference-plans-intro");
+  if (intro) intro.textContent = t("ref.intro");
+  list.innerHTML = "";
+  for (const p of refs) {
+    const q = (p.quotas || [])[0];
+    const amount = q ? (q.min != null && q.max != null && q.min !== q.max
+      ? `${fmtNum(q.min)}-${fmtNum(q.max)}`
+      : fmtNum(q.amount)) : null;
+    const quota = q ? `${amount} ${q.unit} / ${q.window}` : t("ref.noQuota");
+    const note = lang === "de" ? (p.notesDe ?? p.notes ?? null) : (p.notes ?? null);
+    // innerHTML ist hier unkritisch: alle Textwerte laufen durch escapeHtml(),
+    // Betrag/Preis sind Zahlen aus dem eigenen Katalog, der Rest sind i18n-Konstanten.
+    const el = document.createElement("article");
+    el.className = "ref-plan";
+    el.innerHTML =
+      `<div class="ref-head"><strong>${escapeHtml(p.name)}</strong>` +
+      `<span class="ref-price">${p.price?.monthlyUsd != null ? fmtMoney(p.price.monthlyUsd) + " " + t("ref.perMonth") : "—"}</span></div>` +
+      `<div class="ref-meta"><span>${escapeHtml(p.provider)}</span><span class="ref-quota">${escapeHtml(quota)}</span></div>` +
+      (note ? `<p class="ref-note">${escapeHtml(note)}</p>` : "");
+    list.appendChild(el);
+  }
+}
+
 function renderPlans() {
   resetNoteMarks(); // "i" erscheint nur beim ersten Vorkommen eines Plans
   const tbody = $("#plans-tbody");
@@ -1543,6 +1587,7 @@ function renderPlans() {
   const shown = combos.slice(0, plansLimit);
   if (count) count.textContent = `${shown.length} / ${combos.length}`;
   announceResults(shown.length, combos.length);
+  renderReferencePlans();
 
   if (!combos.length) {
     tbody.innerHTML = `<tr><td colspan="${visibleColumns.length}" style="text-align:center;padding:28px;color:var(--text-3)">${lang === "de" ? "Keine Kombinationen gefunden." : "No combinations match."}</td></tr>`;

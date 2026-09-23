@@ -61,6 +61,16 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
   öffneten auf dem Telefon unsichtbar unter dem Fold. Command-Palette, Toast und Sheet stehen
   deshalb hinter `</main>`.
 
+## Referenz-Plaene (grosse Anbieter ohne veroeffentlichte Quote)
+
+Plaene wie Claude Pro/Max, ChatGPT/Codex, Cursor und Kiro haben keinen veroeffentlichten
+Token-Kurs, also gibt es fuer sie keine Rate pro Dollar. Sie stehen in `data/overrides.yml`
+mit `disclosure: reference`, ohne Modellzeilen (ohne Zeile keine Rate, kein Ranglistenplatz),
+und werden von `renderReferencePlans()` in `public/app.js` in einem eigenen Abschnitt unter
+der Plantabelle gezeigt. Preis und Quote muessen aus der offiziellen Seite stammen, das
+Lesedatum steht in `lastVerified`, drittseitige Messungen gehoeren als Zitat mit Quelle und
+Datum ins Notizfeld (`note`/`noteDe`). Details und Quellenlage: `docs/limits-research.md`.
+
 ## Befehle
 ```bash
 npm run update   # fetch → parse → build

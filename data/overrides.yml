@@ -27,9 +27,159 @@ overrides:
     lastVerified: 2026-08-28
     note: "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Prompts = 100/5h; Modellkosten aus Feed."
 
+  # ---------------------------------------------------------------------------
+  # Referenz-Plaene: die groessten Plaene ohne veröffentlichte Token-Quote.
+  # Preise/Quoten aus den offiziellen Seiten (Lesedatum je Eintrag), drittseitige
+  # Messungen stehen als Zitat mit Quelle im Notizfeld. Bewusst OHNE Modellzeilen:
+  # ohne veröffentlichte Quote gibt es keine Rate pro Dollar, also auch keinen
+  # Platz in der Rangliste. Details siehe docs/limits-research.md.
+  # ---------------------------------------------------------------------------
+
+  # OpenAI Codex / ChatGPT: offizielle Tabelle "local messages per five-hour period"
+  # je Modell und Tarif. 5h-Fenster = Durchsatz-Cap, deshalb keine Monatsrate.
+  # Quelle: developers.openai.com/codex/pricing (gelesen 2026-09-23)
+  - id: chatgpt-plus-codex
+    provider: openai
+    name: ChatGPT Plus (Codex)
+    price: { monthlyUsd: 20, paidPrice: 20, advertisedPrice: 20, currency: USD }
+    meter: messages
+    disclosure: reference
+    dataTierNote: "Official 5h message estimates per model from developers.openai.com/codex/pricing (read 2026-09-23)"
+    quotas:
+      - { label: "5h", unit: messages, amount: 150, min: 15, max: 150, window: "5h", refresh: rolling, disclosure: "official estimate" }
+    lastVerified: 2026-09-23
+    note: "OpenAI publishes local messages per five-hour period as ranges, not fixed limits. GPT-6 Astra 5-45, GPT-6 Sol 15-150, GPT-6 Luna 350-3,000, GPT-5.6 Sol 10-100, GPT-5.6 Terra 25-200, GPT-5.6 Luna 250-2,000, GPT-5.4 20-100, GPT-5.4 mini 60-350. Local messages and cloud chats share the allowance, weekly limits may also apply. Source: developers.openai.com/codex/pricing"
+    noteDe: "OpenAI veröffentlicht lokale Nachrichten pro Fünf-Stunden-Fenster als Bereiche, nicht als feste Limits. GPT-6 Astra 5-45, GPT-6 Sol 15-150, GPT-6 Luna 350-3.000, GPT-5.6 Sol 10-100, GPT-5.6 Terra 25-200, GPT-5.6 Luna 250-2.000, GPT-5.4 20-100, GPT-5.4 mini 60-350. Lokale Nachrichten und Cloud-Chats teilen sich das Kontingent, zusätzlich können Wochenlimits gelten. Quelle: developers.openai.com/codex/pricing"
+
+  - id: chatgpt-pro-codex-5x
+    provider: openai
+    name: ChatGPT Pro 5x (Codex)
+    price: { monthlyUsd: 100, paidPrice: 100, advertisedPrice: 100, currency: USD }
+    meter: messages
+    disclosure: reference
+    dataTierNote: "Official 5h message estimates per model (5x the Plus ranges) from developers.openai.com/codex/pricing (read 2026-09-23)"
+    quotas:
+      - { label: "5h", unit: messages, amount: 500, min: 50, max: 500, window: "5h", refresh: rolling, disclosure: "official estimate" }
+    lastVerified: 2026-09-23
+    note: "5x the Plus ranges per OpenAI: GPT-6 Astra 25-225, GPT-6 Sol 70-700, GPT-6 Luna 1,750-14,000, GPT-5.6 Sol 50-500, GPT-5.6 Terra 125-1,000, GPT-5.6 Luna 1,250-10,000. Source: developers.openai.com/codex/pricing"
+    noteDe: "Das Fünffache der Plus-Bereiche laut OpenAI: GPT-6 Astra 25-225, GPT-6 Sol 70-700, GPT-6 Luna 1.750-14.000, GPT-5.6 Sol 50-500, GPT-5.6 Terra 125-1.000, GPT-5.6 Luna 1.250-10.000. Quelle: developers.openai.com/codex/pricing"
+
+  - id: chatgpt-pro-codex-20x
+    provider: openai
+    name: ChatGPT Pro 20x (Codex)
+    price: { monthlyUsd: 200, paidPrice: 200, advertisedPrice: 200, currency: USD }
+    meter: messages
+    disclosure: reference
+    dataTierNote: "Official 5h message estimates per model (20x the Plus ranges) from developers.openai.com/codex/pricing (read 2026-09-23)"
+    quotas:
+      - { label: "5h", unit: messages, amount: 2000, min: 200, max: 2000, window: "5h", refresh: rolling, disclosure: "official estimate" }
+    lastVerified: 2026-09-23
+    note: "20x the Plus ranges per OpenAI: GPT-6 Astra 100-900, GPT-6 Sol 300-3,000, GPT-6 Luna 7,000-56,000, GPT-5.6 Sol 200-2,000, GPT-5.6 Terra 500-4,000, GPT-5.6 Luna 5,000-40,000. Source: developers.openai.com/codex/pricing"
+    noteDe: "Das Zwanzigfache der Plus-Bereiche laut OpenAI: GPT-6 Astra 100-900, GPT-6 Sol 300-3.000, GPT-6 Luna 7.000-56.000, GPT-5.6 Sol 200-2.000, GPT-5.6 Terra 500-4.000, GPT-5.6 Luna 5.000-40.000. Quelle: developers.openai.com/codex/pricing"
+
+  # Anthropic Claude: Preise offiziell, Quote nicht veröffentlicht. Die Bereiche
+  # unten sind drittseitige Messungen, klar als solche benannt.
+  - id: claude-pro
+    provider: anthropic
+    name: Claude Pro
+    price: { monthlyUsd: 20, paidPrice: 20, advertisedPrice: 20, currency: USD, billingNote: "Annual billing available at a discount (no amount published); usage credits can extend beyond the plan" }
+    meter: prompts
+    disclosure: reference
+    dataTierNote: "Anthropic publishes no token count. Third-party measured ranges in the note."
+    lastVerified: 2026-09-23
+    note: "Anthropic publishes no token count: rolling five-hour session limit plus a weekly limit, shared across Claude Code, claude.ai and Cowork. Third-party measurements (truefoundry.com/blog/claude-code-limits-explained, read 2026-09-23): about 10-45 prompts per 5h and 40-80 Sonnet hours per week. Community tracker Claude-Code-Usage-Monitor (plans.py, last updated 2026-07-05, labelled local_estimate) models 19,000 tokens per 5h window. Treat both as estimates, not limits."
+    noteDe: "Anthropic veröffentlicht keine Token-Zahl: rollierendes Fünf-Stunden-Fenster plus Wochenlimit, geteilt von Claude Code, claude.ai und Cowork. Drittseitige Messungen (truefoundry.com/blog/claude-code-limits-explained, gelesen 2026-09-23): etwa 10-45 Prompts pro 5h und 40-80 Sonnet-Stunden pro Woche. Der Community-Tracker Claude-Code-Usage-Monitor (plans.py, zuletzt 2026-07-05 aktualisiert, als local_estimate gekennzeichnet) modelliert 19.000 Token pro 5h-Fenster. Beides sind Schätzungen, keine Limits."
+
+  - id: claude-max-5x
+    provider: anthropic
+    name: Claude Max 5x
+    price: { monthlyUsd: 100, paidPrice: 100, advertisedPrice: 100, currency: USD, billingNote: "Monthly only; 5x the Pro allowance" }
+    meter: prompts
+    disclosure: reference
+    dataTierNote: "Anthropic publishes multipliers only (5x Pro), no token count. Third-party ranges in the note."
+    lastVerified: 2026-09-23
+    note: "Anthropic states 5x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 50-225 prompts per 5h, 140-240 Sonnet hours plus 15-35 Opus hours per week. Community tracker models 88,000 tokens per 5h window (local_estimate, 2026-07-05)."
+    noteDe: "Anthropic nennt das Fünffache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 50-225 Prompts pro 5h, 140-240 Sonnet-Stunden plus 15-35 Opus-Stunden pro Woche. Der Community-Tracker modelliert 88.000 Token pro 5h-Fenster (local_estimate, 2026-07-05)."
+
+  - id: claude-max-20x
+    provider: anthropic
+    name: Claude Max 20x
+    price: { monthlyUsd: 200, paidPrice: 200, advertisedPrice: 200, currency: USD, billingNote: "Monthly only; 20x the Pro allowance" }
+    meter: prompts
+    disclosure: reference
+    dataTierNote: "Anthropic publishes multipliers only (20x Pro), no token count. Third-party ranges in the note."
+    lastVerified: 2026-09-23
+    note: "Anthropic states 20x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 200-900 prompts per 5h, 240-480 Sonnet hours plus 24-40 Opus hours per week. Community tracker models 220,000 tokens per 5h window (local_estimate, 2026-07-05)."
+    noteDe: "Anthropic nennt das Zwanzigfache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 200-900 Prompts pro 5h, 240-480 Sonnet-Stunden plus 24-40 Opus-Stunden pro Woche. Der Community-Tracker modelliert 220.000 Token pro 5h-Fenster (local_estimate, 2026-07-05)."
+
+  # Cursor: Preis offiziell, enthaltenes Volumen nicht veröffentlicht.
+  - id: cursor-pro
+    provider: cursor
+    name: Cursor Pro (Individual)
+    price: { monthlyUsd: 20, paidPrice: 20, advertisedPrice: 20, currency: USD }
+    meter: dollar_usage
+    disclosure: reference
+    dataTierNote: "Cursor does not publish the included amount. Two usage pools, dollar-denominated."
+    lastVerified: 2026-09-23
+    note: "Cursor publishes two monthly pools (Cursor Models: Grok/Composer; Other Models at provider prices) but not the included amount. Third-party figure (rankllms.com/coding-plans, verified 2026-09-13): about $20 of usage credits, beyond that API price plus 20 percent. Source: cursor.com/pricing and cursor.com/help/models-and-usage/usage-limits"
+    noteDe: "Cursor nennt zwei Monats-Pools (Cursor Models: Grok/Composer; Other Models zu Anbieterpreisen), aber nicht die enthaltene Menge. Drittseitige Angabe (rankllms.com/coding-plans, geprüft 2026-09-13): etwa 20 $ Nutzungsguthaben, darüber API-Preis plus 20 Prozent. Quelle: cursor.com/pricing und cursor.com/help/models-and-usage/usage-limits"
+
+  # Kiro: Credit-Mengen offiziell, Kurs Credit zu Token nicht veröffentlicht.
+  - id: kiro-pro
+    provider: kiro
+    name: Kiro Pro
+    price: { monthlyUsd: 20, paidPrice: 20, advertisedPrice: 20, currency: USD }
+    meter: credits
+    disclosure: reference
+    dataTierNote: "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published."
+    quotas:
+      - { label: "Monthly", unit: credits, amount: 1000, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-09-23
+    note: "Credits do not roll over. Add-on credits cost $0.04 each; Kiro publishes per-model credit multipliers relative to Auto (for example Claude Opus 5 2.2x, Qwen3 Coder Next 0.05x) but no credit-to-token rate, so no tokens-per-dollar is computed. Source: kiro.dev/pricing and kiro.dev/docs/billing"
+    noteDe: "Credits verfallen monatlich. Zusatz-Credits kosten je 0,04 $; Kiro veröffentlicht Credit-Multiplikatoren je Modell relativ zu Auto (zum Beispiel Claude Opus 5 2,2x, Qwen3 Coder Next 0,05x), aber keinen Kurs Credit zu Token, deshalb wird keine Rate pro Dollar berechnet. Quelle: kiro.dev/pricing und kiro.dev/docs/billing"
+
+  - id: kiro-pro-plus
+    provider: kiro
+    name: Kiro Pro+
+    price: { monthlyUsd: 40, paidPrice: 40, advertisedPrice: 40, currency: USD }
+    meter: credits
+    disclosure: reference
+    dataTierNote: "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published."
+    quotas:
+      - { label: "Monthly", unit: credits, amount: 2000, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-09-23
+    note: "Same limits model as Kiro Pro: credits do not roll over, no published credit-to-token rate. Source: kiro.dev/pricing"
+    noteDe: "Gleiches Modell wie Kiro Pro: Credits verfallen monatlich, kein veröffentlichter Kurs Credit zu Token. Quelle: kiro.dev/pricing"
+
+  - id: kiro-pro-max
+    provider: kiro
+    name: Kiro Pro Max
+    price: { monthlyUsd: 100, paidPrice: 100, advertisedPrice: 100, currency: USD }
+    meter: credits
+    disclosure: reference
+    dataTierNote: "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published."
+    quotas:
+      - { label: "Monthly", unit: credits, amount: 5000, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-09-23
+    note: "Same limits model as Kiro Pro. Source: kiro.dev/pricing"
+    noteDe: "Gleiches Modell wie Kiro Pro. Quelle: kiro.dev/pricing"
+
+  - id: kiro-power
+    provider: kiro
+    name: Kiro Power
+    price: { monthlyUsd: 200, paidPrice: 200, advertisedPrice: 200, currency: USD }
+    meter: credits
+    disclosure: reference
+    dataTierNote: "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published."
+    quotas:
+      - { label: "Monthly", unit: credits, amount: 10000, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-09-23
+    note: "Same limits model as Kiro Pro. Source: kiro.dev/pricing"
+    noteDe: "Gleiches Modell wie Kiro Pro. Quelle: kiro.dev/pricing"
+
   # Command Code Go (1 $): laut Doku der einzige Command-Code-Plan OHNE API-Zugang.
   # Quelle: commandcode.ai/docs/plans/go ("Go is the only plan without API access"),
-  # geprueft 2026-09-13. Darum ist der Plan an die Command-Code-CLI gebunden.
+  # geprüft 2026-09-13. Darum ist der Plan an die Command-Code-CLI gebunden.
   - id: command-code-go
     tag: "CLI only"
     tagDe: "nur CLI"
