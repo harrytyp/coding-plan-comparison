@@ -143,6 +143,46 @@ Rangliste), 17 Referenzzeilen ohne Rate.
   FirePass**: keine offizielle Menge auffindbar (Preise teils nicht einmal
   offiziell bestätigt), deshalb nicht im Katalog statt mit geratenen Zahlen.
 
+
+## Dritte Runde 2026-09-23: Restliste und geprüfte Sackgassen
+
+Katalogstand: 76 Pläne, 25 Anbieter, 49 mit Modellzeilen, 21 Referenzzeilen.
+
+**Neu als Referenz (Preis offiziell, Menge nicht veröffentlicht):**
+
+- **Google AI Pro** (21,99 €) und **Google AI Ultra** (99,99 € bzw. 219,99 €):
+  Antigravity und Gemini CLI hängen am Google-AI-Tarif, die Doku nennt nur
+  "high, generous quota, refreshed every five hours" und "highest weekly limits".
+  Preise aus der deutschen Ansicht von gemini.google/subscriptions, mit dem
+  Wechselkurs der Seite in USD umgerechnet.
+- **ClinePass** (9,99 $): "2 bis 5 mal die Nutzung" gegenüber dem API-Preis, also
+  eine relative Angabe, keine absolute Quote.
+
+**Geprüft und verworfen:**
+
+- **OpenAI Codex**: Die Credits sind dokumentiert, aber ohne Kurs. Die FAQ nennt
+  Verbrauchsraten nur für einzelne Funktionen (Sprache 1,25 Credits pro Minute,
+  Bildgenerierung 3 bis 5 mal schneller), nicht für Coding-Nachrichten. Ohne
+  Nachricht-zu-Token-Kurs bleibt Codex Referenz.
+- **xAI / SuperGrok** (10 $/30 $/300 $): x.ai/pricing blockt den Abruf mit
+  Cloudflare, Preise damit nicht selbst verifiziert, und xAI veröffentlicht laut
+  Sekundärquellen keine festen Quoten. Nicht aufgenommen.
+- **Qwen-Tarife ohne Modellzeilen** (5 Pläne): Die Token-Preise der Modelle sind
+  veröffentlicht (help.aliyun.com/zh/model-studio/model-pricing), aber die
+  Umrechnung Credits zu Token ist es nicht ("Tiered deduction coefficients by
+  model (official); coefficients not published"). Ohne Koeffizient keine Rate,
+  die Pläne bleiben mit roher Quote im Katalog.
+- **Google AI Credits** (1.000 für Pro, 35.000 für Ultra): nur Sekundärquellen,
+  die offizielle Seite nennt keine Zahl.
+- **OpenHands Cloud**: keine Abo-Quote, Nutzung nach Verbrauch oder eigener
+  Schlüssel.
+- **Warp, Qoder, Replit, Kilo Pass, Meta Muse Code, Fireworks FirePass**:
+  keine offizielle Menge auffindbar.
+
+Damit ist die Liste der populären Coding-Pläne durchgearbeitet. Alles, was
+integrierbar war, ist drin; alles andere steht mit Grund und Quelle als
+Referenzzeile oder ist als Sackgasse hier dokumentiert.
+
 ## Messverfahren (fuer eigene Messungen)
 
 ## Messverfahren (das ist der Weg zu echten Zahlen)

@@ -623,3 +623,46 @@ overrides:
     lastVerified: 2026-09-23
     note: "Cursor publishes the price and the two usage pools but no included amount for Pro Plus either, so it stays a reference row. Source: cursor.com/docs/account/pricing (read 2026-09-23)."
     noteDe: "Cursor nennt Preis und die zwei Pools, aber auch fuer Pro Plus keine enthaltene Menge, deshalb bleibt der Tarif eine Referenzzeile. Quelle: cursor.com/docs/account/pricing (gelesen 2026-09-23)."
+
+  # Google AI: Preise offiziell in EUR (gemini.google/subscriptions, gelesen
+  # 2026-09-23, deutsche Ansicht). Die Kontingente sind nicht veroeffentlicht,
+  # Antigravity nennt nur "high, generous quota" je Tarif.
+  - id: google-ai-pro
+    provider: google
+    name: Google AI Pro (Antigravity, Gemini CLI)
+    price: { monthlyUsd: 25.19, paidPrice: 25.19, advertisedPrice: 25.19, currency: EUR, monthlyCny: null, billingNote: "21,99 EUR pro Monat in Deutschland (umgerechnet mit dem Kurs der Seite)" }
+    meter: requests
+    disclosure: reference
+    lastVerified: 2026-09-23
+    note: "Antigravity and Gemini CLI quotas depend on the Google AI plan: AI Pro gets a high quota refreshed every five hours until the weekly limit is reached. Google publishes no amount. AI credits can be bought for overage and are consumed at Gemini consumption pricing. Source: antigravity.google/docs/plans and gemini.google/subscriptions (read 2026-09-23)."
+    noteDe: "Die Kontingente von Antigravity und Gemini CLI haengen am Google-AI-Tarif: AI Pro bekommt ein hohes Kontingent, das alle fuenf Stunden erneuert wird, bis das Wochenlimit erreicht ist. Google nennt keine Menge. Fuer Mehrverbrauch lassen sich AI-Credits kaufen, die zu Gemini-Verbrauchspreisen abgerechnet werden. Quelle: antigravity.google/docs/plans und gemini.google/subscriptions (gelesen 2026-09-23)."
+
+  - id: google-ai-ultra-5x
+    provider: google
+    name: Google AI Ultra (5x)
+    price: { monthlyUsd: 114.51, paidPrice: 114.51, advertisedPrice: 114.51, currency: EUR, monthlyCny: null, billingNote: "99,99 EUR pro Monat, 5-fache Limits von AI Pro" }
+    meter: requests
+    disclosure: reference
+    lastVerified: 2026-09-23
+    note: "Five times the AI Pro usage limits, the highest quota in Antigravity, refreshed every five hours, highest weekly limits, plus third-party models. No amount published. Source: antigravity.google/docs/plans and gemini.google/subscriptions (read 2026-09-23)."
+    noteDe: "Fuenffache Nutzungslimits von AI Pro, das hoechste Kontingent in Antigravity, alle fuenf Stunden erneuert, hoechste Wochenlimits, dazu Fremdmodelle. Keine Menge veroeffentlicht. Quelle: antigravity.google/docs/plans und gemini.google/subscriptions (gelesen 2026-09-23)."
+
+  - id: google-ai-ultra-20x
+    provider: google
+    name: Google AI Ultra (20x)
+    price: { monthlyUsd: 251.94, paidPrice: 251.94, advertisedPrice: 251.94, currency: EUR, monthlyCny: null, billingNote: "219,99 EUR pro Monat, 20-fache Limits von AI Pro" }
+    meter: requests
+    disclosure: reference
+    lastVerified: 2026-09-23
+    note: "Twenty times the AI Pro usage limits, no amount published. Source: gemini.google/subscriptions (read 2026-09-23)."
+    noteDe: "Zwanzigfache Nutzungslimits von AI Pro, keine Menge veroeffentlicht. Quelle: gemini.google/subscriptions (gelesen 2026-09-23)."
+
+  - id: cline-pass
+    provider: cline
+    name: ClinePass
+    price: { monthlyUsd: 9.99, paidPrice: 9.99, advertisedPrice: 9.99, currency: USD }
+    meter: credits
+    disclosure: reference
+    lastVerified: 2026-09-23
+    note: "ClinePass costs $9.99 per month and offers 2 to 5 times the usage on popular open coding models compared to the standard API rate. The amount is relative, not an absolute quota, so no rate is computed. Source: docs.cline.bot/getting-started/clinepass (read 2026-09-23)."
+    noteDe: "ClinePass kostet 9,99 $ pro Monat und bietet das Zwei- bis Fuenffache an Nutzung bei populaeren offenen Coding-Modellen gegenueber dem Standard-API-Preis. Die Angabe ist relativ, keine absolute Quote, deshalb wird keine Rate berechnet. Quelle: docs.cline.bot/getting-started/clinepass (gelesen 2026-09-23)."
