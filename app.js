@@ -47,7 +47,7 @@ const I18N = {
     "hero.live": "Live data · auto-updated daily",
     "hero.h1a": "AI Coding Subscriptions,",
     "hero.h1b": "Compared Honestly.",
-    "hero.lead": `"60 for 10" is only the sticker price. We compare what you actually get. real token economics, provider credit formulas, cache-aware cost per request. from live official sources, reproduced daily.`,
+    "hero.lead": `“60 for 10” is only the sticker price. We compare what you actually get. real token economics, provider credit formulas, cache-aware cost per request. from live official sources, reproduced daily.`,
     "hero.cta1": "Compare plans",
     "hero.cta2": "How it works",
     "hero.cta3": "Budget calculator",
@@ -67,6 +67,27 @@ const I18N = {
     "plans.quota": "Quota",
     "plans.source": "Source",
     "plans.searchPh": "Filter plans...",
+    "a11y.skip": "Skip to content",
+    "a11y.status": "{n} of {total} plans shown",
+    "a11y.statusCols": ", {c} columns hidden",
+    "a11y.removeChip": "Remove filter",
+    "plans.searchAria": "Filter plans",
+    "plans.meterAria": "Usage meter",
+    "plans.budgetAria": "Maximum plan price per month",
+    "plans.aiAria": "Minimum AI score",
+    "plans.hiddenCols": "columns hidden",
+    "plans.caption": "Plans and models, sortable columns",
+    "top.caption": "Best value plans and models",
+    "sheet.sortKeyAria": "Sort field",
+    "sheet.sortDirAria": "Sort direction",
+    "sheet.searchAria": "Filter plans",
+    "sheet.meterAria": "Usage meter",
+    "sheet.budgetAria": "Maximum plan price per month",
+    "sheet.aiAria": "Minimum AI score",
+    "cmdk.aria": "Search plans and models or jump to a view",
+    "dash.chartAria": "Scatter plot: tokens per money against AI score, one dot per plan and model",
+    "dash.chartDesc": "Use the arrow keys to move between dots, Enter opens its numbers, Escape clears the selection. The same values are in the table below.",
+    "dash.targetHint": "Activates as soon as the target zone is switched on",
     "plans.allMeters": "All meters",
     "plans.allStatus": "All statuses",
     "plans.meter.dollar": "Dollar usage",
@@ -215,7 +236,7 @@ const I18N = {
     "fcomp.winner.draw": "Draw",
     "cl.h2": "Changelog",
     "cl.sub": "What changed for you, newest first.",
-    "method.h2": "Why \"60 for 10\" is not the answer",
+    "method.h2": "Why “60 for 10” is not the answer",
     "method.sub": "The sticker value hides the real economics. Here is exactly how we make plans comparable. every step reproducible.",
     "method.formula.title": "Cost per request",
     "method.s1.t": "Real token prices, not marketing",
@@ -235,7 +256,7 @@ const I18N = {
     "faq.h2": "Frequently asked questions",
     "faq.q1": "Is this really reproducible?",
     "faq.a1": "Yes. The pipeline fetches official feeds and docs (sources.yml), parses them deterministically, and builds latest.json from the cached snapshots only. never live-fetched during build. Same snapshots in, same JSON out. Change detection runs daily (content-hash of parsed data, robust against HTML nonces).",
-    "faq.q2": "Why is \"60 for 10\" misleading?",
+    "faq.q2": "Why is “60 for 10” misleading?",
     "faq.a2": "OpenCode Go advertises $60 of usage for $10. But real requests per month range from ~490 (Kimi K3) to ~226,000 (Muse Spark 1.2) depending on the model. The dollar value is real; what it buys depends entirely on token prices, cache behaviour and the workload pattern. We compute exactly that.",
     "faq.q3": "Why don't you compare all 17 plans directly?",
     "faq.a3": "Only 6 plans currently publish enough data (token prices or credit formulas) to compute requests per month honestly. The others show their raw quotas. We never invent missing numbers. comparing undisclosed plans would be fiction.",
@@ -348,6 +369,27 @@ const I18N = {
     "plans.quota": "Kontingent",
     "plans.source": "Quelle",
     "plans.searchPh": "Pläne filtern...",
+    "a11y.skip": "Zum Inhalt springen",
+    "a11y.status": "{n} von {total} Plänen sichtbar",
+    "a11y.statusCols": ", {c} Spalten ausgeblendet",
+    "a11y.removeChip": "Filter entfernen",
+    "plans.searchAria": "Pläne filtern",
+    "plans.meterAria": "Abrechnungsart",
+    "plans.budgetAria": "Maximaler Planpreis pro Monat",
+    "plans.aiAria": "Mindest-AI-Score",
+    "plans.hiddenCols": "Spalten ausgeblendet",
+    "plans.caption": "Pläne und Modelle, sortierbare Spalten",
+    "top.caption": "Beste Pläne und Modelle",
+    "sheet.sortKeyAria": "Sortierfeld",
+    "sheet.sortDirAria": "Sortierrichtung",
+    "sheet.searchAria": "Pläne filtern",
+    "sheet.meterAria": "Abrechnungsart",
+    "sheet.budgetAria": "Maximaler Planpreis pro Monat",
+    "sheet.aiAria": "Mindest-AI-Score",
+    "cmdk.aria": "Pläne und Modelle suchen oder zu einer Ansicht springen",
+    "dash.chartAria": "Streudiagramm: Tokens pro Geld gegen AI-Score, ein Punkt pro Plan und Modell",
+    "dash.chartDesc": "Mit den Pfeiltasten zwischen den Punkten wechseln, Enter öffnet die Zahlen, Escape hebt die Auswahl auf. Dieselben Werte stehen in der Tabelle darunter.",
+    "dash.targetHint": "Wird aktiv, sobald die Ziel-Zone eingeschaltet ist",
     "plans.allMeters": "Alle Meter",
     "plans.allStatus": "Alle Status",
     "plans.meter.dollar": "Dollar-Usage",
@@ -690,6 +732,10 @@ function applyI18n() {
     if (typeof val === "string" && val.startsWith("<")) el.innerHTML = val;
     else el.textContent = val;
   });
+  $$("[data-i18n-aria]").forEach((el) => {
+    const v = t(el.getAttribute("data-i18n-aria"));
+    if (v) el.setAttribute("aria-label", v);
+  });
   $$("[data-i18n-ph]").forEach((el) => {
     const key = el.dataset.i18nPh;
     el.placeholder = t(key);
@@ -716,14 +762,20 @@ function applyTheme() {
 /* ---------------- Command Palette (Cmd/Ctrl+K) ---------------- */
 let cmdkIndex = 0;
 let cmdkItems = [];
+let cmdkReturnFocus = null;
 function cmdkClose() {
   const box = $("#cmdk");
   if (box) box.hidden = true;
+  // Fokus dorthin zurueck, wo er herkam (2.4.3)
+  const back = cmdkReturnFocus;
+  cmdkReturnFocus = null;
+  if (back && document.contains(back) && typeof back.focus === "function") back.focus();
 }
 function cmdkOpen() {
   const box = $("#cmdk");
   const input = $("#cmdk-input");
   if (!box) return;
+  cmdkReturnFocus = document.activeElement;
   box.hidden = false;
   cmdkIndex = 0;
   if (input) { input.value = ""; input.focus(); }
@@ -864,6 +916,19 @@ function syncFilterUI() {
 /* ---------------- Filter-Toggle + aktive-Filter-Chips ---------------- */
 let filtersOpen = false;
 // Gemeinsames Re-Rendering: Tabelle + Dashboard + Rechner + Filter-Chips
+let announceTimer = null;
+// Statusmeldung fuer Screenreader: Trefferzahl und ausgeblendete Spalten (4.1.3)
+function announceResults(shown, total) {
+  clearTimeout(announceTimer);
+  announceTimer = setTimeout(() => {
+    const el = $("#a11y-status");
+    if (!el) return;
+    const cols = ALL_COLUMNS.length - visibleColumns.length;
+    let msg = t("a11y.status").replace("{n}", shown).replace("{total}", total);
+    if (cols > 0) msg += t("a11y.statusCols").replace("{c}", cols);
+    if (el.textContent !== msg) el.textContent = msg;
+  }, 400);
+}
 function rerender() {
   renderCalculator();
   renderPlans();
@@ -907,7 +972,12 @@ function syncFilterChips() {
     const hidden = buildCombos().filter(isNoApi).length;
     if (hidden) chips.push({ label: `${t("plans.noApiHidden")} (${hidden})`, clear: () => { includeNoApi = true; syncNoApiBoxes(); rerender(); } });
   }
-  container.innerHTML = chips.map((c) => `<span class="chip"${c.tip ? ` title="${escapeHtml(c.tip)}"` : ""}>${escapeHtml(c.label)}<button type="button" aria-label="remove">×</button></span>`).join("");
+  // U3: ausgeblendete Spalten sichtbar machen (das x stellt die Voreinstellung wieder her)
+  const hiddenCols = ALL_COLUMNS.length - visibleColumns.length;
+  if (hiddenCols > 0) {
+    chips.push({ label: `${hiddenCols} ${t("plans.hiddenCols")}`, clear: () => { visibleColumns = [...ALL_COLUMNS]; saveColumns(); syncColumnPicker(); rerender(); } });
+  }
+  container.innerHTML = chips.map((c) => `<span class="chip"${c.tip ? ` title="${escapeHtml(c.tip)}"` : ""}>${escapeHtml(c.label)}<button type="button" aria-label="${escapeHtml(t("a11y.removeChip"))}">×</button></span>`).join("");
   container.querySelectorAll(".chip button").forEach((btn, i) => {
     btn.addEventListener("click", chips[i].clear);
   });
@@ -1274,7 +1344,10 @@ function bindSortHeader(tableId, state, renderFn) {
     th.innerHTML = th.innerHTML.replace(/\s*<span class="sort-ind">.*<\/span>/, "");
     if (state.key === th.dataset.sort) {
       th.classList.add("sorted");
+      th.setAttribute("aria-sort", state.dir === "asc" ? "ascending" : "descending");
       th.insertAdjacentHTML("beforeend", sortArrow(th.dataset.sort, state));
+    } else {
+      th.removeAttribute("aria-sort");
     }
     th.addEventListener("click", () => {
       const key = th.dataset.sort;
@@ -1445,6 +1518,7 @@ function renderPlans() {
   const count = $("#plans-count");
   const shown = combos.slice(0, plansLimit);
   if (count) count.textContent = `${shown.length} / ${combos.length}`;
+  announceResults(shown.length, combos.length);
 
   if (!combos.length) {
     tbody.innerHTML = `<tr><td colspan="${visibleColumns.length}" style="text-align:center;padding:28px;color:var(--text-3)">${lang === "de" ? "Keine Kombinationen gefunden." : "No combinations match."}</td></tr>`;
@@ -1504,7 +1578,7 @@ function renderCell(col, c) {
     ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
     : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}${noteMark(c)}<div class="muted" style="font-size:12px">${escapeHtml(c.provider)}</div></span></span></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}${noteMark(c)}<div class="muted" style="font-size: var(--fs-sm)">${escapeHtml(c.provider)}</div></span></span></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
@@ -1593,9 +1667,14 @@ function syncColumnHeaders() {
     const th = document.createElement("th");
     if (sortKey) {
       th.dataset.sort = sortKey;
+      th.scope = "col";
       th.innerHTML = `${label}<span class="sort-ind">${plansSort.key === sortKey ? (plansSort.dir === "asc" ? "↑" : "↓") : "↕"}</span>`;
-      if (plansSort.key === sortKey) th.classList.add("sorted");
+      if (plansSort.key === sortKey) {
+        th.classList.add("sorted");
+        th.setAttribute("aria-sort", plansSort.dir === "asc" ? "ascending" : "descending");
+      }
     } else {
+      th.scope = "col";
       th.textContent = label;
     }
     if (RIGHT_COLS.has(col)) th.classList.add("t-right");
@@ -1688,6 +1767,7 @@ function initSheet() {
       else { visibleColumns = visibleColumns.filter((c) => c !== col); }
       saveColumns();
       renderPlans();
+      syncFilterChips(); // Chip "n Spalten ausgeblendet" mitziehen
     });
   });
   // Schließen
@@ -2134,6 +2214,8 @@ function renderDashboardInner() {
       const el = lg.querySelector(`[data-legend="${k}"]`);
       if (!el) continue;
       el.classList.toggle("off", v === 0);
+      // Kategorien ohne Punkte ganz ausblenden, statt sie als leeren Eintrag zu zeigen
+      el.hidden = v === 0;
       const n = el.querySelector(`[data-count="${k}"]`);
       if (n) n.textContent = fmtNum(v);
     }
@@ -2370,6 +2452,43 @@ function bindDashTooltip() {
     if (hoverRaf) return;
     hoverRaf = requestAnimationFrame(() => { hoverRaf = null; renderDashboard(); });
   };
+  // Tastatur: mit den Pfeiltasten von Punkt zu Punkt, Enter oeffnet die Zahlen (2.1.1)
+  let kbdPoint = null;
+  const kbdAnnounce = (p) => {
+    const el = document.getElementById("chart-status");
+    if (el) el.textContent = `${p.combo.model}, ${p.combo.planName}: ${metricLabel(dashX)} ${metricFmt(dashX, p.x)}, ${metricLabel(dashY)} ${metricFmt(dashY, p.y)}`;
+  };
+  const moveTo = (dx, dy) => {
+    if (!dashPoints.length) return;
+    const cur = kbdPoint || dashPoints.reduce((a, b) => (b.y > a.y ? b : a));
+    let best = null, bestScore = Infinity;
+    for (const p of dashPoints) {
+      const vx = p.px - cur.px, vy = p.py - cur.py;
+      const dot = vx * dx + vy * dy;
+      if (dot <= 1) continue; // nur in Blickrichtung
+      const score = Math.hypot(vx, vy) - dot * 0.35; // nah und geradlinig bevorzugt
+      if (score < bestScore) { bestScore = score; best = p; }
+    }
+    if (!best) return;
+    kbdPoint = best;
+    dashSelected = `${best.combo.planId}::${best.combo.model}`;
+    showDashDetail(best);
+    const r = canvas.getBoundingClientRect();
+    showTip(best, r.left + best.px, r.top + best.py);
+    setHover(best);
+    renderDashboard();
+    kbdAnnounce(best);
+  };
+  canvas.addEventListener("keydown", (e) => {
+    const dirs = { ArrowRight: [1, 0], ArrowLeft: [-1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
+    if (dirs[e.key]) { e.preventDefault(); moveTo(dirs[e.key][0], dirs[e.key][1]); return; }
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (kbdPoint) select(kbdPoint); return; }
+    if (e.key === "Escape") {
+      kbdPoint = null; dashSelected = null; tip.style.display = "none";
+      setHover(null); showDashDetail(null); renderDashboard();
+    }
+  });
+  canvas.addEventListener("blur", () => { kbdPoint = null; tip.style.display = "none"; setHover(null); });
   canvas.addEventListener("mousemove", (e) => {
     if (e.pointerType === "touch") return;
     if (dashBrush) return; // beim Ziehen keine Tooltips
@@ -2728,7 +2847,7 @@ function renderChangelog() {
 function renderFormula() {
   const block = $("#formula-block");
   const m = data.methodology ?? {};
-  const title = `<div style="font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:8px">${t("method.formula.title")}</div>`;
+  const title = `<div style="font-size: var(--fs-sm);text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:8px">${t("method.formula.title")}</div>`;
   const perUnit = lang === "de"
     ? "Requests pro 1 $ = Requests / Monat ÷ bezahlter Preis · Tokens pro 1 $ = Requests pro 1 $ × Tokens pro Request"
     : "Requests per $1 = monthly requests ÷ paid price · Tokens per $1 = requests per $1 × tokens per request";
@@ -2788,7 +2907,7 @@ async function loadData() {
     errBox.className = "state-box";
     errBox.innerHTML = `
       <p style="font-size:18px;font-weight:700;margin:0 0 8px">${t("error")}</p>
-      <p style="font-size:14px;color:var(--text-2);margin:0 0 16px" class="mono">${(e.message || e).replace(/</g, "&lt;")}</p>
+      <p style="font-size: var(--fs-base);color:var(--text-2);margin:0 0 16px" class="mono">${(e.message || e).replace(/</g, "&lt;")}</p>
       <button class="btn" onclick="location.reload()">↻ ${lang === "de" ? "Erneut versuchen" : "Retry"}</button>`;
     const mainEl = $("#main");
     if (mainEl) mainEl.prepend(errBox);
@@ -2933,6 +3052,7 @@ function init() {
       else { visibleColumns = visibleColumns.filter((c) => c !== col); }
       saveColumns();
       renderPlans();
+      syncFilterChips(); // Chip "n Spalten ausgeblendet" mitziehen
     });
   });
   syncColumnPicker();
@@ -2955,7 +3075,7 @@ function init() {
   // und dürfen nicht gelöscht werden, sonst crasht renderStats auf null-Elementen)
   const loadingNote = document.createElement("div");
   loadingNote.id = "loading-note";
-  loadingNote.style.cssText = "text-align:center;padding:24px;color:var(--text-2);font-size:15px";
+  loadingNote.style.cssText = "text-align:center;padding:24px;color:var(--text-2);font-size: var(--fs-lg)";
   loadingNote.textContent = t("loading");
   const mainEl = $("#main");
   // Nur anhängen, nicht ersetzen
