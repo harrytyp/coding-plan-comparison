@@ -157,6 +157,14 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       tokenPricing: null,
       workload: { pattern: null, taskConversion: qwen.taskConversion },
       models: ["Qwen Code", "Claude Code", "Codex", "Cursor", "OpenCode"],
+      // Offizielle Request-Quote: 6.000 pro 5h, 45.000 pro Woche, 90.000 pro Monat.
+      // Die Monatsmenge ist direkt eine Request-Zahl, deshalb braucht der Plan
+      // keine Token-Preise (die Credits der Token-Tarife sind ein eigenes System).
+      requestPlan: p.quotaMonth > 0 ? {
+        requests: p.quotaMonth,
+        label: "Requests (Coding Plan)",
+        note: `requests (official monthly quota ${p.quotaMonth.toLocaleString()}; ${p.quota5h.toLocaleString()} per 5h, ${p.quotaWeek.toLocaleString()} per week)`,
+      } : null,
       disclosure: "disclosed",
       sourceIds: ["qwen-coding-plan"],
       verifiedAt: "2026-08-28",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T15:50:54.279Z",
+  "generatedAt": "2026-09-23T15:57:16.414Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -11004,15 +11004,46 @@
         "qwen-coding-plan"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 0,
-      "modelStats": null,
+      "modelCount": 1,
+      "modelStats": {
+        "count": 1,
+        "min": 90000,
+        "max": 90000,
+        "mean": 90000,
+        "median": 90000,
+        "p25": 90000,
+        "p75": 90000
+      },
       "dataTier": null,
       "dataTierNote": null,
       "notes": null,
       "notesDe": null,
       "tag": null,
       "tagDe": null,
-      "modelRows": []
+      "modelRows": [
+        {
+          "model": "Requests (Coding Plan)",
+          "family": "requests (coding plan)",
+          "allowance": null,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": null,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests (official monthly quota 90,000; 6,000 per 5h, 45,000 per week)",
+          "requestsPerMonth": 90000,
+          "requestsRawInWindow": 90000,
+          "normalizedPer1": 1800,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4586580000,
+          "derivedTokensPerMonth": 4586580000
+        }
+      ]
     },
     {
       "id": "qwen-token-personal-lite",
@@ -20828,6 +20859,14 @@
     },
     {
       "planA": "opencode-go",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 35421.42992156376,
+      "meanRequestsB": 90000,
+      "advantagePercent": 60.64285564270693,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "opencode-go",
       "planB": "kimi-moderato",
       "meanRequestsA": 35421.42992156376,
       "meanRequestsB": 3300,
@@ -21204,6 +21243,14 @@
     },
     {
       "planA": "command-code-go",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 2357.153089219057,
+      "meanRequestsB": 90000,
+      "advantagePercent": 97.38094101197883,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "command-code-go",
       "planB": "kimi-moderato",
       "meanRequestsA": 2357.153089219057,
       "meanRequestsB": 3300,
@@ -21572,6 +21619,14 @@
     },
     {
       "planA": "command-code-goat",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 16500.071624533415,
+      "meanRequestsB": 90000,
+      "advantagePercent": 81.66658708385177,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "command-code-goat",
       "planB": "kimi-moderato",
       "meanRequestsA": 16500.071624533415,
       "meanRequestsB": 3300,
@@ -21932,6 +21987,14 @@
     },
     {
       "planA": "command-code-pro",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 21368.437069885716,
+      "meanRequestsB": 90000,
+      "advantagePercent": 76.25729214457142,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "command-code-pro",
       "planB": "kimi-moderato",
       "meanRequestsA": 21368.437069885716,
       "meanRequestsB": 3300,
@@ -22284,6 +22347,14 @@
     },
     {
       "planA": "command-code-max10",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 35357.29633828589,
+      "meanRequestsB": 90000,
+      "advantagePercent": 60.71411517968235,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "command-code-max10",
       "planB": "kimi-moderato",
       "meanRequestsA": 35357.29633828589,
       "meanRequestsB": 3300,
@@ -22628,6 +22699,14 @@
     },
     {
       "planA": "command-code-max20",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 70714.59267657177,
+      "meanRequestsB": 90000,
+      "advantagePercent": 21.428230359364697,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "command-code-max20",
       "planB": "kimi-moderato",
       "meanRequestsA": 70714.59267657177,
       "meanRequestsB": 3300,
@@ -22964,6 +23043,14 @@
     },
     {
       "planA": "glm-lite",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 8297.177874448013,
+      "meanRequestsB": 90000,
+      "advantagePercent": 90.78091347283555,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "glm-lite",
       "planB": "kimi-moderato",
       "meanRequestsA": 8297.177874448013,
       "meanRequestsB": 3300,
@@ -23292,6 +23379,14 @@
     },
     {
       "planA": "glm-pro",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 49783.067246688064,
+      "meanRequestsB": 90000,
+      "advantagePercent": 44.68548083701326,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "glm-pro",
       "planB": "kimi-moderato",
       "meanRequestsA": 49783.067246688064,
       "meanRequestsB": 3300,
@@ -23612,6 +23707,14 @@
     },
     {
       "planA": "glm-max",
+      "planB": "qwen-coding-pro",
+      "meanRequestsA": 116160.49024227216,
+      "meanRequestsB": 90000,
+      "advantagePercent": 29.067211380302417,
+      "winner": "glm-max"
+    },
+    {
+      "planA": "glm-max",
       "planB": "kimi-moderato",
       "meanRequestsA": 116160.49024227216,
       "meanRequestsB": 3300,
@@ -23928,6 +24031,326 @@
       "meanRequestsA": 116160.49024227216,
       "meanRequestsB": 422621.2482799468,
       "advantagePercent": 72.51428064371085,
+      "winner": "ollama-team"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kimi-moderato",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 3300,
+      "advantagePercent": 2627.2727272727275,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kimi-allegretto",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 6633.333333333334,
+      "advantagePercent": 1256.7839195979898,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kimi-allegro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 23300,
+      "advantagePercent": 286.26609442060084,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kimi-vivace",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 47381.00000000001,
+      "advantagePercent": 89.94955783964033,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "claude-max-20x",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 165682,
+      "advantagePercent": 45.67907195712269,
+      "winner": "claude-max-20x"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kiro-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 3231.5,
+      "advantagePercent": 2685.08432616432,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kiro-pro-plus",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 6462.9,
+      "advantagePercent": 1292.563709789723,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kiro-pro-max",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 16157.3,
+      "advantagePercent": 457.0237601579472,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "kiro-power",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 32314.6,
+      "advantagePercent": 178.5118800789736,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "amazon-q-free",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 50,
+      "advantagePercent": 179900,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "jetbrains-ai-free",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 278.7277701778386,
+      "advantagePercent": 32189.57055214724,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "jetbrains-ai-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 929.092567259462,
+      "advantagePercent": 9586.87116564417,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "jetbrains-ai-ultimate",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 3251.8239854081166,
+      "advantagePercent": 2667.6774758983347,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "gemini-code-assist-individual",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 7305,
+      "advantagePercent": 1132.0328542094455,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "gemini-code-assist-standard",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 45660,
+      "advantagePercent": 97.1090670170828,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "gemini-code-assist-enterprise",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 60880,
+      "advantagePercent": 47.83180026281209,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "augment-standard",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 1858.185134518924,
+      "advantagePercent": 4743.435582822085,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "augment-business",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 9290.92567259462,
+      "advantagePercent": 868.687116564417,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "cursor-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 2616.5465037326767,
+      "advantagePercent": 3339.648401876636,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "cursor-ultra",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 52330.930074653545,
+      "advantagePercent": 71.98242009383176,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "freebuff-free",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 59755.15238035567,
+      "advantagePercent": 50.61462721595742,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "freebuff-starter",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 96379.27803283172,
+      "advantagePercent": 6.618931126106387,
+      "winner": "draw"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "freebuff-plus",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 159989.60153450066,
+      "advantagePercent": 43.74634405187132,
+      "winner": "freebuff-plus"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "freebuff-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 254441.29400667577,
+      "advantagePercent": 64.62838300231304,
+      "winner": "freebuff-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "mimo-lite",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 10421.328912833265,
+      "advantagePercent": 763.6134676564157,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "mimo-standard",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 27959.662936869732,
+      "advantagePercent": 221.8922924901186,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "mimo-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 96587.92650918636,
+      "advantagePercent": 6.8206521739130554,
+      "winner": "draw"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "mimo-max",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 208426.5782566653,
+      "advantagePercent": 56.819326617179215,
+      "winner": "mimo-max"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "stepfun-flash-mini",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 37493.04215659978,
+      "advantagePercent": 140.04453846153848,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "stepfun-flash-plus",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 149972.16862639913,
+      "advantagePercent": 39.98886538461538,
+      "winner": "stepfun-flash-plus"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "stepfun-flash-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 749860.8431319958,
+      "advantagePercent": 87.99777307692308,
+      "winner": "stepfun-flash-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "stepfun-flash-max",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 3749304.215659979,
+      "advantagePercent": 97.59955461538462,
+      "winner": "stepfun-flash-max"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "cerebras-code-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 14335.387151210707,
+      "advantagePercent": 527.8170170827858,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "cerebras-code-max",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 71676.93575605353,
+      "advantagePercent": 25.56340341655716,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "copilot-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 2830.0976976519746,
+      "advantagePercent": 3080.102230204618,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "copilot-pro-plus",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 13207.122589042548,
+      "advantagePercent": 581.4504779009897,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "copilot-max",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 37734.63596869301,
+      "advantagePercent": 138.5076672653463,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "ollama-pro",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 25357.27489679682,
+      "advantagePercent": 254.92772928596116,
+      "winner": "qwen-coding-pro"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "ollama-max",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 126786.37448398408,
+      "advantagePercent": 29.014454142807754,
+      "winner": "ollama-max"
+    },
+    {
+      "planA": "qwen-coding-pro",
+      "planB": "ollama-team",
+      "meanRequestsA": 90000,
+      "meanRequestsB": 422621.2482799468,
+      "advantagePercent": 78.70433624284232,
       "winner": "ollama-team"
     },
     {
@@ -32980,6 +33403,13 @@
       "normalizedPer1Mean": 1156.9364658281963
     },
     {
+      "planId": "qwen-coding-pro",
+      "family": "requests (coding plan)",
+      "modelCount": 1,
+      "normalizedPer1Median": 1800,
+      "normalizedPer1Mean": 1800
+    },
+    {
       "planId": "kimi-moderato",
       "family": "kimi k3",
       "modelCount": 1,
@@ -36033,7 +36463,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T15:50:54.192Z",
+    "fetchedAt": "2026-09-23T14:00:11.468Z",
     "count": 410,
     "scores": {
       "claude-opus-5-5": {
@@ -36153,10 +36583,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -36774,10 +37204,10 @@
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.85
       },
-      "gemma-4-e4b-it": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.8
       },
-      "llama-3-3-70b-instruct": {
+      "gemma-4-e4b-it": {
         "intelligence": 13.8
       },
       "devstral-medium-2507": {
@@ -36957,10 +37387,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -37470,13 +37900,12 @@
   },
   "statistics": {
     "totalPlans": 76,
-    "comparablePlans": 49,
-    "plansWithModels": 49,
+    "comparablePlans": 50,
+    "plansWithModels": 50,
     "undisclosed": 1,
     "sourceCount": 27
   },
   "warnings": [
-    "qwen-coding-pro: no model pricing from feeds (meter=requests), raw quotas only, no request normalization",
     "qwen-token-personal-lite: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
     "qwen-token-personal-essential: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
     "qwen-token-personal-standard: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",

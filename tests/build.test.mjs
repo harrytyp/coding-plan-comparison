@@ -494,6 +494,23 @@ test("Augment und Cursor: Dollar-Volumen, Cursor als berichtet gekennzeichnet", 
   }
 });
 
+// Qwen Coding Plan Pro: die offizielle Monatsquote ist bereits eine Request-Zahl.
+test("Qwen Coding Plan Pro: offizielle Request-Quote als Rate", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/qwen-coding-plan.json"), "utf8"));
+  const plan = d.plans.find((p) => p.id === "qwen-coding-pro");
+  assert.ok(plan, "qwen-coding-pro fehlt");
+  assert.equal(plan.modelRows.length, 1, "genau eine Zeile mit der offiziellen Quote");
+  assert.equal(plan.modelRows[0].requestsPerMonth, src.plans[0].quotaMonth, "Requests/Monat = offizielle Monatsquote");
+  assert.equal(plan.modelRows[0].normalizedPer1, src.plans[0].quotaMonth / plan.price.monthlyUsd, "Rate pro Dollar");
+  // Die Token-Tarife bleiben ohne Rate: Koeffizienten sind nicht veroeffentlicht.
+  for (const id of ["qwen-token-personal-lite", "qwen-token-personal-pro"]) {
+    const p2 = d.plans.find((p) => p.id === id);
+    assert.ok(p2, `${id} fehlt`);
+    assert.equal((p2.modelRows ?? []).length, 0, `${id}: ohne veroeffentlichte Koeffizienten keine Rate`);
+  }
+});
+
 test("Cerebras Code: Tageslimit in Tokens wird auf den Monat gerechnet", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const src = JSON.parse(await readFile(join(ROOT, "parsed/cerebras-code.json"), "utf8"));

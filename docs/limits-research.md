@@ -183,6 +183,37 @@ Damit ist die Liste der populären Coding-Pläne durchgearbeitet. Alles, was
 integrierbar war, ist drin; alles andere steht mit Grund und Quelle als
 Referenzzeile oder ist als Sackgasse hier dokumentiert.
 
+
+## Nachtrag 2026-09-23: Codex-Messmethode und die letzte Qwen-Lücke
+
+- **Codex lässt sich messen, ist aber nicht gemessen.** `marcus/nightshift`
+  dokumentiert die Methode vollständig: die Codex-Session-Dateien enthalten
+  `rate_limits` (primär 5 Stunden, sekundär 7 Tage, je mit `used_percent` und
+  `window_minutes`) und `total_token_usage`. Abrechenbar sind
+  `(input − cached) + output + reasoning`, und die Quote folgt aus
+  `inferred_budget = lokale Token / (Prozent / 100)`. Die Beispielwerte im
+  Repo (1 Mio. Token pro Woche für Claude, 500.000 für Codex) sind
+  Konfigurationsvorgaben für API-Abrechnung, keine gemessenen Limits. Damit
+  fehlt für Codex nur noch eine veröffentlichte Messung, das Verfahren steht.
+- **codexusage.dev** ist der genaueste Codex-Tracker (Stand 8. und 18. September
+  2026) und bestätigt: OpenAI veröffentlicht je Modell Nachrichtenbereiche pro
+  5-Stunden-Fenster, das Wochenlimit nicht. Business Standard teilt die
+  Plus-Bereiche, Business Premium hat kein 5-Stunden-Fenster.
+- **Qwen Coding Plan Pro** hatte eine offizielle Request-Quote, aber keine Zeile:
+  6.000 Requests pro 5 Stunden, 45.000 pro Woche, 90.000 pro Monat. Die
+  Monatsmenge ist direkt eine Request-Zahl, deshalb steht der Plan jetzt mit
+  90.000 Requests pro Monat und 1.800 Requests pro Dollar in der Rangliste. Die
+  vier Token-Tarife bleiben ohne Rate, weil die Credit-Koeffizienten
+  ("tiered deduction coefficients") nicht veröffentlicht sind; die Preise und
+  Mengen (6/10/18/68 $ für 11.500/25.500/45.000/180.000 Credits) sind bestätigt.
+- **MiniMax Token Plan** bleibt ohne Rate: die einzige verfügbare Angabe ist ein
+  5-Stunden-Cap von 100 Prompts aus einer Dritttabelle, und die Anbieterseite ist
+  eine JS-SPA ohne Parser.
+
+Damit sind alle Pläne mit veröffentlichter Menge integriert. Die verbleibenden
+fünf Zeilen ohne Rate (vier Qwen-Token-Tarife, MiniMax) haben eine
+nachvollziehbare Begründung, keine geratene Zahl.
+
 ## Messverfahren (fuer eigene Messungen)
 
 ## Messverfahren (das ist der Weg zu echten Zahlen)
