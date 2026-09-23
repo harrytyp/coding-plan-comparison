@@ -28,10 +28,6 @@ const banner = '<div style="background:var(--surface-2);color:var(--text-2);bord
   + 'different presentation layer. <a href="../" style="color:var(--accent);text-decoration:underline">Back to the main page</a></div>\n';
 html = html.replace('<body>', '<body>\n' + banner);
 
-// Preview-Schicht
-html = html.replace('</head>', '  <link rel="stylesheet" href="preview.css">\n</head>');
-html = html.replace('</body>', '<script src="preview.js" defer></script>\n</body>');
-
 await mkdir(OUT_DIR, { recursive: true });
 await writeFile(OUT, html, 'utf8');
 console.log(`preview/index.html: ${html.length} Bytes`);

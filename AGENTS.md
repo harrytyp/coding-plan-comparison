@@ -62,11 +62,13 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 
 - `node scripts/build-preview.mjs` erzeugt `public/preview/index.html` neu. **Nach jeder
   Änderung an `public/index.html` laufen lassen**, sonst zeigt die Vorschau altes Markup.
-- `public/preview/preview.css` und `preview.js` sind die Gestaltungs- und Bewegungsschicht
-  der Vorschau (eigene Tokens, Typo, Layout, Animation). Sie liegen **nur** in der Vorschau;
-  die Hauptseite bleibt unberührt, bis die Schicht bewusst übernommen wird.
-- `app.js` bleibt in beiden Fassungen identisch. Die Vorschau darf app.js nicht patchen;
-  Korrekturen an dessen Verhalten gehören in `public/app.js` und damit in beide Fassungen.
+- Die Gestaltungsschicht ("Instrument Panel": Tokens, Typo, Layout, Tiefe, Zustände, Bewegung)
+  steht **inline am Ende des `<style>`-Blocks und als `<script>` vor `</body>` in
+  `public/index.html`**, damit die Einzeldatei-Architektur bleibt und der CI-Mirror nichts
+  zusätzlich kopieren muss. `public/preview/preview.css` und `preview.js` waren die
+  Vorschau-Fassung davon und werden nicht mehr geladen (können weg, sobald Kolja es freigibt).
+- `app.js` bleibt der Renderer. Die Schicht darf app.js nicht patchen; Korrekturen an dessen
+  Verhalten gehören in `public/app.js`.
 
 ## Workflow
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
