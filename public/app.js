@@ -29,7 +29,7 @@ const I18N = {
     "tab.method": "Method",
     "tab.changelog": "Changelog",
     "top.h3": "Best value right now",
-    "top.sub": "One row per plan, strongest model, ranked by tokens per unit paid.",
+    "top.sub": "One row per plan, strongest model, ranked by tokens per unit paid. Only plans that do not train on your data and come with API access.",
     "top.all": "All plans",
     "more.show": "Show more",
     "fcomp.scale": "Bars share one scale, full width =",
@@ -331,7 +331,7 @@ const I18N = {
     "tab.method": "Methodik",
     "tab.changelog": "Changelog",
     "top.h3": "Beste Rate gerade jetzt",
-    "top.sub": "Eine Zeile pro Plan, stärkstes Modell, sortiert nach Tokens pro bezahlter Einheit.",
+    "top.sub": "Eine Zeile pro Plan, stärkstes Modell, sortiert nach Tokens pro bezahlter Einheit. Nur Pläne ohne Training auf den Daten und mit API-Zugang.",
     "top.all": "Alle Pläne",
     "more.show": "Mehr anzeigen",
     "fcomp.scale": "Balken teilen eine Skala, volle Breite =",
@@ -2756,6 +2756,11 @@ function renderTop() {
   const best = new Map();
   for (const c of buildCombos()) {
     if (c.tokensPer == null) continue;
+    // Dieses Panel zeigt bewusst nur Plaene ohne Training auf den Daten und nur
+    // solche mit API-Zugang: ohne API sind die Token-Raten nicht vergleichbar.
+    if (c.noTraining !== true) continue;
+    if (isNoApi(c)) continue;
+    if (!includePriceBased && c.dataTier === "D") continue;
     const cur = best.get(c.planId);
     if (!cur || c.tokensPer > cur.tokensPer) best.set(c.planId, c);
   }
