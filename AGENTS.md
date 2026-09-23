@@ -105,6 +105,16 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.
 
+## Quoten messen statt schaetzen
+
+Fuer Plaene ohne veroeffentlichte Quote (Claude, Codex, Cursor, Devin) fuehrt
+`tools/measure-quota/` das Messverfahren: Statusline-Capture schreibt die
+offiziellen Prozentwerte mit, `measure.py` rechnet daraus die Quote
+(`Summe(gewichtete Token) / Prozentanteil`), `test_measure.py` prueft das gegen
+eine bekannte Grundwahrheit. Ergebnisse gelten pro Konto und Modellmischung,
+also nur mit Stichprobenzahl und Bereich veroeffentlichen. Quellenlage:
+`docs/limits-research.md`.
+
 ## Verifikation (vor Commit/Push)
 1. `npm run update` (exit 0)
 2. `npm test` grün
