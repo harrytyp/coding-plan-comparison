@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-23T16:08:20.033Z",
+  "generatedAt": "2026-09-24T08:30:12.033Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -74,15 +74,15 @@
         "ocgo-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 40,
+      "modelCount": 42,
       "modelStats": {
-        "count": 40,
+        "count": 42,
         "min": 422.5352112676057,
         "max": 226586.10271903325,
-        "mean": 35421.42992156376,
+        "mean": 34474.27609624812,
         "median": 16063.489529219045,
-        "p25": 3957.78364116095,
-        "p75": 31811.64875778523
+        "p25": 4057.069358524496,
+        "p75": 30260.27365652184
       },
       "dataTier": "A",
       "dataTierNote": "Official usage (credits/month per model) from feed",
@@ -1079,6 +1079,58 @@
           "estimate": null,
           "rawTokensPerMonth": 13947887.323943663,
           "derivedTokensPerMonth": 13947887.323943663
+        },
+        {
+          "model": "GPT 6 Luna",
+          "family": "gpt 6 luna",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.00073375,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 20442.930153321977,
+          "requestsRawInWindow": 20442.930153321977,
+          "normalizedPer1": 2044.2930153321977,
+          "privacy": {
+            "training": false,
+            "retentionDays": 30,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 1047086882.4531517,
+          "derivedTokensPerMonth": 1047086882.4531517
+        },
+        {
+          "model": "GPT 6 Luna",
+          "family": "gpt 6 luna",
+          "allowance": 15,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0014125,
+          "patternUsed": {
+            "input": 1000,
+            "cachedRead": 50000,
+            "output": 220
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 10619.469026548673,
+          "requestsRawInWindow": 10619.469026548673,
+          "normalizedPer1": 1061.9469026548672,
+          "privacy": {
+            "training": false,
+            "retentionDays": 30,
+            "validUntil": null
+          },
+          "estimate": null,
+          "rawTokensPerMonth": 543929203.539823,
+          "derivedTokensPerMonth": 543929203.539823
         },
         {
           "model": "GPT 5.6 Luna",
@@ -22362,409 +22414,409 @@
     {
       "planA": "opencode-go",
       "planB": "command-code-go",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 2357.153089219057,
-      "advantagePercent": 1402.7208068738187,
+      "advantagePercent": 1362.5386978013257,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 16500.071624533415,
-      "advantagePercent": 114.67440098197387,
+      "advantagePercent": 108.93409968590349,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 21368.437069885716,
-      "advantagePercent": 65.7651881872201,
+      "advantagePercent": 61.33269823852632,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 35357.29633828589,
-      "advantagePercent": 0.18138712492115072,
+      "advantagePercent": 2.4974201465783663,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 70714.59267657177,
-      "advantagePercent": 49.90930643753943,
+      "advantagePercent": 51.24871007328918,
       "winner": "command-code-max20"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-lite",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 326.90937156653695,
+      "advantagePercent": 315.49399829567466,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 28.84843807224383,
+      "advantagePercent": 30.751000284054207,
       "winner": "glm-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 69.50647345953307,
+      "advantagePercent": 70.32185726459467,
       "winner": "glm-max"
     },
     {
       "planA": "opencode-go",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 90000,
-      "advantagePercent": 60.64285564270693,
+      "advantagePercent": 61.69524878194653,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 3300,
-      "advantagePercent": 973.376664289811,
+      "advantagePercent": 944.67503321964,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 433.99140585271994,
+      "advantagePercent": 419.7127049685646,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 23300,
-      "advantagePercent": 52.02330438439382,
+      "advantagePercent": 47.95826650750266,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 25.24127831501287,
+      "advantagePercent": 27.240294429733204,
       "winner": "kimi-vivace"
     },
     {
       "planA": "opencode-go",
       "planB": "claude-max-20x",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 165682,
-      "advantagePercent": 78.62083393394347,
+      "advantagePercent": 79.192503653838,
       "winner": "claude-max-20x"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 996.1296587208343,
+      "advantagePercent": 966.8196223502434,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 448.07330952921694,
+      "advantagePercent": 433.41806458784947,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 119.22864538978519,
+      "advantagePercent": 113.3665655539485,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-power",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 9.614322694892596,
+      "advantagePercent": 6.683282776974253,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "amazon-q-free",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 50,
-      "advantagePercent": 70742.85984312752,
+      "advantagePercent": 68848.55219249624,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 12608.25289455858,
+      "advantagePercent": 12268.439669377853,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 3712.4758683675736,
+      "advantagePercent": 3610.5319008133556,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 989.2788195335927,
+      "advantagePercent": 960.1519716609589,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 7305,
-      "advantagePercent": 384.89294896048955,
+      "advantagePercent": 371.92711972961143,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 45660,
-      "advantagePercent": 22.423499952773195,
+      "advantagePercent": 24.497862250880164,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "opencode-go",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 60880,
-      "advantagePercent": 41.817624964579906,
+      "advantagePercent": 43.37339668816011,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "opencode-go",
       "planB": "augment-standard",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 1806.2379341837868,
+      "advantagePercent": 1755.2659504066778,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "augment-business",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 281.24758683675736,
+      "advantagePercent": 271.0531900813356,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "cursor-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 2616.5465037326767,
-      "advantagePercent": 1253.7473869099115,
+      "advantagePercent": 1217.5487631145973,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "cursor-ultra",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 52330.930074653545,
-      "advantagePercent": 32.312630654504446,
+      "advantagePercent": 34.12256184427015,
       "winner": "cursor-ultra"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-free",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 40.722383743416835,
+      "advantagePercent": 42.307441746928866,
       "winner": "freebuff-free"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-starter",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 63.24787792091844,
+      "advantagePercent": 64.2306138830959,
       "winner": "freebuff-starter"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-plus",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 77.86016742224002,
+      "advantagePercent": 78.45217703800958,
       "winner": "freebuff-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 86.07874163671153,
+      "advantagePercent": 86.4509901072333,
       "winner": "freebuff-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-lite",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 10421.328912833265,
-      "advantagePercent": 239.89359915455992,
+      "advantagePercent": 230.80499027139462,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-standard",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 27959.662936869732,
-      "advantagePercent": 26.68761423033599,
+      "advantagePercent": 23.30004182842893,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 96587.92650918636,
-      "advantagePercent": 63.32726956490274,
+      "advantagePercent": 64.30788262861269,
       "winner": "mimo-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 208426.5782566653,
-      "advantagePercent": 83.005320042272,
+      "advantagePercent": 83.45975048643027,
       "winner": "mimo-max"
     },
     {
       "planA": "opencode-go",
       "planB": "stepfun-flash-mini",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 37493.04215659978,
-      "advantagePercent": 5.525324475894433,
+      "advantagePercent": 8.051536729783015,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 149972.16862639913,
-      "advantagePercent": 76.3813311189736,
+      "advantagePercent": 77.01288418244575,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 749860.8431319958,
-      "advantagePercent": 95.27626622379472,
+      "advantagePercent": 95.40257683648915,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 3749304.215659979,
-      "advantagePercent": 99.05525324475894,
+      "advantagePercent": 99.08051536729783,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "opencode-go",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 147.09084971292324,
+      "advantagePercent": 140.48374649816532,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 50.581830057415345,
+      "advantagePercent": 51.90325070036693,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 2830.0976976519746,
-      "advantagePercent": 1151.5974254511277,
+      "advantagePercent": 1118.130247759649,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 13207.122589042548,
-      "advantagePercent": 168.19944831095594,
+      "advantagePercent": 161.02791023421048,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 37734.63596869301,
-      "advantagePercent": 6.130193091165448,
+      "advantagePercent": 8.640231418026357,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-business",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 3584.7904170258357,
-      "advantagePercent": 888.1032306193111,
+      "advantagePercent": 861.6817745470909,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 7358.254013895134,
-      "advantagePercent": 381.38362517351067,
+      "advantagePercent": 368.5116337537111,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-pro",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 25357.27489679682,
-      "advantagePercent": 39.68941877913807,
+      "advantagePercent": 35.95418370687371,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-max",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 126786.37448398408,
-      "advantagePercent": 72.06211624417239,
+      "advantagePercent": 72.80916325862525,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-team",
-      "meanRequestsA": 35421.42992156376,
+      "meanRequestsA": 34474.27609624812,
       "meanRequestsB": 422621.2482799468,
-      "advantagePercent": 91.61863487325171,
+      "advantagePercent": 91.84274897758758,
       "winner": "ollama-team"
     },
     {
@@ -33174,6 +33226,13 @@
     },
     {
       "planId": "opencode-go",
+      "family": "gpt 6 luna",
+      "modelCount": 2,
+      "normalizedPer1Median": 1553.1199589935325,
+      "normalizedPer1Mean": 1553.1199589935325
+    },
+    {
+      "planId": "opencode-go",
       "family": "gpt-5.6 luna",
       "modelCount": 2,
       "normalizedPer1Median": 755.6216361750046,
@@ -39299,7 +39358,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-23T16:08:19.914Z",
+    "fetchedAt": "2026-09-24T08:30:11.920Z",
     "count": 410,
     "scores": {
       "claude-opus-5-5": {
@@ -39725,10 +39784,10 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.04
       },
-      "seed-2-0-mini": {
+      "gemini-2-5-pro": {
         "intelligence": 27.8
       },
-      "gemini-2-5-pro": {
+      "seed-2-0-mini": {
         "intelligence": 27.8
       },
       "mai-code-1-1-flash": {
@@ -40040,10 +40099,10 @@
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.85
       },
-      "llama-3-3-70b-instruct": {
+      "gemma-4-e4b-it": {
         "intelligence": 13.8
       },
-      "gemma-4-e4b-it": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.8
       },
       "devstral-medium-2507": {
@@ -40223,10 +40282,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -40615,7 +40674,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-23",
+      "verifiedAt": "2026-09-24",
       "crawled": true
     },
     {
@@ -40726,12 +40785,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Wed, 23 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Thu, 24 Sep 2026 00:02:32 +0000",
     "rates": {
-      "EUR": 0.873207,
-      "CNY": 6.71347,
-      "GBP": 0.749328,
-      "JPY": 157.415417
+      "EUR": 0.877372,
+      "CNY": 6.722655,
+      "GBP": 0.754513,
+      "JPY": 158.127269
     }
   },
   "statistics": {
