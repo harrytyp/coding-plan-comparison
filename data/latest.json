@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-25T08:52:00.675Z",
+  "generatedAt": "2026-09-26T08:38:46.136Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -1239,15 +1239,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 83,
+      "modelCount": 84,
       "modelStats": {
-        "count": 83,
+        "count": 84,
         "min": 42.01680672268907,
-        "max": 18577.00167193015,
-        "mean": 2154.626454252617,
-        "median": 497.2057039438356,
+        "max": 85034.01360544217,
+        "mean": 3141.285825100111,
+        "median": 503.9602501864589,
         "p25": 188.46588767433093,
-        "p75": 2219.962178915693
+        "p75": 2623.581654883943
       },
       "dataTier": "B",
       "dataTierNote": "Official total 15,000 req/mo as anchor",
@@ -3081,6 +3081,28 @@
           "estimate": null,
           "rawTokensPerMonth": 26027047.455618884,
           "derivedTokensPerMonth": 26027047.455618884
+        },
+        {
+          "model": "Jev",
+          "family": "jev",
+          "allowance": 2.8571428571428568,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0000336,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 85034.01360544217,
+          "requestsRawInWindow": 85034.01360544217,
+          "normalizedPer1": 85034.01360544217,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4333503401.360544,
+          "derivedTokensPerMonth": 4333503401.360544
         }
       ]
     },
@@ -3137,15 +3159,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 83,
+      "modelCount": 84,
       "modelStats": {
-        "count": 83,
+        "count": 84,
         "min": 294.11764705882354,
-        "max": 130039.01170351106,
-        "mean": 15082.385179768327,
-        "median": 3480.43992760685,
+        "max": 595238.0952380953,
+        "mean": 21989.00077570079,
+        "median": 3527.721751305213,
         "p25": 1319.2612137203166,
-        "p75": 15539.735252409853
+        "p75": 18365.0715841876
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
@@ -4979,6 +5001,28 @@
           "estimate": null,
           "rawTokensPerMonth": 182189332.18933222,
           "derivedTokensPerMonth": 182189332.18933222
+        },
+        {
+          "model": "Jev",
+          "family": "jev",
+          "allowance": 20,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0000336,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 595238.0952380953,
+          "requestsRawInWindow": 595238.0952380953,
+          "normalizedPer1": 55268.16111774329,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 30334523809.52381,
+          "derivedTokensPerMonth": 30334523809.52381
         }
       ]
     },
@@ -5035,15 +5079,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 83,
+      "modelCount": 84,
       "modelStats": {
-        "count": 83,
+        "count": 84,
         "min": 294.11764705882354,
-        "max": 151712.18032076288,
-        "mean": 19951.512741385915,
-        "median": 5028.494803888702,
-        "p25": 1580.3645401822703,
-        "p75": 23081.811375942336
+        "max": 892857.142857143,
+        "mean": 30343.24643324016,
+        "median": 5035.679575418884,
+        "p25": 1635.2526926263465,
+        "p75": 26429.685225020432
       },
       "dataTier": "A",
       "dataTierNote": "Official per-model allowances from feed",
@@ -6877,6 +6921,28 @@
           "estimate": null,
           "rawTokensPerMonth": 273283998.2839983,
           "derivedTokensPerMonth": 273283998.2839983
+        },
+        {
+          "model": "Jev",
+          "family": "jev",
+          "allowance": 30,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0000336,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 892857.142857143,
+          "requestsRawInWindow": 892857.142857143,
+          "normalizedPer1": 44642.857142857145,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 45501785714.28572,
+          "derivedTokensPerMonth": 45501785714.28572
         }
       ]
     },
@@ -6933,15 +6999,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 83,
+      "modelCount": 84,
       "modelStats": {
-        "count": 83,
+        "count": 84,
         "min": 630.2521008403361,
-        "max": 278655.02507895225,
-        "mean": 32319.396813789277,
-        "median": 7458.085559157535,
+        "max": 1275510.2040816327,
+        "mean": 47119.2873765017,
+        "median": 7559.403752796883,
         "p25": 2826.988315114964,
-        "p75": 33299.4326837354
+        "p75": 39353.724823259145
       },
       "dataTier": "B",
       "dataTierNote": "Official total 230,000 req/mo as anchor",
@@ -8775,6 +8841,28 @@
           "estimate": null,
           "rawTokensPerMonth": 390405711.8342833,
           "derivedTokensPerMonth": 390405711.8342833
+        },
+        {
+          "model": "Jev",
+          "family": "jev",
+          "allowance": 42.857142857142854,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0000336,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 1275510.2040816327,
+          "requestsRawInWindow": 1275510.2040816327,
+          "normalizedPer1": 12755.102040816326,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 65002551020.408165,
+          "derivedTokensPerMonth": 65002551020.408165
         }
       ]
     },
@@ -8831,15 +8919,15 @@
         "cc-pricing"
       ],
       "verifiedAt": "2026-08-28",
-      "modelCount": 83,
+      "modelCount": 84,
       "modelStats": {
-        "count": 83,
+        "count": 84,
         "min": 1260.5042016806722,
-        "max": 557310.0501579045,
-        "mean": 64638.793627578554,
-        "median": 14916.17111831507,
+        "max": 2551020.4081632653,
+        "mean": 94238.5747530034,
+        "median": 15118.807505593766,
         "p25": 5653.976630229928,
-        "p75": 66598.8653674708
+        "p75": 78707.44964651829
       },
       "dataTier": "B",
       "dataTierNote": "Official total 370,000 req/mo as anchor",
@@ -10673,6 +10761,28 @@
           "estimate": null,
           "rawTokensPerMonth": 780811423.6685666,
           "derivedTokensPerMonth": 780811423.6685666
+        },
+        {
+          "model": "Jev",
+          "family": "jev",
+          "allowance": 85.71428571428571,
+          "window": null,
+          "windowNote": null,
+          "costPerRequest": 0.0000336,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "unit": "requests",
+          "requestsPerMonth": 2551020.4081632653,
+          "requestsRawInWindow": 2551020.4081632653,
+          "normalizedPer1": 12755.102040816326,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 130005102040.81633,
+          "derivedTokensPerMonth": 130005102040.81633
         }
       ]
     },
@@ -22283,40 +22393,40 @@
       "planA": "opencode-go",
       "planB": "command-code-go",
       "meanRequestsA": 34474.27609624812,
-      "meanRequestsB": 2154.626454252617,
-      "advantagePercent": 1500.0117342013393,
+      "meanRequestsB": 3141.285825100111,
+      "advantagePercent": 997.4574749226915,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
       "meanRequestsA": 34474.27609624812,
-      "meanRequestsB": 15082.385179768327,
-      "advantagePercent": 128.57310488590548,
+      "meanRequestsB": 21989.00077570079,
+      "advantagePercent": 56.77963927467013,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
       "meanRequestsA": 34474.27609624812,
-      "meanRequestsB": 19951.512741385915,
-      "advantagePercent": 72.79028684745931,
+      "meanRequestsB": 30343.24643324016,
+      "advantagePercent": 13.6143298710534,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
       "meanRequestsA": 34474.27609624812,
-      "meanRequestsB": 32319.396813789277,
-      "advantagePercent": 6.667448946755861,
-      "winner": "draw"
+      "meanRequestsB": 47119.2873765017,
+      "advantagePercent": 26.836168338487276,
+      "winner": "command-code-max10"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
       "meanRequestsA": 34474.27609624812,
-      "meanRequestsB": 64638.793627578554,
-      "advantagePercent": 46.66627552662207,
+      "meanRequestsB": 94238.5747530034,
+      "advantagePercent": 63.41808416924364,
       "winner": "command-code-max20"
     },
     {
@@ -22690,1921 +22800,1921 @@
     {
       "planA": "command-code-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 2154.626454252617,
-      "meanRequestsB": 15082.385179768327,
+      "meanRequestsA": 3141.285825100111,
+      "meanRequestsB": 21989.00077570079,
       "advantagePercent": 85.71428571428572,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 2154.626454252617,
-      "meanRequestsB": 19951.512741385915,
-      "advantagePercent": 89.2006862728598,
+      "meanRequestsA": 3141.285825100111,
+      "meanRequestsB": 30343.24643324016,
+      "advantagePercent": 89.64749591968867,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 2154.626454252617,
-      "meanRequestsB": 32319.396813789277,
+      "meanRequestsA": 3141.285825100111,
+      "meanRequestsB": 47119.2873765017,
       "advantagePercent": 93.33333333333333,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 2154.626454252617,
-      "meanRequestsB": 64638.793627578554,
+      "meanRequestsA": 3141.285825100111,
+      "meanRequestsB": 94238.5747530034,
       "advantagePercent": 96.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-lite",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 74.03181555396077,
+      "advantagePercent": 62.1403099628126,
       "winner": "glm-lite"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 95.67196925899346,
+      "advantagePercent": 93.69005166046877,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "glm-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 98.14512968242578,
+      "advantagePercent": 97.29573642591518,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-go",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 90000,
-      "advantagePercent": 97.60597060638598,
+      "advantagePercent": 96.50968241655544,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 3300,
-      "advantagePercent": 34.70828926507221,
-      "winner": "kimi-moderato"
+      "advantagePercent": 4.8095204515117835,
+      "winner": "draw"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 67.51819415699572,
+      "advantagePercent": 52.64393228492295,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 23300,
-      "advantagePercent": 90.75267616200594,
+      "advantagePercent": 86.51808658755317,
       "winner": "kimi-allegro"
     },
     {
       "planA": "command-code-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 95.45255175227915,
+      "advantagePercent": 93.37015718304782,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-go",
       "planB": "claude-max-20x",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 165682,
-      "advantagePercent": 98.6995410157696,
+      "advantagePercent": 98.10402709702917,
       "winner": "claude-max-20x"
     },
     {
       "planA": "command-code-go",
       "planB": "kiro-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 33.324262594689245,
-      "winner": "kiro-pro"
+      "advantagePercent": 2.791712050128081,
+      "winner": "draw"
     },
     {
       "planA": "command-code-go",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 66.66161546283222,
+      "advantagePercent": 51.395103976541314,
       "winner": "kiro-pro-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 86.66468745240469,
+      "advantagePercent": 80.55810175524307,
       "winner": "kiro-pro-max"
     },
     {
       "planA": "command-code-go",
       "planB": "kiro-power",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 93.33234372620235,
+      "advantagePercent": 90.27905087762153,
       "winner": "kiro-power"
     },
     {
       "planA": "command-code-go",
       "planB": "amazon-q-free",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 50,
-      "advantagePercent": 4209.252908505234,
+      "advantagePercent": 6182.571650200222,
       "winner": "command-code-go"
     },
     {
       "planA": "command-code-go",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 673.0218100901413,
+      "advantagePercent": 1027.0085586003343,
       "winner": "command-code-go"
     },
     {
       "planA": "command-code-go",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 131.9065430270424,
+      "advantagePercent": 238.1025675801003,
       "winner": "command-code-go"
     },
     {
       "planA": "command-code-go",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 33.74098770655931,
-      "winner": "jetbrains-ai-ultimate"
+      "advantagePercent": 3.399266405685619,
+      "winner": "draw"
     },
     {
       "planA": "command-code-go",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 7305,
-      "advantagePercent": 70.50477133124411,
+      "advantagePercent": 56.99814065571373,
       "winner": "gemini-code-assist-individual"
     },
     {
       "planA": "command-code-go",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 45660,
-      "advantagePercent": 95.28115099813267,
+      "advantagePercent": 93.12026757533923,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "command-code-go",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 60880,
-      "advantagePercent": 96.46086324859951,
+      "advantagePercent": 94.84020068150441,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "command-code-go",
       "planB": "augment-standard",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 15.953271513521194,
+      "advantagePercent": 69.05128379005015,
       "winner": "command-code-go"
     },
     {
       "planA": "command-code-go",
       "planB": "augment-business",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 76.80934569729575,
+      "advantagePercent": 66.18974324198997,
       "winner": "augment-business"
     },
     {
       "planA": "command-code-go",
       "planB": "cursor-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 2616.5465037326767,
-      "advantagePercent": 17.65380622209849,
-      "winner": "cursor-pro"
+      "advantagePercent": 20.054652979370303,
+      "winner": "command-code-go"
     },
     {
       "planA": "command-code-go",
       "planB": "cursor-ultra",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 52330.930074653545,
-      "advantagePercent": 95.88269031110492,
+      "advantagePercent": 93.99726735103148,
       "winner": "cursor-ultra"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-free",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 96.3942415533678,
+      "advantagePercent": 94.74307118304195,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-starter",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 97.76442976308803,
+      "advantagePercent": 96.740704133486,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-plus",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 98.6532709416193,
+      "advantagePercent": 98.03656875511206,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "freebuff-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 99.15319309207881,
+      "advantagePercent": 98.76541823238107,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "mimo-lite",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 10421.328912833265,
-      "advantagePercent": 79.32483973709611,
+      "advantagePercent": 69.85714728539276,
       "winner": "mimo-lite"
     },
     {
       "planA": "command-code-go",
       "planB": "mimo-standard",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 27959.662936869732,
-      "advantagePercent": 92.29380390200855,
+      "advantagePercent": 88.76493671546457,
       "winner": "mimo-standard"
     },
     {
       "planA": "command-code-go",
       "planB": "mimo-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 96587.92650918636,
-      "advantagePercent": 97.76925902426564,
+      "advantagePercent": 96.74774483868711,
       "winner": "mimo-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "mimo-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 208426.5782566653,
-      "advantagePercent": 98.96624198685481,
+      "advantagePercent": 98.49285736426964,
       "winner": "mimo-max"
     },
     {
       "planA": "command-code-go",
       "planB": "stepfun-flash-mini",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 94.28083171288851,
+      "advantagePercent": 91.66187612882662,
       "winner": "stepfun-flash-mini"
     },
     {
       "planA": "command-code-go",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 98.57020792822213,
+      "advantagePercent": 97.91546903220666,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 99.71404158564442,
+      "advantagePercent": 99.58309380644134,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.94280831712888,
+      "advantagePercent": 99.91661876128826,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "command-code-go",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 84.96987607292736,
+      "advantagePercent": 78.08719226090234,
       "winner": "cerebras-code-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 96.99397521458548,
+      "advantagePercent": 95.61743845218047,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 2830.0976976519746,
-      "advantagePercent": 23.867417861926487,
-      "winner": "copilot-pro"
+      "advantagePercent": 10.995667312344647,
+      "winner": "command-code-go"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 13207.122589042548,
-      "advantagePercent": 83.6858752561271,
+      "advantagePercent": 76.21521414735471,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 37734.63596869301,
-      "advantagePercent": 94.2900563396445,
+      "advantagePercent": 91.67532495157415,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-business",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 3584.7904170258357,
-      "advantagePercent": 39.89532989099461,
+      "advantagePercent": 12.371841595517418,
       "winner": "copilot-business"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 7358.254013895134,
-      "advantagePercent": 70.7182376392025,
+      "advantagePercent": 57.3093587260213,
       "winner": "copilot-enterprise"
     },
     {
       "planA": "command-code-go",
       "planB": "ollama-pro",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 25232.864715101314,
-      "advantagePercent": 91.46103116479232,
+      "advantagePercent": 87.55081572953497,
       "winner": "ollama-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "ollama-max",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 126164.32357550655,
-      "advantagePercent": 98.29220623295846,
+      "advantagePercent": 97.51016314590699,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-go",
       "planB": "ollama-team",
-      "meanRequestsA": 2154.626454252617,
+      "meanRequestsA": 3141.285825100111,
       "meanRequestsB": 420547.7452516885,
-      "advantagePercent": 99.48766186988753,
+      "advantagePercent": 99.25304894377209,
       "winner": "ollama-team"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-pro",
-      "meanRequestsA": 15082.385179768327,
-      "meanRequestsB": 19951.512741385915,
-      "advantagePercent": 24.40480391001849,
+      "meanRequestsA": 21989.00077570079,
+      "meanRequestsB": 30343.24643324016,
+      "advantagePercent": 27.532471437820615,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max10",
-      "meanRequestsA": 15082.385179768327,
-      "meanRequestsB": 32319.396813789277,
+      "meanRequestsA": 21989.00077570079,
+      "meanRequestsB": 47119.2873765017,
       "advantagePercent": 53.33333333333334,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-goat",
       "planB": "command-code-max20",
-      "meanRequestsA": 15082.385179768327,
-      "meanRequestsB": 64638.793627578554,
+      "meanRequestsA": 21989.00077570079,
+      "meanRequestsB": 94238.5747530034,
       "advantagePercent": 76.66666666666667,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-lite",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 81.7772911222747,
+      "advantagePercent": 165.01783026031194,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 69.70378481295421,
+      "advantagePercent": 55.830361623281334,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "glm-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 87.01590777698038,
+      "advantagePercent": 81.07015498140629,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 90000,
-      "advantagePercent": 83.24179424470186,
+      "advantagePercent": 75.567776915888,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-moderato",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 3300,
-      "advantagePercent": 357.04197514449476,
+      "advantagePercent": 566.333356839418,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 127.37264090103002,
+      "advantagePercent": 231.49247400553955,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-allegro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 23300,
-      "advantagePercent": 35.26873313404152,
-      "winner": "kimi-allegro"
+      "advantagePercent": 5.6266061128721345,
+      "winner": "draw"
     },
     {
       "planA": "command-code-goat",
       "planB": "kimi-vivace",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 68.16786226595401,
+      "advantagePercent": 53.59110028133473,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-goat",
       "planB": "claude-max-20x",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 165682,
-      "advantagePercent": 90.89678711038717,
+      "advantagePercent": 86.72818967920426,
       "winner": "claude-max-20x"
     },
     {
       "planA": "command-code-goat",
       "planB": "kiro-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 366.73016183717556,
+      "advantagePercent": 580.4580156491038,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 133.36869176017467,
+      "advantagePercent": 240.234272164211,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 6.652812166832778,
-      "winner": "draw"
+      "advantagePercent": 36.09328771329858,
+      "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "kiro-power",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 53.32640608341639,
+      "advantagePercent": 31.95335614335071,
       "winner": "kiro-power"
     },
     {
       "planA": "command-code-goat",
       "planB": "amazon-q-free",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 50,
-      "advantagePercent": 30064.77035953665,
+      "advantagePercent": 43878.00155140158,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 5311.152670630992,
+      "advantagePercent": 7789.059910202346,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 1523.3458011892974,
+      "advantagePercent": 2266.717973060703,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 363.81308605408503,
+      "advantagePercent": 576.205135160201,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 7305,
-      "advantagePercent": 106.46660068129128,
+      "advantagePercent": 201.01301541000402,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 45660,
-      "advantagePercent": 66.96805698692876,
+      "advantagePercent": 51.84187302737453,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "command-code-goat",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 60880,
-      "advantagePercent": 75.22604274019658,
+      "advantagePercent": 63.88140477053089,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "command-code-goat",
       "planB": "augment-standard",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 711.6729005946487,
+      "advantagePercent": 1083.3589865303516,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "augment-business",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 62.334580118929765,
+      "advantagePercent": 136.67179730607035,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "cursor-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 2616.5465037326767,
-      "advantagePercent": 476.4233564453109,
+      "advantagePercent": 740.3825708555926,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "cursor-ultra",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 52330.930074653545,
-      "advantagePercent": 71.17883217773446,
+      "advantagePercent": 57.980871457220374,
       "winner": "cursor-ultra"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-free",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 74.75969087357458,
+      "advantagePercent": 63.201498281293624,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-starter",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 84.35100834161624,
+      "advantagePercent": 77.18492893440205,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-plus",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 90.57289659133508,
+      "advantagePercent": 86.25598128578437,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-goat",
       "planB": "freebuff-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 94.07235164455162,
+      "advantagePercent": 91.35792762666745,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "mimo-lite",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 10421.328912833265,
-      "advantagePercent": 44.726121840327295,
+      "advantagePercent": 110.99996900225082,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "mimo-standard",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 27959.662936869732,
-      "advantagePercent": 46.05662731405982,
+      "advantagePercent": 21.354557008251962,
       "winner": "mimo-standard"
     },
     {
       "planA": "command-code-goat",
       "planB": "mimo-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 96587.92650918636,
-      "advantagePercent": 84.38481316985941,
+      "advantagePercent": 77.23421387080978,
       "winner": "mimo-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "mimo-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 208426.5782566653,
-      "advantagePercent": 92.76369390798364,
+      "advantagePercent": 89.45000154988746,
       "winner": "mimo-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "stepfun-flash-mini",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 59.96582199021958,
+      "advantagePercent": 41.63313290178634,
       "winner": "stepfun-flash-mini"
     },
     {
       "planA": "command-code-goat",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 89.9914554975549,
+      "advantagePercent": 85.40828322544658,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "command-code-goat",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 97.99829109951098,
+      "advantagePercent": 97.08165664508932,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.5996582199022,
+      "advantagePercent": 99.41633132901786,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 5.210867489508519,
-      "winner": "draw"
+      "advantagePercent": 53.38965417368371,
+      "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 78.9578265020983,
+      "advantagePercent": 69.32206916526326,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 2830.0976976519746,
-      "advantagePercent": 432.92807496651494,
+      "advantagePercent": 676.969671186413,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 13207.122589042548,
-      "advantagePercent": 14.19887320711033,
+      "advantagePercent": 66.49350096851707,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 37734.63596869301,
-      "advantagePercent": 60.0303943775114,
+      "advantagePercent": 41.727274661019045,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-business",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 3584.7904170258357,
-      "advantagePercent": 320.7326907630379,
+      "advantagePercent": 513.3971088313784,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 7358.254013895134,
-      "advantagePercent": 104.97233652558262,
+      "advantagePercent": 198.83448891785113,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "ollama-pro",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 25232.864715101314,
-      "advantagePercent": 40.22721815354618,
+      "advantagePercent": 12.8557101067448,
       "winner": "ollama-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "ollama-max",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 126164.32357550655,
-      "advantagePercent": 88.04544363070923,
+      "advantagePercent": 82.57114202134896,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "ollama-team",
-      "meanRequestsA": 15082.385179768327,
+      "meanRequestsA": 21989.00077570079,
       "meanRequestsB": 420547.7452516885,
-      "advantagePercent": 96.41363308921277,
+      "advantagePercent": 94.77134260640469,
       "winner": "ollama-team"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max10",
-      "meanRequestsA": 19951.512741385915,
-      "meanRequestsB": 32319.396813789277,
-      "advantagePercent": 38.267682233248,
+      "meanRequestsA": 30343.24643324016,
+      "meanRequestsB": 47119.2873765017,
+      "advantagePercent": 35.60334181035964,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-pro",
       "planB": "command-code-max20",
-      "meanRequestsA": 19951.512741385915,
-      "meanRequestsB": 64638.793627578554,
-      "advantagePercent": 69.133841116624,
+      "meanRequestsA": 30343.24643324016,
+      "meanRequestsB": 94238.5747530034,
+      "advantagePercent": 67.8016709051798,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-lite",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 140.46143210727817,
+      "advantagePercent": 265.70562777357367,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 59.92309464878696,
+      "advantagePercent": 39.049062037737706,
       "winner": "glm-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "glm-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 82.8241834209087,
+      "advantagePercent": 73.87816944474473,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 90000,
-      "advantagePercent": 77.8316525095712,
+      "advantagePercent": 66.28528174084427,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-moderato",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 3300,
-      "advantagePercent": 504.59129519351256,
+      "advantagePercent": 819.4923161587928,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 200.77657399074243,
+      "advantagePercent": 357.4358758779924,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-allegro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 23300,
-      "advantagePercent": 14.371189951133411,
-      "winner": "kimi-allegro"
+      "advantagePercent": 30.22852546455006,
+      "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kimi-vivace",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 57.89132196157549,
+      "advantagePercent": 35.95904173985319,
       "winner": "kimi-vivace"
     },
     {
       "planA": "command-code-pro",
       "planB": "claude-max-20x",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 165682,
-      "advantagePercent": 87.95794791142917,
+      "advantagePercent": 81.68585215458519,
       "winner": "claude-max-20x"
     },
     {
       "planA": "command-code-pro",
       "planB": "kiro-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 517.4071713255738,
+      "advantagePercent": 838.9833338462065,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 208.70836221179218,
+      "advantagePercent": 369.49893133485216,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 23.482962756066406,
+      "advantagePercent": 87.79899137380727,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "kiro-power",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 38.2585186219668,
-      "winner": "kiro-power"
+      "advantagePercent": 6.1005043130963665,
+      "winner": "draw"
     },
     {
       "planA": "command-code-pro",
       "planB": "amazon-q-free",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 50,
-      "advantagePercent": 39803.02548277183,
+      "advantagePercent": 60586.492866480316,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 7058.064203167167,
+      "advantagePercent": 10786.337738747758,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 2047.4192609501501,
+      "advantagePercent": 3165.9013216243275,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 513.5483602714716,
+      "advantagePercent": 833.1146633212364,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 7305,
-      "advantagePercent": 173.12132431739786,
+      "advantagePercent": 315.3764056569495,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 45660,
-      "advantagePercent": 56.30417708851092,
+      "advantagePercent": 33.54523339194008,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "command-code-pro",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 60880,
-      "advantagePercent": 67.22813281638318,
+      "advantagePercent": 50.15892504395505,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "command-code-pro",
       "planB": "augment-standard",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 973.7096304750751,
+      "advantagePercent": 1532.9506608121637,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "augment-business",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 114.74192609501502,
+      "advantagePercent": 226.59013216243275,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "cursor-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 2616.5465037326767,
-      "advantagePercent": 662.5132101769933,
+      "advantagePercent": 1059.6677677982605,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "cursor-ultra",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 52330.930074653545,
-      "advantagePercent": 61.874339491150344,
+      "advantagePercent": 42.01661161008698,
       "winner": "cursor-ultra"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-free",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 66.61122606735262,
+      "advantagePercent": 49.220702777062264,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-starter",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 79.29896016175863,
+      "advantagePercent": 68.5168357217786,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-plus",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 87.52949407334857,
+      "advantagePercent": 81.03423838661361,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-pro",
       "planB": "freebuff-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 92.15869703096917,
+      "advantagePercent": 88.0745589855222,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "mimo-lite",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 10421.328912833265,
-      "advantagePercent": 91.4488344842161,
+      "advantagePercent": 191.16484746848553,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "mimo-standard",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 27959.662936869732,
-      "advantagePercent": 28.641798055883083,
-      "winner": "mimo-standard"
+      "advantagePercent": 8.525079510981005,
+      "winner": "draw"
     },
     {
       "planA": "command-code-pro",
       "planB": "mimo-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 96587.92650918636,
-      "advantagePercent": 79.34367838459774,
+      "advantagePercent": 68.58484540471603,
       "winner": "mimo-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "mimo-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 208426.5782566653,
-      "advantagePercent": 90.42755827578918,
+      "advantagePercent": 85.44175762657572,
       "winner": "mimo-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "stepfun-flash-mini",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 47.04137289077541,
+      "advantagePercent": 19.45790306877503,
       "winner": "stepfun-flash-mini"
     },
     {
       "planA": "command-code-pro",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 86.76034322269386,
+      "advantagePercent": 79.86447576719375,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "command-code-pro",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 97.35206864453878,
+      "advantagePercent": 95.97289515343876,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.47041372890776,
+      "advantagePercent": 99.19457903068775,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 39.17665795095666,
+      "advantagePercent": 111.66673849249685,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 72.16466840980867,
+      "advantagePercent": 57.66665230150063,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 2830.0976976519746,
-      "advantagePercent": 604.9761129426356,
+      "advantagePercent": 972.1625072666152,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 13207.122589042548,
-      "advantagePercent": 51.06630991627905,
+      "advantagePercent": 129.74910869998894,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 37734.63596869301,
-      "advantagePercent": 47.126791529302345,
+      "advantagePercent": 19.587811955003886,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-business",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 3584.7904170258357,
-      "advantagePercent": 456.5600891652385,
+      "advantagePercent": 746.4440846841695,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 7358.254013895134,
-      "advantagePercent": 171.1446588240906,
+      "advantagePercent": 312.3701951025443,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "ollama-pro",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 25232.864715101314,
-      "advantagePercent": 20.93044936968502,
-      "winner": "ollama-pro"
+      "advantagePercent": 20.25287963074758,
+      "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "ollama-max",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 126164.32357550655,
-      "advantagePercent": 84.18608987393701,
+      "advantagePercent": 75.94942407385048,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "ollama-team",
-      "meanRequestsA": 19951.512741385915,
+      "meanRequestsA": 30343.24643324016,
       "meanRequestsB": 420547.7452516885,
-      "advantagePercent": 95.2558269621811,
+      "advantagePercent": 92.78482722215514,
       "winner": "ollama-team"
     },
     {
       "planA": "command-code-max10",
       "planB": "command-code-max20",
-      "meanRequestsA": 32319.396813789277,
-      "meanRequestsB": 64638.793627578554,
+      "meanRequestsA": 47119.2873765017,
+      "meanRequestsB": 94238.5747530034,
       "advantagePercent": 50,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-lite",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 289.5227666905887,
+      "advantagePercent": 467.89535055781135,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 35.07953888490187,
-      "winner": "glm-pro"
+      "advantagePercent": 5.350774907031419,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max10",
       "planB": "glm-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 72.17694523638652,
+      "advantagePercent": 59.43604638872776,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 90000,
-      "advantagePercent": 64.0895590957897,
+      "advantagePercent": 47.64523624833144,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-moderato",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 3300,
-      "advantagePercent": 879.3756610239175,
+      "advantagePercent": 1327.8571932273244,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 387.2270876450644,
+      "advantagePercent": 610.3410157261562,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-allegro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 23300,
-      "advantagePercent": 38.70985756991105,
+      "advantagePercent": 102.22870118670255,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kimi-vivace",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 31.788276284187177,
-      "winner": "kimi-vivace"
+      "advantagePercent": 0.5523577457172912,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max10",
       "planB": "claude-max-20x",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 165682,
-      "advantagePercent": 80.49311523654393,
+      "advantagePercent": 71.56040645543771,
       "winner": "claude-max-20x"
     },
     {
       "planA": "command-code-max10",
       "planB": "kiro-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 900.136061079662,
+      "advantagePercent": 1358.1243192480797,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 400.0757680575172,
+      "advantagePercent": 629.0734403518808,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 100.02968821392982,
+      "advantagePercent": 191.62847367135413,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "kiro-power",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 0.014844106964906345,
-      "winner": "draw"
+      "advantagePercent": 45.81423683567707,
+      "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "amazon-q-free",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 50,
-      "advantagePercent": 64538.79362757856,
+      "advantagePercent": 94138.5747530034,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 11495.327151352129,
+      "advantagePercent": 16805.128379005026,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 3378.598145405638,
+      "advantagePercent": 4971.538513701507,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 893.885184401611,
+      "advantagePercent": 1349.0110039147166,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 7305,
-      "advantagePercent": 342.4284300313385,
+      "advantagePercent": 545.0278901642944,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 45660,
-      "advantagePercent": 29.217264971990197,
-      "winner": "gemini-code-assist-standard"
+      "advantagePercent": 3.195986369911741,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max10",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 60880,
-      "advantagePercent": 46.912948728992646,
+      "advantagePercent": 22.6030102225662,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "command-code-max10",
       "planB": "augment-standard",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 1639.299072702819,
+      "advantagePercent": 2435.7692568507537,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "augment-business",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 247.85981454056386,
+      "advantagePercent": 407.15385137015073,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "cursor-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 2616.5465037326767,
-      "advantagePercent": 1135.1929066685236,
+      "advantagePercent": 1700.8197946905557,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "cursor-ultra",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 52330.930074653545,
-      "advantagePercent": 38.240354666573836,
-      "winner": "cursor-ultra"
+      "advantagePercent": 9.959010265472234,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-free",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 45.91362330051696,
+      "advantagePercent": 21.146067745629203,
       "winner": "freebuff-free"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-starter",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 66.46644644632052,
+      "advantagePercent": 51.110562002290095,
       "winner": "freebuff-starter"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-plus",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 79.79906412428946,
+      "advantagePercent": 70.54853132668079,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-max10",
       "planB": "freebuff-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 87.29789638118201,
+      "advantagePercent": 81.48127348571595,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "mimo-lite",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 10421.328912833265,
-      "advantagePercent": 210.1274039435585,
+      "advantagePercent": 352.1427907191089,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "mimo-standard",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 27959.662936869732,
-      "advantagePercent": 15.592941469871825,
+      "advantagePercent": 68.52594926803152,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "mimo-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 96587.92650918636,
-      "advantagePercent": 66.53888536398446,
+      "advantagePercent": 51.21617258030666,
       "winner": "mimo-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "mimo-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 208426.5782566653,
-      "advantagePercent": 84.49362980282207,
+      "advantagePercent": 77.39286046404456,
       "winner": "mimo-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "stepfun-flash-mini",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 14.212475693327642,
-      "winner": "stepfun-flash-mini"
+      "advantagePercent": 25.07185806760073,
+      "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 78.55311892333191,
+      "advantagePercent": 68.73203548309982,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "command-code-max10",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 95.71062378466638,
+      "advantagePercent": 93.74640709661996,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "command-code-max10",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.14212475693328,
+      "advantagePercent": 98.74928141932399,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 125.4518589060897,
+      "advantagePercent": 228.6921160864651,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 54.909628218782046,
+      "advantagePercent": 34.26157678270697,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 2830.0976976519746,
-      "advantagePercent": 1041.9887320711036,
+      "advantagePercent": 1564.9350096851708,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 13207.122589042548,
-      "advantagePercent": 144.7118711580936,
+      "advantagePercent": 256.7717877896794,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 37734.63596869301,
-      "advantagePercent": 14.350845094667264,
-      "winner": "copilot-max"
+      "advantagePercent": 24.87012572638776,
+      "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-business",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 3584.7904170258357,
-      "advantagePercent": 801.5700516350813,
+      "advantagePercent": 1214.4223760672396,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 7358.254013895134,
-      "advantagePercent": 339.2264354119629,
+      "advantagePercent": 540.359619109681,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "ollama-pro",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 25232.864715101314,
-      "advantagePercent": 28.084532528115336,
+      "advantagePercent": 86.73776405697544,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "ollama-max",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 126164.32357550655,
-      "advantagePercent": 74.38309349437692,
+      "advantagePercent": 62.65244718860491,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "ollama-team",
-      "meanRequestsA": 32319.396813789277,
+      "meanRequestsA": 47119.2873765017,
       "meanRequestsB": 420547.7452516885,
-      "advantagePercent": 92.31492804831308,
+      "advantagePercent": 88.79573415658147,
       "winner": "ollama-team"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-lite",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 8297.177874448013,
-      "advantagePercent": 679.0455333811774,
+      "advantagePercent": 1035.7907011156226,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 49783.067246688064,
-      "advantagePercent": 29.840922230196256,
+      "advantagePercent": 89.29845018593716,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "glm-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 116160.49024227216,
-      "advantagePercent": 44.35389047277304,
+      "advantagePercent": 18.872092777455517,
       "winner": "glm-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 90000,
-      "advantagePercent": 28.179118191579388,
-      "winner": "qwen-coding-pro"
+      "advantagePercent": 4.709527503337108,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-moderato",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 3300,
-      "advantagePercent": 1858.751322047835,
+      "advantagePercent": 2755.714386454649,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 874.4541752901288,
+      "advantagePercent": 1320.6820314523125,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-allegro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 23300,
-      "advantagePercent": 177.4197151398221,
+      "advantagePercent": 304.4574023734051,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kimi-vivace",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 36.42344743162565,
+      "advantagePercent": 98.89528450856542,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "claude-max-20x",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 165682,
-      "advantagePercent": 60.986230473087865,
+      "advantagePercent": 43.120812910875415,
       "winner": "claude-max-20x"
     },
     {
       "planA": "command-code-max20",
       "planB": "kiro-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 1900.272122159324,
+      "advantagePercent": 2816.2486384961594,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 900.1515361150344,
+      "advantagePercent": 1358.1468807037616,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 300.0593764278596,
+      "advantagePercent": 483.25694734270826,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "kiro-power",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 100.02968821392982,
+      "advantagePercent": 191.62847367135413,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "amazon-q-free",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 50,
-      "advantagePercent": 129177.58725515712,
+      "advantagePercent": 188377.1495060068,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 23090.654302704257,
+      "advantagePercent": 33710.25675801005,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 6857.196290811276,
+      "advantagePercent": 10043.077027403015,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 1887.770368803222,
+      "advantagePercent": 2798.0220078294333,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 7305,
-      "advantagePercent": 784.856860062677,
+      "advantagePercent": 1190.0557803285888,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 45660,
-      "advantagePercent": 41.565470056019606,
+      "advantagePercent": 106.39197273982349,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 60880,
-      "advantagePercent": 6.174102542014714,
-      "winner": "draw"
+      "advantagePercent": 54.7939795548676,
+      "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "augment-standard",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 3378.598145405638,
+      "advantagePercent": 4971.538513701507,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "augment-business",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 595.7196290811277,
+      "advantagePercent": 914.3077027403015,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "cursor-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 2616.5465037326767,
-      "advantagePercent": 2370.3858133370472,
+      "advantagePercent": 3501.6395893811114,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "cursor-ultra",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 52330.930074653545,
-      "advantagePercent": 23.51929066685232,
+      "advantagePercent": 80.08197946905553,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-free",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 59755.15238035567,
-      "advantagePercent": 8.172753398966082,
-      "winner": "draw"
+      "advantagePercent": 57.707864508741594,
+      "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-starter",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 96379.27803283172,
-      "advantagePercent": 32.93289289264102,
-      "winner": "freebuff-starter"
+      "advantagePercent": 2.2211240045801994,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-plus",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 159989.60153450066,
-      "advantagePercent": 59.59812824857893,
+      "advantagePercent": 41.09706265336157,
       "winner": "freebuff-plus"
     },
     {
       "planA": "command-code-max20",
       "planB": "freebuff-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 254441.29400667577,
-      "advantagePercent": 74.59579276236403,
+      "advantagePercent": 62.9625469714319,
       "winner": "freebuff-pro"
     },
     {
       "planA": "command-code-max20",
       "planB": "mimo-lite",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 10421.328912833265,
-      "advantagePercent": 520.2548078871171,
+      "advantagePercent": 804.2855814382178,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "mimo-standard",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 27959.662936869732,
-      "advantagePercent": 131.18588293974364,
+      "advantagePercent": 237.05189853606305,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "mimo-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 96587.92650918636,
-      "advantagePercent": 33.07777072796895,
-      "winner": "mimo-pro"
+      "advantagePercent": 2.432345160613336,
+      "winner": "draw"
     },
     {
       "planA": "command-code-max20",
       "planB": "mimo-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 208426.5782566653,
-      "advantagePercent": 68.98725960564414,
+      "advantagePercent": 54.78572092808911,
       "winner": "mimo-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "stepfun-flash-mini",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 71.57504861334472,
+      "advantagePercent": 150.14371613520146,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 57.106237846663824,
+      "advantagePercent": 37.464070966199635,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "command-code-max20",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 91.42124756933276,
+      "advantagePercent": 87.49281419323994,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "command-code-max20",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.28424951386656,
+      "advantagePercent": 97.49856283864798,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 350.90371781217937,
+      "advantagePercent": 557.3842321729302,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 9.819256437564105,
-      "winner": "draw"
+      "advantagePercent": 31.476846434586058,
+      "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 2830.0976976519746,
-      "advantagePercent": 2183.9774641422073,
+      "advantagePercent": 3229.8700193703417,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 13207.122589042548,
-      "advantagePercent": 389.4237423161872,
+      "advantagePercent": 613.5435755793588,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 37734.63596869301,
-      "advantagePercent": 71.29830981066547,
+      "advantagePercent": 149.7402514527755,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-business",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 3584.7904170258357,
-      "advantagePercent": 1703.1401032701626,
+      "advantagePercent": 2528.844752134479,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 7358.254013895134,
-      "advantagePercent": 778.4528708239258,
+      "advantagePercent": 1180.719238219362,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "ollama-pro",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 25232.864715101314,
-      "advantagePercent": 156.16906505623066,
+      "advantagePercent": 273.4755281139509,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "ollama-max",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 126164.32357550655,
-      "advantagePercent": 48.766186988753866,
+      "advantagePercent": 25.30489437720982,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "ollama-team",
-      "meanRequestsA": 64638.793627578554,
+      "meanRequestsA": 94238.5747530034,
       "meanRequestsB": 420547.7452516885,
-      "advantagePercent": 84.62985609662617,
+      "advantagePercent": 77.59146831316295,
       "winner": "ollama-team"
     },
     {
@@ -33618,6 +33728,13 @@
       "normalizedPer1Mean": 510.7147964290821
     },
     {
+      "planId": "command-code-go",
+      "family": "jev",
+      "modelCount": 1,
+      "normalizedPer1Median": 85034.01360544217,
+      "normalizedPer1Mean": 85034.01360544217
+    },
+    {
       "planId": "command-code-goat",
       "family": "tencent hy4",
       "modelCount": 1,
@@ -34127,6 +34244,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 331.94090761407386,
       "normalizedPer1Mean": 331.94090761407386
+    },
+    {
+      "planId": "command-code-goat",
+      "family": "jev",
+      "modelCount": 1,
+      "normalizedPer1Median": 55268.16111774329,
+      "normalizedPer1Mean": 55268.16111774329
     },
     {
       "planId": "command-code-pro",
@@ -34640,6 +34764,13 @@
       "normalizedPer1Mean": 268.1252681252682
     },
     {
+      "planId": "command-code-pro",
+      "family": "jev",
+      "modelCount": 1,
+      "normalizedPer1Median": 44642.857142857145,
+      "normalizedPer1Mean": 44642.857142857145
+    },
+    {
       "planId": "command-code-max10",
       "family": "tencent hy4",
       "modelCount": 1,
@@ -35151,6 +35282,13 @@
       "normalizedPer1Mean": 76.60721946436233
     },
     {
+      "planId": "command-code-max10",
+      "family": "jev",
+      "modelCount": 1,
+      "normalizedPer1Median": 12755.102040816326,
+      "normalizedPer1Mean": 12755.102040816326
+    },
+    {
       "planId": "command-code-max20",
       "family": "tencent hy4",
       "modelCount": 1,
@@ -35660,6 +35798,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 76.60721946436233,
       "normalizedPer1Mean": 76.60721946436233
+    },
+    {
+      "planId": "command-code-max20",
+      "family": "jev",
+      "modelCount": 1,
+      "normalizedPer1Median": 12755.102040816326,
+      "normalizedPer1Mean": 12755.102040816326
     },
     {
       "planId": "glm-lite",
@@ -39180,11 +39325,20 @@
       "requestsB": 268.1252681252682,
       "advantagePercent": 23.800680903744965,
       "winner": "command-code-goat"
+    },
+    {
+      "family": "jev",
+      "planA": "command-code-goat",
+      "planB": "command-code-pro",
+      "requestsA": 55268.16111774329,
+      "requestsB": 44642.857142857145,
+      "advantagePercent": 23.800680903744965,
+      "winner": "command-code-goat"
     }
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-09-25T08:52:00.553Z",
+    "fetchedAt": "2026-09-26T08:38:45.306Z",
     "count": 410,
     "scores": {
       "claude-opus-5-5": {
@@ -39304,10 +39458,10 @@
       "grok-4-5": {
         "intelligence": 44.57
       },
-      "claude-mythos-5-1": {
+      "gpt-6-luna": {
         "intelligence": 44.52
       },
-      "gpt-6-luna": {
+      "claude-mythos-5-1": {
         "intelligence": 44.52
       },
       "claude-opus-4-7": {
@@ -39328,10 +39482,10 @@
       "deepseek-v4-pro-max": {
         "intelligence": 43
       },
-      "hy3": {
+      "gemini-3-6-flash": {
         "intelligence": 42.92
       },
-      "gemini-3-6-flash": {
+      "hy3": {
         "intelligence": 42.92
       },
       "gpt-5-2-pro-2025-12-11": {
@@ -39610,10 +39764,10 @@
       "qwen3-235b-a22b-thinking-2507": {
         "intelligence": 28.04
       },
-      "seed-2-0-mini": {
+      "gemini-2-5-pro": {
         "intelligence": 27.8
       },
-      "gemini-2-5-pro": {
+      "seed-2-0-mini": {
         "intelligence": 27.8
       },
       "mai-code-1-1-flash": {
@@ -39805,10 +39959,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
       "qwen3-5-4b": {
@@ -39925,10 +40079,10 @@
       "qwen3-vl-8b-instruct": {
         "intelligence": 13.85
       },
-      "gemma-4-e4b-it": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.8
       },
-      "llama-3-3-70b-instruct": {
+      "gemma-4-e4b-it": {
         "intelligence": 13.8
       },
       "devstral-medium-2507": {
@@ -40108,10 +40262,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -40500,7 +40654,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-09-25",
+      "verifiedAt": "2026-09-26",
       "crawled": true
     },
     {
@@ -40611,12 +40765,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Fri, 25 Sep 2026 00:02:31 +0000",
+    "updatedAt": "Sat, 26 Sep 2026 00:02:32 +0000",
     "rates": {
-      "EUR": 0.878683,
-      "CNY": 6.717253,
-      "GBP": 0.756444,
-      "JPY": 158.686572
+      "EUR": 0.877267,
+      "CNY": 6.724641,
+      "GBP": 0.755351,
+      "JPY": 157.539759
     }
   },
   "statistics": {
