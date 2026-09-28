@@ -191,7 +191,7 @@ sources:
     typ: html-docs
     parser: freebuff-pricing
     provides: [plan_meta, plan_prices, usage_volume, included_hours]
-    note: "Tarife Starter $8 / Plus $25 / Pro $60, je mit 'max spend / mo' als offiziellem Dollar-Volumen ($50/$83/$132) und Stunden je Modell und Tag. Gratis-Tarif: 'Up to $31 of usage a month on any model - free for everyone, forever'."
+    note: "Tarife Starter $8 / Plus $25 / Pro $60, je mit 'max spend / mo' als offiziellem Dollar-Volumen ($50/$83/$132) und Stunden je Modell und Tag. Gratis-Tarif: kein Dollar-Volumen mehr ('Sign in to see your account's allowance'); die publizierte Menge steht als 100 Freebucks/Tag je Region in der Homepage-FAQ."
   - id: freebuff-faq
     url: "https://freebuff.com/"
     typ: html-docs

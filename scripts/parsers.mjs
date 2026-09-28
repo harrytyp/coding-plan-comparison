@@ -53,6 +53,15 @@ export function parseOcgo(raw) {
   return {
     // KEIN fetchedAt, volatiler Timestamp, würde contentHash falsch-positiv machen.
     sourceUrl: data.sourceUrl,
+    // Tarif-Liste aus dem Feed (seit 09/2026: Go $10 / Go Plus $40). Nicht hart
+    // kodieren: ein neu eingeschobener Tarif würde sonst still aus dem Katalog fallen.
+    plans: (data.plans ?? []).map((p) => ({
+      id: p.id,
+      name: p.name,
+      priceMonthly: p.priceMonthly ?? null,
+      creditsMonthly: p.creditsMonthly ?? null,
+      sourceUrl: p.sourceUrl ?? null,
+    })),
     monthlyCredit: data.monthlyCredit,
     monthlyCost: data.monthlyCost,
     peakHours: data.peakHours,
@@ -63,6 +72,7 @@ export function parseOcgo(raw) {
       output: m.output,
       cachedRead: m.cachedRead,
       cachedWrite: m.cachedWrite ?? null,
+      // usage ist seit dem Tarif-Split ein Objekt ({go, "go-plus"}), vorher eine Zahl.
       usage: m.usage,
       multiplier: m.multiplier ?? null,
       pattern: m.pattern ?? null,
@@ -476,9 +486,10 @@ export function parseKimiGoods(raw) {
 }
 
 // ---------- Parser: Freebuff Pricing (HTML) ----------
-// Werbefinanzierter Gratis-Tarif + drei bezahlte Tarife. Mengen-Basis ist ein
-// DOLLAR-Volumen ("Up to $31 of usage a month ... free", "$50 max spend / mo"),
-// nicht Token oder Requests. Karten stehen als <section><h3>Name</h3>... im HTML.
+// Drei bezahlte Tarife. Mengen-Basis ist ein DOLLAR-Volumen ("$50 max spend / mo"),
+// nicht Token oder Requests. Der Gratis-Tarif nennt seit 09/2026 kein Volumen mehr
+// ("Sign in to see your account's allowance"); freeTierMonthlyUsd bleibt dann null.
+// Karten stehen als <section><h3>Name</h3>... im HTML.
 export function parseFreebuffPricing(html) {
   const text = htmlToText(html);
   const out = { freeTierMonthlyUsd: null, yearlyDiscountPercent: null, plans: [] };

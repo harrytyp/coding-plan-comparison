@@ -545,27 +545,38 @@ test("Cerebras Code: Tageslimit in Tokens wird auf den Monat gerechnet", async (
   }
 });
 
-// --- Freebuff 2026-09-21: werbefinanzierter Gratis-Tarif + bezahlte Tarife ---
-// Mengen-Basis ist ein offizielles Dollar-Volumen, keine Request-Zahl. Preis 0 darf
-// keine Infinity-Rate erzeugen (das würde Familien-Mediane und Pareto-Front verfälschen).
-test("Freebuff: Tarife, Dollar-Volumen, keine Infinity-Rate bei Preis 0", async () => {
+// --- Freebuff 2026-09-28: Gratis-Tarif ohne veroeffentlichtes Dollar-Volumen ---
+// Die Quelle nennt den Gratis-Tarif nur noch als "100 Freebucks every day" je Region
+// (freebuff.com/plans sagt nur "Sign in to see your account's allowance"); das frueher
+// publizierte "$31 of usage a month" ist weg. Ohne Volumen gibt es keine Rate und keine
+// Modell-Zeilen (ehrlich null statt erfundener Zahlen). Die Modell-Liste der bezahlten
+// Tarife kommt aus der FAQ der Quelle, nicht aus einer hart kodierten Liste.
+test("Freebuff: Tarife, Freebucks-Tagesquote, keine Rate ohne veroeffentlichtes Volumen", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const fb = JSON.parse(await readFile(join(ROOT, "parsed/freebuff-pricing.json"), "utf8"));
+  const faq = JSON.parse(await readFile(join(ROOT, "parsed/freebuff-faq.json"), "utf8"));
   const plans = d.plans.filter((p) => p.provider === "freebuff");
   assert.equal(plans.length, fb.plans.length + 1, "Gratis-Tarif plus bezahlte Tarife");
 
   const free = plans.find((p) => p.id === "freebuff-free");
   assert.ok(free, "Gratis-Tarif vorhanden");
   assert.equal(free.price.paidPrice, 0, "Gratis-Tarif kostet $0");
-  assert.equal(free.quotas[0].amount, fb.freeTierMonthlyUsd, "Volumen des Gratis-Tarifs kommt aus der Quelle");
-  assert.ok(free.modelRows.length > 0, "Gratis-Tarif hat Modell-Zeilen (Volumen ÷ Tokenpreis)");
-  for (const r of free.modelRows) {
-    assert.equal(r.normalizedPer1, null, `${r.model}: ohne Preis keine Rate pro $`);
-    assert.ok(r.requestsPerMonth > 0, `${r.model}: Anfragen pro Monat > 0`);
-  }
+  // Das Dollar-Volumen ist nicht mehr publiziert (freeTierMonthlyUsd: null) ...
+  assert.equal(fb.freeTierMonthlyUsd, null, "Quelle nennt kein Monats-Volumen mehr");
+  assert.ok(!free.quotas.some((q) => q.unit === "usd"), "kein erfundenes Dollar-Volumen");
+  // ... publiziert ist die Freebucks-Tagesquote (US; andere Regionen stehen in der Notiz).
+  const usDay = faq.freebucksPerDay.find((b) => b.regions === "US");
+  assert.equal(free.quotas[0].amount, usDay.perDay, "Freebucks/Tag des Gratis-Tarifs aus der Quelle");
+  assert.equal(free.quotas[0].window, "day", "Tagesfenster");
+  assert.equal((free.modelRows ?? []).length, 0, "ohne Dollar-Volumen keine Modell-Zeilen");
   assert.ok(!d.modelComparisons.some((m) => m.planId === "freebuff-free"),
     "Gratis-Tarif darf nicht in die Familien-Mediane laufen");
 
+  // Jede Modell-Zeile muss im publizierten Katalog stehen (Provenance-Kopplung):
+  // eine Umbenennung in der Quelle faellt damit auf, statt still Zeilen zu verlieren.
+  const key = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "").replace(/([a-z])v(?=\d)/g, "$1");
+  const catalog = new Set((faq.models ?? []).map(key));
+  assert.ok(catalog.size >= 8, "Modell-Katalog der FAQ ist geparst");
   for (const p of fb.plans) {
     const plan = plans.find((x) => x.id === `freebuff-${p.name.toLowerCase()}`);
     assert.ok(plan, `${p.name} im Katalog`);
@@ -573,6 +584,7 @@ test("Freebuff: Tarife, Dollar-Volumen, keine Infinity-Rate bei Preis 0", async 
     assert.equal(plan.quotas[0].amount, p.maxSpendUsd, `${p.name}: Dollar-Volumen aus der Quelle`);
     assert.ok(plan.modelRows.length > 0, `${p.name}: Modell-Zeilen`);
     for (const r of plan.modelRows) {
+      assert.ok(catalog.has(key(r.model)), `${p.name}/${r.model}: Modell steht im Quell-Katalog`);
       const expected = r.requestsPerMonth / p.monthlyUsd;
       assert.ok(Math.abs(r.normalizedPer1 - expected) < Math.max(1e-6, expected * 1e-6),
         `${p.name}/${r.model}: Rate pro $`);

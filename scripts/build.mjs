@@ -32,34 +32,57 @@ const DRAW_THRESHOLD_PERCENT = 10;
 // ai-10-usd workload fallback: average message profile
 const FALLBACK_PATTERN = { input: 800, cachedRead: 50000, output: 162 };
 
+// Feed-Modellnamen finden. Default: Substring (der Feed-Name enthält den Quell-Namen).
+// "normalized": Gleichheit ohne Trennzeichen/Case und ohne "V" vor Zahlen, weil Quellen
+// "GLM 5.3 Flash" / "MiMo 2.6 Flash" schreiben und der Feed "GLM-5.3-Flash" / "MiMo V2.6 Flash".
+const modelKey = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "").replace(/([a-z])v(?=\d)/g, "$1");
+function findFeedModel(allModels, modelName, mode) {
+  if (mode === "normalized") {
+    const key = modelKey(modelName);
+    return allModels.find((m) => m.name && modelKey(m.name) === key) ?? null;
+  }
+  return allModels.find((m) => m.name && m.name.toLowerCase().includes(String(modelName).toLowerCase())) ?? null;
+}
+
 // ---------- Dynamischer Plan-Katalog aus geparsten Quellen + Overrides ----------
 function buildPlanCatalog(parsed, overrides, overridesData) {
   const plans = [];
   const add = (p) => { if (p) plans.push(p); };
 
   // --- OpenCode Go (aus ocgo-Feed) ---
+  // Die Tarif-Liste kommt aus dem Feed (Go $10 / Go Plus $40): ein neuer Tarif darf
+  // nicht still aus dem Katalog fallen. Fallback nur fuer die alte Feed-Form ohne plans[].
   const oc = parsed["ocgo-pricing"];
   if (oc) {
-    add({
-      id: "opencode-go",
-      provider: "opencode",
-      name: "OpenCode Go",
-      price: { monthlyUsd: oc.monthlyCost ?? 10, paidPrice: oc.monthlyCost ?? 10, advertisedPrice: oc.monthlyCost ?? 10, billingNote: "first month $5; beta", altPrice: null },
-      meter: "dollar_usage",
-      quotas: [
-        { label: "5h window", unit: "usd", amount: 12, window: "5h", refresh: "rolling", disclosure: "exact" },
-        { label: "Weekly", unit: "usd", amount: 30, window: "week", refresh: "weekly", disclosure: "exact" },
-        { label: "Monthly", unit: "usd", amount: oc.monthlyCredit ?? 60, window: "month", refresh: "monthly", disclosure: "exact" },
-      ],
-      tokenPricing: { source: "ocgo-pricing", note: "Feed: usage = credits/month per model, pattern = token profile, input/output/cachedRead/cachedWrite = API prices" },
-      workload: { pattern: null, taskConversion: null },
-      models: (oc.models ?? []).map((m) => m.name),
-      dataTier: "A",
-      dataTierNote: "Official usage (credits/month per model) from feed",
-      disclosure: "disclosed",
-      sourceIds: ["ocgo-pricing"],
-      verifiedAt: oc.fetchedAt ? oc.fetchedAt.slice(0, 10) : "2026-08-28",
-    });
+    const ocPlans = oc.plans?.length
+      ? oc.plans
+      : [{ id: "go", name: "Go", priceMonthly: oc.monthlyCost ?? 10, creditsMonthly: oc.monthlyCredit ?? 60 }];
+    // Fenster-Regel aus den Docs (opencode.ai/docs/go, "Usage limits"): je Modell
+    // 5 h = 20 % des Monatslimits, Woche = 50 %, Monat = 100 %. Abgeleitet, nicht geraten.
+    const ocWindows = (monthly) => [
+      { label: "5h window", unit: "usd", amount: monthly == null ? null : +(monthly * 0.2).toFixed(2), window: "5h", refresh: "rolling", disclosure: "exact" },
+      { label: "Weekly", unit: "usd", amount: monthly == null ? null : +(monthly * 0.5).toFixed(2), window: "week", refresh: "weekly", disclosure: "exact" },
+      { label: "Monthly", unit: "usd", amount: monthly, window: "month", refresh: "monthly", disclosure: "exact" },
+    ];
+    for (const ocp of ocPlans) {
+      const monthly = ocp.creditsMonthly ?? null;
+      add({
+        id: `opencode-${ocp.id}`,
+        provider: "opencode",
+        name: `OpenCode ${ocp.name}`,
+        price: { monthlyUsd: ocp.priceMonthly ?? null, paidPrice: ocp.priceMonthly ?? null, advertisedPrice: ocp.priceMonthly ?? null, billingNote: "beta", altPrice: null },
+        meter: "dollar_usage",
+        quotas: ocWindows(monthly),
+        tokenPricing: { source: "ocgo-pricing", note: "Feed: usage = Monatslimit in $ je Modell und Tarif, pattern = token profile, input/output/cachedRead/cachedWrite = API prices" },
+        workload: { pattern: null, taskConversion: null },
+        models: (oc.models ?? []).map((m) => m.name),
+        dataTier: "A",
+        dataTierNote: "Official per-model monthly limit in USD from the feed; 5h/weekly windows are the documented shares of it (20 % / 50 %)",
+        disclosure: "disclosed",
+        sourceIds: ["ocgo-pricing"],
+        verifiedAt: oc.fetchedAt ? oc.fetchedAt.slice(0, 10) : "2026-09-28",
+      });
+    }
   }
 
   // --- Command Code Pläne (aus cc-Feed) ---
@@ -366,22 +389,32 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   }
 
   // --- Freebuff (werbefinanziert): Gratis-Tarif + drei bezahlte Tarife ---
-  // Quelle: freebuff.com/pricing ("Up to $31 of usage a month on any model - free for
-  // everyone, forever"; je Tarif "<X> max spend / mo") + Homepage-FAQ (JSON-LD).
+  // Quelle: freebuff.com/plans (je Tarif "<X> max spend / mo") + Homepage-FAQ (JSON-LD).
   // Mengen-Basis ist ein USD-Volumen (wie OpenCode Go), nicht Token/Credits:
   // Requests = Volumen ÷ $/Request aus den Feed-Tokenpreisen. Modelle ohne Tokenpreis
-  // im Feed (z.B. Solar Pro 4) bekommen KEINE Zeile, statt erfundener Werte.
+  // im Feed bekommen KEINE Zeile, statt erfundener Werte.
+  // Der Gratis-Tarif nennt seit 09/2026 KEIN Dollar-Volumen mehr (die Seite sagt nur
+  // noch "Sign in to see your account's allowance", die Homepage "100 Freebucks every
+  // day" je Region). Ohne veroeffentlichtes Volumen: keine Modell-Zeilen, keine Rate
+  // pro $, ehrlich null statt der frueheren $31.
   const fbPricing = parsed["freebuff-pricing"];
   const fbFaq = parsed["freebuff-faq"];
-  const FREEBUFF_MODELS = ["GLM-5.3-Flash", "DeepSeek V4.1 Flash", "MiMo V2.5", "Muse Spark 1.2", "GPT 5.6 Luna"];
+  // Modell-Katalog aus der Quelle (FAQ-JSON-LD, "regular picker"), nie hart kodieren:
+  // Umbenennungen (GPT 5.6 Luna → GPT-6 Luna, MiMo V2.5 → MiMo 2.6) fielen sonst still raus.
+  const FREEBUFF_MODELS = fbFaq?.models ?? [];
   if (fbPricing?.plans?.length) {
     const freebucksNote = (fbFaq?.freebucksPerDay ?? []).map((b) => `${b.regions}: ${b.perDay}`).join("; ");
+    const freebucksPerDayUs = (fbFaq?.freebucksPerDay ?? []).find((b) => b.regions === "US")?.perDay ?? null;
     const fbPlans = [
       { name: "Free", monthlyUsd: 0, maxSpendUsd: fbPricing.freeTierMonthlyUsd, adFunded: true },
       ...fbPricing.plans,
     ];
     for (const p of fbPlans) {
       const isFree = p.monthlyUsd === 0;
+      const hasUsdVolume = typeof p.maxSpendUsd === "number" && p.maxSpendUsd > 0;
+      // Ohne Dollar-Volumen gibt es nichts zu teilen: kein feedModels, damit der
+      // Build keine Zeilen mit nicht vergleichbarer Basis erzeugt.
+      const feedModels = hasUsdVolume ? FREEBUFF_MODELS : null;
       // Kein API-Zugang: die Terms erlauben Inferenz NUR ueber ein offizielles
       // Freebuff-Produkt (keine direkten Endpoint-Aufrufe, keine Wrapper/Skripte,
       // ein Mensch muss jede Session starten und anwesend bleiben). Der Free-Tarif
@@ -395,28 +428,32 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
           paidPrice: p.monthlyUsd,
           advertisedPrice: p.monthlyUsd,
           billingNote: isFree
-            ? `$0 (supported by text ads). Up to $${p.maxSpendUsd} of usage a month; daily Freebucks by region (${freebucksNote}). Region spoofing by VPN or proxy is prohibited by the Terms`
+            ? `$0 (supported by text ads). Allowance published only as daily Freebucks by region (${freebucksNote}); freebuff.com/plans no longer names a monthly dollar volume. Region spoofing by VPN or proxy is prohibited by the Terms`
             : `$${p.dailyUsd}/day + $${p.flexibleMonthlyUsd}/mo flexible, $${p.maxSpendUsd} max spend/mo${fbPricing.yearlyDiscountPercent ? `; yearly ~${fbPricing.yearlyDiscountPercent}% off` : ""}`,
           altPrice: null,
         },
-        meter: "dollar_usage",
-        quotas: [
-          { label: "Monthly", unit: "usd", amount: p.maxSpendUsd, window: "month", refresh: "monthly", disclosure: "exact" },
-        ],
+        meter: hasUsdVolume ? "dollar_usage" : "credits",
+        quotas: hasUsdVolume
+          ? [{ label: "Monthly", unit: "usd", amount: p.maxSpendUsd, window: "month", refresh: "monthly", disclosure: "exact" }]
+          // Freebucks sind die Credits der Quelle (1 Freebuck = 1 Stunde Modell-Session).
+          : [{ label: "Daily Freebucks (US; regional)", unit: "credits", amount: freebucksPerDayUs, window: "day", refresh: "daily", disclosure: "exact" }],
         tokenPricing: null,
         workload: { pattern: null, taskConversion: null },
         models: [],
-        feedModels: FREEBUFF_MODELS,
+        feedModels,
+        modelMatch: "normalized",
         dataTier: "A",
-        dataTierNote: "Official monthly usage volume in USD from freebuff.com/pricing (not a published request count)",
+        dataTierNote: hasUsdVolume
+          ? "Official monthly usage volume in USD from freebuff.com/plans (not a published request count)"
+          : "Official daily Freebucks allowance by region (freebuff.com FAQ); no monthly dollar volume published",
         // Kein veröffentlichter Request-Zaehler, Freibetrag je Region, Limits laut Seite anpassbar
         disclosure: "partial",
         tag: "no API",
         tagDe: "kein API",
-        notes: "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in USD, not tokens: Freebucks buy one-hour model sessions, requests here are derived from the monthly USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
-        notesDe: "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in USD gemessen, nicht in Token: Freebucks kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem Monats-Volumen in USD und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+        notes: "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in Freebucks: they buy one-hour model sessions, requests here are derived from the published USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
+        notesDe: "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in Freebucks gemessen: sie kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem veroeffentlichten Dollar-Volumen und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
         sourceIds: ["freebuff-pricing", "freebuff-faq"],
-        verifiedAt: "2026-09-21",
+        verifiedAt: "2026-09-28",
       });
     }
   }
@@ -748,12 +785,17 @@ function modelsForPlan(plan, feeds) {
     }
     return out;
   }
-  if (plan.id === "opencode-go") {
+  if (plan.provider === "opencode") {
     const oc = feeds["ocgo-pricing.json"];
     if (!oc?.models) return out;
+    // usage ist je Tarif ein Objekt ({go: 60, "go-plus": 180}); die alte Feed-Form
+    // hatte eine Zahl (nur ein Tarif). Der Tarif-Key ist das id-Suffix.
+    const planKey = plan.id.replace("opencode-", "");
+    const usageOf = (m) => (typeof m.usage === "number" ? m.usage : (m.usage?.[planKey] ?? null));
     for (const m of oc.models) {
-      if (typeof m.usage !== "number" || m.usage <= 0) continue;
-      out.push({ name: m.name, usage: m.usage, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m, privacy: m.privacy ?? null });
+      const usage = usageOf(m);
+      if (typeof usage !== "number" || usage <= 0) continue;
+      out.push({ name: m.name, usage, pattern: m.pattern ?? FALLBACK_PATTERN, pricing: m, privacy: m.privacy ?? null });
     }
     return out;
   }
@@ -936,7 +978,7 @@ function modelsForPlan(plan, feeds) {
     if (!quota || typeof quota.amount !== "number" || quota.amount <= 0) return out;
     const monthly = quota.window === "rolling" || quota.window === "week" ? quota.amount * 4.33 : quota.amount;
     for (const modelName of plan.feedModels) {
-      const match = allModels.find((m) => m.name && m.name.toLowerCase().includes(modelName.toLowerCase()));
+      const match = findFeedModel(allModels, modelName, plan.modelMatch);
       if (!match) continue;
       const pattern = match.pattern ?? FALLBACK_PATTERN;
       out.push({
