@@ -59,6 +59,10 @@ const I18N = {
     "stats.models-sub": "matched across plans",
     "stats.sources": "Live sources",
     "stats.sources-sub": "official feeds & docs",
+    "status.plans": "plans",
+    "status.comparable": "comparable",
+    "status.models": "model families",
+    "status.sources": "sources",
     "plans.h2": "The plans",
     "plans.sub": "Every plan and model combination. Rates are tokens or requests per 1 paid unit, in your currency.",
     "plans.per": "/mo",
@@ -369,6 +373,10 @@ const I18N = {
     "stats.models-sub": "über Pläne gematcht",
     "stats.sources": "Live-Quellen",
     "stats.sources-sub": "offizielle Feeds & Docs",
+    "status.plans": "Pläne",
+    "status.comparable": "vergleichbar",
+    "status.models": "Modell-Familien",
+    "status.sources": "Quellen",
     "plans.h2": "Die Pläne",
     "plans.sub": "Jede Plan-Modell-Kombination. Raten sind Tokens oder Requests pro 1 bezahlter Einheit, in deiner Währung.",
     "plans.per": "/Monat",
@@ -893,7 +901,6 @@ function renderAll() {
   syncRateLabels();
   renderStats();
   renderCalculator();
-  renderTop();
   renderPlans();
   renderDashboard();
   refreshDashDetail();
@@ -1011,15 +1018,19 @@ function syncFilterChips() {
 }
 
 function renderStats() {
-  $("#stat-plans").textContent = fmtNum(data.statistics?.totalPlans);
-  $("#stat-comparable").textContent = fmtNum(data.statistics?.comparablePlans);
-  $("#stat-models").textContent = fmtNum(data.modelComparisons?.length ?? data.statistics?.plansWithModels);
+  const setTxt = (sel, val) => { const el = $(sel); if (el) el.textContent = val; };
+  setTxt("#stat-plans", fmtNum(data.statistics?.totalPlans));
+  setTxt("#stat-comparable", fmtNum(data.statistics?.comparablePlans));
+  setTxt("#stat-models", fmtNum(data.modelComparisons?.length ?? data.statistics?.plansWithModels));
   const srcCount = data.statistics?.sourceCount ?? Object.keys(data.sources ?? {}).length;
-  $("#stat-sources").textContent = fmtNum(srcCount);
+  setTxt("#stat-sources", fmtNum(srcCount));
   const ms = $("#meta-sources");
   if (ms) ms.textContent = `${fmtNum(srcCount)} ${lang === "de" ? "Live-Quellen" : "live sources"}`;
   const date = new Date(data.generatedAt);
-  $("#meta-updated").textContent = `${t("updated")}: ${date.toLocaleDateString(lang === "de" ? "de-DE" : "en-US")}`;
+  const day = date.toLocaleDateString(lang === "de" ? "de-DE" : "en-US");
+  const hh = String(date.getUTCHours()).padStart(2, "0");
+  const mm = String(date.getUTCMinutes()).padStart(2, "0");
+  setTxt("#meta-updated", `${t("updated")} ${day}, ${hh}:${mm} UTC`);
   // Anteilsbalken: zeigen das Verhältnis, nicht nur die Zahl
   const total = Number(data.statistics?.totalPlans) || 0;
   const comp = Number(data.statistics?.comparablePlans) || 0;
@@ -1040,15 +1051,14 @@ function renderStats() {
     { cls: "on", pct: (comp / total) * 100 },
     { cls: "rest", pct: ((total - comp) / total) * 100 },
   ]);
-  $("#stat-plans-sub").textContent = lang === "de" ? "davon " + data.statistics?.undisclosed + " ohne öffentliche Zahlen" : "of which " + data.statistics?.undisclosed + " undisclosed";
-  const csub = $("#stat-comparable-sub");
-  if (csub) csub.textContent = (lang === "de" ? "von " + total + " Plänen" : "of " + total + " plans");
+  setTxt("#stat-plans-sub", lang === "de" ? "davon " + data.statistics?.undisclosed + " ohne öffentliche Zahlen" : "of which " + data.statistics?.undisclosed + " undisclosed");
+  setTxt("#stat-comparable-sub", lang === "de" ? "von " + total + " Plänen" : "of " + total + " plans");
   // Disclaimer-Banner
   const disc = $("#disclaimer");
   if (disc) {
     disc.style.display = "block";
-    $("#disclaimer-title").textContent = t("disclaimer.title");
-    $("#disclaimer-text").textContent = t("disclaimer.text");
+    const dt = $("#disclaimer-title"); if (dt) dt.textContent = t("disclaimer.title");
+    const dx = $("#disclaimer-text"); if (dx) dx.textContent = t("disclaimer.text");
   }
 }
 
@@ -1290,6 +1300,10 @@ function buildCombos() {
     const capStr = monthlyQuota
       ? `${fmtNum(monthlyQuota.amount)} ${monthlyQuota.unit ?? ""} / ${windows[monthlyQuota.window] ?? monthlyQuota.window}`
       : null;
+    // Kurzform fuer die Tabellenzelle (Zahl + Einheit), voller Text steht in der Detailzeile
+    const capShort = monthlyQuota
+      ? `${fmtNum(monthlyQuota.amount)} ${monthlyQuota.unit ?? ""}`.trim()
+      : null;
     for (const row of plan.modelRows ?? []) {
       const score = aiScoreFor(row.model, row.family);
       const tokensPerReq = tokensPerRequest(row);
@@ -1324,6 +1338,7 @@ function buildCombos() {
         rawRequestsPerMonth: row.requestsPerMonth ?? null,
         // Inklusives Volumen des Plans (Cap, keine Rate)
         capStr,
+        capShort,
         // Schätzung (kein offizielles Limit): z.B. Kimi price-based estimate
         estimateNote: row.estimate ?? null,
         // Privacy: kombinierte Aussage (Modell-Feed vorrangig, sonst Anbieter-Policy)
@@ -1425,8 +1440,8 @@ function planColor(name, provider) {
 
 
 // Zeilen-Deckel: 396 Modell-Kombinationen als Endlos-Tabelle sind unbrauchbar
-let plansLimit = 25, famLimit = 12;
-const PAGE = 25;
+let plansLimit = 50, famLimit = 12;
+const PAGE = 50;
 const FAM_PAGE = 12;
 // Zahlen rechtsbündig: Standard in Datentabellen, sonst kein sauberer Scan
 const RIGHT_COLS = new Set(["score", "tokens", "req10", "rawtokens", "rawreq", "price", "cap"]);
@@ -1445,8 +1460,7 @@ function detailGrid(c) {
   push(t("plans.th.rawtokens"), fmtTokens(c.rawTokensPerMonth));
   push(t("plans.th.rawreq"), c.rawRequestsPerMonth != null ? fmtNum(c.rawRequestsPerMonth) : null);
   push(t("plans.th.price"), c.priceDisplay ?? (c.price != null ? fmtPrice(c.price) : null));
-  push(t("plans.th.cap"), c.cap != null ? String(c.cap) : null);
-  push(t("plans.th.volume"), c.volume ?? c.includedVolume ?? null);
+  push(t("plans.th.cap"), c.capStr ?? c.capShort ?? null);
   push(t("plans.meter"), c.meter ?? null);
   const grid = `<div class="detail-grid">${parts.map(([k, v]) => `<div><div class="dg-k">${escapeHtml(k)}</div><div class="dg-v">${escapeHtml(String(v))}</div></div>`).join("")}</div>`;
   // Hinweis als eigene Zeile unter dem Raster: als Grid-Zelle wuerde der lange
@@ -1672,7 +1686,7 @@ function renderCell(col, c) {
       const mark = c.estimateNote ? "~" : "";
       return `<td data-label="${t("plans.th.rawreq")}"><span class="num">${c.rawRequestsPerMonth ? mark + fmtNum(c.rawRequestsPerMonth) : "-"}</span>${c.estimateNote ? `<div class="est-note" title="${escapeHtml(c.estimateNote)}">${t("plans.estimate")}</div>` : ""}</td>`;
     }
-    case "cap": return `<td data-label="${t("plans.th.cap")}"><span class="num">${c.capStr ? escapeHtml(c.capStr) : "-"}</span></td>`;
+    case "cap": return `<td data-label="${t("plans.th.cap")}"><span class="num">${c.capShort ? escapeHtml(c.capShort) : "-"}</span></td>`;
     case "price": {
       const wl = c.waitlist === true
         ? `<div class="waitlist-badge" title="${t("plans.waitlist.title")}">${t("plans.waitlist")}</div>`
@@ -1775,7 +1789,9 @@ function syncColumnPicker() {
   });
 }
 
-/* ============ MOBILE BOTTOM-SHEET (Filter & Columns) ============ */
+/* ============ MOBILE FILTER-DRAWER (faehrt von links ein) ============ */
+let sheetCloseTimer = null;
+let sheetReturnFocus = null;
 function openSheet() {
   const sheet = $("#sheet");
   const overlay = $("#sheet-overlay");
@@ -1794,26 +1810,48 @@ function openSheet() {
   syncNoApiBoxes();
   syncTrainingBoxes();
   syncColumnPicker();
+  if (sheetCloseTimer) { clearTimeout(sheetCloseTimer); sheetCloseTimer = null; }
+  if (document.activeElement && typeof document.activeElement.focus === "function") sheetReturnFocus = document.activeElement;
   sheet.hidden = false;
   if (overlay) overlay.hidden = false;
   document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => sheet.classList.add("open"));
+  const focusTarget = $("#sheet-close");
+  if (focusTarget) setTimeout(() => { try { focusTarget.focus(); } catch (e) { /* ignore */ } }, 60);
 }
 function closeSheet() {
   const sheet = $("#sheet");
   const overlay = $("#sheet-overlay");
-  if (sheet) sheet.hidden = true;
-  if (overlay) overlay.hidden = true;
+  if (sheet) sheet.classList.remove("open");
   document.body.style.overflow = "";
+  if (sheetCloseTimer) clearTimeout(sheetCloseTimer);
+  sheetCloseTimer = setTimeout(() => {
+    const s = $("#sheet");
+    if (s) s.hidden = true;
+    const o = $("#sheet-overlay");
+    if (o) o.hidden = true;
+    sheetCloseTimer = null;
+  }, 200);
+  if (sheetReturnFocus && document.contains(sheetReturnFocus) && typeof sheetReturnFocus.focus === "function") {
+    try { sheetReturnFocus.focus(); } catch (e) { /* ignore */ }
+  }
+  sheetReturnFocus = null;
 }
 function initSheet() {
-  // Auf Mobile: "Filter & Columns"-Button öffnet Sheet (statt Filter-Toggle + Col-Picker)
+  // Auf Mobile: Filter-Button öffnet den linken Drawer (statt Filter-Toggle + Col-Picker)
   const isMobile = window.matchMedia("(max-width: 760px)").matches;
+  const ft = $("#filter-toggle");
+  if (ft && isMobile) ft.addEventListener("click", openSheet);
+  const ov = $("#filter-open-overview");
+  if (ov) ov.addEventListener("click", openSheet);
   if (isMobile) {
-    const ft = $("#filter-toggle");
-    if (ft) ft.addEventListener("click", openSheet);
     const cp = $("#col-picker-btn");
-    if (cp) cp.style.display = "none"; // Columns im Sheet
+    if (cp) cp.style.display = "none"; // Columns im Drawer
   }
+  document.addEventListener("keydown", (e) => {
+    const s = $("#sheet");
+    if (e.key === "Escape" && s && !s.hidden) closeSheet();
+  });
   // Sheet-Controls: Änderungen direkt anwenden
   const sk = $("#sheet-sort-key"); if (sk) sk.addEventListener("change", (e) => { plansSort.key = e.target.value; renderPlans(); });
   const sd = $("#sheet-sort-dir"); if (sd) sd.addEventListener("change", (e) => { plansSort.dir = e.target.value; renderPlans(); });
@@ -2841,32 +2879,8 @@ function initTabs() {
   fromHash();
 }
 
-// Kompakte Top-Tabelle im Übersichts-View (stärkstes Modell je Plan, nach Rate)
-function renderTop() {
-  const tbody = $("#top-tbody");
-  if (!tbody || !data) return;
-  const best = new Map();
-  for (const c of buildCombos()) {
-    if (c.tokensPer == null) continue;
-    // Dieses Panel zeigt bewusst nur Plaene ohne Training auf den Daten und nur
-    // solche mit API-Zugang: ohne API sind die Token-Raten nicht vergleichbar.
-    if (c.noTraining !== true) continue;
-    if (isNoApi(c)) continue;
-    if (!includePriceBased && c.dataTier === "D") continue;
-    const cur = best.get(c.planId);
-    if (!cur || c.tokensPer > cur.tokensPer) best.set(c.planId, c);
-  }
-  const rows = [...best.values()].sort((a, b) => b.tokensPer - a.tokensPer).slice(0, 6);
-  if (!rows.length) { tbody.innerHTML = ""; return; }
-  tbody.innerHTML = rows.map((c) => `<tr>`
-    + `<td data-label="${t("plans.th.plan")}"><span class="strong">${escapeHtml(c.planName)}</span><div class="muted">${escapeHtml(c.provider)}</div></td>`
-    + `<td data-label="${t("plans.th.model")}">${escapeHtml(c.model)}</td>`
-    + `<td data-label="${t("plans.th.score")}">${c.score !== null ? `<span class="num">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : "-"}</td>`
-    + `<td data-label="${rateTokensLabel()}"><span class="num strong">${fmtTokens(c.tokensPer)}</span></td>`
-    + `<td data-label="${t("plans.th.rawtokens")}"><span class="num">${fmtTokens(c.rawTokensPerMonth)}</span></td>`
-    + `<td data-label="${t("plans.th.price")}"><span class="num">${c.priceDisplay ?? "-"}</span></td>`
-    + `</tr>`).join("");
-}
+// (Best-value-Panel entfernt: der Scatter-Plot steht jetzt oben, der Link
+//  "Alle Pläne" sitzt im Chart-Kopf. renderTop() ist stillgelegt.)
 
 function initBackTop() {
   const b = $("#back-top");
@@ -3083,9 +3097,12 @@ function init() {
   const plansMeterEl = $("#plans-meter-filter");
   if (plansMeterEl) plansMeterEl.addEventListener("change", (e) => { plansMeter = e.target.value; rerender(); });
 
-  // Filter-Toggle: ein-/ausklappen
+  // Filter-Toggle: ein-/ausklappen (Desktop). Mobil öffnet der Button den linken Drawer.
   const filterToggle = $("#filter-toggle");
-  if (filterToggle) filterToggle.addEventListener("click", () => toggleFilters());
+  if (filterToggle) filterToggle.addEventListener("click", () => {
+    if (window.matchMedia("(max-width: 760px)").matches) return;
+    toggleFilters();
+  });
 
   // Sort-Selector (Mobile): ändert Sortierung
   const sortKeySel = $("#sort-select-key");
