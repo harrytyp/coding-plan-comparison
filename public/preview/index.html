@@ -1538,7 +1538,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   <section id="models" class="panel">
     <div class="section-head">
       <h2 data-i18n="fcomp.h2">Same model, different plans</h2>
-      <p data-i18n="fcomp.sub">Request rate per $1 paid for one model family across plans. Plain numbers, no podium.</p>
+      <p data-i18n="fcomp.sub">Requests per $1 paid for the same model across plans.</p>
       <p class="fc-legend" id="fcomp-legend"></p>
     </div>
     <div class="fc-list" id="fcomp-list">
@@ -1605,8 +1605,8 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   <!-- ===== METHOD ===== -->
   <section id="method">
     <div class="section-head">
-      <h2 data-i18n="method.h2">Why “60 for 10” is not the answer</h2>
-      <p data-i18n="method.sub">The sticker value hides the real economics. Here is how plans are made comparable, every step reproducible.</p>
+      <h2 data-i18n="method.h2">What “60 for 10” actually buys</h2>
+      <p data-i18n="method.sub">An advertised “60 for 10” says little about what a plan delivers. This is how we make plans comparable, and every step is reproducible.</p>
     </div>
 
     <div class="formula mono" id="formula-block"></div>
@@ -1614,18 +1614,18 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
     <div class="method-grid">
       <div class="method-card">
         <div class="step-num">1</div>
-        <h3 data-i18n="method.s1.t">Real token prices, not marketing</h3>
-        <p data-i18n="method.s1.p">Every model behind a plan has published API token prices: input, output, cached-read and cached-write. That is the ground truth behind any credit or dollar-usage number.</p>
+        <h3 data-i18n="method.s1.t">The provider's own token prices</h3>
+        <p data-i18n="method.s1.p">Every model behind a plan has published API token prices: input, output, cached-read and cached-write. We use them to turn credits or dollar usage into requests.</p>
       </div>
       <div class="method-card">
         <div class="step-num">2</div>
         <h3 data-i18n="method.s2.t">Provider credit formulas</h3>
-        <p data-i18n="method.s2.p">Providers define their own credits (GLM: <span class="mono">(in×6.9 + cached×1.7 + out×24)/10000</span>). Those formulas come from the official docs, never invented.</p>
+        <p data-i18n="method.s2.p">Providers define their own credits (GLM: <span class="mono">(in×6.9 + cached×1.7 + out×24)/10000</span>). We take those formulas from the official docs instead of inventing them.</p>
       </div>
       <div class="method-card">
         <div class="step-num">3</div>
         <h3 data-i18n="method.s3.t">Cache-aware workload model</h3>
-        <p data-i18n="method.s3.p">Coding agents hit the cache constantly. Input is priced 5% fresh + 95% cached-write, cached-read and output at their real rates, per model and workload pattern.</p>
+        <p data-i18n="method.s3.p">Coding agents hit the cache constantly. We price input as 5% fresh and 95% cached-write, and use the real rates for cached reads and output, per model and workload pattern.</p>
       </div>
     </div>
     <details class="method-more">
@@ -1633,18 +1633,18 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
       <div class="method-grid">
       <div class="method-card">
         <div class="step-num">4</div>
-        <h3 data-i18n="method.s4.t">Windows are caps, not volumes</h3>
-        <p data-i18n="method.s4.p">A 5-hour window is a throughput limit, not a monthly quota. Weekly credits scale to a month (×4.33); 5h caps are never multiplied into fake monthly numbers.</p>
+        <h3 data-i18n="method.s4.t">Time windows are throughput caps</h3>
+        <p data-i18n="method.s4.p">A 5-hour window is a throughput limit rather than a monthly quota. Weekly credits scale to a month (×4.33), and we never multiply 5-hour caps into monthly numbers.</p>
       </div>
       <div class="method-card">
         <div class="step-num">5</div>
-        <h3 data-i18n="method.s5.t">Fair pattern unification</h3>
-        <p data-i18n="method.s5.p">Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans, so a cheap pattern cannot rig the comparison.</p>
+        <h3 data-i18n="method.s5.t">One workload pattern per model family</h3>
+        <p data-i18n="method.s5.p">Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans, so neither plan gets a cheaper pattern.</p>
       </div>
       <div class="method-card">
         <div class="step-num">6</div>
-        <h3 data-i18n="method.s6.t">Undisclosed stays undisclosed</h3>
-        <p data-i18n="method.s6.p">If a provider hides its numbers, we say so. No invented credits, no back-calculated quotas. Honesty is a feature.</p>
+        <h3 data-i18n="method.s6.t">Undisclosed numbers stay empty</h3>
+        <p data-i18n="method.s6.p">If a provider does not publish its numbers, we say so. We do not invent credits or back-calculate quotas.</p>
       </div>
       </div>
     </details>
