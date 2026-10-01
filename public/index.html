@@ -1203,14 +1203,22 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 .filter-dock { margin-top: 14px; }
 .filter-dock[hidden] { display: none; }
 
+/* Rail-Bloecke: ein-/ausklappbar, Standard eingeklappt */
+.rail-block > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; min-height: 44px; gap: 8px; }
+.rail-block:not([open]) { padding-top: 8px; padding-bottom: 8px; }
+.rail-block:not([open]) > summary { margin-bottom: 0; }
+.rail-block > summary::-webkit-details-marker { display: none; }
+.rail-block > summary::after { content: "+"; font-family: var(--pv-mono); color: var(--text-3); }
+.rail-block[open] > summary::after { content: "\2013"; }
+
 /* 3) Chart direkt unter der Statuszeile */
 #workbench { margin-top: 18px; }
 
 /* 4) Mobile Reihenfolge im Workbench: Chart, Rail, Detail */
 @media (max-width: 900px) {
   .chart-card { order: 1; }
-  .rail { order: 2; }
-  .detail-card { order: 3; }
+  .detail-card { order: 2; }
+  .rail { order: 3; }
 }
 
 /* 5) Tap-Ziele >= 44px (transparente Flaeche, Optik bleibt ruhig) */
@@ -1277,7 +1285,9 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 /* 8b) Attribut-Chips flacher, damit die Zeile nicht auf zwei Chip-Reihen waechst */
 .attr { line-height: 1.35; padding: 0 6px 1px; margin: 0 4px 2px 0; }
 /* 8c) Schliessen-Kreuz der Filter-Chips: 44px Trefferflaeche ohne groessere Optik */
-.chip button { min-width: 44px; min-height: 44px; margin: -12px -10px -12px 0; padding: 0; }
+/* Trefferflaeche 44px ohne die Chip-Groesse zu veraendern (Pseudo-Element) */
+.chip button { position: relative; }
+.chip button::after { content: ""; position: absolute; inset: -12px -10px; }
 
 /* 5) Tap-Targets: Klickflaeche >= 44px, Optik unveraendert */
 .rail-check, .rail-row { min-height: 44px; }
@@ -1471,8 +1481,8 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   <!-- ===== WERKBANK: CHART OBEN, DANN RAIL + DETAIL ===== -->
   <div class="workbench" id="workbench">
     <aside class="rail">
-      <div class="rail-block">
-        <div class="rail-title" data-i18n="rail.axes">Axes</div>
+      <details class="rail-block">
+        <summary class="rail-title" data-i18n="rail.axes">Axes</summary>
         <label class="rail-row">
           <span data-i18n="dash.x">X axis</span>
           <select id="dash-x">
@@ -1495,24 +1505,24 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         </label>
         <label class="rail-check"><input type="checkbox" id="dash-pareto" checked><span data-i18n="dash.pareto">Pareto line</span></label>
         <label class="rail-check"><input type="checkbox" id="dash-logx" checked><span data-i18n="dash.logx">Logarithmic X</span></label>
-      </div>
+      </details>
 
-      <div class="rail-block">
-        <div class="rail-title" data-i18n="rail.target">Target zone</div>
+      <details class="rail-block">
+        <summary class="rail-title" data-i18n="rail.target">Target zone</summary>
         <label class="rail-check"><input type="checkbox" id="dash-green"><span data-i18n="dash.green">Show target</span></label>
         <label class="rail-row"><span data-i18n="rail.minx">Minimum X</span>
           <input type="number" id="dash-target-x" class="dash-target-input" step="any" placeholder="auto" data-i18n-aria="dash.targetHint"></label>
         <label class="rail-row"><span data-i18n="rail.miny">Minimum Y</span>
           <input type="number" id="dash-target-y" class="dash-target-input" step="any" placeholder="auto" data-i18n-aria="dash.targetHint"></label>
-      </div>
+      </details>
 
-      <div class="rail-block">
-        <div class="rail-title" data-i18n="rail.stats">In this view</div>
+      <details class="rail-block">
+        <summary class="rail-title" data-i18n="rail.stats">In this view</summary>
         <div class="rail-stat"><span data-i18n="rail.points">Points</span><b id="rail-points">…</b></div>
         <div class="rail-stat"><span data-i18n="rail.paretoCount">Pareto points</span><b id="rail-pareto">…</b></div>
         <div class="rail-stat"><span data-i18n="rail.best">Best rate</span><b id="rail-best">…</b></div>
         <div class="rail-stat"><span data-i18n="rail.median">Median score</span><b id="rail-median">…</b></div>
-      </div>
+      </details>
     </aside>
 
     <section class="chart-card">
