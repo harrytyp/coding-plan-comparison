@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-01T22:28:15.513Z",
+  "generatedAt": "2026-10-01T23:43:01.139Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -41326,7 +41326,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-01T22:28:15.391Z",
+    "fetchedAt": "2026-10-01T23:43:00.778Z",
     "count": 413,
     "scores": {
       "claude-opus-5-5": {
@@ -41440,10 +41440,10 @@
       "qwen3-8-27b": {
         "intelligence": 44.75
       },
-      "claude-opus-4-6": {
+      "gpt-5-5-pro": {
         "intelligence": 44.7
       },
-      "gpt-5-5-pro": {
+      "claude-opus-4-6": {
         "intelligence": 44.7
       },
       "gpt-5-6-luna": {
@@ -41812,10 +41812,10 @@
       "mimo-v2-5-pro": {
         "intelligence": 25.69
       },
-      "sarvam-105b": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.68
       },
-      "claude-haiku-4-5-20251001": {
+      "sarvam-105b": {
         "intelligence": 25.68
       },
       "nova-2-omni": {
@@ -41860,10 +41860,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.92
       },
-      "granite-4-2-30b": {
+      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.8
       },
-      "qwen3-next-80b-a3b-thinking": {
+      "granite-4-2-30b": {
         "intelligence": 23.8
       },
       "grok-4-20-beta-0309-reasoning": {
@@ -41959,10 +41959,10 @@
       "sarvam-30b": {
         "intelligence": 19.54
       },
-      "gpt-5-nano-2025-08-07": {
+      "qwen3-5-4b": {
         "intelligence": 19.5
       },
-      "qwen3-5-4b": {
+      "gpt-5-nano-2025-08-07": {
         "intelligence": 19.5
       },
       "diffusiongemma-26b-a4b-it": {
@@ -42256,10 +42256,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
