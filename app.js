@@ -16,7 +16,7 @@ if (typeof window !== "undefined") window.__CPC_LOADED__ = true;
 /* ---------------- i18n ---------------- */
 const I18N = {
   en: {
-    "nav.brand": "Coding Plan Compare",
+    "nav.brand": "vibeplan.cc",
     "nav.pareto": "Pareto",
     "nav.calc": "Calculator",
     "nav.changelog": "Changelog",
@@ -313,7 +313,7 @@ const I18N = {
     "foot.privacy": "Privacy",
     "foot.imprint": "Imprint",
     "foot.disclaimer": "Disclaimer",
-    "foot.rights": "© 2026 Coding Plan Compare · MIT License",
+    "foot.rights": "© 2026 vibeplan.cc · MIT License",
     "foot.lang": "English · Deutsch",
     "legal.h2": "Legal",
     "legal.sub": "Privacy, imprint and liability information.",
@@ -330,7 +330,7 @@ const I18N = {
     "disclaimer.text": "Prices and quotas change frequently. This site is informational, so confirm them on the official provider page before subscribing.",
   },
   de: {
-    "nav.brand": "Coding Plan Compare",
+    "nav.brand": "vibeplan.cc",
     "nav.pareto": "Pareto",
     "nav.calc": "Rechner",
     "nav.changelog": "Changelog",
@@ -628,7 +628,7 @@ const I18N = {
     "foot.privacy": "Datenschutz",
     "foot.imprint": "Impressum",
     "foot.disclaimer": "Haftungsausschluss",
-    "foot.rights": "© 2026 Coding Plan Compare · MIT-Lizenz",
+    "foot.rights": "© 2026 vibeplan.cc · MIT-Lizenz",
     "legal.h2": "Rechtliches",
     "legal.sub": "Datenschutz, Impressum und Haftungsinformationen.",
     "legal.privacy.h3": "Datenschutz",
@@ -772,8 +772,8 @@ function applyI18n() {
   document.documentElement.lang = lang;
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
   document.title = lang === "de"
-    ? "Coding Plan Compare , KI-Coding-Abos im Vergleich"
-    : "Coding Plan Compare , AI Coding Subscriptions, Compared";
+    ? "vibeplan.cc , KI-Coding-Abos im Vergleich"
+    : "vibeplan.cc , AI Coding Subscriptions, Compared";
   renderAll();
   syncMethodMore();
 }
@@ -1842,8 +1842,6 @@ function initSheet() {
   const isMobile = window.matchMedia("(max-width: 760px)").matches;
   const ft = $("#filter-toggle");
   if (ft && isMobile) ft.addEventListener("click", openSheet);
-  const ov = $("#filter-open-overview");
-  if (ov) ov.addEventListener("click", openSheet);
   if (isMobile) {
     const cp = $("#col-picker-btn");
     if (cp) cp.style.display = "none"; // Columns im Drawer
@@ -2854,6 +2852,9 @@ function showView(name) {
     });
     // Chart braucht nach dem Sichtbarwerden seine Größe: neu rendern
     if (view === "overview") requestAnimationFrame(() => renderDashboard());
+    // Filter-Dock gilt fuer Uebersicht (Pareto) und Plaene, nicht fuer Methodik/Changelog/Rechner
+    const dock = $("#filter-dock");
+    if (dock) dock.hidden = !(view === "overview" || view === "plans");
     try { history.replaceState(null, "", `#${view}`); } catch (e) { /* ignore */ }
     window.scrollTo({ top: 0, behavior: "auto" });
     revealActiveTab();

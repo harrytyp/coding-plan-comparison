@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Coding Plan Compare: AI coding subscription prices and token rates</title>
+<title>vibeplan.cc: AI coding subscription prices and token rates</title>
 <meta name="description" content="The independent, reproducible comparison of AI coding plan subscriptions. Live prices, real token economics, credit formulas, cache-aware cost modeling. English & Deutsch.">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Coding Plan Compare">
+<meta property="og:title" content="vibeplan.cc">
 <meta property="og:description" content="Compare AI coding plans and models by tokens and requests per dollar paid, with published quotas, live prices and an open dataset.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b57d0'/%3E%3Cpath d='M18 20h28v6H18zm0 10h28v6H18zm0 10h18v6H18z' fill='%23fff'/%3E%3C/svg%3E">
@@ -1178,8 +1178,8 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
    ========================================================================= */
 
 /* 1) Eine Kopfzeile (max 56px), Tab-Leiste mit deutlichem Abstand darunter */
-.nav-inner { height: 56px; }
-.nav .tabs { margin: 18px auto 0; }
+.nav-inner { height: 56px; display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
+.nav .tabs { margin: 34px auto 0; }
 
 /* 2) Statuszeile ersetzt Hero + KPI-Kacheln (einzeilig, kleinste Schrift >= 12px) */
 .status-line {
@@ -1198,6 +1198,10 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 .status-meta .dot b { color: var(--text); }
 .status-meta .dot + .dot::before { content: "\00b7"; color: var(--pv-tick); margin-right: 10px; }
 #pv-lastseen { margin-left: 4px; }
+
+/* Filter-Dock: liegt ueber den Views, gilt fuer Uebersicht und Plaene */
+.filter-dock { margin-top: 14px; }
+.filter-dock[hidden] { display: none; }
 
 /* 3) Chart direkt unter der Statuszeile */
 #workbench { margin-top: 18px; }
@@ -1314,7 +1318,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         "@type": "WebSite",
         "@id": "https://harrytyp.github.io/coding-plan-comparison/#website",
         "url": "https://harrytyp.github.io/coding-plan-comparison/",
-        "name": "Coding Plan Compare",
+        "name": "vibeplan.cc",
         "inLanguage": ["en", "de"],
         "description": "Compare AI coding plans and models by tokens and requests per dollar paid, with published quotas, live prices and an open JSON dataset."
       },
@@ -1346,7 +1350,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
       <span class="brand-mark">
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20h-20"/></svg>
       </span>
-      <span class="brand-text" data-i18n="nav.brand">Coding Plan Compare</span>
+      <span class="brand-text" data-i18n="nav.brand">vibeplan.cc</span>
     </a>
     <div class="nav-spacer"></div>
     <div class="nav-controls" id="nav-controls">
@@ -1385,7 +1389,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <main id="main">
   <!-- ===== STATUSZEILE (ersetzt Hero + KPI-Kacheln) ===== -->
   <div class="status-line" id="status-line">
-    <h1 class="status-title" data-i18n="nav.brand">Coding Plan Compare</h1>
+    <h1 class="status-title" data-i18n="nav.brand">vibeplan.cc</h1>
     <div class="status-meta" id="status-meta">
       <span class="dot"><b class="num" id="stat-plans">…</b><span data-i18n="status.plans">plans</span></span>
       <span class="dot"><b class="num" id="stat-comparable">…</b><span data-i18n="status.comparable">comparable</span></span>
@@ -1396,6 +1400,70 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   </div>
   <div class="disclaimer" id="disclaimer" hidden>
     <strong id="disclaimer-title"></strong> <span id="disclaimer-text"></span>
+  </div>
+
+  <!-- ===== FILTER-DOCK: gilt fuer Uebersicht (Pareto) und Plaene ===== -->
+  <div class="filter-dock" id="filter-dock">
+    <!-- Filter-Toggle: schlanker Header, Filter eingeklappt -->
+    <div class="filter-bar" id="filter-bar">
+      <button class="btn filter-toggle" id="filter-toggle" type="button" aria-expanded="false">
+        <span class="filter-toggle-icon" id="filter-toggle-icon"><svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/><circle cx="17.5" cy="12" r="1.9" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="1.9" fill="currentColor" stroke="none"/></svg></span>
+        <span data-i18n="filters.toggle">Filters</span>
+        <span class="filter-count-badge" id="filter-count-badge" hidden>0</span>
+      </button>
+      <span class="filter-active" id="filter-active"></span>
+    </div>
+    <div class="table-toolbar" id="plans-toolbar" hidden>
+      <input type="search" id="plans-search" class="toolbar-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="plans.searchAria">
+      <select id="plans-meter-filter" class="toolbar-select" data-i18n-aria="plans.meterAria">
+        <option value="" data-i18n="plans.allMeters">All meters</option>
+        <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
+        <option value="credits" data-i18n="plans.meter.credits">Credits</option>
+        <option value="tokens" data-i18n="plans.meter.tokens">Tokens</option>
+        <option value="requests" data-i18n="plans.meter.requests">Requests</option>
+        <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
+      </select>
+      <div class="budget-filter" id="budget-filter">
+        <label data-i18n="plans.budget">Max $/mo</label>
+        <input type="range" id="budget-slider" min="0" max="300" step="5" value="300" data-i18n-aria="plans.budgetAria">
+        <output id="budget-value" class="num">$300</output>
+      </div>
+      <div class="ai-filter" id="ai-filter">
+        <label data-i18n="plans.aiScore">Min AI score</label>
+        <input type="range" id="ai-slider" min="0" max="70" step="1" value="0" data-i18n-aria="plans.aiAria">
+        <output id="ai-value" class="num">0</output>
+      </div>
+      <div class="attr-filter" id="attr-filter">
+        <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
+        <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
+        <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
+        <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
+        <label class="privacy-filter"><input type="checkbox" id="training-toggle"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
+        <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
+      </div>
+      <label class="privacy-filter" id="tierd-filter">
+        <input type="checkbox" id="tierd-toggle">
+        <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
+      </label>
+      <div class="col-picker" id="col-picker">
+        <button class="btn col-picker-btn" id="col-picker-btn" type="button" data-i18n="plans.columns">Columns</button>
+        <div class="col-picker-panel" id="col-picker-panel" hidden>
+          <div class="col-picker-title" data-i18n="plans.columns.title">Show columns</div>
+          <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
+          <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
+          <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
+          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
+          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
+          <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
+          <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
+          <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
+          <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
+          <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
+        </div>
+      </div>
+      <span class="toolbar-count" id="plans-count" role="status"></span>
+
+    </div>
   </div>
 
   <!-- ===== VIEW: ÜBERSICHT ===== -->
@@ -1449,12 +1517,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 
     <section class="chart-card">
       <div class="chart-head">
-        <div>
-          <h2 data-i18n="dash.h3">Positioning</h2>
-          <p data-i18n="dash.sub">One dot per plan and model. Default axes: tokens per money against AI score.</p>
-        </div>
         <div class="chart-tools">
-          <button class="btn btn-sm mobile-only" id="filter-open-overview" type="button" data-i18n="filters.toggle">Filters</button>
           <button class="btn btn-sm" id="top-open-plans" type="button" data-i18n="top.all">All plans</button>
           <button class="btn btn-sm" id="dash-reset-btn" type="button" data-i18n="dash.resetZoom" hidden>Reset zoom</button>
         </div>
@@ -1535,66 +1598,6 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
           <option value="asc" data-i18n="sort.asc">↑ asc</option>
         </select>
       </label>
-    </div>
-    <!-- Filter-Toggle: schlanker Header, Filter eingeklappt -->
-    <div class="filter-bar" id="filter-bar">
-      <button class="btn filter-toggle" id="filter-toggle" type="button" aria-expanded="false">
-        <span class="filter-toggle-icon" id="filter-toggle-icon"><svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/><circle cx="17.5" cy="12" r="1.9" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="1.9" fill="currentColor" stroke="none"/></svg></span>
-        <span data-i18n="filters.toggle">Filters</span>
-        <span class="filter-count-badge" id="filter-count-badge" hidden>0</span>
-      </button>
-      <span class="filter-active" id="filter-active"></span>
-    </div>
-    <div class="table-toolbar" id="plans-toolbar" hidden>
-      <input type="search" id="plans-search" class="toolbar-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="plans.searchAria">
-      <select id="plans-meter-filter" class="toolbar-select" data-i18n-aria="plans.meterAria">
-        <option value="" data-i18n="plans.allMeters">All meters</option>
-        <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
-        <option value="credits" data-i18n="plans.meter.credits">Credits</option>
-        <option value="tokens" data-i18n="plans.meter.tokens">Tokens</option>
-        <option value="requests" data-i18n="plans.meter.requests">Requests</option>
-        <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
-      </select>
-      <div class="budget-filter" id="budget-filter">
-        <label data-i18n="plans.budget">Max $/mo</label>
-        <input type="range" id="budget-slider" min="0" max="300" step="5" value="300" data-i18n-aria="plans.budgetAria">
-        <output id="budget-value" class="num">$300</output>
-      </div>
-      <div class="ai-filter" id="ai-filter">
-        <label data-i18n="plans.aiScore">Min AI score</label>
-        <input type="range" id="ai-slider" min="0" max="70" step="1" value="0" data-i18n-aria="plans.aiAria">
-        <output id="ai-value" class="num">0</output>
-      </div>
-      <div class="attr-filter" id="attr-filter">
-        <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
-        <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
-        <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
-        <label class="privacy-filter"><input type="checkbox" id="training-toggle"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
-        <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
-      </div>
-      <label class="privacy-filter" id="tierd-filter">
-        <input type="checkbox" id="tierd-toggle">
-        <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
-      </label>
-      <div class="col-picker" id="col-picker">
-        <button class="btn col-picker-btn" id="col-picker-btn" type="button" data-i18n="plans.columns">Columns</button>
-        <div class="col-picker-panel" id="col-picker-panel" hidden>
-          <div class="col-picker-title" data-i18n="plans.columns.title">Show columns</div>
-          <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
-          <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
-          <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
-          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
-          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
-          <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
-          <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
-          <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
-          <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
-          <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
-        </div>
-      </div>
-      <span class="toolbar-count" id="plans-count" role="status"></span>
-
     </div>
     
     
@@ -1834,7 +1837,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <footer>
   <div class="footer-inner">
     <div class="footer-row">
-      <span data-i18n="foot.rights">© 2026 Coding Plan Compare · MIT license</span>
+      <span data-i18n="foot.rights">© 2026 vibeplan.cc · MIT license</span>
       <span class="footer-links">
         <span data-i18n="foot.scope"></span>
         <a href="data/latest.json" target="_blank" data-i18n="foot.json">latest.json (API)</a>
@@ -1949,7 +1952,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <div class="sr-only" id="chart-status" role="status" aria-live="polite"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
-<script src="app.js?v=1296e50"></script>
+<script src="app.js?v=43c2e67"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,
