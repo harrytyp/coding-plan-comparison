@@ -327,6 +327,7 @@ const I18N = {
   },
   de: {
     "nav.brand": "Coding Plan Compare",
+    "nav.pareto": "Pareto",
     "nav.calc": "Rechner",
     "nav.changelog": "Changelog",
     "menu.currency": "Währung",
@@ -722,9 +723,11 @@ function fmtTokens(n) {
   return Math.round(n).toLocaleString(loc);
 }
 
+// Geldbeträge laufen intern als USD und werden in die gewählte Währung
+// umgerechnet. Hier stand früher ein festes "$", wodurch Referenzpläne,
+// Budget-Labels und das Dashboard-Detail beim Umschalten konstant blieben.
 function fmtMoney(n) {
-  if (n === null || n === undefined || !isFinite(n)) return "-";
-  return "$" + n.toLocaleString(lang === "de" ? "de-DE" : "en-US", { maximumFractionDigits: 2 });
+  return fmtPrice(n);
 }
 
 function fmtPct(n) {
@@ -893,6 +896,7 @@ function renderAll() {
   renderTop();
   renderPlans();
   renderDashboard();
+  refreshDashDetail();
   renderFamily();
   renderChangelog();
   renderFormula();
@@ -2484,6 +2488,15 @@ function showDashDetail(p) {
   // von selbst nach unten gezogen. Wer das Panel sehen will, scrollt selbst.
 }
 
+// Detail-Panel neu aufbauen, wenn Sprache oder Währung wechseln.
+// renderDashboard() läuft auch beim Hovern und darf das Panel nicht anfassen,
+// deshalb hängt das Refresh an renderAll() (Sprache, Währung, Filter).
+function refreshDashDetail() {
+  if (!dashSelected) return;
+  const p = (dashPoints || []).find((x) => `${x.combo.planId}::${x.combo.model}` === dashSelected);
+  if (p) showDashDetail(p);
+}
+
 // Tooltip + Auswahl auf Canvas (Hover, Klick, Touch mit Hit-Test)
 function bindDashTooltip() {
   const canvas = $("#dash-canvas");
@@ -2924,7 +2937,8 @@ function renderChangelog() {
   list.innerHTML = entries.map((e) => {
     let date = e.date;
     try { date = new Date(e.date + "T00:00:00").toLocaleDateString(lang === "de" ? "de-DE" : "en-US"); } catch (err) { /* keep */ }
-    return `<div class="cl-row"><span class="cl-date num">${escapeHtml(date)}</span><span>${escapeHtml(e.text)}</span></div>`;
+    const text = lang === "de" ? (e.textDe ?? e.text ?? e.textEn ?? "") : (e.textEn ?? e.text ?? "");
+    return `<div class="cl-row"><span class="cl-date num">${escapeHtml(date)}</span><span>${escapeHtml(text)}</span></div>`;
   }).join("");
 }
 

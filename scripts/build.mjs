@@ -1469,7 +1469,11 @@ function loadChangelog(root) {
   try {
     const raw = readFileSync(join(root, "data", "changelog.yml"), "utf8");
     const parsed = parseYaml(raw);
-    const entries = (parsed.entries ?? []).filter((e) => e.date && e.text);
+    // text = Deutsch (Bestand), textEn = Englisch. Beide durchreichen, die UI
+    // waehlt nach Sprache.
+    const entries = (parsed.entries ?? [])
+      .filter((e) => e.date && (e.text || e.textEn))
+      .map((e) => ({ date: e.date, text: e.text ?? null, textEn: e.textEn ?? null }));
     return { entries };
   } catch (e) {
     console.warn("WARN: changelog.yml nicht lesbar:", e.message);
