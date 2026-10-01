@@ -1297,8 +1297,8 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 .rail select, .dash-target-input, .sheet-search, .sheet-range, #budget-slider, #ai-slider { min-height: 44px; }
 .cmdk-trigger { min-width: 44px; }
 
-/* 7) Filter als linkes Drawer (mobil) statt Blatt von unten */
-@media (max-width: 760px) {
+/* 7) Filter als linkes Drawer (mobil/tablet) statt Blatt von unten */
+@media (max-width: 900px) {
   .sheet {
     top: 0; bottom: 0; right: auto; height: 100%; max-height: none; width: min(88vw, 340px);
     border-top: 0; border-right: 1px solid var(--line); border-radius: 0;
@@ -1955,7 +1955,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <div class="sr-only" id="chart-status" role="status" aria-live="polite"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
-<script src="../app.js?v=43c2e67"></script>
+<script src="../app.js?v=6243fa9"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,

@@ -1839,7 +1839,7 @@ function closeSheet() {
 }
 function initSheet() {
   // Auf Mobile: Filter-Button öffnet den linken Drawer (statt Filter-Toggle + Col-Picker)
-  const isMobile = window.matchMedia("(max-width: 760px)").matches;
+  const isMobile = window.matchMedia("(max-width: 900px)").matches;
   const ft = $("#filter-toggle");
   if (ft && isMobile) ft.addEventListener("click", openSheet);
   if (isMobile) {
@@ -3101,7 +3101,7 @@ function init() {
   // Filter-Toggle: ein-/ausklappen (Desktop). Mobil öffnet der Button den linken Drawer.
   const filterToggle = $("#filter-toggle");
   if (filterToggle) filterToggle.addEventListener("click", () => {
-    if (window.matchMedia("(max-width: 760px)").matches) return;
+    if (window.matchMedia("(max-width: 900px)").matches) return;
     toggleFilters();
   });
 
