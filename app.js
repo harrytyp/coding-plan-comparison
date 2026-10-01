@@ -843,18 +843,7 @@ function cmdkRender(query) {
     if (it) it.run();
   }));
 }
-// Punkt im Chart auswählen (Palette, Shortlist, Tabelle)
-// Detail-Panel auf schmalen Displays ins Bild holen. Wird ausschliesslich nach
-// einer Nutzeraktion aufgerufen (Tippen auf Punkt, Shortlist, Palette): beim
-// Laden hatte ein automatisches Scrollen die Seite nach unten gezogen.
-function revealDetailOnNarrow() {
-  try {
-    if (!window.matchMedia || !window.matchMedia("(max-width: 900px)").matches) return;
-    const el = document.getElementById("dash-detail");
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  } catch (e) { /* ignore */ }
-}
-
+// Punkt im Chart auswählen (Palette, Shortlist, Tabelle): Detail-Panel fuellen, ohne zu scrollen
 function selectCombo(c) {
   const key = `${c.planId}::${c.model}`;
   const p = dashPoints.find((x) => `${x.combo.planId}::${x.combo.model}` === key);
@@ -862,7 +851,6 @@ function selectCombo(c) {
   if (p) showDashDetail(p);
   showView("overview");
   renderDashboard();
-  revealDetailOnNarrow();
 }
 function initPalette() {
   const trigger = $("#cmdk-trigger");
@@ -2486,7 +2474,6 @@ function renderShortlist(pts) {
     dashSelected = b.dataset.key;
     showDashDetail(p);
     renderDashboard();
-    revealDetailOnNarrow();
   }));
 }
 
@@ -2569,7 +2556,6 @@ function bindDashTooltip() {
     dashSelected = `${p.combo.planId}::${p.combo.model}`;
     showDashDetail(p);
     renderDashboard(); // Ring zeichnen
-    revealDetailOnNarrow(); // auf dem Phone liegt das Panel unter dem Chart
   };
   // Crosshair nur neu zeichnen, wenn sich der Punkt ändert (rAF-gebremst)
   let hoverRaf = null;
