@@ -9,6 +9,34 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Preview build resolves the JSON-LD date placeholder</title>
+    <id>https://vibeplan.cc/#ff76c30</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ff76c30"/>
+    <summary>Preview build resolves the JSON-LD date placeholder</summary>
+  </entry>
+  <entry>
+    <title>Indexnow, 404 page, font preload, repo-ready metadata</title>
+    <id>https://vibeplan.cc/#c38ed23</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/c38ed23"/>
+    <summary>Indexnow, 404 page, font preload, repo-ready metadata</summary>
+  </entry>
+  <entry>
+    <title>A static comparison page that targets \"coding plan comparison\"</title>
+    <id>https://vibeplan.cc/#5269ffd</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/5269ffd"/>
+    <summary>A static comparison page that targets \"coding plan comparison\"</summary>
+  </entry>
+  <entry>
+    <title>One price including the fee, no separate fee marker</title>
+    <id>https://vibeplan.cc/#82c67cf</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/82c67cf"/>
+    <summary>One price including the fee, no separate fee marker</summary>
+  </entry>
+  <entry>
     <title>Generate the changelog from the repository commits</title>
     <id>https://vibeplan.cc/#1fe46a4</id>
     <updated>2026-10-02T00:00:00Z</updated>
@@ -189,33 +217,5 @@
     <updated>2026-09-23T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/f6b2325"/>
     <summary>Measured quota for Claude Max 20x from published third-party telemetry</summary>
-  </entry>
-  <entry>
-    <title>Measure plan quotas from local tokens plus official percentages</title>
-    <id>https://vibeplan.cc/#aebe8cd</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/aebe8cd"/>
-    <summary>Measure plan quotas from local tokens plus official percentages</summary>
-  </entry>
-  <entry>
-    <title>Reference plans for OpenAI Codex, Claude, Cursor and Kiro</title>
-    <id>https://vibeplan.cc/#068a3b7</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/068a3b7"/>
-    <summary>Reference plans for OpenAI Codex, Claude, Cursor and Kiro</summary>
-  </entry>
-  <entry>
-    <title>Add GitHub Copilot and Ollama Cloud</title>
-    <id>https://vibeplan.cc/#9710333</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/9710333"/>
-    <summary>Add GitHub Copilot and Ollama Cloud</summary>
-  </entry>
-  <entry>
-    <title>Add MiMo Token Plan, StepFun Step Plan and Cerebras Code</title>
-    <id>https://vibeplan.cc/#ad35510</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ad35510"/>
-    <summary>Add MiMo Token Plan, StepFun Step Plan and Cerebras Code</summary>
   </entry>
 </feed>
