@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T09:49:24.009Z",
+  "generatedAt": "2026-10-02T09:50:17.225Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -88,6 +88,9 @@
       "dataTierNote": "Official per-model monthly limit in USD from the feed; 5h/weekly windows are the documented shares of it (20 % / 50 %)",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -1122,6 +1125,9 @@
       "dataTierNote": "Official per-model monthly limit in USD from the feed; 5h/weekly windows are the documented shares of it (20 % / 50 %)",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -2156,6 +2162,9 @@
       "dataTierNote": "Official total 9,000 req/mo as anchor",
       "notes": "No API access: the $1 Go credits can only be spent in the Command Code CLI, so this plan cannot be used from your own harness or agent. Every other Command Code plan includes API access.",
       "notesDe": "Kein API-Zugang: Die Credits des 1-$-Plans lassen sich nur in der Command-Code-CLI ausgeben, der Plan ist damit nicht in einem eigenen Harness oder Agenten nutzbar. Alle anderen Command-Code-Pläne haben API-Zugang.",
+      "priceNote": "plus card processing fee, rate shown at checkout",
+      "priceNoteDe": "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout",
+      "priceNoteSource": "https://commandcode.ai/pricing",
       "tag": "CLI only",
       "tagDe": "nur CLI",
       "modelRows": [
@@ -4164,6 +4173,9 @@
       "dataTierNote": "Official per-model allowances from feed",
       "notes": null,
       "notesDe": null,
+      "priceNote": "plus card processing fee, rate shown at checkout",
+      "priceNoteDe": "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout",
+      "priceNoteSource": "https://commandcode.ai/pricing",
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -6172,6 +6184,9 @@
       "dataTierNote": "Official per-model allowances from feed",
       "notes": null,
       "notesDe": null,
+      "priceNote": "plus card processing fee, rate shown at checkout",
+      "priceNoteDe": "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout",
+      "priceNoteSource": "https://commandcode.ai/pricing",
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -8180,6 +8195,9 @@
       "dataTierNote": "Official total 230,000 req/mo as anchor",
       "notes": null,
       "notesDe": null,
+      "priceNote": "plus card processing fee, rate shown at checkout",
+      "priceNoteDe": "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout",
+      "priceNoteSource": "https://commandcode.ai/pricing",
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -10188,6 +10206,9 @@
       "dataTierNote": "Official total 370,000 req/mo as anchor",
       "notes": null,
       "notesDe": null,
+      "priceNote": "plus card processing fee, rate shown at checkout",
+      "priceNoteDe": "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout",
+      "priceNoteSource": "https://commandcode.ai/pricing",
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -12189,6 +12210,9 @@
       "dataTierNote": "Official quotas (5h/weekly credits) from GLM docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -12298,6 +12322,9 @@
       "dataTierNote": "Official quotas (5h/weekly credits) from GLM docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -12407,6 +12434,9 @@
       "dataTierNote": "Official quotas (5h/weekly credits) from GLM docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -12523,6 +12553,9 @@
       "dataTierNote": null,
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -12593,6 +12626,9 @@
       "dataTierNote": null,
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -12640,6 +12676,9 @@
       "dataTierNote": null,
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -12687,6 +12726,9 @@
       "dataTierNote": null,
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -12734,6 +12776,9 @@
       "dataTierNote": null,
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -12800,6 +12845,9 @@
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "notes": "Sold on kimi.ai as \"Plus\" (identical tier and price as Moderato on kimi.com).",
       "notesDe": "Auf kimi.ai heißt der Tarif \"Plus\" (gleicher Tarif und Preis wie Moderato auf kimi.com).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -12955,6 +13003,9 @@
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "notes": "Sold on kimi.ai as \"Pro\" (identical tier and price as Allegretto on kimi.com).",
       "notesDe": "Auf kimi.ai heißt der Tarif \"Pro\" (gleicher Tarif und Preis wie Allegretto auf kimi.com).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -13110,6 +13161,9 @@
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "notes": "Sold on kimi.ai as \"Max\" (identical tier and price as Allegro on kimi.com).",
       "notesDe": "Auf kimi.ai heißt der Tarif \"Max\" (gleicher Tarif und Preis wie Allegro auf kimi.com).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -13265,6 +13319,9 @@
       "dataTierNote": "No published quota (waitlist only), requests derived from price / cost",
       "notes": "Sold on kimi.ai as \"Ultra\" (identical tier and price as Vivace on kimi.com).",
       "notesDe": "Auf kimi.ai heißt der Tarif \"Ultra\" (gleicher Tarif und Preis wie Vivace auf kimi.com).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -13401,6 +13458,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Aus coding-plans-Tabelle; MiniMax-SPA nicht direkt parsebar. Prompts = 100/5h; Modellkosten aus Feed.",
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -13450,6 +13510,9 @@
       "dataTierNote": "Official 5h message estimates per model from developers.openai.com/codex/pricing (read 2026-09-23)",
       "notes": "OpenAI publishes local messages per five-hour period as ranges, not fixed limits. GPT-6 Astra 5-45, GPT-6 Sol 15-150, GPT-6 Luna 350-3,000, GPT-5.6 Sol 10-100, GPT-5.6 Terra 25-200, GPT-5.6 Luna 250-2,000, GPT-5.4 20-100, GPT-5.4 mini 60-350. Local messages and cloud chats share the allowance, weekly limits may also apply. Source: developers.openai.com/codex/pricing",
       "notesDe": "OpenAI veröffentlicht lokale Nachrichten pro Fünf-Stunden-Fenster als Bereiche, nicht als feste Limits. GPT-6 Astra 5-45, GPT-6 Sol 15-150, GPT-6 Luna 350-3.000, GPT-5.6 Sol 10-100, GPT-5.6 Terra 25-200, GPT-5.6 Luna 250-2.000, GPT-5.4 20-100, GPT-5.4 mini 60-350. Lokale Nachrichten und Cloud-Chats teilen sich das Kontingent, zusätzlich können Wochenlimits gelten. Quelle: developers.openai.com/codex/pricing",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -13499,6 +13562,9 @@
       "dataTierNote": "Official 5h message estimates per model (5x the Plus ranges) from developers.openai.com/codex/pricing (read 2026-09-23)",
       "notes": "5x the Plus ranges per OpenAI: GPT-6 Astra 25-225, GPT-6 Sol 70-700, GPT-6 Luna 1,750-14,000, GPT-5.6 Sol 50-500, GPT-5.6 Terra 125-1,000, GPT-5.6 Luna 1,250-10,000. Source: developers.openai.com/codex/pricing",
       "notesDe": "Das Fünffache der Plus-Bereiche laut OpenAI: GPT-6 Astra 25-225, GPT-6 Sol 70-700, GPT-6 Luna 1.750-14.000, GPT-5.6 Sol 50-500, GPT-5.6 Terra 125-1.000, GPT-5.6 Luna 1.250-10.000. Quelle: developers.openai.com/codex/pricing",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -13548,6 +13614,9 @@
       "dataTierNote": "Official 5h message estimates per model (20x the Plus ranges) from developers.openai.com/codex/pricing (read 2026-09-23)",
       "notes": "20x the Plus ranges per OpenAI: GPT-6 Astra 100-900, GPT-6 Sol 300-3,000, GPT-6 Luna 7,000-56,000, GPT-5.6 Sol 200-2,000, GPT-5.6 Terra 500-4,000, GPT-5.6 Luna 5,000-40,000. Source: developers.openai.com/codex/pricing",
       "notesDe": "Das Zwanzigfache der Plus-Bereiche laut OpenAI: GPT-6 Astra 100-900, GPT-6 Sol 300-3.000, GPT-6 Luna 7.000-56.000, GPT-5.6 Sol 200-2.000, GPT-5.6 Terra 500-4.000, GPT-5.6 Luna 5.000-40.000. Quelle: developers.openai.com/codex/pricing",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -13586,6 +13655,9 @@
       "dataTierNote": "Anthropic publishes no token count. Third-party measured ranges in the note.",
       "notes": "Anthropic publishes no token count: rolling five-hour session limit plus a weekly limit, shared across Claude Code, claude.ai and Cowork. Third-party measurements (truefoundry.com/blog/claude-code-limits-explained, read 2026-09-23): about 10-45 prompts per 5h and 40-80 Sonnet hours per week. Community tracker Claude-Code-Usage-Monitor (plans.py, last updated 2026-07-05, labelled local_estimate) models 19,000 tokens per 5h window. Treat both as estimates, not limits.",
       "notesDe": "Anthropic veröffentlicht keine Token-Zahl: rollierendes Fünf-Stunden-Fenster plus Wochenlimit, geteilt von Claude Code, claude.ai und Cowork. Drittseitige Messungen (truefoundry.com/blog/claude-code-limits-explained, gelesen 2026-09-23): etwa 10-45 Prompts pro 5h und 40-80 Sonnet-Stunden pro Woche. Der Community-Tracker Claude-Code-Usage-Monitor (plans.py, zuletzt 2026-07-05 aktualisiert, als local_estimate gekennzeichnet) modelliert 19.000 Token pro 5h-Fenster. Beides sind Schätzungen, keine Limits.",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -13624,6 +13696,9 @@
       "dataTierNote": "Anthropic publishes multipliers only (5x Pro), no token count. Third-party ranges in the note.",
       "notes": "Anthropic states 5x the Pro allowance. Third-party measurement (truefoundry.com, read 2026-09-23): about 50-225 prompts per 5h, 140-240 Sonnet hours plus 15-35 Opus hours per week. Community tracker models 88,000 tokens per 5h window (local_estimate, 2026-07-05).",
       "notesDe": "Anthropic nennt das Fünffache des Pro-Kontingents. Drittseitige Messung (truefoundry.com, gelesen 2026-09-23): etwa 50-225 Prompts pro 5h, 140-240 Sonnet-Stunden plus 15-35 Opus-Stunden pro Woche. Der Community-Tracker modelliert 88.000 Token pro 5h-Fenster (local_estimate, 2026-07-05).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -13679,6 +13754,9 @@
       "dataTierNote": "Measured (third party): 37,363 responses with rate-limit headers (45,884 requests total), one Max 20x account, Apr 1-22 2026; cross-validated against two further datasets (215K and 101K calls, Max 20x and Max 5x)",
       "notes": "Measured, not published: Anthropic discloses no token count. Source: github.com/ArkNill/claude-code-hidden-problem-analysis. A third-party proxy measurement on one Max 20x account puts 1% of the five-hour window at 1.6-2.1M visible tokens (97% of them cache reads) and the weekly cap at about 1.95B visible tokens in the week of Apr 7-13 2026, when 99% was reached. Cross-validated against two independent datasets (215K and 101K calls). Monthly volume = weekly x 4.33. Model prices are Anthropic's own list prices, read 2026-09-23.",
       "notesDe": "Gemessen, nicht veroeffentlicht: Anthropic nennt keine Token-Zahl. Quelle: github.com/ArkNill/claude-code-hidden-problem-analysis. Eine Drittmessung per Proxy auf einem Max-20x-Konto ergibt 1 % des Fuenf-Stunden-Fensters bei 1,6-2,1 Mio sichtbaren Token (97 % davon Cache-Reads) und das Wochenlimit bei rund 1,95 Mrd sichtbaren Token in der Woche 7. bis 13. April 2026, als 99 % erreicht wurden. Gegen zwei unabhaengige Datensaetze kreuzvalidiert (215K und 101K Calls). Monatsmenge = Woche x 4,33. Modellpreise sind Anthropics eigene Listenpreise, gelesen 2026-09-23.",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "measured",
       "tagDe": "gemessen",
       "modelRows": [
@@ -13845,6 +13923,9 @@
       "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -14121,6 +14202,9 @@
       "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -14397,6 +14481,9 @@
       "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -14673,6 +14760,9 @@
       "dataTierNote": "Official monthly credit amount from kiro.dev; the credit-to-token rate is not published.",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -14949,6 +15039,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official free-tier limit: 50 agentic requests per month for Q&A chat and agentic coding, available in the IDE and CLI. The Pro tier at $19 per user lists increased limits without a number, so it is not ranked. Source: aws.amazon.com/q/developer/pricing (read 2026-09-23).",
       "notesDe": "Offizielles Free-Tier-Limit: 50 agentische Requests pro Monat fuer Q&A-Chat und agentisches Coding, nutzbar in IDE und CLI. Der Pro-Tarif fuer 19 $ pro Nutzer nennt nur 'erhoehte Limits' ohne Zahl, deshalb steht er nicht in der Rangliste. Quelle: aws.amazon.com/q/developer/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
       "modelRows": [
@@ -15019,6 +15112,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Amazon publishes no number for the Pro tier: the pricing table says increased limits of agentic requests without a figure. Known extras: 4,000 lines of code per month for Java upgrades (pooled per payer account), admin controls, IP indemnity. Source: aws.amazon.com/q/developer/pricing (read 2026-09-23).",
       "notesDe": "Amazon nennt fuer den Pro-Tarif keine Zahl: die Preistabelle spricht von erhoehten Limits bei agentischen Requests ohne Wert. Bekannt sind 4.000 Zeilen Code pro Monat fuer Java-Upgrades (pro Zahlerkonto gepoolt), Admin-Steuerung und IP-Indemnitaet. Quelle: aws.amazon.com/q/developer/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -15074,6 +15170,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: JetBrains AI Free includes 3 AI Credits per 30 days and each AI Credit is $1 of cloud-model usage. Modelled against Anthropic list prices (Opus 5.5, Sonnet 5, Haiku 4.5) because JetBrains routes to several providers and publishes no per-model token price. Source: jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html and jetbrains.com/ai-ides/buy (read 2026-09-23).",
       "notesDe": "Offiziell: JetBrains AI Free enthaelt 3 AI Credits pro 30 Tage, ein AI Credit entspricht 1 $ Modellnutzung. Gerechnet gegen Anthropics Listenpreise (Opus 5.5, Sonnet 5, Haiku 4.5), weil JetBrains an mehrere Anbieter routet und keine eigenen Token-Preise veroeffentlicht. Quelle: jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html und jetbrains.com/ai-ides/buy (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
       "modelRows": [
@@ -15196,6 +15295,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: 10 AI Credits per 30 days, and the credit count matches the subscription price with each credit worth $1 of cloud-model usage. Modelled against Anthropic list prices (JetBrains publishes no per-model token price). Top-ups are available and expire after 12 months. Source: jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html (read 2026-09-23).",
       "notesDe": "Offiziell: 10 AI Credits pro 30 Tage, die Credit-Zahl entspricht dem Abopreis, ein Credit ist 1 $ Modellnutzung. Gerechnet gegen Anthropics Listenpreise (JetBrains veroeffentlicht keine eigenen Token-Preise). Top-ups sind moeglich und verfallen nach 12 Monaten. Quelle: jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
       "modelRows": [
@@ -15318,6 +15420,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: 35 AI Credits per 30 days, described as the subscription price plus a small bonus for this tier, each credit worth $1. Modelled against Anthropic list prices. Source: jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html (read 2026-09-23).",
       "notesDe": "Offiziell: 35 AI Credits pro 30 Tage, laut Doku der Abopreis plus kleiner Bonus fuer diesen Tarif, ein Credit ist 1 $. Gerechnet gegen Anthropics Listenpreise. Quelle: jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
       "modelRows": [
@@ -15440,6 +15545,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official free individual tier: 240 chat requests and 6,000 code-related requests per day. Ranked on the chat/agent figure (240 x 30.44 = 7,305 per month); code completions are a separate, larger pool. Source: codeassist.google (read 2026-09-23).",
       "notesDe": "Offizieller kostenloser Einzeltarif: 240 Chat-Requests und 6.000 codebezogene Requests pro Tag. Gerechnet mit der Chat-/Agent-Zahl (240 x 30,44 = 7.305 pro Monat); Code-Vervollstaendigungen sind ein eigener, groesserer Topf. Quelle: codeassist.google (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
       "modelRows": [
@@ -15518,6 +15626,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: 1,500 requests per user per day for agent mode and Gemini CLI (combined, aggregated across model versions), plus 6,000 code requests and 960 chat requests per day. Monthly = 1,500 x 30.44 = 45,660. One prompt can consume several model requests. Price: $19 per user per month with an upfront annual commitment ($22.80 monthly). Sources: developers.google.com/gemini-code-assist/resources/quotas and codeassist.google/products/business (read 2026-09-23).",
       "notesDe": "Offiziell: 1.500 Requests pro Nutzer und Tag fuer Agent-Modus und Gemini CLI (zusammen, ueber alle Modellversionen gezaehlt), dazu 6.000 Code-Requests und 960 Chat-Requests pro Tag. Monat = 1.500 x 30,44 = 45.660. Ein Prompt kann mehrere Modell-Requests verbrauchen. Preis: 19 $ pro Nutzer und Monat bei jaehrlicher Vorauszahlung (22,80 $ monatlich). Quellen: developers.google.com/gemini-code-assist/resources/quotas und codeassist.google/products/business (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
       "modelRows": [
@@ -15596,6 +15707,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: 2,000 requests per user per day for agent mode and Gemini CLI, plus code customization and Gemini Cloud Assist. Monthly = 2,000 x 30.44 = 60,880. Price: $45 per user per month with annual commitment ($54 monthly). Sources: developers.google.com/gemini-code-assist/resources/quotas and codeassist.google/products/business (read 2026-09-23).",
       "notesDe": "Offiziell: 2.000 Requests pro Nutzer und Tag fuer Agent-Modus und Gemini CLI, dazu Code-Customization und Gemini Cloud Assist. Monat = 2.000 x 30,44 = 60.880. Preis: 45 $ pro Nutzer und Monat bei jaehrlicher Vorauszahlung (54 $ monatlich). Quellen: developers.google.com/gemini-code-assist/resources/quotas und codeassist.google/products/business (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
       "modelRows": [
@@ -15674,6 +15788,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: $20 of usage per month across LLM, Context Engine and compute, flat for up to 50 seats, top-ups pay as you go. The token-based rate is an upper bound because the allowance also covers context engine and compute. Modelled against Anthropic list prices. Source: augmentcode.com/pricing (read 2026-09-23).",
       "notesDe": "Offiziell: 20 $ Nutzung pro Monat ueber LLM, Context Engine und Compute, pauschal fuer bis zu 50 Sitze, Top-ups nach Verbrauch. Die tokenbasierte Rate ist eine Obergrenze, weil das Kontingent auch Context Engine und Compute abdeckt. Gerechnet gegen Anthropics Listenpreise. Quelle: augmentcode.com/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
       "modelRows": [
@@ -15796,6 +15913,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Official: $100 of usage per month across LLM, Context Engine and compute. Same caveat as Standard: the token rate is an upper bound. Source: augmentcode.com/pricing (read 2026-09-23).",
       "notesDe": "Offiziell: 100 $ Nutzung pro Monat ueber LLM, Context Engine und Compute. Gleicher Vorbehalt wie Standard: die Token-Rate ist eine Obergrenze. Quelle: augmentcode.com/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
       "modelRows": [
@@ -15918,6 +16038,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Cursor publishes the per-model token prices and the two pools but not the included amount. Several independent write-ups report about $20 of included model usage for Pro, so the row carries that figure and is labelled reported, not published. On-demand usage beyond it is billed at the same API rates plus the $0.25 per million Cursor Token Rate on third-party models. Sources: cursor.com/docs/models-and-pricing, cursor.com/help/models-and-usage/usage-limits (read 2026-09-23).",
       "notesDe": "Cursor veroeffentlicht die Token-Preise je Modell und die zwei Pools, aber nicht die enthaltene Menge. Mehrere unabhaengige Berichte nennen rund 20 $ enthaltene Modellnutzung fuer Pro, deshalb steht diese Zahl mit Kennzeichnung 'berichtet' in der Zeile. Nutzung darueber hinaus kostet zu denselben API-Preisen plus 0,25 $ pro Million Token Cursor Token Rate bei Fremdmodellen. Quellen: cursor.com/docs/models-and-pricing, cursor.com/help/models-and-usage/usage-limits (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "reported usage",
       "tagDe": "berichtete Nutzung",
       "modelRows": [
@@ -16216,6 +16339,9 @@
       "dataTierNote": "Official quota from docs/overrides",
       "notes": "Cursor does not publish the included amount. One write-up reports roughly $400 of API usage for Ultra, described as 20 times the Pro pool; that is a single source, so the row is labelled reported. Sources: cursor.com/docs/models-and-pricing, breaktheordinary.com/cursor-usage-based-billing (read 2026-09-23).",
       "notesDe": "Cursor veroeffentlicht die enthaltene Menge nicht. Ein Bericht nennt rund 400 $ API-Nutzung fuer Ultra, beschrieben als 20-facher Pro-Pool; das ist eine Einzelquelle, deshalb ist die Zeile als 'berichtet' gekennzeichnet. Quellen: cursor.com/docs/models-and-pricing, breaktheordinary.com/cursor-usage-based-billing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "reported usage",
       "tagDe": "berichtete Nutzung",
       "modelRows": [
@@ -16497,6 +16623,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "The quota is token-based with a daily and weekly allowance, but Cognition publishes no amount. Paid plans include extra usage at API prices. Source: devin.ai/pricing and docs.windsurf.com/windsurf/accounts/quota (read 2026-09-23).",
       "notesDe": "Die Quote ist tokenbasiert mit Tages- und Wochenkontingent, Cognition nennt aber keine Menge. Bezahlte Tarife erlauben Zusatznutzung zu API-Preisen. Quelle: devin.ai/pricing und docs.windsurf.com/windsurf/accounts/quota (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16535,6 +16664,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Significantly higher quotas than Pro, no number published. Source: devin.ai/pricing (read 2026-09-23).",
       "notesDe": "Deutlich hoehere Quoten als Pro, keine Zahl veroeffentlicht. Quelle: devin.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16573,6 +16705,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Team plan at $80 per month plus $40 per full user, each full user carries its own quota without a published number. Source: devin.ai/pricing (read 2026-09-23).",
       "notesDe": "Team-Tarif 80 $ pro Monat plus 40 $ pro Vollnutzer, jeder Vollnutzer hat ein eigenes Kontingent ohne veroeffentlichte Zahl. Quelle: devin.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16611,6 +16746,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Three rolling rate limits (5-hour, 7-day, 30-day) run independently, plus a free Droid Core pool for open-weight models, but Factory publishes no amounts. Extra usage is prepaid credit from $10. Source: docs.factory.ai/pricing (read 2026-09-23).",
       "notesDe": "Drei rollierende Limits (5 Stunden, 7 Tage, 30 Tage) laufen unabhaengig, dazu ein kostenloser Droid-Core-Pool fuer Open-Weight-Modelle, Mengen nennt Factory aber nicht. Zusatznutzung laeuft ueber Prepaid-Guthaben ab 10 $. Quelle: docs.factory.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16649,6 +16787,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Same rate-limit structure as Pro with higher amounts, no numbers published. Source: docs.factory.ai/pricing (read 2026-09-23).",
       "notesDe": "Gleiche Limitstruktur wie Pro mit hoeheren Mengen, keine Zahlen veroeffentlicht. Quelle: docs.factory.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16687,6 +16828,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Same rate-limit structure as Pro with higher amounts, no numbers published. Source: docs.factory.ai/pricing (read 2026-09-23).",
       "notesDe": "Gleiche Limitstruktur wie Pro mit hoeheren Mengen, keine Zahlen veroeffentlicht. Quelle: docs.factory.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16725,6 +16869,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Trae lists basic usage per tier and queue priority but no numbers for the usage allowance. Source: trae.ai/pricing (read 2026-09-23).",
       "notesDe": "Trae nennt je Tarif eine Grundnutzung und die Warteschlangen-Prioritaet, aber keine Zahl fuer das Kontingent. Quelle: trae.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16763,6 +16910,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Higher usage tier, no amount published. Source: trae.ai/pricing (read 2026-09-23).",
       "notesDe": "Hoeherer Nutzungstarif, keine Menge veroeffentlicht. Quelle: trae.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16801,6 +16951,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Highest tier with fast queue and the largest allowance, no amount published. Source: trae.ai/pricing (read 2026-09-23).",
       "notesDe": "Hoechster Tarif mit schneller Warteschlange und groesstem Kontingent, keine Menge veroeffentlicht. Quelle: trae.ai/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16839,6 +16992,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Zed Pro includes hosted models and unlimited edit predictions but bundles no fixed credit amount: usage is charged at standard rates, or you bring your own API key. Source: zed.dev/pricing (read 2026-09-23).",
       "notesDe": "Zed Pro enthaelt gehostete Modelle und unbegrenzte Edit-Vorhersagen, aber kein festes Guthaben: Nutzung wird zu Standardraten abgerechnet, oder man bringt einen eigenen API-Schluessel mit. Quelle: zed.dev/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16877,6 +17033,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Cursor publishes the price and the two usage pools but no included amount for Pro Plus either, so it stays a reference row. Source: cursor.com/docs/account/pricing (read 2026-09-23).",
       "notesDe": "Cursor nennt Preis und die zwei Pools, aber auch fuer Pro Plus keine enthaltene Menge, deshalb bleibt der Tarif eine Referenzzeile. Quelle: cursor.com/docs/account/pricing (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16915,6 +17074,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Antigravity and Gemini CLI quotas depend on the Google AI plan: AI Pro gets a high quota refreshed every five hours until the weekly limit is reached. Google publishes no amount. AI credits can be bought for overage and are consumed at Gemini consumption pricing. Source: antigravity.google/docs/plans and gemini.google/subscriptions (read 2026-09-23).",
       "notesDe": "Die Kontingente von Antigravity und Gemini CLI haengen am Google-AI-Tarif: AI Pro bekommt ein hohes Kontingent, das alle fuenf Stunden erneuert wird, bis das Wochenlimit erreicht ist. Google nennt keine Menge. Fuer Mehrverbrauch lassen sich AI-Credits kaufen, die zu Gemini-Verbrauchspreisen abgerechnet werden. Quelle: antigravity.google/docs/plans und gemini.google/subscriptions (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16953,6 +17115,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Five times the AI Pro usage limits, the highest quota in Antigravity, refreshed every five hours, highest weekly limits, plus third-party models. No amount published. Source: antigravity.google/docs/plans and gemini.google/subscriptions (read 2026-09-23).",
       "notesDe": "Fuenffache Nutzungslimits von AI Pro, das hoechste Kontingent in Antigravity, alle fuenf Stunden erneuert, hoechste Wochenlimits, dazu Fremdmodelle. Keine Menge veroeffentlicht. Quelle: antigravity.google/docs/plans und gemini.google/subscriptions (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -16991,6 +17156,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "Twenty times the AI Pro usage limits, no amount published. Source: gemini.google/subscriptions (read 2026-09-23).",
       "notesDe": "Zwanzigfache Nutzungslimits von AI Pro, keine Menge veroeffentlicht. Quelle: gemini.google/subscriptions (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -17029,6 +17197,9 @@
       "dataTierNote": "No official quota, derived",
       "notes": "ClinePass costs $9.99 per month and offers 2 to 5 times the usage on popular open coding models compared to the standard API rate. The amount is relative, not an absolute quota, so no rate is computed. Source: docs.cline.bot/getting-started/clinepass (read 2026-09-23).",
       "notesDe": "ClinePass kostet 9,99 $ pro Monat und bietet das Zwei- bis Fuenffache an Nutzung bei populaeren offenen Coding-Modellen gegenueber dem Standard-API-Preis. Die Angabe ist relativ, keine absolute Quote, deshalb wird keine Rate berechnet. Quelle: docs.cline.bot/getting-started/clinepass (gelesen 2026-09-23).",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": []
@@ -17077,6 +17248,9 @@
       "dataTierNote": "Official daily Freebucks allowance by region (freebuff.com FAQ); no monthly dollar volume published",
       "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in Freebucks: they buy one-hour model sessions, requests here are derived from the published USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
       "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in Freebucks gemessen: sie kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem veroeffentlichten Dollar-Volumen und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
       "modelRows": []
@@ -17133,6 +17307,9 @@
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/plans (not a published request count)",
       "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in Freebucks: they buy one-hour model sessions, requests here are derived from the published USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
       "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in Freebucks gemessen: sie kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem veroeffentlichten Dollar-Volumen und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
       "modelRows": [
@@ -17366,6 +17543,9 @@
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/plans (not a published request count)",
       "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in Freebucks: they buy one-hour model sessions, requests here are derived from the published USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
       "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in Freebucks gemessen: sie kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem veroeffentlichten Dollar-Volumen und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
       "modelRows": [
@@ -17599,6 +17779,9 @@
       "dataTierNote": "Official monthly usage volume in USD from freebuff.com/plans (not a published request count)",
       "notes": "No API access: model inference only through an official Freebuff product (CLI, Desktop, Web, Cloud, Chat), no direct calls to servers or endpoints, no scripts, wrappers or third-party software, and a human must start each session and stay present. Usage is metered in Freebucks: they buy one-hour model sessions, requests here are derived from the published USD volume at feed token prices. Source: freebuff.com/terms-of-service (Free Access and Human Use)",
       "notesDe": "Kein API-Zugang: Modell-Inferenz nur ueber ein offizielles Freebuff-Produkt (CLI, Desktop, Web, Cloud, Chat), keine direkten Aufrufe der Server oder Endpunkte, keine Skripte, Wrapper oder Drittanbieter-Software, und ein Mensch muss jede Session starten und anwesend bleiben. Die Nutzung wird in Freebucks gemessen: sie kaufen einstuendige Modell-Sessions, die Requests hier werden aus dem veroeffentlichten Dollar-Volumen und den Token-Preisen des Feeds abgeleitet. Quelle: freebuff.com/terms-of-service (Free Access and Human Use)",
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
       "modelRows": [
@@ -17831,6 +18014,9 @@
       "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -17931,6 +18117,9 @@
       "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18031,6 +18220,9 @@
       "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18131,6 +18323,9 @@
       "dataTierNote": "Official monthly credits and per-model credit rates from MiMo docs (September 21, 2026); model token prices not in the feeds yet, so cost per request stays empty",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18231,6 +18426,9 @@
       "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18331,6 +18529,9 @@
       "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18431,6 +18632,9 @@
       "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18531,6 +18735,9 @@
       "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18631,6 +18838,9 @@
       "dataTierNote": "Official daily token limit from the Cerebras Code announcement; model token prices are not in the feeds",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18709,6 +18919,9 @@
       "dataTierNote": "Official daily token limit from the Cerebras Code announcement; model token prices are not in the feeds",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -18788,6 +19001,9 @@
       "dataTierNote": "Official AI credit allowance (1500 credits = $15) and official per-model token prices from the GitHub Copilot docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -19615,6 +19831,9 @@
       "dataTierNote": "Official AI credit allowance (7000 credits = $70) and official per-model token prices from the GitHub Copilot docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -20442,6 +20661,9 @@
       "dataTierNote": "Official AI credit allowance (20000 credits = $200) and official per-model token prices from the GitHub Copilot docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -21269,6 +21491,9 @@
       "dataTierNote": "Official seat price and 1,900 AI credits per user per month from the GitHub Copilot docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -22096,6 +22321,9 @@
       "dataTierNote": "Official seat price and 3,900 AI credits per user per month from the GitHub Copilot docs",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -22922,6 +23150,9 @@
       "dataTierNote": "Official credit allowance ($60) and official model prices from the Ollama pricing page",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -23308,6 +23539,9 @@
       "dataTierNote": "Official credit allowance ($300) and official model prices from the Ollama pricing page",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -23694,6 +23928,9 @@
       "dataTierNote": "Official credit allowance ($1000) and official model prices from the Ollama pricing page",
       "notes": null,
       "notesDe": null,
+      "priceNote": null,
+      "priceNoteDe": null,
+      "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
       "modelRows": [
@@ -41326,7 +41563,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-02T09:49:23.887Z",
+    "fetchedAt": "2026-10-02T09:50:16.778Z",
     "count": 413,
     "scores": {
       "claude-opus-5-5": {
@@ -41860,10 +42097,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.92
       },
-      "qwen3-next-80b-a3b-thinking": {
+      "granite-4-2-30b": {
         "intelligence": 23.8
       },
-      "granite-4-2-30b": {
+      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.8
       },
       "grok-4-20-beta-0309-reasoning": {
@@ -41953,16 +42190,16 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "grok-4-1-2025-11-17": {
-        "intelligence": 19.54
-      },
       "sarvam-30b": {
         "intelligence": 19.54
       },
-      "qwen3-5-4b": {
-        "intelligence": 19.5
+      "grok-4-1-2025-11-17": {
+        "intelligence": 19.54
       },
       "gpt-5-nano-2025-08-07": {
+        "intelligence": 19.5
+      },
+      "qwen3-5-4b": {
         "intelligence": 19.5
       },
       "diffusiongemma-26b-a4b-it": {
