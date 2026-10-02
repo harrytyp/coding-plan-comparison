@@ -2058,6 +2058,9 @@ function renderDashboardInner() {
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
   // Ohne API-Zugang sind die Token-Raten nicht vergleichbar , gleiche Logik wie Tier D
   if (!includeNoApi) combos = combos.filter((c) => !isNoApi(c));
+  // Gleiche Ausschluesse wie die Tabelle: sonst zeigt der Plot Zeilen,
+  // die in der Liste per Default fehlen (und umgekehrt).
+  if (!includeTraining) combos = combos.filter((c) => c.noTraining !== false);
 
   const points = combos.map((c) => ({
     combo: c,
@@ -2748,6 +2751,7 @@ function renderCalculator() {
   if (!includePriceBased) combos = combos.filter((c) => c.dataTier !== "D");
   // Ohne API-Zugang sind die Token-Raten nicht vergleichbar , gleiche Logik wie Tier D
   if (!includeNoApi) combos = combos.filter((c) => !isNoApi(c));
+  if (!includeTraining) combos = combos.filter((c) => c.noTraining !== false);
   // Pro Plan nur das beste Modell (Tokens/Monat), dann Top 5
   const best = new Map();
   for (const c of combos) {

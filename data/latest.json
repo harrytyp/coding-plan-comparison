@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-01T23:57:46.415Z",
+  "generatedAt": "2026-10-02T08:02:04.640Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -41326,7 +41326,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-01T23:57:46.298Z",
+    "fetchedAt": "2026-10-02T08:02:04.521Z",
     "count": 413,
     "scores": {
       "claude-opus-5-5": {
@@ -41440,10 +41440,10 @@
       "qwen3-8-27b": {
         "intelligence": 44.75
       },
-      "claude-opus-4-6": {
+      "gpt-5-5-pro": {
         "intelligence": 44.7
       },
-      "gpt-5-5-pro": {
+      "claude-opus-4-6": {
         "intelligence": 44.7
       },
       "gpt-5-6-luna": {
@@ -41812,10 +41812,10 @@
       "mimo-v2-5-pro": {
         "intelligence": 25.69
       },
-      "claude-haiku-4-5-20251001": {
+      "sarvam-105b": {
         "intelligence": 25.68
       },
-      "sarvam-105b": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.68
       },
       "nova-2-omni": {
@@ -41959,10 +41959,10 @@
       "sarvam-30b": {
         "intelligence": 19.54
       },
-      "gpt-5-nano-2025-08-07": {
+      "qwen3-5-4b": {
         "intelligence": 19.5
       },
-      "qwen3-5-4b": {
+      "gpt-5-nano-2025-08-07": {
         "intelligence": 19.5
       },
       "diffusiongemma-26b-a4b-it": {
@@ -42653,7 +42653,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-10-01",
+      "verifiedAt": "2026-10-02",
       "crawled": true
     },
     {
@@ -42770,12 +42770,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Thu, 01 Oct 2026 00:02:31 +0000",
+    "updatedAt": "Fri, 02 Oct 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.881813,
-      "CNY": 6.716878,
-      "GBP": 0.753798,
-      "JPY": 157.298282
+      "EUR": 0.88731,
+      "CNY": 6.714553,
+      "GBP": 0.757129,
+      "JPY": 157.92293
     }
   },
   "statistics": {
