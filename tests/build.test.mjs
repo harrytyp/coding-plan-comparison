@@ -604,3 +604,27 @@ test("Freebuff: Tarife, Freebucks-Tagesquote, keine Rate ohne veroeffentlichtes 
     assert.ok(Number.isFinite(m.normalizedPer1Median), `${m.planId}/${m.family}: endlicher Median`);
   }
 });
+
+test("OpenDesign Go: Credits, Fenster und Modell-Caps kommen 1:1 aus der Quelle", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const od = JSON.parse(await readFile(join(ROOT, "parsed/opendesign-pricing.json"), "utf8"));
+  const cr = JSON.parse(await readFile(join(ROOT, "parsed/opendesign-credits.json"), "utf8"));
+  const src = od.plans.find((p) => p.tier === "go");
+  const plan = d.plans.find((p) => p.id === "opendesign-go");
+  assert.ok(src, "Quelle muss den Go-Tarif liefern");
+  assert.ok(plan, "opendesign-go muss im Katalog stehen");
+  assert.equal(plan.price.advertised, src.priceMonthly, "Listenpreis aus der Tarifkarte");
+  assert.equal(plan.price.altPrice, src.priceYearlyMonthly, "Jahrespreis pro Monat");
+  assert.equal(plan.meter, "dollar_usage");
+  assert.equal(plan.quotas.find((q) => q.window === "month").amount, src.creditsMonthly, "Monats-Credits");
+  assert.equal(plan.quotas.find((q) => q.window === "week").amount, cr.windows.go.design7d, "7-Tage-Fenster");
+  assert.equal(plan.quotas.find((q) => q.window === "5h").amount, cr.windows.go.design5h, "5-Stunden-Fenster");
+  assert.ok(plan.modelRows.length >= 8, `erwartet >=8 Modellzeilen, hat ${plan.modelRows.length}`);
+  // Keine Zeile darf ueber dem Monatsmaximum liegen ...
+  for (const r of plan.modelRows) {
+    assert.ok(r.allowance <= src.creditsMonthly, `${r.model}: Obergrenze ueber dem Monatsmaximum`);
+  }
+  // ... und die veroeffentlichten Einzel-Obergrenzen (Luna 15 $, Flash-X 30 $) muessen ankommen.
+  assert.ok(plan.modelRows.some((r) => r.allowance === 15), "Einzel-Obergrenze 15 $ fehlt");
+  assert.ok(plan.modelRows.some((r) => r.allowance === 30), "Einzel-Obergrenze 30 $ fehlt");
+});

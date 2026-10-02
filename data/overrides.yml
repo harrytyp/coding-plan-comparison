@@ -482,7 +482,7 @@ overrides:
     tagDe: "berichtete Nutzung"
     dollarPlan:
       usd: 20
-      source: "cursor.com/docs/models-and-pricing (Modellpreise) + Drittberichte zur enthaltenen Menge (breaktheordinary.com, morphllm.com, word-spinner.com, gelesen 2026-09-23)"
+      source: "cursor.com/docs/models-and-pricing (Modellpreise) + Drittberichte zur enthaltenen Menge (breaktheordinary.com, morphllm.com, word-spinner.com, gelesen 2026-09-23); Plantabelle am 2026-10-02 erneut geprueft (Pro 20 $, Pro Plus 60 $, Ultra 200 $ unveraendert)"
       note: "about $20 of included model usage per month (third-party reported)"
       models:
       - { model: "Claude Fable 5.1", input: 10, cachedWrite: 12.5, cachedRead: 0.25, output: 50 }
@@ -498,7 +498,7 @@ overrides:
       - { model: "Muse Spark 1.3", input: 1.25, cachedWrite: 1.25, cachedRead: 0.15, output: 4.25 }
     quotas:
       - { label: "Monthly", unit: "USD usage", amount: 20, window: month, refresh: monthly, disclosure: reported }
-    lastVerified: 2026-09-23
+    lastVerified: 2026-10-02
     note: "Cursor publishes the per-model token prices and the two pools but not the included amount. Several independent write-ups report about $20 of included model usage for Pro, so the row carries that figure and is labelled reported, not published. On-demand usage beyond it is billed at the same API rates plus the $0.25 per million Cursor Token Rate on third-party models. Sources: cursor.com/docs/models-and-pricing, cursor.com/help/models-and-usage/usage-limits (read 2026-09-23)."
     noteDe: "Cursor veroeffentlicht die Token-Preise je Modell und die zwei Pools, aber nicht die enthaltene Menge. Mehrere unabhaengige Berichte nennen rund 20 $ enthaltene Modellnutzung fuer Pro, deshalb steht diese Zahl mit Kennzeichnung 'berichtet' in der Zeile. Nutzung darueber hinaus kostet zu denselben API-Preisen plus 0,25 $ pro Million Token Cursor Token Rate bei Fremdmodellen. Quellen: cursor.com/docs/models-and-pricing, cursor.com/help/models-and-usage/usage-limits (gelesen 2026-09-23)."
 
@@ -528,7 +528,7 @@ overrides:
       - { model: "Muse Spark 1.3", input: 1.25, cachedWrite: 1.25, cachedRead: 0.15, output: 4.25 }
     quotas:
       - { label: "Monthly", unit: "USD usage", amount: 400, window: month, refresh: monthly, disclosure: reported }
-    lastVerified: 2026-09-23
+    lastVerified: 2026-10-02
     note: "Cursor does not publish the included amount. One write-up reports roughly $400 of API usage for Ultra, described as 20 times the Pro pool; that is a single source, so the row is labelled reported. Sources: cursor.com/docs/models-and-pricing, breaktheordinary.com/cursor-usage-based-billing (read 2026-09-23)."
     noteDe: "Cursor veroeffentlicht die enthaltene Menge nicht. Ein Bericht nennt rund 400 $ API-Nutzung fuer Ultra, beschrieben als 20-facher Pro-Pool; das ist eine Einzelquelle, deshalb ist die Zeile als 'berichtet' gekennzeichnet. Quellen: cursor.com/docs/models-and-pricing, breaktheordinary.com/cursor-usage-based-billing (gelesen 2026-09-23)."
 
@@ -643,9 +643,9 @@ overrides:
     price: { monthlyUsd: 60, paidPrice: 60, advertisedPrice: 60, currency: USD }
     meter: dollar_usage
     disclosure: reference
-    lastVerified: 2026-09-23
-    note: "Cursor publishes the price and the two usage pools but no included amount for Pro Plus either, so it stays a reference row. Source: cursor.com/docs/account/pricing (read 2026-09-23)."
-    noteDe: "Cursor nennt Preis und die zwei Pools, aber auch fuer Pro Plus keine enthaltene Menge, deshalb bleibt der Tarif eine Referenzzeile. Quelle: cursor.com/docs/account/pricing (gelesen 2026-09-23)."
+    lastVerified: 2026-10-02
+    note: "Cursor publishes the price and the two usage pools but no included amount for Pro Plus either, so it stays a reference row. Source: cursor.com/docs/account/pricing (read 2026-10-02)."
+    noteDe: "Cursor nennt Preis und die zwei Pools, aber auch fuer Pro Plus keine enthaltene Menge, deshalb bleibt der Tarif eine Referenzzeile. Quelle: cursor.com/docs/account/pricing (gelesen 2026-10-02)."
 
   # Google AI: Preise offiziell in EUR (gemini.google/subscriptions, gelesen
   # 2026-09-23, deutsche Ansicht). Die Kontingente sind nicht veroeffentlicht,
@@ -686,6 +686,6 @@ overrides:
     price: { monthlyUsd: 9.99, paidPrice: 9.99, advertisedPrice: 9.99, currency: USD }
     meter: credits
     disclosure: reference
-    lastVerified: 2026-09-23
-    note: "ClinePass costs $9.99 per month and offers 2 to 5 times the usage on popular open coding models compared to the standard API rate. The amount is relative, not an absolute quota, so no rate is computed. Source: docs.cline.bot/getting-started/clinepass (read 2026-09-23)."
-    noteDe: "ClinePass kostet 9,99 $ pro Monat und bietet das Zwei- bis Fuenffache an Nutzung bei populaeren offenen Coding-Modellen gegenueber dem Standard-API-Preis. Die Angabe ist relativ, keine absolute Quote, deshalb wird keine Rate berechnet. Quelle: docs.cline.bot/getting-started/clinepass (gelesen 2026-09-23)."
+    lastVerified: 2026-10-02
+    note: "ClinePass costs $9.99 per month and offers 2 to 5 times the usage on popular open coding models compared to the standard API rate; the amount is relative, not an absolute quota, so no rate is computed. Included models: GLM-5.3, GLM-5.3 Flash, Kimi K3, DeepSeek V4 Pro, DeepSeek V4.1 Flash, MiMo-V2.5, MiMo-V2.5-Pro, MiniMax M3, Muse Spark 1.3 Contributor, Qwen3.8 Max, Qwen3.7 Max, Qwen3.7 Plus (GLM-5.2, Kimi K2.6, Kimi K2.7 Code and DeepSeek V4 Flash were discontinued). The models are also reachable from your own scripts through an OpenAI-compatible Cline API. Source: docs.cline.bot/getting-started/clinepass (read 2026-10-02)."
+    noteDe: "ClinePass kostet 9,99 $ pro Monat und bietet das Zwei- bis Fuenffache an Nutzung bei populaeren offenen Coding-Modellen gegenueber dem Standard-API-Preis; die Angabe ist relativ, keine absolute Quote, deshalb wird keine Rate berechnet. Enthaltene Modelle: GLM-5.3, GLM-5.3 Flash, Kimi K3, DeepSeek V4 Pro, DeepSeek V4.1 Flash, MiMo-V2.5, MiMo-V2.5-Pro, MiniMax M3, Muse Spark 1.3 Contributor, Qwen3.8 Max, Qwen3.7 Max, Qwen3.7 Plus (GLM-5.2, Kimi K2.6, Kimi K2.7 Code und DeepSeek V4 Flash wurden abgekuendigt). Die Modelle sind auch aus eigenen Skripten ueber eine OpenAI-kompatible Cline-API erreichbar. Quelle: docs.cline.bot/getting-started/clinepass (gelesen 2026-10-02)."

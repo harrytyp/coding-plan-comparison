@@ -20,6 +20,13 @@ sources.yml (feeds + docs + privacy + scores + FX)
 - **Change-Detection:** contentHash = Hash des **geparsten** Inhalts (robust gegen HTML-Nonces).
 - **Ehrlichkeit:** undisclosed bleibt undisclosed; keine erfundenen Zahlen.
   Nicht-scrapebares (GLM-Preise via Auth-API, MiniMax-SPA) → `data/overrides.yml` mit lastVerified.
+- **Mengen je Modell:** Veröffentlicht ein Anbieter die Obergrenze **pro Modell** (OpenDesign:
+  15 $ fuer GPT-6 Luna, 30 $ fuer GLM-5.3 Flash-X, sonst die Plan-Summe), stehen die
+  `feedModels` als Objekte `{ model, usd }` im Plan; der generische feedModels-Zweig in
+  `build.mjs` nimmt dann `usd` als Allowance statt der Plan-Menge. Token-Preise kommen weiter
+  aus den Feeds, nie aus dem Kopf. OpenDesign wird aus zwei HTML-Quellen gebaut
+  (`opendesign-pricing`, `opendesign-credits`), die Modellzeilen entstehen nur fuer Modelle,
+  die auch im Feed einen Preis haben (Hunyuan H4 Preview fehlt dort und bekommt bewusst keine Zeile).
 - **Preis-Zuschlaege:** Erhebt ein Anbieter auf den Listenpreis etwas drauf (Command Code:
   „+ processing fee" bei Kartenzahlung auf jedem Plan), steht das als `priceNote` /
   `priceNoteDe` / `priceNoteSource` in `overrides.yml` und wandert ueber build.mjs in die

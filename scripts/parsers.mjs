@@ -665,7 +665,102 @@ export function parseCopilotPlans(html) {
   return { plans, note: "GitHub Copilot Business/Enterprise: Preis pro Sitz und AI-Credits pro Nutzer aus der Docs-Plantabelle" };
 }
 
+const OD_TIERS = ["go", "plus", "pro", "max"];
+const OD_TIER_NAME = { go: "Go", plus: "Plus", pro: "Pro", max: "Max" };
+
+function odNum(v) {
+  const t = String(v ?? "").replace(/[,$\s]/g, "");
+  if (!t) return null;
+  const n = Number(t);
+  return Number.isFinite(n) ? n : null;
+}
+
+/**
+ * OpenDesign (open-design.ai/pricing), statische Astro-Seite.
+ * Modelltabelle: je Modell eine Zeile `.dpu-row`; jede Zahl steht in
+ * <span data-usage-value="go|plus|pro|max">, erst die Spalte "Est. requests / 7 days",
+ * dann "Monthly usage" (Dollar je Monat und Modell).
+ * Wirft, wenn die Struktur fehlt, statt still Zahlenmuell zu liefern.
+ */
+export function parseOpenDesignPricing(html) {
+  // Die Karte traegt weitere Klassen (z.B. "plan-pro new-plan-card recommended"),
+  // deshalb ueber die Klassenliste filtern statt ueber das Zeilenende.
+  const marks = [...html.matchAll(/class="([^"]*)"\s+data-tier="(go|plus|pro|max)"/g)]
+    .filter((m) => new RegExp(`\\bplan-${m[2]}\\b`).test(m[1]))
+    .map((m) => ({ tier: m[2], index: m.index }));
+  if (!marks.length) throw new Error("OpenDesign: keine Tarifkarten gefunden");
+  const cards = [];
+  for (let i = 0; i < marks.length; i++) {
+    const chunk = html.slice(marks[i].index, i + 1 < marks.length ? marks[i + 1].index : marks[i].index + 30000);
+    const tier = marks[i].tier;
+    const priceMonthly = odNum((chunk.match(/data-regular-price="([\d.]+)"/) || [])[1]);
+    const introPrice = odNum((chunk.match(/data-intro-price="([\d.]+)"/) || [])[1]);
+    const yearly = odNum((chunk.match(/<div class="price" data-when="yearly"[^>]*>[\s\S]{0,200}?rolling-price-number"[^>]*>([\d.]+)</) || [])[1]);
+    const credits = odNum((chunk.match(/data-total-credits="([\d.]+)"/) || [])[1]);
+    const design = odNum((chunk.match(/Design Plan [Uu]p to\s*<strong[^>]*>\$([\d,]+)/) || [])[1]);
+    const planModels = odNum((chunk.match(/plan models\s*<strong[^>]*>\$([\d,]+)/) || [])[1]) ?? 0;
+    if (priceMonthly === null || credits === null || design === null) continue;
+    cards.push({
+      tier, name: OD_TIER_NAME[tier], priceMonthly, introPrice, priceYearlyMonthly: yearly,
+      creditsMonthly: credits, planModelCredits: planModels, designMonthly: design, models: [],
+    });
+  }
+  if (!cards.length) throw new Error("OpenDesign: Tarifkarten ohne Preis/Credits");
+
+  const rows = html.split(/<div class="dpu-row"/).slice(1);
+  const models = [];
+  for (const row of rows) {
+    if (/dpu-head/.test(row.slice(0, 60))) continue;
+    const name = (row.match(/<strong[^>]*>([^<]+)<\/strong>/) || [])[1];
+    if (!name) continue;
+    const vals = [...row.matchAll(/<span data-usage-value="(go|plus|pro|max)"[^>]*>([^<]*)<\/span>/g)].map((x) => ({ tier: x[1], raw: x[2].trim() }));
+    if (vals.length < OD_TIERS.length * 2) continue;
+    const requests7d = {}, monthlyUsd = {};
+    for (const t of OD_TIERS) {
+      requests7d[t] = odNum((vals.find((v) => v.tier === t && !v.raw.includes("$")) || {}).raw);
+      monthlyUsd[t] = odNum((vals.find((v) => v.tier === t && v.raw.includes("$")) || {}).raw);
+    }
+    models.push({ model: name.trim(), requests7d, monthlyUsd });
+  }
+  if (models.length < 5) throw new Error(`OpenDesign: nur ${models.length} Modellzeilen erkannt`);
+
+  for (const c of cards) {
+    c.models = models
+      .filter((mm) => mm.monthlyUsd[c.tier] != null && mm.monthlyUsd[c.tier] > 0)
+      .map((mm) => ({ model: mm.model, usd: mm.monthlyUsd[c.tier], requests7d: mm.requests7d[c.tier] ?? null }));
+  }
+  return { plans: cards, modelCount: models.length, models };
+}
+
+/**
+ * OpenDesign (open-design.ai/model-credits/): Fenster je Tarif.
+ * Spalten: Preis | Monthly maximum | Plan model credits | ＋ | Design Plan monthly | 7-day | 5-hour.
+ */
+export function parseOpenDesignCredits(html) {
+  const start = html.indexOf("allowance-table");
+  if (start < 0) throw new Error("OpenDesign: Credit-Tabelle fehlt");
+  const table = html.slice(start);
+  const windows = {};
+  for (const t of OD_TIERS) {
+    const cell = table.match(new RegExp(`<th[^>]*>\\s*${OD_TIER_NAME[t]}\\s*</th>((?:\\s*<td[^>]*>[\\s\\S]*?</td>)+)`, "i"));
+    if (!cell) continue;
+    const tds = [...cell[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)]
+      .map((x) => x[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
+    const nums = tds.map(odNum);
+    // Spalte 4 ist der Operand ("+") und traegt keine Zahl; danach folgen die
+    // drei Design-Plan-Fenster (Monat, 7 Tage, 5 Stunden).
+    windows[t] = {
+      price: nums[0], monthlyMaximum: nums[1], planModelCredits: nums[2],
+      designMonthly: nums[4], design7d: nums[5], design5h: nums[6],
+    };
+  }
+  if (!Object.keys(windows).length) throw new Error("OpenDesign: keine Tarifzeilen in der Credit-Tabelle");
+  return { windows };
+}
+
 export const PARSERS = {
+  opendesignPricing: parseOpenDesignPricing,
+  opendesignCredits: parseOpenDesignCredits,
   ocgo: parseOcgo,
   cc: parseCc,
   "glm-overview": parseGlmOverview,

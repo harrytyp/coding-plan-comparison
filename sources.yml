@@ -19,6 +19,20 @@ sources:
     provides: [plan_meta, model_prices, allowances, patterns, request_estimates, peak_hours]
     note: "Command Code Preis-Tracker: allowances je Plan, Token-Preise, requestEstimate (offizielle Request-Schätzung)."
 
+  - id: opendesign-pricing
+    url: "https://open-design.ai/pricing"
+    typ: html-docs
+    parser: opendesignPricing
+    provides: [plan_prices, plan_quotas, model_allowances, request_estimates]
+    note: "OpenDesign Design Plan (statisches Astro-HTML): Tarifkarten Go/Plus/Pro/Max mit Preis, Erstmonats- und Jahrespreis, Monats-Credits in USD; Modelltabelle mit Dollar-Obergrenze und 7-Tage-Request-Schaetzung je Modell und Tarif (data-usage-value). In den Katalog gebaut wird bisher nur Go (OD_BUILD_TIERS in build.mjs), die uebrigen Tarife liegen geparst bereit."
+
+  - id: opendesign-credits
+    url: "https://open-design.ai/model-credits/"
+    typ: html-docs
+    parser: opendesignCredits
+    provides: [plan_quotas]
+    note: "OpenDesign Credit-Regeln: Monatsmaximum, Plan-Modell-Credits sowie 7-Tage- und 5-Stunden-Fenster je Tarif (Tabelle allowance-table)."
+
   # ---- Offizielle Docs (statisches HTML, scrapebar) ----
   - id: glm-coding-overview
     url: "https://docs.bigmodel.cn/cn/coding-plan/overview"

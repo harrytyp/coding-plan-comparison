@@ -1437,6 +1437,7 @@ function bindSortHeader(tableId, state, renderFn) {
 // Plan-Kürzel für die Tabellen-Miniatur: markenbasiert (CC, OG, GL, QW, KM, MM),
 // damit gleiche Marken gleich aussehen und nicht "GC"/"QT" herauskommt.
 const BRAND_MARKS = [
+  [/opendesign/i, "OD"],
   [/opencode/i, "OG"],
   [/command\s*code/i, "CC"],
   [/glm|zhipu/i, "GL"],
@@ -1456,7 +1457,7 @@ function planInitials(name, provider) {
 }
 // Farbe hängt an der Marke, nicht am Plan: gleiche Marke = gleicher Marker
 const MARK_COLORS = {
-  OG: "#2563eb", CC: "#7c3aed", GL: "#0d9488", QW: "#db2777", KM: "#ea580c",
+  OD: "#0f766e", OG: "#2563eb", CC: "#7c3aed", GL: "#0d9488", QW: "#db2777", KM: "#ea580c",
   MM: "#0891b2", FB: "#65a30d", AN: "#d97706", OA: "#059669", GO: "#4f46e5", CU: "#475569",
 };
 function planColor(name, provider) {

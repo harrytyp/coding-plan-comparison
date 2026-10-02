@@ -458,6 +458,57 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     }
   }
 
+  // --- OpenDesign Design Plan (aus den beiden HTML-Quellen) ---
+  // Offizielle Mengenbasis: Monats-Credits in Dollar, dazu die Fenster der Credit-Seite
+  // (Monat / 7 Tage / 5 Stunden) und eine veroeffentlichte Dollar-Obergrenze JE MODELL
+  // (z.B. GPT-6 Luna 15 $, GLM-5.3 Flash-X 30 $, sonst die Plan-Summe). Token-Preise
+  // kommen aus den Feeds: dieselben Modelle, dieselben API-Preise. Der Plan hat keine
+  // eigene API-Preisliste, deshalb keine erfundenen Preise.
+  const od = parsed["opendesign-pricing"];
+  const odCr = parsed["opendesign-credits"];
+  // Vorerst nur Go: die Karten fuer Pro/Max liefert die Seite mit anderem Markup,
+  // sie kommen erst dazu, wenn der Parser sie belegt (kein Raten).
+  const OD_BUILD_TIERS = ["go"];
+  for (const p of od?.plans ?? []) {
+    if (!OD_BUILD_TIERS.includes(p.tier)) continue;
+    const w = odCr?.windows?.[p.tier] ?? null;
+    const billingNote = [
+      p.introPrice ? `first month $${p.introPrice}` : null,
+      p.priceYearlyMonthly ? `$${p.priceYearlyMonthly}/mo billed yearly` : null,
+    ].filter(Boolean).join(", ");
+    add({
+      id: `opendesign-${p.tier}`,
+      provider: "opendesign",
+      name: `OpenDesign ${p.name}`,
+      price: {
+        monthlyUsd: p.priceMonthly,
+        paidPrice: p.priceMonthly,
+        advertisedPrice: p.priceMonthly,
+        billingNote,
+        altPrice: p.priceYearlyMonthly ?? null,
+      },
+      meter: "dollar_usage",
+      quotas: [
+        w?.design5h ? { label: "5h window", unit: "usd", amount: w.design5h, window: "5h", refresh: "rolling", disclosure: "exact" } : null,
+        w?.design7d ? { label: "7-day window", unit: "usd", amount: w.design7d, window: "week", refresh: "weekly", disclosure: "exact" } : null,
+        { label: "Monthly", unit: "usd", amount: p.creditsMonthly, window: "month", refresh: "monthly", disclosure: "exact" },
+      ].filter(Boolean),
+      tokenPricing: {
+        source: "opendesign-pricing",
+        note: "Monats-Credits in USD je Tarif, dazu je Modell eine veroeffentlichte Obergrenze; Requests = Obergrenze / Kosten pro Request aus den Feed-Tokenpreisen",
+      },
+      workload: { pattern: null, taskConversion: null },
+      models: [],
+      feedModels: (p.models ?? []).map((m) => ({ model: m.model, usd: m.usd })),
+      modelMatch: "normalized",
+      dataTier: "A",
+      dataTierNote: "Official monthly credit amount and per-model USD caps from open-design.ai/pricing; 7-day and 5-hour windows from open-design.ai/model-credits",
+      disclosure: "disclosed",
+      sourceIds: ["opendesign-pricing", "opendesign-credits"],
+      verifiedAt: "2026-10-02",
+    });
+  }
+
   // --- Xiaomi MiMo Token Plan (Monats-Credits + Credits pro Token je Modell) ---
   const mimo = parsed["mimo-token-plan"];
   if (mimo?.plans?.length && mimo?.models?.length) {
@@ -981,13 +1032,17 @@ function modelsForPlan(plan, feeds) {
     const quota = plan.quotas.find((q) => q.amount != null);
     if (!quota || typeof quota.amount !== "number" || quota.amount <= 0) return out;
     const monthly = quota.window === "rolling" || quota.window === "week" ? quota.amount * 4.33 : quota.amount;
-    for (const modelName of plan.feedModels) {
+    for (const entry of plan.feedModels) {
+      // Eintrag ist entweder ein Modellname (Plan-Menge gilt fuer alle Modelle)
+      // oder { model, usd }: eine je Modell veroeffentlichte Obergrenze in Dollar.
+      const modelName = typeof entry === "string" ? entry : entry?.model;
+      const cap = entry && typeof entry === "object" && entry.usd > 0 ? entry.usd : monthly;
       const match = findFeedModel(allModels, modelName, plan.modelMatch);
       if (!match) continue;
       const pattern = match.pattern ?? FALLBACK_PATTERN;
       out.push({
         name: match.name,
-        allowance: monthly, // Monats-Credits
+        allowance: cap, // Monats-Credits
         window: "month",
         pattern,
         pricing: match,
