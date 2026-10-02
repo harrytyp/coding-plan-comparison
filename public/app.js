@@ -203,6 +203,7 @@ const I18N = {
     "cmdk.family": "family",
     "cmdk.empty": "Nothing matches",
     "cmdk.hint": "Type to search plans and models",
+    "rail.filters": "Filters",
     "rail.axes": "Axes",
     "rail.target": "Target zone",
     "rail.stats": "In this view",
@@ -522,6 +523,7 @@ const I18N = {
     "cmdk.family": "Familie",
     "cmdk.empty": "Nichts gefunden",
     "cmdk.hint": "Tippen, um Pläne und Modelle zu suchen",
+    "rail.filters": "Filter",
     "rail.axes": "Achsen",
     "rail.target": "Zielzone",
     "rail.stats": "In dieser Ansicht",
@@ -920,8 +922,8 @@ function syncRateLabels() {
   for (const [key, label] of Object.entries(map)) {
     document.querySelectorAll(`option[data-i18n="${key}"]`).forEach((el) => { el.textContent = label; });
   }
-  document.querySelectorAll(`#col-picker-panel label span[data-i18n="plans.th.tokens"], #sheet-cols span[data-i18n="plans.th.tokens"]`).forEach((el) => { el.textContent = rateTokensLabel(); });
-  document.querySelectorAll(`#col-picker-panel label span[data-i18n="plans.th.req10"], #sheet-cols span[data-i18n="plans.th.req10"]`).forEach((el) => { el.textContent = rateReqLabel(); });
+  document.querySelectorAll(`#col-picker-panel label span[data-i18n="plans.th.tokens"]`).forEach((el) => { el.textContent = rateTokensLabel(); });
+  document.querySelectorAll(`#col-picker-panel label span[data-i18n="plans.th.req10"]`).forEach((el) => { el.textContent = rateReqLabel(); });
 }
 
 function syncFilterUI() {
@@ -941,7 +943,6 @@ function syncFilterUI() {
 }
 
 /* ---------------- Filter-Toggle + aktive-Filter-Chips ---------------- */
-let filtersOpen = false;
 // Gemeinsames Re-Rendering: Tabelle + Dashboard + Rechner + Filter-Chips
 let announceTimer = null;
 // Statusmeldung fuer Screenreader: Trefferzahl und ausgeblendete Spalten (4.1.3)
@@ -962,13 +963,12 @@ function rerender() {
   renderDashboard();
   syncFilterChips();
 }
-function toggleFilters(force) {
-  filtersOpen = force !== undefined ? force : !filtersOpen;
-  const toolbar = $("#plans-toolbar");
-  const btn = $("#filter-toggle");
-  if (toolbar) toolbar.hidden = !filtersOpen;
-  if (btn) btn.setAttribute("aria-expanded", String(filtersOpen));
-}
+// Filterblock: der Nutzer kann ihn auf- und zuklappen, die Listenansicht
+// startet aufgeklappt (dort ist Filtern die Hauptarbeit), der Graph zugeklappt.
+let filtersOpenManual = null;
+document.addEventListener("toggle", (e) => {
+  if (e.target && e.target.id === "rail-filters") filtersOpenManual = e.target.open;
+}, true);
 
 // Aktive Filter als Chips anzeigen (mit Entfernen-Button) + Zähler-Badge
 function syncFilterChips() {
@@ -1017,6 +1017,9 @@ function syncFilterChips() {
     badge.hidden = chips.length === 0;
     badge.textContent = String(chips.length);
   }
+  // Leere Zeile nicht als Balken stehen lassen
+  const dock = $("#filter-dock");
+  if (dock) dock.classList.toggle("is-empty", chips.length === 0);
 }
 
 function renderStats() {
@@ -1541,11 +1544,9 @@ function syncAttrBoxes() {
 // "Ohne API": Leiste und mobiles Sheet bleiben synchron
 function syncNoApiBoxes() {
   const bar = $("#noapi-toggle"); if (bar) bar.checked = includeNoApi;
-  const sheet = $("#sheet-noapi"); if (sheet) sheet.checked = includeNoApi;
 }
 function syncTrainingBoxes() {
   const bar = $("#training-toggle"); if (bar) bar.checked = includeTraining;
-  const sheet = $("#sheet-training"); if (sheet) sheet.checked = includeTraining;
 }
 
 function attrMatches(c) {
@@ -1814,116 +1815,6 @@ function syncColumnPicker() {
   document.querySelectorAll("#col-picker-panel input[data-col]").forEach((box) => {
     box.checked = visibleColumns.includes(box.dataset.col);
   });
-  // Mobile-Sheet-Spalten syncen
-  document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
-    box.checked = visibleColumns.includes(box.dataset.col);
-  });
-}
-
-/* ============ MOBILE FILTER-DRAWER (faehrt von links ein) ============ */
-let sheetCloseTimer = null;
-let sheetReturnFocus = null;
-function openSheet() {
-  const sheet = $("#sheet");
-  const overlay = $("#sheet-overlay");
-  if (!sheet) return;
-  // Sync aller Controls mit aktuellem State
-  const sk = $("#sheet-sort-key"); if (sk) sk.value = plansSort.key;
-  const sd = $("#sheet-sort-dir"); if (sd) sd.value = plansSort.dir;
-  const ss = $("#sheet-search"); if (ss) ss.value = plansSearch;
-  const sm = $("#sheet-meter"); if (sm) sm.value = plansMeter;
-  const sb = $("#sheet-budget"); if (sb) sb.value = maxBudget;
-  const sbo = $("#sheet-budget-out"); if (sbo) sbo.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
-  const sa = $("#sheet-ai"); if (sa) sa.value = minAiScore;
-  const sao = $("#sheet-ai-out"); if (sao) sao.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
-  syncAttrBoxes();
-  const st = $("#sheet-tierd"); if (st) st.checked = includePriceBased;
-  syncNoApiBoxes();
-  syncTrainingBoxes();
-  syncColumnPicker();
-  if (sheetCloseTimer) { clearTimeout(sheetCloseTimer); sheetCloseTimer = null; }
-  if (document.activeElement && typeof document.activeElement.focus === "function") sheetReturnFocus = document.activeElement;
-  sheet.hidden = false;
-  if (overlay) overlay.hidden = false;
-  document.body.style.overflow = "hidden";
-  requestAnimationFrame(() => sheet.classList.add("open"));
-  const focusTarget = $("#sheet-close");
-  if (focusTarget) setTimeout(() => { try { focusTarget.focus(); } catch (e) { /* ignore */ } }, 60);
-}
-function closeSheet() {
-  const sheet = $("#sheet");
-  const overlay = $("#sheet-overlay");
-  if (sheet) sheet.classList.remove("open");
-  document.body.style.overflow = "";
-  if (sheetCloseTimer) clearTimeout(sheetCloseTimer);
-  sheetCloseTimer = setTimeout(() => {
-    const s = $("#sheet");
-    if (s) s.hidden = true;
-    const o = $("#sheet-overlay");
-    if (o) o.hidden = true;
-    sheetCloseTimer = null;
-  }, 200);
-  if (sheetReturnFocus && document.contains(sheetReturnFocus) && typeof sheetReturnFocus.focus === "function") {
-    try { sheetReturnFocus.focus(); } catch (e) { /* ignore */ }
-  }
-  sheetReturnFocus = null;
-}
-function initSheet() {
-  // Auf Mobile: Filter-Button öffnet den linken Drawer (statt Filter-Toggle + Col-Picker)
-  const isMobile = window.matchMedia("(max-width: 900px)").matches;
-  const ft = $("#filter-toggle");
-  if (ft && isMobile) ft.addEventListener("click", openSheet);
-  if (isMobile) {
-    const cp = $("#col-picker-btn");
-    if (cp) cp.style.display = "none"; // Columns im Drawer
-  }
-  document.addEventListener("keydown", (e) => {
-    const s = $("#sheet");
-    if (e.key === "Escape" && s && !s.hidden) closeSheet();
-  });
-  // Sheet-Controls: Änderungen direkt anwenden
-  const sk = $("#sheet-sort-key"); if (sk) sk.addEventListener("change", (e) => { plansSort.key = e.target.value; renderPlans(); });
-  const sd = $("#sheet-sort-dir"); if (sd) sd.addEventListener("change", (e) => { plansSort.dir = e.target.value; renderPlans(); });
-  const ss = $("#sheet-search"); if (ss) ss.addEventListener("input", (e) => { plansSearch = e.target.value; rerender(); });
-  const sm = $("#sheet-meter"); if (sm) sm.addEventListener("change", (e) => { plansMeter = e.target.value; rerender(); });
-  const sb = $("#sheet-budget"); if (sb) sb.addEventListener("input", (e) => {
-    maxBudget = parseInt(e.target.value, 10) || 300;
-    const o = $("#sheet-budget-out"); if (o) o.textContent = maxBudget >= 300 ? (lang === "de" ? "beliebig" : "any") : fmtMoney(maxBudget);
-    rerender();
-  });
-  const sa = $("#sheet-ai"); if (sa) sa.addEventListener("input", (e) => {
-    minAiScore = parseInt(e.target.value, 10) || 0;
-    const o = $("#sheet-ai-out"); if (o) o.textContent = minAiScore === 0 ? (lang === "de" ? "keins" : "none") : String(minAiScore);
-    rerender();
-  });
-  // Beide Gruppen (Leiste und mobiles Sheet) haengen an data-attr und bleiben synchron
-  $$("input[data-attr]").forEach((el) => {
-    el.checked = attrFilter.has(el.dataset.attr);
-    el.addEventListener("change", (e) => {
-      const k = e.target.dataset.attr;
-      if (e.target.checked) attrFilter.add(k); else attrFilter.delete(k);
-      syncAttrBoxes();
-      rerender();
-    });
-  });
-  const st2 = $("#sheet-tierd"); if (st2) st2.addEventListener("change", (e) => { includePriceBased = e.target.checked; rerender(); });
-  const sn = $("#sheet-noapi"); if (sn) sn.addEventListener("change", (e) => { includeNoApi = e.target.checked; syncNoApiBoxes(); rerender(); });
-  const str = $("#sheet-training"); if (str) str.addEventListener("change", (e) => { includeTraining = e.target.checked; syncTrainingBoxes(); rerender(); });
-  // Sheet-Spalten
-  document.querySelectorAll("#sheet-cols input[data-col]").forEach((box) => {
-    box.addEventListener("change", () => {
-      const col = box.dataset.col;
-      if (box.checked) { if (!visibleColumns.includes(col)) visibleColumns.push(col); }
-      else { visibleColumns = visibleColumns.filter((c) => c !== col); }
-      saveColumns();
-      renderPlans();
-      syncFilterChips(); // Chip "n Spalten ausgeblendet" mitziehen
-    });
-  });
-  // Schließen
-  const sc = $("#sheet-close"); if (sc) sc.addEventListener("click", closeSheet);
-  const so = $("#sheet-overlay"); if (so) so.addEventListener("click", closeSheet);
-  const sd2 = $("#sheet-done"); if (sd2) sd2.addEventListener("click", closeSheet);
 }
 
 /* ============ DASHBOARD / PARETO-PLOT (Canvas) ============ */
@@ -3006,6 +2897,15 @@ function showView(name) {
     // Filter-Dock gilt fuer Uebersicht (Pareto) und Plaene, nicht fuer Methodik/Changelog/Rechner
     const dock = $("#filter-dock");
     if (dock) dock.hidden = !(view === "overview" || view === "plans");
+    // Derselbe Filterblock wandert mit: im Graph sitzt er im Rail-Menue,
+    // in der Listenansicht ueber der Tabelle.
+    const filters = $("#rail-filters");
+    if (filters) {
+      const host = view === "plans" ? $("#filters-host") : document.querySelector(".rail");
+      if (host && filters.parentElement !== host) host.insertBefore(filters, host.firstChild);
+      // Liste: aufgeklappt, weil dort das Filtern die Hauptarbeit ist
+      filters.open = view === "plans" ? true : filtersOpenManual === true;
+    }
     try { history.replaceState(null, "", `#${view}`); } catch (e) { /* ignore */ }
     window.scrollTo({ top: 0, behavior: "auto" });
     revealActiveTab();
@@ -3250,12 +3150,7 @@ function init() {
   const plansMeterEl = $("#plans-meter-filter");
   if (plansMeterEl) plansMeterEl.addEventListener("change", (e) => { plansMeter = e.target.value; rerender(); });
 
-  // Filter-Toggle: ein-/ausklappen (Desktop). Mobil öffnet der Button den linken Drawer.
-  const filterToggle = $("#filter-toggle");
-  if (filterToggle) filterToggle.addEventListener("click", () => {
-    if (window.matchMedia("(max-width: 900px)").matches) return;
-    toggleFilters();
-  });
+  // Zustand des Filterblocks merkt der toggle-Handler oben (filtersOpenManual)
 
   // Sort-Selector (Mobile): ändert Sortierung
   const sortKeySel = $("#sort-select-key");
@@ -3333,7 +3228,6 @@ function init() {
   syncColumnPicker();
   initDashboard();
   initCalculator();
-  initSheet();
   initTabs();
   initPalette();
   initBackTop();

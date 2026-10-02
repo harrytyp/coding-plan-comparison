@@ -131,6 +131,17 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 - `app.js` bleibt der Renderer. Die Schicht darf app.js nicht patchen; Korrekturen an dessen
   Verhalten gehören in `public/app.js`.
 
+## Filter-Bedienung (eine Stelle, zwei Ansichten)
+Es gibt genau **einen** Satz Filter-Controls: den Rail-Block `#rail-filters` (Suche, Meter,
+Budget, AI-Score, Attribute, Spalten, Trefferzahl). Er wandert beim Ansichtswechsel per
+`showView` in den passenden Host: im Graph steht er als erster Block im `.rail` (zusammen mit
+Achsen, Zielzone, Kennzahlen), in der Listenansicht in `#filters-host` ueber der Tabelle, dort
+standardmaessig aufgeklappt. Der frueher doppelte Satz (Dock-Leiste + mobiles Bottom-Sheet
+`#sheet-*`) ist entfernt, damit es keine Sync-Fehler mehr gibt. Aktive Filter zeigt die
+Chip-Zeile `#filter-active` ueber den Views; sie blendet sich ohne aktive Filter selbst aus
+(`.filter-dock.is-empty`). Der Desktop-Rail ist bei `min-width: 981px` intern scrollbar
+(`max-height: calc(100vh - 96px)`), weil der aufgeklappte Filterblock hoeher ist als das Fenster.
+
 ## Chart: Zoom und Pan
 Der Scatter-Plot ist live navigierbar: Mausrad zoomt auf den Zeiger, Ziehen verschiebt
 (Live-Pan), Zwei-Finger-Pinch zoomt auf Touch, `+`/`-`/`0` und die Buttons im Chart-Kopf
