@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-02"
+    commit: "82c67cf"
+    text: "One price including the fee, no separate fee marker"
+    textEn: "One price including the fee, no separate fee marker"
+  - date: "2026-10-02"
     commit: "1fe46a4"
     text: "Generate the changelog from the repository commits"
     textEn: "Generate the changelog from the repository commits"
@@ -399,7 +403,3 @@ entries:
     commit: "fc1c09d"
     text: "Kimi-Membership aufgeloest (offizielles Billing-Beispiel)"
     textEn: "Kimi-Membership aufgeloest (offizielles Billing-Beispiel)"
-  - date: "2026-08-30"
-    commit: "3cb0757"
-    text: "Mehr vergleichbare Plaene - 6 auf 10"
-    textEn: "Mehr vergleichbare Plaene - 6 auf 10"
