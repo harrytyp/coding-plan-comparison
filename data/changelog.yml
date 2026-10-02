@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-02"
+    commit: "b753996"
+    text: "Long-tail pages for plans and providers, plus a German entry page"
+    textEn: "Long-tail pages for plans and providers, plus a German entry page"
+  - date: "2026-10-02"
     commit: "687619d"
     text: "Record the Cloudflare setup (proxy, TLS, redirects, rollback)"
     textEn: "Record the Cloudflare setup (proxy, TLS, redirects, rollback)"
@@ -399,7 +403,3 @@ entries:
     commit: "251a16e"
     text: "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)"
     textEn: "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)"
-  - date: "2026-08-31"
-    commit: "1d850a0"
-    text: "FX-Rates als Pipeline-Quelle statt Client-Live-API"
-    textEn: "FX-Rates als Pipeline-Quelle statt Client-Live-API"
