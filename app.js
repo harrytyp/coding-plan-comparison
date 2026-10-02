@@ -109,8 +109,6 @@ const I18N = {
     "plans.th.plan": "Plan",
     "plans.th.provider": "Provider",
     "plans.th.price": "Price / mo",
-    "price.feeMark": "+ fee",
-    "price.feeAmount": "+ {v} fee",
     "plans.th.meter": "Meter",
     "plans.th.quota": "Quota",
     "plans.th.models": "Models",
@@ -271,8 +269,8 @@ const I18N = {
     "method.s5.p": "Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans, so neither plan gets a cheaper pattern.",
     "method.s6.t": "Undisclosed numbers stay empty",
     "method.s6.p": "If a provider does not publish its numbers, we say so. We do not invent credits or back-calculate quotas.",
-    "method.s7.t": "Listed prices, plus fees where a vendor adds them",
-    "method.s7.p": "We show the price each vendor lists. Command Code adds a card processing fee to every plan and does not publish the rate, it appears at checkout. Where we measured the fee it stands as an amount on the price (GOAT: $10.78 paid for the $10 plan on 2026-10-02); the other Command Code tiers carry a “+ fee” mark with the measurement in the tooltip. Where a vendor publishes a complete price, we show it unchanged.",
+    "method.s7.t": "Prices as you pay them",
+    "method.s7.p": "Prices show what you pay. Normally that is the vendor list price; where a vendor adds a fee on top, the fee is already inside the number and the split stands in the plan note. Command Code adds a card processing fee to every plan and only shows the exact rate at checkout, so its prices carry the measured total (GOAT: $10.78 paid for the $10 tier on 2026-10-02, 7.8 %) and the other Command Code tiers use the same measured rate.",
     "method.more": "Show all steps",
     "method.less": "Show fewer",
     "faq.h2": "Frequently asked questions",
@@ -434,8 +432,6 @@ const I18N = {
     "plans.th.plan": "Plan",
     "plans.th.provider": "Anbieter",
     "plans.th.price": "Preis / Monat",
-    "price.feeMark": "+ Gebühr",
-    "price.feeAmount": "+ {v} Gebühr",
     "plans.th.meter": "Meter",
     "plans.th.quota": "Kontingent",
     "plans.th.models": "Modelle",
@@ -596,8 +592,8 @@ const I18N = {
     "method.s5.p": "Manche Feeds nutzen ein generisches Workload-Pattern. Für geteilte Modell-Familien verwenden wir das präziseste per-Modell-Pattern für beide Pläne, damit kein Plan ein billigeres Pattern bekommt.",
     "method.s6.t": "Nicht veröffentlichte Zahlen bleiben leer",
     "method.s6.p": "Wenn ein Anbieter seine Zahlen nicht veröffentlicht, sagen wir das. Wir erfinden keine Credits und rechnen keine Kontingente zurück.",
-    "method.s7.t": "Listenpreise, plus Gebühren wo der Anbieter sie erhebt",
-    "method.s7.p": "Wir zeigen den Preis, den der Anbieter ausweist. Command Code erhebt auf jeden Plan zusätzlich eine Bearbeitungsgebühr für Kartenzahlung und veröffentlicht den Satz nicht, er erscheint erst im Checkout, deshalb tragen diese Preise die Marke „+ Gebühr“. Wo ein Anbieter einen vollständigen Preis ausweist, steht er unverändert.",
+    "method.s7.t": "Preise, wie du sie zahlst",
+    "method.s7.p": "Preise zeigen, was du zahlst. Normalerweise ist das der Listenpreis des Anbieters; schlägt ein Anbieter etwas drauf, steckt die Gebühr schon in der Zahl und die Aufteilung steht in der Plan-Notiz. Command Code erhebt auf jeden Plan eine Gebühr für Kartenzahlung und zeigt den genauen Satz erst im Checkout, deshalb steht dort der gemessene Gesamtbetrag (GOAT: 10,78 $ für den 10-$-Tarif am 02.10.2026, 7,8 %) und für die übrigen Command-Code-Tarife derselbe gemessene Satz.",
     "method.more": "Alle Schritte zeigen",
     "method.less": "Weniger zeigen",
     "faq.h2": "Häufige Fragen",
@@ -1362,11 +1358,9 @@ function buildCombos() {
         // Manuelle Hinweise (overrides.yml): kurzer Tag fuer Tabellen, langer Text fuer Details
         planTag: lang === "de" ? (plan.tagDe ?? plan.tag ?? null) : (plan.tag ?? null),
         planNote: lang === "de" ? (plan.notesDe ?? plan.notes ?? null) : (plan.notes ?? null),
-        // Preis-Zuschlag (z.B. Karten-Gebuehr): gehoert sichtbar an den Preis
+        // Manuelle Preis-Notiz (overrides.yml): reist in die Kombination mit
         priceNote: lang === "de" ? (plan.priceNoteDe ?? plan.priceNote ?? null) : (plan.priceNote ?? null),
         priceNoteSource: plan.priceNoteSource ?? null,
-        // Gemessener Zuschlag in USD (Command Code GOAT): Betrag statt Platzhalter
-        feeUsd: plan.feeUsd ?? null,
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
@@ -1525,18 +1519,6 @@ function noteMark(c) {
   notePlanSeen.add(c.planId);
   const tip = c.planNote ?? c.planTag;
   return `<span class="note-mark" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}">i</span>`;
-}
-
-// Preis-Zuschlag am Preis markieren (Command Code: Karten-Gebuehr). Ist der
-// Betrag gemessen (feeUsd), steht die Zahl am Preis; sonst bleibt es beim
-// Hinweis "plus fee", weil der Satz erst an der Kasse erscheint.
-function feeMark(c) {
-  if (!c.priceNote) return "";
-  const tip = c.priceNoteSource ? `${c.priceNote} · ${c.priceNoteSource}` : c.priceNote;
-  const label = c.feeUsd > 0
-    ? t("price.feeAmount").replace("{v}", fmtPrice(c.feeUsd))
-    : t("price.feeMark");
-  return ` <span class="fee-note" title="${escapeHtml(tip)}">${escapeHtml(label)}</span>`;
 }
 
 // Attribute einer Kombination: alles, was den Plan jenseits von Preis und Rate
@@ -1746,7 +1728,7 @@ function renderCell(col, c) {
       const wl = c.waitlist === true
         ? `<div class="waitlist-badge" title="${t("plans.waitlist.title")}">${t("plans.waitlist")}</div>`
         : "";
-      return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${feeMark(c)}${wl}</td>`;
+      return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${wl}</td>`;
     }
     case "privacy": return `<td class="td-attrs" data-label="${t("plans.th.privacy")}">${attrCell(c)}</td>`;
     default: return "";
@@ -2858,7 +2840,7 @@ function renderCalculator() {
     return `<div class="calc-row">`
       + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}${noteMark(c)}${i === 0 ? "" : ""}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span></div>`
-      + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>${feeMark(c)}`
+      + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>`
       + `<span class="sub">${fmtPrice(Math.max(0, left))} ${t("calc.leftover")}</span></div>`
       + `</div>`;
   }).join("");
