@@ -27,17 +27,15 @@ sources.yml (feeds + docs + privacy + scores + FX)
   aus den Feeds, nie aus dem Kopf. OpenDesign wird aus zwei HTML-Quellen gebaut
   (`opendesign-pricing`, `opendesign-credits`), die Modellzeilen entstehen nur fuer Modelle,
   die auch im Feed einen Preis haben (Hunyuan H4 Preview fehlt dort und bekommt bewusst keine Zeile).
-- **Preis-Zuschlaege:** Erhebt ein Anbieter auf den Listenpreis etwas drauf (Command Code:
-  Kartenzahlung auf jedem Plan), steht der Text als `priceNote` / `priceNoteDe` /
-  `priceNoteSource` in `overrides.yml` und wandert ueber build.mjs in die Plan-Daten.
-  UI: Marke an der Preiszelle, im Detail, im Dashboard-Detail und im Rechner, mit Quell-URL
-  im Tooltip. **Gemessener Betrag schlaegt Platzhalter:** ist der Zuschlag gemessen (GOAT:
-  10,78 $ fur den 10-$-Tarif am 2026-10-02), steht er als `feeUsd` in `overrides.yml` und
-  `paidPrice = Liste + Zuschlag` (die Rate rechnet damit, was wirklich abgebucht wird).
-  Die Marke zeigt dann „+ 0,78 $ Gebühr" statt „+ Gebühr". Fuer Tarife ohne Messung bleibt
-  es beim Hinweis mit der Messung als Referenz: **nie einen Betrag fuer sie rechnen**, der
-  Satz steht erst an der Kasse (`commandcode.ai/docs/resources/payment-methods`).
-  Methodik-Schritt 7 nennt die Regel.
+- **Preise inkl. Zuschlaege, keine separate Gebuehren-Marke.** Erhebt ein Anbieter etwas
+  drauf (Command Code: Gebuehr fuer Kartenzahlung auf jedem Plan), steht in `overrides.yml`
+  EIN fertiger `price`: `monthlyUsd` = `paidPrice` = Liste + Zuschlag, `advertisedPrice` =
+  Liste, die Aufteilung nur in der `billingNote` (Datenlage, nicht sichtbar). Ist der
+  Zuschlag gemessen (GOAT: 10,78 $ fuer den 10-$-Tarif am 2026-10-02 = 7,8 %), gilt
+  derselbe gemessene Satz fuer die uebrigen Tarife desselben Anbieters, weil er nirgends
+  veroeffentlicht wird (`commandcode.ai/docs/resources/payment-methods`). Erklaerung
+  gehoert in die Plan-Notiz und Methodik-Schritt 7, **nie als eigene Marke an den Preis**
+  (kein `feeUsd`, kein „+ Gebuehr"-Chip: Kolja will eine Zahl, in der alles drin ist).
 
 ## Normalisierung
 ```

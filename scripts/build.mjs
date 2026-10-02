@@ -105,15 +105,14 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
         id,
         provider: "command-code",
         name: `Command Code ${p.name}`,
-        // Preis aus overrides.yml, wenn dort gepflegt (GOAT: gemessener
-        // Kartenbetrag), sonst Listenpreis + verifizierter Fallback.
+        // Fertiger Preis aus overrides.yml (Command Code: inkl. Kartengebuehr),
+        // sonst Listenpreis + verifizierter Fallback.
         price: (() => {
           const ov = overrides[`command-code-${p.id}`];
           if (ov?.price) return ov.price;
           const paid = CC_PAID[p.id] ?? p.priceMonthly;
           return { monthlyUsd: p.priceMonthly, paidPrice: paid, advertisedPrice: p.priceMonthly, billingNote: CC_PAID[p.id] ? `paid $${paid.toFixed(2)} (verified checkout price)` : "", altPrice: null };
         })(),
-        feeUsd: overrides[`command-code-${p.id}`]?.feeUsd ?? null,
         meter: "credits",
         quotas: [
           { label: "5h window", unit: "credits", amount: p.limits?.h5 ?? null, window: "5h", refresh: "rolling", disclosure: "exact" },
@@ -756,10 +755,8 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     if (ov.priceNote) plan.priceNote = ov.priceNote;
     if (ov.priceNoteDe) plan.priceNoteDe = ov.priceNoteDe;
     if (ov.priceNoteSource) plan.priceNoteSource = ov.priceNoteSource;
-    // Gemessener Kartenbetrag: ueberschreibt den Feed-Preis (paidPrice = was
-    // tatsaechlich abgebucht wird) und traegt den Zuschlags-Betrag fuer die UI.
+    // Fertiger Preis aus overrides.yml (Command Code: Preis inkl. Kartengebuehr)
     if (ov.price) plan.price = ov.price;
-    if (ov.feeUsd != null) plan.feeUsd = ov.feeUsd;
   }
 
   return plans;
@@ -1273,7 +1270,6 @@ async function main() {
       priceNote: plan.priceNote ?? null,
       priceNoteDe: plan.priceNoteDe ?? null,
       priceNoteSource: plan.priceNoteSource ?? null,
-      feeUsd: plan.feeUsd ?? null,
       tag: plan.tag ?? null,
       tagDe: plan.tagDe ?? null,
       modelRows,

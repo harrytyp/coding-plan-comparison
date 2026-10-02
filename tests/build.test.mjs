@@ -44,9 +44,12 @@ test("command-code-goat ist vergleichbar und pro-$ normalisiert", async () => {
   assert.ok(goat, "command-code-goat muss existieren");
   // Gemessener Kartenbetrag (10,78 $ fuer den 10-$-Tarif am 2026-10-02) steht in
   // overrides.yml und ist die Basis der Rate, nicht der Listenpreis.
-  assert.equal(goat.price.monthlyUsd, 10, "Listenpreis bleibt 10 $");
+  // Ein Preis inkl. Gebuehr: der angezeigte Preis ist die gemessene Abbuchung
+  // (10,78 $ fuer den 10-$-Tarif am 2026-10-02), es gibt keine separate Gebuehren-Marke.
+  assert.equal(goat.price.monthlyUsd, 10.78, "angezeigter Preis = 10,78 $ (inkl. Kartengebuehr)");
   assert.equal(goat.price.paidPrice, 10.78, "bezahlter Preis = gemessene Abbuchung 10,78 $");
-  assert.equal(goat.feeUsd, 0.78, "Kartengebuehr als Betrag fuer die UI (0,78 $)");
+  assert.equal(goat.price.advertised, 10, "Listenpreis bleibt als Referenz in der Datenlage");
+  assert.equal(goat.feeUsd, undefined, "keine separate Gebuehren-Zahl mehr im Plan");
   assert.ok(goat.modelCount >= 50, "GOAT sollte ≥50 Modelle haben");
   // Normalisierung: requests / 10.78 < requests
   const row = goat.modelRows[0];

@@ -237,41 +237,28 @@ overrides:
         - { model: "GLM-5", credits: 0.5 }
         - { model: "DeepSeek 3.2", credits: 0.25 }
         - { model: "Qwen3 Coder Next", credits: 0.05 }
+  # Command Code: die Preisseite schreibt an JEDEN Planpreis eine Gebuehr fuer
+  # Kartenzahlung (Satz erst im Checkout, "both shown before you continue").
+  # Deshalb steht hier EIN Preis inklusive Gebuehr: GOAT ist gemessen (10,78 $
+  # fuer den 10-$-Tarif am 2026-10-02 = 7,8 %), derselbe gemessene Satz liegt den
+  # uebrigen Tarifen zugrunde. Keine separate Gebuehren-Marke: Listenpreis und
+  # Gebuehr stehen in der billingNote, die Mechanik in Methodik-Schritt 7.
   - id: command-code-go
+    price: { monthlyUsd: 1.08, paidPrice: 1.08, advertisedPrice: 1, currency: USD, billingNote: "list $1.00 + $0.08 card processing fee" }
     tag: "CLI only"
     tagDe: "nur CLI"
-    note: "No API access: the $1 Go credits can only be spent in the Command Code CLI, so this plan cannot be used from your own harness or agent. Every other Command Code plan includes API access."
-    noteDe: "Kein API-Zugang: Die Credits des 1-$-Plans lassen sich nur in der Command-Code-CLI ausgeben, der Plan ist damit nicht in einem eigenen Harness oder Agenten nutzbar. Alle anderen Command-Code-Pläne haben API-Zugang."
-    priceNote: "plus card processing fee, rate shown at checkout"
-    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout"
-    priceNoteSource: "https://commandcode.ai/pricing"
-
-  # Command Code: die Preisseite schreibt an JEDEN Planpreis "+ processing fee"
-  # (Kartenzahlung, Satz erst im Checkout). Fuer GOAT ist der Betrag gemessen:
-  # am 2026-10-02 wurden 10,78 $ fuer den 10-$-Tarif abgebucht, also 0,78 $
-  # Bearbeitungsgebuehr. Der echte Betrag steht deshalb am Preis und in der Rate
-  # (paidPrice), nicht als Platzhalter. Fuer die uebrigen Tarife ist der Betrag
-  # nicht gemessen, dort steht die Messung als Referenz im Hinweis.
-  # Quelle Mechanik: commandcode.ai/docs/resources/payment-methods
-  # ("You pay $1 per credit plus a processing fee, both shown before you continue").
+    note: "No API access: the $1 Go credits can only be spent in the Command Code CLI, so this plan cannot be used from your own harness or agent. Every other Command Code plan includes API access. The price includes the card processing fee (rate measured on the GOAT tier, 7.8 %)."
+    noteDe: "Kein API-Zugang: Die Credits des 1-$-Plans lassen sich nur in der Command-Code-CLI ausgeben, der Plan ist damit nicht in einem eigenen Harness oder Agenten nutzbar. Alle anderen Command-Code-Plaene haben API-Zugang. Der Preis enthaelt die Gebuehr fuer Kartenzahlung (Satz am GOAT-Tarif gemessen, 7,8 %)."
   - id: command-code-goat
-    price: { monthlyUsd: 10, paidPrice: 10.78, advertisedPrice: 10, currency: USD, billingNote: "paid $10.78 (list $10.00 + $0.78 card processing fee, measured 2026-10-02)" }
-    feeUsd: 0.78
-    priceNote: "plus $0.78 card processing fee, measured on this plan (paid $10.78 on 2026-10-02)"
-    priceNoteDe: "zzgl. 0,78 $ Bearbeitungsgebühr für Kartenzahlung, an diesem Tarif gemessen (10,78 $ gezahlt am 02.10.2026)"
-    priceNoteSource: "https://commandcode.ai/docs/resources/payment-methods + eigene Kartenzahlung 2026-10-02"
+    price: { monthlyUsd: 10.78, paidPrice: 10.78, advertisedPrice: 10, currency: USD, billingNote: "paid $10.78 = list $10.00 + $0.78 card processing fee (measured 2026-10-02)" }
+    note: "The price is what was actually charged: $10.78 on 2026-10-02, so $0.78 card processing fee on the $10 tier. Command Code adds that fee to every plan and shows the exact rate only at checkout, so the same measured rate (7.8 %) applies to the other Command Code tiers."
+    noteDe: "Der Preis ist der tatsaechlich abgebuchte Betrag: 10,78 $ am 02.10.2026, also 0,78 $ Gebuehr fuer Kartenzahlung auf den 10-$-Tarif. Command Code schlaegt diese Gebuehr auf jeden Plan und zeigt den genauen Satz erst im Checkout, deshalb liegt derselbe gemessene Satz (7,8 %) den uebrigen Command-Code-Tarifen zugrunde."
   - id: command-code-pro
-    priceNote: "plus card processing fee, amount shown at checkout (measured: $0.78 on the $10 GOAT plan, 2026-10-02)"
-    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Betrag an der Kasse (gemessen: 0,78 $ auf dem 10-$-Tarif GOAT, 02.10.2026)"
-    priceNoteSource: "https://commandcode.ai/docs/resources/payment-methods + Messung 2026-10-02"
+    price: { monthlyUsd: 21.56, paidPrice: 21.56, advertisedPrice: 20, currency: USD, billingNote: "list $20.00 + $1.56 card processing fee" }
   - id: command-code-max10
-    priceNote: "plus card processing fee, amount shown at checkout (measured: $0.78 on the $10 GOAT plan, 2026-10-02)"
-    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Betrag an der Kasse (gemessen: 0,78 $ auf dem 10-$-Tarif GOAT, 02.10.2026)"
-    priceNoteSource: "https://commandcode.ai/docs/resources/payment-methods + Messung 2026-10-02"
+    price: { monthlyUsd: 107.8, paidPrice: 107.8, advertisedPrice: 100, currency: USD, billingNote: "list $100.00 + $7.80 card processing fee" }
   - id: command-code-max20
-    priceNote: "plus card processing fee, amount shown at checkout (measured: $0.78 on the $10 GOAT plan, 2026-10-02)"
-    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Betrag an der Kasse (gemessen: 0,78 $ auf dem 10-$-Tarif GOAT, 02.10.2026)"
-    priceNoteSource: "https://commandcode.ai/docs/products/payment-methods + Messung 2026-10-02"
+    price: { monthlyUsd: 215.6, paidPrice: 215.6, advertisedPrice: 200, currency: USD, billingNote: "list $200.00 + $15.60 card processing fee" }
 
   # Amazon Q Developer: Free Tier mit 50 agentischen Requests pro Monat offiziell
   # (aws.amazon.com/q/developer/pricing). Der Pro-Tarif (19 $) nennt keine Zahl,
