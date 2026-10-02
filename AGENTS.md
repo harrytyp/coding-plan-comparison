@@ -123,6 +123,12 @@ GitHub Pages ohne CDN auskommt; die CI kopiert `public/vendor/` mit ins Root (`v
 - Ein Finger bleibt Seiten-Scroll (Filter erlaubt Touch erst ab zwei Fingern).
 - `window.__dashState` gibt Achsen/Zoom/Punktzahl nach außen: das Chart ist Canvas und
   sonst nicht automatisiert prüfbar.
+- **Hover/Pan/Zoom nutzen den leichten Pfad** (`renderDashboard(true)`): Punkte und
+  Pareto-Front kommen aus `dashCache`, Rail-Zahlen, Shortlist und Notiz bleiben stehen.
+  Ohne das kostete jede Mausbewegung ~100 ms (buildCombos + Fuzzy-Score für ~800 Modelle),
+  die Seite ruckelte sichtbar. Filter-, Achsen-, Sprach- und Datenwechsel laufen weiter
+  über den vollen Pfad. `aiScoreFor` ist per Modell/Familie gemerkt (`aiScoreMemo`),
+  das Leeren passiert beim Datenladen.
 - Neu bauen (nur bei d3-Update nötig):
   `npm i --no-save d3-zoom esbuild` in einem Temp-Ordner, dann
   `npx esbuild entry.js --bundle --format=iife --global-name=d3zoom --minify --outfile=public/vendor/d3-zoom.min.js`
