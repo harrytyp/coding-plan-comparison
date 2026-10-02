@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T08:50:17.078Z",
+  "generatedAt": "2026-10-02T09:06:53.936Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -41326,7 +41326,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-02T08:50:16.957Z",
+    "fetchedAt": "2026-10-02T09:06:53.259Z",
     "count": 413,
     "scores": {
       "claude-opus-5-5": {
@@ -41440,10 +41440,10 @@
       "qwen3-8-27b": {
         "intelligence": 44.75
       },
-      "gpt-5-5-pro": {
+      "claude-opus-4-6": {
         "intelligence": 44.7
       },
-      "claude-opus-4-6": {
+      "gpt-5-5-pro": {
         "intelligence": 44.7
       },
       "gpt-5-6-luna": {
@@ -41839,10 +41839,10 @@
       "qwen3-vl-235b-a22b-instruct": {
         "intelligence": 24.66
       },
-      "glm-4-5-air": {
+      "laguna-xs-2-1": {
         "intelligence": 24.35
       },
-      "laguna-xs-2-1": {
+      "glm-4-5-air": {
         "intelligence": 24.35
       },
       "claude-sonnet-4-20250514": {
@@ -41959,10 +41959,10 @@
       "sarvam-30b": {
         "intelligence": 19.54
       },
-      "qwen3-5-4b": {
+      "gpt-5-nano-2025-08-07": {
         "intelligence": 19.5
       },
-      "gpt-5-nano-2025-08-07": {
+      "qwen3-5-4b": {
         "intelligence": 19.5
       },
       "diffusiongemma-26b-a4b-it": {
