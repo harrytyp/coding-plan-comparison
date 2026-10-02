@@ -275,3 +275,17 @@ also nur mit Stichprobenzahl und Bereich veroeffentlichen. Quellenlage:
 - `harrytyp/free-llm-tracker` — LLM-Preis-Tracker (collector/benchmark, alle 6h) — nicht duplizieren,
   ggf. Messdaten teilen.
 - `harrytyp/modelselector` — Modell-Auswahl-Daten.
+
+## Seiten aus Daten (Longtail)
+
+`scripts/pages.mjs` erzeugt aus `public/data/latest.json`:
+
+- `public/plans/<id>/index.html` fuer jeden Tarif mit belastbaren Zahlen (Monatspreis > 0, mindestens 3 Modelle mit Rate)
+- `public/providers/<anbieter>/index.html` je Anbieter, sortiert nach Tokens pro Dollar
+- `public/de/index.html` als deutsche Einstiegsseite
+
+Regeln: das Stylesheet wird aus `public/coding-plan-comparison/index.html` uebernommen, damit es kein
+zweites Design gibt. Die Hauptseite (`public/index.html`, `public/app.js`) wird von diesen Skripten
+NICHT angefasst, die Default-Ansicht der App bleibt unveraendert. Reihenfolge in der CI:
+build -> landing -> pages -> seo (die Sitemap sammelt die erzeugten Verzeichnisse ein). Die Root-
+Spiegelung kopiert `plans/`, `providers/` und `de/` mit.

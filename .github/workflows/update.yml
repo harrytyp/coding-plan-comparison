@@ -48,14 +48,17 @@ jobs:
       - name: Changelog aus der Git-Historie erzeugen
         run: node scripts/changelog-from-git.mjs
 
-      - name: Sitemap und Feed aktualisieren
-        run: node scripts/seo.mjs
-
       - name: Build latest.json
         run: node scripts/build.mjs
 
       - name: Statische Vergleichsseite erzeugen
         run: node scripts/landing.mjs
+
+      - name: Plan- und Anbieterseiten, deutsche Einstiegsseite
+        run: node scripts/pages.mjs
+
+      - name: Sitemap und Feed aktualisieren
+        run: node scripts/seo.mjs
 
       - name: IndexNow (Bing/Yandex) informieren
         continue-on-error: true
@@ -72,7 +75,7 @@ jobs:
         run: |
           git config user.name "coding-plan-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add public/data/latest.json data/changelog.yml public/sitemap.xml public/feed.xml public/coding-plan-comparison
+          git add public/data/latest.json data/changelog.yml public/sitemap.xml public/feed.xml public/coding-plan-comparison public/plans public/providers public/de
           git add public/8f3c1a94d7b25e60af4183c95d7b2e10.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Keine Änderungen — nichts zu committen"
@@ -114,6 +117,10 @@ jobs:
           cp public/robots.txt public/sitemap.xml public/feed.xml public/llms.txt ./
           # Statische Vergleichsseite (SEO-Einstieg) ins Root spiegeln
           cp -r public/coding-plan-comparison ./coding-plan-comparison
+          # Plan-, Anbieter- und deutsche Seiten ebenfalls ins Root
+          cp -r public/plans ./plans
+          cp -r public/providers ./providers
+          cp -r public/de ./de
           # 404-Seite und IndexNow-Schluessel gehören ebenfalls ins Root
           cp public/404.html ./
           cp public/8f3c1a94d7b25e60af4183c95d7b2e10.txt ./
@@ -127,7 +134,7 @@ jobs:
           mkdir -p preview
           cp -r public/preview/. ./preview/
           sed -i "s/__VERSION__/$VERSION/g" ./preview/index.html
-          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png robots.txt sitemap.xml feed.xml llms.txt coding-plan-comparison 404.html 8f3c1a94d7b25e60af4183c95d7b2e10.txt
+          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png robots.txt sitemap.xml feed.xml llms.txt coding-plan-comparison plans providers de 404.html 8f3c1a94d7b25e60af4183c95d7b2e10.txt
           if git diff --cached --quiet; then
             echo "Website unverändert"
           else

@@ -9,7 +9,7 @@
  *   - Feed (Atom): die Changelog-Eintraege (aus data/changelog.yml, also aus Git)
  * Die CI ruft das Skript nach dem Changelog-Schritt auf.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseYaml } from "./yaml.mjs";
@@ -30,6 +30,25 @@ function writeIfChanged(file, content) {
 }
 
 // ---------------------------------------------------------------- Sitemap
+// Plan-, Anbieter- und deutsche Seiten kommen aus scripts/pages.mjs und werden
+// aus dem Dateisystem eingesammelt, damit die Sitemap nicht von Hand waechst.
+const extra = [];
+for (const [dir, prio] of [["plans", "0.7"], ["providers", "0.6"]]) {
+  const base = join(ROOT, "public", dir);
+  if (!existsSync(base)) continue;
+  for (const e of readdirSync(base, { withFileTypes: true })) {
+    if (e.isDirectory()) extra.push({ loc: `${SITE}/${dir}/${e.name}/`, prio });
+  }
+}
+if (existsSync(join(ROOT, "public", "de", "index.html"))) extra.push({ loc: `${SITE}/de/`, prio: "0.8" });
+extra.sort((a, b) => a.loc.localeCompare(b.loc));
+const extraXml = extra.map((u) => `  <url>
+    <loc>${u.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>${u.prio}</priority>
+  </url>`).join("\n");
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -48,6 +67,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
+${extraXml}
 </urlset>
 `;
 

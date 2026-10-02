@@ -673,3 +673,26 @@ test("Changelog wird aus den Commits erzeugt und ist sauber", async () => {
   const rausch = entries.filter((e) => /^(chore\((web|data|ci)\)|test[(:])/.test(e.text || ""));
   assert.equal(rausch.length, 0, `Rausch-Commits im Changelog: ${rausch.slice(0, 3).map((e) => e.text).join(" | ")}`);
 });
+
+test("Plan-/Anbieterseiten und deutsche Seite: Kanonisch, Sprache, Sitemap", async () => {
+  const dirs = ["plans", "providers"];
+  const { readdirSync } = await import("node:fs");
+  const sitemap = await readFile(join(ROOT, "public/sitemap.xml"), "utf8");
+  for (const dir of dirs) {
+    const base = join(ROOT, "public", dir);
+    const entries = readdirSync(base, { withFileTypes: true }).filter((e) => e.isDirectory() && !e.name.startsWith("."));
+    assert.ok(entries.length > 0, `${dir} sollte Seiten enthalten`);
+    for (const e of entries) {
+      const html = await readFile(join(base, e.name, "index.html"), "utf8");
+      const canonical = `https://vibeplan.cc/${dir}/${e.name}/`;
+      assert.ok(html.includes(`rel="canonical" href="${canonical}"`), `canonical fehlt: ${canonical}`);
+      assert.ok(html.includes("<h1>"), `h1 fehlt: ${canonical}`);
+      assert.ok(!html.includes("\u2014"), `Em-Dash gefunden: ${canonical}`);
+      assert.ok(sitemap.includes(canonical), `nicht in der Sitemap: ${canonical}`);
+    }
+  }
+  const de = await readFile(join(ROOT, "public/de/index.html"), "utf8");
+  assert.ok(de.includes('<html lang="de">'), "deutsche Seite ohne lang=de");
+  assert.ok(de.includes('hreflang="en"'), "hreflang auf die englische Fassung fehlt");
+  assert.ok(sitemap.includes("https://vibeplan.cc/de/"), "deutsche Seite fehlt in der Sitemap");
+});
