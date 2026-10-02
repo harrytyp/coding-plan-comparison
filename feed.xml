@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>vibeplan.cc: AI coding plan comparison</title>
+  <subtitle>What $1 really buys in AI coding subscriptions: tokens and requests per dollar, published quotas, open data.</subtitle>
+  <id>https://vibeplan.cc/</id>
+  <link rel="self" href="https://vibeplan.cc/feed.xml"/>
+  <link rel="alternate" href="https://vibeplan.cc/"/>
+  <updated>2026-10-02T00:00:00Z</updated>
+  <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
+  <rights>MIT</rights>
+  <entry>
+    <title>Preview build resolves the JSON-LD date placeholder</title>
+    <id>https://vibeplan.cc/#ff76c30</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ff76c30"/>
+    <summary>Preview build resolves the JSON-LD date placeholder</summary>
+  </entry>
+  <entry>
+    <title>Indexnow, 404 page, font preload, repo-ready metadata</title>
+    <id>https://vibeplan.cc/#c38ed23</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/c38ed23"/>
+    <summary>Indexnow, 404 page, font preload, repo-ready metadata</summary>
+  </entry>
+  <entry>
+    <title>A static comparison page that targets \"coding plan comparison\"</title>
+    <id>https://vibeplan.cc/#5269ffd</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/5269ffd"/>
+    <summary>A static comparison page that targets \"coding plan comparison\"</summary>
+  </entry>
+  <entry>
+    <title>One price including the fee, no separate fee marker</title>
+    <id>https://vibeplan.cc/#82c67cf</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/82c67cf"/>
+    <summary>One price including the fee, no separate fee marker</summary>
+  </entry>
+  <entry>
+    <title>Generate the changelog from the repository commits</title>
+    <id>https://vibeplan.cc/#1fe46a4</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/1fe46a4"/>
+    <summary>Generate the changelog from the repository commits</summary>
+  </entry>
+  <entry>
+    <title>Mobile filter drawer with a visible handle, real Command Code fee</title>
+    <id>https://vibeplan.cc/#0100b06</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0100b06"/>
+    <summary>Mobile filter drawer with a visible handle, real Command Code fee</summary>
+  </entry>
+  <entry>
+    <title>Repair the CSS the filter refactor broke, unstick the detail card</title>
+    <id>https://vibeplan.cc/#580ede9</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/580ede9"/>
+    <summary>Repair the CSS the filter refactor broke, unstick the detail card</summary>
+  </entry>
+  <entry>
+    <title>Add the OpenDesign Design Plan (Go)</title>
+    <id>https://vibeplan.cc/#6d9ce22</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6d9ce22"/>
+    <summary>Add the OpenDesign Design Plan (Go)</summary>
+  </entry>
+  <entry>
+    <title>Filters into the rail menu, shortlist as its own panel, drop All plans</title>
+    <id>https://vibeplan.cc/#804490c</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/804490c"/>
+    <summary>Filters into the rail menu, shortlist as its own panel, drop All plans</summary>
+  </entry>
+  <entry>
+    <title>Real logo, favicons and a social card</title>
+    <id>https://vibeplan.cc/#93f9088</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/93f9088"/>
+    <summary>Real logo, favicons and a social card</summary>
+  </entry>
+  <entry>
+    <title>Mark the card processing fee Command Code adds to every price</title>
+    <id>https://vibeplan.cc/#7269834</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/7269834"/>
+    <summary>Mark the card processing fee Command Code adds to every price</summary>
+  </entry>
+  <entry>
+    <title>Stop rebuilding the chart on every mouse move</title>
+    <id>https://vibeplan.cc/#80619e1</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/80619e1"/>
+    <summary>Stop rebuilding the chart on every mouse move</summary>
+  </entry>
+  <entry>
+    <title>Move the status figures into the header</title>
+    <id>https://vibeplan.cc/#082b0b8</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/082b0b8"/>
+    <summary>Move the status figures into the header</summary>
+  </entry>
+  <entry>
+    <title>Live zoom and pan on the scatter plot</title>
+    <id>https://vibeplan.cc/#ce8fc4d</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ce8fc4d"/>
+    <summary>Live zoom and pan on the scatter plot</summary>
+  </entry>
+  <entry>
+    <title>ZDR only when zero-day retention is confirmed per model/provider</title>
+    <id>https://vibeplan.cc/#6c2a383</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6c2a383"/>
+    <summary>ZDR only when zero-day retention is confirmed per model/provider</summary>
+  </entry>
+  <entry>
+    <title>Chart and calculator honour the training exclusion</title>
+    <id>https://vibeplan.cc/#0651b30</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0651b30"/>
+    <summary>Chart and calculator honour the training exclusion</summary>
+  </entry>
+  <entry>
+    <title>Collapsible rail blocks, no jump on tap, correct chip close size</title>
+    <id>https://vibeplan.cc/#291970d</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/291970d"/>
+    <summary>Collapsible rail blocks, no jump on tap, correct chip close size</summary>
+  </entry>
+  <entry>
+    <title>Left filter drawer up to 900px, inline filters only on wide screens</title>
+    <id>https://vibeplan.cc/#0367fc9</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0367fc9"/>
+    <summary>Left filter drawer up to 900px, inline filters only on wide screens</summary>
+  </entry>
+  <entry>
+    <title>One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview</title>
+    <id>https://vibeplan.cc/#089de01</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/089de01"/>
+    <summary>One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview</summary>
+  </entry>
+  <entry>
+    <title>Single header, chart-first overview, compact table, left filter drawer</title>
+    <id>https://vibeplan.cc/#ca5f725</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ca5f725"/>
+    <summary>Single header, chart-first overview, compact table, left filter drawer</summary>
+  </entry>
+  <entry>
+    <title>Anti-slop pass on the site text (EN + DE)</title>
+    <id>https://vibeplan.cc/#1de3625</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/1de3625"/>
+    <summary>Anti-slop pass on the site text (EN + DE)</summary>
+  </entry>
+  <entry>
+    <title>Currency-aware prices, live-refresh dashboard detail, bilingual changelog</title>
+    <id>https://vibeplan.cc/#83048e5</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/83048e5"/>
+    <summary>Currency-aware prices, live-refresh dashboard detail, bilingual changelog</summary>
+  </entry>
+  <entry>
+    <title>Create CNAME</title>
+    <id>https://vibeplan.cc/#0f37c90</id>
+    <updated>2026-10-01T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0f37c90"/>
+    <summary>Create CNAME</summary>
+  </entry>
+  <entry>
+    <title>Follow source changes for the Freebuff free tier and OpenCode Go</title>
+    <id>https://vibeplan.cc/#30f88a9</id>
+    <updated>2026-09-28T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/30f88a9"/>
+    <summary>Follow source changes for the Freebuff free tier and OpenCode Go</summary>
+  </entry>
+  <entry>
+    <title>Show daily quotas in the included-volume column</title>
+    <id>https://vibeplan.cc/#0cdbc0e</id>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0cdbc0e"/>
+    <summary>Show daily quotas in the included-volume column</summary>
+  </entry>
+  <entry>
+    <title>Add Copilot Business and Enterprise from the docs plan table</title>
+    <id>https://vibeplan.cc/#6f83c8d</id>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6f83c8d"/>
+    <summary>Add Copilot Business and Enterprise from the docs plan table</summary>
+  </entry>
+  <entry>
+    <title>Rank Qwen Coding Plan Pro on its official request quota</title>
+    <id>https://vibeplan.cc/#0b62251</id>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0b62251"/>
+    <summary>Rank Qwen Coding Plan Pro on its official request quota</summary>
+  </entry>
+  <entry>
+    <title>Close out the popular-plan sweep</title>
+    <id>https://vibeplan.cc/#b7d5549</id>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/b7d5549"/>
+    <summary>Close out the popular-plan sweep</summary>
+  </entry>
+  <entry>
+    <title>Second wave of popular coding plans</title>
+    <id>https://vibeplan.cc/#caf2864</id>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/caf2864"/>
+    <summary>Second wave of popular coding plans</summary>
+  </entry>
+  <entry>
+    <title>Measured quota for Claude Max 20x from published third-party telemetry</title>
+    <id>https://vibeplan.cc/#f6b2325</id>
+    <updated>2026-09-23T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/f6b2325"/>
+    <summary>Measured quota for Claude Max 20x from published third-party telemetry</summary>
+  </entry>
+</feed>

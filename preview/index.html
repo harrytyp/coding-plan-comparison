@@ -4,8 +4,12 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>vibeplan.cc: AI coding subscription prices and token rates</title>
-<meta name="description" content="The independent, reproducible comparison of AI coding plan subscriptions. Live prices, real token economics, credit formulas, cache-aware cost modeling. English & Deutsch.">
+<meta name="theme-color" content="#0b0f0e">
+<!-- Die zwei Schriften ueber dem Fal vorladen: schnellerer erster Textaufbau -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/Inter-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/SpaceGrotesk-700.woff2" crossorigin>
+<title>AI coding plan comparison: tokens and requests per dollar paid | vibeplan.cc</title>
+<meta name="description" content="AI coding plan comparison: which subscription gives the most tokens and requests per dollar paid. Live prices, published quotas, cache-aware rates, zero-retention flags, open JSON dataset. English &amp; Deutsch.">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="vibeplan.cc">
@@ -13,6 +17,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://vibeplan.cc/">
 <meta property="og:site_name" content="vibeplan.cc">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
 <meta property="og:image" content="https://vibeplan.cc/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -1347,15 +1353,19 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   .sortable-table tbody td { padding: 4px 14px; }
 }
 </style>
-  <link rel="canonical" href="https://harrytyp.github.io/coding-plan-comparison/">
+  <link rel="canonical" href="https://vibeplan.cc/">
+<link rel="alternate" hreflang="en" href="https://vibeplan.cc/?lang=en">
+<link rel="alternate" hreflang="de" href="https://vibeplan.cc/?lang=de">
+<link rel="alternate" hreflang="x-default" href="https://vibeplan.cc/">
+<link rel="alternate" type="application/atom+xml" title="vibeplan.cc changelog" href="https://vibeplan.cc/feed.xml">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://harrytyp.github.io/coding-plan-comparison/#website",
-        "url": "https://harrytyp.github.io/coding-plan-comparison/",
+        "@id": "https://vibeplan.cc/#website",
+        "url": "https://vibeplan.cc/",
         "name": "vibeplan.cc",
         "inLanguage": ["en", "de"],
         "description": "Compare AI coding plans and models by tokens and requests per dollar paid, with published quotas, live prices and an open JSON dataset."
@@ -1365,13 +1375,16 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         "name": "AI coding plan comparison dataset",
         "description": "Plan prices, included token and request quotas, derived rates per dollar paid and model benchmark scores for AI coding subscriptions.",
         "license": "https://opensource.org/licenses/MIT",
-        "creator": { "@type": "Person", "name": "Kolja Knodel", "url": "https://github.com/harrytyp" },
+        "creator": { "@type": "Person", "name": "Kolja Knodel", "url": "https://github.com/harrytyp",
+          "sameAs": ["https://github.com/harrytyp/coding-plan-comparison"] },
+        "publisher": { "@type": "Organization", "name": "vibeplan.cc", "url": "https://vibeplan.cc/", "logo": "https://vibeplan.cc/og-image.png" },
+        "keywords": ["AI coding plan comparison", "coding plan comparison", "tokens per dollar", "LLM subscription pricing", "coding agent quotas"],
         "isAccessibleForFree": true,
-        "dateModified": "2026-09-13",
+        "dateModified": "2026-10-02",
         "distribution": [{
           "@type": "DataDownload",
           "encodingFormat": "application/json",
-          "contentUrl": "https://harrytyp.github.io/coding-plan-comparison/data/latest.json"
+          "contentUrl": "https://vibeplan.cc/data/latest.json"
         }]
       }
     ]
@@ -1436,7 +1449,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 
 <main id="main">
   <!-- Die Kennzahlen stehen im Kopf; hier bleibt nur die Überschrift für die Gliederung -->
-  <h1 class="sr-only" data-i18n="nav.brand">vibeplan.cc</h1>
+  <h1 class="sr-only">AI coding plan comparison: tokens and requests per dollar paid</h1>
   <div class="disclaimer" id="disclaimer" hidden>
     <strong id="disclaimer-title"></strong> <span id="disclaimer-text"></span>
   </div>
@@ -1905,6 +1918,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
       <span class="footer-links">
         <span data-i18n="foot.scope"></span>
         <a href="data/latest.json" target="_blank" data-i18n="foot.json">latest.json (API)</a>
+        <a href="/coding-plan-comparison/" data-i18n="foot.compare">AI coding plan comparison</a>
         <a href="https://github.com/harrytyp/coding-plan-comparison" target="_blank" data-i18n="foot.repo">GitHub</a>
         <a href="https://github.com/harrytyp/coding-plan-comparison/blob/main/sources.yml" target="_blank" data-i18n="foot.sources">sources.yml</a>
         <a href="https://llm-stats.com" target="_blank" data-i18n="foot.llmstats">AI scores: llm-stats.com</a>
@@ -1948,7 +1962,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="../vendor/d3-zoom.min.js"></script>
-<script src="../app.js?v=7d0dc5d"></script>
+<script src="../app.js?v=87d96a1"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,

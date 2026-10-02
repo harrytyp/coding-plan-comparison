@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://harrytyp.github.io/coding-plan-comparison/</loc>
-    <lastmod>2026-09-13</lastmod>
+    <loc>https://vibeplan.cc/</loc>
+    <lastmod>2026-10-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vibeplan.cc/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://vibeplan.cc/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vibeplan.cc/"/>
+  </url>
+  <url>
+    <loc>https://vibeplan.cc/coding-plan-comparison/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

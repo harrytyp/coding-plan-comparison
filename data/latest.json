@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T13:19:55.458Z",
+  "generatedAt": "2026-10-02T19:08:18.056Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -42338,7 +42338,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-02T13:19:55.251Z",
+    "fetchedAt": "2026-10-02T19:08:17.807Z",
     "count": 413,
     "scores": {
       "claude-opus-5-5": {
@@ -42965,10 +42965,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
       "qwen3-5-4b": {
@@ -43268,10 +43268,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -43748,6 +43748,24 @@
   ],
   "changelog": {
     "entries": [
+      {
+        "date": "2026-10-02",
+        "commit": "ff76c30",
+        "text": "Preview build resolves the JSON-LD date placeholder",
+        "textEn": "Preview build resolves the JSON-LD date placeholder"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "c38ed23",
+        "text": "Indexnow, 404 page, font preload, repo-ready metadata",
+        "textEn": "Indexnow, 404 page, font preload, repo-ready metadata"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "5269ffd",
+        "text": "A static comparison page that targets \\\"coding plan comparison\\\"",
+        "textEn": "A static comparison page that targets \\\"coding plan comparison\\\""
+      },
       {
         "date": "2026-10-02",
         "commit": "82c67cf",
@@ -44329,24 +44347,6 @@
         "commit": "c682389",
         "text": "Pareto-Chart dynamische Aufloesung (viewBox = CSS-Pixel)",
         "textEn": "Pareto-Chart dynamische Aufloesung (viewBox = CSS-Pixel)"
-      },
-      {
-        "date": "2026-08-30",
-        "commit": "0ca4f99",
-        "text": "Mobile Bottom-Sheet fuer Filter+Sort+Columns, 5 Iterationen poliert",
-        "textEn": "Mobile Bottom-Sheet fuer Filter+Sort+Columns, 5 Iterationen poliert"
-      },
-      {
-        "date": "2026-08-30",
-        "commit": "bb914f5",
-        "text": "Waehrungs-Umschalter (USD/EUR/CNY/GBP/JPY) mit taeglichen Kursen",
-        "textEn": "Waehrungs-Umschalter (USD/EUR/CNY/GBP/JPY) mit taeglichen Kursen"
-      },
-      {
-        "date": "2026-08-30",
-        "commit": "fc1c09d",
-        "text": "Kimi-Membership aufgeloest (offizielles Billing-Beispiel)",
-        "textEn": "Kimi-Membership aufgeloest (offizielles Billing-Beispiel)"
       }
     ]
   },
