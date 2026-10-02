@@ -141,6 +141,31 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 - `app.js` bleibt der Renderer. Die Schicht darf app.js nicht patchen; Korrekturen an dessen
   Verhalten gehören in `public/app.js`.
 
+## Auffindbarkeit (SEO)
+
+Alles Automatische, damit die Seite ohne Handarbeit gefunden wird:
+
+- `scripts/landing.mjs` erzeugt **`public/coding-plan-comparison/`** (statische
+  Vergleichsseite, Zielphrase "coding plan comparison" in URL, Titel, H1 und Text, plus
+  Rangliste, Formel, FAQ und JSON-LD fuer WebPage/ItemList/FAQPage). Quelle ist
+  `public/data/latest.json`, also jeden Tag frisch.
+- `scripts/seo.mjs` schreibt `public/sitemap.xml` (lastmod = heute, Sprachvarianten) und
+  `public/feed.xml` (Atom aus dem Changelog). Beide werden von der CI ins Root gespiegelt.
+- `scripts/indexnow.mjs` legt die IndexNow-Schluesseldatei an und meldet Startseite,
+  Vergleichsseite und Datensatz bei Bing/Yandex an (kein Konto noetig, Google nutzt
+  IndexNow nicht).
+- `public/llms.txt` beschreibt Datensatz, Quellen und Lizenz fuer AI-Crawler,
+  `public/404.html` faengt falsche Adressen mit Links ab (GitHub Pages serviert sie).
+- Kopf der Startseite: Canonical auf `https://vibeplan.cc/`, hreflang en/de/x-default,
+  `og:locale`, Font-Preload fuer die zwei Schriften ueber dem Fal, `theme-color`.
+- **Domain:** DNS liegt bei Cloudflare (Nameserver), aber **ohne Proxy** (A-Records zeigen
+  auf GitHub). Deshalb greifen Cloudflare-Funktionen wie Always-Use-HTTPS, Brotli,
+  Crawler-Hints oder Web Analytics nur, wenn der Proxy aktiviert wird. `www.vibeplan.cc`
+  hat kein Zertifikat (GitHub liefert `*.github.io`), braucht also eine Cloudflare-
+  Redirect-Regel auf die Hauptdomain.
+- Nicht automatisch moeglich: Search-Console-/Bing-Verifikation (Konto von Kolja),
+  Repo-Beschreibung und Topics (Token ohne `administration`-Scope), Public-Posts.
+
 ## Changelog (automatisch)
 
 Der Changelog auf der Seite kommt **aus der Git-Historie**, nicht aus Handarbeit:

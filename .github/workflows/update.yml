@@ -57,6 +57,10 @@ jobs:
       - name: Statische Vergleichsseite erzeugen
         run: node scripts/landing.mjs
 
+      - name: IndexNow (Bing/Yandex) informieren
+        continue-on-error: true
+        run: node scripts/indexnow.mjs
+
       - name: Tests
         run: npm test
 
@@ -69,6 +73,7 @@ jobs:
           git config user.name "coding-plan-bot"
           git config user.email "bot@users.noreply.github.com"
           git add public/data/latest.json data/changelog.yml public/sitemap.xml public/feed.xml public/coding-plan-comparison
+          git add public/8f3c1a94d7b25e60af4183c95d7b2e10.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Keine Änderungen — nichts zu committen"
           else
@@ -109,6 +114,9 @@ jobs:
           cp public/robots.txt public/sitemap.xml public/feed.xml public/llms.txt ./
           # Statische Vergleichsseite (SEO-Einstieg) ins Root spiegeln
           cp -r public/coding-plan-comparison ./coding-plan-comparison
+          # 404-Seite und IndexNow-Schluessel gehören ebenfalls ins Root
+          cp public/404.html ./
+          cp public/8f3c1a94d7b25e60af4183c95d7b2e10.txt ./
           touch .nojekyll
           # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen, dazu das
           # Datum im Datensatz-JSON-LD (sonst steht dort ein veraltetes lastmod).
@@ -119,7 +127,7 @@ jobs:
           mkdir -p preview
           cp -r public/preview/. ./preview/
           sed -i "s/__VERSION__/$VERSION/g" ./preview/index.html
-          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png robots.txt sitemap.xml feed.xml llms.txt coding-plan-comparison
+          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png robots.txt sitemap.xml feed.xml llms.txt coding-plan-comparison 404.html 8f3c1a94d7b25e60af4183c95d7b2e10.txt
           if git diff --cached --quiet; then
             echo "Website unverändert"
           else

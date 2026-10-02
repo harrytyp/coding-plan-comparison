@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f0e">
+<!-- Die zwei Schriften ueber dem Fal vorladen: schnellerer erster Textaufbau -->
+<link rel="preload" as="font" type="font/woff2" href="fonts/Inter-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/SpaceGrotesk-700.woff2" crossorigin>
 <title>AI coding plan comparison: tokens and requests per dollar paid | vibeplan.cc</title>
 <meta name="description" content="AI coding plan comparison: which subscription gives the most tokens and requests per dollar paid. Live prices, published quotas, cache-aware rates, zero-retention flags, open JSON dataset. English &amp; Deutsch.">
 <meta name="robots" content="index,follow">
@@ -1371,7 +1375,10 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         "name": "AI coding plan comparison dataset",
         "description": "Plan prices, included token and request quotas, derived rates per dollar paid and model benchmark scores for AI coding subscriptions.",
         "license": "https://opensource.org/licenses/MIT",
-        "creator": { "@type": "Person", "name": "Kolja Knodel", "url": "https://github.com/harrytyp" },
+        "creator": { "@type": "Person", "name": "Kolja Knodel", "url": "https://github.com/harrytyp",
+          "sameAs": ["https://github.com/harrytyp/coding-plan-comparison"] },
+        "publisher": { "@type": "Organization", "name": "vibeplan.cc", "url": "https://vibeplan.cc/", "logo": "https://vibeplan.cc/og-image.png" },
+        "keywords": ["AI coding plan comparison", "coding plan comparison", "tokens per dollar", "LLM subscription pricing", "coding agent quotas"],
         "isAccessibleForFree": true,
         "dateModified": "2026-10-02",
         "distribution": [{
