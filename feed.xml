@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Long-tail pages for plans and providers, plus a German entry page</title>
+    <id>https://vibeplan.cc/#b753996</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/b753996"/>
+    <summary>Long-tail pages for plans and providers, plus a German entry page</summary>
+  </entry>
+  <entry>
     <title>Record the Cloudflare setup (proxy, TLS, redirects, rollback)</title>
     <id>https://vibeplan.cc/#687619d</id>
     <updated>2026-10-02T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-09-23T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/b7d5549"/>
     <summary>Close out the popular-plan sweep</summary>
-  </entry>
-  <entry>
-    <title>Second wave of popular coding plans</title>
-    <id>https://vibeplan.cc/#caf2864</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/caf2864"/>
-    <summary>Second wave of popular coding plans</summary>
   </entry>
 </feed>
