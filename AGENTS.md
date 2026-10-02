@@ -97,6 +97,24 @@ den die CI beim Sync durch den Commit-Hash ersetzt (Cache-Busting). Lokal nicht 
 Root-Mirrors committet die CI (`update.yml`), nicht von Hand. **Änderungen immer in `public/`
 machen:** die Root-Kopien werden bei jedem CI-Lauf überschrieben, ein Edit dort ist nach dem
 nächsten Push weg (und die Seite hat dann neues Markup ohne Logik).
+Ebenso spiegelt die CI `public/favicon.svg`, `favicon.ico`, `apple-touch-icon.png` und
+`og-image.png` ins Root: `/favicon.ico` muss dort liegen, damit Browser es ohne Pfad finden.
+
+## Marke und Bilder
+Die Marke ist eine Pareto-Stufenkurve auf dunkler Kachel (`public/favicon.svg`), Farbe aus
+den Site-Tokens (Akzent `#6ee7c7`). Vorlage fuer alles Gerasterte ist
+`assets/render/`; die Rasterung macht der Browser, weil im Container kein
+rsvg/ImageMagick/Pillow liegt:
+
+```
+python3 -m http.server 8180          # im Repo-Root
+```
+dann `assets/render/og-card.html` (1200x630, deckend), `assets/render/apple-frame.html`
+(180x180, deckend) und `assets/render/icon-frame.html` (16/32/48, transparent) jeweils im
+Zielformat per CDP-Screenshot aufnehmen. `public/favicon.ico` ist eine ICO-Huelle mit den
+16/32/48-PNGs (`python3`-Helfer, PNG-Payloads). `assets/logo.svg`, `assets/logo-512.png`
+und `assets/social-preview.png` sind die GitHub-Fassungen; das Social Preview laedt man
+einmalig unter Settings > Social preview hoch (dafuer gibt es keine API).
 
 **Vorschau:** `public/preview/index.html` spiegelt die CI nach `preview/` (erreichbar unter
 `/preview/`). Sie lädt `../app.js`, `../data/latest.json` und `../fonts/` von der Hauptseite,

@@ -20,6 +20,13 @@ if (!html.includes('../app.js')) throw new Error('app.js-Pfad nicht umgebogen');
 html = html.replace('<script src="vendor/d3-zoom.min.js">', '<script src="../vendor/d3-zoom.min.js">');
 if (!html.includes('../vendor/d3-zoom.min.js')) throw new Error('vendor-Pfad nicht umgebogen');
 
+// Icons und Marke liegen im Site-Root, die Vorschau liegt eine Ebene tiefer
+html = html.replace('href="favicon.ico"', 'href="../favicon.ico"')
+           .replace('href="favicon.svg"', 'href="../favicon.svg"')
+           .replace('href="apple-touch-icon.png"', 'href="../apple-touch-icon.png"')
+           .replace('src="favicon.svg"', 'src="../favicon.svg"');
+if (!html.includes('../favicon.ico') || !html.includes('src="../favicon.svg"')) throw new Error('Icon-Pfade nicht umgebogen');
+
 // nicht indexieren
 html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex,nofollow">\n<meta name="viewport"');
 

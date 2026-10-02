@@ -93,6 +93,8 @@ jobs:
           # Chart-Zoom-Bibliothek ebenfalls lokal (kein CDN)
           mkdir -p vendor
           cp -r public/vendor/. ./vendor/
+          # Icon, Marke und Social-Card liegen im Site-Root (/favicon.ico muss dort liegen)
+          cp public/favicon.svg public/favicon.ico public/apple-touch-icon.png public/og-image.png ./
           touch .nojekyll
           # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen
           VERSION=$(git rev-parse --short HEAD)
@@ -101,7 +103,7 @@ jobs:
           mkdir -p preview
           cp -r public/preview/. ./preview/
           sed -i "s/__VERSION__/$VERSION/g" ./preview/index.html
-          git add index.html app.js data/latest.json .nojekyll fonts preview vendor
+          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png
           if git diff --cached --quiet; then
             echo "Website unverändert"
           else

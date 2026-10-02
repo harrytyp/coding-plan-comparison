@@ -1,8 +1,10 @@
+<p align="center"><img src="assets/logo.svg" width="104" height="104" alt="vibeplan logo"></p>
+
 # coding-plan-comparison
 
-**Reproducible comparison of AI coding plan subscriptions** (credit/token-pass plans, not plain token PAYG).
+**vibeplan.cc**, a reproducible comparison of AI coding plan subscriptions (credit/token-pass plans, not plain token PAYG).
 
-Live site: https://harrytyp.github.io/coding-plan-comparison/
+Live site: https://vibeplan.cc/ &nbsp;·&nbsp; GitHub Pages: https://harrytyp.github.io/coding-plan-comparison/
 
 > Nothing here is static. All data comes live from official sources (feeds + docs), is fetched, parsed and built deterministically. When a source changes (prices, billing rules, formulas), change detection catches it and the site updates.
 
