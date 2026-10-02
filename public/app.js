@@ -109,6 +109,7 @@ const I18N = {
     "plans.th.plan": "Plan",
     "plans.th.provider": "Provider",
     "plans.th.price": "Price / mo",
+    "price.feeMark": "+ fee",
     "plans.th.meter": "Meter",
     "plans.th.quota": "Quota",
     "plans.th.models": "Models",
@@ -264,6 +265,8 @@ const I18N = {
     "method.s5.p": "Some feeds reuse one generic workload pattern. For shared model families we use the most precise per-model pattern for both plans, so neither plan gets a cheaper pattern.",
     "method.s6.t": "Undisclosed numbers stay empty",
     "method.s6.p": "If a provider does not publish its numbers, we say so. We do not invent credits or back-calculate quotas.",
+    "method.s7.t": "Listed prices, plus fees where a vendor adds them",
+    "method.s7.p": "We show the price each vendor lists. Command Code adds a card processing fee to every plan and does not publish the rate, it appears at checkout, so those prices carry a “+ fee” mark. Where a vendor publishes a complete price, we show it unchanged.",
     "method.more": "Show all steps",
     "method.less": "Show fewer",
     "faq.h2": "Frequently asked questions",
@@ -425,6 +428,7 @@ const I18N = {
     "plans.th.plan": "Plan",
     "plans.th.provider": "Anbieter",
     "plans.th.price": "Preis / Monat",
+    "price.feeMark": "+ Gebühr",
     "plans.th.meter": "Meter",
     "plans.th.quota": "Kontingent",
     "plans.th.models": "Modelle",
@@ -581,6 +585,8 @@ const I18N = {
     "method.s5.p": "Manche Feeds nutzen ein generisches Workload-Pattern. Für geteilte Modell-Familien verwenden wir das präziseste per-Modell-Pattern für beide Pläne, damit kein Plan ein billigeres Pattern bekommt.",
     "method.s6.t": "Nicht veröffentlichte Zahlen bleiben leer",
     "method.s6.p": "Wenn ein Anbieter seine Zahlen nicht veröffentlicht, sagen wir das. Wir erfinden keine Credits und rechnen keine Kontingente zurück.",
+    "method.s7.t": "Listenpreise, plus Gebühren wo der Anbieter sie erhebt",
+    "method.s7.p": "Wir zeigen den Preis, den der Anbieter ausweist. Command Code erhebt auf jeden Plan zusätzlich eine Bearbeitungsgebühr für Kartenzahlung und veröffentlicht den Satz nicht, er erscheint erst im Checkout, deshalb tragen diese Preise die Marke „+ Gebühr“. Wo ein Anbieter einen vollständigen Preis ausweist, steht er unverändert.",
     "method.more": "Alle Schritte zeigen",
     "method.less": "Weniger zeigen",
     "faq.h2": "Häufige Fragen",
@@ -1337,6 +1343,9 @@ function buildCombos() {
         // Manuelle Hinweise (overrides.yml): kurzer Tag fuer Tabellen, langer Text fuer Details
         planTag: lang === "de" ? (plan.tagDe ?? plan.tag ?? null) : (plan.tag ?? null),
         planNote: lang === "de" ? (plan.notesDe ?? plan.notes ?? null) : (plan.notes ?? null),
+        // Preis-Zuschlag (z.B. Karten-Gebuehr): gehoert sichtbar an den Preis
+        priceNote: lang === "de" ? (plan.priceNoteDe ?? plan.priceNote ?? null) : (plan.priceNote ?? null),
+        priceNoteSource: plan.priceNoteSource ?? null,
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
@@ -1472,7 +1481,8 @@ function detailGrid(c) {
   push(rateReqLabel(), c.requestsPer10 != null ? fmtNum(c.requestsPer10) : null);
   push(t("plans.th.rawtokens"), fmtTokens(c.rawTokensPerMonth));
   push(t("plans.th.rawreq"), c.rawRequestsPerMonth != null ? fmtNum(c.rawRequestsPerMonth) : null);
-  push(t("plans.th.price"), c.priceDisplay ?? (c.price != null ? fmtPrice(c.price) : null));
+  const priceVal = c.priceDisplay ?? (c.price != null ? fmtPrice(c.price) : null);
+  push(t("plans.th.price"), priceVal ? (c.priceNote ? `${priceVal} · ${c.priceNote}` : priceVal) : null);
   push(t("plans.th.cap"), c.capStr ?? c.capShort ?? null);
   push(t("plans.meter"), c.meter ?? null);
   const grid = `<div class="detail-grid">${parts.map(([k, v]) => `<div><div class="dg-k">${escapeHtml(k)}</div><div class="dg-v">${escapeHtml(String(v))}</div></div>`).join("")}</div>`;
@@ -1493,6 +1503,14 @@ function noteMark(c) {
   notePlanSeen.add(c.planId);
   const tip = c.planNote ?? c.planTag;
   return `<span class="note-mark" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}">i</span>`;
+}
+
+// Preis-Zuschlag am Preis markieren (Command Code: "+ processing fee" bei
+// Kartenzahlung). Kein gerechneter Betrag: der Satz ist nicht veroeffentlicht.
+function feeMark(c) {
+  if (!c.priceNote) return "";
+  const tip = c.priceNoteSource ? `${c.priceNote} · ${c.priceNoteSource}` : c.priceNote;
+  return ` <span class="fee-note" title="${escapeHtml(tip)}">${escapeHtml(t("price.feeMark"))}</span>`;
 }
 
 // Attribute einer Kombination: alles, was den Plan jenseits von Preis und Rate
@@ -1704,7 +1722,7 @@ function renderCell(col, c) {
       const wl = c.waitlist === true
         ? `<div class="waitlist-badge" title="${t("plans.waitlist.title")}">${t("plans.waitlist")}</div>`
         : "";
-      return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${wl}</td>`;
+      return `<td data-label="${t("plans.th.price")}"><span class="num">${priceStr}</span>${feeMark(c)}${wl}</td>`;
     }
     case "privacy": return `<td class="td-attrs" data-label="${t("plans.th.privacy")}">${attrCell(c)}</td>`;
     default: return "";
@@ -2574,7 +2592,7 @@ function showDashDetail(p) {
     `<div class="dd-row"><span class="k">${metricLabel(dashY)}</span><span class="v">${metricFmt(dashY, p.y)}</span></div>`,
   ];
   if (dashY !== "score") rows.push(`<div class="dd-row"><span class="k">AI ${lang === "de" ? "Score" : "score"}</span><span class="v">${p.combo.score !== null ? p.combo.score.toFixed(1) : "-"}</span></div>`);
-  rows.push(`<div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}</span></div>`);
+  rows.push(`<div class="dd-row"><span class="k">${t("plans.th.price")}</span><span class="v">${p.combo.price !== null ? fmtPrice(p.combo.price) : "-"}${p.combo.priceNote ? ` · ${escapeHtml(p.combo.priceNote)}` : ""}</span></div>`);
   if (dashX !== "tokens") rows.push(`<div class="dd-row"><span class="k">${rateTokensLabel()}</span><span class="v">${fmtTokens(p.combo.tokensPer)}</span></div>`);
   rows.push(`<div class="dd-row"><span class="k">${t("plans.th.rawtokens")}</span><span class="v">${fmtTokens(p.combo.rawTokensPerMonth)}</span></div>`);
   if (p.combo.planNote) rows.push(`<div class="dd-note">${escapeHtml(p.combo.planNote)}</div>`);
@@ -2926,7 +2944,7 @@ function renderCalculator() {
     return `<div class="calc-row">`
       + `<div class="calc-main"><span class="calc-ranknum">${i + 1}</span><span class="calc-plan">${escapeHtml(c.planName)}${noteMark(c)}${i === 0 ? "" : ""}<span class="calc-model">${escapeHtml(c.model)}${c.score != null ? ` <span class="calc-score">${c.scoreFallback ? "~" : ""}${c.score.toFixed(1)}</span>` : ""}</span></span></div>`
       + `<div class="calc-nums"><span class="num strong">${fmtTokens(c.rawTokensPerMonth)}</span></div>`
-      + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>`
+      + `<div class="calc-nums"><span class="num strong">${fmtPrice(c.price)}</span>${feeMark(c)}`
       + `<span class="sub">${fmtPrice(Math.max(0, left))} ${t("calc.leftover")}</span></div>`
       + `</div>`;
   }).join("");

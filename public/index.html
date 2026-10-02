@@ -497,6 +497,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .privacy-badges { display: flex; flex-wrap: wrap; gap: 4px; }
 .privacy-badges .badge { text-transform: none; letter-spacing: 0; }
 .est-note { font-size: var(--fs-xs); color: var(--text-3); margin-left: 4px; }
+/* Preis-Zuschlag (z.B. Karten-Gebuehr): sichtbar am Preis, Details im Tooltip */
+.fee-note { font-size: var(--fs-xs); color: var(--warn, var(--text-2)); margin-left: 4px; cursor: help; white-space: nowrap; }
 .table-note { padding: 11px 18px; font-size: var(--fs-sm); color: var(--text-3); border-top: 1px solid var(--line-soft); }
 .skel-row td { padding: 13px 18px; }
 .skel {
@@ -1752,6 +1754,11 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         <div class="step-num">6</div>
         <h3 data-i18n="method.s6.t">Undisclosed numbers stay empty</h3>
         <p data-i18n="method.s6.p">If a provider does not publish its numbers, we say so. We do not invent credits or back-calculate quotas.</p>
+      </div>
+      <div class="method-card">
+        <div class="step-num">7</div>
+        <h3 data-i18n="method.s7.t">Listed prices, plus fees where a vendor adds them</h3>
+        <p data-i18n="method.s7.p">We show the price each vendor lists. Command Code adds a card processing fee to every plan and does not publish the rate, it appears at checkout, so those prices carry a “+ fee” mark. Where a vendor publishes a complete price, we show it unchanged.</p>
       </div>
       </div>
     </details>

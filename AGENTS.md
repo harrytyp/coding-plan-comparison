@@ -20,6 +20,12 @@ sources.yml (feeds + docs + privacy + scores + FX)
 - **Change-Detection:** contentHash = Hash des **geparsten** Inhalts (robust gegen HTML-Nonces).
 - **Ehrlichkeit:** undisclosed bleibt undisclosed; keine erfundenen Zahlen.
   Nicht-scrapebares (GLM-Preise via Auth-API, MiniMax-SPA) → `data/overrides.yml` mit lastVerified.
+- **Preis-Zuschlaege:** Erhebt ein Anbieter auf den Listenpreis etwas drauf (Command Code:
+  „+ processing fee" bei Kartenzahlung auf jedem Plan), steht das als `priceNote` /
+  `priceNoteDe` / `priceNoteSource` in `overrides.yml` und wandert ueber build.mjs in die
+  Plan-Daten. UI: Marke „+ Gebühr" an der Preiszelle, im Detail, im Dashboard-Detail und im
+  Rechner, mit Quell-URL im Tooltip. **Nie einen Betrag rechnen**, wenn der Satz nicht
+  veroeffentlicht ist (Command Code zeigt ihn erst im Checkout). Methodik-Schritt 7 nennt die Regel.
 
 ## Normalisierung
 ```

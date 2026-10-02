@@ -691,6 +691,10 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
     if (ov.noteDe) plan.notesDe = ov.noteDe;
     if (ov.tag) plan.tag = ov.tag;
     if (ov.tagDe) plan.tagDe = ov.tagDe;
+    // Preis-Zuschlaege (z.B. Karten-Gebuehr): gehoeren sichtbar an den Preis
+    if (ov.priceNote) plan.priceNote = ov.priceNote;
+    if (ov.priceNoteDe) plan.priceNoteDe = ov.priceNoteDe;
+    if (ov.priceNoteSource) plan.priceNoteSource = ov.priceNoteSource;
   }
 
   return plans;
@@ -1197,6 +1201,9 @@ async function main() {
       // in den Plan-Summaries, sonst erreichen sie die Seite nicht.
       notes: plan.notes ?? null,
       notesDe: plan.notesDe ?? null,
+      priceNote: plan.priceNote ?? null,
+      priceNoteDe: plan.priceNoteDe ?? null,
+      priceNoteSource: plan.priceNoteSource ?? null,
       tag: plan.tag ?? null,
       tagDe: plan.tagDe ?? null,
       modelRows,

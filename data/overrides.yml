@@ -242,6 +242,29 @@ overrides:
     tagDe: "nur CLI"
     note: "No API access: the $1 Go credits can only be spent in the Command Code CLI, so this plan cannot be used from your own harness or agent. Every other Command Code plan includes API access."
     noteDe: "Kein API-Zugang: Die Credits des 1-$-Plans lassen sich nur in der Command-Code-CLI ausgeben, der Plan ist damit nicht in einem eigenen Harness oder Agenten nutzbar. Alle anderen Command-Code-Pläne haben API-Zugang."
+    priceNote: "plus card processing fee, rate shown at checkout"
+    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout"
+    priceNoteSource: "https://commandcode.ai/pricing"
+
+  # Command Code: die Preisseite schreibt an JEDEN Planpreis "+ processing fee"
+  # (Kartenzahlung). Der Satz wird nirgends veroeffentlicht, sondern erst im
+  # Checkout gezeigt, deshalb steht er hier ohne Zahl. Gelesen 2026-10-02.
+  - id: command-code-goat
+    priceNote: "plus card processing fee, rate shown at checkout"
+    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout"
+    priceNoteSource: "https://commandcode.ai/pricing"
+  - id: command-code-pro
+    priceNote: "plus card processing fee, rate shown at checkout"
+    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout"
+    priceNoteSource: "https://commandcode.ai/pricing"
+  - id: command-code-max10
+    priceNote: "plus card processing fee, rate shown at checkout"
+    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout"
+    priceNoteSource: "https://commandcode.ai/pricing"
+  - id: command-code-max20
+    priceNote: "plus card processing fee, rate shown at checkout"
+    priceNoteDe: "zzgl. Bearbeitungsgebühr für Kartenzahlung, Satz erst im Checkout"
+    priceNoteSource: "https://commandcode.ai/pricing"
 
   # Amazon Q Developer: Free Tier mit 50 agentischen Requests pro Monat offiziell
   # (aws.amazon.com/q/developer/pricing). Der Pro-Tarif (19 $) nennt keine Zahl,
