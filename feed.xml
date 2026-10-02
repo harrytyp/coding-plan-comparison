@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Record the Cloudflare setup (proxy, TLS, redirects, rollback)</title>
+    <id>https://vibeplan.cc/#687619d</id>
+    <updated>2026-10-02T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/687619d"/>
+    <summary>Record the Cloudflare setup (proxy, TLS, redirects, rollback)</summary>
+  </entry>
+  <entry>
     <title>Preview build resolves the JSON-LD date placeholder</title>
     <id>https://vibeplan.cc/#ff76c30</id>
     <updated>2026-10-02T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-09-23T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/caf2864"/>
     <summary>Second wave of popular coding plans</summary>
-  </entry>
-  <entry>
-    <title>Measured quota for Claude Max 20x from published third-party telemetry</title>
-    <id>https://vibeplan.cc/#f6b2325</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/f6b2325"/>
-    <summary>Measured quota for Claude Max 20x from published third-party telemetry</summary>
   </entry>
 </feed>
