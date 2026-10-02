@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-02"
+    commit: "1fe46a4"
+    text: "Generate the changelog from the repository commits"
+    textEn: "Generate the changelog from the repository commits"
+  - date: "2026-10-02"
     commit: "0100b06"
     text: "Mobile filter drawer with a visible handle, real Command Code fee"
     textEn: "Mobile filter drawer with a visible handle, real Command Code fee"
@@ -399,7 +403,3 @@ entries:
     commit: "3cb0757"
     text: "Mehr vergleichbare Plaene - 6 auf 10"
     textEn: "Mehr vergleichbare Plaene - 6 auf 10"
-  - date: "2026-08-30"
-    commit: "058d18e"
-    text: "Pareto-Dashboard inhaltlich ueberarbeitet (Plugin-gestuetzt)"
-    textEn: "Pareto-Dashboard inhaltlich ueberarbeitet (Plugin-gestuetzt)"
