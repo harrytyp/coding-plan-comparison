@@ -16,6 +16,9 @@ let html = await readFile(SRC, 'utf8');
 // Assets der Hauptseite statt Duplikate im Vorschau-Ordner
 html = html.replaceAll("src:url('fonts/", "src:url('../fonts/");
 html = html.replace('<script src="app.js?v=__VERSION__">', '<script src="../app.js?v=__VERSION__">');
+// Der Datensatz-Platzhalter im JSON-LD wird auf der Hauptseite von der CI ersetzt,
+// die eingefrorene Vorschau bekommt hier das Build-Datum.
+html = html.replace(/__DATEMODIFIED__/g, new Date().toISOString().slice(0, 10));
 if (!html.includes('../app.js')) throw new Error('app.js-Pfad nicht umgebogen');
 html = html.replace('<script src="vendor/d3-zoom.min.js">', '<script src="../vendor/d3-zoom.min.js">');
 if (!html.includes('../vendor/d3-zoom.min.js')) throw new Error('vendor-Pfad nicht umgebogen');
