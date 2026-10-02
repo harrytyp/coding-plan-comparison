@@ -140,7 +140,7 @@ const I18N = {
     "attr.unknown.tip": "No verifiable privacy statement found in the provider docs.",
     "attr.cli": "no API",
     "attr.zdr": "ZDR",
-    "attr.zdr.tip": "Zero Data Retention offered: prompts and outputs are not stored. Caution: enforcing ZDR can change model prices depending on the provider.",
+    "attr.zdr.tip": "Zero data retention confirmed for this model and provider: 0 days retention documented. Provider-wide promises and ZDR on request are not counted.",
     "attr.days": "days",
     "attr.retention.tip": "Standard retention window for request data, as stated by the provider.",
 
@@ -454,7 +454,7 @@ const I18N = {
     "attr.unknown.tip": "Keine prüfbare Datenschutz-Aussage in den Anbieter-Docs gefunden.",
     "attr.cli": "kein API",
     "attr.zdr": "ZDR",
-    "attr.zdr.tip": "Zero Data Retention möglich: Eingaben und Ausgaben werden nicht gespeichert. Achtung: erzwungenes ZDR kann je nach Anbieter die Modellpreise ändern.",
+    "attr.zdr.tip": "Zero Data Retention bestätigt: für diese Modell-/Anbieter-Kombination sind 0 Tage Aufbewahrung dokumentiert. Anbieterweite Zusagen und ZDR auf Anfrage zählen nicht.",
     "attr.days": "Tage",
     "attr.retention.tip": "Übliche Aufbewahrungsdauer für Request-Daten laut Anbieter.",
 
@@ -1242,33 +1242,38 @@ function buildModelPrivacyMap() {
 // Privacy einer Combo: Modell-genaue Privacy hat STRENGEN Vorrang.
 // Ein Modell trainiert (oder nicht) unabhängig vom Plan/Anbieter.
 // Anbieter-Policy gilt nur als Fallback für Modelle ohne eigene Aussage.
+// Aussagen gelten fuer genau eine Modell/Anbieter-Kombination. Das Feed des
+// jeweiligen Plans hat Vorrang: die globale Map waere falsch, weil dasselbe
+// Modell bei mehreren Anbietern mit anderer Policy laeuft.
 function comboPrivacy(plan, row) {
-  const modelPriv = modelPrivacyByName.get(row.model.toLowerCase()) ?? modelPrivacyMap.get(row.family);
+  const rowPriv = row.privacy ?? null;
+  const modelPriv = rowPriv ?? modelPrivacyByName.get(row.model.toLowerCase()) ?? modelPrivacyMap.get(row.family);
+  const pp = providerPrivacy(plan.provider);
+  // ZDR nur, wenn fuer diese Kombination 0 Tage Aufbewahrung dokumentiert sind.
+  // Anbietersaetze ("auf Anfrage", "mit Ausnahmen", Blanket-Policy) zaehlen nicht.
+  const zdr = rowPriv?.retentionDays === true && rowPriv?.training !== true ? true : null;
+  const rowDays = typeof rowPriv?.retentionDays === "number" ? rowPriv.retentionDays : null;
   if (modelPriv) {
-    // Training steht pro Modell (Feed), ZDR und Aufbewahrung sind Anbieter-Politik
-    // und gelten unabhaengig vom Modell: beides gehoert in dieselbe Aussage.
-    const pp = providerPrivacy(plan.provider);
     return {
       // training === null heisst "unbekannt", nicht "trainiert": sonst faerbt
       // jede Modellzeile ohne Aussage den Punkt als Training-Fall ein.
       noTraining: modelPriv.training === false ? true : (modelPriv.training === true ? false : null),
-      retentionDays: typeof modelPriv.retentionDays === "number" ? modelPriv.retentionDays : (pp?.retentionDays ?? null),
-      zeroRetention: pp?.zeroRetention === true ? true : (pp?.zeroRetention === false ? false : null),
-      source: "model",
+      retentionDays: rowDays ?? (typeof modelPriv.retentionDays === "number" ? modelPriv.retentionDays : (pp?.retentionDays ?? null)),
+      zeroRetention: zdr,
+      source: rowPriv ? "model" : "provider",
       known: true,
     };
   }
-  const pp = providerPrivacy(plan.provider);
   if (pp) {
     return {
       noTraining: pp.training === false ? true : (pp.training === true ? false : null),
-      retentionDays: pp.retentionDays ?? null,
-      zeroRetention: pp.zeroRetention === true ? true : (pp.zeroRetention === false ? false : null),
+      retentionDays: rowDays ?? (pp.retentionDays ?? null),
+      zeroRetention: zdr,
       source: "provider",
       known: pp.training != null || pp.zeroRetention != null,
     };
   }
-  return { noTraining: null, retentionDays: null, zeroRetention: null, source: null, known: false };
+  return { noTraining: null, retentionDays: rowDays, zeroRetention: zdr, source: rowPriv ? "model" : null, known: !!rowPriv };
 }
 
 function buildCombos() {

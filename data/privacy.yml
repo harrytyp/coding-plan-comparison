@@ -2,6 +2,12 @@
 # Jede Aussage hat: provider, quelle (URL), aussage, zeroRetention, training, retentionDays, verifiedAt.
 # Prinzip: NUR was offiziell dokumentiert ist. Unbekannt bleibt unbekannt.
 # Belegt heisst: URL + Zitat in der Notiz. Ohne beides bleibt das Feld null.
+#
+# WICHTIG (ZDR-Chip und ZDR-Filter der Website): ZDR wird ausschliesslich aus
+# modelgenauer Aufbewahrung abgeleitet (Feed-Feld privacy.retentionDays, 0 Tage
+# bestaetigt) und gilt nur fuer genau diese Modell/Anbieter-Kombination.
+# Anbietersaetze hier (zeroRetention: true, "auf Anfrage", Blanket-Policies ohne
+# Modelldaten) erzeugen bewusst KEIN ZDR. Sie bleiben als Dokumentation stehen.
 
 privacy:
 

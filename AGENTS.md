@@ -56,6 +56,12 @@ Kosten pro Request = (0.05×input + 0.95×cachedWrite)×pattern.input
   `#sheet-training`, Chip "training hidden (n)". `noTraining === null` (keine Aussage) bleibt
   sichtbar. Das Best-Value-Panel (`renderTop`) filtert härter und immer: nur `noTraining === true`
   und nur Pläne mit API-Zugang, unabhängig von den Schaltern.
+- **ZDR ist modelgenau, nie Anbieterebene.** Chip und Filter (`data-attr="zdr"`) kommen
+  ausschliesslich aus `privacy.retentionDays === true` des Feeds *dieses Plans* (0 Tage bestätigt,
+  Modell trainiert nicht). Anbietersätze in `data/privacy.yml` erzeugen bewusst kein ZDR, auch nicht
+  `zeroRetention: true`, "auf Anfrage" (Command Code `CMD_ZDR=1`) oder Blanket-Policies ohne
+  Modelldaten. Für ZDR nie die globale `modelPrivacyByName`-Map nutzen: 46 Modelle laufen bei
+  mehreren Anbietern mit unterschiedlicher Policy, das vererbt Aussagen zwischen Anbietern.
 - **Fixe Overlays gehören auf Body-Ebene.** `main` trägt `view-transition-name: main-content`
   und ist damit Containing Block für `position: fixed`: Sheet und Overlay lagen darin und
   öffneten auf dem Telefon unsichtbar unter dem Fold. Command-Palette, Toast und Sheet stehen
