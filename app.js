@@ -212,7 +212,9 @@ const I18N = {
     "rail.minx": "Minimum X",
     "rail.miny": "Minimum Y",
     "dash.logx": "Logarithmic X",
-    "dash.hint": "Drag to zoom, double click to reset",
+    "dash.hint": "Wheel or pinch to zoom, drag to pan, double click to reset",
+    "dash.zoomIn": "Zoom in",
+    "dash.zoomOut": "Zoom out",
     "dash.resetZoom": "Reset zoom",
     "dash.reset": "Reset filters",
     "dash.shortlist": "Strongest plans in this view",
@@ -526,7 +528,9 @@ const I18N = {
     "rail.minx": "Minimum X",
     "rail.miny": "Minimum Y",
     "dash.logx": "X logarithmisch",
-    "dash.hint": "Ziehen zum Zoomen, Doppelklick zum Zurücksetzen",
+    "dash.hint": "Mausrad oder Pinch zum Zoomen, Ziehen verschiebt, Doppelklick setzt zurück",
+    "dash.zoomIn": "Vergrößern",
+    "dash.zoomOut": "Verkleinern",
     "dash.resetZoom": "Zoom zurücksetzen",
     "dash.reset": "Filter zurücksetzen",
     "dash.shortlist": "Stärkste Pläne in dieser Ansicht",
@@ -764,6 +768,10 @@ function applyI18n() {
   $$("[data-i18n-ph]").forEach((el) => {
     const key = el.dataset.i18nPh;
     el.placeholder = t(key);
+  });
+  $$("[data-i18n-title]").forEach((el) => {
+    const v = t(el.getAttribute("data-i18n-title"));
+    if (v) el.setAttribute("title", v);
   });
   // Select-Optionen (data-i18n auf <option>) aktualisieren
   $$("option[data-i18n]").forEach((el) => {
@@ -1905,6 +1913,43 @@ let dashBrush = null; // laufende Zoom-Auswahl in CSS-Pixeln
 let dashPlotBox = null; // Plot-Rechteck in CSS-Pixeln (für Zoom-Umrechnung)
 let dashAxisX = null; // aktuelle X-Achsengrenzen [min,max] aus dem letzten Render
 let dashAxisY = null; // aktuelle Y-Achsengrenzen [min,max] aus dem letzten Render
+let dashPanning = false; // laufende Zoom-/Pan-Geste: unterdrückt Tooltips und Klicks
+
+// Log-Metriken: auf diesen Achsen zoomen wir im Log-Raum, sonst verzerrt der Zoom.
+const LOG_METRICS = new Set(["tokens", "req10", "rawtokens", "rawreq", "price"]);
+const isLogX = () => dashLogX && LOG_METRICS.has(dashX);
+const isLogY = () => LOG_METRICS.has(dashY);
+
+// Fenster um den Mittelpunkt skalieren (Buttons, Tasten). f < 1 zoomt hinein.
+function scaleWindow(lo, hi, log, f) {
+  if (!(hi > lo)) return [lo, hi];
+  if (log) {
+    const m = (Math.log(lo) + Math.log(hi)) / 2, half = (Math.log(hi) - Math.log(lo)) * f / 2;
+    return [Math.exp(m - half), Math.exp(m + half)];
+  }
+  const m = (lo + hi) / 2, half = (hi - lo) * f / 2;
+  return [m - half, m + half];
+}
+
+function zoomByFactor(f) {
+  if (!dashAxisX || !dashAxisY) return;
+  dashZoom = {
+    x0: scaleWindow(dashAxisX[0], dashAxisX[1], isLogX(), f)[0],
+    x1: scaleWindow(dashAxisX[0], dashAxisX[1], isLogX(), f)[1],
+    y0: scaleWindow(dashAxisY[0], dashAxisY[1], isLogY(), f)[0],
+    y1: scaleWindow(dashAxisY[0], dashAxisY[1], isLogY(), f)[1],
+  };
+  renderDashboard();
+}
+
+function resetZoom() {
+  const rb = $("#dash-reset-btn"); if (rb) rb.hidden = true;
+  if (!dashZoom) return;
+  dashZoom = null; dashSelected = null;
+  const c = $("#dash-canvas");
+  if (c && window.d3zoom) window.d3zoom.select(c).property("__zoom", window.d3zoom.zoomIdentity);
+  renderDashboard();
+}
 
 // Quantil für den Bildausschnitt (P2-P98 statt Min/Max: keine halbe Fläche Luft)
 // Obergrenze des Bildausschnitts: P98, aber liegt der echte Höchstwert nur
@@ -2444,6 +2489,8 @@ function renderDashboardInner() {
   dashPlotBox = { l: PAD_L, t: PAD_T, w: plotW, h: plotH, w0: W, h0: H };
   dashAxisX = [xMin, xMax];
   dashAxisY = [yMin, yMax];
+  // Zustand nach aussen geben: das Chart ist Canvas und sonst nicht prüfbar
+  window.__dashState = { axisX: dashAxisX, axisY: dashAxisY, zoom: dashZoom, points: px.length };
   const rbBtn = $("#dash-reset-btn");
   if (rbBtn) rbBtn.hidden = !dashZoom;
   dashPoints = px;
@@ -2609,11 +2656,15 @@ function bindDashTooltip() {
       kbdPoint = null; dashSelected = null; tip.style.display = "none";
       setHover(null); showDashDetail(null); renderDashboard();
     }
+    // Zoom per Tastatur: + / - / 0
+    if (e.key === "+" || e.key === "=") { e.preventDefault(); zoomByFactor(0.6); return; }
+    if (e.key === "-" || e.key === "_") { e.preventDefault(); zoomByFactor(1 / 0.6); return; }
+    if (e.key === "0") { e.preventDefault(); resetZoom(); return; }
   });
   canvas.addEventListener("blur", () => { kbdPoint = null; tip.style.display = "none"; setHover(null); });
   canvas.addEventListener("mousemove", (e) => {
     if (e.pointerType === "touch") return;
-    if (dashBrush) return; // beim Ziehen keine Tooltips
+    if (dashBrush || dashPanning) return; // während Zoom/Pan keine Tooltips
     const p = pick(e.clientX, e.clientY);
     setHover(p);
     if (p) showTip(p, e.clientX, e.clientY);
@@ -2621,66 +2672,125 @@ function bindDashTooltip() {
   });
   canvas.addEventListener("mouseleave", () => { tip.style.display = "none"; setHover(null); });
 
-  // Zoom: ziehen spannt ein Rechteck auf, das in Datenkoordinaten umgerechnet wird
-  const applyZoom = (brush) => {
-    const box = dashPlotBox;
-    if (!box) return;
-    const r = canvas.getBoundingClientRect();
-    const spanX = Math.abs(brush.x1 - brush.x0), spanY = Math.abs(brush.y1 - brush.y0);
-    if (spanX < 12 || spanY < 12) return; // Mini-Zieher ignorieren
-    const nx0 = Math.min(brush.x0, brush.x1) - r.left, nx1 = Math.max(brush.x0, brush.x1) - r.left;
-    const ny0 = Math.min(brush.y0, brush.y1) - r.top, ny1 = Math.max(brush.y0, brush.y1) - r.top;
-    const t = (v, l, w) => Math.min(1, Math.max(0, (v - l) / w));
-    const xLogNow = dashLogX && ["tokens", "req10", "rawtokens", "rawreq", "price"].includes(dashX);
-    const yLogNow = ["tokens", "req10", "rawtokens", "rawreq", "price"].includes(dashY);
-    const xa = dashAxisX, ya = dashAxisY; // aktuelle Achsengrenzen aus dem letzten Render
-    if (!xa || !ya) return;
-    const invX = (tt) => (xLogNow ? Math.exp(Math.log(xa[0]) + tt * (Math.log(xa[1]) - Math.log(xa[0]))) : xa[0] + tt * (xa[1] - xa[0]));
-    const invY = (tt) => (yLogNow ? Math.exp(Math.log(ya[0]) + tt * (Math.log(ya[1]) - Math.log(ya[0]))) : ya[0] + tt * (ya[1] - ya[0]));
-    dashZoom = {
-      x0: invX(t(nx0, box.l, box.w)), x1: invX(t(nx1, box.l, box.w)),
-      y0: invY(1 - t(ny1, box.t, box.h)), y1: invY(1 - t(ny0, box.t, box.h)),
-    };
-    dashBrush = null;
-    dashSelected = null;
-    renderDashboard();
-  };
-  let dragging = false;
-  canvas.addEventListener("pointerdown", (e) => {
-    if (e.pointerType === "touch") return;
-    dragging = true;
-    tip.style.display = "none";
-    dashBrush = { x0: e.clientX, y0: e.clientY, x1: e.clientX, y1: e.clientY };
-  });
-  window.addEventListener("pointermove", (e) => {
-    if (!dragging || !dashBrush) return;
-    dashBrush.x1 = e.clientX; dashBrush.y1 = e.clientY;
-    if (!hoverRaf) hoverRaf = requestAnimationFrame(() => { hoverRaf = null; renderDashboard(); });
-  });
-  window.addEventListener("pointerup", () => {
-    if (!dragging) return;
-    dragging = false;
-    const b = dashBrush;
-    dashBrush = null;
-    if (b) applyZoom(b);
-    else renderDashboard();
-  });
-  canvas.addEventListener("dblclick", () => {
-    if (!dashZoom) return;
-    dashZoom = null; dashSelected = null;
-    const rb = $("#dash-reset-btn"); if (rb) rb.hidden = true;
-    renderDashboard();
-  });
+  // Zoom: Ziehen verschiebt (Live-Pan), Rad/Pinch zoomt, Shift+Ziehen die Auswahl
   canvas.addEventListener("click", (e) => {
+    if (dashPanning || dashBrush) return; // nach einer Geste nicht auswählen
     tip.style.display = "none";
     select(pick(e.clientX, e.clientY));
   });
-  // Touch: Antippen wählt direkt (kein Hover auf Mobile)
+  // Touch: Antippen wählt direkt (kein Hover auf Mobile). Zwei Finger sind Zoom/Pan.
   canvas.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
     const t = e.touches[0];
     const p = pick(t.clientX, t.clientY);
     if (p) { e.preventDefault(); tip.style.display = "none"; select(p); }
   }, { passive: false });
+}
+
+// Live-Zoom und Live-Pan auf dem Chart.
+// Die Gesten liefert d3-zoom (Mausrad, Ziehen, Zwei-Finger-Pinch); pro Geste wird
+// das Achsenfenster in Datenkoordinaten umgerechnet, damit auch Log-Achsen stimmen.
+// Shift+Ziehen bleibt die Rechteck-Auswahl, Doppelklick setzt zurück.
+function bindDashZoom() {
+  const canvas = $("#dash-canvas");
+  if (!canvas) return;
+  const inv = (a, t, log) => (log ? Math.exp(Math.log(a[0]) + t * (Math.log(a[1]) - Math.log(a[0]))) : a[0] + t * (a[1] - a[0]));
+  let frame = null;
+  const queue = () => { if (!frame) frame = requestAnimationFrame(() => { frame = null; renderDashboard(); }); };
+
+  // Rechteck-Auswahl: grobe Sprünge mit der Maus
+  const applyBrush = (b) => {
+    const box = dashPlotBox, xa = dashAxisX, ya = dashAxisY;
+    if (!box || !xa || !ya) return;
+    const r = canvas.getBoundingClientRect();
+    const nx0 = Math.min(b.x0, b.x1) - r.left, nx1 = Math.max(b.x0, b.x1) - r.left;
+    const ny0 = Math.min(b.y0, b.y1) - r.top, ny1 = Math.max(b.y0, b.y1) - r.top;
+    if (nx1 - nx0 < 12 || ny1 - ny0 < 12) return; // Mini-Zieher ignorieren
+    const fr = (v, l, w) => Math.min(1, Math.max(0, (v - l) / w));
+    dashZoom = {
+      x0: inv(xa, fr(nx0, box.l, box.w), isLogX()), x1: inv(xa, fr(nx1, box.l, box.w), isLogX()),
+      y0: inv(ya, 1 - fr(ny1, box.t, box.h), isLogY()), y1: inv(ya, 1 - fr(ny0, box.t, box.h), isLogY()),
+    };
+    dashSelected = null;
+    renderDashboard();
+  };
+
+  if (window.d3zoom) {
+    let base = null;
+    const zoom = window.d3zoom.zoom()
+      // Nur gegen Entartung begrenzt: frei navigieren ist gewollt, Reset holt zurück
+      .scaleExtent([0.2, 500])
+      // Ein Finger bleibt Seiten-Scroll, zwei Finger zoomen, Shift+Ziehen ist Auswahl
+      .filter((ev) => {
+        if (ev.type === "touchstart") return ev.touches.length >= 2;
+        if (ev.type === "wheel") return true;
+        return ev.button === 0 && !ev.shiftKey;
+      })
+      .clickDistance(4)
+      // Touch nicht von der Feature-Erkennung abhängig machen: ohne Touch
+      // (Maus-Geräte) passiert nichts, mit Touch greift Pinch/Zwei-Finger-Pan.
+      .touchable(true)
+      .on("start", () => {
+        if (!dashAxisX || !dashAxisY || !dashPlotBox) return;
+        base = { x: dashAxisX.slice(), y: dashAxisY.slice(), logX: isLogX(), logY: isLogY(), box: { ...dashPlotBox } };
+        dashPanning = true;
+        const tipEl = document.getElementById("dash-tooltip"); if (tipEl) tipEl.style.display = "none";
+        canvas.style.cursor = "grabbing";
+      })
+      .on("zoom", (ev) => {
+        if (!base) return;
+        const tr = ev.transform, b = base.box;
+        // d3 rechnet im Canvas-Raum (auch die Ränder), die Achsen aber im
+        // Plot-Rechteck. Deshalb erst die Kanten des Rechtecks transformieren
+        // und daraus den sichtbaren Bruchteil [0,1] je Achse bestimmen: sonst
+        // schiebt jeder Pan zusätzlich die Ränder ins Bild und zoomt langsam raus.
+        const cx = (b.l * (tr.k - 1) + tr.x) / b.w;
+        const cy = (b.t * (tr.k - 1) + tr.y) / b.h;
+        const f0x = -cx / tr.k, f1x = (1 - cx) / tr.k;
+        const fx0 = 1 - (1 - cy) / tr.k, fx1 = 1 + cy / tr.k; // y: 0 = unten
+        dashZoom = {
+          x0: inv(base.x, f0x, base.logX),
+          x1: inv(base.x, f1x, base.logX),
+          y0: inv(base.y, fx0, base.logY),
+          y1: inv(base.y, fx1, base.logY),
+        };
+        queue();
+      })
+      .on("end", () => {
+        dashPanning = false;
+        canvas.style.cursor = "";
+        base = null;
+        // Internen Transform zurücksetzen: die nächste Geste startet relativ zum
+        // aktuellen Ausschnitt, sonst summieren sich Gesten still auf.
+        window.d3zoom.select(canvas).property("__zoom", window.d3zoom.zoomIdentity);
+      });
+    window.d3zoom.select(canvas).call(zoom);
+    window.d3zoom.select(canvas).on("dblclick.zoom", null); // eigener Reset unten
+  }
+
+  // Shift+Ziehen: Rechteck aufziehen
+  let brush = null;
+  canvas.addEventListener("pointerdown", (e) => {
+    if (!e.shiftKey || e.pointerType === "touch") return;
+    brush = { x0: e.clientX, y0: e.clientY, x1: e.clientX, y1: e.clientY };
+    dashBrush = brush;
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!brush) return;
+    brush.x1 = e.clientX; brush.y1 = e.clientY;
+    queue();
+  });
+  window.addEventListener("pointerup", () => {
+    if (!brush) return;
+    const b = brush; brush = null; dashBrush = null;
+    applyBrush(b);
+  });
+
+  canvas.addEventListener("dblclick", () => resetZoom());
+
+  const zin = $("#dash-zoom-in"), zout = $("#dash-zoom-out");
+  if (zin) zin.addEventListener("click", () => zoomByFactor(0.6));
+  if (zout) zout.addEventListener("click", () => zoomByFactor(1 / 0.6));
 }
 
 // Dashboard-Controls initialisieren
@@ -2711,9 +2821,10 @@ function initDashboard() {
   // Leerer Plot oder Zoom: je nach Zustand Zoom oder Filter zurücksetzen
   const rb = $("#dash-reset-btn");
   if (rb) rb.addEventListener("click", () => {
-    if (dashZoom) { dashZoom = null; dashSelected = null; rb.hidden = true; renderDashboard(); return; }
+    if (dashZoom) { resetZoom(); return; }
     resetAllFilters();
   });
+  bindDashZoom();
   bindDashTooltip();
 }
 

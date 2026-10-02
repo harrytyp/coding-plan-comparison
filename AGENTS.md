@@ -107,6 +107,27 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 - `app.js` bleibt der Renderer. Die Schicht darf app.js nicht patchen; Korrekturen an dessen
   Verhalten gehören in `public/app.js`.
 
+## Chart: Zoom und Pan
+Der Scatter-Plot ist live navigierbar: Mausrad zoomt auf den Zeiger, Ziehen verschiebt
+(Live-Pan), Zwei-Finger-Pinch zoomt auf Touch, `+`/`-`/`0` und die Buttons im Chart-Kopf
+zoomen bzw. setzen zurück, Shift+Ziehen bleibt die Rechteck-Auswahl. Die Gesten liefert
+**d3-zoom**, gebündelt als `public/vendor/d3-zoom.min.js` (IIFE, global `d3zoom`), damit
+GitHub Pages ohne CDN auskommt; die CI kopiert `public/vendor/` mit ins Root (`vendor/`).
+
+- Zustand ist `dashZoom` in Datenkoordinaten (`{x0,x1,y0,y1}`, `null` = Auto-Ausschnitt).
+  Jede Geste wird über die Achsen vom Gestenbeginn umgerechnet, danach wird der interne
+  d3-Transform auf Identität zurückgesetzt: sonst summieren sich Gesten auf.
+- Umrechnung **immer im Plot-Rechteck** (`dashPlotBox`), nie in Canvas-Koordinaten: die
+  Ränder gehören nicht zum Achsenfenster, sonst zoomt jeder Pan die Achse langsam auf.
+- Log-Achsen werden im Log-Raum skaliert (`scaleWindow`), sonst verzerrt der Zoom.
+- Ein Finger bleibt Seiten-Scroll (Filter erlaubt Touch erst ab zwei Fingern).
+- `window.__dashState` gibt Achsen/Zoom/Punktzahl nach außen: das Chart ist Canvas und
+  sonst nicht automatisiert prüfbar.
+- Neu bauen (nur bei d3-Update nötig):
+  `npm i --no-save d3-zoom esbuild` in einem Temp-Ordner, dann
+  `npx esbuild entry.js --bundle --format=iife --global-name=d3zoom --minify --outfile=public/vendor/d3-zoom.min.js`
+  mit `entry.js`: `export * from "d3-zoom"; export { select, pointer } from "d3-selection";`
+
 ## Workflow
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.

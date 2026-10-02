@@ -90,6 +90,9 @@ jobs:
           # Schriften liegen lokal im Repo (kein CDN): müssen mit ins Root
           mkdir -p fonts
           cp -r public/fonts/. ./fonts/
+          # Chart-Zoom-Bibliothek ebenfalls lokal (kein CDN)
+          mkdir -p vendor
+          cp -r public/vendor/. ./vendor/
           touch .nojekyll
           # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen
           VERSION=$(git rev-parse --short HEAD)
@@ -98,7 +101,7 @@ jobs:
           mkdir -p preview
           cp -r public/preview/. ./preview/
           sed -i "s/__VERSION__/$VERSION/g" ./preview/index.html
-          git add index.html app.js data/latest.json .nojekyll fonts preview
+          git add index.html app.js data/latest.json .nojekyll fonts preview vendor
           if git diff --cached --quiet; then
             echo "Website unverändert"
           else

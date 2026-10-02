@@ -17,6 +17,8 @@ let html = await readFile(SRC, 'utf8');
 html = html.replaceAll("src:url('fonts/", "src:url('../fonts/");
 html = html.replace('<script src="app.js?v=__VERSION__">', '<script src="../app.js?v=__VERSION__">');
 if (!html.includes('../app.js')) throw new Error('app.js-Pfad nicht umgebogen');
+html = html.replace('<script src="vendor/d3-zoom.min.js">', '<script src="../vendor/d3-zoom.min.js">');
+if (!html.includes('../vendor/d3-zoom.min.js')) throw new Error('vendor-Pfad nicht umgebogen');
 
 // nicht indexieren
 html = html.replace('<meta name="viewport"', '<meta name="robots" content="noindex,nofollow">\n<meta name="viewport"');
