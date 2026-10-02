@@ -48,8 +48,14 @@ jobs:
       - name: Changelog aus der Git-Historie erzeugen
         run: node scripts/changelog-from-git.mjs
 
+      - name: Sitemap und Feed aktualisieren
+        run: node scripts/seo.mjs
+
       - name: Build latest.json
         run: node scripts/build.mjs
+
+      - name: Statische Vergleichsseite erzeugen
+        run: node scripts/landing.mjs
 
       - name: Tests
         run: npm test
@@ -62,7 +68,7 @@ jobs:
         run: |
           git config user.name "coding-plan-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add public/data/latest.json data/changelog.yml
+          git add public/data/latest.json data/changelog.yml public/sitemap.xml public/feed.xml public/coding-plan-comparison
           if git diff --cached --quiet; then
             echo "Keine Änderungen — nichts zu committen"
           else
@@ -99,15 +105,21 @@ jobs:
           cp -r public/vendor/. ./vendor/
           # Icon, Marke und Social-Card liegen im Site-Root (/favicon.ico muss dort liegen)
           cp public/favicon.svg public/favicon.ico public/apple-touch-icon.png public/og-image.png ./
+          # SEO-Dateien ebenfalls ins Root (dort liegt die ausgelieferte Fassung)
+          cp public/robots.txt public/sitemap.xml public/feed.xml public/llms.txt ./
+          # Statische Vergleichsseite (SEO-Einstieg) ins Root spiegeln
+          cp -r public/coding-plan-comparison ./coding-plan-comparison
           touch .nojekyll
-          # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen
+          # Cache-Busting: __VERSION__ durch kurzen Commit-Hash ersetzen, dazu das
+          # Datum im Datensatz-JSON-LD (sonst steht dort ein veraltetes lastmod).
           VERSION=$(git rev-parse --short HEAD)
-          sed -i "s/__VERSION__/$VERSION/g" ./index.html
+          TODAY=$(date -u +%F)
+          sed -i "s/__VERSION__/$VERSION/g; s/__DATEMODIFIED__/$TODAY/g" ./index.html
           # Vorschau-Fassung (public/preview/) unter /preview/ ausliefern
           mkdir -p preview
           cp -r public/preview/. ./preview/
           sed -i "s/__VERSION__/$VERSION/g" ./preview/index.html
-          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png
+          git add index.html app.js data/latest.json .nojekyll fonts preview vendor favicon.svg favicon.ico apple-touch-icon.png og-image.png robots.txt sitemap.xml feed.xml llms.txt coding-plan-comparison
           if git diff --cached --quiet; then
             echo "Website unverändert"
           else

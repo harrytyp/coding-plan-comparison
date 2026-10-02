@@ -1,4 +1,7 @@
+# vibeplan.cc — alles erlaubt, auch AI-Crawler (die Seite will zitiert werden).
 User-agent: *
 Allow: /
 
-Sitemap: https://harrytyp.github.io/coding-plan-comparison/sitemap.xml
+Sitemap: https://vibeplan.cc/sitemap.xml
+# Aktualisierungen als Feed:
+# https://vibeplan.cc/feed.xml

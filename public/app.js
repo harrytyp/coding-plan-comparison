@@ -313,6 +313,7 @@ const I18N = {
     "foot.faq": "FAQ",
     "foot.data": "Data",
     "foot.json": "latest.json (API)",
+    "foot.compare": "AI coding plan comparison",
     "foot.repo": "GitHub",
     "foot.sources": "sources.yml",
     "foot.llmstats": "AI scores: llm-stats.com",
@@ -636,6 +637,7 @@ const I18N = {
     "foot.faq": "FAQ",
     "foot.data": "Daten",
     "foot.json": "latest.json (API)",
+    "foot.compare": "Vergleich der AI-Coding-Plaene",
     "foot.repo": "GitHub",
     "foot.sources": "sources.yml",
     "foot.llmstats": "AI-Scores: llm-stats.com",
@@ -792,9 +794,11 @@ function applyI18n() {
   });
   document.documentElement.lang = lang;
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+  // Titel mit der Suchphrase, in beiden Sprachen (Suchmaschinen führen JS aus,
+  // der statische <title> im HTML allein würde überschrieben).
   document.title = lang === "de"
-    ? "vibeplan.cc , KI-Coding-Abos im Vergleich"
-    : "vibeplan.cc , AI Coding Subscriptions, Compared";
+    ? "AI-Coding-Plan-Vergleich: Tokens und Requests pro Dollar | vibeplan.cc"
+    : "AI coding plan comparison: tokens and requests per dollar paid | vibeplan.cc";
   renderAll();
   syncMethodMore();
 }
