@@ -185,7 +185,7 @@ td.t-right, .rail-stat b, .sl-val, .dg-v { font-variant-numeric: tabular-nums; }
   background: var(--surface-3); border: 1px solid var(--line); border-radius: 5px; padding: 1px 5px; color: var(--text-3);
 }
 
-.currency-select, .toolbar-select, .sort-select select, .sheet-select, .dash-ctl select {
+.currency-select, .toolbar-select, .sort-select select, .rail-filters select, .dash-ctl select {
   appearance: none; background: var(--surface-2); color: var(--text);
   border: 1px solid var(--ctl-line); border-radius: var(--radius-sm);
   font-size: var(--fs-md); font-weight: 500; padding: 6px 26px 6px 10px; cursor: pointer;
@@ -293,12 +293,34 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 /* ------------------------------------------------- workbench (overview) */
 .workbench { display: grid; grid-template-columns: 264px minmax(0, 1fr) 320px; gap: 18px; align-items: start; margin-top: 18px; }
 .rail { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 76px; }
+/* Desktop: der Rail klebt und darf nicht laenger als das Fenster werden,
+   sonst ist der untere Teil nicht erreichbar (Filterblock ist hoch). */
+@media (min-width: 981px) {
+  .rail { max-height: calc(100vh - 96px); overflow-y: auto; overscroll-behavior: contain; }
+}
 .rail-block { background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 14px; }
 .rail-title {
   font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
   color: var(--text-3); margin-bottom: 10px;
 }
 .rail-row { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+/* Filterblock im Rail: eine Spalte, alles auf gleicher Breite, gut tippbar */
+.rail-filters-body { display: flex; flex-direction: column; gap: 12px; }
+.rail-filters-body > .rail-row { margin-bottom: 0; }
+.rail-filters .rail-input { width: 100%; min-height: 44px; }
+.rail-filters .budget-filter, .rail-filters .ai-filter { display: flex; flex-direction: column; gap: 4px; }
+.rail-filters .budget-filter label, .rail-filters .ai-filter label { font-size: var(--fs-sm); color: var(--text-3); }
+.rail-filters .budget-filter output, .rail-filters .ai-filter output { font-size: var(--fs-sm); color: var(--text); font-weight: 700; }
+.rail-filters .attr-filter { flex-direction: column; align-items: stretch; gap: 0; }
+.rail-filters .attr-filter-title { margin: 2px 0 4px; }
+.rail-filters .col-picker-panel { position: static; margin-top: 6px; box-shadow: none; }
+/* In der Listenansicht sitzt derselbe Block ueber der Tabelle */
+.filters-host .rail-block { border-radius: var(--radius); margin-bottom: 12px; }
+.filters-host:empty { display: none; }
+/* Shortlist: eigener Block unter der Werkbank */
+.shortlist-panel { margin-top: 18px; }
+.shortlist-panel .sl-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 22px; padding: 14px 18px 16px; }
+.shortlist-panel .sl-item { padding: 8px 0; }
 .rail-row:last-child { margin-bottom: 0; }
 .rail-row > span { font-size: var(--fs-xs); font-weight: 600; color: var(--text-2); }
 .rail-row select, .rail-row input[type="number"] {
@@ -387,14 +409,13 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .dd-row .v { font-size: var(--fs-base); font-weight: 600; font-variant-numeric: tabular-nums; }
 .dd-foot { margin-top: 14px; }
 .dd-badge { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.dd-shortlist { border-top: 1px solid var(--line-soft); padding: 12px 16px 14px; }
-.dd-shortlist .sl-rank {
+.sl-rank {
   flex: 0 0 16px; height: 16px; border-radius: 4px; display: grid; place-items: center;
   font: 700 10px/1 var(--font-num); color: var(--text-3);
   background: var(--surface-2); border: 1px solid var(--line-soft);
 }
-.dd-shortlist .sl-item:hover .sl-rank { color: var(--text); border-color: var(--line); }
-.dd-shortlist .sl-title { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 8px; }
+.sl-item:hover .sl-rank { color: var(--text); border-color: var(--line); }
+.sl-title { margin: 0; }
 .sl-item { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; background: none; border: 0; padding: 6px 0; cursor: pointer; font-size: var(--fs-md); color: var(--text-2); contain: inline-size; }
 .sl-item:hover { color: var(--text); }
 .sl-item .sl-bar { width: 26px; height: 4px; border-radius: 99px; background: var(--accent); flex: none; }
@@ -454,13 +475,6 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 }
 .toolbar-search::placeholder { color: var(--text-3); }
 .toolbar-count { font-size: var(--fs-sm); color: var(--text-3); font-variant-numeric: tabular-nums; }
-.filter-toggle {
-  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
-  padding: 6px 11px; font-size: var(--fs-sm); font-weight: 500; color: var(--text-2);
-  border: 1px solid var(--line); border-radius: 99px; background: var(--surface-2);
-}
-.filter-toggle:hover { color: var(--text); border-color: var(--text-3); }
-.filter-toggle.active { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); font-weight: 600; }
 .filter-count-badge {
   display: inline-flex; align-items: center; justify-content: center; min-width: 16px; height: 16px;
   padding: 0 5px; border-radius: 99px; background: var(--accent-ink); color: var(--accent); font-size: var(--fs-xs); font-weight: 700;
@@ -527,8 +541,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
   box-shadow: var(--shadow-3); padding: 14px;
 }
 .col-picker-title { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 10px; }
-.col-picker-panel label, .sheet-cols label { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: var(--fs-md); cursor: pointer; color: var(--text-2); }
-.col-picker-panel input, .sheet-cols input { accent-color: var(--accent); }
+.col-picker-panel label { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: var(--fs-md); cursor: pointer; color: var(--text-2); }
+.col-picker-panel input { accent-color: var(--accent); }
 
 /* ---------------------------------------------------------------- calculator */
 .calc-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; padding: 18px; border-bottom: 1px solid var(--line-soft); }
@@ -660,25 +674,8 @@ footer { margin-top: auto; }
 }
 #back-top.show { display: inline-flex; }
 #back-top:hover { color: var(--accent); border-color: var(--accent); }
-.sheet-overlay { position: fixed; inset: 0; background: rgba(6, 9, 13, .6); z-index: 100; }
-.sheet {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 101; max-height: 86vh; overflow-y: auto;
-  background: var(--surface); border-top: 1px solid var(--line);
-  border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg); box-shadow: var(--shadow-3);
-}
-.sheet-handle { width: 40px; height: 4px; border-radius: 99px; background: var(--line); margin: 10px auto 4px; }
-.sheet-title { padding: 6px 18px 12px; font-family: var(--font-display); font-size: var(--fs-lg); font-weight: 700; }
-.sheet-section { padding: 12px 18px; border-top: 1px solid var(--line-soft); }
-.sheet-section-title { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 8px; }
-.sheet-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 0; font-size: var(--fs-md); }
 .attr-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 14px; }
 .attr-filter-title { font: 700 10.5px/1 var(--font-num); text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
-.sheet-check { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-md); color: var(--text-2); }
-.sheet-slider-row { display: flex; flex-direction: column; gap: 6px; padding: 6px 0; }
-.sheet-slider-label { display: flex; justify-content: space-between; font-size: var(--fs-sm); color: var(--text-3); }
-.sheet-search { width: 100%; padding: 8px 10px; font-size: var(--fs-base); background: var(--surface-2); color: var(--text); border: 1px solid var(--ctl-line); border-radius: var(--radius-sm); }
-.sheet-out { font-size: var(--fs-base); font-weight: 700; font-variant-numeric: tabular-nums; }
-.sheet-close, .sheet-done { width: 100%; }
 .dash-target-input {
   width: 100%; padding: 7px 9px; font-size: var(--fs-md); font-family: var(--font-text);
   background: var(--surface-2); color: var(--text); border: 1px solid var(--line); border-radius: var(--radius-sm);
@@ -766,7 +763,7 @@ main { view-transition-name: main-content; }
   .sortable-table tbody td::before { content: attr(data-label); flex: none; font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
   .sortable-table tbody tr.row-detail td::before { content: none; }
   .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .detail-grid .dg-v, .dash-detail-content, .dd-shortlist { overflow-wrap: anywhere; }
+  .detail-grid .dg-v, .dash-detail-content, .sl-item { overflow-wrap: anywhere; }
   /* Tags auf dem Handy vollständig: Zusatz-Chips statt "+n", Zeile bricht um */
   .attr-extra { display: inline-block; }
   .attr-more { display: none; }
@@ -878,10 +875,6 @@ main { max-width: 1680px; padding: 0 28px 64px; }
 
 /* mono utility: labels, kickers, numerals */
 .kpi .k, .rail-title, .section-head p, .panel-head p, .app-meta, .chart-foot,
-.sheet-section-title, .detail-kicker, .sl-title, .cl-date, .attr, .chip, .rank-tag,
-.waitlist-badge, .est-note, .table-note, .attr-filter-title, .toolbar-count, .sheet-check span {
-  font-family: var(--pv-mono);
-}
 
 /* ---------------------------------------------------------------- scroll progress */
 #pv-progress {
@@ -1040,7 +1033,7 @@ main { max-width: 1680px; padding: 0 28px 64px; }
 .detail-grid .dg-k, .dd-row .k { font-family: var(--pv-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .07em; color: var(--text-3); }
 .detail-grid .dg-v, .dd-row .v { font-family: var(--pv-mono); }
 .sl-title { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .16em; color: var(--text-3); padding: 14px 20px 8px; }
-.dd-shortlist { border-top: 1px solid var(--pv-hair); }
+
 .sl-item .sl-val { font-family: var(--pv-mono); }
 
 /* ---------------------------------------------------------------- tables */
@@ -1094,14 +1087,14 @@ main { max-width: 1680px; padding: 0 28px 64px; }
 .attr-unknown, .attr-more { color: var(--text-3); }
 .attr-more { border-style: dashed; }
 .plan-avatar + .attr { margin-left: 0; }
-.btn, .chip-btn, .seg button, .filter-toggle, .linklike {
+.btn, .chip-btn, .seg button, .linklike {
   font-family: var(--pv-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .07em;
   border-radius: var(--pv-radius);
 }
 .btn { border: 1px solid var(--ctl-line); background: var(--surface-2); padding: 7px 13px; }
 .btn:hover { border-color: var(--accent); color: var(--accent); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.privacy-filter, .sheet-check { font-family: var(--pv-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
+.privacy-filter { font-family: var(--pv-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--text-2); }
 select, input[type="search"], input[type="text"] { border-radius: var(--pv-radius); border-color: var(--ctl-line); }
 .table-toolbar, .filter-bar, .sort-bar { padding: 12px 22px; border-bottom: 1px solid var(--pv-hair); background: var(--surface-2); }
 .toolbar-count { font-size: var(--fs-xs); letter-spacing: .06em; color: var(--text-3); }
@@ -1216,6 +1209,8 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 /* Filter-Dock: liegt ueber den Views, gilt fuer Uebersicht und Plaene */
 .filter-dock { margin-top: 14px; }
 .filter-dock[hidden] { display: none; }
+/* Ohne aktive Filter braucht die Zeile keinen Platz */
+.filter-dock.is-empty { display: none; }
 
 /* Rail-Bloecke: ein-/ausklappbar, Standard eingeklappt */
 .rail-block > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; min-height: 44px; gap: 8px; }
@@ -1241,13 +1236,9 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   display: inline-flex; align-items: center; gap: 8px;
   min-height: 44px; padding: 6px 0;
 }
-.sheet-check {
-  display: flex; align-items: center; gap: 8px;
-  min-height: 44px; padding: 4px 0;
-}
-.col-picker-panel label, .sheet-cols label { min-height: 44px; }
-.rail-check input, .privacy-filter input, .sheet-check input,
-.col-picker-panel input, .sheet-cols input { width: 18px; height: 18px; }
+.col-picker-panel label { min-height: 44px; }
+.rail-check input, .privacy-filter input,
+.col-picker-panel input { width: 18px; height: 18px; }
 .brand { min-width: 44px; min-height: 44px; padding: 4px 2px; }
 .footer-links a, .footer-links .linklike, #open-legal {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px;
@@ -1267,27 +1258,6 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 }
 
 /* 7) Filter als linker Drawer (mobil) statt Bottom-Sheet */
-.sheet {
-  position: fixed; top: 0; bottom: 0; left: 0; right: auto;
-  width: min(360px, 90vw); height: 100%; max-height: none;
-  border-top: 0; border-right: 1px solid var(--line);
-  border-top-left-radius: 0; border-bottom-left-radius: 0;
-  border-top-right-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg);
-  transform: translateX(-102%); transition: transform .22s var(--pv-ease);
-}
-.sheet.open { transform: none; }
-.sheet-head {
-  position: sticky; top: 0; z-index: 2; display: flex; align-items: center;
-  justify-content: space-between; gap: 10px; padding: 6px 10px 6px 18px;
-  background: var(--surface); border-bottom: 1px solid var(--line-soft);
-}
-.sheet-title { padding: 0; }
-.sheet-close { width: 44px; height: 44px; flex: none; font-size: 22px; line-height: 1; }
-.sheet-section { padding: 14px 18px; }
-.sheet-section .sheet-search { margin-bottom: 10px; }
-.sheet-section .sheet-select { width: 100%; margin-bottom: 4px; }
-.sheet-done { margin: 6px 18px 20px; width: calc(100% - 36px); }
-@media (prefers-reduced-motion: reduce) { .sheet { transition: none; } }
 
 /* 8) Plaene kompakter: Zeilenhoehe ~44px (Desktop) */
 .sortable-table tbody td { padding: 5px 12px; }
@@ -1300,30 +1270,22 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 
 /* 5) Tap-Targets: Klickflaeche >= 44px, Optik unveraendert */
 .rail-check, .rail-row { min-height: 44px; }
-.sheet-check, .privacy-filter { min-height: 44px; padding: 6px 0; }
 .footer-links a, .footer-links .linklike { min-height: 44px; display: inline-flex; align-items: center; padding: 10px 2px; }
 .brand { min-height: 44px; display: inline-flex; align-items: center; }
-.rail-check input, .sheet-check input, .privacy-filter input { width: 18px; height: 18px; }
+.rail-check input, .privacy-filter input { width: 18px; height: 18px; }
 /* 5b) Kopfzeile, Tabs und Chips ebenfalls >= 44px */
-.cmdk-trigger, .currency-select, .toolbar-select, .sort-select select, .sheet-select,
+.cmdk-trigger, .currency-select, .toolbar-select, .sort-select select,
 .icon-btn, .lang-switch button, .tab, .chip-btn, .skip-link { min-height: 44px; }
 .icon-btn, .lang-switch button { min-width: 44px; }
 .tab { padding-top: 12px; padding-bottom: 12px; }
 /* 5c) restliche Bedienelemente auf 44px Klickflaeche */
-.btn, #filter-toggle, #plans-more, #fcomp-more, #open-legal, #top-open-plans, .note-mark, .sl-item { min-height: 44px; }
+.btn, #plans-more, #fcomp-more, #open-legal, .note-mark, .sl-item { min-height: 44px; }
 #open-legal { min-width: 44px; }
-.rail select, .dash-target-input, .sheet-search, .sheet-range, #budget-slider, #ai-slider { min-height: 44px; }
+.rail select, .dash-target-input, #budget-slider, #ai-slider { min-height: 44px; }
 .cmdk-trigger { min-width: 44px; }
 
 /* 7) Filter als linkes Drawer (mobil/tablet) statt Blatt von unten */
 @media (max-width: 900px) {
-  .sheet {
-    top: 0; bottom: 0; right: auto; height: 100%; max-height: none; width: min(88vw, 340px);
-    border-top: 0; border-right: 1px solid var(--line); border-radius: 0;
-    transform: translateX(-102%); transition: transform .22s ease;
-  }
-  .sheet.open { transform: translateX(0); }
-  .sheet-handle { display: none; }
   /* Karten kompakter, damit 50 Zeilen nicht 20 Bildschirme werden */
   .sortable-table tbody td { padding: 4px 14px; }
 }
@@ -1422,67 +1384,11 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
     <strong id="disclaimer-title"></strong> <span id="disclaimer-text"></span>
   </div>
 
-  <!-- ===== FILTER-DOCK: gilt fuer Uebersicht (Pareto) und Plaene ===== -->
+  <!-- ===== AKTIVE FILTER: nur die Zusammenfassung; bedient wird im Rail-Menue ===== -->
   <div class="filter-dock" id="filter-dock">
-    <!-- Filter-Toggle: schlanker Header, Filter eingeklappt -->
     <div class="filter-bar" id="filter-bar">
-      <button class="btn filter-toggle" id="filter-toggle" type="button" aria-expanded="false">
-        <span class="filter-toggle-icon" id="filter-toggle-icon"><svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h13"/><circle cx="17.5" cy="12" r="1.9" fill="currentColor" stroke="none"/><circle cx="20" cy="17" r="1.9" fill="currentColor" stroke="none"/></svg></span>
-        <span data-i18n="filters.toggle">Filters</span>
-        <span class="filter-count-badge" id="filter-count-badge" hidden>0</span>
-      </button>
+      <span class="filter-count-badge" id="filter-count-badge" hidden>0</span>
       <span class="filter-active" id="filter-active"></span>
-    </div>
-    <div class="table-toolbar" id="plans-toolbar" hidden>
-      <input type="search" id="plans-search" class="toolbar-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="plans.searchAria">
-      <select id="plans-meter-filter" class="toolbar-select" data-i18n-aria="plans.meterAria">
-        <option value="" data-i18n="plans.allMeters">All meters</option>
-        <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
-        <option value="credits" data-i18n="plans.meter.credits">Credits</option>
-        <option value="tokens" data-i18n="plans.meter.tokens">Tokens</option>
-        <option value="requests" data-i18n="plans.meter.requests">Requests</option>
-        <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
-      </select>
-      <div class="budget-filter" id="budget-filter">
-        <label data-i18n="plans.budget">Max $/mo</label>
-        <input type="range" id="budget-slider" min="0" max="300" step="5" value="300" data-i18n-aria="plans.budgetAria">
-        <output id="budget-value" class="num">$300</output>
-      </div>
-      <div class="ai-filter" id="ai-filter">
-        <label data-i18n="plans.aiScore">Min AI score</label>
-        <input type="range" id="ai-slider" min="0" max="70" step="1" value="0" data-i18n-aria="plans.aiAria">
-        <output id="ai-value" class="num">0</output>
-      </div>
-      <div class="attr-filter" id="attr-filter">
-        <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
-        <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
-        <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-        <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
-        <label class="privacy-filter"><input type="checkbox" id="training-toggle"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
-        <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
-      </div>
-      <label class="privacy-filter" id="tierd-filter">
-        <input type="checkbox" id="tierd-toggle">
-        <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
-      </label>
-      <div class="col-picker" id="col-picker">
-        <button class="btn col-picker-btn" id="col-picker-btn" type="button" data-i18n="plans.columns">Columns</button>
-        <div class="col-picker-panel" id="col-picker-panel" hidden>
-          <div class="col-picker-title" data-i18n="plans.columns.title">Show columns</div>
-          <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
-          <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
-          <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
-          <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
-          <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
-          <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
-          <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
-          <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
-          <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
-          <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
-        </div>
-      </div>
-      <span class="toolbar-count" id="plans-count" role="status"></span>
-
     </div>
   </div>
 
@@ -1491,6 +1397,62 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   <!-- ===== WERKBANK: CHART OBEN, DANN RAIL + DETAIL ===== -->
   <div class="workbench" id="workbench">
     <aside class="rail">
+      <!-- Filter: einzige Bedienstelle, gilt fuer Graph und Liste -->
+      <details class="rail-block rail-filters" id="rail-filters">
+        <summary class="rail-title">
+          <span data-i18n="rail.filters">Filters</span>
+        </summary>
+        <div class="rail-filters-body">
+          <input type="search" id="plans-search" class="rail-input" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="plans.searchAria">
+          <label class="rail-row">
+            <span data-i18n="plans.meter">Meter</span>
+            <select id="plans-meter-filter" data-i18n-aria="plans.meterAria">
+              <option value="" data-i18n="plans.allMeters">All meters</option>
+              <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
+              <option value="credits" data-i18n="plans.meter.credits">Credits</option>
+              <option value="tokens" data-i18n="plans.meter.tokens">Tokens</option>
+              <option value="requests" data-i18n="plans.meter.requests">Requests</option>
+              <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
+            </select>
+          </label>
+          <div class="budget-filter" id="budget-filter">
+            <label data-i18n="plans.budget">Max $/mo</label>
+            <input type="range" id="budget-slider" min="0" max="300" step="5" value="300" data-i18n-aria="plans.budgetAria">
+            <output id="budget-value" class="num">$300</output>
+          </div>
+          <div class="ai-filter" id="ai-filter">
+            <label data-i18n="plans.aiScore">Min AI score</label>
+            <input type="range" id="ai-slider" min="0" max="70" step="1" value="0" data-i18n-aria="plans.aiAria">
+            <output id="ai-value" class="num">0</output>
+          </div>
+          <div class="attr-filter" id="attr-filter">
+            <span class="attr-filter-title" data-i18n="plans.attrs">Attributes</span>
+            <label class="privacy-filter"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
+            <label class="privacy-filter"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
+            <label class="privacy-filter"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
+            <label class="privacy-filter"><input type="checkbox" id="noapi-toggle"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
+            <label class="privacy-filter"><input type="checkbox" id="training-toggle"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
+            <label class="privacy-filter" id="tierd-filter"><input type="checkbox" id="tierd-toggle"><span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span></label>
+          </div>
+          <div class="col-picker" id="col-picker">
+            <button class="btn col-picker-btn" id="col-picker-btn" type="button" data-i18n="plans.columns">Columns</button>
+            <div class="col-picker-panel" id="col-picker-panel" hidden>
+              <div class="col-picker-title" data-i18n="plans.columns.title">Show columns</div>
+              <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
+              <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
+              <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
+              <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
+              <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
+              <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
+              <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
+              <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
+              <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
+              <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
+            </div>
+          </div>
+          <span class="toolbar-count" id="plans-count" role="status"></span>
+        </div>
+      </details>
       <details class="rail-block">
         <summary class="rail-title" data-i18n="rail.axes">Axes</summary>
         <label class="rail-row">
@@ -1538,7 +1500,6 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
     <section class="chart-card">
       <div class="chart-head">
         <div class="chart-tools">
-          <button class="btn btn-sm" id="top-open-plans" type="button" data-i18n="top.all">All plans</button>
           <div class="zoom-tools" role="group" aria-label="Zoom">
             <button class="btn btn-sm" id="dash-zoom-out" type="button" aria-label="Zoom out" data-i18n-aria="dash.zoomOut" title="Zoom out" data-i18n-title="dash.zoomOut">&minus;</button>
             <button class="btn btn-sm" id="dash-zoom-in" type="button" aria-label="Zoom in" data-i18n-aria="dash.zoomIn" title="Zoom in" data-i18n-title="dash.zoomIn">+</button>
@@ -1568,12 +1529,18 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
       <div class="detail-head"><span class="detail-kicker" data-i18n="dash.detailTitle">Selected point</span></div>
       <div class="dash-detail-empty" id="dash-detail-empty" data-i18n="dash.clickHint">Pick a dot to see its numbers</div>
       <div class="dash-detail-content" id="dash-detail-content" hidden></div>
-      <div class="dd-shortlist" id="dd-shortlist">
-        <div class="sl-title" data-i18n="dash.shortlist">Strongest plans in this view</div>
-        <div id="sl-list"></div>
-      </div>
     </aside>
   </div>
+
+  <!-- ===== STAERKSTE PLAENE: eigener Block unter der Werkbank ===== -->
+  <section class="panel shortlist-panel" id="shortlist-panel">
+    <div class="panel-head">
+      <div>
+        <h2 class="sl-title" data-i18n="dash.shortlist">Strongest plans in this view</h2>
+      </div>
+    </div>
+    <div id="sl-list" class="sl-list"></div>
+  </section>
 
   </div><!-- /view-overview -->
 
@@ -1587,6 +1554,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
       </div>
     </div>
     <!-- Sortier-Leiste: IMMER sichtbar (Mobile + Desktop) -->
+    <div class="filters-host" id="filters-host"></div>
     <div class="sort-bar" id="sort-bar">
       <details class="pop" id="sort-pop">
         <summary class="btn">
@@ -1894,95 +1862,13 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <!-- Fixe Overlays gehoeren auf Body-Ebene: #main traegt view-transition-name und ist
      damit Containing Block fuer position:fixed, sonst landet das Sheet unter dem Fold. -->
 <!-- ===== MOBILE BOTTOM-SHEET: Filter & Columns konsolidiert ===== -->
-<div class="sheet-overlay" id="sheet-overlay" hidden></div>
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Filters and columns" hidden>
-  <div class="sheet-head">
-    <span class="sheet-title" data-i18n="sheet.title">Customize list</span>
-    <button class="sheet-close" id="sheet-close" type="button" aria-label="Close">×</button>
-  </div>
-
-  <div class="sheet-section">
-    <div class="sheet-section-title" data-i18n="sheet.filter">Filter</div>
-    <input type="search" id="sheet-search" class="sheet-search" placeholder="Filter plans…" data-i18n-ph="plans.searchPh" data-i18n-aria="sheet.searchAria">
-    <select id="sheet-meter" class="sheet-select" data-i18n-aria="sheet.meterAria">
-      <option value="" data-i18n="plans.allMeters">All meters</option>
-      <option value="dollar_usage" data-i18n="plans.meter.dollar">Dollar usage</option>
-      <option value="credits" data-i18n="plans.meter.credits">Credits</option>
-      <option value="tokens" data-i18n="plans.meter.tokens">Tokens</option>
-      <option value="requests" data-i18n="plans.meter.requests">Requests</option>
-      <option value="prompts" data-i18n="plans.meter.prompts">Prompts</option>
-    </select>
-    <div class="sheet-slider-row">
-      <span class="sheet-slider-label" data-i18n="plans.budget">Max $/mo</span>
-      <input type="range" id="sheet-budget" class="sheet-range" min="0" max="300" step="5" value="300" data-i18n-aria="sheet.budgetAria">
-      <output id="sheet-budget-out" class="sheet-out num"></output>
-    </div>
-    <div class="sheet-slider-row">
-      <span class="sheet-slider-label" data-i18n="plans.aiScore">Min AI score</span>
-      <input type="range" id="sheet-ai" class="sheet-range" min="0" max="70" step="1" value="0" data-i18n-aria="sheet.aiAria">
-      <output id="sheet-ai-out" class="sheet-out num"></output>
-    </div>
-  </div>
-
-  <div class="sheet-section">
-    <div class="sheet-section-title" data-i18n="plans.attrs">Attributes</div>
-    <label class="sheet-check"><input type="checkbox" data-attr="noTraining"><span data-i18n="attr.noTraining">no training</span></label>
-    <label class="sheet-check"><input type="checkbox" data-attr="zdr"><span data-i18n="attr.zdr">ZDR</span></label>
-    <label class="sheet-check"><input type="checkbox" data-attr="unknown"><span data-i18n="attr.unknown">not stated</span></label>
-    <label class="sheet-check"><input type="checkbox" id="sheet-noapi"><span data-i18n="plans.includeNoApi">Include no-API plans</span></label>
-    <label class="sheet-check"><input type="checkbox" id="sheet-training"><span data-i18n="plans.includeTraining">Include models that train on your data</span></label>
-    <label class="sheet-check">
-      <input type="checkbox" id="sheet-tierd">
-      <span data-i18n="plans.includePriceBased">Include price-based plans (Kimi)</span>
-    </label>
-  </div>
-
-  <div class="sheet-section">
-    <div class="sheet-section-title" data-i18n="plans.columns.title">Show columns</div>
-    <div class="sheet-cols" id="sheet-cols">
-      <label><input type="checkbox" data-col="plan" checked> <span data-i18n="plans.th.plan">Plan</span></label>
-      <label><input type="checkbox" data-col="model" checked> <span data-i18n="plans.th.model">Model</span></label>
-      <label><input type="checkbox" data-col="score" checked> <span data-i18n="plans.th.score">AI score</span></label>
-      <label><input type="checkbox" data-col="tokens" checked> <span data-i18n="plans.th.tokens">Tokens / $</span></label>
-      <label><input type="checkbox" data-col="req10" checked> <span data-i18n="plans.th.req10">Requests / $</span></label>
-      <label><input type="checkbox" data-col="rawtokens" checked> <span data-i18n="plans.th.rawtokens">Tokens / mo</span></label>
-      <label><input type="checkbox" data-col="rawreq" checked> <span data-i18n="plans.th.rawreq">Requests / mo</span></label>
-      <label><input type="checkbox" data-col="cap" checked> <span data-i18n="plans.th.cap">Included volume</span></label>
-      <label><input type="checkbox" data-col="price" checked> <span data-i18n="plans.th.price">Plan price / mo</span></label>
-      <label><input type="checkbox" data-col="privacy" checked> <span data-i18n="plans.th.privacy">Privacy</span></label>
-    </div>
-  </div>
-
-  <div class="sheet-section">
-    <div class="sheet-section-title" data-i18n="sheet.sort">Sort by</div>
-    <div class="sheet-row">
-      <select id="sheet-sort-key" class="sheet-select" data-i18n-aria="sheet.sortKeyAria">
-        <option value="tokens" data-i18n="sort.tokens">Tokens / $</option>
-        <option value="score" data-i18n="sort.score">AI score</option>
-        <option value="req10" data-i18n="sort.req10">Requests / $</option>
-        <option value="rawtokens" data-i18n="sort.rawtokens">Tokens / mo</option>
-        <option value="rawreq" data-i18n="sort.rawreq">Requests / mo</option>
-        <option value="price" data-i18n="sort.price">Plan price</option>
-        <option value="plan" data-i18n="sort.plan">Plan</option>
-        <option value="model" data-i18n="sort.model">Model</option>
-      </select>
-      <select id="sheet-sort-dir" class="sheet-select" data-i18n-aria="sheet.sortDirAria">
-        <option value="desc" data-i18n="sort.desc">↓ desc</option>
-        <option value="asc" data-i18n="sort.asc">↑ asc</option>
-      </select>
-    </div>
-  </div>
-
-  <button class="btn btn-primary sheet-done" id="sheet-done" type="button" data-i18n="sheet.done">Done</button>
-</div>
-
 <div class="toast" id="toast"></div>
 <div class="sr-only" id="a11y-status" role="status" aria-live="polite"></div>
 <div class="sr-only" id="chart-status" role="status" aria-live="polite"></div>
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="../vendor/d3-zoom.min.js"></script>
-<script src="../app.js?v=4c8c318"></script>
+<script src="../app.js?v=7f61303"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,
