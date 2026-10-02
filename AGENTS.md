@@ -158,13 +158,17 @@ Alles Automatische, damit die Seite ohne Handarbeit gefunden wird:
   `public/404.html` faengt falsche Adressen mit Links ab (GitHub Pages serviert sie).
 - Kopf der Startseite: Canonical auf `https://vibeplan.cc/`, hreflang en/de/x-default,
   `og:locale`, Font-Preload fuer die zwei Schriften ueber dem Fal, `theme-color`.
-- **Domain:** DNS liegt bei Cloudflare (Nameserver), aber **ohne Proxy** (A-Records zeigen
-  auf GitHub). Deshalb greifen Cloudflare-Funktionen wie Always-Use-HTTPS, Brotli,
-  Crawler-Hints oder Web Analytics nur, wenn der Proxy aktiviert wird. `www.vibeplan.cc`
-  hat kein Zertifikat (GitHub liefert `*.github.io`), braucht also eine Cloudflare-
-  Redirect-Regel auf die Hauptdomain.
-- Nicht automatisch moeglich: Search-Console-/Bing-Verifikation (Konto von Kolja),
-  Repo-Beschreibung und Topics (Token ohne `administration`-Scope), Public-Posts.
+- **Domain/Cloudflare (Stand 2026-10-02):** Zone `vibeplan.cc` (Free), Zone-ID
+  `fe1f0f8bf150fc972bb26a821f3a56e8`, Token `CLOUDFLARE_API_TOKEN` in `/opt/data/.env`
+  (account-scoped, Zone Settings + Rules Edit). Aktiv: SSL **strict**, Always Use HTTPS,
+  Mindest-TLS **1.2**, Brotli, HTTP/3, Early Hints, **Proxy an** für Apex und www
+  (Origin bleibt GitHub Pages), Redirect-Regel `www to apex` (301), Cache-Regel
+  `cache dataset` (latest.json 10 Minuten an der Kante). Rollback für DNS: beide Records
+  `proxied=false` setzen (`python3 /opt/data/tmp/cf-apply.py` mit `RETURN_TO_DNS_ONLY=1`).
+  Crawler Hints ist über diese API-Version nicht setzbar (code 1006), das erledigt
+  `scripts/indexnow.mjs`. HSTS ist bewusst aus; das JS-Beacon von Cloudflare Web Analytics
+  ebenfalls, weil die Seite „keine Drittanbieter-Verbindungen" verspricht: die
+  serverseitigen Analytics des Proxys liefern Traffic/Referrer ohne Seitenaenderung.
 
 ## Changelog (automatisch)
 
