@@ -1185,22 +1185,21 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 .nav-inner { height: 56px; display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
 .nav .tabs { margin: 34px auto 0; }
 
-/* 2) Statuszeile ersetzt Hero + KPI-Kacheln (einzeilig, kleinste Schrift >= 12px) */
-.status-line {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
-  width: 100%; padding: 14px 0 0;
-}
-.status-title {
-  font-family: var(--font-display); font-size: 20px; font-weight: 700;
-  letter-spacing: -0.02em; margin: 0; color: var(--text);
-}
+/* 2) Kennzahlen sitzen im Kopf zwischen Marke und Suche (eine Zeile, >= 12px) */
 .status-meta {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
-  font-size: 12.5px; line-height: 1.5; color: var(--text-3);
+  display: flex; flex-wrap: nowrap; align-items: baseline; gap: 4px 12px;
+  flex: none; /* nie klippen: lieber gestufte Ausblendung unten */
+  font-family: var(--pv-mono); font-size: 12px; line-height: 1.4; color: var(--text-3);
 }
-.status-meta .dot { display: inline-flex; align-items: baseline; gap: 6px; }
+.status-meta .dot { display: inline-flex; align-items: baseline; gap: 5px; flex: none; }
+.status-meta .num { color: var(--text); font-variant-numeric: tabular-nums; }
+/* Gestufte Ausblendung statt Abschneiden: die Zeile passt in jede Fensterbreite */
+@media (max-width: 1359px) { .status-meta .sm3 { display: none; } }
+@media (max-width: 1179px) { .status-meta .sm2 { display: none; } }
+/* Auf schmalen Geräten hat die Zeile keinen Platz; die Zahlen stehen in der Tabelle */
+@media (max-width: 899px) { .status-meta { display: none; } }
 .status-meta .dot b { color: var(--text); }
-.status-meta .dot + .dot::before { content: "\00b7"; color: var(--pv-tick); margin-right: 10px; }
+.status-meta .dot + .dot::before { content: "\00b7"; color: var(--pv-tick); margin-right: 8px; }
 #pv-lastseen { margin-left: 4px; }
 
 /* Filter-Dock: liegt ueber den Views, gilt fuer Uebersicht und Plaene */
@@ -1278,11 +1277,6 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 .sheet-section .sheet-select { width: 100%; margin-bottom: 4px; }
 .sheet-done { margin: 6px 18px 20px; width: calc(100% - 36px); }
 @media (prefers-reduced-motion: reduce) { .sheet { transition: none; } }
-@media (max-width: 760px) {
-  .status-line { gap: 4px 10px; padding: 10px 0 0; }
-  .status-title { font-size: 17px; }
-  .status-meta { font-size: 12px; gap: 2px 8px; }
-}
 
 /* 8) Plaene kompakter: Zeilenhoehe ~44px (Desktop) */
 .sortable-table tbody td { padding: 5px 12px; }
@@ -1368,6 +1362,14 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
       </span>
       <span class="brand-text" data-i18n="nav.brand">vibeplan.cc</span>
     </a>
+    <!-- Kennzahlen im Kopf: eine Zeile zwischen Marke und Suche -->
+    <div class="status-meta" id="status-meta">
+      <span class="dot"><b class="num" id="stat-plans">…</b><span data-i18n="status.plans">plans</span></span>
+      <span class="dot sm3"><b class="num" id="stat-comparable">…</b><span data-i18n="status.comparable">comparable</span></span>
+      <span class="dot sm3"><b class="num" id="stat-models">…</b><span data-i18n="status.models">model families</span></span>
+      <span class="dot sm2"><b class="num" id="stat-sources">…</b><span data-i18n="status.sources">sources</span></span>
+      <span class="dot"><span id="meta-updated"></span></span>
+    </div>
     <div class="nav-spacer"></div>
     <div class="nav-controls" id="nav-controls">
       <button class="cmdk-trigger" id="cmdk-trigger" type="button" aria-label="Open command palette">
@@ -1403,17 +1405,8 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 </nav>
 
 <main id="main">
-  <!-- ===== STATUSZEILE (ersetzt Hero + KPI-Kacheln) ===== -->
-  <div class="status-line" id="status-line">
-    <h1 class="status-title" data-i18n="nav.brand">vibeplan.cc</h1>
-    <div class="status-meta" id="status-meta">
-      <span class="dot"><b class="num" id="stat-plans">…</b><span data-i18n="status.plans">plans</span></span>
-      <span class="dot"><b class="num" id="stat-comparable">…</b><span data-i18n="status.comparable">comparable</span></span>
-      <span class="dot"><b class="num" id="stat-models">…</b><span data-i18n="status.models">model families</span></span>
-      <span class="dot"><b class="num" id="stat-sources">…</b><span data-i18n="status.sources">sources</span></span>
-      <span class="dot"><span id="meta-updated"></span></span>
-    </div>
-  </div>
+  <!-- Die Kennzahlen stehen im Kopf; hier bleibt nur die Überschrift für die Gliederung -->
+  <h1 class="sr-only" data-i18n="nav.brand">vibeplan.cc</h1>
   <div class="disclaimer" id="disclaimer" hidden>
     <strong id="disclaimer-title"></strong> <span id="disclaimer-text"></span>
   </div>
@@ -2094,7 +2087,9 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   /* ---------------------------------------------------------- "data updated" chip */
   function lastSeen() {
     var meta = $('#meta-updated');
-    var host = $('.status-meta') || $('.app-meta');
+    // Nicht in den Kopf haengen: die Pille ist breit und wuerde die Kennzahlenzeile
+    // aus dem Header draengen. Neben dem Chart ist sie ohnehin am Platz.
+    var host = $('.chart-foot') || $('.status-meta');
     if (!meta || !host) return;
     var now = (meta.textContent || '').trim();
     if (!now) return;
