@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-02"
+    commit: "687619d"
+    text: "Record the Cloudflare setup (proxy, TLS, redirects, rollback)"
+    textEn: "Record the Cloudflare setup (proxy, TLS, redirects, rollback)"
+  - date: "2026-10-02"
     commit: "ff76c30"
     text: "Preview build resolves the JSON-LD date placeholder"
     textEn: "Preview build resolves the JSON-LD date placeholder"
@@ -399,7 +403,3 @@ entries:
     commit: "1d850a0"
     text: "FX-Rates als Pipeline-Quelle statt Client-Live-API"
     textEn: "FX-Rates als Pipeline-Quelle statt Client-Live-API"
-  - date: "2026-08-31"
-    commit: "c682389"
-    text: "Pareto-Chart dynamische Aufloesung (viewBox = CSS-Pixel)"
-    textEn: "Pareto-Chart dynamische Aufloesung (viewBox = CSS-Pixel)"
