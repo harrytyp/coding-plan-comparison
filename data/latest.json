@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T12:46:30.188Z",
+  "generatedAt": "2026-10-02T12:53:15.903Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -42418,7 +42418,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-02T12:46:29.765Z",
+    "fetchedAt": "2026-10-02T12:53:15.747Z",
     "count": 413,
     "scores": {
       "claude-opus-5-5": {
@@ -42532,10 +42532,10 @@
       "qwen3-8-27b": {
         "intelligence": 44.75
       },
-      "gpt-5-5-pro": {
+      "claude-opus-4-6": {
         "intelligence": 44.7
       },
-      "claude-opus-4-6": {
+      "gpt-5-5-pro": {
         "intelligence": 44.7
       },
       "gpt-5-6-luna": {
@@ -42952,10 +42952,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.92
       },
-      "qwen3-next-80b-a3b-thinking": {
+      "granite-4-2-30b": {
         "intelligence": 23.8
       },
-      "granite-4-2-30b": {
+      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.8
       },
       "grok-4-20-beta-0309-reasoning": {
@@ -43045,16 +43045,16 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "sarvam-30b": {
-        "intelligence": 19.54
-      },
       "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
-      "gpt-5-nano-2025-08-07": {
-        "intelligence": 19.5
+      "sarvam-30b": {
+        "intelligence": 19.54
       },
       "qwen3-5-4b": {
+        "intelligence": 19.5
+      },
+      "gpt-5-nano-2025-08-07": {
         "intelligence": 19.5
       },
       "diffusiongemma-26b-a4b-it": {
@@ -43348,10 +43348,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -43829,34 +43829,604 @@
   "changelog": {
     "entries": [
       {
-        "date": "2026-09-13",
-        "text": "Raten pro 1 $ statt pro 10 $: Command Code Go zeigt, was 1 $ kauft, kein Stapeln nötig.",
-        "textEn": "Rates per $1 instead of per $10: Command Code Go shows what $1 buys, no stacking needed."
+        "date": "2026-10-02",
+        "commit": "1fe46a4",
+        "text": "Generate the changelog from the repository commits",
+        "textEn": "Generate the changelog from the repository commits"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "0100b06",
+        "text": "Mobile filter drawer with a visible handle, real Command Code fee",
+        "textEn": "Mobile filter drawer with a visible handle, real Command Code fee"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "580ede9",
+        "text": "Repair the CSS the filter refactor broke, unstick the detail card",
+        "textEn": "Repair the CSS the filter refactor broke, unstick the detail card"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "6d9ce22",
+        "text": "Add the OpenDesign Design Plan (Go)",
+        "textEn": "Add the OpenDesign Design Plan (Go)"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "804490c",
+        "text": "Filters into the rail menu, shortlist as its own panel, drop All plans",
+        "textEn": "Filters into the rail menu, shortlist as its own panel, drop All plans"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "93f9088",
+        "text": "Real logo, favicons and a social card",
+        "textEn": "Real logo, favicons and a social card"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "7269834",
+        "text": "Mark the card processing fee Command Code adds to every price",
+        "textEn": "Mark the card processing fee Command Code adds to every price"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "80619e1",
+        "text": "Stop rebuilding the chart on every mouse move",
+        "textEn": "Stop rebuilding the chart on every mouse move"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "082b0b8",
+        "text": "Move the status figures into the header",
+        "textEn": "Move the status figures into the header"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "ce8fc4d",
+        "text": "Live zoom and pan on the scatter plot",
+        "textEn": "Live zoom and pan on the scatter plot"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "6c2a383",
+        "text": "ZDR only when zero-day retention is confirmed per model/provider",
+        "textEn": "ZDR only when zero-day retention is confirmed per model/provider"
+      },
+      {
+        "date": "2026-10-02",
+        "commit": "0651b30",
+        "text": "Chart and calculator honour the training exclusion",
+        "textEn": "Chart and calculator honour the training exclusion"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "291970d",
+        "text": "Collapsible rail blocks, no jump on tap, correct chip close size",
+        "textEn": "Collapsible rail blocks, no jump on tap, correct chip close size"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "0367fc9",
+        "text": "Left filter drawer up to 900px, inline filters only on wide screens",
+        "textEn": "Left filter drawer up to 900px, inline filters only on wide screens"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "089de01",
+        "text": "One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview",
+        "textEn": "One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "ca5f725",
+        "text": "Single header, chart-first overview, compact table, left filter drawer",
+        "textEn": "Single header, chart-first overview, compact table, left filter drawer"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "1de3625",
+        "text": "Anti-slop pass on the site text (EN + DE)",
+        "textEn": "Anti-slop pass on the site text (EN + DE)"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "83048e5",
+        "text": "Currency-aware prices, live-refresh dashboard detail, bilingual changelog",
+        "textEn": "Currency-aware prices, live-refresh dashboard detail, bilingual changelog"
+      },
+      {
+        "date": "2026-10-01",
+        "commit": "0f37c90",
+        "text": "Create CNAME",
+        "textEn": "Create CNAME"
+      },
+      {
+        "date": "2026-09-28",
+        "commit": "30f88a9",
+        "text": "Follow source changes for the Freebuff free tier and OpenCode Go",
+        "textEn": "Follow source changes for the Freebuff free tier and OpenCode Go"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "0cdbc0e",
+        "text": "Show daily quotas in the included-volume column",
+        "textEn": "Show daily quotas in the included-volume column"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "6f83c8d",
+        "text": "Add Copilot Business and Enterprise from the docs plan table",
+        "textEn": "Add Copilot Business and Enterprise from the docs plan table"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "0b62251",
+        "text": "Rank Qwen Coding Plan Pro on its official request quota",
+        "textEn": "Rank Qwen Coding Plan Pro on its official request quota"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "b7d5549",
+        "text": "Close out the popular-plan sweep",
+        "textEn": "Close out the popular-plan sweep"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "caf2864",
+        "text": "Second wave of popular coding plans",
+        "textEn": "Second wave of popular coding plans"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "f6b2325",
+        "text": "Measured quota for Claude Max 20x from published third-party telemetry",
+        "textEn": "Measured quota for Claude Max 20x from published third-party telemetry"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "aebe8cd",
+        "text": "Measure plan quotas from local tokens plus official percentages",
+        "textEn": "Measure plan quotas from local tokens plus official percentages"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "068a3b7",
+        "text": "Reference plans for OpenAI Codex, Claude, Cursor and Kiro",
+        "textEn": "Reference plans for OpenAI Codex, Claude, Cursor and Kiro"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "9710333",
+        "text": "Add GitHub Copilot and Ollama Cloud",
+        "textEn": "Add GitHub Copilot and Ollama Cloud"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "ad35510",
+        "text": "Add MiMo Token Plan, StepFun Step Plan and Cerebras Code",
+        "textEn": "Add MiMo Token Plan, StepFun Step Plan and Cerebras Code"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "57f0807",
+        "text": "Hide training models in the plan list by default, fix mobile sheet",
+        "textEn": "Hide training models in the plan list by default, fix mobile sheet"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "fd91683",
+        "text": "Best-value panel lists only no-training plans with API access",
+        "textEn": "Best-value panel lists only no-training plans with API access"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "7640de1",
+        "text": "Accessibility, typography, motion and mobile overflow from the design review",
+        "textEn": "Accessibility, typography, motion and mobile overflow from the design review"
+      },
+      {
+        "date": "2026-09-23",
+        "commit": "1936e53",
+        "text": "Ship the instrument-panel design layer to the live page",
+        "textEn": "Ship the instrument-panel design layer to the live page"
+      },
+      {
+        "date": "2026-09-22",
+        "commit": "9cc913d",
+        "text": "Instrument-panel presentation layer for the preview build",
+        "textEn": "Instrument-panel presentation layer for the preview build"
+      },
+      {
+        "date": "2026-09-22",
+        "commit": "93b0199",
+        "text": "Note that web edits belong in public/, not the root mirror",
+        "textEn": "Note that web edits belong in public/, not the root mirror"
+      },
+      {
+        "date": "2026-09-22",
+        "commit": "a3dcac0",
+        "text": "Show the attribute column in the mobile card defaults",
+        "textEn": "Show the attribute column in the mobile card defaults"
+      },
+      {
+        "date": "2026-09-22",
+        "commit": "7970c37",
+        "text": "No-API filter logic in the source file, not the root mirror",
+        "textEn": "No-API filter logic in the source file, not the root mirror"
+      },
+      {
+        "date": "2026-09-22",
+        "commit": "5ca5df9",
+        "text": "Hide no-API plans by default, show all tags on mobile",
+        "textEn": "Hide no-API plans by default, show all tags on mobile"
+      },
+      {
+        "date": "2026-09-22",
+        "commit": "29528e6",
+        "text": "Design preview build at /preview/ (contrast, measure, focus)",
+        "textEn": "Design preview build at /preview/ (contrast, measure, focus)"
+      },
+      {
+        "date": "2026-09-21",
+        "commit": "123fa80",
+        "text": "No API access is an attribute, not prose",
+        "textEn": "No API access is an attribute, not prose"
+      },
+      {
+        "date": "2026-09-21",
+        "commit": "14d907e",
+        "text": "CLI-only attribute filter keyed on the tag text",
+        "textEn": "CLI-only attribute filter keyed on the tag text"
+      },
+      {
+        "date": "2026-09-21",
+        "commit": "7c17c14",
+        "text": "Ad-funded free tier plus paid tiers",
+        "textEn": "Ad-funded free tier plus paid tiers"
+      },
+      {
+        "date": "2026-09-21",
+        "commit": "6398d96",
+        "text": "Tier names follow the sources again",
+        "textEn": "Tier names follow the sources again"
+      },
+      {
+        "date": "2026-09-14",
+        "commit": "487f00d",
+        "text": "Attribut-Filter als Haken, ZDR-Vorbehalt",
+        "textEn": "Attribut-Filter als Haken, ZDR-Vorbehalt"
+      },
+      {
+        "date": "2026-09-14",
+        "commit": "c59163e",
+        "text": "Privacy je Anbieter recherchiert und belegt",
+        "textEn": "Privacy je Anbieter recherchiert und belegt"
+      },
+      {
+        "date": "2026-09-14",
+        "commit": "f9d6cbc",
+        "text": "No-training-Kategorie wird Sammelspalte Sonstiges",
+        "textEn": "No-training-Kategorie wird Sammelspalte Sonstiges"
+      },
+      {
+        "date": "2026-09-14",
+        "commit": "9d15af8",
+        "text": "Plan-Hinweis leise statt laut",
+        "textEn": "Plan-Hinweis leise statt laut"
       },
       {
         "date": "2026-09-13",
-        "text": "Neu: Budget-Rechner vergleicht Einzelpläne innerhalb deines Budgets.",
-        "textEn": "New: the budget calculator compares single plans within your budget."
+        "commit": "d347ab2",
+        "text": "Hinweis-Chip in Amber, Notiz als eigene Zeile statt Grid-Zelle",
+        "textEn": "Hinweis-Chip in Amber, Notiz als eigene Zeile statt Grid-Zelle"
       },
       {
         "date": "2026-09-13",
-        "text": "Pareto-Standard: Tokens pro Geld gegen AI-Score; Preise in deiner Währung.",
-        "textEn": "Pareto default: tokens per money against AI score; prices in your currency."
+        "commit": "dd86794",
+        "text": "Hinweis zum 1-$-Command-Code-Go (kein API-Zugang, nur CLI)",
+        "textEn": "Hinweis zum 1-$-Command-Code-Go (kein API-Zugang, nur CLI)"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "e309be5",
+        "text": "Detail-Panel auf dem Phone nach Tippen sichtbar, Shortlist-Werte umbruchfrei",
+        "textEn": "Detail-Panel auf dem Phone nach Tippen sichtbar, Shortlist-Werte umbruchfrei"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "bab5f1e",
+        "text": "Zielzone-Felder erst mit aktiver Zielzone bedienbar",
+        "textEn": "Zielzone-Felder erst mit aktiver Zielzone bedienbar"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "d9b8d96",
+        "text": "Em-Dashes entfernt, ehrlicher Footer, Rechner-Score sichtbar, Footer klebt unten",
+        "textEn": "Em-Dashes entfernt, ehrlicher Footer, Rechner-Score sichtbar, Footer klebt unten"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "0a2ac8d",
+        "text": "Mobile Tab-Leiste kompakt, alle fuenf Reiter sichtbar",
+        "textEn": "Mobile Tab-Leiste kompakt, alle fuenf Reiter sichtbar"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "a345eb5",
+        "text": "EN-Tab gekuerzt, damit die Leiste auf 390px passt",
+        "textEn": "EN-Tab gekuerzt, damit die Leiste auf 390px passt"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "fe6b4b1",
+        "text": "Kein Auto-Scroll zum Detail-Panel beim Laden",
+        "textEn": "Kein Auto-Scroll zum Detail-Panel beim Laden"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "09e2dc1",
+        "text": "Tab-Leiste nur horizontal scrollen, Seite bleibt oben",
+        "textEn": "Tab-Leiste nur horizontal scrollen, Seite bleibt oben"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "7c773ed",
+        "text": "Mobil erst das Chart, kein Seitenversatz, Tab in Sicht",
+        "textEn": "Mobil erst das Chart, kein Seitenversatz, Tab in Sicht"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "a131f78",
+        "text": "Dashboard rebuild auf eigenem Design-System",
+        "textEn": "Dashboard rebuild auf eigenem Design-System"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "9344089",
+        "text": "No table overflow on mobile, modern sort control, brand marks, copy and SEO",
+        "textEn": "No table overflow on mobile, modern sort control, brand marks, copy and SEO"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "7794327",
+        "text": "Calculator columns, family bars, human plan names",
+        "textEn": "Calculator columns, family bars, human plan names"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "69ccf38",
+        "text": "Chart, controls, cards, table detail pass",
+        "textEn": "Chart, controls, cards, table detail pass"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "72c35a9",
+        "text": "Dark contrast, mobile control collapse, touch targets",
+        "textEn": "Dark contrast, mobile control collapse, touch targets"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "286613a",
+        "text": "Rebuild the UI as a designed dashboard",
+        "textEn": "Rebuild the UI as a designed dashboard"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "2cb18fa",
+        "text": "Surface plot errors instead of an empty canvas",
+        "textEn": "Surface plot errors instead of an empty canvas"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "0fd568c",
+        "text": "Repair black scatter plot + rebuild as tabbed dashboard",
+        "textEn": "Repair black scatter plot + rebuild as tabbed dashboard"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "9788d2a",
+        "text": "Explicit plot background, visible error on version mismatch",
+        "textEn": "Explicit plot background, visible error on version mismatch"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "bbd733a",
+        "text": "Small clipped dots, percentile viewport, no duplicate detail rows",
+        "textEn": "Small clipped dots, percentile viewport, no duplicate detail rows"
+      },
+      {
+        "date": "2026-09-13",
+        "commit": "d67421b",
+        "text": "Mobile nav, canvas pareto, neutral calculator, changelog, imprint",
+        "textEn": "Mobile nav, canvas pareto, neutral calculator, changelog, imprint"
       },
       {
         "date": "2026-09-12",
-        "text": "AI-Scores lösen auf exakte Modell-Versionen auf (z. B. Muse Spark 1.3 statt generisch).",
-        "textEn": "AI scores resolve to exact model versions (e.g. Muse Spark 1.3 instead of a generic family)."
+        "commit": "81f9706",
+        "text": "Per-$1 rates, budget calculator, pareto defaults, calmer UI",
+        "textEn": "Per-$1 rates, budget calculator, pareto defaults, calmer UI"
+      },
+      {
+        "date": "2026-09-11",
+        "commit": "f11e353",
+        "text": "Fix AI score aliases resolving to generic base models (Muse Spark)",
+        "textEn": "Fix AI score aliases resolving to generic base models (Muse Spark)"
+      },
+      {
+        "date": "2026-09-11",
+        "commit": "01f1f5e",
+        "text": "English README and output strings, dedupe YAML parser, honest derived metrics",
+        "textEn": "English README and output strings, dedupe YAML parser, honest derived metrics"
       },
       {
         "date": "2026-09-10",
-        "text": "Kimi-Zahlen korrigiert (waren 33–168× zu hoch); Spalte heißt ehrlich Tokens / $10.",
-        "textEn": "Kimi numbers corrected (were 33-168x too high); the column is honestly named Tokens / $10."
+        "commit": "ea4a265",
+        "text": "Kimi requests per CNY list price, no double division; label tokens per $10",
+        "textEn": "Kimi requests per CNY list price, no double division; label tokens per $10"
       },
       {
-        "date": "2026-09-10",
-        "text": "Checkout-Preise: Command Code GOAT kostet 10,77 $, nicht 10 $.",
-        "textEn": "Checkout prices: Command Code GOAT costs $10.77, not $10."
+        "date": "2026-09-03",
+        "commit": "9e88544",
+        "text": "Automatic fuzzy model name matching (no manual aliases)",
+        "textEn": "Automatic fuzzy model name matching (no manual aliases)"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "07f668e",
+        "text": "Model name mapping in data/aliases.yml + build integration",
+        "textEn": "Model name mapping in data/aliases.yml + build integration"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "dc52c92",
+        "text": "Switch to LLM Stats leaderboard index (conservative 0-100)",
+        "textEn": "Switch to LLM Stats leaderboard index (conservative 0-100)"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "5137522",
+        "text": "Single LLM Stats rankings endpoint, conservative_rating 0-100",
+        "textEn": "Single LLM Stats rankings endpoint, conservative_rating 0-100"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "b637f63",
+        "text": "Merge LLM Stats rankings + models for scores",
+        "textEn": "Merge LLM Stats rankings + models for scores"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "49a1154",
+        "text": "Single LLM Stats rankings endpoint (conservative_rating 0-100)",
+        "textEn": "Single LLM Stats rankings endpoint (conservative_rating 0-100)"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "730c1e5",
+        "text": "Use LLM Stats general (TrueSkill) as single intelligence score",
+        "textEn": "Use LLM Stats general (TrueSkill) as single intelligence score"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "869fe4a",
+        "text": "TTL-Guard + LLM Stats in FAQ + Footer",
+        "textEn": "TTL-Guard + LLM Stats in FAQ + Footer"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "77550bc",
+        "text": "Replace AA scores with LLM Stats (zeroeval.com)",
+        "textEn": "Replace AA scores with LLM Stats (zeroeval.com)"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "6a46ca8",
+        "text": "Switch to AA V2 Free API + pagination + caching",
+        "textEn": "Switch to AA V2 Free API + pagination + caching"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "d7aa2e8",
+        "text": "Auto-fetch AA Intelligence Scores via API (19. Quelle)",
+        "textEn": "Auto-fetch AA Intelligence Scores via API (19. Quelle)"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "53cb483",
+        "text": "Add Muse Spark 1.3 AI score (61.5, AA Intelligence Index)",
+        "textEn": "Add Muse Spark 1.3 AI score (61.5, AA Intelligence Index)"
+      },
+      {
+        "date": "2026-09-03",
+        "commit": "8bed1e1",
+        "text": "Kimi Moderato 9 (USD primary) + undisclosed modelStats=null guard",
+        "textEn": "Kimi Moderato 9 (USD primary) + undisclosed modelStats=null guard"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "d1786f1",
+        "text": "CC-Allowances sind Dollar (nicht Credits) - verifiziert mit offiziellem Calculator",
+        "textEn": "CC-Allowances sind Dollar (nicht Credits) - verifiziert mit offiziellem Calculator"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "09d5115",
+        "text": "CC-Credits sind keine Dollar - requestEstimate als Anker, Credit-Anteil-Verteilung",
+        "textEn": "CC-Credits sind keine Dollar - requestEstimate als Anker, Credit-Anteil-Verteilung"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "d5445e8",
+        "text": "CC Go/Max10/Max20 offizielle requestEstimate als Anker + Tier-System",
+        "textEn": "CC Go/Max10/Max20 offizielle requestEstimate als Anker + Tier-System"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "deea58f",
+        "text": "Kimi-Limits ehrlich als Schaetzung markieren (estimate)",
+        "textEn": "Kimi-Limits ehrlich als Schaetzung markieren (estimate)"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "04b371c",
+        "text": "Kimi-Preise aus offizieller kimi.ai Goods-API (Pipeline-Fix)",
+        "textEn": "Kimi-Preise aus offizieller kimi.ai Goods-API (Pipeline-Fix)"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "357fc50",
+        "text": "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)",
+        "textEn": "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "9e26c60",
+        "text": "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse",
+        "textEn": "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "251a16e",
+        "text": "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)",
+        "textEn": "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "1d850a0",
+        "text": "FX-Rates als Pipeline-Quelle statt Client-Live-API",
+        "textEn": "FX-Rates als Pipeline-Quelle statt Client-Live-API"
+      },
+      {
+        "date": "2026-08-31",
+        "commit": "c682389",
+        "text": "Pareto-Chart dynamische Aufloesung (viewBox = CSS-Pixel)",
+        "textEn": "Pareto-Chart dynamische Aufloesung (viewBox = CSS-Pixel)"
+      },
+      {
+        "date": "2026-08-30",
+        "commit": "0ca4f99",
+        "text": "Mobile Bottom-Sheet fuer Filter+Sort+Columns, 5 Iterationen poliert",
+        "textEn": "Mobile Bottom-Sheet fuer Filter+Sort+Columns, 5 Iterationen poliert"
+      },
+      {
+        "date": "2026-08-30",
+        "commit": "bb914f5",
+        "text": "Waehrungs-Umschalter (USD/EUR/CNY/GBP/JPY) mit taeglichen Kursen",
+        "textEn": "Waehrungs-Umschalter (USD/EUR/CNY/GBP/JPY) mit taeglichen Kursen"
+      },
+      {
+        "date": "2026-08-30",
+        "commit": "fc1c09d",
+        "text": "Kimi-Membership aufgeloest (offizielles Billing-Beispiel)",
+        "textEn": "Kimi-Membership aufgeloest (offizielles Billing-Beispiel)"
+      },
+      {
+        "date": "2026-08-30",
+        "commit": "3cb0757",
+        "text": "Mehr vergleichbare Plaene - 6 auf 10",
+        "textEn": "Mehr vergleichbare Plaene - 6 auf 10"
       }
     ]
   },

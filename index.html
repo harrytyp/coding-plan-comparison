@@ -601,6 +601,8 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .cl-row { display: flex; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line-soft); font-size: var(--fs-md); color: var(--text-2); }
 .cl-row:last-child { border-bottom: 0; }
 .cl-date { flex: none; width: 92px; color: var(--text-3); font-size: var(--fs-sm); font-weight: 600; font-variant-numeric: tabular-nums; }
+.cl-commit { font-family: var(--pv-mono); font-size: var(--fs-xs); color: var(--text-3); text-decoration: none; border-bottom: 1px dotted var(--line); }
+.cl-commit:hover { color: var(--text); }
 
 /* ---------------------------------------------------------------- method */
 .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; padding: 18px; }
@@ -1944,7 +1946,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="vendor/d3-zoom.min.js"></script>
-<script src="app.js?v=547a585"></script>
+<script src="app.js?v=6304448"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,
