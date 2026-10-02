@@ -628,3 +628,22 @@ test("OpenDesign Go: Credits, Fenster und Modell-Caps kommen 1:1 aus der Quelle"
   assert.ok(plan.modelRows.some((r) => r.allowance === 15), "Einzel-Obergrenze 15 $ fehlt");
   assert.ok(plan.modelRows.some((r) => r.allowance === 30), "Einzel-Obergrenze 30 $ fehlt");
 });
+
+test("CSS: keine zerschnittenen Regeln (Klebe-Bug nach Text-Aufraeumen)", async () => {
+  const html = await readFile(join(ROOT, "public/index.html"), "utf8");
+  const css = html.match(/<style[^>]*>([\s\S]*?)<\/style>/)[1];
+  assert.equal((css.match(/{/g) || []).length, (css.match(/}/g) || []).length, "CSS-Klammern unbalanciert");
+  assert.equal((css.match(/,\s*{/g) || []).length, 0, "Selektorliste endet mit einem Komma");
+  // Die Mono-Utility-Regel muss ihre eigene Deklaration behalten. Fehlt ihr die
+  // schliessende Klammer, frisst sie die naechste Regel (Fortschrittsbalken:
+  // position: fixed, height: 2px) und die linke Spalte kollabiert.
+  const mono = (css.match(/[^{}]*\.rail-title[^{}]*\{[^{}]*\}/g) || []).find((r) => /\.chart-foot/.test(r));
+  assert.ok(mono, "Mono-Regel mit .rail-title und .chart-foot fehlt");
+  assert.match(mono, /font-family:\s*var\(--pv-mono\)/, "Mono-Regel hat die falsche Deklaration");
+  assert.doesNotMatch(mono, /position:\s*fixed/, "Mono-Regel hat eine fremde Deklaration gefressen");
+  // Kein Layout-Element darf als Fortschrittsbalken enden.
+  for (const sel of [".rail-title", ".chart-foot", ".app-meta", ".panel-head p"]) {
+    const re = new RegExp(`[^{}]*${sel.replace(/[.]/g, "\\.")}[^{}]*\\{[^{}]*position:\\s*fixed[^{}]*\\}`, "g");
+    assert.equal([...css.matchAll(re)].length, 0, `${sel} darf nicht position: fixed sein`);
+  }
+});
