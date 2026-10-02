@@ -42,13 +42,17 @@ test("command-code-goat ist vergleichbar und pro-$ normalisiert", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const goat = d.plans.find((p) => p.id === "command-code-goat");
   assert.ok(goat, "command-code-goat muss existieren");
-  assert.equal(goat.price.paidPrice, 10.77, "bezahlter Preis muss 10.77 sein (ai-10-usd)");
+  // Gemessener Kartenbetrag (10,78 $ fuer den 10-$-Tarif am 2026-10-02) steht in
+  // overrides.yml und ist die Basis der Rate, nicht der Listenpreis.
+  assert.equal(goat.price.monthlyUsd, 10, "Listenpreis bleibt 10 $");
+  assert.equal(goat.price.paidPrice, 10.78, "bezahlter Preis = gemessene Abbuchung 10,78 $");
+  assert.equal(goat.feeUsd, 0.78, "Kartengebuehr als Betrag fuer die UI (0,78 $)");
   assert.ok(goat.modelCount >= 50, "GOAT sollte ≥50 Modelle haben");
-  // Normalisierung: requests / 10.77 < requests
+  // Normalisierung: requests / 10.78 < requests
   const row = goat.modelRows[0];
   assert.ok(row.normalizedPer1 < row.requestsPerMonth,
-    "bei paid=10.77 ist normalizedPer1 < requestsPerMonth");
-  assert.ok(Math.abs(row.normalizedPer1 - row.requestsPerMonth / 10.77) < 0.01,
+    "bei paid=10.78 ist normalizedPer1 < requestsPerMonth");
+  assert.ok(Math.abs(row.normalizedPer1 - row.requestsPerMonth / 10.78) < 0.01,
     "Normalisierung = requests / paidPrice");
 });
 

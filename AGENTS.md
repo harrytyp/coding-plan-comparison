@@ -28,11 +28,16 @@ sources.yml (feeds + docs + privacy + scores + FX)
   (`opendesign-pricing`, `opendesign-credits`), die Modellzeilen entstehen nur fuer Modelle,
   die auch im Feed einen Preis haben (Hunyuan H4 Preview fehlt dort und bekommt bewusst keine Zeile).
 - **Preis-Zuschlaege:** Erhebt ein Anbieter auf den Listenpreis etwas drauf (Command Code:
-  „+ processing fee" bei Kartenzahlung auf jedem Plan), steht das als `priceNote` /
-  `priceNoteDe` / `priceNoteSource` in `overrides.yml` und wandert ueber build.mjs in die
-  Plan-Daten. UI: Marke „+ Gebühr" an der Preiszelle, im Detail, im Dashboard-Detail und im
-  Rechner, mit Quell-URL im Tooltip. **Nie einen Betrag rechnen**, wenn der Satz nicht
-  veroeffentlicht ist (Command Code zeigt ihn erst im Checkout). Methodik-Schritt 7 nennt die Regel.
+  Kartenzahlung auf jedem Plan), steht der Text als `priceNote` / `priceNoteDe` /
+  `priceNoteSource` in `overrides.yml` und wandert ueber build.mjs in die Plan-Daten.
+  UI: Marke an der Preiszelle, im Detail, im Dashboard-Detail und im Rechner, mit Quell-URL
+  im Tooltip. **Gemessener Betrag schlaegt Platzhalter:** ist der Zuschlag gemessen (GOAT:
+  10,78 $ fur den 10-$-Tarif am 2026-10-02), steht er als `feeUsd` in `overrides.yml` und
+  `paidPrice = Liste + Zuschlag` (die Rate rechnet damit, was wirklich abgebucht wird).
+  Die Marke zeigt dann „+ 0,78 $ Gebühr" statt „+ Gebühr". Fuer Tarife ohne Messung bleibt
+  es beim Hinweis mit der Messung als Referenz: **nie einen Betrag fuer sie rechnen**, der
+  Satz steht erst an der Kasse (`commandcode.ai/docs/resources/payment-methods`).
+  Methodik-Schritt 7 nennt die Regel.
 
 ## Normalisierung
 ```
@@ -148,6 +153,18 @@ standardmaessig aufgeklappt. Der frueher doppelte Satz (Dock-Leiste + mobiles Bo
 Chip-Zeile `#filter-active` ueber den Views; sie blendet sich ohne aktive Filter selbst aus
 (`.filter-dock.is-empty`). Der Desktop-Rail ist bei `min-width: 981px` intern scrollbar
 (`max-height: calc(100vh - 96px)`), weil der aufgeklappte Filterblock hoeher ist als das Fenster.
+
+**Mobil ist der Rail eine Schublade** (`initRailDrawer` in app.js, CSS Abschnitt 7):
+`placeRail()` haengt `#rail` bei `max-width: 900px` an die **Body-Ebene** und zurueck ins
+`.workbench` auf Desktop. Body-Ebene ist Pflicht, weil `main` `view-transition-name` traegt
+und sonst der Containing Block fuer `position: fixed` waere (die Schublade erschiene
+unsichtbar unter dem Fold). Bedienung: fester Griff `#rail-trigger` unten links (zeigt die
+Zahl der aktiven Filter, damit man zum Filtern nicht scrollen muss), Schublade von links,
+Schliessen per X, Tippen auf den Hintergrund `#rail-scrim`, Escape oder „Ergebnisse zeigen"
+(`#rail-apply`, spiegelt die Trefferzahl und scrollt zum Chart). Geschlossen ist der Rail
+`inert` und `visibility: hidden` (nicht fokussierbar), offen sperrt `body.rail-open` das
+Seiten-Scrollen. In der Listenansicht ist der Griff aus (der Filterblock steht dort ueber der
+Tabelle in `#filters-host`).
 
 ## Chart: Zoom und Pan
 Der Scatter-Plot ist live navigierbar: Mausrad zoomt auf den Zeiger, Ziehen verschiebt

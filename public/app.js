@@ -110,6 +110,7 @@ const I18N = {
     "plans.th.provider": "Provider",
     "plans.th.price": "Price / mo",
     "price.feeMark": "+ fee",
+    "price.feeAmount": "+ {v} fee",
     "plans.th.meter": "Meter",
     "plans.th.quota": "Quota",
     "plans.th.models": "Models",
@@ -204,6 +205,10 @@ const I18N = {
     "cmdk.empty": "Nothing matches",
     "cmdk.hint": "Type to search plans and models",
     "rail.filters": "Filters",
+    "rail.trigger": "Filters",
+    "rail.title": "Filters and axes",
+    "rail.close": "Close filters",
+    "rail.show": "Show results",
     "rail.axes": "Axes",
     "rail.target": "Target zone",
     "rail.stats": "In this view",
@@ -267,7 +272,7 @@ const I18N = {
     "method.s6.t": "Undisclosed numbers stay empty",
     "method.s6.p": "If a provider does not publish its numbers, we say so. We do not invent credits or back-calculate quotas.",
     "method.s7.t": "Listed prices, plus fees where a vendor adds them",
-    "method.s7.p": "We show the price each vendor lists. Command Code adds a card processing fee to every plan and does not publish the rate, it appears at checkout, so those prices carry a “+ fee” mark. Where a vendor publishes a complete price, we show it unchanged.",
+    "method.s7.p": "We show the price each vendor lists. Command Code adds a card processing fee to every plan and does not publish the rate, it appears at checkout. Where we measured the fee it stands as an amount on the price (GOAT: $10.78 paid for the $10 plan on 2026-10-02); the other Command Code tiers carry a “+ fee” mark with the measurement in the tooltip. Where a vendor publishes a complete price, we show it unchanged.",
     "method.more": "Show all steps",
     "method.less": "Show fewer",
     "faq.h2": "Frequently asked questions",
@@ -430,6 +435,7 @@ const I18N = {
     "plans.th.provider": "Anbieter",
     "plans.th.price": "Preis / Monat",
     "price.feeMark": "+ Gebühr",
+    "price.feeAmount": "+ {v} Gebühr",
     "plans.th.meter": "Meter",
     "plans.th.quota": "Kontingent",
     "plans.th.models": "Modelle",
@@ -524,7 +530,10 @@ const I18N = {
     "cmdk.empty": "Nichts gefunden",
     "cmdk.hint": "Tippen, um Pläne und Modelle zu suchen",
     "rail.filters": "Filter",
-    "rail.axes": "Achsen",
+    "rail.trigger": "Filter",
+    "rail.title": "Filter und Achsen",
+    "rail.close": "Filter schließen",
+    "rail.show": "Ergebnisse zeigen",    "rail.axes": "Achsen",
     "rail.target": "Zielzone",
     "rail.stats": "In dieser Ansicht",
     "rail.points": "Punkte",
@@ -1020,6 +1029,13 @@ function syncFilterChips() {
   // Leere Zeile nicht als Balken stehen lassen
   const dock = $("#filter-dock");
   if (dock) dock.classList.toggle("is-empty", chips.length === 0);
+  // Mobil: gleicher Stand auf dem Griff und am Abschluss-Button
+  const triggerCount = $("#rail-trigger-count");
+  if (triggerCount) {
+    triggerCount.hidden = chips.length === 0;
+    triggerCount.textContent = String(chips.length);
+  }
+  syncRailApplyCount();
 }
 
 function renderStats() {
@@ -1349,6 +1365,8 @@ function buildCombos() {
         // Preis-Zuschlag (z.B. Karten-Gebuehr): gehoert sichtbar an den Preis
         priceNote: lang === "de" ? (plan.priceNoteDe ?? plan.priceNote ?? null) : (plan.priceNote ?? null),
         priceNoteSource: plan.priceNoteSource ?? null,
+        // Gemessener Zuschlag in USD (Command Code GOAT): Betrag statt Platzhalter
+        feeUsd: plan.feeUsd ?? null,
         model: row.model,
         family: row.family,
         score: score?.intelligence ?? null,
@@ -1509,12 +1527,16 @@ function noteMark(c) {
   return `<span class="note-mark" title="${escapeHtml(tip)}" aria-label="${escapeHtml(tip)}">i</span>`;
 }
 
-// Preis-Zuschlag am Preis markieren (Command Code: "+ processing fee" bei
-// Kartenzahlung). Kein gerechneter Betrag: der Satz ist nicht veroeffentlicht.
+// Preis-Zuschlag am Preis markieren (Command Code: Karten-Gebuehr). Ist der
+// Betrag gemessen (feeUsd), steht die Zahl am Preis; sonst bleibt es beim
+// Hinweis "plus fee", weil der Satz erst an der Kasse erscheint.
 function feeMark(c) {
   if (!c.priceNote) return "";
   const tip = c.priceNoteSource ? `${c.priceNote} · ${c.priceNoteSource}` : c.priceNote;
-  return ` <span class="fee-note" title="${escapeHtml(tip)}">${escapeHtml(t("price.feeMark"))}</span>`;
+  const label = c.feeUsd > 0
+    ? t("price.feeAmount").replace("{v}", fmtPrice(c.feeUsd))
+    : t("price.feeMark");
+  return ` <span class="fee-note" title="${escapeHtml(tip)}">${escapeHtml(label)}</span>`;
 }
 
 // Attribute einer Kombination: alles, was den Plan jenseits von Preis und Rate
@@ -2900,6 +2922,11 @@ function showView(name) {
     if (dock) dock.hidden = !(view === "overview" || view === "plans");
     // Derselbe Filterblock wandert mit: im Graph sitzt er im Rail-Menue,
     // in der Listenansicht ueber der Tabelle.
+    const railTrigger = $("#rail-trigger");
+    if (railTrigger) {
+      railTrigger.hidden = !(view === "overview" && railIsDrawer());
+      if (railTrigger.hidden) closeRail();
+    }
     const filters = $("#rail-filters");
     if (filters) {
       const host = view === "plans" ? $("#filters-host") : document.querySelector(".rail");
@@ -2934,6 +2961,87 @@ function initTabs() {
 
 // (Best-value-Panel entfernt: der Scatter-Plot steht jetzt oben, der Link
 //  "Alle Pläne" sitzt im Chart-Kopf. renderTop() ist stillgelegt.)
+
+// ---------------- Mobile Filterspalte: Griff + Schublade ----------------
+// Auf schmalen Displays wandert der Rail-Block an die Body-Ebene: `main` traegt
+// view-transition-name und waere sonst der Containing Block fuer position: fixed
+// (die Schublade erschiene unsichtbar unter dem Fold). Dort liegt er als linke
+// Schublade hinter einem festen Griff, damit Filtern ohne Scrollen geht.
+const RAIL_DRAWER_MQ = "(max-width: 900px)";
+function railIsDrawer() {
+  return !!(window.matchMedia && window.matchMedia(RAIL_DRAWER_MQ).matches);
+}
+// Trefferzahl der aktuellen Filter auf den Abschluss-Button spiegeln
+function syncRailApplyCount() {
+  const src = $("#plans-count");
+  const dst = $("#rail-apply-count");
+  if (!dst) return;
+  const txt = src && src.textContent ? src.textContent.trim() : "";
+  dst.textContent = txt;
+}
+function openRail() {
+  const rail = $("#rail"), scrim = $("#rail-scrim"), trigger = $("#rail-trigger");
+  if (!rail || !railIsDrawer()) return;
+  syncRailApplyCount();
+  rail.removeAttribute("inert");
+  rail.classList.add("open");
+  if (scrim) scrim.hidden = false;
+  if (trigger) trigger.setAttribute("aria-expanded", "true");
+  document.body.classList.add("rail-open");
+  const close = $("#rail-close");
+  if (close) close.focus({ preventScroll: true });
+}
+function closeRail() {
+  const rail = $("#rail"), scrim = $("#rail-scrim"), trigger = $("#rail-trigger");
+  if (!rail) return;
+  const wasOpen = rail.classList.contains("open");
+  rail.classList.remove("open");
+  if (railIsDrawer()) rail.setAttribute("inert", "");
+  if (scrim) scrim.hidden = true;
+  if (trigger) trigger.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("rail-open");
+  if (wasOpen && trigger && railIsDrawer()) trigger.focus({ preventScroll: true });
+}
+// Rail zwischen Raster (Desktop) und Body-Ebene (Schublade) umhaengen
+function placeRail() {
+  const rail = $("#rail");
+  if (!rail) return;
+  const drawer = railIsDrawer();
+  const wasDrawer = rail.dataset.drawer === "1";
+  rail.dataset.drawer = drawer ? "1" : "0";
+  const trigger = $("#rail-trigger");
+  if (drawer) {
+    if (rail.parentElement !== document.body) document.body.appendChild(rail);
+    if (!wasDrawer) closeRail();
+    if (trigger) trigger.hidden = false;
+  } else {
+    const wb = document.querySelector(".workbench");
+    if (wb && rail.parentElement !== wb) wb.insertBefore(rail, wb.firstChild);
+    closeRail();
+    if (trigger) trigger.hidden = true;
+  }
+}
+function initRailDrawer() {
+  const rail = $("#rail"), trigger = $("#rail-trigger"), scrim = $("#rail-scrim");
+  if (!rail || !trigger) return;
+  placeRail();
+  trigger.addEventListener("click", () => {
+    if (rail.classList.contains("open")) closeRail();
+    else openRail();
+  });
+  scrim?.addEventListener("click", closeRail);
+  $("#rail-close")?.addEventListener("click", closeRail);
+  $("#rail-apply")?.addEventListener("click", () => {
+    closeRail();
+    // Direkt zum Ergebnis: das Chart steht mobil ganz oben
+    const chart = document.querySelector(".chart-card");
+    if (chart) chart.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && rail.classList.contains("open")) closeRail();
+  });
+  window.addEventListener("resize", () => { placeRail(); }, { passive: true });
+}
 
 function initBackTop() {
   const b = $("#back-top");
@@ -3232,6 +3340,7 @@ function init() {
   initTabs();
   initPalette();
   initBackTop();
+  initRailDrawer();
   initMethodMore();
 
   // Chart-Auflösung dynamisch an Fenstergröße koppeln (debounced)
