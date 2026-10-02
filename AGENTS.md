@@ -143,6 +143,26 @@ dupliziert also keine Assets, trägt `noindex` und eine Hinweisleiste. Quelle bl
 - `app.js` bleibt der Renderer. Die Schicht darf app.js nicht patchen; Korrekturen an dessen
   Verhalten gehören in `public/app.js`.
 
+## Changelog (automatisch)
+
+Der Changelog auf der Seite kommt **aus der Git-Historie**, nicht aus Handarbeit:
+`scripts/changelog-from-git.mjs` liest die Commit-Betreffzeilen, wirft Sync-, Daten-, Test-
+und CI-Commits raus, entfernt das Typ-Praefix (`fix(web): ...`) und schreibt
+`data/changelog.yml` (neueste zuerst, max. 100 Eintraege, je Eintrag der Kurz-SHA).
+`build.mjs` reicht das als `changelog` nach latest.json, die Changelog-Ansicht verlinkt
+jeden Eintrag auf seinen Commit. Die CI ruft das Skript **vor dem Build** auf
+(`update.yml`, dort auch `fetch-depth: 0`, sonst fehlt die Historie) und committet die
+Datei mit, deshalb bleibt die Seite ohne Zutun aktuell.
+
+- **Nicht von Hand pflegen:** die Datei wird bei jedem Lauf neu erzeugt, Aenderungen
+  waeren beim naechsten Push weg. Wer etwas Nutzerrelevantes im Changelog sehen will,
+  schreibt es in die Commit-Betreffzeile.
+- Sprache ist Englisch (wie die Commits); `text` und `textEn` tragen denselben Satz.
+- Handgeschriebene Eintraege von vorher liegen unveraendert in
+  `data/changelog-archive.yml` (nicht gebaut, reines Archiv).
+- Lokal erzeugen: `node scripts/changelog-from-git.mjs` (idempotent, zweimal laufen
+  ergibt dieselbe Datei).
+
 ## Filter-Bedienung (eine Stelle, zwei Ansichten)
 Es gibt genau **einen** Satz Filter-Controls: den Rail-Block `#rail-filters` (Suche, Meter,
 Budget, AI-Score, Attribute, Spalten, Trefferzahl). Er wandert beim Ansichtswechsel per

@@ -31,7 +31,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          # Volle Historie: der Changelog wird aus den Commit-Betreffzeilen erzeugt
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -43,6 +44,9 @@ jobs:
 
       - name: Parse Snapshots
         run: node scripts/parse-all.mjs
+
+      - name: Changelog aus der Git-Historie erzeugen
+        run: node scripts/changelog-from-git.mjs
 
       - name: Build latest.json
         run: node scripts/build.mjs
@@ -58,7 +62,7 @@ jobs:
         run: |
           git config user.name "coding-plan-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add public/data/latest.json
+          git add public/data/latest.json data/changelog.yml
           if git diff --cached --quiet; then
             echo "Keine Änderungen — nichts zu committen"
           else

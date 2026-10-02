@@ -1541,7 +1541,8 @@ function applyScoreAliases(scores, plans) {
   return added;
 }
 
-// Changelog aus data/changelog.yml laden (manuell kuratiert, Nutzer-relevant)
+// Changelog aus data/changelog.yml laden (von scripts/changelog-from-git.mjs
+// aus der Git-Historie erzeugt, die CI schreibt sie vor jedem Build neu)
 function loadChangelog(root) {
   try {
     const raw = readFileSync(join(root, "data", "changelog.yml"), "utf8");
@@ -1550,7 +1551,8 @@ function loadChangelog(root) {
     // waehlt nach Sprache.
     const entries = (parsed.entries ?? [])
       .filter((e) => e.date && (e.text || e.textEn))
-      .map((e) => ({ date: e.date, text: e.text ?? null, textEn: e.textEn ?? null }));
+      // commit = Kurz-SHA, aus dem der Eintrag stammt (die UI verlinkt ihn)
+      .map((e) => ({ date: e.date, commit: e.commit ?? null, text: e.text ?? null, textEn: e.textEn ?? null }));
     return { entries };
   } catch (e) {
     console.warn("WARN: changelog.yml nicht lesbar:", e.message);

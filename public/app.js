@@ -255,7 +255,7 @@ const I18N = {
     "fcomp.th.edge": "Difference",
     "fcomp.winner.draw": "Draw",
     "cl.h2": "Changelog",
-    "cl.sub": "What changed for you, newest first.",
+    "cl.sub": "What changed for you, newest first. Generated from the repository commits, each entry links to its commit.",
     "method.h2": "What “60 for 10” actually buys",
     "method.sub": "An advertised “60 for 10” says little about what a plan delivers. This is how we make plans comparable, and every step is reproducible.",
     "method.formula.title": "Cost per request",
@@ -580,7 +580,7 @@ const I18N = {
     "fcomp.th.edge": "Unterschied",
     "fcomp.winner.draw": "Unentschieden",
     "cl.h2": "Changelog",
-    "cl.sub": "Was sich für dich geändert hat, Neuestes zuerst.",
+    "cl.sub": "Was sich für dich geändert hat, Neuestes zuerst. Erzeugt aus den Commits des Repos, jeder Eintrag verlinkt seinen Commit.",
     "method.h2": "Was „60 für 10“ wirklich kauft",
     "method.sub": "Ein beworbenes „60 für 10“ sagt wenig darüber, was ein Plan liefert. So machen wir Pläne vergleichbar, und jeder Schritt ist reproduzierbar.",
     "method.formula.title": "Kosten pro Request",
@@ -3113,7 +3113,12 @@ function renderChangelog() {
     let date = e.date;
     try { date = new Date(e.date + "T00:00:00").toLocaleDateString(lang === "de" ? "de-DE" : "en-US"); } catch (err) { /* keep */ }
     const text = lang === "de" ? (e.textDe ?? e.text ?? e.textEn ?? "") : (e.textEn ?? e.text ?? "");
-    return `<div class="cl-row"><span class="cl-date num">${escapeHtml(date)}</span><span>${escapeHtml(text)}</span></div>`;
+    // Eintraege kommen aus Commits: der Kurz-SHA verlinkt den Commit, damit die
+    // Aenderung nachpruefbar ist.
+    const commit = e.commit
+      ? ` <a class="cl-commit" href="https://github.com/harrytyp/coding-plan-comparison/commit/${encodeURIComponent(e.commit)}" target="_blank" rel="noopener">${escapeHtml(e.commit)}</a>`
+      : "";
+    return `<div class="cl-row"><span class="cl-date num">${escapeHtml(date)}</span><span>${escapeHtml(text)}${commit}</span></div>`;
   }).join("");
 }
 

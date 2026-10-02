@@ -651,3 +651,22 @@ test("CSS: keine zerschnittenen Regeln (Klebe-Bug nach Text-Aufraeumen)", async 
     assert.equal([...css.matchAll(re)].length, 0, `${sel} darf nicht position: fixed sein`);
   }
 });
+
+// --- Changelog: kommt aus der Git-Historie, nicht aus Handarbeit -------------
+test("Changelog wird aus den Commits erzeugt und ist sauber", async () => {
+  const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const entries = d.changelog?.entries ?? [];
+  assert.ok(entries.length >= 10, `Changelog sollte gefuellt sein, hat ${entries.length}`);
+  for (const e of entries) {
+    assert.ok(e.date && /^\d{4}-\d{2}-\d{2}$/.test(e.date), `Datum fehlt/kaputt: ${JSON.stringify(e)}`);
+    assert.ok(e.text || e.textEn, `Text fehlt: ${JSON.stringify(e)}`);
+    if (e.commit) assert.match(String(e.commit), /^[0-9a-f]{7,40}$/, `commit muss ein SHA sein: ${e.commit}`);
+  }
+  const dates = entries.map((e) => e.date);
+  assert.deepEqual(dates, [...dates].sort().reverse(), "neueste zuerst");
+  // Internes Rauschen (Sync-/Daten-/Test-Commits) darf nicht auftauchen
+  // Nur die Praefix-Rauschtypen: ein Betreff wie "feat: merge LLM Stats ..." ist
+  // eine echte Aenderung, deshalb hier nicht auf das Wort "merge" pruefen.
+  const rausch = entries.filter((e) => /^(chore\((web|data|ci)\)|test[(:])/.test(e.text || ""));
+  assert.equal(rausch.length, 0, `Rausch-Commits im Changelog: ${rausch.slice(0, 3).map((e) => e.text).join(" | ")}`);
+});
