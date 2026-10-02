@@ -1125,7 +1125,19 @@ function columnVisible(col) { return visibleColumns.includes(col); }
 
 /* ---------------- AI-Score (LLM Stats) ---------------- */
 // Robuster Fuzzy-Match: findet Score für Feed-Modellnamen in den Scores.
+// Memo: derselbe Modellname wird bei jedem Render erneut gesucht (Hover, Pan,
+// Filterwechsel). Das Fuzzy-Matching darunter kostet rund 1 ms pro Aufruf, und
+// genau das summierte sich auf über 100 ms pro Mausbewegung.
+const aiScoreMemo = new Map();
 function aiScoreFor(modelName, family) {
+  const memoKey = `${modelName}\u0000${family || ""}`;
+  if (aiScoreMemo.has(memoKey)) return aiScoreMemo.get(memoKey);
+  const value = aiScoreForUncached(modelName, family);
+  aiScoreMemo.set(memoKey, value);
+  return value;
+}
+
+function aiScoreForUncached(modelName, family) {
   const scores = data?.aiScores?.scores ?? {};
   const keys = Object.keys(scores);
   if (!keys.length) return null;
@@ -2070,9 +2082,14 @@ function showPlotError(err) {
   try { console.error("[dashboard]", msg, err); } catch (e) { /* ignore */ }
 }
 
-function renderDashboard() {
+// Zwischenstand des letzten Vollaufbaus: Hover, Zoom und Pan zeichnen nur die
+// Canvas neu. Kombis, Filter, Pareto-Front und die Rail-Zahlen aendern sich dabei
+// nicht, kosten zusammen aber >100 ms pro Mausbewegung.
+let dashCache = null;
+
+function renderDashboard(light) {
   try {
-    renderDashboardInner();
+    renderDashboardInner(!!light);
     const box = document.getElementById("dash-error");
     if (box) box.remove();
   } catch (err) {
@@ -2080,7 +2097,7 @@ function renderDashboard() {
   }
 }
 
-function renderDashboardInner() {
+function renderDashboardInner(light) {
   const canvas = $("#dash-canvas");
   const note = $("#dash-note");
   const resetBtn = $("#dash-reset-btn");
@@ -2095,6 +2112,11 @@ function renderDashboardInner() {
   const ALLOWED_Y = ["score", "tokens", "req10", "rawtokens", "rawreq"];
   if (!ALLOWED_Y.includes(dashY)) { dashY = "score"; const ys = $("#dash-y"); if (ys) ys.value = "score"; }
   if (!validAxes(dashX, dashY)) { dashX = "tokens"; const xs = $("#dash-x"); if (xs) xs.value = "tokens"; }
+  // Leichter Pfad (Hover, Zoom, Pan): Punkte aus dem letzten Vollaufbau nutzen
+  let points;
+  if (light && dashCache) {
+    points = dashCache.points;
+  } else {
   // Gleiche Filter wie die Tabelle anwenden (Suche, Budget, AI, Privacy)
   let combos = buildCombos();
   if (plansSearch) {
@@ -2112,11 +2134,12 @@ function renderDashboardInner() {
   // die in der Liste per Default fehlen (und umgekehrt).
   if (!includeTraining) combos = combos.filter((c) => c.noTraining !== false);
 
-  const points = combos.map((c) => ({
+  points = combos.map((c) => ({
     combo: c,
     x: metricValue(c, dashX),
     y: metricValue(c, dashY),
   })).filter((p) => p.x != null && p.y != null && p.x > 0 && p.y > 0);
+  }
 
   // Canvas-Größe: CSS-Pixel × Gerätepixel-Verhältnis (scharf auf Retina + Mobile)
   const rect = canvas.getBoundingClientRect();
@@ -2296,7 +2319,7 @@ function renderDashboardInner() {
   ctx.restore();
   ctx.restore();
   // Pareto-Linie (wird unten im geclippten Bereich gezeichnet)
-  const frontier = dashPareto ? paretoFrontier(points) : [];
+  const frontier = light && dashCache ? dashCache.frontier : (dashPareto ? paretoFrontier(points) : []);
   // Punkte: klein genug, dass 400 davon unterscheidbar bleiben (Trefferfläche bleibt groß)
   const frontierKeys = new Set(frontier.map((f) => `${f.combo.planId}::${f.combo.model}`));
   const touchSize = cssW < 760;
@@ -2472,6 +2495,8 @@ function renderDashboardInner() {
     ctx.restore();
   }
   // Werkbank-Kennzahlen im Rail füllen: was gerade wirklich im Bild ist
+  // (im leichten Pfad unverändert: Zahlen und Shortlist bleiben stehen)
+  if (!light) {
   const rp = $("#rail-points");
   if (rp) rp.textContent = fmtNum(px.length);
   const rpar = $("#rail-pareto");
@@ -2485,6 +2510,7 @@ function renderDashboardInner() {
   const rm = $("#rail-median");
   if (rm) rm.textContent = ySorted.length ? metricFmt(dashY, quantile(ySorted, 0.5)) : "-";
   renderShortlist(px);
+  }
   // Plot-Rechteck merken: Zoom und Crosshair rechnen damit
   dashPlotBox = { l: PAD_L, t: PAD_T, w: plotW, h: plotH, w0: W, h0: H };
   dashAxisX = [xMin, xMax];
@@ -2494,7 +2520,8 @@ function renderDashboardInner() {
   const rbBtn = $("#dash-reset-btn");
   if (rbBtn) rbBtn.hidden = !dashZoom;
   dashPoints = px;
-  if (note) {
+  dashCache = { points, frontier };
+  if (note && !light) {
     if (dashPareto && frontier.length === 1 && points.length > 1) {
       // Genau 1 Pareto-Punkt: dieser Plan dominiert alle anderen auf beiden Achsen.
       note.textContent = lang === "de"
@@ -2528,7 +2555,7 @@ function renderShortlist(pts) {
     if (!p) return;
     dashSelected = b.dataset.key;
     showDashDetail(p);
-    renderDashboard();
+    renderDashboard(true);
   }));
 }
 
@@ -2610,7 +2637,7 @@ function bindDashTooltip() {
     if (!p) return;
     dashSelected = `${p.combo.planId}::${p.combo.model}`;
     showDashDetail(p);
-    renderDashboard(); // Ring zeichnen
+    renderDashboard(true); // nur den Ring neu zeichnen
   };
   // Crosshair nur neu zeichnen, wenn sich der Punkt ändert (rAF-gebremst)
   let hoverRaf = null;
@@ -2619,7 +2646,7 @@ function bindDashTooltip() {
     if (key === dashHover) return;
     dashHover = key;
     if (hoverRaf) return;
-    hoverRaf = requestAnimationFrame(() => { hoverRaf = null; renderDashboard(); });
+    hoverRaf = requestAnimationFrame(() => { hoverRaf = null; renderDashboard(true); });
   };
   // Tastatur: mit den Pfeiltasten von Punkt zu Punkt, Enter oeffnet die Zahlen (2.1.1)
   let kbdPoint = null;
@@ -2645,7 +2672,7 @@ function bindDashTooltip() {
     const r = canvas.getBoundingClientRect();
     showTip(best, r.left + best.px, r.top + best.py);
     setHover(best);
-    renderDashboard();
+    renderDashboard(true);
     kbdAnnounce(best);
   };
   canvas.addEventListener("keydown", (e) => {
@@ -2654,7 +2681,7 @@ function bindDashTooltip() {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); if (kbdPoint) select(kbdPoint); return; }
     if (e.key === "Escape") {
       kbdPoint = null; dashSelected = null; tip.style.display = "none";
-      setHover(null); showDashDetail(null); renderDashboard();
+      setHover(null); showDashDetail(null); renderDashboard(true);
     }
     // Zoom per Tastatur: + / - / 0
     if (e.key === "+" || e.key === "=") { e.preventDefault(); zoomByFactor(0.6); return; }
@@ -2696,7 +2723,7 @@ function bindDashZoom() {
   if (!canvas) return;
   const inv = (a, t, log) => (log ? Math.exp(Math.log(a[0]) + t * (Math.log(a[1]) - Math.log(a[0]))) : a[0] + t * (a[1] - a[0]));
   let frame = null;
-  const queue = () => { if (!frame) frame = requestAnimationFrame(() => { frame = null; renderDashboard(); }); };
+  const queue = () => { if (!frame) frame = requestAnimationFrame(() => { frame = null; renderDashboard(true); }); };
 
   // Rechteck-Auswahl: grobe Sprünge mit der Maus
   const applyBrush = (b) => {
@@ -2712,7 +2739,7 @@ function bindDashZoom() {
       y0: inv(ya, 1 - fr(ny1, box.t, box.h), isLogY()), y1: inv(ya, 1 - fr(ny0, box.t, box.h), isLogY()),
     };
     dashSelected = null;
-    renderDashboard();
+    renderDashboard(true);
   };
 
   if (window.d3zoom) {
@@ -3090,6 +3117,7 @@ async function loadData() {
     const resp = await fetch(DATA_URL, { cache: "no-cache" });
     if (!resp.ok) throw new Error("HTTP " + resp.status + " for " + DATA_URL);
     data = await resp.json();
+    aiScoreMemo.clear(); // Scores sind neu: Memo verwerfen
     try { localStorage.setItem("cpc-data", JSON.stringify({ at: data.generatedAt, data })); } catch (e) { /* Quota: egal */ }
     buildModelPrivacyMap(); // Modell-Privacy-Map aufbauen, bevor gerendert wird
     // Loading-Note entfernen
