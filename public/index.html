@@ -393,7 +393,10 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 }
 .chart-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; color: var(--text-3); font-size: var(--fs-md); }
 
-.detail-card { background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); overflow: hidden; position: sticky; top: 76px; }
+.detail-card { background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius-lg); overflow: hidden; }
+/* Kein top-Versatz mehr: die Karte stand mit "top: 76px" 76 px unter ihrer Rasterzelle
+   (die allgemeine Panel-Regel setzt weiter unten position: relative) und lag damit ueber
+   dem naechsten Block. Die Ausrichtung uebernimmt jetzt das Raster. */
 .detail-head { padding: 14px 16px 12px; border-bottom: 1px solid var(--line-soft); }
 .detail-kicker { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); }
 .dash-detail-empty { padding: 26px 16px; color: var(--text-3); font-size: var(--fs-md); }
@@ -874,7 +877,10 @@ main { max-width: 1680px; padding: 0 28px 64px; }
 
 /* mono utility: labels, kickers, numerals */
 .kpi .k, .rail-title, .section-head p, .panel-head p, .app-meta, .chart-foot,
-
+.detail-kicker, .sl-title, .cl-date, .attr, .chip, .rank-tag,
+.waitlist-badge, .est-note, .table-note, .attr-filter-title, .toolbar-count {
+  font-family: var(--pv-mono);
+}
 /* ---------------------------------------------------------------- scroll progress */
 #pv-progress {
   position: fixed; inset: 0 auto auto 0; height: 2px; width: 100%;
@@ -1134,7 +1140,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   .table-wrap { overflow: visible; }
   /* Panels klippen fuer die Rundungen, aber "hidden" macht sie zum Scroll-Container
      und killt sticky. clip klippt genauso, ohne Scroll-Container zu sein. */
-  .panel, .chart-card, .detail-card, .rail { overflow: clip; }
+  .panel, .chart-card, .detail-card { overflow: clip; }
   .sortable-table thead th { top: 58px; }
   .sortable-table thead th.sorted { color: var(--accent-2); box-shadow: inset 0 -2px 0 var(--accent-2); }
   .sortable-table thead th[aria-sort] { color: var(--accent-2); }
