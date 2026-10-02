@@ -1264,6 +1264,56 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 }
 
 /* 7) Filter als linker Drawer (mobil) statt Bottom-Sheet */
+.rail-trigger, .rail-scrim, .rail-drawer-head, .rail-apply { display: none; }
+
+@media (max-width: 900px) {
+  /* Griff: fest sichtbar unten links, damit Filtern ohne Scrollen geht */
+  .rail-trigger {
+    display: inline-flex; align-items: center; gap: 9px;
+    position: fixed; left: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    z-index: 96; min-height: 48px; padding: 0 16px;
+    font-family: var(--pv-mono); font-size: var(--fs-sm); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em;
+    color: var(--accent-ink); background: var(--accent);
+    border: 1px solid color-mix(in oklab, var(--accent) 65%, #000);
+    border-radius: 999px; box-shadow: 0 10px 24px rgb(0 0 0 / .38);
+    cursor: pointer;
+  }
+  .rail-trigger-count {
+    min-width: 21px; height: 21px; padding: 0 5px; border-radius: 999px;
+    display: grid; place-items: center; font-size: var(--fs-xs);
+    background: rgb(0 0 0 / .26); color: inherit;
+  }
+  .rail-scrim { display: block; position: fixed; inset: 0; z-index: 99; background: rgb(3 7 18 / .55); }
+  /* Schublade: gleiche Bedienelemente wie im Desktop-Rail, nur als Overlay */
+  #rail {
+    position: fixed; inset: 0 auto 0 0; z-index: 100;
+    width: min(90vw, 340px); max-height: none; height: 100%;
+    padding: 10px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+    overflow-y: auto; overscroll-behavior: contain;
+    background: var(--surface); border-right: 1px solid var(--line);
+    box-shadow: 0 0 44px rgb(0 0 0 / .5);
+    transform: translateX(-102%); visibility: hidden;
+    transition: transform .24s cubic-bezier(.22, .61, .36, 1), visibility 0s linear .24s;
+  }
+  #rail.open { transform: translateX(0); visibility: visible; transition: transform .24s cubic-bezier(.22, .61, .36, 1), visibility 0s; }
+  .rail-drawer-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 0 8px; }
+  .rail-drawer-title { font-family: var(--pv-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
+  .rail-close {
+    min-width: 44px; min-height: 44px; display: grid; place-items: center;
+    font-size: 22px; line-height: 1; color: var(--text-2);
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
+  }
+  .rail-apply {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; margin-top: 2px; font-weight: 700;
+    color: var(--accent-ink); background: var(--accent);
+    border: 1px solid color-mix(in oklab, var(--accent) 65%, #000);
+    border-radius: 12px; cursor: pointer;
+  }
+  .rail-apply-count { font-family: var(--pv-mono); font-size: var(--fs-xs); opacity: .85; }
+  body.rail-open { overflow: hidden; }
+}
 
 /* 8) Plaene kompakter: Zeilenhoehe ~44px (Desktop) */
 .sortable-table tbody td { padding: 5px 12px; }
@@ -1402,7 +1452,12 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   <div class="view active" id="view-overview">
   <!-- ===== WERKBANK: CHART OBEN, DANN RAIL + DETAIL ===== -->
   <div class="workbench" id="workbench">
-    <aside class="rail">
+    <aside class="rail" id="rail">
+      <!-- Mobil: Kopfzeile der Schublade (Desktop ausgeblendet) -->
+      <div class="rail-drawer-head">
+        <span class="rail-drawer-title" data-i18n="rail.title">Filters and axes</span>
+        <button class="rail-close" id="rail-close" type="button" data-i18n-aria="rail.close" aria-label="Close">×</button>
+      </div>
       <!-- Filter: einzige Bedienstelle, gilt fuer Graph und Liste -->
       <details class="rail-block rail-filters" id="rail-filters">
         <summary class="rail-title">
@@ -1501,6 +1556,11 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         <div class="rail-stat"><span data-i18n="rail.best">Best rate</span><b id="rail-best">…</b></div>
         <div class="rail-stat"><span data-i18n="rail.median">Median score</span><b id="rail-median">…</b></div>
       </details>
+      <!-- Mobil: Schublade schliessen und das Ergebnis ansehen -->
+      <button class="rail-apply" id="rail-apply" type="button">
+        <span data-i18n="rail.show">Show results</span>
+        <span class="rail-apply-count" id="rail-apply-count"></span>
+      </button>
     </aside>
 
     <section class="chart-card">
@@ -1854,6 +1914,19 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 </footer>
 
 <!-- ===== COMMAND PALETTE ===== -->
+<!-- ===== MOBIL: fester Filter-Griff + Hintergrund der Schublade ===== -->
+<button class="rail-trigger" id="rail-trigger" type="button" hidden aria-controls="rail" aria-expanded="false">
+  <svg class="rail-trigger-glyph" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M4 7h16M4 12h16M4 17h16"/>
+    <circle cx="9" cy="7" r="2.4" fill="currentColor" stroke="none"/>
+    <circle cx="15" cy="12" r="2.4" fill="currentColor" stroke="none"/>
+    <circle cx="9" cy="17" r="2.4" fill="currentColor" stroke="none"/>
+  </svg>
+  <span data-i18n="rail.trigger">Filters</span>
+  <span class="rail-trigger-count" id="rail-trigger-count" hidden>0</span>
+</button>
+<div class="rail-scrim" id="rail-scrim" hidden></div>
+
 <div class="cmdk-overlay" id="cmdk" hidden>
   <div class="cmdk" role="dialog" aria-modal="true" aria-label="Command palette">
     <div class="cmdk-input">
@@ -1874,7 +1947,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="../vendor/d3-zoom.min.js"></script>
-<script src="../app.js?v=b8a52aa"></script>
+<script src="../app.js?v=547a585"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,
