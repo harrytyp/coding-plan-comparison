@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T14:41:47.401Z",
+  "generatedAt": "2026-10-05T15:00:28.033Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -20,6 +20,7 @@
     "ocgo-pricing.json": null,
     "cc-pricing.json": null
   },
+  "staleSources": [],
   "plans": [
     {
       "id": "opencode-go",
@@ -41824,7 +41825,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-05T14:41:47.206Z",
+    "fetchedAt": "2026-10-05T15:00:27.835Z",
     "count": 412,
     "scores": {
       "claude-opus-5-5": {
@@ -41938,10 +41939,10 @@
       "qwen3-8-27b": {
         "intelligence": 44.75
       },
-      "gpt-5-5-pro": {
+      "claude-opus-4-6": {
         "intelligence": 44.7
       },
-      "claude-opus-4-6": {
+      "gpt-5-5-pro": {
         "intelligence": 44.7
       },
       "gpt-5-6-luna": {
@@ -42358,10 +42359,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.92
       },
-      "granite-4-2-30b": {
+      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.8
       },
-      "qwen3-next-80b-a3b-thinking": {
+      "granite-4-2-30b": {
         "intelligence": 23.8
       },
       "grok-4-20-beta-0309-reasoning": {
@@ -42457,10 +42458,10 @@
       "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
-      "gpt-5-nano-2025-08-07": {
+      "qwen3-5-4b": {
         "intelligence": 19.5
       },
-      "qwen3-5-4b": {
+      "gpt-5-nano-2025-08-07": {
         "intelligence": 19.5
       },
       "diffusiongemma-26b-a4b-it": {
@@ -42754,10 +42755,10 @@
       "hermes-3-405b": {
         "intelligence": 4.29
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 4.19
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 4.19
       },
       "hermes-3-70b": {
@@ -43229,6 +43230,12 @@
   ],
   "changelog": {
     "entries": [
+      {
+        "date": "2026-10-05",
+        "commit": "3df6363",
+        "text": "Restore snapshots from the last run, warn when a source goes stale",
+        "textEn": "Restore snapshots from the last run, warn when a source goes stale"
+      },
       {
         "date": "2026-10-05",
         "commit": "be08251",
@@ -43822,12 +43829,6 @@
         "commit": "357fc50",
         "text": "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)",
         "textEn": "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)"
-      },
-      {
-        "date": "2026-08-31",
-        "commit": "9e26c60",
-        "text": "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse",
-        "textEn": "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
       }
     ]
   },

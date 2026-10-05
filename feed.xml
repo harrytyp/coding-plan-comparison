@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Restore snapshots from the last run, warn when a source goes stale</title>
+    <id>https://vibeplan.cc/#3df6363</id>
+    <updated>2026-10-05T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/3df6363"/>
+    <summary>Restore snapshots from the last run, warn when a source goes stale</summary>
+  </entry>
+  <entry>
     <title>Retry transient source failures so one flaky source cannot kill the daily run</title>
     <id>https://vibeplan.cc/#be08251</id>
     <updated>2026-10-05T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-09-23T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6f83c8d"/>
     <summary>Add Copilot Business and Enterprise from the docs plan table</summary>
-  </entry>
-  <entry>
-    <title>Rank Qwen Coding Plan Pro on its official request quota</title>
-    <id>https://vibeplan.cc/#0b62251</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0b62251"/>
-    <summary>Rank Qwen Coding Plan Pro on its official request quota</summary>
   </entry>
 </feed>
