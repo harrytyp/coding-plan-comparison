@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T15:01:32.629Z",
+  "generatedAt": "2026-10-05T15:06:17.606Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -41825,7 +41825,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-05T15:01:32.441Z",
+    "fetchedAt": "2026-10-05T15:06:17.404Z",
     "count": 412,
     "scores": {
       "claude-opus-5-5": {
@@ -43232,6 +43232,12 @@
     "entries": [
       {
         "date": "2026-10-05",
+        "commit": "3b226c9",
+        "text": "Record snapshot cache, retry and staleness handling",
+        "textEn": "Record snapshot cache, retry and staleness handling"
+      },
+      {
+        "date": "2026-10-05",
         "commit": "3df6363",
         "text": "Restore snapshots from the last run, warn when a source goes stale",
         "textEn": "Restore snapshots from the last run, warn when a source goes stale"
@@ -43823,12 +43829,6 @@
         "commit": "04b371c",
         "text": "Kimi-Preise aus offizieller kimi.ai Goods-API (Pipeline-Fix)",
         "textEn": "Kimi-Preise aus offizieller kimi.ai Goods-API (Pipeline-Fix)"
-      },
-      {
-        "date": "2026-08-31",
-        "commit": "357fc50",
-        "text": "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)",
-        "textEn": "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)"
       }
     ]
   },
