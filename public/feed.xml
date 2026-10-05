@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Record snapshot cache, retry and staleness handling</title>
+    <id>https://vibeplan.cc/#3b226c9</id>
+    <updated>2026-10-05T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/3b226c9"/>
+    <summary>Record snapshot cache, retry and staleness handling</summary>
+  </entry>
+  <entry>
     <title>Restore snapshots from the last run, warn when a source goes stale</title>
     <id>https://vibeplan.cc/#3df6363</id>
     <updated>2026-10-05T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-09-23T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0cdbc0e"/>
     <summary>Show daily quotas in the included-volume column</summary>
-  </entry>
-  <entry>
-    <title>Add Copilot Business and Enterprise from the docs plan table</title>
-    <id>https://vibeplan.cc/#6f83c8d</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6f83c8d"/>
-    <summary>Add Copilot Business and Enterprise from the docs plan table</summary>
   </entry>
 </feed>
