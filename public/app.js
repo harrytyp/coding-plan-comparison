@@ -336,6 +336,7 @@ const I18N = {
     "loading": "Loading live data…",
     "error": "Could not load data. Please check the connection or try again.",
     "updated": "Data snapshot",
+    "stale.sources": "sources stale",
     "disclaimer.title": "Note:",
     "disclaimer.text": "Prices and quotas change frequently. This site is informational, so confirm them on the official provider page before subscribing.",
   },
@@ -660,6 +661,7 @@ const I18N = {
     "loading": "Live-Daten werden geladen…",
     "error": "Daten konnten nicht geladen werden. Bitte Verbindung prüfen oder erneut versuchen.",
     "updated": "Datenstand",
+    "stale.sources": "Quellen veraltet",
     "disclaimer.title": "Hinweis:",
     "disclaimer.text": "Preise und Kontingente ändern sich häufig. Diese Seite ist informativ, also bestätige die Angaben vor dem Abonnieren auf der offiziellen Anbieterseite.",
   },
@@ -1051,7 +1053,13 @@ function renderStats() {
   const day = date.toLocaleDateString(lang === "de" ? "de-DE" : "en-US");
   const hh = String(date.getUTCHours()).padStart(2, "0");
   const mm = String(date.getUTCMinutes()).padStart(2, "0");
-  setTxt("#meta-updated", `${t("updated")} ${day}, ${hh}:${mm} UTC`);
+  const stamp = `${t("updated")} ${day}, ${hh}:${mm} UTC`;
+  // Quellen mit zu altem Snapshot sichtbar machen: die Kopfzeile behauptet sonst
+  // einen frischen Datenstand, obwohl eine Quelle ihren letzten Stand behalten hat.
+  const stale = data.staleSources ?? [];
+  const mu = $("#meta-updated");
+  if (mu) mu.title = stale.length ? stale.map((s) => `${s.id} (${s.fetchedAt.slice(0, 10)})`).join(", ") : "";
+  setTxt("#meta-updated", stale.length ? `${stamp} · ${stale.length} ${t("stale.sources")}` : stamp);
   // Anteilsbalken: zeigen das Verhältnis, nicht nur die Zahl
   const total = Number(data.statistics?.totalPlans) || 0;
   const comp = Number(data.statistics?.comparablePlans) || 0;

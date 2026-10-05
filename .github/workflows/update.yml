@@ -38,6 +38,18 @@ jobs:
         with:
           node-version: 22
 
+      # Snapshots des letzten Laufs mitnehmen. cache/ ist nicht im Repo (reproduzierbar
+      # per npm run update), aber genau deshalb hatte CI bisher keinen Ersatz-Snapshot:
+      # fiel eine Quelle aus, riss das den ganzen Tageslauf mit und die Seite fror ein.
+      # Mit dem Cache greift der Fallback in fetch.mjs ("behalte letzten Snapshot").
+      - name: Snapshots aus dem letzten Lauf wiederherstellen
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: snapshots-${{ github.run_id }}
+          restore-keys: |
+            snapshots-
+
       - name: Fetch alle Quellen
         run: node scripts/fetch.mjs
         continue-on-error: false

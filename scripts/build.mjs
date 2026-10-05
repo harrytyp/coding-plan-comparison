@@ -1349,6 +1349,13 @@ async function main() {
     }
   }
 
+  // Quellen, deren Snapshot zu alt ist (Fetch fehlgeschlagen und Fallback auf den letzten
+  // Stand): als Warnung ausweisen, statt frische Daten vorzutaeuschen.
+  const staleSources = loadStaleSources(ROOT);
+  for (const s of staleSources) {
+    warnings.push(`${s.id}: snapshot ${s.hours}h old (${s.fetchedAt.slice(0, 10)}), this source did not update`);
+  }
+
   const output = {
     schemaVersion: 2,
     generatedAt: new Date().toISOString(),
@@ -1364,6 +1371,7 @@ async function main() {
       fenster: "5h windows are throughput caps, never multiplied into monthly volumes; weekly credits scale ×4.33 to monthly; undisclosed stays undisclosed; no direct credit conversion between providers.",
     },
     sources: Object.fromEntries(Object.entries(feeds).map(([k, v]) => [k, v.fetchedAt ?? null])),
+    staleSources,
     plans: planSummaries,
     pairwiseComparisons: pairwise,
     modelComparisons,
@@ -1420,6 +1428,20 @@ function loadAiScores(root) {
   } catch (e) { /* kein parsed */ }
 
   return result;
+}
+
+// Quellen mit zu altem Snapshot (STALE_SOURCE_HOURS). Quelle ist das Manifest aus dem
+// Fetch-Lauf; fehlt es (frischer Checkout ohne cache/), gibt es nichts zu melden.
+const STALE_SOURCE_HOURS = 48;
+function loadStaleSources(root) {
+  try {
+    const m = JSON.parse(readFileSync(join(root, "cache/manifest.json"), "utf8"));
+    const now = Date.now();
+    return Object.values(m.sources ?? {})
+      .filter((s) => s.fetchedAt && (now - new Date(s.fetchedAt).getTime()) / 3600000 > STALE_SOURCE_HOURS)
+      .map((s) => ({ id: s.id, fetchedAt: s.fetchedAt, hours: Math.round((now - new Date(s.fetchedAt).getTime()) / 3600000) }))
+      .sort((a, b) => b.hours - a.hours);
+  } catch { return []; }
 }
 
 // Fuzzy-Match: Feed-Modellname → Score-Slug aus vorhandenen Scores.
