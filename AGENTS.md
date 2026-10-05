@@ -244,6 +244,21 @@ GitHub Pages ohne CDN auskommt; die CI kopiert `public/vendor/` mit ins Root (`v
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.
 
+- **Snapshots überleben den Lauf (`actions/cache`).** `cache/` bleibt aus dem Repo, wird aber
+  vor dem Fetch aus dem letzten Lauf wiederhergestellt (`restore-keys: snapshots-`). Ohne das
+  hatte CI keinen Ersatzstand: ein einziger Aussetzer einer Quelle riss den ganzen Tageslauf mit
+  und die Seite fror ein (27./28.09. `privacy-minimax` 404, 04.10. `glm-coding-overview` fetch failed).
+- **Wiederholversuche in `fetch.mjs` (`fetchWithRetry`).** 3 Versuche mit 2s/8s Backoff bei
+  Netzwerkfehler, Timeout, HTTP 429 und 5xx; 404/403 werden nicht wiederholt (dauerhafte Aussage
+  der Quelle). Danach: Snapshot behalten und weiterlaufen, wenn einer existiert. Fehlt der
+  Snapshot, laufen erst ALLE Quellen durch, dann exit 1 mit Sammel-Liste (nichts wird still
+  fallengelassen). Eine `optional: true`-Quelle (privacy-minimax) darf ganz fehlen.
+- **Veraltete Quellen sind sichtbar.** Ist ein Snapshot älter als 48h (`STALE_SOURCE_HOURS`),
+  steht die Quelle in `latest.json.staleSources` und in `warnings`; die Kopfzeile der Seite hängt
+  dann „· n Quellen veraltet" an den Datenstand, die Quelle mit Datum steht im `title`.
+- **Test:** `tests/fetch-retry.test.mjs` (Retry-Verhalten). `fetch.mjs` läuft nur bei direktem
+  Start, damit ein Import in Tests nicht alle 30 Quellen fetcht.
+
 ## Gemessene Plaene (Tier M)
 
 Wo kein Anbieter eine Quote veroeffentlicht und eine Drittmessung vorliegt, steht der
