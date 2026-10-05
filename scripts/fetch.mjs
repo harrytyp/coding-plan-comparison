@@ -14,7 +14,7 @@
  */
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { createHash } from "node:crypto";
 import { parseYaml } from "./yaml.mjs";
 
@@ -29,6 +29,38 @@ const DEFAULT_HEADERS = {
 
 function sha256(buf) {
   return createHash("sha256").update(buf).digest("hex");
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Wiederholversuche gegen transiente Fehler: Netzwerkfehler ("fetch failed"), Timeout,
+// HTTP 429 und 5xx. Ein einzelner Aussetzer einer Quelle darf den Tageslauf nicht killen.
+// 404/403 werden NICHT wiederholt (das ist eine dauerhafte Aussage der Quelle).
+export async function fetchWithRetry(url, makeOpts, { attempts = 3, delays = [2000, 8000], label = "", log = console.log } = {}) {
+  let lastErr;
+  for (let i = 1; i <= attempts; i++) {
+    if (i > 1) {
+      const wait = delays[Math.min(i - 2, delays.length - 1)];
+      log(`  ↻ ${label}: Versuch ${i}/${attempts} in ${wait / 1000}s (${lastErr?.message ?? ""})`);
+      await sleep(wait);
+    }
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 30000);
+    try {
+      const resp = await fetch(url, { ...makeOpts(), signal: controller.signal });
+      clearTimeout(timer);
+      if ((resp.status === 429 || resp.status >= 500) && i < attempts) {
+        lastErr = new Error(`HTTP ${resp.status}`);
+        continue;
+      }
+      return resp;
+    } catch (e) {
+      clearTimeout(timer);
+      lastErr = e;
+      if (i === attempts) throw e;
+    }
+  }
+  throw lastErr;
 }
 
 async function fetchSource(source) {
@@ -53,8 +85,6 @@ async function fetchSource(source) {
   }
 
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 30000);
     // Manche JSON-APIs (z.B. Kimi GoodsService) brauchen POST + leeren Body
     const method = source.method ?? "GET";
     const body = source.body ?? null;
@@ -66,14 +96,7 @@ async function fetchSource(source) {
       }
     }
     if (method === "POST") headers["Content-Type"] = "application/json; charset=utf-8";
-    const resp = await fetch(url, {
-      method,
-      body: body ? JSON.stringify(body) : undefined,
-      headers,
-      signal: controller.signal,
-      redirect: "follow",
-    });
-    clearTimeout(timer);
+    const resp = await fetchWithRetry(url, () => ({ method, body: body ? JSON.stringify(body) : undefined, headers, redirect: "follow" }), { label: id });
     let buf = Buffer.from(await resp.arrayBuffer());
 
     // Pagination: unterstützt page-basierte (pagination.has_more) und cursor-basierte (next_cursor) APIs
@@ -87,12 +110,7 @@ async function fetchSource(source) {
           for (let page = 2; page <= totalPages; page++) {
             const pageUrl = new URL(url);
             pageUrl.searchParams.set("page", String(page));
-            const pc = new AbortController();
-            const pt = setTimeout(() => pc.abort(), 30000);
-            const pr = await fetch(pageUrl.toString(), {
-              method, headers, signal: pc.signal, redirect: "follow",
-            });
-            clearTimeout(pt);
+            const pr = await fetchWithRetry(pageUrl.toString(), () => ({ method, headers, redirect: "follow" }), { label: `${id} page ${page}` });
             if (pr.ok) {
               const pb = await pr.json();
               allData.push(...(pb.data ?? []));
@@ -110,12 +128,7 @@ async function fetchSource(source) {
             const pageUrl = new URL(url);
             pageUrl.searchParams.set("cursor", cursor);
             pageUrl.searchParams.set("limit", "200");
-            const pc = new AbortController();
-            const pt = setTimeout(() => pc.abort(), 30000);
-            const pr = await fetch(pageUrl.toString(), {
-              method, headers, signal: pc.signal, redirect: "follow",
-            });
-            clearTimeout(pt);
+            const pr = await fetchWithRetry(pageUrl.toString(), () => ({ method, headers, redirect: "follow" }), { label: `${id} cursor ${cursor.slice(0, 12)}` });
             if (!pr.ok) {
               console.log(`  ⚠ pagination cursor ${cursor.slice(0, 12)}: HTTP ${pr.status} (abgebrochen)`);
               break;
@@ -221,13 +234,28 @@ async function main() {
   const targets = only ? sources.filter((s) => s.id === only) : sources;
   if (!targets.length) throw new Error(`Quelle '${only}' nicht gefunden`);
   const results = [];
+  const failed = [];
   for (const s of targets) {
-    results.push(await fetchSource(s));
+    try {
+      results.push(await fetchSource(s));
+    } catch (e) {
+      // Nicht sofort abbrechen: erst alle Quellen durchlaufen, dann alle Fehler melden.
+      // Sonst zeigt ein Lauf nur die erste kaputte Quelle und der Rest bleibt ungeprüft.
+      failed.push(e.message);
+    }
   }
   const ok = results.filter(Boolean); // optionale Quellen können null liefern
   const changed = ok.filter((r) => r.changed).length;
   console.log(`\nFertig: ${ok.length} Quellen, ${changed} geändert.`);
+  if (failed.length) {
+    console.log(`\n${failed.length} Quelle(n) fehlgeschlagen:`);
+    for (const f of failed) console.log(`  - ${f}`);
+    process.exit(1);
+  }
   if (changed) console.log("Nächster Schritt: node scripts/check.mjs (Diff-Report)");
 }
 
-main().catch((e) => { console.error(e); process.exit(1); });
+// Nur ausführen, wenn direkt gestartet (nicht beim Import, z.B. in Tests).
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((e) => { console.error(e); process.exit(1); });
+}
