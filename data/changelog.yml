@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-05"
+    commit: "3df6363"
+    text: "Restore snapshots from the last run, warn when a source goes stale"
+    textEn: "Restore snapshots from the last run, warn when a source goes stale"
+  - date: "2026-10-05"
     commit: "be08251"
     text: "Retry transient source failures so one flaky source cannot kill the daily run"
     textEn: "Retry transient source failures so one flaky source cannot kill the daily run"
@@ -399,7 +403,3 @@ entries:
     commit: "357fc50"
     text: "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)"
     textEn: "Qwen 3.8 Flash AI-Score Mapping (AA nennt es Flash Next)"
-  - date: "2026-08-31"
-    commit: "9e26c60"
-    text: "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
-    textEn: "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
