@@ -3,6 +3,10 @@
 # neueste zuerst. Die CI schreibt die Datei vor jedem Build neu.
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
+  - date: "2026-10-05"
+    commit: "be08251"
+    text: "Retry transient source failures so one flaky source cannot kill the daily run"
+    textEn: "Retry transient source failures so one flaky source cannot kill the daily run"
   - date: "2026-10-02"
     commit: "b753996"
     text: "Long-tail pages for plans and providers, plus a German entry page"
@@ -399,7 +403,3 @@ entries:
     commit: "9e26c60"
     text: "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
     textEn: "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
-  - date: "2026-08-31"
-    commit: "251a16e"
-    text: "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)"
-    textEn: "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)"
