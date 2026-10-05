@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-05T10:30:59.911Z",
+  "generatedAt": "2026-10-05T14:41:47.401Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -41824,7 +41824,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-05T10:30:59.488Z",
+    "fetchedAt": "2026-10-05T14:41:47.206Z",
     "count": 412,
     "scores": {
       "claude-opus-5-5": {
@@ -41938,10 +41938,10 @@
       "qwen3-8-27b": {
         "intelligence": 44.75
       },
-      "claude-opus-4-6": {
+      "gpt-5-5-pro": {
         "intelligence": 44.7
       },
-      "gpt-5-5-pro": {
+      "claude-opus-4-6": {
         "intelligence": 44.7
       },
       "gpt-5-6-luna": {
@@ -42310,10 +42310,10 @@
       "mimo-v2-5-pro": {
         "intelligence": 25.69
       },
-      "sarvam-105b": {
+      "claude-haiku-4-5-20251001": {
         "intelligence": 25.68
       },
-      "claude-haiku-4-5-20251001": {
+      "sarvam-105b": {
         "intelligence": 25.68
       },
       "nova-2-omni": {
@@ -42337,10 +42337,10 @@
       "qwen3-vl-235b-a22b-instruct": {
         "intelligence": 24.66
       },
-      "glm-4-5-air": {
+      "laguna-xs-2-1": {
         "intelligence": 24.35
       },
-      "laguna-xs-2-1": {
+      "glm-4-5-air": {
         "intelligence": 24.35
       },
       "claude-sonnet-4-20250514": {
@@ -42358,10 +42358,10 @@
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.92
       },
-      "qwen3-next-80b-a3b-thinking": {
+      "granite-4-2-30b": {
         "intelligence": 23.8
       },
-      "granite-4-2-30b": {
+      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.8
       },
       "grok-4-20-beta-0309-reasoning": {
@@ -42451,10 +42451,10 @@
       "granite-4-2-8b": {
         "intelligence": 19.66
       },
-      "grok-4-1-2025-11-17": {
+      "sarvam-30b": {
         "intelligence": 19.54
       },
-      "sarvam-30b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.54
       },
       "gpt-5-nano-2025-08-07": {
@@ -43230,6 +43230,12 @@
   "changelog": {
     "entries": [
       {
+        "date": "2026-10-05",
+        "commit": "be08251",
+        "text": "Retry transient source failures so one flaky source cannot kill the daily run",
+        "textEn": "Retry transient source failures so one flaky source cannot kill the daily run"
+      },
+      {
         "date": "2026-10-02",
         "commit": "b753996",
         "text": "Long-tail pages for plans and providers, plus a German entry page",
@@ -43822,12 +43828,6 @@
         "commit": "9e26c60",
         "text": "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse",
         "textEn": "Pareto-Richtungen (price=min), Currency im Plot, Impressum ohne Adresse"
-      },
-      {
-        "date": "2026-08-31",
-        "commit": "251a16e",
-        "text": "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)",
-        "textEn": "Rechtliche Angaben - Privacy, Imprint, Disclaimer (EN+DE)"
       }
     ]
   },

@@ -5,9 +5,16 @@
   <id>https://vibeplan.cc/</id>
   <link rel="self" href="https://vibeplan.cc/feed.xml"/>
   <link rel="alternate" href="https://vibeplan.cc/"/>
-  <updated>2026-10-02T00:00:00Z</updated>
+  <updated>2026-10-05T00:00:00Z</updated>
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
+  <entry>
+    <title>Retry transient source failures so one flaky source cannot kill the daily run</title>
+    <id>https://vibeplan.cc/#be08251</id>
+    <updated>2026-10-05T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/be08251"/>
+    <summary>Retry transient source failures so one flaky source cannot kill the daily run</summary>
+  </entry>
   <entry>
     <title>Long-tail pages for plans and providers, plus a German entry page</title>
     <id>https://vibeplan.cc/#b753996</id>
@@ -210,12 +217,5 @@
     <updated>2026-09-23T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0b62251"/>
     <summary>Rank Qwen Coding Plan Pro on its official request quota</summary>
-  </entry>
-  <entry>
-    <title>Close out the popular-plan sweep</title>
-    <id>https://vibeplan.cc/#b7d5549</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/b7d5549"/>
-    <summary>Close out the popular-plan sweep</summary>
   </entry>
 </feed>
