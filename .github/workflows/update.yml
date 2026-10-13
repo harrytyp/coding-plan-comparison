@@ -96,6 +96,9 @@ jobs:
             echo "Keine Änderungen — nichts zu committen"
           else
             git commit -m "chore(data): update coding-plan snapshots $(date -u +%Y-%m-%d)"
+            # Ein gleichzeitiger Push (z. B. von Hand) hat den Lauf schon einmal mit
+            # non-fast-forward abgebrochen. Erst integrieren, dann pushen.
+            git pull --rebase --autostash --quiet || true
             git push
           fi
 
