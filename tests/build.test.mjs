@@ -703,3 +703,15 @@ test("Plan-/Anbieterseiten und deutsche Seite: Kanonisch, Sprache, Sitemap", asy
   assert.ok(de.includes('hreflang="en"'), "hreflang auf die englische Fassung fehlt");
   assert.ok(sitemap.includes("https://vibeplan.cc/de/"), "deutsche Seite fehlt in der Sitemap");
 });
+
+test("Leerer Parse ueberschreibt keinen vorhandenen Stand (Quellen-Schutz)", async () => {
+  const { isEmptyParse } = await import("../scripts/parse-all.mjs");
+  // JS-Huelle ohne Daten: Listen leer -> gilt als leer
+  assert.equal(isEmptyParse({ plans: [], models: [] }), true, "leere Listen sind leer");
+  assert.equal(isEmptyParse({ freeTierMonthlyUsd: null, plans: [] }), true, "auch mit null-Feldern");
+  // Vorhandener Inhalt darf nie als leer gelten
+  assert.equal(isEmptyParse({ plans: [{ name: "Starter" }] }), false, "gefuellte Liste ist Inhalt");
+  // Reiner Metadaten-Parser (keine Listen, aber Felder) bleibt Inhalt
+  assert.equal(isEmptyParse({ quotaRefresh: "7d", rollover: false }), false, "Felder zaehlen als Inhalt");
+  assert.equal(isEmptyParse({}), true, "leeres Objekt ist leer");
+});

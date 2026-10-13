@@ -24,16 +24,44 @@ async function main() {
     if (!PARSERS[s.parser]) { report.push(`${s.id}: kein Parser (${s.parser})`); continue; }
     const ext = s.typ === "json-api" ? "json" : "html";
     const cachePath = join(CACHE_DIR, `${s.id}.${ext}`);
+    const outPath = join(PARSED_DIR, `${s.id}.json`);
     try {
       const raw = await readFile(cachePath, "utf8");
       const parsed = PARSERS[s.parser](raw);
-      await writeFile(join(PARSED_DIR, `${s.id}.json`), JSON.stringify(parsed, null, 2) + "\n");
+      // Leerer Parse bei vorher vorhandenem Inhalt: die Quelle hat ausgeliefert, aber ohne
+      // die erwarteten Daten (JS-Huelle, A/B-Variante, Layoutwechsel). Der alte Stand bleibt
+      // dann stehen, sonst faellt ein Tarif still aus dem Katalog und die Tests kippen.
+      // Gleiche Haltung wie fetch.mjs: Snapshot behalten und sichtbar warnen.
+      if (isEmptyParse(parsed) && !(await isEmptyFile(outPath))) {
+        report.push(`${s.id}: WARN leerer Parse (${Object.keys(parsed).join(", ")}), vorheriger Stand bleibt`);
+        continue;
+      }
+      await writeFile(outPath, JSON.stringify(parsed, null, 2) + "\n");
       report.push(`${s.id}: ✓ (${Object.keys(parsed).join(", ")})`);
     } catch (e) {
       report.push(`${s.id}: FEHLER ${e.message}`);
     }
   }
   console.log(report.join("\n"));
+}
+
+// "Leer" heisst: kein einziges Element in den Listen des Ergebnisses. Objekte mit Feldern
+// (z.B. Budget-Regeln) zaehlen weiter als Inhalt, sonst wuerde ein reiner Metadaten-Parser
+// als leer gelten.
+export function isEmptyParse(parsed) {
+  if (!parsed || typeof parsed !== "object") return true;
+  const counts = Object.values(parsed).filter((v) => Array.isArray(v)).map((v) => v.length);
+  if (!counts.length) return Object.keys(parsed).length === 0;
+  return counts.every((n) => n === 0);
+}
+
+export async function isEmptyFile(path) {
+  try {
+    const prev = JSON.parse(await readFile(path, "utf8"));
+    return isEmptyParse(prev);
+  } catch {
+    return true; // keine Vorlage: dann ist Schreiben besser als Nichtstun
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
