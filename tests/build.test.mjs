@@ -461,10 +461,12 @@ test("Amazon Q Developer: 50 agentische Requests im Free-Tier", async () => {
   assert.equal(plan.quotas[0].amount, 50);
   assert.equal(plan.modelRows.length, 1);
   assert.equal(plan.modelRows[0].requestsPerMonth, 50);
-  // Pro nennt keine Zahl und darf keine erfundene Rate bekommen
+  // Pro: die AWS-Service-Quota-Doku nennt 1.000 agentische Requests pro Nutzer und Monat.
   const pro = d.plans.find((p) => p.id === "amazon-q-pro");
   assert.ok(pro, "amazon-q-pro fehlt");
-  assert.equal((pro.modelRows ?? []).length, 0);
+  assert.equal(pro.quotas[0].amount, 1000);
+  assert.equal(pro.modelRows.length, 1);
+  assert.equal(pro.modelRows[0].requestsPerMonth, 1000);
 });
 
 test("JetBrains AI: 1 AI Credit = 1 USD Modellnutzung", async () => {

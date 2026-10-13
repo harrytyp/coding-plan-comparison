@@ -388,6 +388,9 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
       requestPlan: ov.requestPlan ?? null,
       dollarPlan: ov.dollarPlan ?? null,
       localModelPricing: ov.localModelPricing ?? null,
+      // Token-Kontingente aus overrides (z.B. Bolt.new: Tokens/Monat als 1 Credit
+      // pro Token) nutzen dieselbe Formel wie die geparsten Cerebras-Tarife.
+      providerCost: ov.providerCost ?? null,
       models: ov.measured && ov.localModelPricing ? ov.localModelPricing.map((m) => m.model) : [],
       // Keine feedModels für undisclosed, sonst entstehen erfundene modelStats
       feedModels: null,
