@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-13"
+    commit: "07a095c"
+    text: "Extend the catalog with Copilot, OpenDesign tiers, free tiers and provider seats"
+    textEn: "Extend the catalog with Copilot, OpenDesign tiers, free tiers and provider seats"
+  - date: "2026-10-13"
     commit: "c395cc9"
     text: "Add Warp, JetBrains, Trae, Zed, Replit, Kilo, v0, Bolt and Amazon Q as comparable plans"
     textEn: "Add Warp, JetBrains, Trae, Zed, Replit, Kilo, v0, Bolt and Amazon Q as comparable plans"
@@ -399,7 +403,3 @@ entries:
     commit: "6a46ca8"
     text: "Switch to AA V2 Free API + pagination + caching"
     textEn: "Switch to AA V2 Free API + pagination + caching"
-  - date: "2026-09-03"
-    commit: "d7aa2e8"
-    text: "Auto-fetch AA Intelligence Scores via API (19. Quelle)"
-    textEn: "Auto-fetch AA Intelligence Scores via API (19. Quelle)"
