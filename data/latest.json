@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T17:09:50.530Z",
+  "generatedAt": "2026-10-13T17:14:48.492Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -42750,7 +42750,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-13T17:09:50.307Z",
+    "fetchedAt": "2026-10-13T17:14:48.348Z",
     "count": 421,
     "scores": {
       "claude-opus-5-5": {
@@ -44186,6 +44186,12 @@
     "entries": [
       {
         "date": "2026-10-13",
+        "commit": "045795c",
+        "text": "Mirror the generated pages into the site root with the dot form",
+        "textEn": "Mirror the generated pages into the site root with the dot form"
+      },
+      {
+        "date": "2026-10-13",
         "commit": "a1e5a42",
         "text": "Committed page snapshot as last fallback for bot-blocked sources",
         "textEn": "Committed page snapshot as last fallback for bot-blocked sources"
@@ -44777,12 +44783,6 @@
         "commit": "53cb483",
         "text": "Add Muse Spark 1.3 AI score (61.5, AA Intelligence Index)",
         "textEn": "Add Muse Spark 1.3 AI score (61.5, AA Intelligence Index)"
-      },
-      {
-        "date": "2026-09-03",
-        "commit": "8bed1e1",
-        "text": "Kimi Moderato 9 (USD primary) + undisclosed modelStats=null guard",
-        "textEn": "Kimi Moderato 9 (USD primary) + undisclosed modelStats=null guard"
       }
     ]
   },
