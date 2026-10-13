@@ -133,9 +133,12 @@ jobs:
           # Statische Vergleichsseite (SEO-Einstieg) ins Root spiegeln
           cp -r public/coding-plan-comparison ./coding-plan-comparison
           # Plan-, Anbieter- und deutsche Seiten ebenfalls ins Root
-          cp -r public/plans ./plans
-          cp -r public/providers ./providers
-          cp -r public/de ./de
+          # ("./ziel/" mit Punkt: sonst landet der Ordner IN einem vorhandenen Ordner)
+          mkdir -p plans providers de
+          cp -r public/plans/. ./plans/
+          rm -rf ./plans/plans ./providers/providers 2>/dev/null || true
+          cp -r public/providers/. ./providers/
+          cp -r public/de/. ./de/
           # 404-Seite und IndexNow-Schluessel gehören ebenfalls ins Root
           cp public/404.html ./
           cp public/8f3c1a94d7b25e60af4183c95d7b2e10.txt ./
