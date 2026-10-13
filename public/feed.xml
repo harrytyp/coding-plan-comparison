@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Rebase before pushing the daily snapshot so concurrent pushes cannot break the run</title>
+    <id>https://vibeplan.cc/#5df9cad</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/5df9cad"/>
+    <summary>Rebase before pushing the daily snapshot so concurrent pushes cannot break the run</summary>
+  </entry>
+  <entry>
     <title>Extend the catalog with Copilot, OpenDesign tiers, free tiers and provider seats</title>
     <id>https://vibeplan.cc/#07a095c</id>
     <updated>2026-10-13T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0651b30"/>
     <summary>Chart and calculator honour the training exclusion</summary>
-  </entry>
-  <entry>
-    <title>Collapsible rail blocks, no jump on tap, correct chip close size</title>
-    <id>https://vibeplan.cc/#291970d</id>
-    <updated>2026-10-01T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/291970d"/>
-    <summary>Collapsible rail blocks, no jump on tap, correct chip close size</summary>
   </entry>
 </feed>

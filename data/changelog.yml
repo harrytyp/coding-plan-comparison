@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-13"
+    commit: "5df9cad"
+    text: "Rebase before pushing the daily snapshot so concurrent pushes cannot break the run"
+    textEn: "Rebase before pushing the daily snapshot so concurrent pushes cannot break the run"
+  - date: "2026-10-13"
     commit: "07a095c"
     text: "Extend the catalog with Copilot, OpenDesign tiers, free tiers and provider seats"
     textEn: "Extend the catalog with Copilot, OpenDesign tiers, free tiers and provider seats"
@@ -399,7 +403,3 @@ entries:
     commit: "77550bc"
     text: "Replace AA scores with LLM Stats (zeroeval.com)"
     textEn: "Replace AA scores with LLM Stats (zeroeval.com)"
-  - date: "2026-09-03"
-    commit: "6a46ca8"
-    text: "Switch to AA V2 Free API + pagination + caching"
-    textEn: "Switch to AA V2 Free API + pagination + caching"
