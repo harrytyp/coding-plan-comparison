@@ -24,7 +24,7 @@ sources:
     typ: html-docs
     parser: opendesignPricing
     provides: [plan_prices, plan_quotas, model_allowances, request_estimates]
-    note: "OpenDesign Design Plan (statisches Astro-HTML): Tarifkarten Go/Plus/Pro/Max mit Preis, Erstmonats- und Jahrespreis, Monats-Credits in USD; Modelltabelle mit Dollar-Obergrenze und 7-Tage-Request-Schaetzung je Modell und Tarif (data-usage-value). In den Katalog gebaut wird bisher nur Go (OD_BUILD_TIERS in build.mjs), die uebrigen Tarife liegen geparst bereit."
+    note: "OpenDesign Design Plan (statisches Astro-HTML): Tarifkarten Go/Plus/Pro/Max mit Preis, Erstmonats- und Jahrespreis, Monats-Credits in USD; Modelltabelle mit Dollar-Obergrenze und 7-Tage-Request-Schaetzung je Modell und Tarif (data-usage-value). Alle vier Tarife werden in den Katalog gebaut (OD_BUILD_TIERS in build.mjs)."
 
   - id: opendesign-credits
     url: "https://open-design.ai/model-credits/"

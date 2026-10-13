@@ -478,9 +478,11 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   // eigene API-Preisliste, deshalb keine erfundenen Preise.
   const od = parsed["opendesign-pricing"];
   const odCr = parsed["opendesign-credits"];
-  // Vorerst nur Go: die Karten fuer Pro/Max liefert die Seite mit anderem Markup,
-  // sie kommen erst dazu, wenn der Parser sie belegt (kein Raten).
-  const OD_BUILD_TIERS = ["go"];
+  // Alle vier Tarife sind inzwischen geparst (Preis, Monats-Credits, Erstmonats-
+  // und Jahrespreis, Modell-Obergrenzen je Tarif und die 7-Tage-Fenster der
+  // Credit-Seite), deshalb werden sie gebaut. Vorher stand hier nur Go, solange
+  // der Parser die uebrigen Karten nicht belegte (kein Raten).
+  const OD_BUILD_TIERS = ["go", "plus", "pro", "max"];
   for (const p of od?.plans ?? []) {
     if (!OD_BUILD_TIERS.includes(p.tier)) continue;
     const w = odCr?.windows?.[p.tier] ?? null;
