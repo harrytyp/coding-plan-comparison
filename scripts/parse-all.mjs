@@ -38,7 +38,20 @@ async function main() {
             report.push(`${s.id}: WARN frischer Snapshot ohne Daten, nutze letzten guten Stand`);
             parsed = prevParsed;
           }
-        } catch { /* kein Rueckfall vorhanden */ }
+        } catch { /* kein Rueckfall im Cache */ }
+        if (isEmptyParse(parsed)) {
+          // Letzter verifizierter Seitenstand im Repo (data/snapshots/): manche Quellen
+          // blocken die CI-IP und liefern eine Challenge-Seite. Der Stand ist datiert,
+          // die Warnung steht im Lauf, die Kopfzeile der Seite zeigt veraltete Quellen.
+          try {
+            const repoRaw = await readFile(join(ROOT, "data", "snapshots", `${s.id}.${ext}`), "utf8");
+            const repoParsed = PARSERS[s.parser](repoRaw);
+            if (!isEmptyParse(repoParsed)) {
+              report.push(`${s.id}: WARN Quelle liefert keine Daten (Bot-Schutz?), nutze Stand aus data/snapshots/`);
+              parsed = repoParsed;
+            }
+          } catch { /* kein Fallback im Repo */ }
+        }
       }
       // Leerer Parse bei vorher vorhandenem Inhalt: die Quelle hat ausgeliefert, aber ohne
       // die erwarteten Daten (JS-Huelle, A/B-Variante, Layoutwechsel). Der alte Stand bleibt

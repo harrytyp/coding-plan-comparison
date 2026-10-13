@@ -337,3 +337,12 @@ max. 120 Tage), heute kommt dazu. Idempotent, ein Tag wird nie doppelt geschrieb
 das Skript direkt nach dem Build auf und committet die Datei mit. Angezeigt wird der Verlauf auf
 den Planseiten (`scripts/pages.mjs`, Abschnitt "History", nur echte Aenderungen, neueste zuerst).
 Die App selbst bleibt unveraendert, der Verlauf liegt auf den statischen Seiten.
+
+## Rueckfall-Staende (data/snapshots/)
+
+Manche Quellen blocken die GitHub-Runner per IP und liefern eine Challenge-Seite statt der Daten
+(Freebuff). `scripts/fetch.mjs` legt deshalb vor jedem Ueberschreiben den vorherigen Stand als
+`cache/<id>.prev.<ext>` ab, und `scripts/parse-all.mjs` faellt in dieser Reihenfolge zurueck:
+frischer Snapshot, `.prev` aus dem Cache, dann `data/snapshots/<id>.<ext>` aus dem Repo.
+Jeder Rueckfall wird im Lauf sichtbar gewarnt. Die Repo-Staende dort sind datierte Kopien der
+zuletzt verifizierten Seite (Refresh: Datei ersetzen, wenn die Quelle wieder erreichbar ist).
