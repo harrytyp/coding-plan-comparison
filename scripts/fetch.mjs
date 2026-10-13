@@ -193,6 +193,13 @@ async function fetchSource(source) {
 
     if (resp.ok) {
       await mkdir(CACHE_DIR, { recursive: true });
+      // Vorherigen Stand als Rueckfall behalten: je nach IP oder Zeitpunkt liefern Quellen
+      // auch mal eine JS-Huelle statt der Daten. parse-all greift dann auf .prev zurueck,
+      // statt einen Tarif still aus dem Katalog fallen zu lassen.
+      try {
+        const before = await readFile(outPath);
+        if (sha256(before) !== sha256(buf)) await writeFile(join(CACHE_DIR, `${s.id}.prev.${ext}`), before);
+      } catch { /* erster Lauf fuer diese Quelle */ }
       await writeFile(outPath, buf);
       manifest.sources = manifest.sources ?? {};
       manifest.sources[id] = entry;

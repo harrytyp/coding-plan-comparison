@@ -27,7 +27,19 @@ async function main() {
     const outPath = join(PARSED_DIR, `${s.id}.json`);
     try {
       const raw = await readFile(cachePath, "utf8");
-      const parsed = PARSERS[s.parser](raw);
+      let parsed = PARSERS[s.parser](raw);
+      if (isEmptyParse(parsed)) {
+        // Frischer Snapshot ohne Daten (JS-Huelle, Bot-Schutz, Layoutwechsel):
+        // letzten guten Snapshot derselben Quelle nehmen, sichtbar warnen.
+        try {
+          const prevRaw = await readFile(join(CACHE_DIR, `${s.id}.prev.${ext}`), "utf8");
+          const prevParsed = PARSERS[s.parser](prevRaw);
+          if (!isEmptyParse(prevParsed)) {
+            report.push(`${s.id}: WARN frischer Snapshot ohne Daten, nutze letzten guten Stand`);
+            parsed = prevParsed;
+          }
+        } catch { /* kein Rueckfall vorhanden */ }
+      }
       // Leerer Parse bei vorher vorhandenem Inhalt: die Quelle hat ausgeliefert, aber ohne
       // die erwarteten Daten (JS-Huelle, A/B-Variante, Layoutwechsel). Der alte Stand bleibt
       // dann stehen, sonst faellt ein Tarif still aus dem Katalog und die Tests kippen.
