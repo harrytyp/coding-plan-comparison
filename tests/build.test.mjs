@@ -143,10 +143,17 @@ test("Dynamik: Daten kommen aus geparsten Quellen (nicht statisch)", async () =>
   assert.equal(std.limitedPrice, 18, "Qwen Standard $18");
   assert.equal(std.originalPrice, 25, "Qwen Standard Original $25");
 
-  // Kimi-Parser: CNY-Preise
+  // Kimi-Parser: CNY-Preise. Seit 12.10.2026 heissen die China-Tarife Go/Plus/Pro/Max,
+  // Andante/Moderato/Allegretto/Allegro sind laut Quelle nur noch Legacy fuer Bestandskunden.
   const kimi = JSON.parse(await readFile(join(parsedDir, "kimi-membership-pricing.json"), "utf8"));
-  const mod = kimi.plans.find((p) => p.name === "Moderato");
-  assert.equal(mod.priceCny, 99, "Kimi Moderato ¥99");
+  const plus = kimi.plans.find((p) => p.name === "Plus");
+  assert.ok(plus, "Kimi Plus muss geparst sein (neuer Tarifname)");
+  assert.equal(plus.priceCny, 99, "Kimi Plus ¥99 (Anker fuer den internationalen $19-Tarif)");
+  assert.equal(plus.priceCnyYear, 948, "Jahrespreis aus derselben Tabellenzeile");
+  assert.equal(plus.priceCnyYearlyMonthly, 79, "Monatsaequivalent bei Jahreszahlung");
+  for (const name of ["Go", "Pro", "Max"]) {
+    assert.ok(kimi.plans.some((p) => p.name === name), `Kimi ${name} im Parser`);
+  }
 });
 
 test("undisclosed Pläne haben keine erfundenen Zahlen", async () => {

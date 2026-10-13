@@ -427,14 +427,32 @@ export function parseOllama(html) {
 }
 
 // ---------- Parser: Kimi Membership Pricing (HTML) ----------
+// kimi.com hat die China-Tarife am 12.10.2026 umbenannt: Go ¥49, Plus ¥99, Pro ¥199, Max ¥699
+// (monatlich), dazu Jahrespreise und Monatsaequivalent. Die alten Namen (Andante, Moderato,
+// Allegretto, Allegro) sind laut Seite nur noch Legacy fuer Bestandskunden und werden nicht
+// mehr verkauft. Die Preise werden ueber die Preisidentitaet den internationalen Tarifen
+// zugeordnet (siehe kimiTierMap in build.mjs), der ¥-Anker haelt die Request-Schaetzung stabil.
 export function parseKimiPricing(html) {
   const text = htmlToText(html);
   const out = { plans: [] };
-  // "Andante Everyday use ¥49/month" etc.
-  const re = /(Andante|Moderato|Allegretto|Allegro|Vivace)\s*[^¥]*?¥([\d.]+)\/month/g;
-  let m;
+  const names = "Go|Plus|Pro|Max|Andante|Moderato|Allegretto|Allegro|Vivace";
+  // Neue Tabellenform: "Plus ¥99/month ¥948/year ¥79/month"
+  const reTable = new RegExp(`\\b(${names})\\s*¥([\\d.]+)\\/month\\s*¥([\\d.,]+)\\/year\\s*¥([\\d.]+)\\/month`, "g");
+  // Legacy-Form (Altbestand): "Andante Everyday use ¥49/month"
+  const reFlat = new RegExp(`\\b(${names})\\s*[^¥]{0,40}?¥([\\d.]+)\\/month`, "g");
   const seen = new Set();
-  while ((m = re.exec(text))) {
+  let m;
+  while ((m = reTable.exec(text))) {
+    if (seen.has(m[1])) continue;
+    seen.add(m[1]);
+    out.plans.push({
+      name: m[1],
+      priceCny: parseFloat(m[2]),
+      priceCnyYear: parseFloat(m[3].replace(/,/g, "")),
+      priceCnyYearlyMonthly: parseFloat(m[4]),
+    });
+  }
+  while ((m = reFlat.exec(text))) {
     if (seen.has(m[1])) continue;
     seen.add(m[1]);
     out.plans.push({ name: m[1], priceCny: parseFloat(m[2]) });
