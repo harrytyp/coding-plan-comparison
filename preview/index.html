@@ -1347,6 +1347,61 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 .rail select, .dash-target-input, #budget-slider, #ai-slider { min-height: 44px; }
 .cmdk-trigger { min-width: 44px; }
 
+/* 9) Feedback: Footer-Button + Panel. Panel liegt auf Body-Ebene, weil main
+   view-transition-name traegt und sonst Containing Block fuer position:fixed waere. */
+#open-feedback {
+  cursor: pointer; margin: 0; padding: 10px 2px; background: none; border: 0;
+  font: inherit; color: var(--text-3); letter-spacing: inherit; text-transform: inherit;
+}
+#open-feedback:hover { color: var(--accent); }
+.fbk-overlay {
+  position: fixed; inset: 0; z-index: 95; display: flex; align-items: center; justify-content: center;
+  padding: 16px; background: rgba(3, 6, 10, .62);
+}
+.fbk-overlay[hidden] { display: none; }
+.fbk {
+  display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 560px;
+  max-height: calc(100vh - 32px); overflow: auto; padding: 18px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow-3);
+}
+.fbk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.fbk-head h2 { margin: 0; font-family: var(--font-display); font-size: var(--fs-lg); letter-spacing: -.01em; }
+.fbk-close {
+  display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto;
+  min-width: 44px; min-height: 44px; padding: 0; cursor: pointer; font-size: 18px; line-height: 1;
+  color: var(--text-2); background: none; border: 1px solid var(--line); border-radius: var(--radius-sm);
+}
+.fbk-close:hover { color: var(--accent); border-color: var(--accent); }
+.fbk-lead { margin: 0; font-size: var(--fs-sm); color: var(--text-2); }
+.fbk textarea, .fbk input[type="text"] {
+  width: 100%; padding: 10px 12px; font: inherit; font-size: var(--fs-base); color: var(--text);
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-sm);
+}
+.fbk textarea { min-height: 132px; resize: vertical; }
+.fbk textarea:focus-visible, .fbk input[type="text"]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent);
+}
+/* Honeypot: fuer Bots sichtbar, fuer Menschen nicht (kein display:none, sonst ueberspringen es manche) */
+.fbk-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fbk-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.fbk-status { font-size: var(--fs-xs); color: var(--text-3); }
+.fbk-status[data-state="ok"] { color: var(--accent-2); }
+.fbk-status[data-state="err"] { color: var(--warn); }
+.fbk-fallbacks { display: flex; flex-wrap: wrap; gap: 8px; }
+.fbk-fallbacks[hidden] { display: none; }
+.fbk-note { margin: 0; font-size: var(--fs-xs); color: var(--text-3); }
+.btn:disabled { opacity: .55; cursor: progress; }
+body.fbk-open { overflow: hidden; }
+@media (max-width: 520px) {
+  .fbk { padding: 14px; }
+  .fbk-foot .btn, .fbk-fallbacks .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .fbk { animation: fbk-in 180ms cubic-bezier(.22, .61, .36, 1) both; }
+  @keyframes fbk-in { from { opacity: 0; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: none; } }
+}
+
 /* 7) Filter als linkes Drawer (mobil/tablet) statt Blatt von unten */
 @media (max-width: 900px) {
   /* Karten kompakter, damit 50 Zeilen nicht 20 Bildschirme werden */
@@ -1380,7 +1435,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         "publisher": { "@type": "Organization", "name": "vibeplan.cc", "url": "https://vibeplan.cc/", "logo": "https://vibeplan.cc/og-image.png" },
         "keywords": ["AI coding plan comparison", "coding plan comparison", "tokens per dollar", "LLM subscription pricing", "coding agent quotas"],
         "isAccessibleForFree": true,
-        "dateModified": "2026-10-02",
+        "dateModified": "2026-10-07",
         "distribution": [{
           "@type": "DataDownload",
           "encodingFormat": "application/json",
@@ -1922,6 +1977,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
         <a href="https://github.com/harrytyp/coding-plan-comparison" target="_blank" data-i18n="foot.repo">GitHub</a>
         <a href="https://github.com/harrytyp/coding-plan-comparison/blob/main/sources.yml" target="_blank" data-i18n="foot.sources">sources.yml</a>
         <a href="https://llm-stats.com" target="_blank" data-i18n="foot.llmstats">AI scores: llm-stats.com</a>
+        <button class="linklike" id="open-feedback" type="button" data-i18n="foot.feedback">Feedback</button>
         <button class="linklike" id="open-legal" type="button" data-i18n="foot.legalTitle">Legal</button>
       </span>
     </div>
@@ -1953,6 +2009,29 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   </div>
 </div>
 
+<!-- ===== FEEDBACK (Body-Ebene, gleiche Begruendung wie oben) ===== -->
+<div class="fbk-overlay" id="fbk-overlay" hidden>
+  <div class="fbk" role="dialog" aria-modal="true" aria-labelledby="fbk-title">
+    <div class="fbk-head">
+      <h2 id="fbk-title" data-i18n="fbk.title">Send feedback</h2>
+      <button class="fbk-close" id="fbk-close" type="button" aria-label="Close" data-i18n-aria="fbk.close" data-i18n-title="fbk.close">×</button>
+    </div>
+    <p class="fbk-lead" data-i18n="fbk.lead"></p>
+    <textarea id="fbk-text" maxlength="4000" required data-i18n-aria="fbk.ph" data-i18n-ph="fbk.ph"></textarea>
+    <input id="fbk-contact" type="text" maxlength="200" autocomplete="email" data-i18n-aria="fbk.contactPh" data-i18n-ph="fbk.contactPh">
+    <input id="fbk-hp" class="fbk-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="fbk-foot">
+      <button class="btn btn-primary" id="fbk-send" type="button" data-i18n="fbk.send">Send</button>
+      <span class="fbk-status" id="fbk-status" role="status" aria-live="polite"></span>
+    </div>
+    <div class="fbk-fallbacks" id="fbk-fallbacks" hidden>
+      <a class="btn" id="fbk-mail" href="#" data-i18n="fbk.mail">Open in mail app</a>
+      <button class="btn" id="fbk-copy" type="button" data-i18n="fbk.copy">Copy text</button>
+    </div>
+    <p class="fbk-note" data-i18n="fbk.privacy"></p>
+  </div>
+</div>
+
 <!-- Fixe Overlays gehoeren auf Body-Ebene: #main traegt view-transition-name und ist
      damit Containing Block fuer position:fixed, sonst landet das Sheet unter dem Fold. -->
 <!-- ===== MOBILE BOTTOM-SHEET: Filter & Columns konsolidiert ===== -->
@@ -1962,7 +2041,7 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="../vendor/d3-zoom.min.js"></script>
-<script src="../app.js?v=f79bb2e"></script>
+<script src="../app.js?v=069bb50"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,
@@ -2122,6 +2201,92 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
   else setTimeout(boot, 80);
   // app.js fills the KPIs after its data fetch resolves
   window.addEventListener('load', function () { setTimeout(function () { try { countUp(); } catch (e) {} }, 250); });
+})();
+
+/* =========================================================================
+   Feedback: Footer-Button, Panel, POST an den eigenen Endpunkt /api/feedback.
+   Faellt der Endpunkt aus (kein Worker, offline), bietet das Panel Mail/Kopie
+   an. Kein Framework, keine Verbindung zu Dritten (gleiche Domain).
+   ========================================================================= */
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var overlay = $('#fbk-overlay'), opener = $('#open-feedback');
+  if (!overlay || !opener) return;
+  var text = $('#fbk-text'), contact = $('#fbk-contact'), hp = $('#fbk-hp');
+  var send = $('#fbk-send'), status = $('#fbk-status'), fallbacks = $('#fbk-fallbacks');
+  var mailLink = $('#fbk-mail'), copyBtn = $('#fbk-copy'), closeBtn = $('#fbk-close');
+  var MAIL_TO = 'feedback@vibeplan.cc';
+  // Statusmeldungen sind Zustand, nicht Markup: kurze eigene Tabelle statt I18N-Zugriff.
+  var WORD = {
+    en: { sending: 'Sending…', ok: 'Thanks, it arrived.', err: 'Not sent. Retry, or use the mail link.',
+          empty: 'Please write something first.', copied: 'Copied.' },
+    de: { sending: 'Wird gesendet…', ok: 'Danke, ist angekommen.', err: 'Nicht gesendet. Nochmal versuchen oder den Mail-Link nutzen.',
+          empty: 'Bitte erst etwas schreiben.', copied: 'Kopiert.' }
+  };
+  function lang() { return document.documentElement.lang === 'de' ? 'de' : 'en'; }
+  function say(kind, state) {
+    status.textContent = kind ? WORD[lang()][kind] : '';
+    if (state) status.dataset.state = state; else status.removeAttribute('data-state');
+  }
+  function context() {
+    var view = $('.view.active'), active = $('#filter-active');
+    return {
+      url: location.href, lang: lang(), theme: document.documentElement.getAttribute('data-theme') || '',
+      view: view ? view.id : '',
+      filters: active ? (active.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 300) : '',
+      visible: $$('#plans-tbody tr.row-main').length, width: window.innerWidth, at: new Date().toISOString()
+    };
+  }
+  function asText() {
+    var c = context();
+    return [(text.value || '').trim(), '', '---',
+      'contact: ' + ((contact.value || '').trim() || '-'),
+      'page: ' + c.url, 'view: ' + c.view, 'lang: ' + c.lang].join('\n');
+  }
+  function openPanel() {
+    overlay.hidden = false;
+    document.body.classList.add('fbk-open');
+    fallbacks.hidden = true; say('');
+    try { text.focus(); } catch (e) {}
+  }
+  function closePanel() {
+    overlay.hidden = true;
+    document.body.classList.remove('fbk-open');
+    try { opener.focus(); } catch (e) {}
+  }
+  function offerFallback() {
+    fallbacks.hidden = false;
+    mailLink.href = 'mailto:' + MAIL_TO + '?subject=' + encodeURIComponent('vibeplan.cc feedback')
+      + '&body=' + encodeURIComponent(asText());
+  }
+  opener.addEventListener('click', openPanel);
+  if (closeBtn) closeBtn.addEventListener('click', closePanel);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closePanel(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) closePanel(); });
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    var t = asText(), done = function () { say('copied', 'ok'); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, done);
+    else done();
+  });
+  send.addEventListener('click', function () {
+    var msg = (text.value || '').trim();
+    if (msg.length < 3) { say('empty', 'err'); text.focus(); return; }
+    if (hp && hp.value) { say('ok', 'ok'); return; }  // Honeypot: Bots bekommen keinen Hinweis
+    send.disabled = true; say('sending');
+    fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ message: msg.slice(0, 4000), contact: (contact.value || '').trim().slice(0, 200), context: context() })
+    }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      say('ok', 'ok'); text.value = ''; contact.value = '';
+      window.setTimeout(closePanel, 1400);
+    }).catch(function () {
+      say('err', 'err'); offerFallback();
+    }).then(function () { send.disabled = false; });
+  });
 })();
 </script>
 </body>

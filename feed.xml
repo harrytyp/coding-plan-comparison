@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Add Warp, JetBrains, Trae, Zed, Replit, Kilo, v0, Bolt and Amazon Q as comparable plans</title>
+    <id>https://vibeplan.cc/#c395cc9</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/c395cc9"/>
+    <summary>Add Warp, JetBrains, Trae, Zed, Replit, Kilo, v0, Bolt and Amazon Q as comparable plans</summary>
+  </entry>
+  <entry>
     <title>Mirror the generated pages into the site root with the dot form</title>
     <id>https://vibeplan.cc/#045795c</id>
     <updated>2026-10-13T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-01T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0367fc9"/>
     <summary>Left filter drawer up to 900px, inline filters only on wide screens</summary>
-  </entry>
-  <entry>
-    <title>One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview</title>
-    <id>https://vibeplan.cc/#089de01</id>
-    <updated>2026-10-01T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/089de01"/>
-    <summary>One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview</summary>
   </entry>
 </feed>
