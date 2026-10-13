@@ -5,9 +5,44 @@
   <id>https://vibeplan.cc/</id>
   <link rel="self" href="https://vibeplan.cc/feed.xml"/>
   <link rel="alternate" href="https://vibeplan.cc/"/>
-  <updated>2026-10-05T00:00:00Z</updated>
+  <updated>2026-10-13T00:00:00Z</updated>
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
+  <entry>
+    <title>Committed page snapshot as last fallback for bot-blocked sources</title>
+    <id>https://vibeplan.cc/#a1e5a42</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/a1e5a42"/>
+    <summary>Committed page snapshot as last fallback for bot-blocked sources</summary>
+  </entry>
+  <entry>
+    <title>Fall back to the last good snapshot when a source serves a JS shell</title>
+    <id>https://vibeplan.cc/#f099503</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/f099503"/>
+    <summary>Fall back to the last good snapshot when a source serves a JS shell</summary>
+  </entry>
+  <entry>
+    <title>Plan history from the daily snapshots, shown on the plan pages</title>
+    <id>https://vibeplan.cc/#61ea3d2</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/61ea3d2"/>
+    <summary>Plan history from the daily snapshots, shown on the plan pages</summary>
+  </entry>
+  <entry>
+    <title>Keep the previous parse when a source delivers no data</title>
+    <id>https://vibeplan.cc/#6757b2f</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6757b2f"/>
+    <summary>Keep the previous parse when a source delivers no data</summary>
+  </entry>
+  <entry>
+    <title>Follow Kimi's renamed China tiers so the CNY anchor survives</title>
+    <id>https://vibeplan.cc/#28805e7</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/28805e7"/>
+    <summary>Follow Kimi's renamed China tiers so the CNY anchor survives</summary>
+  </entry>
   <entry>
     <title>Record snapshot cache, retry and staleness handling</title>
     <id>https://vibeplan.cc/#3b226c9</id>
@@ -182,40 +217,5 @@
     <updated>2026-10-01T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ca5f725"/>
     <summary>Single header, chart-first overview, compact table, left filter drawer</summary>
-  </entry>
-  <entry>
-    <title>Anti-slop pass on the site text (EN + DE)</title>
-    <id>https://vibeplan.cc/#1de3625</id>
-    <updated>2026-10-01T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/1de3625"/>
-    <summary>Anti-slop pass on the site text (EN + DE)</summary>
-  </entry>
-  <entry>
-    <title>Currency-aware prices, live-refresh dashboard detail, bilingual changelog</title>
-    <id>https://vibeplan.cc/#83048e5</id>
-    <updated>2026-10-01T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/83048e5"/>
-    <summary>Currency-aware prices, live-refresh dashboard detail, bilingual changelog</summary>
-  </entry>
-  <entry>
-    <title>Create CNAME</title>
-    <id>https://vibeplan.cc/#0f37c90</id>
-    <updated>2026-10-01T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0f37c90"/>
-    <summary>Create CNAME</summary>
-  </entry>
-  <entry>
-    <title>Follow source changes for the Freebuff free tier and OpenCode Go</title>
-    <id>https://vibeplan.cc/#30f88a9</id>
-    <updated>2026-09-28T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/30f88a9"/>
-    <summary>Follow source changes for the Freebuff free tier and OpenCode Go</summary>
-  </entry>
-  <entry>
-    <title>Show daily quotas in the included-volume column</title>
-    <id>https://vibeplan.cc/#0cdbc0e</id>
-    <updated>2026-09-23T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0cdbc0e"/>
-    <summary>Show daily quotas in the included-volume column</summary>
   </entry>
 </feed>
