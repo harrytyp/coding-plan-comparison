@@ -66,6 +66,9 @@ jobs:
       - name: Statische Vergleichsseite erzeugen
         run: node scripts/landing.mjs
 
+      - name: Verlauf aus der Git-Historie fortschreiben
+        run: node scripts/history.mjs
+
       - name: Plan- und Anbieterseiten, deutsche Einstiegsseite
         run: node scripts/pages.mjs
 
@@ -87,7 +90,7 @@ jobs:
         run: |
           git config user.name "coding-plan-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add public/data/latest.json data/changelog.yml public/sitemap.xml public/feed.xml public/coding-plan-comparison public/plans public/providers public/de
+          git add public/data/latest.json data/changelog.yml data/history.jsonl public/sitemap.xml public/feed.xml public/coding-plan-comparison public/plans public/providers public/de
           git add public/8f3c1a94d7b25e60af4183c95d7b2e10.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "Keine Änderungen — nichts zu committen"

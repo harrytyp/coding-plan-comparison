@@ -715,3 +715,23 @@ test("Leerer Parse ueberschreibt keinen vorhandenen Stand (Quellen-Schutz)", asy
   assert.equal(isEmptyParse({ quotaRefresh: "7d", rollover: false }), false, "Felder zaehlen als Inhalt");
   assert.equal(isEmptyParse({}), true, "leeres Objekt ist leer");
 });
+
+test("Verlauf (data/history.jsonl): aufsteigende Tage, keine Doppelten, Planseite zeigt ihn", async () => {
+  const raw = await readFile(join(ROOT, "data/history.jsonl"), "utf8");
+  const rows = raw.split("\n").filter(Boolean).map((l) => JSON.parse(l));
+  assert.ok(rows.length > 1, "Verlauf muss mehr als einen Tag haben");
+  const dates = rows.map((r) => r.date);
+  assert.deepEqual(dates, [...dates].sort(), "Tage aufsteigend sortiert");
+  assert.equal(new Set(dates).size, dates.length, "kein Tag doppelt");
+  for (const r of rows) {
+    assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(r.date), `Datum kaputt: ${r.date}`);
+    assert.ok(Object.keys(r.plans).length > 0, `keine Tarife am ${r.date}`);
+    for (const [id, v] of Object.entries(r.plans)) {
+      assert.ok(v.p === null || Number.isFinite(v.p), `${id} Preis am ${r.date}`);
+      assert.ok(v.t === null || Number.isFinite(v.t), `${id} Rate am ${r.date}`);
+    }
+  }
+  const html = await readFile(join(ROOT, "public/plans/opencode-go/index.html"), "utf8");
+  assert.ok(html.includes("<h2>History</h2>"), "Planseite zeigt den Verlauf");
+  assert.ok(/\d{4}-\d{2}-\d{2}/.test(html.slice(html.indexOf("<h2>History</h2>"))), "Verlauf mit Datum");
+});

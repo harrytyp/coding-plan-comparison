@@ -240,6 +240,29 @@ GitHub Pages ohne CDN auskommt; die CI kopiert `public/vendor/` mit ins Root (`v
   `npx esbuild entry.js --bundle --format=iife --global-name=d3zoom --minify --outfile=public/vendor/d3-zoom.min.js`
   mit `entry.js`: `export * from "d3-zoom"; export { select, pointer } from "d3-selection";`
 
+## Feedback (Button -> eigener Endpunkt)
+
+Footer-Button `#open-feedback` oeffnet das Panel `#fbk-overlay` (Body-Ebene wie Palette
+und Toast, weil `main` `view-transition-name` traegt). Es schickt JSON an `/api/feedback`
+auf **derselben Domain**: kein Drittanbieter, kein Cookie, kein CAPTCHA, nur ein Honeypot
+plus 6 Meldungen/Stunde/IP im Worker. Faellt der Endpunkt aus, bietet das Panel
+Mail- und Kopier-Rueckfall auf `feedback@vibeplan.cc` an.
+
+- **Endpunkt:** `worker/feedback-worker.js` als Worker-Route der Zone, KV `vibeplan-feedback`
+  (ein Eintrag pro Meldung, IP nur als gesalzener Hash), `send_email`-Binding schickt die
+  Meldung an die in Email Routing **verifizierte** Zieladresse (kostenlos fuer verifizierte
+  Empfaenger). `GET /api/feedback?key=…[&since=<ms>][&limit=n]` liefert JSON.
+- **Deploy:** `node scripts/deploy-feedback-worker.mjs` (Trockenlauf) bzw. `--apply`
+  `[--email-routing] [--verify]`. Token braucht Workers Scripts:Edit, Workers KV
+  Storage:Edit, Zone DNS:Edit, Email Routing Rules/Addresses:Edit. Der Leseschluessel
+  landet als `VIBEPLAN_FEEDBACK_KEY` in `/opt/data/.env` und wird nie ausgegeben.
+- **Abholen (Hermes):** `/opt/data/scripts/vibeplan-feedback.py` holt neue Meldungen
+  (`--all` zeigt die letzten), Zustand in `/opt/data/data/vibeplan-feedback/`; als
+  Cron-Job gedacht, der ohne neue Meldungen schweigt.
+- **Tests:** `tests/feedback.test.mjs` (Handler inkl. Honeypot, Rate-Limit, Mail-Ausfall,
+  Leseschluessel; dazu Markup/i18n-Verdrahtung). Markup-Aenderungen in `public/index.html`
+  brauchen weiterhin `node scripts/build-preview.mjs`; die Root-Spiegelung macht die CI.
+
 ## Workflow
 `.github/workflows/update.yml`: täglich 03:17 UTC — fetch → parse → build → test → commit bei
 Änderung → Review-Issue wenn SPA-Preise (GLM/MiniMax) sich ändern → overrides.yml manuell pflegen.
@@ -304,3 +327,13 @@ zweites Design gibt. Die Hauptseite (`public/index.html`, `public/app.js`) wird 
 NICHT angefasst, die Default-Ansicht der App bleibt unveraendert. Reihenfolge in der CI:
 build -> landing -> pages -> seo (die Sitemap sammelt die erzeugten Verzeichnisse ein). Die Root-
 Spiegelung kopiert `plans/`, `providers/` und `de/` mit.
+
+## Verlauf (data/history.jsonl)
+
+`scripts/history.mjs` schreibt eine Zeile pro Tag (`date` + je Tarif `p` = gezahlter Monatspreis,
+`t` = Median Tokens pro Dollar, `d` = Offenlegung). Quelle ist die Git-Historie: fehlende Tage
+werden aus den Commits nachgetragen, die `public/data/latest.json` angefasst haben (Backfill,
+max. 120 Tage), heute kommt dazu. Idempotent, ein Tag wird nie doppelt geschrieben. Die CI ruft
+das Skript direkt nach dem Build auf und committet die Datei mit. Angezeigt wird der Verlauf auf
+den Planseiten (`scripts/pages.mjs`, Abschnitt "History", nur echte Aenderungen, neueste zuerst).
+Die App selbst bleibt unveraendert, der Verlauf liegt auf den statischen Seiten.

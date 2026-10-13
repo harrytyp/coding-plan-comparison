@@ -47,6 +47,27 @@ let sources = [];
 try { sources = (parseYaml(readFileSync(join(ROOT, "sources.yml"), "utf8")).sources ?? []); } catch { /* optional */ }
 const srcById = new Map(sources.map((s) => [s.id, s]));
 
+// Verlauf: eine Zeile pro Tag, gebaut von scripts/history.mjs aus der Git-Historie
+let history = [];
+try {
+  history = readFileSync(join(ROOT, "data", "history.jsonl"), "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l));
+} catch { /* ohne Verlauf fehlt nur dieser Abschnitt */ }
+const historyById = new Map();
+for (const rec of history) {
+  for (const [id, v] of Object.entries(rec.plans ?? {})) {
+    if (!historyById.has(id)) historyById.set(id, []);
+    historyById.get(id).push({ date: rec.date, p: v.p, t: v.t, d: v.d });
+  }
+}
+const fmtDelta = (now, before, unit) => {
+  if (before == null || now == null || before === now) return "";
+  const rel = before === 0 ? null : (now - before) / before;
+  const abs = big(Math.abs(now - before));
+  if (rel == null) return ` (was ${big(before)})`;
+  const pct = `${rel > 0 ? "+" : "−"}${Math.abs(rel * 100).toFixed(1)}%`;
+  return ` (${pct}, ${rel > 0 ? "+" : "−"}${abs} ${unit})`;
+};
+
 // Kennzahl wie auf der Vergleichsseite und in der App: Median der Tokens pro Dollar
 const excluded = (p) => p.tag === "no API" || p.tag === "CLI only";
 const measured = [];
@@ -114,6 +135,25 @@ for (const { p, paid, rows, tokensPerUsd } of measured) {
   const siblings = measured.filter((m) => m.p.provider === p.provider && m.p.id !== p.id);
   const quotaRows = (p.quotas ?? []).map((q) => `      <tr><td>${esc(q.label)}</td><td class="num">${q.amount != null ? esc(String(q.amount)) : "not published"}${q.unit ? ` ${esc(q.unit)}` : ""}</td><td>${esc(q.window ?? "")}</td><td>${esc(q.refresh ?? "")}</td><td>${esc(q.disclosure ?? "")}</td></tr>`).join("\n");
   const modelRows = [...rows].sort((a, b) => (b.requestsPerMonth ?? 0) - (a.requestsPerMonth ?? 0)).slice(0, 30).map((r) => `      <tr><td>${esc(r.model)}</td><td class="num">${big(r.rawTokensPerMonth)}</td><td class="num">${usd(r.costPerRequest)}</td><td class="num">${num(r.requestsPerMonth)}</td><td>${r.capUsd != null ? `${usd(r.capUsd)} cap` : ""}${r.privacy?.retentionDays === true ? " zero retention" : ""}${r.privacy?.training === true ? " trains on data" : ""}</td></tr>`).join("\n");
+  // Verlauf: nur Tage, an denen sich Preis, Rate oder Offenlegung geaendert haben
+  const hist = historyById.get(p.id) ?? [];
+  const changes = [];
+  for (let i = 0; i < hist.length; i++) {
+    const prev = i > 0 ? hist[i - 1] : null;
+    if (!prev || prev.p !== hist[i].p || prev.t !== hist[i].t || prev.d !== hist[i].d) changes.push({ ...hist[i], prev });
+  }
+  const histRows = changes.slice(-12).reverse().map((h) => `      <tr><td>${esc(h.date)}</td><td class="num">${usd(h.p)}${h.prev ? fmtDelta(h.p, h.prev.p, "USD") : ""}</td><td class="num">${h.t ? big(h.t) + fmtDelta(h.t, h.prev?.t, "tokens") : ""}</td><td>${esc(h.d)}</td></tr>`).join("\n");
+  const histSection = hist.length > 1
+    ? `<h2>History</h2>
+<p class="note">Tracked since ${esc(hist[0].date)}: ${changes.length === 1 ? "1 recorded change" : `${changes.length} recorded changes`} in price, tokens per dollar or disclosure, newest first. Rebuilt from the daily snapshots in the repository history, not maintained by hand.</p>
+<table>
+  <thead><tr><th>Date</th><th>Price</th><th>Tokens per dollar</th><th>Disclosure</th></tr></thead>
+  <tbody>
+${histRows}
+  </tbody>
+</table>`
+    : "";
+
   const title = `${p.name} pricing and limits${p.provider ? ` (${p.provider})` : ""}: what $1 buys`;
   const desc = `${p.name} costs ${usd(paid)} per month with fees included. Published quotas, per-model rates and ${big(tokensPerUsd)} tokens per dollar, from official sources, rebuilt daily.`;
   const body = `<nav class="note"><a href="/coding-plan-comparison/">All plans</a> · <a href="/providers/${provSlug}/">${esc(p.provider)}</a> · <a href="/de/">Deutsch</a></nav>
@@ -134,6 +174,7 @@ ${modelRows ? `<table>\n    <thead><tr><th>Model</th><th>Tokens per month</th><t
 <h2>Where these numbers come from</h2>
 ${sourceList(p.sourceIds, p.verifiedAt)}
 ${siblings.length ? `<h2>Other ${esc(p.provider)} plans</h2>\n<ul>${siblings.slice(0, 12).map((m) => `<li><a href="${SITE}/plans/${slug(m.p.id)}/">${esc(m.p.name)}</a> (${usd(m.paid)}, ${big(m.tokensPerUsd)} tokens per dollar)</li>`).join("")}</ul>` : ""}
+${histSection}
 <h2>Compare</h2>
 <p>Rankings, chart and filters for all ${stats.totalPlans ?? plans.length} tracked plans: <a href="${ALL_PLANS}">AI coding plan comparison</a>. German entry page: <a href="/de/">KI-Coding-Abos im Vergleich</a>.</p>`;
   const ld = {
