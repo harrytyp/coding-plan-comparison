@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Mirror the generated pages into the site root with the dot form</title>
+    <id>https://vibeplan.cc/#045795c</id>
+    <updated>2026-10-13T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/045795c"/>
+    <summary>Mirror the generated pages into the site root with the dot form</summary>
+  </entry>
+  <entry>
     <title>Committed page snapshot as last fallback for bot-blocked sources</title>
     <id>https://vibeplan.cc/#a1e5a42</id>
     <updated>2026-10-13T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-01T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/089de01"/>
     <summary>One-row header, bigger tabs gap, vibeplan.cc brand, filters on the overview</summary>
-  </entry>
-  <entry>
-    <title>Single header, chart-first overview, compact table, left filter drawer</title>
-    <id>https://vibeplan.cc/#ca5f725</id>
-    <updated>2026-10-01T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ca5f725"/>
-    <summary>Single header, chart-first overview, compact table, left filter drawer</summary>
   </entry>
 </feed>
