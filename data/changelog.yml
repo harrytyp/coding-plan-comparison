@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-13"
+    commit: "c395cc9"
+    text: "Add Warp, JetBrains, Trae, Zed, Replit, Kilo, v0, Bolt and Amazon Q as comparable plans"
+    textEn: "Add Warp, JetBrains, Trae, Zed, Replit, Kilo, v0, Bolt and Amazon Q as comparable plans"
+  - date: "2026-10-13"
     commit: "045795c"
     text: "Mirror the generated pages into the site root with the dot form"
     textEn: "Mirror the generated pages into the site root with the dot form"
@@ -399,7 +403,3 @@ entries:
     commit: "d7aa2e8"
     text: "Auto-fetch AA Intelligence Scores via API (19. Quelle)"
     textEn: "Auto-fetch AA Intelligence Scores via API (19. Quelle)"
-  - date: "2026-09-03"
-    commit: "53cb483"
-    text: "Add Muse Spark 1.3 AI score (61.5, AA Intelligence Index)"
-    textEn: "Add Muse Spark 1.3 AI score (61.5, AA Intelligence Index)"
