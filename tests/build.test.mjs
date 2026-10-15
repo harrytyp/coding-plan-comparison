@@ -111,14 +111,19 @@ test("Pattern-Unifizierung: geteilte Familien nutzen dasselbe Pattern (ai-10-usd
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const oc = d.plans.find((p) => p.id === "opencode-go");
   const goat = d.plans.find((p) => p.id === "command-code-goat");
-  // DeepSeek V4 Flash existiert in beiden Feeds; beide müssen das OC-Pattern (410/71300/310) nutzen
-  const ocRow = oc.modelRows.find((r) => r.family === "deepseek v4 flash");
-  const ccRow = goat.modelRows.find((r) => r.family === "deepseek v4 flash");
-  assert.ok(ocRow && ccRow, "DeepSeek V4 Flash muss in beiden Plänen sein");
-  assert.deepEqual(ocRow.patternUsed, ccRow.patternUsed,
-    "geteilte Familie muss identisches Pattern nutzen (OC-Pattern als kanonisch)");
-  assert.deepEqual(ocRow.patternUsed, { input: 410, cachedRead: 71300, output: 310 },
-    "DeepSeek V4 Flash Pattern = OC-Feed (410/71300/310)");
+  // Kein Modellname hart kodieren: die Feeds benennen Versionen um
+  // (DeepSeek V4 Flash -> V4.1 Flash) und rissen damit den Tageslauf mit,
+  // obwohl sich am Pattern nichts geaendert hatte. Geprueft wird die Regel,
+  // nicht das Beispiel: jede Familie, die in beiden Plaenen steht, muss
+  // dasselbe Pattern nutzen.
+  const ocRows = new Map(oc.modelRows.map((r) => [r.family, r]));
+  const ccRows = new Map(goat.modelRows.map((r) => [r.family, r]));
+  const shared = [...ocRows.keys()].filter((f) => ccRows.has(f));
+  assert.ok(shared.length > 0, "mindestens eine geteilte Modellfamilie erwartet");
+  for (const family of shared) {
+    assert.deepEqual(ccRows.get(family).patternUsed, ocRows.get(family).patternUsed,
+      `geteilte Familie "${family}" muss identisches Pattern nutzen (OC-Pattern als kanonisch)`);
+  }
 });
 
 test("Dynamik: Daten kommen aus geparsten Quellen (nicht statisch)", async () => {
