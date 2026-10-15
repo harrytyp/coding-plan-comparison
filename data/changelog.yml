@@ -3,6 +3,10 @@
 # neueste zuerst. Die CI schreibt die Datei vor jedem Build neu.
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
+  - date: "2026-10-15"
+    commit: "795c228"
+    text: "Also guard the root-mirror push against concurrent pushes"
+    textEn: "Also guard the root-mirror push against concurrent pushes"
   - date: "2026-10-13"
     commit: "5df9cad"
     text: "Rebase before pushing the daily snapshot so concurrent pushes cannot break the run"
@@ -399,7 +403,3 @@ entries:
     commit: "869fe4a"
     text: "TTL-Guard + LLM Stats in FAQ + Footer"
     textEn: "TTL-Guard + LLM Stats in FAQ + Footer"
-  - date: "2026-09-03"
-    commit: "77550bc"
-    text: "Replace AA scores with LLM Stats (zeroeval.com)"
-    textEn: "Replace AA scores with LLM Stats (zeroeval.com)"

@@ -5,9 +5,16 @@
   <id>https://vibeplan.cc/</id>
   <link rel="self" href="https://vibeplan.cc/feed.xml"/>
   <link rel="alternate" href="https://vibeplan.cc/"/>
-  <updated>2026-10-13T00:00:00Z</updated>
+  <updated>2026-10-15T00:00:00Z</updated>
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
+  <entry>
+    <title>Also guard the root-mirror push against concurrent pushes</title>
+    <id>https://vibeplan.cc/#795c228</id>
+    <updated>2026-10-15T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/795c228"/>
+    <summary>Also guard the root-mirror push against concurrent pushes</summary>
+  </entry>
   <entry>
     <title>Rebase before pushing the daily snapshot so concurrent pushes cannot break the run</title>
     <id>https://vibeplan.cc/#5df9cad</id>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6c2a383"/>
     <summary>ZDR only when zero-day retention is confirmed per model/provider</summary>
-  </entry>
-  <entry>
-    <title>Chart and calculator honour the training exclusion</title>
-    <id>https://vibeplan.cc/#0651b30</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0651b30"/>
-    <summary>Chart and calculator honour the training exclusion</summary>
   </entry>
 </feed>
