@@ -160,5 +160,14 @@ jobs:
             echo "Website unverändert"
           else
             git commit -m "chore(web): sync website files to root for legacy Pages $(date -u +%Y-%m-%d)"
-            git push
+            # Zweiter Push des Laufs: derselbe Schutz wie im Daten-Commit. Ein
+            # gleichzeitiger Push (Hand oder paralleler Lauf) brach den Lauf sonst
+            # mit non-fast-forward ab, der Spiegel-Schritt blieb unerledigt.
+            for i in 1 2 3; do
+              if git pull --rebase --autostash --quiet && git push; then
+                break
+              fi
+              echo "Push-Versuch $i fehlgeschlagen — neuer Versuch"
+              sleep 5
+            done
           fi
