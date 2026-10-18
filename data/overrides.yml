@@ -1774,3 +1774,336 @@ overrides:
     lastVerified: 2026-10-13
     note: "Roomote Cloud for 11-50 users is $249 per month ($499 for 51-100 users), all features included, self-hosted or managed; the same price applies to the self-hosted licence. The customer provides the inference key (BYOK), so no model quota is bundled and no rate per dollar is derivable. Source: roocode.com/pricing (read 2026-10-13)."
     noteDe: "Roomote Cloud fuer 11-50 Nutzer kostet 249 $ pro Monat (499 $ fuer 51-100 Nutzer), alle Funktionen inklusive, selbst gehostet oder verwaltet; derselbe Preis gilt fuer die Self-Hosted-Lizenz. Den Inferenz-Key stellt der Kunde (BYOK), es ist daher kein Modell-Kontingent gebuendelt und keine Rate pro Dollar ableitbar. Quelle: roocode.com/pricing (gelesen 2026-10-13)."
+
+  # Standard Compute: fester Monatspreis, der volle Preis wird zum Dollar-Budget,
+  # keine 5h- oder Wochen-Fenster. Das Budget wird zu den Preisen belastet, die der
+  # Anbieter pro Modell veroeffentlicht (Input, Cached Input, Output pro 1M).
+  # Quellen: standardcompute.com/llm-api-pricing + standardcompute.com/standard-compute-facts
+  - id: standardcompute-starter
+    provider: standardcompute
+    name: Standard Compute Starter
+    price: { monthlyUsd: 19, paidPrice: 19, advertisedPrice: 19, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 20
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 20, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $19/month buys a $20 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Starter runs one agent at a time and includes one API key. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 19 $ pro Monat ergeben ein monatliches Compute-Budget von 20 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Starter laeuft mit einem Agenten gleichzeitig und enthaelt einen API-Key. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
+
+  - id: standardcompute-economy
+    provider: standardcompute
+    name: Standard Compute Economy
+    price: { monthlyUsd: 39, paidPrice: 39, advertisedPrice: 39, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 41
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 41, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $39/month buys a $41 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Economy adds parallel agents and a shared execution pool, and is the first tier that can turn on Pay as you go. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 39 $ pro Monat ergeben ein monatliches Compute-Budget von 41 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Economy ergaenzt parallele Agenten und einen gemeinsamen Ausfuehrungspool und ist der erste Tarif, der Pay as you go zuschalten kann. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
+
+  - id: standardcompute-standard
+    provider: standardcompute
+    name: Standard Compute Standard
+    price: { monthlyUsd: 89, paidPrice: 89, advertisedPrice: 89, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 95
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 95, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $89/month buys a $95 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Standard adds priority scheduling and a higher-capacity pool. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 89 $ pro Monat ergeben ein monatliches Compute-Budget von 95 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Standard ergaenzt Priority-Scheduling und einen groesseren Pool. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
+
+  - id: standardcompute-pro
+    provider: standardcompute
+    name: Standard Compute Pro
+    price: { monthlyUsd: 249, paidPrice: 249, advertisedPrice: 249, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 269
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 269, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $249/month buys a $269 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Pro adds the highest priority scheduling. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 249 $ pro Monat ergeben ein monatliches Compute-Budget von 269 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Pro ergaenzt das Scheduling mit der hoechsten Prioritaet. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
+
+  - id: standardcompute-proplus
+    provider: standardcompute
+    name: Standard Compute Pro Plus
+    price: { monthlyUsd: 499, paidPrice: 499, advertisedPrice: 499, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 549
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 549, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $499/month buys a $549 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Pro Plus adds unlimited API keys. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 499 $ pro Monat ergeben ein monatliches Compute-Budget von 549 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Pro Plus ergaenzt unbegrenzte API-Keys. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
+
+  - id: standardcompute-growth
+    provider: standardcompute
+    name: Standard Compute Growth
+    price: { monthlyUsd: 999, paidPrice: 999, advertisedPrice: 999, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 1119
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 1119, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $999/month buys a $1119 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Growth adds more capacity for parallel agents. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 999 $ pro Monat ergeben ein monatliches Compute-Budget von 1119 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Growth ergaenzt mehr Kapazitaet fuer parallele Agenten. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
+
+  - id: standardcompute-scale
+    provider: standardcompute
+    name: Standard Compute Scale
+    price: { monthlyUsd: 2499, paidPrice: 2499, advertisedPrice: 2499, currency: USD, billingNote: "flat; the full price becomes the monthly compute budget; individual plans start with 1.5x the compute in the first month" }
+    meter: dollar_usage
+    disclosure: disclosed
+    tag: "usage in USD"
+    tagDe: "Nutzung in USD"
+    dollarPlan:
+      usd: 2849
+      source: "standardcompute.com/llm-api-pricing"
+      note: "Per-model input, cached input and output rates in USD per million tokens, published by Standard Compute."
+      models:
+      - { model: "GPT-6 Astra", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "GPT-5.6 Sol", input: 4.0, cachedRead: 0.4, output: 20.0 }
+      - { model: "GPT-5.6 Terra", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "GPT-5.6 Luna", input: 0.2, cachedRead: 0.02, output: 1.2 }
+      - { model: "GPT-6 Luna", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Claude Fable 5.1", input: 10.0, cachedRead: 0.25, output: 50.0 }
+      - { model: "Claude Fable 5", input: 10.0, cachedRead: 1.0, output: 50.0 }
+      - { model: "Claude Opus 5", input: 5.0, cachedRead: 0.5, output: 25.0 }
+      - { model: "Claude Opus 5.5", input: 4.0, cachedRead: 0.2, output: 20.0 }
+      - { model: "Claude Sonnet 5.5", input: 2.0, cachedRead: 0.1, output: 10.0 }
+      - { model: "Claude Sonnet 5", input: 2.0, cachedRead: 0.2, output: 10.0 }
+      - { model: "Claude Haiku 5.5", input: 0.1, cachedRead: 0.01, output: 0.5 }
+      - { model: "Gemini 3.1 Pro Preview", input: 2.0, cachedRead: 0.2, output: 12.0 }
+      - { model: "Gemini 3.8 Flash", input: 1.5, cachedRead: 0.15, output: 7.5 }
+      - { model: "Gemini 2.5 Pro", input: 1.25, cachedRead: 0.125, output: 10.0 }
+      - { model: "Gemini 3.5 Flash-Lite", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Gemini 2.5 Flash", input: 0.3, cachedRead: 0.03, output: 2.5 }
+      - { model: "Kimi K3", input: 3.0, cachedRead: 0.3, output: 15.0 }
+      - { model: "GLM 5.3", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.2", input: 1.4, cachedRead: 0.26, output: 4.4 }
+      - { model: "GLM 5.3 Flash", input: 0.15, cachedRead: 0.03, output: 0.5 }
+      - { model: "DeepSeek V4 Pro 0813", input: 1.32, cachedRead: 0.044, output: 3.96 }
+      - { model: "DeepSeek V4.1 Flash", input: 0.3, cachedRead: 0.006, output: 1.2 }
+      - { model: "Mistral Large 4", input: 1.36, cachedRead: 0.14, output: 4.18 }
+      - { model: "Grok 4.3", input: 1.25, cachedRead: 0.2, output: 2.5 }
+      - { model: "MiniMax M3", input: 0.3, cachedRead: 0.06, output: 1.2 }
+      - { model: "MiMo V2.6 Pro", input: 0.435, cachedRead: 0.0036, output: 0.87 }
+      - { model: "MiMo V2.6 Flash", input: 0.14, cachedRead: 0.0028, output: 0.28 }
+    quotas:
+      - { label: "Monthly", unit: "USD usage", amount: 2849, window: month, refresh: monthly, disclosure: exact }
+    lastVerified: 2026-10-18
+    note: "Official: $2499/month buys a $2849 monthly compute budget, drawn down at the cost the provider reports for each request, so the rates are the per-model ones Standard Compute publishes. There are no 5-hour or weekly windows inside the month; requests run at full speed until the budget is spent, then return 402 until renewal, with no overage unless Pay as you go is enabled. Cached input is billed at the published cached-input rate. No cache write rate is published, so the build falls back to the input rate for writes; if a write actually costs more than fresh input, the requests per dollar shown here are an upper bound rather than a floor. Four of the 32 published models have no cached input rate (Qwen, marked Not listed), so they carry no row and the median is computed over 28 models; Standard Compute documents gateway cache breakpoints for Claude models. Scale adds dedicated throughput and priority support with a direct line to engineers. Every plan reaches every model, so tiers differ in budget, parallelism and scheduling, not model access. Sources: standardcompute.com/llm-api-pricing and standardcompute.com/standard-compute-facts (read 2026-10-18)."
+    noteDe: "Offiziell: 2499 $ pro Monat ergeben ein monatliches Compute-Budget von 2849 $, abgebucht zu den Kosten, die der Anbieter pro Request meldet, also zu den veroeffentlichten Preisen pro Modell. Innerhalb des Monats gibt es keine 5-Stunden- oder Wochen-Fenster; Requests laufen mit voller Geschwindigkeit bis das Budget aufgebraucht ist und antworten dann mit 402 bis zur Erneuerung, ohne Aufpreis, ausser man schaltet Pay as you go selbst ein. Cache-Lesen wird zum veroeffentlichten Cache-Read-Preis abgerechnet. Einen Preis fuers Schreiben in den Cache veroeffentlicht der Anbieter nicht, der Build setzt dafuer den Input-Preis an; kostet ein Write real mehr als frischer Input, sind die hier gezeigten Requests pro Dollar eine Obergrenze und keine Untergrenze. Vier der 32 veroeffentlichten Modelle haben keinen Cache-Read-Preis (Qwen, als Not listed markiert), sie bekommen daher keine Zeile, der Median wird ueber 28 Modelle gebildet; Gateway-Cache-Breakpoints dokumentiert Standard Compute fuer Claude-Modelle. Scale ergaenzt dedizierten Durchsatz und Priority-Support mit direkter Leitung zu den Entwicklern. Jeder Tarif erreicht jedes Modell, die Tarife unterscheiden sich also in Budget, Parallelitaet und Scheduling, nicht im Modellzugang. Quellen: standardcompute.com/llm-api-pricing und standardcompute.com/standard-compute-facts (gelesen 2026-10-18)."
