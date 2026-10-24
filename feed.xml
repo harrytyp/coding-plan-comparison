@@ -5,9 +5,16 @@
   <id>https://vibeplan.cc/</id>
   <link rel="self" href="https://vibeplan.cc/feed.xml"/>
   <link rel="alternate" href="https://vibeplan.cc/"/>
-  <updated>2026-10-18T00:00:00Z</updated>
+  <updated>2026-10-24T00:00:00Z</updated>
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
+  <entry>
+    <title>GLM-Koeffizienten aus der Tabelle statt aus Section-Text</title>
+    <id>https://vibeplan.cc/#0cc0aea</id>
+    <updated>2026-10-24T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0cc0aea"/>
+    <summary>GLM-Koeffizienten aus der Tabelle statt aus Section-Text</summary>
+  </entry>
   <entry>
     <title>Add the seven Standard Compute plans</title>
     <id>https://vibeplan.cc/#bf25193</id>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/80619e1"/>
     <summary>Stop rebuilding the chart on every mouse move</summary>
-  </entry>
-  <entry>
-    <title>Move the status figures into the header</title>
-    <id>https://vibeplan.cc/#082b0b8</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/082b0b8"/>
-    <summary>Move the status figures into the header</summary>
   </entry>
 </feed>
