@@ -21,17 +21,8 @@ export function htmlToText(html) {
     .trim();
 }
 
-function findSection(text, startKw, endKws = []) {
-  // Letztes Vorkommen (TOC-Erwähnungen überspringen, echte Section ist meist die letzte)
-  const start = text.lastIndexOf(startKw);
-  if (start < 0) return null;
-  let end = text.length;
-  for (const kw of endKws) {
-    const idx = text.indexOf(kw, start + startKw.length);
-    if (idx >= 0 && idx < end) end = idx;
-  }
-  return text.slice(start, end);
-}
+// (Section-Slicing gibt es hier bewusst nicht mehr: Mintlify-Seiten rendern ihre
+// Inhalte zusätzlich als JS-Payload, dadurch wandern Abschnittsgrenzen.)
 
 // ---------- Parser: fx-rates (Währungskurse, JSON) ----------
 // Extrahiert NUR die relevanten Währungen → stabiler, kleiner Output
@@ -145,18 +136,34 @@ export function parseGlmOverview(html) {
   }
 
   // Formel: "模型消耗积分数=（输入 Token × Input 抵扣系数 + 缓存命中 Token × Cached Input 抵扣系数 + 输出 Token × Output 抵扣系数） / 10000"
-  const formulaSection = findSection(text, "积分抵扣计算方式", ["可用额度参考"]);
-  if (formulaSection) {
-    // Tabelle: "模型 GLM-5.3 6.9 1.7 24" und "GLM-5.3-Flash（含视觉理解 MCP） 2.3 0.56 8"
-    const modelRe = /GLM-([\d.]+(?:-Flash)?)[^]*?([\d.]+)\s+([\d.]+)\s+([\d.]+)/g;
-    let m;
-    while ((m = modelRe.exec(formulaSection))) {
-      out.models.push({ model: `GLM-${m[1]}`, input: parseFloat(m[2]), cachedRead: parseFloat(m[3]), output: parseFloat(m[4]) });
-    }
-    // MCP: "MCP 工具 联网搜索 -, 1.2"
-    const mcpRe = /MCP\s*工具\s*联网搜索\s*-\s*-\s*([\d.]+)/;
-    const mcpM = mcpRe.exec(formulaSection);
-    if (mcpM) out.mcpPerCall = parseFloat(mcpM[1]);
+  //
+  // Koeffizienten-Tabelle direkt aus den <tr>/<td> lesen, NICHT aus dem
+  // Section-Text: die Mintlify-Seite rendert ihre Inhalte inzwischen auch als
+  // JS-Payload, dadurch rutschte "积分抵扣计算方式" ans Dokumentende und die
+  // Section-Grenze schnitt die Tabelle weg (models=[] ab 2026-10-20).
+  const tblRowRe = /<tr[^>]*>([\s\S]*?)<\/tr>/g;
+  let tr;
+  const seenModels = new Set();
+  while ((tr = tblRowRe.exec(html))) {
+    const cells = [...tr[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/g)]
+      .map((c) => htmlToText(c[1]));
+    const nameIdx = cells.findIndex((c) => /^GLM-\d/.test(c));
+    if (nameIdx < 0) continue;
+    const name = /^GLM-\d[\d.]*(?:-Flash)?/.exec(cells[nameIdx])[0];
+    const nums = cells.slice(nameIdx + 1).map((c) => /^\d+(?:\.\d+)?$/.exec(c)?.[0]).filter(Boolean).map(Number);
+    if (nums.length < 3 || seenModels.has(name)) continue;
+    seenModels.add(name);
+    out.models.push({ model: name, input: nums[0], cachedRead: nums[1], output: nums[2] });
+  }
+
+  // MCP: Zeile "MCP 工具 | 联网搜索 | — | — | 1.2" (Gedankenstrich = kein Input-Preis)
+  const mcpRow = /<tr[^>]*>([\s\S]*?联网搜索[\s\S]*?)<\/tr>/.exec(html);
+  if (mcpRow) {
+    const nums = [...mcpRow[1].matchAll(/<td[^>]*>(\d+(?:\.\d+)?)<\/td>/g)].map((m) => parseFloat(m[1]));
+    if (nums.length) out.mcpPerCall = nums[nums.length - 1];
+  }
+
+  if (out.models.length) {
     out.formula = "模型消耗积分数=（输入 Token × Input 抵扣系数 + 缓存命中 Token × Cached Input 抵扣系数 + 输出 Token × Output 抵扣系数）/ 10000";
   }
 

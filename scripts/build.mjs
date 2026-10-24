@@ -1001,6 +1001,9 @@ function modelsForPlan(plan, feeds) {
           providerCost: {
             formula: plan.providerCost.formula ?? "(input×a + cachedRead×b + output×c)/10000",
             creditsPerRequest: creditCostPerReq,
+            // Pattern, mit dem die Formel tatsaechlich gerechnet hat (Modell-Pattern
+            // aus dem Feed, nicht das vereinheitlichte Familien-Pattern der Zeile).
+            pattern,
             offPeakDiscount: plan.providerCost.offPeakDiscount ?? null,
           },
         });
@@ -1212,6 +1215,8 @@ async function main() {
         costPerRequest: cost,
         patternUsed: pattern,
         creditsPerRequest: m.providerCost?.creditsPerRequest ?? null,
+        // Pattern der Credit-Formel (kann vom vereinheitlichten patternUsed abweichen)
+        providerPattern: m.providerCost?.pattern ?? null,
         unit,
         requestsPerMonth: monthlyRequests,
         requestsRawInWindow: requests,

@@ -61,23 +61,25 @@ test("command-code-goat ist vergleichbar und pro-$ normalisiert", async () => {
 
 test("GLM nutzt Anbieter-Credit-Formel (beide Modelle, offiziell)", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
+  const src = JSON.parse(await readFile(join(ROOT, "parsed/glm-coding-overview.json"), "utf8"));
   const pro = d.plans.find((p) => p.id === "glm-pro");
   assert.ok(pro, "glm-pro muss existieren");
-  // Nach Fenster-Korrektur: nur Wochen-Rows (5h-Caps raus)
-  assert.ok(pro.modelRows.length >= 2, "GLM-5.3 + GLM-5.3-Flash (Wochen-Basis)");
-  const glm53 = pro.modelRows.find((r) => r.model === "GLM-5.3");
-  const flash = pro.modelRows.find((r) => r.model === "GLM-5.3-Flash");
-  assert.ok(glm53 && flash, "beide GLM-Modelle müssen present sein");
-  // Formel GLM-5.3: (in×6.9 + cached×1.7 + out×24)/10000, Pattern aus Feed (GLM-5.3: 1000/55000/200)
-  const expected53 = (1000 * 6.9 + 55000 * 1.7 + 200 * 24) / 10000;
-  assert.ok(Math.abs(glm53.creditsPerRequest - expected53) < 0.001,
-    `GLM-5.3: (in×6.9 + cached×1.7 + out×24)/10000 = ${expected53}`);
-  // Formel GLM-5.3-Flash: (in×2.3 + cached×0.56 + out×8)/10000
-  const expectedFlash = (1000 * 2.3 + 55000 * 0.56 + 200 * 8) / 10000;
-  assert.ok(Math.abs(flash.creditsPerRequest - expectedFlash) < 0.001,
-    `GLM-5.3-Flash: (in×2.3 + cached×0.56 + out×8)/10000 = ${expectedFlash}`);
-  // Wochen-Fenster: weekly×4.33→monthly
-  assert.equal(glm53.window, "week");
+  // Keine Modellnamen hart kodieren: Zhipu benennt Versionen um, und die alte
+  // Section-Suche lieferte ab 2026-10-20 gar keine Modelle mehr (CI rot, ohne
+  // dass sich an der Formel etwas geaendert hatte). Geprueft wird die Regel:
+  // je Modell aus den Docs eine Zeile mit (Tokens x Koeffizient)/10000.
+  assert.ok(src.models.length >= 1, "GLM-Docs muessen Modelle liefern");
+  assert.equal(pro.modelRows.length, src.models.length, "je Doku-Modell genau eine Zeile");
+  for (const m of src.models) {
+    const row = pro.modelRows.find((r) => r.model === m.model);
+    assert.ok(row, `${m.model} fehlt in glm-pro`);
+    assert.equal(row.window, "week", `${m.model}: Wochen-Fenster (5h-Caps sind Durchsatz, keine Monatsmenge)`);
+    const p = row.providerPattern ?? row.patternUsed;
+    const expected = (p.input * m.input + p.cachedRead * m.cachedRead + p.output * m.output) / 10000;
+    assert.ok(Math.abs(row.creditsPerRequest - expected) < 0.001,
+      `${m.model}: (in×${m.input} + cached×${m.cachedRead} + out×${m.output})/10000 = ${expected}`);
+  }
+  const glm53 = pro.modelRows[0];
   assert.ok(Math.abs(glm53.requestsPerMonth - glm53.requestsRawInWindow * 4.33) < 1,
     "weekly → ×4.33 monthly");
 });
@@ -135,11 +137,15 @@ test("Dynamik: Daten kommen aus geparsten Quellen (nicht statisch)", async () =>
   assert.ok(files.includes("glm-coding-overview.json"), "GLM-Docs müssen geparst sein");
   assert.ok(files.includes("kimi-membership-pricing.json"), "Kimi-Pricing muss geparst sein");
 
-  // GLM-Parser: Quoten + Formel + beide Modelle
+  // GLM-Parser: Quoten + Formel + Modelle (Namen kommen aus der Quelle, nicht aus dem Test)
   const glm = JSON.parse(await readFile(join(parsedDir, "glm-coding-overview.json"), "utf8"));
   assert.equal(glm.quotas.length, 3, "GLM Lite/Pro/Max Quoten");
-  assert.ok(glm.models.some((m) => m.model === "GLM-5.3" && m.input === 6.9), "GLM-5.3 Koeffizienten");
-  assert.ok(glm.models.some((m) => m.model === "GLM-5.3-Flash" && m.input === 2.3), "GLM-5.3-Flash Koeffizienten");
+  assert.ok(glm.models.length >= 1, "GLM-Koeffizienten aus der Docs-Tabelle");
+  for (const m of glm.models) {
+    assert.ok(m.input > 0 && m.cachedRead > 0 && m.output > 0,
+      `${m.model}: Input/Cached/Output-Koeffizient positiv (${m.input}/${m.cachedRead}/${m.output})`);
+  }
+  assert.ok(glm.mcpPerCall > 0, "MCP-Preis pro Aufruf aus derselben Tabelle");
   assert.equal(glm.offPeakDiscount, 0.5, "Off-Peak 50%");
 
   // Qwen-Parser: Limited-Time-Preise
@@ -353,9 +359,13 @@ test("GitHub Copilot: AI-Credit-Kontingent und Modellpreise aus der Doku, Rate n
     assert.equal(plan.quotas[0].amount, +(p.totalCredits * 0.01).toFixed(2), `${p.name}: Credit-Volumen in Dollar`);
   }
   // Anker: Copilot Pro hat 15 $ Volumen, die Rate folgt Volumen / Kosten pro Request.
+  // Kein Modellname hart kodieren: GitHub rotiert die Modellliste (GPT-5.4 ist
+  // aus der Doku verschwunden), geprueft wird die Regel an einem Modell, das die
+  // Doku aktuell fuehrt.
   const pro = byId.get("copilot-pro");
-  const row = pro.modelRows.find((r) => /GPT-5\.4$/.test(r.model));
-  assert.ok(row, "GPT-5.4-Zeile vorhanden");
+  const anchorModel = models.models[0].model;
+  const row = pro.modelRows.find((r) => r.model === anchorModel);
+  assert.ok(row, `Anker-Modell "${anchorModel}" fehlt in den Zeilen von copilot-pro`);
   assert.ok(Math.abs(row.requestsPerMonth - 15 / row.costPerRequest) < 1, "Requests = Volumen / Kosten pro Request");
   assert.ok(Math.abs(row.normalizedPer1 - row.requestsPerMonth / 10) < 0.01, "Rate pro $ = Requests / Preis");
 });
@@ -536,6 +546,7 @@ test("Qwen Coding Plan Pro: offizielle Request-Quote als Rate", async () => {
 test("Copilot Business und Enterprise: Credits pro Nutzer, Rate nachgerechnet", async () => {
   const d = JSON.parse(await readFile(join(ROOT, "public/data/latest.json"), "utf8"));
   const src = JSON.parse(await readFile(join(ROOT, "parsed/copilot-plans.json"), "utf8"));
+  const modelSrc = JSON.parse(await readFile(join(ROOT, "parsed/copilot-models.json"), "utf8"));
   assert.equal(src.plans.length, 2, "Business und Enterprise aus der Docs-Tabelle");
   for (const p of src.plans) {
     const plan = d.plans.find((x) => x.id === `copilot-${p.name.toLowerCase()}`);
@@ -543,7 +554,11 @@ test("Copilot Business und Enterprise: Credits pro Nutzer, Rate nachgerechnet", 
     assert.equal(plan.price.monthlyUsd, p.priceUsd, `${p.name}: Preis pro Sitz`);
     // Credits x 0,01 $ = Nutzungsvolumen in Dollar
     assert.equal(plan.quotas[0].amount, +(p.creditsPerUser * 0.01).toFixed(2), `${p.name}: Dollar-Volumen`);
-    assert.ok(plan.modelRows.length >= 30, `${p.name}: Modellpreise aus der Copilot-Doku`);
+    // Erwartung kommt aus der geparsten Docs-Tabelle, nicht aus einer festen Zahl:
+    // GitHub pflegt die Modellliste, eine Schwelle wie ">= 30" veraltet still.
+    assert.equal(plan.modelRows.length, modelSrc.models.length,
+      `${p.name}: jede Doku-Modellzeile muss im Plan stehen (${modelSrc.models.length})`);
+    assert.ok(plan.modelRows.length > 15, `${p.name}: Modellpreise aus der Copilot-Doku`);
     const row = plan.modelRows[0];
     assert.ok(Math.abs(row.requestsPerMonth - plan.quotas[0].amount / row.costPerRequest) < 1, `${p.name}: Requests = Volumen / Kosten pro Request`);
   }
