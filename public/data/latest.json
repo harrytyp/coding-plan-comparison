@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T16:40:24.673Z",
+  "generatedAt": "2026-10-26T17:01:10.556Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -94,6 +94,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://opencode.ai/zen"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -1114,6 +1117,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://opencode.ai/zen"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3-Flash",
@@ -2134,6 +2140,9 @@
       "priceNoteSource": null,
       "tag": "CLI only",
       "tagDe": "nur CLI",
+      "links": {
+        "overview": "https://commandcode.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -4463,6 +4472,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://commandcode.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -6792,6 +6804,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://commandcode.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -9121,6 +9136,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://commandcode.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -11450,6 +11468,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://commandcode.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Tencent Hy4 Preview",
@@ -13772,6 +13793,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://docs.bigmodel.cn/cn/coding-plan/overview"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3",
@@ -13894,6 +13918,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://docs.bigmodel.cn/cn/coding-plan/overview"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3",
@@ -14016,6 +14043,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://docs.bigmodel.cn/cn/coding-plan/overview"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3",
@@ -14145,6 +14175,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.alibabacloud.com/help/en/model-studio/coding-plan"
+      },
       "modelRows": [
         {
           "model": "Requests (Coding Plan)",
@@ -14219,6 +14252,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+      },
       "modelRows": []
     },
     {
@@ -14269,6 +14305,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+      },
       "modelRows": []
     },
     {
@@ -14319,6 +14358,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+      },
       "modelRows": []
     },
     {
@@ -14369,6 +14411,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+      },
       "modelRows": []
     },
     {
@@ -14438,6 +14483,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.kimi.com/code/docs/en/kimi-code/membership.html"
+      },
       "modelRows": [
         {
           "model": "Kimi K3.1 Pro",
@@ -14600,6 +14648,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.kimi.com/code/docs/en/kimi-code/membership.html"
+      },
       "modelRows": [
         {
           "model": "Kimi K3.1 Pro",
@@ -14762,6 +14813,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.kimi.com/code/docs/en/kimi-code/membership.html"
+      },
       "modelRows": [
         {
           "model": "Kimi K3.1 Pro",
@@ -14924,6 +14978,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.kimi.com/code/docs/en/kimi-code/membership.html"
+      },
       "modelRows": [
         {
           "model": "Kimi K3.1 Pro",
@@ -15067,6 +15124,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.minimax.io/m-plan"
+      },
       "modelRows": []
     },
     {
@@ -15119,6 +15179,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://chatgpt.com/pricing/"
+      },
       "modelRows": []
     },
     {
@@ -15171,6 +15234,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://chatgpt.com/pricing/"
+      },
       "modelRows": []
     },
     {
@@ -15223,6 +15289,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://chatgpt.com/pricing/"
+      },
       "modelRows": []
     },
     {
@@ -15264,6 +15333,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://claude.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -15305,6 +15377,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://claude.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -15363,6 +15438,9 @@
       "priceNoteSource": null,
       "tag": "measured",
       "tagDe": "gemessen",
+      "links": {
+        "overview": "https://claude.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -15537,6 +15615,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://kiro.dev/pricing/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -15826,6 +15907,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://kiro.dev/pricing/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -16115,6 +16199,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://kiro.dev/pricing/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -16404,6 +16491,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://kiro.dev/pricing/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -16693,6 +16783,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://aws.amazon.com/q/developer/pricing/"
+      },
       "modelRows": [
         {
           "model": "Agent requests",
@@ -16775,6 +16868,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://aws.amazon.com/q/developer/pricing/"
+      },
       "modelRows": [
         {
           "model": "Agent requests",
@@ -16857,6 +16953,9 @@
       "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
+      "links": {
+        "overview": "https://www.jetbrains.com/store/ai/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -16985,6 +17084,9 @@
       "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
+      "links": {
+        "overview": "https://www.jetbrains.com/store/ai/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -17113,6 +17215,9 @@
       "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
+      "links": {
+        "overview": "https://www.jetbrains.com/store/ai/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -17241,6 +17346,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://codeassist.google/products/individual"
+      },
       "modelRows": [
         {
           "model": "Chat/agent requests",
@@ -17323,6 +17431,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://codeassist.google/products/standard"
+      },
       "modelRows": [
         {
           "model": "Agent requests",
@@ -17405,6 +17516,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://codeassist.google/products/enterprise"
+      },
       "modelRows": [
         {
           "model": "Agent requests",
@@ -17487,6 +17601,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.augmentcode.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -17615,6 +17732,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.augmentcode.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -17743,6 +17863,9 @@
       "priceNoteSource": null,
       "tag": "reported usage",
       "tagDe": "berichtete Nutzung",
+      "links": {
+        "overview": "https://cursor.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Fable 5.1",
@@ -18055,6 +18178,9 @@
       "priceNoteSource": null,
       "tag": "reported usage",
       "tagDe": "berichtete Nutzung",
+      "links": {
+        "overview": "https://cursor.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Fable 5.1",
@@ -18350,6 +18476,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://devin.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -18391,6 +18520,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://devin.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -18432,6 +18564,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://devin.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -18473,6 +18608,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://factory.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -18514,6 +18652,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://factory.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -18555,6 +18696,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://factory.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -18613,6 +18757,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.trae.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -18856,6 +19003,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.trae.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -19099,6 +19249,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.trae.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -19342,6 +19495,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://zed.dev/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Luna",
@@ -19453,6 +19609,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://cursor.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -19494,6 +19653,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://one.google.com/about/google-ai-plans/"
+      },
       "modelRows": []
     },
     {
@@ -19535,6 +19697,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://one.google.com/about/google-ai-plans/"
+      },
       "modelRows": []
     },
     {
@@ -19576,6 +19741,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://one.google.com/about/google-ai-plans/"
+      },
       "modelRows": []
     },
     {
@@ -19617,6 +19785,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://cline.bot/pricing"
+      },
       "modelRows": []
     },
     {
@@ -19675,6 +19846,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.warp.dev/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -19872,6 +20046,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.warp.dev/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -20069,6 +20246,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://replit.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -20312,6 +20492,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://kilo.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -20555,6 +20738,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://v0.app/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -20798,6 +20984,9 @@
       "priceNoteSource": null,
       "tag": "official tokens",
       "tagDe": "offizielle Tokens",
+      "links": {
+        "overview": "https://bolt.new/pricing"
+      },
       "modelRows": [
         {
           "model": "Bolt tokens",
@@ -20884,6 +21073,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://github.com/features/copilot/plans"
+      },
       "modelRows": [
         {
           "model": "Completions",
@@ -20966,6 +21158,9 @@
       "priceNoteSource": null,
       "tag": "official tokens",
       "tagDe": "offizielle Tokens",
+      "links": {
+        "overview": "https://bolt.new/pricing"
+      },
       "modelRows": [
         {
           "model": "Bolt tokens",
@@ -21052,6 +21247,9 @@
       "priceNoteSource": null,
       "tag": "official tokens",
       "tagDe": "offizielle Tokens",
+      "links": {
+        "overview": "https://bolt.new/pricing"
+      },
       "modelRows": [
         {
           "model": "Bolt tokens",
@@ -21138,6 +21336,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://v0.app/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -21381,6 +21582,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://qoder.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -21624,6 +21828,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://qoder.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -21867,6 +22074,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://qoder.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -22110,6 +22320,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://qoder.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -22353,6 +22566,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://lovable.dev/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -22596,6 +22812,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://replit.com/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -22839,6 +23058,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://www.warp.dev/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -23036,6 +23258,9 @@
       "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
+      "links": {
+        "overview": "https://www.jetbrains.com/store/ai/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -23164,6 +23389,9 @@
       "priceNoteSource": null,
       "tag": "credits = USD",
       "tagDe": "Credits = USD",
+      "links": {
+        "overview": "https://www.jetbrains.com/store/ai/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -23284,6 +23512,9 @@
       "priceNoteSource": null,
       "tag": "credits, no token price",
       "tagDe": "Credits, kein Token-Preis",
+      "links": {
+        "overview": "https://cloud.baidu.com/doc/COMATE/s/rlnvnio4a"
+      },
       "modelRows": []
     },
     {
@@ -23334,6 +23565,9 @@
       "priceNoteSource": null,
       "tag": "credits, no token price",
       "tagDe": "Credits, kein Token-Preis",
+      "links": {
+        "overview": "https://cloud.baidu.com/doc/COMATE/s/rlnvnio4a"
+      },
       "modelRows": []
     },
     {
@@ -23375,6 +23609,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://qoder.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -23416,6 +23653,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://v0.app/pricing"
+      },
       "modelRows": []
     },
     {
@@ -23466,6 +23706,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://lovable.dev/pricing"
+      },
       "modelRows": []
     },
     {
@@ -23507,6 +23750,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://devin.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -23557,6 +23803,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://ampcode.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -23607,6 +23856,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.openhands.dev/pricing"
+      },
       "modelRows": []
     },
     {
@@ -23665,6 +23917,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://kiro.dev/pricing/"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5",
@@ -23954,6 +24209,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://www.trae.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Completions",
@@ -24036,6 +24294,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://lovable.dev/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -24279,6 +24540,9 @@
       "priceNoteSource": null,
       "tag": "official requests",
       "tagDe": "offizielle Requests",
+      "links": {
+        "overview": "https://www.codebuddy.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Completions",
@@ -24353,6 +24617,9 @@
       "priceNoteSource": null,
       "tag": "credits, no token price",
       "tagDe": "Credits, kein Token-Preis",
+      "links": {
+        "overview": "https://www.codebuddy.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -24403,6 +24670,9 @@
       "priceNoteSource": null,
       "tag": "credits, no token price",
       "tagDe": "Credits, kein Token-Preis",
+      "links": {
+        "overview": "https://www.codebuddy.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -24453,6 +24723,9 @@
       "priceNoteSource": null,
       "tag": "credits, no token price",
       "tagDe": "Credits, kein Token-Preis",
+      "links": {
+        "overview": "https://refact.ai/"
+      },
       "modelRows": []
     },
     {
@@ -24503,6 +24776,9 @@
       "priceNoteSource": null,
       "tag": "credits, no token price",
       "tagDe": "Credits, kein Token-Preis",
+      "links": {
+        "overview": "https://refact.ai/"
+      },
       "modelRows": []
     },
     {
@@ -24561,6 +24837,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://kilo.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -24804,6 +25083,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://kilo.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Claude Opus 5.5",
@@ -25030,6 +25312,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://www.warp.dev/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25071,6 +25356,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://zed.dev/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25112,6 +25400,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://zed.dev/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25153,6 +25444,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://replit.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25194,6 +25488,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://kilo.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25235,6 +25532,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://kilo.ai/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25276,6 +25576,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://ollama.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25317,6 +25620,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://cursor.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25358,6 +25664,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://cursor.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25399,6 +25708,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://ampcode.com/pricing"
+      },
       "modelRows": []
     },
     {
@@ -25440,6 +25752,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://roomote.dev/"
+      },
       "modelRows": []
     },
     {
@@ -25481,6 +25796,9 @@
       "priceNoteSource": null,
       "tag": "no published quota",
       "tagDe": "keine veroeffentlichte Quote",
+      "links": {
+        "overview": "https://roomote.dev/"
+      },
       "modelRows": []
     },
     {
@@ -25539,6 +25857,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -26242,6 +26563,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -26945,6 +27269,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -27648,6 +27975,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -28351,6 +28681,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -29054,6 +29387,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -29757,6 +30093,9 @@
       "priceNoteSource": null,
       "tag": "usage in USD",
       "tagDe": "Nutzung in USD",
+      "links": {
+        "overview": "https://standardcompute.com/pricing"
+      },
       "modelRows": [
         {
           "model": "GPT-6 Astra",
@@ -30453,6 +30792,9 @@
       "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
+      "links": {
+        "overview": "https://freebuff.com/plans"
+      },
       "modelRows": []
     },
     {
@@ -30512,6 +30854,9 @@
       "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
+      "links": {
+        "overview": "https://freebuff.com/plans"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Flash",
@@ -30756,6 +31101,9 @@
       "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
+      "links": {
+        "overview": "https://freebuff.com/plans"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Flash",
@@ -31000,6 +31348,9 @@
       "priceNoteSource": null,
       "tag": "no API",
       "tagDe": "kein API",
+      "links": {
+        "overview": "https://freebuff.com/plans"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Flash",
@@ -31260,6 +31611,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://open-design.ai/pricing/"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3 FlashX",
@@ -31558,6 +31912,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://open-design.ai/pricing/"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3 FlashX",
@@ -31856,6 +32213,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://open-design.ai/pricing/"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3 FlashX",
@@ -32154,6 +32514,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://open-design.ai/pricing/"
+      },
       "modelRows": [
         {
           "model": "GLM-5.3 FlashX",
@@ -32443,6 +32806,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://mimo.mi.com/docs/en-US/price/token-plan"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Pro",
@@ -32556,6 +32922,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://mimo.mi.com/docs/en-US/price/token-plan"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Pro",
@@ -32669,6 +33038,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://mimo.mi.com/docs/en-US/price/token-plan"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Pro",
@@ -32782,6 +33154,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://mimo.mi.com/docs/en-US/price/token-plan"
+      },
       "modelRows": [
         {
           "model": "MiMo V2.6 Pro",
@@ -32895,6 +33270,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://platform.stepfun.ai/docs/en/step-plan/overview"
+      },
       "modelRows": [
         {
           "model": "Step 3.7 Flash",
@@ -33008,6 +33386,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://platform.stepfun.ai/docs/en/step-plan/overview"
+      },
       "modelRows": [
         {
           "model": "Step 3.7 Flash",
@@ -33121,6 +33502,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://platform.stepfun.ai/docs/en/step-plan/overview"
+      },
       "modelRows": [
         {
           "model": "Step 3.7 Flash",
@@ -33234,6 +33618,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://platform.stepfun.ai/docs/en/step-plan/overview"
+      },
       "modelRows": [
         {
           "model": "Step 3.7 Flash",
@@ -33347,6 +33734,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.cerebras.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Qwen3-Coder-480B",
@@ -33433,6 +33823,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://www.cerebras.ai/pricing"
+      },
       "modelRows": [
         {
           "model": "Qwen3-Coder-480B",
@@ -33520,6 +33913,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://github.com/features/copilot/plans"
+      },
       "modelRows": [
         {
           "model": "GPT-5.3-Codex",
@@ -34224,6 +34620,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://github.com/features/copilot/plans"
+      },
       "modelRows": [
         {
           "model": "GPT-5.3-Codex",
@@ -34928,6 +35327,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://github.com/features/copilot/plans"
+      },
       "modelRows": [
         {
           "model": "GPT-5.3-Codex",
@@ -35632,6 +36034,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://github.com/features/copilot/plans"
+      },
       "modelRows": [
         {
           "model": "GPT-5.3-Codex",
@@ -36336,6 +36741,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://github.com/features/copilot/plans"
+      },
       "modelRows": [
         {
           "model": "GPT-5.3-Codex",
@@ -37039,6 +37447,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://ollama.com/pricing"
+      },
       "modelRows": [
         {
           "model": "deepseek-v4.1-flash",
@@ -37512,6 +37923,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://ollama.com/pricing"
+      },
       "modelRows": [
         {
           "model": "deepseek-v4.1-flash",
@@ -37985,6 +38399,9 @@
       "priceNoteSource": null,
       "tag": null,
       "tagDe": null,
+      "links": {
+        "overview": "https://ollama.com/pricing"
+      },
       "modelRows": [
         {
           "model": "deepseek-v4.1-flash",
@@ -82327,7 +82744,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-26T16:40:24.409Z",
+    "fetchedAt": "2026-10-26T17:01:10.379Z",
     "count": 434,
     "scores": {
       "claude-opus-5-5": {
@@ -83808,6 +84225,12 @@
     "entries": [
       {
         "date": "2026-10-26",
+        "commit": "3082ef2",
+        "text": "Link each plan to its provider plans page",
+        "textEn": "Link each plan to its provider plans page"
+      },
+      {
+        "date": "2026-10-26",
         "commit": "8feae0c",
         "text": "Keep feedback and legal links clear of the mobile filter trigger",
         "textEn": "Keep feedback and legal links clear of the mobile filter trigger"
@@ -84399,12 +84822,6 @@
         "commit": "9e88544",
         "text": "Automatic fuzzy model name matching (no manual aliases)",
         "textEn": "Automatic fuzzy model name matching (no manual aliases)"
-      },
-      {
-        "date": "2026-09-03",
-        "commit": "07f668e",
-        "text": "Model name mapping in data/aliases.yml + build integration",
-        "textEn": "Model name mapping in data/aliases.yml + build integration"
       }
     ]
   },

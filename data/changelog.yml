@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-26"
+    commit: "3082ef2"
+    text: "Link each plan to its provider plans page"
+    textEn: "Link each plan to its provider plans page"
+  - date: "2026-10-26"
     commit: "8feae0c"
     text: "Keep feedback and legal links clear of the mobile filter trigger"
     textEn: "Keep feedback and legal links clear of the mobile filter trigger"
@@ -399,7 +403,3 @@ entries:
     commit: "9e88544"
     text: "Automatic fuzzy model name matching (no manual aliases)"
     textEn: "Automatic fuzzy model name matching (no manual aliases)"
-  - date: "2026-09-03"
-    commit: "07f668e"
-    text: "Model name mapping in data/aliases.yml + build integration"
-    textEn: "Model name mapping in data/aliases.yml + build integration"
