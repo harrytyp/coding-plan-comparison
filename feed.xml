@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Link the provider plans page from the plan detail row</title>
+    <id>https://vibeplan.cc/#82a0f4a</id>
+    <updated>2026-10-26T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/82a0f4a"/>
+    <summary>Link the provider plans page from the plan detail row</summary>
+  </entry>
+  <entry>
     <title>Link each plan to its provider plans page</title>
     <id>https://vibeplan.cc/#3082ef2</id>
     <updated>2026-10-26T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/580ede9"/>
     <summary>Repair the CSS the filter refactor broke, unstick the detail card</summary>
-  </entry>
-  <entry>
-    <title>Add the OpenDesign Design Plan (Go)</title>
-    <id>https://vibeplan.cc/#6d9ce22</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/6d9ce22"/>
-    <summary>Add the OpenDesign Design Plan (Go)</summary>
   </entry>
 </feed>
