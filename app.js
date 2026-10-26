@@ -106,6 +106,7 @@ const I18N = {
     "plans.status.disclosed": "Verified",
     "plans.status.partial": "Partial",
     "plans.status.undisclosed": "Undisclosed",
+    "plans.overviewLink": "opens the plans page at the provider",
     "plans.th.plan": "Plan",
     "plans.th.provider": "Provider",
     "plans.th.price": "Price / mo",
@@ -446,6 +447,7 @@ const I18N = {
     "plans.status.disclosed": "Verifiziert",
     "plans.status.partial": "Teilweise",
     "plans.status.undisclosed": "Nicht veröffentlicht",
+    "plans.overviewLink": "öffnet die Tarifseite beim Anbieter",
     "plans.th.plan": "Plan",
     "plans.th.provider": "Anbieter",
     "plans.th.price": "Preis / Monat",
@@ -796,6 +798,20 @@ function fmtPct(n) {
 
 function escapeHtml(s) {
   return String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+/**
+ * Plan-Name als Link auf die Uebersichtsseite beim Anbieter.
+ * Ohne Link (Anbieter ohne gepruefte Adresse) bleibt es reiner Text.
+ * target=_blank + rel: die Seite behaelt ihren Zustand, und der Anbieter
+ * bekommt kein window.opener.
+ */
+function planNameMarkup(c) {
+  const label = `${c.planName} - ${t("plans.overviewLink")}`;
+  if (!c.planLink) return `<span class="strong">${escapeHtml(c.planName)}</span>`;
+  return `<a class="strong plan-link" href="${escapeHtml(c.planLink)}" target="_blank" rel="noopener noreferrer"`
+    + ` title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${escapeHtml(c.planName)}`
+    + `<span class="plan-link-arrow" aria-hidden="true">&#8599;</span></a>`;
 }
 
 /* ---------------- i18n DOM ---------------- */
@@ -1392,6 +1408,8 @@ function buildCombos() {
         planId: plan.id,
         planName: plan.name,
         provider: plan.provider,
+        // Uebersichtsseite beim Anbieter (data/plan-links.yml -> latest.json)
+        planLink: plan.links?.overview ?? null,
         price: priceUsd,
         priceDisplay,
         meter: plan.meter,
@@ -1752,7 +1770,7 @@ function renderCell(col, c) {
     ? `<span class="rank-tag" title="${escapeHtml(t("calc.rankTitle"))}">#${calcRanks.get(c.planId)}</span>`
     : "";
   switch (col) {
-    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span><span class="strong">${escapeHtml(c.planName)}</span>${rankTag}${noteMark(c)}<div class="muted" style="font-size: var(--fs-sm)">${escapeHtml(c.provider)}</div></span></span></td>`;
+    case "plan": return `<td class="cell-head" data-label="${t("plans.th.plan")}"><span class="plan-cell"><span class="plan-avatar" style="--av: ${planColor(c.planName, c.provider)}">${escapeHtml(planInitials(c.planName, c.provider))}</span><span>${planNameMarkup(c)}${rankTag}${noteMark(c)}<div class="muted" style="font-size: var(--fs-sm)">${escapeHtml(c.provider)}</div></span></span></td>`;
     case "model": return `<td class="cell-sub" data-label="${t("plans.th.model")}"><span class="strong">${escapeHtml(c.model)}</span></td>`;
     case "score": return `<td data-label="${t("plans.th.score")}">${scoreStr}${scoreBar}</td>`;
     case "tokens": return `<td data-label="${rateTokensLabel()}"><span class="num">${fmtTokens(c.tokensPer)}</span></td>`;
