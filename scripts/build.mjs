@@ -1093,6 +1093,12 @@ async function main() {
   const overridesData = parseYaml(overridesYml);
   const overrides = Object.fromEntries((overridesData.overrides ?? []).map((o) => [o.id, o]));
 
+  // Uebersichtsseiten der Anbieter (kuratiert, geprueft): je Plan zuerst der
+  // Eintrag unter plans, sonst die Tarifseite des Anbieters, sonst nichts.
+  const planLinksData = parseYaml(await readFile(join(ROOT, "data/plan-links.yml"), "utf8"));
+  const planOverviewUrl = (plan) =>
+    planLinksData.plans?.[plan.id] ?? planLinksData.providers?.[plan.provider] ?? null;
+
   // Plan-Katalog dynamisch bauen
   const plans = buildPlanCatalog(parsed, overrides, overridesData);
   if (!plans.length) throw new Error("keine Pläne aus Quellen+Overrides aufgelöst");
@@ -1282,6 +1288,8 @@ async function main() {
       priceNoteSource: plan.priceNoteSource ?? null,
       tag: plan.tag ?? null,
       tagDe: plan.tagDe ?? null,
+      // Uebersichtsseite beim Anbieter: Ziel fuer den Plan-Namen in der Tabelle.
+      links: { overview: planOverviewUrl(plan) },
       modelRows,
     });
 

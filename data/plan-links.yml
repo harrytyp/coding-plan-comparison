@@ -1,0 +1,62 @@
+# Uebersichtsseiten je Anbieter: die Seite, auf der die Plaene selbst stehen
+# (Tarifseite, Preisseite oder die offizielle Tarif-Doku).
+#
+# Regel: nur URLs der Anbieter-Domain, jede am checkedAt per HTTP 200 geprueft.
+# Abweichungen je Plan stehen unter plans (Schluessel = Plan-ID aus latest.json).
+# Fehlt ein Anbieter, bekommt der Plan keinen Link, statt auf eine geratene
+# Adresse zu zeigen.
+
+checkedAt: "2026-10-26"
+
+providers:
+  alibaba: "https://www.alibabacloud.com/help/en/model-studio/coding-plan"
+  anthropic: "https://claude.com/pricing"
+  augment: "https://www.augmentcode.com/pricing"
+  aws: "https://aws.amazon.com/q/developer/pricing/"
+  baidu: "https://cloud.baidu.com/doc/COMATE/s/rlnvnio4a"
+  bytedance: "https://www.trae.ai/pricing"
+  cerebras: "https://www.cerebras.ai/pricing"
+  cline: "https://cline.bot/pricing"
+  cognition: "https://devin.ai/pricing"
+  command-code: "https://commandcode.ai/pricing"
+  cursor: "https://cursor.com/pricing"
+  factory: "https://factory.com/pricing"
+  freebuff: "https://freebuff.com/plans"
+  github: "https://github.com/features/copilot/plans"
+  google: "https://one.google.com/about/google-ai-plans/"
+  jetbrains: "https://www.jetbrains.com/store/ai/"
+  kilo: "https://kilo.ai/pricing"
+  kiro: "https://kiro.dev/pricing/"
+  lovable: "https://lovable.dev/pricing"
+  minimax: "https://www.minimax.io/m-plan"
+  moonshot: "https://www.kimi.com/code/docs/en/kimi-code/membership.html"
+  ollama: "https://ollama.com/pricing"
+  openai: "https://chatgpt.com/pricing/"
+  opencode: "https://opencode.ai/zen"
+  opendesign: "https://open-design.ai/pricing/"
+  openhands: "https://www.openhands.dev/pricing"
+  qoder: "https://qoder.com/pricing"
+  # Refact hat keine eigene /pricing-Route (404); Preise stehen auf der Startseite.
+  refact: "https://refact.ai/"
+  replit: "https://replit.com/pricing"
+  roocode: "https://roomote.dev/"
+  sourcegraph: "https://ampcode.com/pricing"
+  stackblitz: "https://bolt.new/pricing"
+  standardcompute: "https://standardcompute.com/pricing"
+  stepfun: "https://platform.stepfun.ai/docs/en/step-plan/overview"
+  tencent: "https://www.codebuddy.ai/pricing"
+  vercel: "https://v0.app/pricing"
+  warp: "https://www.warp.dev/pricing"
+  xiaomi: "https://mimo.mi.com/docs/en-US/price/token-plan"
+  zed: "https://zed.dev/pricing"
+  zhipu: "https://docs.bigmodel.cn/cn/coding-plan/overview"
+
+# Plaene, deren Uebersicht nicht die allgemeine Tarifseite des Anbieters ist.
+plans:
+  qwen-token-personal-lite: "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+  qwen-token-personal-essential: "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+  qwen-token-personal-standard: "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+  qwen-token-personal-pro: "https://www.alibabacloud.com/help/en/model-studio/token-plan-personal-overview"
+  gemini-code-assist-individual: "https://codeassist.google/products/individual"
+  gemini-code-assist-standard: "https://codeassist.google/products/standard"
+  gemini-code-assist-enterprise: "https://codeassist.google/products/enterprise"
