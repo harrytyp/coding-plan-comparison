@@ -3,6 +3,14 @@
 # neueste zuerst. Die CI schreibt die Datei vor jedem Build neu.
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
+  - date: "2026-10-26"
+    commit: "6b81760"
+    text: "Size panel with dvh so the send button stays above the keyboard on mobile"
+    textEn: "Size panel with dvh so the send button stays above the keyboard on mobile"
+  - date: "2026-10-26"
+    commit: "4962c44"
+    text: "On-origin feedback endpoint (Worker + KV + mail binding)"
+    textEn: "On-origin feedback endpoint (Worker + KV + mail binding)"
   - date: "2026-10-24"
     commit: "0cc0aea"
     text: "GLM-Koeffizienten aus der Tabelle statt aus Section-Text"
@@ -395,11 +403,3 @@ entries:
     commit: "dc52c92"
     text: "Switch to LLM Stats leaderboard index (conservative 0-100)"
     textEn: "Switch to LLM Stats leaderboard index (conservative 0-100)"
-  - date: "2026-09-03"
-    commit: "5137522"
-    text: "Single LLM Stats rankings endpoint, conservative_rating 0-100"
-    textEn: "Single LLM Stats rankings endpoint, conservative_rating 0-100"
-  - date: "2026-09-03"
-    commit: "b637f63"
-    text: "Merge LLM Stats rankings + models for scores"
-    textEn: "Merge LLM Stats rankings + models for scores"
