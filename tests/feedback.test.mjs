@@ -185,6 +185,37 @@ test("Mobil: Feedback-Kontrolle sichtbar und Panel passt auf kleine Hoehen", asy
   assert.match(css, /#open-feedback\s*\{[^}]*padding:\s*10px 2px/);
 });
 
+test("Mobil: der feste Filter-Griff verdeckt Feedback/Legal nicht", async () => {
+  const html = await readFile(join(ROOT, "public/index.html"), "utf8");
+  const css = [...html.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/g)].map((m) => m[1]).join("\n");
+
+  // Griff: fest, 48px hoch, 14px ueber der Unterkante (plus Safe-Area).
+  const trig = css.match(/\.rail-trigger\s*\{([^}]*)\}/);
+  assert.ok(trig, ".rail-trigger existiert");
+  const trigCss = trig[1];
+  assert.match(trigCss, /position:\s*fixed/);
+  const trigH = Number((trigCss.match(/min-height:\s*(\d+)px/) || [])[1]);
+  const trigBottom = Number((trigCss.match(/bottom:\s*calc\((\d+)px/) || [])[1]);
+  assert.equal(trigH, 48);
+  assert.equal(trigBottom, 14);
+
+  // Footer muss so viel Luft haben, dass die letzte Zeile ueber dem Griff endet.
+  const footerReserve = Number(
+    (css.match(/\.footer-row\s*\{\s*padding-bottom:\s*calc\((\d+)px \+ env\(safe-area-inset-bottom/) || [])[1]
+  );
+  assert.ok(footerReserve, "Footer hat eine Reserve fuer den Griff");
+  assert.ok(
+    footerReserve >= trigH + trigBottom,
+    `Reserve ${footerReserve}px muss Griff (${trigH}px + ${trigBottom}px Abstand) abdecken`
+  );
+
+  // Cascade: die Reserve-Regel steht nach den Basispaddings von .footer-row.
+  assert.ok(
+    css.lastIndexOf(".footer-row { padding-bottom: calc(") > css.indexOf(".footer-row { padding: 18px 14px; }"),
+    "Reserve-Regel muss die mobilen Basispaddings ueberschreiben"
+  );
+});
+
 test("jeder fbk-Key existiert in beiden Sprachen", async () => {
   const [html, app] = await Promise.all([
     readFile(join(ROOT, "public/index.html"), "utf8"),
