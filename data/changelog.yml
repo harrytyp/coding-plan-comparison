@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-10-26"
+    commit: "8feae0c"
+    text: "Keep feedback and legal links clear of the mobile filter trigger"
+    textEn: "Keep feedback and legal links clear of the mobile filter trigger"
+  - date: "2026-10-26"
     commit: "6b81760"
     text: "Size panel with dvh so the send button stays above the keyboard on mobile"
     textEn: "Size panel with dvh so the send button stays above the keyboard on mobile"
@@ -399,7 +403,3 @@ entries:
     commit: "07f668e"
     text: "Model name mapping in data/aliases.yml + build integration"
     textEn: "Model name mapping in data/aliases.yml + build integration"
-  - date: "2026-09-03"
-    commit: "dc52c92"
-    text: "Switch to LLM Stats leaderboard index (conservative 0-100)"
-    textEn: "Switch to LLM Stats leaderboard index (conservative 0-100)"
