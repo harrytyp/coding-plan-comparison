@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-25T08:28:18.885Z",
+  "generatedAt": "2026-10-26T08:59:39.374Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -82327,7 +82327,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-25T08:28:18.653Z",
+    "fetchedAt": "2026-10-26T08:59:38.843Z",
     "count": 434,
     "scores": {
       "claude-opus-5-5": {
@@ -82678,10 +82678,10 @@
       "gpt-5-high-2025-08-07": {
         "intelligence": 33.71
       },
-      "qwen3-5-27b": {
+      "deepseek-v3-2-speciale": {
         "intelligence": 33.55
       },
-      "deepseek-v3-2-speciale": {
+      "qwen3-5-27b": {
         "intelligence": 33.55
       },
       "grok-4": {
@@ -82876,10 +82876,10 @@
       "step3-vl-10b": {
         "intelligence": 25.2
       },
-      "gpt-oss-120b-high": {
+      "nova-2-lite": {
         "intelligence": 24.96
       },
-      "nova-2-lite": {
+      "gpt-oss-120b-high": {
         "intelligence": 24.96
       },
       "chatgpt-4o-latest": {
@@ -82999,10 +82999,10 @@
       "gpt-4-5": {
         "intelligence": 19.67
       },
-      "longcat-flash-chat": {
+      "granite-4-2-8b": {
         "intelligence": 19.34
       },
-      "granite-4-2-8b": {
+      "longcat-flash-chat": {
         "intelligence": 19.34
       },
       "grok-4-1-2025-11-17": {
@@ -83458,10 +83458,10 @@
       "gemma-3n-e4b-it": {
         "intelligence": -5.13
       },
-      "deepseek-vl2-tiny": {
+      "ministral-8b-instruct-2410": {
         "intelligence": -5.14
       },
-      "ministral-8b-instruct-2410": {
+      "deepseek-vl2-tiny": {
         "intelligence": -5.14
       },
       "mistral-nemo-instruct-2407": {
@@ -83723,7 +83723,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-26",
       "crawled": true
     },
     {
@@ -84410,12 +84410,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sun, 25 Oct 2026 00:02:31 +0000",
+    "updatedAt": "Mon, 26 Oct 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.892628,
-      "CNY": 6.689203,
-      "GBP": 0.74768,
-      "JPY": 156.842558
+      "EUR": 0.89213,
+      "CNY": 6.677446,
+      "GBP": 0.747783,
+      "JPY": 156.872016
     }
   },
   "statistics": {
