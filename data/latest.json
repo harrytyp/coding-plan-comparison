@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T08:59:39.374Z",
+  "generatedAt": "2026-10-26T16:27:06.585Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -82327,7 +82327,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-26T08:59:38.843Z",
+    "fetchedAt": "2026-10-26T16:27:06.342Z",
     "count": 434,
     "scores": {
       "claude-opus-5-5": {
@@ -83807,6 +83807,18 @@
   "changelog": {
     "entries": [
       {
+        "date": "2026-10-26",
+        "commit": "6b81760",
+        "text": "Size panel with dvh so the send button stays above the keyboard on mobile",
+        "textEn": "Size panel with dvh so the send button stays above the keyboard on mobile"
+      },
+      {
+        "date": "2026-10-26",
+        "commit": "4962c44",
+        "text": "On-origin feedback endpoint (Worker + KV + mail binding)",
+        "textEn": "On-origin feedback endpoint (Worker + KV + mail binding)"
+      },
+      {
         "date": "2026-10-24",
         "commit": "0cc0aea",
         "text": "GLM-Koeffizienten aus der Tabelle statt aus Section-Text",
@@ -84393,18 +84405,6 @@
         "commit": "dc52c92",
         "text": "Switch to LLM Stats leaderboard index (conservative 0-100)",
         "textEn": "Switch to LLM Stats leaderboard index (conservative 0-100)"
-      },
-      {
-        "date": "2026-09-03",
-        "commit": "5137522",
-        "text": "Single LLM Stats rankings endpoint, conservative_rating 0-100",
-        "textEn": "Single LLM Stats rankings endpoint, conservative_rating 0-100"
-      },
-      {
-        "date": "2026-09-03",
-        "commit": "b637f63",
-        "text": "Merge LLM Stats rankings + models for scores",
-        "textEn": "Merge LLM Stats rankings + models for scores"
       }
     ]
   },
