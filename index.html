@@ -1290,6 +1290,11 @@ footer { border-top: 1px solid var(--pv-hair); background: var(--surface); }
     display: grid; place-items: center; font-size: var(--fs-xs);
     background: rgb(0 0 0 / .26); color: inherit;
   }
+  /* Der Griff steht fest 14 + 48 = 62 px ueber der Unterkante und lag damit
+     genau auf Feedback/Legal: am Seitenende war kein Scroll mehr moeglich,
+     die beiden Links waren auf dem Handy unerreichbar. Footer bekommt so viel
+     Luft, dass die letzte Zeile ueber dem Griff endet. */
+  .footer-row { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
   .rail-scrim { display: block; position: fixed; inset: 0; z-index: 99; background: rgb(3 7 18 / .55); }
   /* Schublade: gleiche Bedienelemente wie im Desktop-Rail, nur als Overlay */
   #rail {
@@ -2042,7 +2047,7 @@ body.fbk-open { overflow: hidden; }
 <button id="back-top" type="button" hidden aria-label="Back to top">↑</button>
 
 <script src="vendor/d3-zoom.min.js"></script>
-<script src="app.js?v=c4489dc"></script>
+<script src="app.js?v=000a92b"></script>
 <script>
 /* =========================================================================
    Design layer: motion + interaction. Scroll progress, staggered reveal,
