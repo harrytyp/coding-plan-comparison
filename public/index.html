@@ -528,6 +528,9 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px; }
 .plan-link:hover, .plan-link:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
 .plan-link-arrow { font-size: .78em; margin-left: .3em; opacity: .5; }
 .plan-link:hover .plan-link-arrow { opacity: 1; }
+/* Detailansicht: Link zur Tarifseite als eigene Zeile, Host als Orientierung */
+.detail-link { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; font-size: var(--fs-sm); }
+.detail-link-host { font-family: var(--pv-mono); font-size: var(--fs-xs); color: var(--text-3); letter-spacing: .04em; }
 .plan-avatar {
   width: 27px; height: 27px; flex: none; border-radius: 8px;
   display: inline-flex; align-items: center; justify-content: center;

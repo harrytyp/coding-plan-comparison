@@ -107,6 +107,7 @@ const I18N = {
     "plans.status.partial": "Partial",
     "plans.status.undisclosed": "Undisclosed",
     "plans.overviewLink": "opens the plans page at the provider",
+    "plans.overviewCta": "Plans page at the provider",
     "plans.th.plan": "Plan",
     "plans.th.provider": "Provider",
     "plans.th.price": "Price / mo",
@@ -448,6 +449,7 @@ const I18N = {
     "plans.status.partial": "Teilweise",
     "plans.status.undisclosed": "Nicht veröffentlicht",
     "plans.overviewLink": "öffnet die Tarifseite beim Anbieter",
+    "plans.overviewCta": "Tarifseite beim Anbieter",
     "plans.th.plan": "Plan",
     "plans.th.provider": "Anbieter",
     "plans.th.price": "Preis / Monat",
@@ -1565,7 +1567,22 @@ function detailGrid(c) {
   // Hinweis als eigene Zeile unter dem Raster: als Grid-Zelle wuerde der lange
   // Text eine Spalte aufziehen und die Ausrichtung der ganzen Zeile zerstoeren.
   const note = c.planNote ? `<div class="detail-note">${escapeHtml(c.planNote)}</div>` : "";
-  return grid + note;
+  return grid + note + detailPlanLink(c);
+}
+
+// Direktlink zur Tarifseite des Anbieters, in der Detailansicht als eigene
+// Zeile unter dem Raster. Der Host steht daneben, damit vor dem Klick klar ist,
+// wohin es geht (kein Affiliate, keine Weiterleitung).
+function detailPlanLink(c) {
+  if (!c.planLink) return "";
+  let host = "";
+  try { host = new URL(c.planLink).hostname.replace(/^www\./, ""); } catch (e) { host = ""; }
+  const label = `${t("plans.overviewCta")} ${host}`.trim();
+  return `<div class="detail-link"><a class="plan-link" href="${escapeHtml(c.planLink)}" target="_blank" rel="noopener noreferrer"`
+    + ` title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}">${escapeHtml(t("plans.overviewCta"))}`
+    + `<span class="plan-link-arrow" aria-hidden="true">&#8599;</span></a>`
+    + (host ? `<span class="detail-link-host">${escapeHtml(host)}</span>` : "")
+    + "</div>";
 }
 
 // Hinweis zum Plan: kleines neutrales Info-Zeichen, voller Text im Tooltip.

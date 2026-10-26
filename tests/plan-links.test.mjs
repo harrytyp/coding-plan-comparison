@@ -61,3 +61,18 @@ test("Tabelle rendert den Plan-Namen als externen Link", async () => {
   assert.match(html, /\.plan-link\s*\{[\s\S]*?text-decoration:\s*none/);
   assert.match(html, /\.plan-link-arrow\s*\{/);
 });
+
+test("Detailansicht zeigt die Tarifseite ebenfalls als Link", async () => {
+  const app = await read("public/app.js");
+  // detailGrid haengt die Link-Zeile an, damit sie nicht nur in der Tabelle steht.
+  assert.match(app, /return grid \+ note \+ detailPlanLink\(c\)/);
+  assert.match(app, /function detailPlanLink\(c\)/);
+  assert.match(app, /if \(!c\.planLink\) return ""/);
+  assert.match(app, /class="detail-link"/);
+  // Host sichtbar machen, damit klar ist, wohin der Klick fuehrt.
+  assert.match(app, /detail-link-host/);
+  const cta = [...app.matchAll(/"plans\.overviewCta":/g)].length;
+  assert.equal(cta, 2, `plans.overviewCta muss in en und de stehen (gefunden: ${cta})`);
+  const html = await read("public/index.html");
+  assert.match(html, /\.detail-link\s*\{[^}]*display:\s*flex/);
+});
