@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T17:01:10.556Z",
+  "generatedAt": "2026-10-26T17:20:06.058Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -82744,7 +82744,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-26T17:01:10.379Z",
+    "fetchedAt": "2026-10-26T17:20:05.821Z",
     "count": 434,
     "scores": {
       "claude-opus-5-5": {
@@ -84225,6 +84225,12 @@
     "entries": [
       {
         "date": "2026-10-26",
+        "commit": "82a0f4a",
+        "text": "Link the provider plans page from the plan detail row",
+        "textEn": "Link the provider plans page from the plan detail row"
+      },
+      {
+        "date": "2026-10-26",
         "commit": "3082ef2",
         "text": "Link each plan to its provider plans page",
         "textEn": "Link each plan to its provider plans page"
@@ -84816,12 +84822,6 @@
         "commit": "ea4a265",
         "text": "Kimi requests per CNY list price, no double division; label tokens per $10",
         "textEn": "Kimi requests per CNY list price, no double division; label tokens per $10"
-      },
-      {
-        "date": "2026-09-03",
-        "commit": "9e88544",
-        "text": "Automatic fuzzy model name matching (no manual aliases)",
-        "textEn": "Automatic fuzzy model name matching (no manual aliases)"
       }
     ]
   },
