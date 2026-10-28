@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T09:03:18.203Z",
+  "generatedAt": "2026-10-28T09:43:08.470Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -83053,7 +83053,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-27T09:03:18.048Z",
+    "fetchedAt": "2026-10-28T09:43:08.234Z",
     "count": 435,
     "scores": {
       "claude-opus-5-5": {
@@ -83221,10 +83221,10 @@
       "gpt-6-luna": {
         "intelligence": 43.12
       },
-      "gemini-3-1-pro-preview": {
+      "deepseek-v4-flash-0731": {
         "intelligence": 43.04
       },
-      "deepseek-v4-flash-0731": {
+      "gemini-3-1-pro-preview": {
         "intelligence": 43.04
       },
       "gpt-5-2-pro-2025-12-11": {
@@ -83236,10 +83236,10 @@
       "deepseek-v4-pro-max": {
         "intelligence": 42.82
       },
-      "hy3": {
+      "seed-2-1-turbo": {
         "intelligence": 42.52
       },
-      "seed-2-1-turbo": {
+      "hy3": {
         "intelligence": 42.52
       },
       "gemini-3-6-flash": {
@@ -83395,19 +83395,19 @@
       "gpt-5-2-codex": {
         "intelligence": 34.06
       },
-      "seed-1-8": {
+      "glm-4-7": {
         "intelligence": 33.95
       },
-      "glm-4-7": {
+      "seed-1-8": {
         "intelligence": 33.95
       },
       "gpt-5-high-2025-08-07": {
         "intelligence": 33.71
       },
-      "deepseek-v3-2-speciale": {
+      "qwen3-5-27b": {
         "intelligence": 33.55
       },
-      "qwen3-5-27b": {
+      "deepseek-v3-2-speciale": {
         "intelligence": 33.55
       },
       "grok-4": {
@@ -83542,10 +83542,10 @@
       "mai-code-1-1-flash": {
         "intelligence": 27.43
       },
-      "claude-opus-4-20250514": {
+      "gemini-2-5-pro": {
         "intelligence": 27.36
       },
-      "gemini-2-5-pro": {
+      "claude-opus-4-20250514": {
         "intelligence": 27.36
       },
       "gpt-oss-20b-high": {
@@ -83875,10 +83875,10 @@
       "deepseek-r1-distill-qwen-32b": {
         "intelligence": 12.52
       },
-      "magistral-medium": {
+      "qwen3-vl-4b-thinking": {
         "intelligence": 12.46
       },
-      "qwen3-vl-4b-thinking": {
+      "magistral-medium": {
         "intelligence": 12.46
       },
       "qwen2-5-vl-72b": {
@@ -84448,13 +84448,13 @@
       "provider": "command-code",
       "scope": "provider",
       "training": false,
-      "trainingNote": "in this privacy policy. What we don&#x27;t do: The Company does not train AI models on your source code, and we do not sell your personal data to third parties. Information Collec",
+      "trainingNote": "stored on a private cloud machine so you can reopen it. We do not train on this data unless you choose to share it. Shared Content: Some features let you share content with others",
       "zeroRetention": true,
       "zeroRetentionNote": "Retention of Data below for how long AI request content is kept. With zero data retention enabled, your prompts, inputs, and outputs are never stored. Taste Profiles and Local Project Data:",
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-10-27",
+      "verifiedAt": "2026-10-28",
       "crawled": true
     },
     {
@@ -85141,12 +85141,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Tue, 27 Oct 2026 00:02:31 +0000",
+    "updatedAt": "Wed, 28 Oct 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.893935,
-      "CNY": 6.683751,
-      "GBP": 0.749228,
-      "JPY": 157.437384
+      "EUR": 0.897453,
+      "CNY": 6.681042,
+      "GBP": 0.751056,
+      "JPY": 157.892678
     }
   },
   "statistics": {
