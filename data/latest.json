@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-31T09:41:44.803Z",
+  "generatedAt": "2026-11-01T10:30:37.278Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -686,7 +686,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 15609016038.144775,
@@ -713,7 +713,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 7804508019.072388,
@@ -740,7 +740,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 433523597.38270915,
@@ -767,7 +767,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 216761798.69135457,
@@ -1736,7 +1736,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 31218032076.28955,
@@ -1763,7 +1763,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 15609016038.144775,
@@ -1790,7 +1790,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 1734094389.5308366,
@@ -1817,7 +1817,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 867047194.7654183,
@@ -2786,7 +2786,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 16389466840.052015,
@@ -2813,7 +2813,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 8194733420.026008,
@@ -2840,7 +2840,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 578031463.1769456,
@@ -2867,7 +2867,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-10-31"
+            "validUntil": "2026-11-30"
           },
           "estimate": null,
           "rawTokensPerMonth": 289015731.5884728,
@@ -88993,7 +88993,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-10-31T09:41:44.573Z",
+    "fetchedAt": "2026-11-01T10:30:37.057Z",
     "count": 444,
     "scores": {
       "claude-opus-5-5": {
@@ -89440,10 +89440,10 @@
       "mimo-v2-flash": {
         "intelligence": 30.03
       },
-      "k2-horizon-mova-36b-a4b": {
+      "glm-5v-turbo": {
         "intelligence": 29.76
       },
-      "glm-5v-turbo": {
+      "k2-horizon-mova-36b-a4b": {
         "intelligence": 29.76
       },
       "grok-3": {
@@ -89698,10 +89698,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.21
       },
-      "grok-4-1-2025-11-17": {
+      "granite-4-2-8b": {
         "intelligence": 19.13
       },
-      "granite-4-2-8b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.13
       },
       "o1-pro": {
@@ -90007,10 +90007,10 @@
       "hermes-3-405b": {
         "intelligence": 3.85
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 3.7
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 3.7
       },
       "hermes-3-70b": {
@@ -90019,10 +90019,10 @@
       "qwen3-5-2b": {
         "intelligence": 3.27
       },
-      "ministral-3-14b-base-2512": {
+      "qwen-2-5-14b-instruct": {
         "intelligence": 3.16
       },
-      "qwen-2-5-14b-instruct": {
+      "ministral-3-14b-base-2512": {
         "intelligence": 3.16
       },
       "gpt-4o-mini-2024-07-18": {
@@ -90417,7 +90417,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-10-31",
+      "verifiedAt": "2026-11-01",
       "crawled": true
     },
     {
@@ -91104,12 +91104,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sat, 31 Oct 2026 00:02:31 +0000",
+    "updatedAt": "Sun, 01 Nov 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.895588,
-      "CNY": 6.669566,
-      "GBP": 0.747088,
-      "JPY": 157.494371
+      "EUR": 0.895556,
+      "CNY": 6.670992,
+      "GBP": 0.746948,
+      "JPY": 157.49531
     }
   },
   "statistics": {
