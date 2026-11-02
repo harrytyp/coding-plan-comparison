@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-01T10:30:37.278Z",
+  "generatedAt": "2026-11-02T11:14:33.477Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -88993,7 +88993,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-01T10:30:37.057Z",
+    "fetchedAt": "2026-11-02T11:14:33.251Z",
     "count": 444,
     "scores": {
       "claude-opus-5-5": {
@@ -89281,10 +89281,10 @@
       "inkling": {
         "intelligence": 36.44
       },
-      "claude-sonnet-4-6": {
+      "minimax-m2-5": {
         "intelligence": 36.41
       },
-      "minimax-m2-5": {
+      "claude-sonnet-4-6": {
         "intelligence": 36.41
       },
       "gemini-3-flash-preview": {
@@ -89332,10 +89332,10 @@
       "muse-glimmer-30b": {
         "intelligence": 34.83
       },
-      "gpt-5-1-high-2025-11-12": {
+      "longcat-flash-thinking-2601": {
         "intelligence": 34.63
       },
-      "longcat-flash-thinking-2601": {
+      "gpt-5-1-high-2025-11-12": {
         "intelligence": 34.63
       },
       "nemotron-3-5-super-vl-120b-a12b": {
@@ -89698,10 +89698,10 @@
       "longcat-flash-chat": {
         "intelligence": 19.21
       },
-      "granite-4-2-8b": {
+      "grok-4-1-2025-11-17": {
         "intelligence": 19.13
       },
-      "grok-4-1-2025-11-17": {
+      "granite-4-2-8b": {
         "intelligence": 19.13
       },
       "o1-pro": {
@@ -90007,10 +90007,10 @@
       "hermes-3-405b": {
         "intelligence": 3.85
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 3.7
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 3.7
       },
       "hermes-3-70b": {
@@ -90019,10 +90019,10 @@
       "qwen3-5-2b": {
         "intelligence": 3.27
       },
-      "qwen-2-5-14b-instruct": {
+      "ministral-3-14b-base-2512": {
         "intelligence": 3.16
       },
-      "ministral-3-14b-base-2512": {
+      "qwen-2-5-14b-instruct": {
         "intelligence": 3.16
       },
       "gpt-4o-mini-2024-07-18": {
@@ -90417,7 +90417,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-01",
+      "verifiedAt": "2026-11-02",
       "crawled": true
     },
     {
@@ -91104,12 +91104,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sun, 01 Nov 2026 00:02:31 +0000",
+    "updatedAt": "Mon, 02 Nov 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.895556,
-      "CNY": 6.670992,
-      "GBP": 0.746948,
-      "JPY": 157.49531
+      "EUR": 0.896073,
+      "CNY": 6.660856,
+      "GBP": 0.746906,
+      "JPY": 157.532149
     }
   },
   "statistics": {
