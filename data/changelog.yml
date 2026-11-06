@@ -3,6 +3,10 @@
 # neueste zuerst. Die CI schreibt die Datei vor jedem Build neu.
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
+  - date: "2026-11-06"
+    commit: "dc644e2"
+    text: "Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)"
+    textEn: "Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)"
   - date: "2026-10-26"
     commit: "82a0f4a"
     text: "Link the provider plans page from the plan detail row"
@@ -399,7 +403,3 @@ entries:
     commit: "01f1f5e"
     text: "English README and output strings, dedupe YAML parser, honest derived metrics"
     textEn: "English README and output strings, dedupe YAML parser, honest derived metrics"
-  - date: "2026-09-10"
-    commit: "ea4a265"
-    text: "Kimi requests per CNY list price, no double division; label tokens per $10"
-    textEn: "Kimi requests per CNY list price, no double division; label tokens per $10"
