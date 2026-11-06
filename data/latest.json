@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-06T07:37:00.174Z",
+  "generatedAt": "2026-11-06T07:38:12.483Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -89494,7 +89494,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-06T07:36:59.977Z",
+    "fetchedAt": "2026-11-06T07:38:12.295Z",
     "count": 451,
     "scores": {
       "claude-opus-5-5": {
@@ -91030,6 +91030,12 @@
     "entries": [
       {
         "date": "2026-11-06",
+        "commit": "91acd82",
+        "text": "Eigene Concurrency-Gruppe statt 'pages'",
+        "textEn": "Eigene Concurrency-Gruppe statt 'pages'"
+      },
+      {
+        "date": "2026-11-06",
         "commit": "dc644e2",
         "text": "Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)",
         "textEn": "Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)"
@@ -91621,12 +91627,6 @@
         "commit": "f11e353",
         "text": "Fix AI score aliases resolving to generic base models (Muse Spark)",
         "textEn": "Fix AI score aliases resolving to generic base models (Muse Spark)"
-      },
-      {
-        "date": "2026-09-11",
-        "commit": "01f1f5e",
-        "text": "English README and output strings, dedupe YAML parser, honest derived metrics",
-        "textEn": "English README and output strings, dedupe YAML parser, honest derived metrics"
       }
     ]
   },
