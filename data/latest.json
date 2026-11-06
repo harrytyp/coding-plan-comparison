@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-06T07:38:12.483Z",
+  "generatedAt": "2026-11-06T10:56:59.927Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -35213,7 +35213,7 @@
         {
           "label": "5h window",
           "unit": "usd",
-          "amount": 10,
+          "amount": 18,
           "window": "5h",
           "refresh": "rolling",
           "disclosure": "exact"
@@ -35221,7 +35221,7 @@
         {
           "label": "7-day window",
           "unit": "usd",
-          "amount": 30,
+          "amount": 55,
           "window": "week",
           "refresh": "weekly",
           "disclosure": "exact"
@@ -35229,16 +35229,16 @@
         {
           "label": "Monthly",
           "unit": "usd",
-          "amount": 120,
+          "amount": 220,
           "window": "month",
           "refresh": "monthly",
           "disclosure": "exact"
         }
       ],
       "windowCaps": {
-        "h5": 10,
-        "weekly": 30,
-        "monthly": 120
+        "h5": 18,
+        "weekly": 55,
+        "monthly": 220
       },
       "officialConversion": null,
       "disclosure": "disclosed",
@@ -35568,7 +35568,7 @@
         {
           "label": "7-day window",
           "unit": "usd",
-          "amount": 40,
+          "amount": 74,
           "window": "week",
           "refresh": "weekly",
           "disclosure": "exact"
@@ -35576,7 +35576,7 @@
         {
           "label": "Monthly",
           "unit": "usd",
-          "amount": 180,
+          "amount": 310,
           "window": "month",
           "refresh": "monthly",
           "disclosure": "exact"
@@ -35584,8 +35584,8 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": 40,
-        "monthly": 180
+        "weekly": 74,
+        "monthly": 310
       },
       "officialConversion": null,
       "disclosure": "disclosed",
@@ -89494,7 +89494,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-06T07:38:12.295Z",
+    "fetchedAt": "2026-11-06T10:56:59.715Z",
     "count": 451,
     "scores": {
       "claude-opus-5-5": {
