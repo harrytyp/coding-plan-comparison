@@ -207,29 +207,31 @@ function buildPlanCatalog(parsed, overrides, overridesData) {
   // HINWEIS: Qwen-Credits sind ein eigenes Währungssystem ("tiered deduction
   // coefficients by model", Koeffizienten NICHT öffentlich). Die API-Dollar-Preise
   // sind NICHT die Credit-Kosten → keine Requests-Normalisierung möglich.
-  // Ehrlich: Rohdaten mit offiziellen Multiplikatoren (Lite 1× / Standard 4× / Pro 16×).
+  // Ehrlich: Rohdaten; Quotenverhaeltnis zu Lite wird aus den Credits abgeleitet,
+  // offizielle Koeffizienten pro Modell publiziert Qwen nicht.
   const qwenTok = parsed["qwen-token-personal"];
-  // Offizielle Multiplikatoren aus der Doku ("2.25x/4x/16x Lite usage"), Stand 2026-09-21.
   const qwenTierMap = { Lite: "lite", Essential: "essential", Standard: "standard", Pro: "pro" };
-  const qwenTierMult = { lite: 1, essential: 2.25, standard: 4, pro: 16 };
+  const qwenLiteQuota = qwenTok?.plans?.find((x) => x.name === "Lite")?.quotaMonth ?? null;
   for (const p of qwenTok?.plans ?? []) {
     const tierKey = qwenTierMap[p.name];
     if (!tierKey) continue;
+    const ratio = qwenLiteQuota && p.quotaMonth ? Math.round((p.quotaMonth / qwenLiteQuota) * 100) / 100 : null;
     add({
       id: `qwen-token-personal-${tierKey}`,
       provider: "alibaba",
       name: `Qwen Token Plan Personal ${p.name}`,
-      price: { monthlyUsd: p.limitedPrice, paidPrice: p.limitedPrice, advertisedPrice: p.originalPrice, billingNote: `Limited-time $${p.limitedPrice} (Original $${p.originalPrice})`, altPrice: null },
+      price: { monthlyUsd: p.limitedPrice, paidPrice: p.limitedPrice, advertisedPrice: p.originalPrice, billingNote: p.limitedPrice < p.originalPrice ? `Limited-time $${p.limitedPrice} (regular $${p.originalPrice})` : `$${p.originalPrice}/month`, altPrice: null },
       meter: "credits",
       quotas: [
-        { label: "7-day rolling", unit: "credits", amount: p.quota7d, window: "rolling", refresh: "rolling", disclosure: "exact" },
+        // Quota-Fenster ist seit 22.09.2026 monatlich (7-Tage-Quote abgeschafft, kein Rollover).
+        { label: "Monthly", unit: "credits", amount: p.quotaMonth, window: "month", refresh: "monthly", disclosure: "exact" },
       ],
       tokenPricing: null,
-      workload: { pattern: null, taskConversion: `Tiered deduction coefficients by model (official); coefficients not published. Official multiplier: ${qwenTierMult[tierKey]}× Lite` },
+      workload: { pattern: null, taskConversion: `Credits are deducted per model and call (coefficients not published). Monthly credit quota ${ratio ? `${ratio}× Lite` : "n/a"}` },
       models: ["Qwen 文本与多模态", "Claude Code", "Cursor", "Qwen Code", "OpenClaw"],
       disclosure: "disclosed",
       sourceIds: ["qwen-token-personal"],
-      verifiedAt: "2026-08-28",
+      verifiedAt: "2026-11-06",
     });
   }
 

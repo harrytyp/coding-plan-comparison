@@ -202,23 +202,32 @@ export function parseQwenDocs(html) {
 export function parseQwenTokenPersonal(html) {
   const text = htmlToText(html);
   const out = { plans: [], extraBundle: null };
-  const prices = [...text.matchAll(/Original price \$([\d.]+)\/month\s*Limited-time \$([\d.]+)\/month/g)].map((m) => ({ original: parseFloat(m[1]), limited: parseFloat(m[2]) }));
-  // Tier-Namen dynamisch aus der Preistabelle (Namensliste steht VOR dem ersten
-  // "Original price"-Block). Positional hart kodierte Namen waren der Bug: als
-  // Qwen einen "Essential"-Tarif zwischen Lite und Standard einfügte, wanderten
-  // die Preise in die falschen Tarife und der Pro-Tarif fiel raus.
-  const tableHead = prices.length ? text.slice(0, text.indexOf("Original price")) : "";
-  const names = [...tableHead.matchAll(/([A-Z][a-z]+) plan\b/g)].map((m) => m[1]);
-  // Quoten: Block reicht von "7-day quota" bis "Concurrent Agents" (nicht fixe 200
-  // Zeichen, sonst fehlt der letzte Tarif sobald ein Tarif dazukommt).
-  const quotaIdx = text.indexOf("7-day quota");
-  const quotaEnd = text.indexOf("Concurrent Agents", quotaIdx);
-  const quotaText = quotaIdx >= 0 ? text.slice(quotaIdx, quotaEnd > quotaIdx ? quotaEnd : quotaIdx + 400) : text;
-  const quotas = [...quotaText.matchAll(/([\d,]+)\s*Credits/g)].map((m) => parseInt(m[1].replace(/,/g, ""), 10));
+  // Tabelle 11/2026: "Lite plan Essential plan Standard plan Pro plan Pricing
+  // $6/month Limited-time new-user price $3/month ... Monthly quota 11,500 Credits ...".
+  // Die 7-Tage-Quote wurde am 22.09.2026 abgeschafft, seither gilt die Monatsquote.
+  const start = text.indexOf("Plans and pricing");
+  const quotaIdx = text.indexOf("Monthly quota", start);
+  const agentsIdx = text.indexOf("Concurrent Agents", quotaIdx);
+  const table = start >= 0 ? text.slice(start, agentsIdx > quotaIdx ? agentsIdx : undefined) : text;
+  const headEnd = table.indexOf("Pricing");
+  // Namenszeile steht direkt vor "Pricing". Nur die letzten Treffer nehmen, damit
+  // ein Inhaltsverzeichnis-Eintrag ("Lite plan") die Zuordnung nicht verschiebt.
+  const headRaw = [...(headEnd >= 0 ? table.slice(Math.max(0, headEnd - 400), headEnd) : "").matchAll(/([A-Z][a-z]+) plan\b/g)].map((m) => m[1]);
+  // Preise: regulär "$18/month", mit Aktion "$6/month Limited-time new-user price $3/month"
+  const priceBlock = headEnd >= 0 ? table.slice(headEnd) : table;
+  const prices = [...priceBlock.matchAll(/\$([\d.]+)\/month(?:\s*Limited-time[^$]{0,60}\$([\d.]+)\/month)?/g)]
+    .map((m) => ({ original: parseFloat(m[1]), limited: m[2] ? parseFloat(m[2]) : parseFloat(m[1]) }));
+  const quotaBlock = quotaIdx >= 0 ? text.slice(quotaIdx, agentsIdx > quotaIdx ? agentsIdx : quotaIdx + 400) : "";
+  const quotas = [...quotaBlock.matchAll(/([\d,]+)\s*Credits/g)].map((m) => parseInt(m[1].replace(/,/g, ""), 10));
+  // Lieber laut scheitern als still Tarife verlieren: Preiszeilen und Tarifnamen
+  // müssen sich 1:1 decken (Layoutwechsel hat den Lauf am 05.11.2026 gerissen).
+  if (!prices.length) throw new Error("qwen-token-personal: keine Preise in der Tariftabelle (Seitenlayout geaendert?)");
+  const names = headRaw.slice(-prices.length);
+  if (prices.length !== names.length) throw new Error(`qwen-token-personal: ${names.length} Tarifnamen vs. ${prices.length} Preise (Seitenlayout geaendert?)`);
   prices.forEach((p, i) => {
-    out.plans.push({ name: names[i] ?? `Plan ${i + 1}`, originalPrice: p.original, limitedPrice: p.limited, quota7d: quotas[i] ?? null });
+    out.plans.push({ name: names[i], originalPrice: p.original, limitedPrice: p.limited, quotaMonth: quotas[i] ?? null });
   });
-  const bundle = /\$([\d.]+)\/bundle\/month\s*([\d,]+)\s*Credits\/bundle/.exec(text);
+  const bundle = /\$([\d.]+)\/bundle\/month,?\s*(?:with\s*)?([\d,]+)\s*Credits(?:\s*\/\s*|\s+per\s+)bundle/.exec(text);
   if (bundle) out.extraBundle = { price: parseFloat(bundle[1]), credits: parseInt(bundle[2].replace(/,/g, ""), 10) };
   return out;
 }

@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { parseQwenTokenPersonal } from "../scripts/parsers.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -94,8 +95,11 @@ test("Preisdiskrepanzen aufgelöst: offizielle Preise (GLM CNY, Kimi USD, Qwen U
   // Kimi.ai hat USD-Preise (primär): $19/Monat (kimi.com CNY ¥99 ist sekundär)
   assert.ok(Math.abs(kimiMod.price.paidPrice - 19) < 1, "Kimi Moderato ≈ $19 (kimi.ai USD, nicht ¥99→$13.9)");
   const qwenStd = d.plans.find((p) => p.id === "qwen-token-personal-standard");
-  assert.equal(qwenStd.price.paidPrice, 18, "Qwen Standard limited-time $18");
-  assert.equal(qwenStd.price.advertised, 25, "Qwen Standard Original $25");
+  // Seit 11/2026: Standard $18 regulaer (keine Aktion), Lite/Essential mit New-User-Preis.
+  assert.equal(qwenStd.price.paidPrice, 18, "Qwen Standard $18");
+  assert.equal(qwenStd.price.advertised, 18, "Qwen Standard ohne Streichpreis");
+  assert.equal(qwenStd.quotas[0].amount, 45000, "Qwen Standard 45.000 Credits/Monat");
+  assert.equal(qwenStd.quotas[0].window, "month", "Quota-Fenster ist monatlich");
 });
 
 test("Draw-Schwelle: relative Differenz < 10% = draw", async () => {
@@ -148,11 +152,16 @@ test("Dynamik: Daten kommen aus geparsten Quellen (nicht statisch)", async () =>
   assert.ok(glm.mcpPerCall > 0, "MCP-Preis pro Aufruf aus derselben Tabelle");
   assert.equal(glm.offPeakDiscount, 0.5, "Off-Peak 50%");
 
-  // Qwen-Parser: Limited-Time-Preise
+  // Qwen-Parser: New-User-Preis + regulaerer Preis
   const qwen = JSON.parse(await readFile(join(parsedDir, "qwen-token-personal.json"), "utf8"));
   const std = qwen.plans.find((p) => p.name === "Standard");
   assert.equal(std.limitedPrice, 18, "Qwen Standard $18");
-  assert.equal(std.originalPrice, 25, "Qwen Standard Original $25");
+  assert.equal(std.originalPrice, 18, "Qwen Standard ohne Streichpreis");
+  const lite = qwen.plans.find((p) => p.name === "Lite");
+  assert.equal(lite.originalPrice, 6, "Qwen Lite regulaer $6");
+  assert.equal(lite.limitedPrice, 3, "Qwen Lite New-User $3");
+  assert.equal(lite.quotaMonth, 11500, "Qwen Lite 11.500 Credits/Monat");
+  assert.equal(qwen.plans.length, 4, "Qwen Token Personal: alle vier Tarife geparst");
 
   // Kimi-Parser: CNY-Preise. Seit 12.10.2026 heissen die China-Tarife Go/Plus/Pro/Max,
   // Andante/Moderato/Allegretto/Allegro sind laut Quelle nur noch Legacy fuer Bestandskunden.
@@ -330,7 +339,7 @@ test("Kein Tarif fällt still weg: jeder geparste Tarif steht im Katalog", async
     assert.ok(plan, `Qwen-Tarif "${p.name}" fehlt im Katalog (${id})`);
     assert.equal(plan.price.paidPrice, p.limitedPrice, `${p.name}: Limited-Preis`);
     assert.equal(plan.price.advertised, p.originalPrice, `${p.name}: Original-Preis`);
-    assert.equal(plan.quotas[0].amount, p.quota7d, `${p.name}: 7d-Quota`);
+    assert.equal(plan.quotas[0].amount, p.quotaMonth, `${p.name}: Monats-Quota`);
   }
 
   // Kimi: die internationalen kimi.ai-USD-Preise müssen im Katalog stehen.
@@ -523,6 +532,27 @@ test("Augment und Cursor: Dollar-Volumen, Cursor als berichtet gekennzeichnet", 
     assert.ok(plan.notes.includes("not publish") || plan.notes.includes("does not publish"), `${id}: Hinweis auf fehlende Anbieterangabe`);
     assert.ok(plan.modelRows.length >= 10, `${id}: Modellpreise aus der Cursor-Doku`);
   }
+});
+
+// --- Regression 2026-11-05: Qwen änderte die Tariftabelle (7-Tage-Quote weg,
+// New-User-Preis statt "Original price/Limited-time", Monats-Credits). Der Parser
+// lieferte still null Tarife -> Katalog verlor alle vier Qwen-Token-Pläne.
+test("Qwen-Token-Parser: Tariftabelle mit und ohne Aktionspreis", () => {
+  const html = `<h2>Plans and pricing</h2><table>
+    <tr><td>Lite plan</td><td>Essential plan</td><td>Standard plan</td><td>Pro plan</td></tr>
+    <tr><td>Pricing</td><td>$6/month <a>Limited-time new-user price</a> $3/month</td>
+        <td>$10/month <a>Limited-time new-user price</a> $5/month</td><td>$18/month</td><td>$68/month</td></tr>
+    <tr><td>Monthly quota</td><td>11,500 Credits</td><td>25,500 Credits</td><td>45,000 Credits</td><td>180,000 Credits</td></tr>
+    <tr><td>Concurrent Agents</td><td>1-2</td><td>2-3</td><td>3-4</td><td>6-8</td></tr></table>
+    <p><b>Extra Bundle</b>: Priced at $15/bundle/month, with 20,000 Credits per bundle.</p>`;
+  const out = parseQwenTokenPersonal(html);
+  assert.deepEqual(out.plans.map((p) => p.name), ["Lite", "Essential", "Standard", "Pro"]);
+  assert.deepEqual(out.plans.map((p) => p.originalPrice), [6, 10, 18, 68]);
+  assert.deepEqual(out.plans.map((p) => p.limitedPrice), [3, 5, 18, 68]);
+  assert.deepEqual(out.plans.map((p) => p.quotaMonth), [11500, 25500, 45000, 180000]);
+  assert.deepEqual(out.extraBundle, { price: 15, credits: 20000 });
+  // Layoutwechsel ohne Preise muss laut scheitern, nicht still Tarife verlieren.
+  assert.throws(() => parseQwenTokenPersonal("<h2>Plans and pricing</h2><p>Lite plan Essential plan</p>"), /keine Preise/);
 });
 
 // Qwen Coding Plan Pro: die offizielle Monatsquote ist bereits eine Request-Zahl.
