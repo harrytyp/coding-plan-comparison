@@ -22,7 +22,9 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  # Eigene Gruppe: mit "pages" teilte sich dieser Workflow die Gruppe mit dem
+  # GitHub-Pages-Deploy und hat ihn bei jedem Push abgebrochen (cancel-in-progress).
+  group: "update-coding-plan"
   cancel-in-progress: true
 
 jobs:
