@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Eigene Concurrency-Gruppe statt 'pages'</title>
+    <id>https://vibeplan.cc/#91acd82</id>
+    <updated>2026-11-06T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/91acd82"/>
+    <summary>Eigene Concurrency-Gruppe statt 'pages'</summary>
+  </entry>
+  <entry>
     <title>Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)</title>
     <id>https://vibeplan.cc/#dc644e2</id>
     <updated>2026-11-06T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/1fe46a4"/>
     <summary>Generate the changelog from the repository commits</summary>
-  </entry>
-  <entry>
-    <title>Mobile filter drawer with a visible handle, real Command Code fee</title>
-    <id>https://vibeplan.cc/#0100b06</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/0100b06"/>
-    <summary>Mobile filter drawer with a visible handle, real Command Code fee</summary>
   </entry>
 </feed>

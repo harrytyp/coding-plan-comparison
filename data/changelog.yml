@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-11-06"
+    commit: "91acd82"
+    text: "Eigene Concurrency-Gruppe statt 'pages'"
+    textEn: "Eigene Concurrency-Gruppe statt 'pages'"
+  - date: "2026-11-06"
     commit: "dc644e2"
     text: "Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)"
     textEn: "Qwen Token-Tabelle 11/2026 (Monats-Credits, New-User-Preise)"
@@ -399,7 +403,3 @@ entries:
     commit: "f11e353"
     text: "Fix AI score aliases resolving to generic base models (Muse Spark)"
     textEn: "Fix AI score aliases resolving to generic base models (Muse Spark)"
-  - date: "2026-09-11"
-    commit: "01f1f5e"
-    text: "English README and output strings, dedupe YAML parser, honest derived metrics"
-    textEn: "English README and output strings, dedupe YAML parser, honest derived metrics"
