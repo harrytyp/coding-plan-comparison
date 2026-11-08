@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-07T10:15:40.097Z",
+  "generatedAt": "2026-11-08T10:26:40.232Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -89683,7 +89683,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-07T10:15:39.881Z",
+    "fetchedAt": "2026-11-08T10:26:40.006Z",
     "count": 452,
     "scores": {
       "claude-opus-5-5": {
@@ -89878,10 +89878,10 @@
       "deepseek-v4-pro-max": {
         "intelligence": 42.58
       },
-      "gemini-3-6-flash": {
+      "ember-1": {
         "intelligence": 42.42
       },
-      "ember-1": {
+      "gemini-3-6-flash": {
         "intelligence": 42.42
       },
       "ling-3-0-flash-fin": {
@@ -90028,10 +90028,10 @@
       "qwen3-6-27b": {
         "intelligence": 34.81
       },
-      "longcat-flash-thinking-2601": {
+      "gpt-5-1-high-2025-11-12": {
         "intelligence": 34.71
       },
-      "gpt-5-1-high-2025-11-12": {
+      "longcat-flash-thinking-2601": {
         "intelligence": 34.71
       },
       "nemotron-3-5-super-vl-120b-a12b": {
@@ -90307,10 +90307,10 @@
       "grok-4-20-beta-0309-reasoning": {
         "intelligence": 23.3
       },
-      "qwen3-next-80b-a3b-thinking": {
+      "mercury-2": {
         "intelligence": 23.16
       },
-      "mercury-2": {
+      "qwen3-next-80b-a3b-thinking": {
         "intelligence": 23.16
       },
       "granite-4-2-30b": {
@@ -90823,10 +90823,10 @@
       "shieldstral-1-0-3b": {
         "intelligence": -2.69
       },
-      "grok-1-5": {
+      "llama-3-1-8b-instruct": {
         "intelligence": -3.12
       },
-      "llama-3-1-8b-instruct": {
+      "grok-1-5": {
         "intelligence": -3.12
       },
       "gpt-5-1-codex-mini": {
@@ -91139,7 +91139,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-07",
+      "verifiedAt": "2026-11-08",
       "crawled": true
     },
     {
@@ -91826,12 +91826,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Sat, 07 Nov 2026 00:02:31 +0000",
+    "updatedAt": "Sun, 08 Nov 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.896118,
-      "CNY": 6.686107,
-      "GBP": 0.747719,
-      "JPY": 158.368984
+      "EUR": 0.895793,
+      "CNY": 6.690826,
+      "GBP": 0.747473,
+      "JPY": 158.318418
     }
   },
   "statistics": {
