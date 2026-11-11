@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseQwenTokenPersonal } from "../scripts/parsers.mjs";
+import { parseQwenTokenPersonal, htmlToText } from "../scripts/parsers.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -98,8 +98,14 @@ test("Preisdiskrepanzen aufgelöst: offizielle Preise (GLM CNY, Kimi USD, Qwen U
   // Seit 11/2026: Standard $18 regulaer (keine Aktion), Lite/Essential mit New-User-Preis.
   assert.equal(qwenStd.price.paidPrice, 18, "Qwen Standard $18");
   assert.equal(qwenStd.price.advertised, 18, "Qwen Standard ohne Streichpreis");
-  assert.equal(qwenStd.quotas[0].amount, 45000, "Qwen Standard 45.000 Credits/Monat");
   assert.equal(qwenStd.quotas[0].window, "month", "Quota-Fenster ist monatlich");
+  // Die Credit-Zahl nicht hart kodieren: Alibaba hat die Monatsquoten am 09.11.2026
+  // erhoeht (Standard 45.000 → 80.000). Geprueft wird die Regel: latest.json
+  // uebernimmt genau den Parserwert und die Extra-Bundles stehen separat.
+  const qwenParsed = JSON.parse(await readFile(join(ROOT, "parsed/qwen-token-personal.json"), "utf8"));
+  const stdSrc = qwenParsed.plans.find((p) => p.name === "Standard");
+  assert.ok(stdSrc?.quotaMonth > 0, "Parser liefert eine Standard-Monatsquote");
+  assert.equal(qwenStd.quotas[0].amount, stdSrc.quotaMonth, "Standard-Quota = Parserwert (kein statischer Wert)");
 });
 
 test("Draw-Schwelle: relative Differenz < 10% = draw", async () => {
@@ -160,7 +166,17 @@ test("Dynamik: Daten kommen aus geparsten Quellen (nicht statisch)", async () =>
   const lite = qwen.plans.find((p) => p.name === "Lite");
   assert.equal(lite.originalPrice, 6, "Qwen Lite regulaer $6");
   assert.equal(lite.limitedPrice, 3, "Qwen Lite New-User $3");
-  assert.equal(lite.quotaMonth, 11500, "Qwen Lite 11.500 Credits/Monat");
+  // Quoten nicht hart kodieren (Erhoehung am 09.11.2026: 11.500 → 20.000, 180.000 → 200.000).
+  // Geprueft wird die Regel: jede Quote steht mit derselben Zahl in der Quelle und
+  // waechst mit dem Tarif (Lite < Essential < Standard < Pro).
+  const qwenRaw = htmlToText(await readFile(join(ROOT, "cache/qwen-token-personal.html"), "utf8"));
+  const quotas = qwen.plans.map((p) => p.quotaMonth);
+  assert.ok(quotas.every((q) => Number.isInteger(q) && q > 0), `jede Monatsquote ist eine Zahl (${quotas.join("/")})`);
+  assert.deepEqual([...quotas].sort((a, b) => a - b), quotas, "Quoten steigen mit dem Tarif");
+  for (const p of qwen.plans) {
+    assert.ok(qwenRaw.includes(`${p.quotaMonth.toLocaleString("en-US")} Credits`),
+      `${p.name}: ${p.quotaMonth} Credits stehen so in der Quelle`);
+  }
   assert.equal(qwen.plans.length, 4, "Qwen Token Personal: alle vier Tarife geparst");
 
   // Kimi-Parser: CNY-Preise. Seit 12.10.2026 heissen die China-Tarife Go/Plus/Pro/Max,

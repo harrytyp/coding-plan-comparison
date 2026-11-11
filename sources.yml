@@ -60,7 +60,7 @@ sources:
     typ: html-docs
     parser: qwen-token-personal
     provides: [plan_meta, plan_quotas, concurrent_agents, extra_bundle]
-    note: "Qwen Token Plan Personal: Lite $6 (New-User $3), Essential $10 ($5), Standard $18, Pro $68; Monats-Credits 11,5k/25,5k/45k/180k statt 7-Tage-Quote (seit 22.09.2026), concurrent agents, Extra Bundle $15/20k."
+    note: "Qwen Token Plan Personal: Lite $6 (New-User $3), Essential $10 ($5), Standard $18, Pro $43; Monats-Credits 20k/45k/80k/200k (Anhebung 09.11.2026, vorher 11,5k/25,5k/45k/180k), concurrent agents, Extra Bundle $15/20k."
 
   - id: kimi-membership-pricing
     url: "https://www.kimi.com/en/help/membership/membership-pricing"

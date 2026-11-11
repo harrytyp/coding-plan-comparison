@@ -205,7 +205,8 @@ Referenzzeile oder ist als Sackgasse hier dokumentiert.
   90.000 Requests pro Monat und 1.800 Requests pro Dollar in der Rangliste. Die
   vier Token-Tarife bleiben ohne Rate, weil die Credit-Koeffizienten
   ("tiered deduction coefficients") nicht veröffentlicht sind; die Preise und
-  Mengen (6/10/18/68 $ für 11.500/25.500/45.000/180.000 Credits) sind bestätigt.
+  Mengen (6/10/18/43 $ für 20.000/45.000/80.000/200.000 Credits, Stand
+  09.11.2026; davor 6/10/18/68 $ für 11.500/25.500/45.000/180.000) sind bestätigt.
 - **MiniMax Token Plan** bleibt ohne Rate: die einzige verfügbare Angabe ist ein
   5-Stunden-Cap von 100 Prompts aus einer Dritttabelle, und die Anbieterseite ist
   eine JS-SPA ohne Parser.
