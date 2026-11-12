@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-11T11:01:57.176Z",
+  "generatedAt": "2026-11-12T11:17:56.429Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -90460,380 +90460,389 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-11T11:01:56.719Z",
-    "count": 457,
+    "fetchedAt": "2026-11-12T11:17:56.188Z",
+    "count": 461,
     "scores": {
       "claude-fable-5-2": {
-        "intelligence": 61.25
+        "intelligence": 61.06
       },
       "claude-mythos-5-2": {
-        "intelligence": 59.62
+        "intelligence": 59.56
       },
       "claude-opus-5-5": {
-        "intelligence": 58.9
+        "intelligence": 58.72
       },
       "gemini-4-carbon": {
-        "intelligence": 57.48
+        "intelligence": 57.22
       },
       "claude-sonnet-5-5": {
-        "intelligence": 57.16
+        "intelligence": 57.01
       },
       "gpt-6-astra": {
-        "intelligence": 56.84
+        "intelligence": 56.61
       },
       "kimi-k3-1-pro": {
-        "intelligence": 55.15
+        "intelligence": 54.93
       },
       "claude-mythos-preview": {
-        "intelligence": 53.85
+        "intelligence": 53.76
       },
       "gemini-4-argon": {
-        "intelligence": 53.81
+        "intelligence": 53.62
       },
       "gpt-6-1-sol": {
-        "intelligence": 53.07
+        "intelligence": 52.94
       },
       "claude-opus-5": {
-        "intelligence": 52.99
+        "intelligence": 52.8
       },
       "muse-wonder-full-1-0": {
-        "intelligence": 52.75
+        "intelligence": 52.66
       },
-      "claude-fable-5": {
-        "intelligence": 52.42
-      },
-      "gpt-5-6-sol": {
-        "intelligence": 52.36
-      },
-      "muse-wonder-full": {
-        "intelligence": 52.23
+      "ernie-5-5-flash-preview": {
+        "intelligence": 52.33
       },
       "claude-fable-5-1": {
+        "intelligence": 52.2
+      },
+      "claude-fable-5": {
+        "intelligence": 52.2
+      },
+      "gpt-5-6-sol": {
         "intelligence": 52.16
       },
+      "muse-wonder-full": {
+        "intelligence": 52.12
+      },
       "muse-spark-1-3": {
-        "intelligence": 51.93
+        "intelligence": 51.6
       },
       "kimi-k3": {
-        "intelligence": 51.17
+        "intelligence": 50.89
       },
       "deepseek-v4-1-flash-1017": {
-        "intelligence": 50.67
+        "intelligence": 50.35
       },
       "qwen3-8-max": {
-        "intelligence": 50.3
+        "intelligence": 50.05
       },
       "glm-5-3": {
-        "intelligence": 50.23
-      },
-      "longcat-2-5": {
-        "intelligence": 49.74
+        "intelligence": 49.92
       },
       "muse-wonder-1-0": {
-        "intelligence": 49.62
+        "intelligence": 49.69
       },
-      "claude-opus-4-8": {
-        "intelligence": 49.3
-      },
-      "deepseek-v4-pro-0813": {
-        "intelligence": 49.27
-      },
-      "deepseek-v4-1-flash": {
-        "intelligence": 49.18
+      "longcat-2-5": {
+        "intelligence": 49.42
       },
       "muse-wonder": {
+        "intelligence": 49.21
+      },
+      "claude-opus-4-8": {
         "intelligence": 49.14
       },
       "claude-haiku-5-5": {
-        "intelligence": 49.13
+        "intelligence": 49.05
+      },
+      "deepseek-v4-pro-0813": {
+        "intelligence": 48.92
+      },
+      "deepseek-v4-1-flash": {
+        "intelligence": 48.88
       },
       "hy4-preview": {
-        "intelligence": 48.86
+        "intelligence": 48.58
       },
       "gpt-5-6-terra": {
-        "intelligence": 48.68
+        "intelligence": 48.48
       },
       "gemini-3-8-flash": {
-        "intelligence": 48.65
-      },
-      "glm-5-3-flash": {
-        "intelligence": 48.2
+        "intelligence": 48.36
       },
       "mimo-v2-6-pro": {
-        "intelligence": 48.16
+        "intelligence": 48
       },
-      "minimax-m3-1-flash": {
-        "intelligence": 48.11
+      "glm-5-3-flash": {
+        "intelligence": 47.87
       },
       "muse-spark-1-1": {
-        "intelligence": 47.98
+        "intelligence": 47.81
+      },
+      "minimax-m3-1-flash": {
+        "intelligence": 47.79
       },
       "qwen3-8-flash-next": {
-        "intelligence": 47.64
+        "intelligence": 47.47
       },
       "qwen3-8-flash": {
-        "intelligence": 47.58
+        "intelligence": 47.41
       },
       "swe-2": {
-        "intelligence": 47.53
-      },
-      "gpt-6-sol": {
-        "intelligence": 47.21
-      },
-      "gpt-6-1-terra": {
-        "intelligence": 47.13
+        "intelligence": 47.38
       },
       "inkling-2-small": {
-        "intelligence": 47.12
+        "intelligence": 47.22
       },
-      "gemini-3-7-flash": {
-        "intelligence": 46.97
+      "gpt-6-1-terra": {
+        "intelligence": 46.95
+      },
+      "gpt-6-sol": {
+        "intelligence": 46.75
       },
       "gpt-5-5": {
-        "intelligence": 46.79
+        "intelligence": 46.7
+      },
+      "gemini-3-7-flash": {
+        "intelligence": 46.63
       },
       "claude-sonnet-5": {
-        "intelligence": 46.69
+        "intelligence": 46.44
       },
       "mistral-large-4": {
-        "intelligence": 46.54
+        "intelligence": 46.02
+      },
+      "muse-ember-1-0": {
+        "intelligence": 45.94
       },
       "grok-4-7": {
-        "intelligence": 45.83
+        "intelligence": 45.43
       },
       "gpt-5-5-pro": {
-        "intelligence": 45.34
+        "intelligence": 45.41
       },
       "seed-2-1-pro": {
-        "intelligence": 45.14
+        "intelligence": 45.08
       },
       "muse-spark-open": {
-        "intelligence": 45.05
+        "intelligence": 44.94
       },
       "glm-5-2": {
-        "intelligence": 44.54
-      },
-      "mimo-v2-6-flash": {
-        "intelligence": 44.39
+        "intelligence": 44.37
       },
       "qwen3-7-max": {
-        "intelligence": 44.39
+        "intelligence": 44.35
       },
-      "grok-4-6": {
-        "intelligence": 44.3
+      "mimo-v2-6-flash": {
+        "intelligence": 43.97
       },
       "claude-opus-4-6": {
-        "intelligence": 44
+        "intelligence": 43.97
       },
-      "beam-1-0-501b-a23b": {
-        "intelligence": 43.93
+      "grok-4-6": {
+        "intelligence": 43.91
       },
       "claude-opus-4-7": {
-        "intelligence": 43.89
+        "intelligence": 43.83
       },
-      "grok-4-5": {
-        "intelligence": 43.85
+      "swe-2-flash": {
+        "intelligence": 43.78
+      },
+      "beam-1-0-501b-a23b": {
+        "intelligence": 43.78
       },
       "qwen3-8-27b": {
-        "intelligence": 43.77
+        "intelligence": 43.66
+      },
+      "grok-4-5": {
+        "intelligence": 43.55
       },
       "gpt-5-6-luna": {
-        "intelligence": 43.75
-      },
-      "deepseek-v4-flash-vision-exp": {
-        "intelligence": 43.11
-      },
-      "kimi-k2-6": {
-        "intelligence": 43.04
+        "intelligence": 43.49
       },
       "claude-mythos-5-1": {
-        "intelligence": 43
+        "intelligence": 43.17
       },
-      "gpt-6-luna": {
-        "intelligence": 42.84
+      "kimi-k2-6": {
+        "intelligence": 43.03
       },
-      "ling-3-0-flash-fin": {
+      "deepseek-v4-flash-vision-exp": {
         "intelligence": 42.75
       },
       "gemini-3-1-pro-preview": {
-        "intelligence": 42.69
+        "intelligence": 42.67
       },
-      "ember-1": {
-        "intelligence": 42.52
+      "ling-3-0-flash-fin": {
+        "intelligence": 42.62
       },
       "gemini-3-5-flash": {
-        "intelligence": 42.42
+        "intelligence": 42.39
       },
       "deepseek-v4-pro-max": {
-        "intelligence": 42.41
+        "intelligence": 42.38
+      },
+      "gpt-6-luna": {
+        "intelligence": 42.36
       },
       "gpt-5-2-pro-2025-12-11": {
         "intelligence": 42.35
       },
+      "ember-1": {
+        "intelligence": 42.18
+      },
       "gemini-3-6-flash": {
-        "intelligence": 42.25
+        "intelligence": 42.01
       },
       "hy3": {
-        "intelligence": 42
-      },
-      "deepseek-v4-flash-0731": {
-        "intelligence": 42
+        "intelligence": 41.96
       },
       "seed-2-1-turbo": {
-        "intelligence": 41.94
+        "intelligence": 41.9
       },
       "qwen3-7-plus": {
-        "intelligence": 41.76
+        "intelligence": 41.74
+      },
+      "deepseek-v4-flash-0731": {
+        "intelligence": 41.7
       },
       "sakana-namazu": {
         "intelligence": 41.35
       },
       "muse-spark": {
-        "intelligence": 41.29
-      },
-      "glm-5-3-flashx-legal": {
-        "intelligence": 41.23
+        "intelligence": 41.33
       },
       "gpt-5-4": {
-        "intelligence": 41.21
+        "intelligence": 41.18
+      },
+      "glm-5-3-flashx-legal": {
+        "intelligence": 41.07
       },
       "gpt-6-cyber": {
-        "intelligence": 41
-      },
-      "minimax-m3": {
-        "intelligence": 40.6
+        "intelligence": 40.82
       },
       "gpt-5-2-2025-12-11": {
-        "intelligence": 40.58
+        "intelligence": 40.62
+      },
+      "minimax-m3": {
+        "intelligence": 40.5
       },
       "grok-4-heavy": {
         "intelligence": 40.13
       },
       "laguna-s-2-1": {
-        "intelligence": 39.02
-      },
-      "gemini-3-8-flash-cyber": {
-        "intelligence": 38.88
+        "intelligence": 38.73
       },
       "seed-2-0-pro": {
-        "intelligence": 38.66
+        "intelligence": 38.67
+      },
+      "gemini-3-8-flash-cyber": {
+        "intelligence": 38.65
       },
       "deepseek-v4-flash-max": {
         "intelligence": 38.53
       },
       "glm-5-1": {
-        "intelligence": 38.51
+        "intelligence": 38.49
       },
       "qwen3-6-plus": {
-        "intelligence": 38.45
-      },
-      "kimi-k2-7-code": {
-        "intelligence": 38.33
-      },
-      "k2-horizon-375b-a23b": {
-        "intelligence": 38.2
+        "intelligence": 38.46
       },
       "kimi-k2-5": {
         "intelligence": 38.16
       },
+      "kimi-k2-7-code": {
+        "intelligence": 38.08
+      },
+      "k2-horizon-375b-a23b": {
+        "intelligence": 38.06
+      },
       "gemini-3-pro-preview": {
-        "intelligence": 37.93
+        "intelligence": 37.99
       },
       "qwen3-5-397b-a17b": {
         "intelligence": 37.8
       },
       "inkling-small": {
-        "intelligence": 37.69
+        "intelligence": 37.65
       },
       "claude-opus-4-5-20251101": {
-        "intelligence": 37.57
+        "intelligence": 37.58
       },
       "qwen3-8-omni-flash": {
-        "intelligence": 37.52
-      },
-      "muse-spark-1-2": {
-        "intelligence": 36.96
-      },
-      "gemini-3-5-flash-cyber": {
-        "intelligence": 36.64
+        "intelligence": 37.48
       },
       "glm-5": {
-        "intelligence": 36.45
+        "intelligence": 36.46
       },
-      "inkling": {
+      "gemini-3-5-flash-cyber": {
         "intelligence": 36.42
       },
+      "inkling": {
+        "intelligence": 36.38
+      },
       "step-3-5-flash": {
-        "intelligence": 36.33
+        "intelligence": 36.35
       },
       "minimax-m2-5": {
-        "intelligence": 36.28
+        "intelligence": 36.31
       },
       "claude-sonnet-4-6": {
-        "intelligence": 36.27
+        "intelligence": 36.25
       },
       "gemini-3-flash-preview": {
+        "intelligence": 36.24
+      },
+      "muse-spark-1-2": {
         "intelligence": 36.19
       },
       "gpt-5-1-thinking-2025-11-12": {
-        "intelligence": 36.04
+        "intelligence": 36.05
       },
       "gpt-5-1-instant-2025-11-12": {
         "intelligence": 35.94
       },
       "gpt-5-3-codex": {
-        "intelligence": 35.85
+        "intelligence": 35.87
       },
       "gpt-5-1-2025-11-13": {
-        "intelligence": 35.8
+        "intelligence": 35.81
       },
       "mercury-3": {
-        "intelligence": 35.72
+        "intelligence": 35.68
       },
       "mimo-v2-5": {
-        "intelligence": 35.55
+        "intelligence": 35.59
       },
       "nemotron-3-ultra-550b-a55b": {
-        "intelligence": 35.51
+        "intelligence": 35.49
       },
       "deepseek-v4-flash-0423": {
         "intelligence": 35.49
       },
       "minimax-m2-7": {
-        "intelligence": 35.34
+        "intelligence": 35.32
       },
       "kimi-k2-thinking-0905": {
         "intelligence": 35.25
       },
-      "ling-3-0-flash": {
-        "intelligence": 34.96
-      },
       "mimo-v2-pro": {
         "intelligence": 34.96
+      },
+      "ling-3-0-flash": {
+        "intelligence": 34.94
       },
       "muse-glimmer-30b": {
         "intelligence": 34.69
       },
       "qwen3-6-27b": {
-        "intelligence": 34.66
+        "intelligence": 34.68
       },
       "longcat-flash-thinking-2601": {
-        "intelligence": 34.53
+        "intelligence": 34.54
       },
       "gpt-5-1-high-2025-11-12": {
         "intelligence": 34.45
       },
       "nemotron-3-5-super-vl-120b-a12b": {
-        "intelligence": 34.43
+        "intelligence": 34.41
       },
       "qwen3-5-122b-a10b": {
-        "intelligence": 34.13
+        "intelligence": 34.15
       },
       "solar-pro4": {
-        "intelligence": 33.82
+        "intelligence": 33.8
       },
       "gpt-5-2-codex": {
-        "intelligence": 33.73
+        "intelligence": 33.76
       },
       "glm-4-7": {
         "intelligence": 33.57
@@ -90848,58 +90857,58 @@
         "intelligence": 33.13
       },
       "gpt-5-2025-08-07": {
-        "intelligence": 33.06
+        "intelligence": 33.09
       },
       "grok-4": {
         "intelligence": 33.06
       },
       "qwen3-5-27b": {
-        "intelligence": 32.97
+        "intelligence": 32.98
       },
       "ernie-5-0": {
         "intelligence": 32.88
       },
       "deepseek-v3-2": {
-        "intelligence": 32.53
+        "intelligence": 32.54
       },
       "gemma-4-31b-it": {
-        "intelligence": 32.41
-      },
-      "solar-mini4": {
-        "intelligence": 32.29
+        "intelligence": 32.45
       },
       "mai-thinking-1": {
-        "intelligence": 32.23
+        "intelligence": 32.24
+      },
+      "solar-mini4": {
+        "intelligence": 32.18
       },
       "qwen3-max-thinking": {
-        "intelligence": 32
+        "intelligence": 32.01
       },
       "deepseek-reasoner": {
-        "intelligence": 31.86
+        "intelligence": 31.87
       },
       "particle-1": {
-        "intelligence": 31.84
+        "intelligence": 31.79
       },
       "gpt-5-5-instant": {
-        "intelligence": 31.63
+        "intelligence": 31.67
       },
       "qwen3-6-35b-a3b": {
-        "intelligence": 31.57
+        "intelligence": 31.59
       },
       "claude-sonnet-4-5-20250929": {
         "intelligence": 31.38
       },
       "seed-2-0-lite": {
-        "intelligence": 31.19
-      },
-      "gpt-rosalind-research": {
-        "intelligence": 31.12
+        "intelligence": 31.2
       },
       "minimax-m2-1": {
-        "intelligence": 31.02
+        "intelligence": 31.03
+      },
+      "gpt-rosalind-research": {
+        "intelligence": 30.95
       },
       "grok-4-fast": {
-        "intelligence": 30.84
+        "intelligence": 30.85
       },
       "grok-3-mini": {
         "intelligence": 30.61
@@ -90908,73 +90917,73 @@
         "intelligence": 30.44
       },
       "o3-2025-04-16": {
-        "intelligence": 30.28
-      },
-      "k2-horizon-32b": {
-        "intelligence": 30.15
+        "intelligence": 30.31
       },
       "gemini-3-1-flash-lite-preview": {
-        "intelligence": 30.15
+        "intelligence": 30.18
+      },
+      "k2-horizon-32b": {
+        "intelligence": 30.1
       },
       "nova-2-pro": {
-        "intelligence": 30.07
+        "intelligence": 30.08
       },
       "mimo-v2-flash": {
-        "intelligence": 29.93
+        "intelligence": 29.94
       },
       "qwen3-5-35b-a3b": {
-        "intelligence": 29.9
-      },
-      "k2-horizon-mova-36b-a4b": {
-        "intelligence": 29.69
+        "intelligence": 29.92
       },
       "grok-3": {
+        "intelligence": 29.66
+      },
+      "k2-horizon-mova-36b-a4b": {
         "intelligence": 29.65
       },
       "step-3-7-flash": {
-        "intelligence": 29.47
+        "intelligence": 29.44
       },
       "glm-5v-turbo": {
         "intelligence": 29.42
       },
       "claude-opus-4-1-20250805": {
-        "intelligence": 29.25
-      },
-      "gpt-5-3-chat-latest": {
-        "intelligence": 29.21
+        "intelligence": 29.26
       },
       "gemini-2-5-pro-preview-06-05": {
-        "intelligence": 29.21
+        "intelligence": 29.22
       },
       "gpt-5-4-mini": {
-        "intelligence": 29.2
+        "intelligence": 29.22
+      },
+      "gpt-5-3-chat-latest": {
+        "intelligence": 29.16
       },
       "gemini-3-5-flash-lite": {
-        "intelligence": 29.15
+        "intelligence": 29.14
       },
       "gpt-5-1-codex": {
-        "intelligence": 29.03
+        "intelligence": 29.04
       },
       "gemma-4-26b-a4b-it": {
-        "intelligence": 28.91
+        "intelligence": 28.94
       },
       "gpt-5-medium-2025-08-07": {
         "intelligence": 28.85
       },
       "nemotron-3-5-bolt-74b-a9b-24gb": {
-        "intelligence": 28.82
+        "intelligence": 28.81
       },
       "gpt-5-1-codex-high": {
         "intelligence": 28.65
       },
       "mai-code-1-flash": {
-        "intelligence": 28.33
-      },
-      "gpt-oss-120b": {
-        "intelligence": 28.22
+        "intelligence": 28.34
       },
       "glm-4-6": {
-        "intelligence": 28.21
+        "intelligence": 28.22
+      },
+      "gpt-oss-120b": {
+        "intelligence": 28.19
       },
       "longcat-flash-thinking": {
         "intelligence": 27.95
@@ -90982,29 +90991,29 @@
       "deepseek-v3-2-exp": {
         "intelligence": 27.45
       },
-      "mai-code-1-1-flash": {
-        "intelligence": 27.44
-      },
       "seed-2-0-mini": {
         "intelligence": 27.44
       },
+      "mai-code-1-1-flash": {
+        "intelligence": 27.35
+      },
       "qwen3-235b-a22b-thinking-2507": {
-        "intelligence": 27.26
+        "intelligence": 27.27
       },
       "gemini-2-5-pro": {
         "intelligence": 27.1
       },
       "claude-opus-4-20250514": {
-        "intelligence": 27.07
+        "intelligence": 27.08
       },
       "glm-4-5": {
-        "intelligence": 27.07
+        "intelligence": 27.06
       },
       "gpt-oss-20b-high": {
         "intelligence": 26.89
       },
       "o4-mini": {
-        "intelligence": 26.68
+        "intelligence": 26.7
       },
       "gpt-5-mini-2025-08-07": {
         "intelligence": 26.59
@@ -91019,76 +91028,76 @@
         "intelligence": 26.2
       },
       "nemotron-3-super-120b-a12b": {
-        "intelligence": 25.96
+        "intelligence": 25.97
       },
       "qwen3-vl-235b-a22b-thinking": {
-        "intelligence": 25.9
+        "intelligence": 25.92
       },
       "k2-horizon-7b": {
         "intelligence": 25.8
       },
       "mistral-medium-3-5": {
-        "intelligence": 25.64
+        "intelligence": 25.65
       },
       "k-exaone-236b-a23b": {
         "intelligence": 25.37
       },
       "gpt-5-4-nano": {
-        "intelligence": 25.26
+        "intelligence": 25.27
       },
       "exaone-4-5-33b": {
-        "intelligence": 25.17
+        "intelligence": 25.19
       },
       "mimo-v2-5-pro": {
         "intelligence": 24.96
       },
       "step3-vl-10b": {
-        "intelligence": 24.89
+        "intelligence": 24.91
       },
       "nova-2-omni": {
-        "intelligence": 24.87
+        "intelligence": 24.88
       },
       "lfm3-1-7b": {
-        "intelligence": 24.85
+        "intelligence": 24.81
       },
       "sarvam-105b": {
         "intelligence": 24.8
       },
       "gpt-oss-120b-high": {
-        "intelligence": 24.61
+        "intelligence": 24.62
       },
       "claude-haiku-4-5-20251001": {
-        "intelligence": 24.43
+        "intelligence": 24.44
       },
       "nova-2-lite": {
-        "intelligence": 24.42
+        "intelligence": 24.43
       },
       "chatgpt-4o-latest": {
         "intelligence": 24.23
       },
       "laguna-xs-2-1": {
-        "intelligence": 24.11
+        "intelligence": 24.13
       },
       "qwen3-vl-235b-a22b-instruct": {
-        "intelligence": 23.92
+        "intelligence": 23.93
       },
       "qwen3-5-9b": {
-        "intelligence": 23.78
+        "intelligence": 23.79
       },
       "glm-4-5-air": {
         "intelligence": 23.63
       },
       "claude-sonnet-4-20250514": {
-        "intelligence": 23.6
+        "intelligence": 23.61
       },
       "deepseek-r1-0528": {
         "intelligence": 23.45
       },
       "command-a-plus-05-2026": {
-        "intelligence": 23.4
+        "intelligence": 23.41
       },
       "qwen3-235b-a22b-instruct-2507": {
-        "intelligence": 23.4
+        "intelligence": 23.41
       },
       "claude-3-7-sonnet-20250219": {
         "intelligence": 23.22
@@ -91097,7 +91106,7 @@
         "intelligence": 23.12
       },
       "qwen3-next-80b-a3b-thinking": {
-        "intelligence": 23.05
+        "intelligence": 23.06
       },
       "granite-4-2-30b": {
         "intelligence": 23.02
@@ -91106,22 +91115,22 @@
         "intelligence": 23.01
       },
       "qwen3-vl-32b-thinking": {
-        "intelligence": 22.9
+        "intelligence": 22.91
       },
       "glm-4-7-flash": {
         "intelligence": 22.59
       },
       "grok-4-3": {
-        "intelligence": 21.68
+        "intelligence": 21.69
       },
       "nemotron-labs-dory-1-0-4b": {
         "intelligence": 21.6
       },
       "north-mini-code-1-0": {
-        "intelligence": 21.49
+        "intelligence": 21.51
       },
       "u2": {
-        "intelligence": 21.41
+        "intelligence": 21.42
       },
       "deepseek-v3-1": {
         "intelligence": 21.34
@@ -91130,16 +91139,16 @@
         "intelligence": 21.3
       },
       "gemma-4-12b-it": {
-        "intelligence": 21.23
+        "intelligence": 21.24
       },
       "k2-horizon-3-7b": {
-        "intelligence": 21.2
+        "intelligence": 21.19
       },
       "kimi-k2-0905": {
         "intelligence": 21.19
       },
       "kimi-k2-instruct": {
-        "intelligence": 21.11
+        "intelligence": 21.12
       },
       "gemini-2-5-flash": {
         "intelligence": 21.02
@@ -91148,19 +91157,19 @@
         "intelligence": 20.98
       },
       "kimi-k2-instruct-0905": {
-        "intelligence": 20.82
-      },
-      "minimax-m1-80k": {
-        "intelligence": 20.65
+        "intelligence": 20.83
       },
       "o3-mini": {
-        "intelligence": 20.65
+        "intelligence": 20.66
+      },
+      "minimax-m1-80k": {
+        "intelligence": 20.66
       },
       "qwen3-coder-480b-a35b-instruct": {
         "intelligence": 20.45
       },
       "nemotron-3-nano-30b-a3b": {
-        "intelligence": 20.27
+        "intelligence": 20.28
       },
       "o1-2024-12-17": {
         "intelligence": 20.25
@@ -91172,16 +91181,16 @@
         "intelligence": 19.86
       },
       "minimax-m1-40k": {
-        "intelligence": 19.74
+        "intelligence": 19.75
       },
       "qwen3-vl-32b-instruct": {
-        "intelligence": 19.56
+        "intelligence": 19.58
       },
       "qwen3-next-80b-a3b-instruct": {
-        "intelligence": 19.43
+        "intelligence": 19.44
       },
       "gpt-4-5": {
-        "intelligence": 19.37
+        "intelligence": 19.38
       },
       "granite-4-2-8b": {
         "intelligence": 19.35
@@ -91190,34 +91199,34 @@
         "intelligence": 19.14
       },
       "o1-pro": {
-        "intelligence": 19.04
+        "intelligence": 19.05
       },
       "grok-4-1-2025-11-17": {
-        "intelligence": 19
+        "intelligence": 19.01
       },
       "sarvam-30b": {
         "intelligence": 18.72
       },
       "qwen3-5-4b": {
-        "intelligence": 18.71
+        "intelligence": 18.72
       },
       "diffusiongemma-26b-a4b-it": {
-        "intelligence": 18.58
+        "intelligence": 18.59
       },
       "gpt-5-nano-2025-08-07": {
-        "intelligence": 18.57
+        "intelligence": 18.58
       },
       "llama-3-1-nemotron-ultra-253b-v1": {
-        "intelligence": 18.45
+        "intelligence": 18.46
       },
       "claude-3-5-sonnet-20241022": {
         "intelligence": 18.29
       },
       "mistral-small-latest": {
-        "intelligence": 18.07
+        "intelligence": 18.08
       },
       "longcat-flash-lite": {
-        "intelligence": 17.96
+        "intelligence": 17.97
       },
       "qwen3-32b": {
         "intelligence": 17.82
@@ -91226,19 +91235,19 @@
         "intelligence": 17.79
       },
       "qwen3-vl-30b-a3b-thinking": {
-        "intelligence": 17.57
+        "intelligence": 17.58
       },
       "lfm-2-5-2-6b": {
         "intelligence": 17.55
       },
       "qwen3-14b": {
-        "intelligence": 17.42
+        "intelligence": 17.43
       },
       "gpt-oss-20b": {
         "intelligence": 17.25
       },
       "gpt-4-1-2025-04-14": {
-        "intelligence": 17.19
+        "intelligence": 17.2
       },
       "qwen3-30b-a3b": {
         "intelligence": 16.65
@@ -91250,28 +91259,28 @@
         "intelligence": 16.1
       },
       "gemini-2-0-flash": {
-        "intelligence": 15.9
+        "intelligence": 15.91
       },
       "o1-preview": {
-        "intelligence": 15.89
+        "intelligence": 15.9
       },
       "ministral-8b-latest": {
         "intelligence": 15.86
       },
       "qwen3-vl-30b-a3b-instruct": {
-        "intelligence": 15.71
+        "intelligence": 15.72
       },
       "qwen3-vl-8b-thinking": {
-        "intelligence": 15.56
+        "intelligence": 15.58
       },
       "grok-4-1-thinking-2025-11-17": {
-        "intelligence": 15.47
+        "intelligence": 15.48
       },
       "deepseek-r1-zero": {
-        "intelligence": 15.36
+        "intelligence": 15.37
       },
       "lfm3-vl-2b": {
-        "intelligence": 15.36
+        "intelligence": 15.37
       },
       "claude-3-5-sonnet-20240620": {
         "intelligence": 15.33
@@ -91280,10 +91289,10 @@
         "intelligence": 14.97
       },
       "deepseek-v3": {
-        "intelligence": 14.88
+        "intelligence": 14.89
       },
       "granite-4-2-3b": {
-        "intelligence": 14.57
+        "intelligence": 14.58
       },
       "phi-4-reasoning-plus": {
         "intelligence": 14.4
@@ -91298,25 +91307,25 @@
         "intelligence": 13.97
       },
       "minicpm-sala": {
-        "intelligence": 13.9
+        "intelligence": 13.91
       },
       "deepseek-r1-distill-llama-70b": {
         "intelligence": 13.84
       },
       "qwen2-vl-72b": {
-        "intelligence": 13.58
+        "intelligence": 13.59
       },
       "gpt-4o-2024-08-06": {
-        "intelligence": 13.36
+        "intelligence": 13.37
       },
       "llama-3-3-70b-instruct": {
         "intelligence": 13.2
       },
       "qwen3-vl-8b-instruct": {
-        "intelligence": 13.19
+        "intelligence": 13.2
       },
       "gpt-4-1-mini-2025-04-14": {
-        "intelligence": 13.17
+        "intelligence": 13.18
       },
       "devstral-medium-2507": {
         "intelligence": 12.95
@@ -91325,7 +91334,7 @@
         "intelligence": 12.74
       },
       "kimi-k2-base": {
-        "intelligence": 12.67
+        "intelligence": 12.68
       },
       "gemma-4-e4b-it": {
         "intelligence": 12.59
@@ -91334,16 +91343,16 @@
         "intelligence": 12.55
       },
       "qwen2-5-vl-72b": {
-        "intelligence": 12.34
+        "intelligence": 12.35
       },
       "deepseek-r1-distill-qwen-32b": {
         "intelligence": 12.33
       },
       "qwen3-vl-4b-thinking": {
-        "intelligence": 12.27
+        "intelligence": 12.28
       },
       "magistral-medium": {
-        "intelligence": 12.21
+        "intelligence": 12.22
       },
       "gemini-2-0-flash-lite": {
         "intelligence": 11.77
@@ -91358,7 +91367,7 @@
         "intelligence": 11.43
       },
       "phi-4-reasoning": {
-        "intelligence": 11.41
+        "intelligence": 11.42
       },
       "pixtral-large": {
         "intelligence": 11.11
@@ -91376,13 +91385,13 @@
         "intelligence": 10.22
       },
       "qwen3-vl-4b-instruct": {
-        "intelligence": 10.18
+        "intelligence": 10.19
       },
       "magistral-small-2506": {
         "intelligence": 10.08
       },
       "mistral-large-3-2509": {
-        "intelligence": 9.98
+        "intelligence": 9.99
       },
       "ministral-3-14b-instruct-2512": {
         "intelligence": 9.84
@@ -91409,13 +91418,13 @@
         "intelligence": 8.34
       },
       "mistral-large-latest": {
-        "intelligence": 8.3
+        "intelligence": 8.31
       },
       "devstral-small-2507": {
         "intelligence": 8.29
       },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
-        "intelligence": 8.19
+        "intelligence": 8.2
       },
       "mistral-large-3-675b-base-2512": {
         "intelligence": 8.09
@@ -91424,7 +91433,7 @@
         "intelligence": 8.07
       },
       "mistral-large-3-675b-instruct-2512-eagle": {
-        "intelligence": 7.99
+        "intelligence": 8
       },
       "mistral-small-3-2-24b-instruct-2506": {
         "intelligence": 7.86
@@ -91433,13 +91442,13 @@
         "intelligence": 7.74
       },
       "deepseek-r1-distill-qwen-7b": {
-        "intelligence": 7.71
+        "intelligence": 7.72
       },
       "deepseek-v2-5": {
         "intelligence": 7.57
       },
       "qvq-72b-preview": {
-        "intelligence": 7.45
+        "intelligence": 7.46
       },
       "ministral-3-8b-instruct-2512": {
         "intelligence": 7.39
@@ -91448,10 +91457,10 @@
         "intelligence": 7.17
       },
       "llama-3-1-70b-instruct": {
-        "intelligence": 7.02
+        "intelligence": 7.03
       },
       "nova-lite": {
-        "intelligence": 6.99
+        "intelligence": 7
       },
       "qwen-2-5-32b-instruct": {
         "intelligence": 6.88
@@ -91460,7 +91469,7 @@
         "intelligence": 6.86
       },
       "qwen2-5-vl-7b": {
-        "intelligence": 6.58
+        "intelligence": 6.59
       },
       "phi-4-mini-reasoning": {
         "intelligence": 6.41
@@ -91469,7 +91478,7 @@
         "intelligence": 6.29
       },
       "gemma-4-e2b-it": {
-        "intelligence": 5.82
+        "intelligence": 5.83
       },
       "gemini-1-5-flash": {
         "intelligence": 5.42
@@ -91484,7 +91493,7 @@
         "intelligence": 4.85
       },
       "qwen2-5-omni-7b": {
-        "intelligence": 4.75
+        "intelligence": 4.76
       },
       "llama-3-2-90b-instruct": {
         "intelligence": 4.62
@@ -91493,22 +91502,22 @@
         "intelligence": 4.49
       },
       "llama-3-1-nemotron-nano-8b-v1": {
-        "intelligence": 4.09
+        "intelligence": 4.1
       },
       "hermes-3-405b": {
         "intelligence": 3.78
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 3.65
       },
-      "mistral-small-3-1-24b-instruct-2503": {
-        "intelligence": 3.64
+      "mistral-small-24b-instruct-2501": {
+        "intelligence": 3.65
       },
       "hermes-3-70b": {
         "intelligence": 3.58
       },
       "qwen3-5-2b": {
-        "intelligence": 3.13
+        "intelligence": 3.14
       },
       "qwen-2-5-14b-instruct": {
         "intelligence": 3.12
@@ -91517,7 +91526,7 @@
         "intelligence": 3.09
       },
       "gpt-4o-mini-2024-07-18": {
-        "intelligence": 3.08
+        "intelligence": 3.09
       },
       "lfm-2-5-vl-3b": {
         "intelligence": 3.04
@@ -91529,7 +91538,7 @@
         "intelligence": 2.27
       },
       "phi-4-multimodal-instruct": {
-        "intelligence": 2.21
+        "intelligence": 2.22
       },
       "qwen-2-5-7b-instruct": {
         "intelligence": 1.92
@@ -91553,13 +91562,13 @@
         "intelligence": 1.18
       },
       "gpt-4-1-nano-2025-04-14": {
-        "intelligence": 0.91
+        "intelligence": 0.92
       },
       "deepseek-vl2-small": {
-        "intelligence": 0.6
+        "intelligence": 0.61
       },
       "k2-horizon-0-9b": {
-        "intelligence": 0.43
+        "intelligence": 0.44
       },
       "jamba-1-5-large": {
         "intelligence": 0.37
@@ -91607,7 +91616,7 @@
         "intelligence": -2.28
       },
       "gemma-3-4b-it": {
-        "intelligence": -2.44
+        "intelligence": -2.43
       },
       "shieldstral-1-0-3b": {
         "intelligence": -2.74
@@ -91624,10 +91633,10 @@
       "deepseek-r1-distill-qwen-1-5b": {
         "intelligence": -3.64
       },
-      "qwen-2-5-coder-7b-instruct": {
+      "grok-4-20-beta-0309-non-reasoning": {
         "intelligence": -3.73
       },
-      "grok-4-20-beta-0309-non-reasoning": {
+      "qwen-2-5-coder-7b-instruct": {
         "intelligence": -3.73
       },
       "phi-3-5-vision-instruct": {
@@ -91640,7 +91649,7 @@
         "intelligence": -4.62
       },
       "medgemma-4b-it": {
-        "intelligence": -5.04
+        "intelligence": -5.03
       },
       "qwen2-7b-instruct": {
         "intelligence": -5.08
@@ -91652,10 +91661,10 @@
         "intelligence": -5.28
       },
       "deepseek-vl2-tiny": {
-        "intelligence": -5.31
+        "intelligence": -5.3
       },
       "gemma-3n-e4b-it": {
-        "intelligence": -5.34
+        "intelligence": -5.33
       },
       "gemma-2-9b-it": {
         "intelligence": -5.38
@@ -91706,52 +91715,52 @@
         "intelligence": -13.98
       },
       "muse-spark-1-3-contributor": {
-        "intelligence": 51.93,
+        "intelligence": 51.6,
         "aliasOf": "muse-spark-1-3",
         "fallback": true
       },
       "muse-spark-1-2-contributor": {
-        "intelligence": 36.96,
+        "intelligence": 36.19,
         "aliasOf": "muse-spark-1-2",
         "fallback": true
       },
       "deepseek-v4-pro": {
-        "intelligence": 42.41,
+        "intelligence": 42.38,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "hy4": {
-        "intelligence": 48.86,
+        "intelligence": 48.58,
         "aliasOf": "hy4-preview",
         "fallback": true
       },
       "tencent-hy4-preview": {
-        "intelligence": 48.86,
+        "intelligence": 48.58,
         "aliasOf": "hy4-preview",
         "fallback": true
       },
       "tencent-hy3": {
-        "intelligence": 42,
+        "intelligence": 41.96,
         "aliasOf": "hy3",
         "fallback": true
       },
       "kimi-k2-7-code-highspeed": {
-        "intelligence": 38.33,
+        "intelligence": 38.08,
         "aliasOf": "kimi-k2-7-code",
         "fallback": true
       },
       "glm-5-3-flashx": {
-        "intelligence": 50.23,
+        "intelligence": 49.92,
         "aliasOf": "glm-5-3",
         "fallback": true
       },
       "glm-5-2-fast": {
-        "intelligence": 44.54,
+        "intelligence": 44.37,
         "aliasOf": "glm-5-2",
         "fallback": true
       },
       "deepseek-v4-pro-latest": {
-        "intelligence": 42.41,
+        "intelligence": 42.38,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
@@ -91766,98 +91775,103 @@
         "fallback": true
       },
       "deepseek-v4-1-flash-latest": {
-        "intelligence": 49.18,
+        "intelligence": 48.88,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "deepseek-v4-1-flash-fast-latest": {
-        "intelligence": 49.18,
+        "intelligence": 48.88,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "deepseek-v4-1-flash-ultrafast": {
-        "intelligence": 49.18,
+        "intelligence": 48.88,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "qwen-3-8-omni-flash": {
-        "intelligence": 37.52,
+        "intelligence": 37.48,
         "aliasOf": "qwen3-8-omni-flash",
         "fallback": true
       },
       "qwen-3-8-max-prime": {
-        "intelligence": 50.3,
+        "intelligence": 50.05,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-max-0902": {
-        "intelligence": 50.3,
+        "intelligence": 50.05,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-max": {
-        "intelligence": 50.3,
+        "intelligence": 50.05,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-27b": {
-        "intelligence": 43.77,
+        "intelligence": 43.66,
         "aliasOf": "qwen3-8-27b",
         "fallback": true
       },
       "qwen-3-6-plus": {
-        "intelligence": 38.45,
+        "intelligence": 38.46,
         "aliasOf": "qwen3-6-plus",
         "fallback": true
       },
       "qwen-3-7-max": {
-        "intelligence": 44.39,
+        "intelligence": 44.35,
         "aliasOf": "qwen3-7-max",
         "fallback": true
       },
       "qwen-3-7-plus": {
-        "intelligence": 41.76,
+        "intelligence": 41.74,
         "aliasOf": "qwen3-7-plus",
         "fallback": true
       },
       "qwen-3-8-flash": {
-        "intelligence": 47.58,
+        "intelligence": 47.41,
         "aliasOf": "qwen3-8-flash",
         "fallback": true
       },
       "ling-3-1-flash-1019": {
-        "intelligence": 42.75,
+        "intelligence": 42.62,
         "aliasOf": "ling-3-0-flash-fin",
         "fallback": true
       },
       "ling-3-1-flash": {
-        "intelligence": 42.75,
+        "intelligence": 42.62,
         "aliasOf": "ling-3-0-flash-fin",
         "fallback": true
       },
       "mimo-v2-6-pro-ultraspeed": {
-        "intelligence": 48.16,
+        "intelligence": 48,
         "aliasOf": "mimo-v2-6-pro",
         "fallback": true
       },
       "nemotron-3-ultra": {
-        "intelligence": 35.51,
+        "intelligence": 35.49,
         "aliasOf": "nemotron-3-ultra-550b-a55b",
         "fallback": true
       },
       "nemotron-3-5-super-vl": {
-        "intelligence": 34.43,
+        "intelligence": 34.41,
         "aliasOf": "nemotron-3-5-super-vl-120b-a12b",
         "fallback": true
       },
       "claude-haiku-4-5": {
-        "intelligence": 24.43,
+        "intelligence": 24.44,
         "aliasOf": "claude-haiku-4-5-20251001",
         "fallback": true
       },
       "gemini-3-1-flash-lite": {
-        "intelligence": 30.15,
+        "intelligence": 30.18,
         "aliasOf": "gemini-3-1-flash-lite-preview",
+        "fallback": true
+      },
+      "muse-ember": {
+        "intelligence": 45.94,
+        "aliasOf": "muse-ember-1-0",
         "fallback": true
       },
       "qwen3-coder-next": {
@@ -91866,7 +91880,7 @@
         "fallback": true
       },
       "gemini-3-1-pro": {
-        "intelligence": 42.69,
+        "intelligence": 42.67,
         "aliasOf": "gemini-3-1-pro-preview",
         "fallback": true
       },
@@ -91876,37 +91890,37 @@
         "fallback": true
       },
       "claude-sonnet-4": {
-        "intelligence": 36.27,
+        "intelligence": 36.25,
         "aliasOf": "claude-sonnet-4-6",
         "fallback": true
       },
       "claude-opus-4-8-fast-mode-preview": {
-        "intelligence": 49.3,
+        "intelligence": 49.14,
         "aliasOf": "claude-opus-4-8",
         "fallback": true
       },
       "gemini-3-8-flash-1": {
-        "intelligence": 48.65,
+        "intelligence": 48.36,
         "aliasOf": "gemini-3-8-flash",
         "fallback": true
       },
       "gemini-4-argon-2": {
-        "intelligence": 53.81,
+        "intelligence": 53.62,
         "aliasOf": "gemini-4-argon",
         "fallback": true
       },
       "gemini-4-carbon-3": {
-        "intelligence": 57.48,
+        "intelligence": 57.22,
         "aliasOf": "gemini-4-carbon",
         "fallback": true
       },
       "beam": {
-        "intelligence": 43.93,
+        "intelligence": 43.78,
         "aliasOf": "beam-1-0-501b-a23b",
         "fallback": true
       },
       "gpt-oss120b": {
-        "intelligence": 28.22,
+        "intelligence": 28.19,
         "aliasOf": "gpt-oss-120b",
         "fallback": true
       },
@@ -91916,7 +91930,7 @@
         "fallback": true
       },
       "nemotron-3-super": {
-        "intelligence": 25.96,
+        "intelligence": 25.97,
         "aliasOf": "nemotron-3-super-120b-a12b",
         "fallback": true
       }
@@ -91933,7 +91947,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-11",
+      "verifiedAt": "2026-11-12",
       "crawled": true
     },
     {
@@ -92620,12 +92634,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Wed, 11 Nov 2026 00:02:32 +0000",
+    "updatedAt": "Thu, 12 Nov 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.893927,
-      "CNY": 6.687755,
-      "GBP": 0.748164,
-      "JPY": 158.555343
+      "EUR": 0.899865,
+      "CNY": 6.685797,
+      "GBP": 0.752421,
+      "JPY": 159.51378
     }
   },
   "statistics": {
