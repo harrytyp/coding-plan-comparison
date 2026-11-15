@@ -5,9 +5,16 @@
   <id>https://vibeplan.cc/</id>
   <link rel="self" href="https://vibeplan.cc/feed.xml"/>
   <link rel="alternate" href="https://vibeplan.cc/"/>
-  <updated>2026-11-06T00:00:00Z</updated>
+  <updated>2026-11-15T00:00:00Z</updated>
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
+  <entry>
+    <title>OpenDesign credits breakdown follows the renamed Coding Plan label</title>
+    <id>https://vibeplan.cc/#e6f23e8</id>
+    <updated>2026-11-15T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/e6f23e8"/>
+    <summary>OpenDesign credits breakdown follows the renamed Coding Plan label</summary>
+  </entry>
   <entry>
     <title>Eigene Concurrency-Gruppe statt 'pages'</title>
     <id>https://vibeplan.cc/#91acd82</id>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/82c67cf"/>
     <summary>One price including the fee, no separate fee marker</summary>
-  </entry>
-  <entry>
-    <title>Generate the changelog from the repository commits</title>
-    <id>https://vibeplan.cc/#1fe46a4</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/1fe46a4"/>
-    <summary>Generate the changelog from the repository commits</summary>
   </entry>
 </feed>

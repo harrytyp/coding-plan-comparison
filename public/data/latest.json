@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-13T11:03:22.966Z",
+  "generatedAt": "2026-11-15T03:04:25.974Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -36118,14 +36118,6 @@
       "meter": "dollar_usage",
       "quotas": [
         {
-          "label": "7-day window",
-          "unit": "usd",
-          "amount": 74,
-          "window": "week",
-          "refresh": "weekly",
-          "disclosure": "exact"
-        },
-        {
           "label": "Monthly",
           "unit": "usd",
           "amount": 310,
@@ -36136,7 +36128,7 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": 74,
+        "weekly": null,
         "monthly": 310
       },
       "officialConversion": null,
@@ -36465,14 +36457,6 @@
       "meter": "dollar_usage",
       "quotas": [
         {
-          "label": "7-day window",
-          "unit": "usd",
-          "amount": 90,
-          "window": "week",
-          "refresh": "weekly",
-          "disclosure": "exact"
-        },
-        {
           "label": "Monthly",
           "unit": "usd",
           "amount": 480,
@@ -36483,7 +36467,7 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": 90,
+        "weekly": null,
         "monthly": 480
       },
       "officialConversion": null,
@@ -36812,14 +36796,6 @@
       "meter": "dollar_usage",
       "quotas": [
         {
-          "label": "7-day window",
-          "unit": "usd",
-          "amount": 150,
-          "window": "week",
-          "refresh": "weekly",
-          "disclosure": "exact"
-        },
-        {
           "label": "Monthly",
           "unit": "usd",
           "amount": 900,
@@ -36830,7 +36806,7 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": 150,
+        "weekly": null,
         "monthly": 900
       },
       "officialConversion": null,
@@ -38285,15 +38261,15 @@
         "copilot-models"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 31,
+      "modelCount": 32,
       "modelStats": {
-        "count": 31,
+        "count": 32,
         "min": 220.58823529411762,
         "max": 22058.823529411762,
-        "mean": 3257.7961995071337,
-        "median": 1077.276644642344,
+        "mean": 3232.0241315328763,
+        "median": 1090.108910556466,
         "p25": 544.0301755404033,
-        "p75": 2015.349935594676
+        "p75": 2262.6842707886076
       },
       "dataTier": "A",
       "dataTierNote": "Official AI credit allowance (1500 credits = $15) and official per-model token prices from the GitHub Copilot docs",
@@ -38907,6 +38883,29 @@
           "derivedTokensPerMonth": 92996350.3649635
         },
         {
+          "model": "Gemini 4 Hydrogen",
+          "family": "gemini 4 hydrogen",
+          "allowance": 15,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.006165,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 2433.0900243309,
+          "requestsRawInWindow": 2433.0900243309,
+          "normalizedPer1": 243.30900243309003,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 123995133.81995134,
+          "derivedTokensPerMonth": 123995133.81995134
+        },
+        {
           "model": "MAI-Code-1.1-Flash",
           "family": "mai-code-1.1-flash",
           "allowance": 15,
@@ -39061,15 +39060,15 @@
         "copilot-models"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 31,
+      "modelCount": 32,
       "modelStats": {
-        "count": 31,
+        "count": 32,
         "min": 1029.4117647058822,
         "max": 102941.17647058822,
-        "mean": 15203.048931033285,
-        "median": 5027.291008330939,
+        "mean": 15082.779280486751,
+        "median": 5087.174915930175,
         "p25": 2538.8074858552154,
-        "p75": 9404.966366108487
+        "p75": 10559.193263680168
       },
       "dataTier": "A",
       "dataTierNote": "Official AI credit allowance (7000 credits = $70) and official per-model token prices from the GitHub Copilot docs",
@@ -39683,6 +39682,29 @@
           "derivedTokensPerMonth": 433982968.36982965
         },
         {
+          "model": "Gemini 4 Hydrogen",
+          "family": "gemini 4 hydrogen",
+          "allowance": 70,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.006165,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 11354.4201135442,
+          "requestsRawInWindow": 11354.4201135442,
+          "normalizedPer1": 291.1389772703641,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 578643957.8264395,
+          "derivedTokensPerMonth": 578643957.8264395
+        },
+        {
           "model": "MAI-Code-1.1-Flash",
           "family": "mai-code-1.1-flash",
           "allowance": 70,
@@ -39837,15 +39859,15 @@
         "copilot-models"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 31,
+      "modelCount": 32,
       "modelStats": {
-        "count": 31,
+        "count": 32,
         "min": 2941.176470588235,
         "max": 294117.6470588235,
-        "mean": 43437.282660095116,
-        "median": 14363.688595231255,
+        "mean": 43093.65508710502,
+        "median": 14534.785474086217,
         "p25": 7253.735673872045,
-        "p75": 26871.332474595678
+        "p75": 30169.123610514765
       },
       "dataTier": "A",
       "dataTierNote": "Official AI credit allowance (20000 credits = $200) and official per-model token prices from the GitHub Copilot docs",
@@ -40459,6 +40481,29 @@
           "derivedTokensPerMonth": 1239951338.1995134
         },
         {
+          "model": "Gemini 4 Hydrogen",
+          "family": "gemini 4 hydrogen",
+          "allowance": 200,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.006165,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 32441.200324412002,
+          "requestsRawInWindow": 32441.200324412002,
+          "normalizedPer1": 324.41200324412,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 1653268450.9326844,
+          "derivedTokensPerMonth": 1653268450.9326844
+        },
+        {
           "model": "MAI-Code-1.1-Flash",
           "family": "mai-code-1.1-flash",
           "allowance": 200,
@@ -40613,15 +40658,15 @@
         "copilot-models"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 31,
+      "modelCount": 32,
       "modelStats": {
-        "count": 31,
+        "count": 32,
         "min": 279.4117647058823,
         "max": 27941.176470588234,
-        "mean": 4126.541852709035,
-        "median": 1364.5504165469692,
+        "mean": 4093.8972332749763,
+        "median": 1380.8046200381905,
         "p25": 689.1048890178442,
-        "p75": 2552.77658508659
+        "p75": 2866.066742998903
       },
       "dataTier": "A",
       "dataTierNote": "Official seat price and 1,900 AI credits per user per month from the GitHub Copilot docs",
@@ -41235,6 +41280,29 @@
           "derivedTokensPerMonth": 117795377.12895378
         },
         {
+          "model": "Gemini 4 Hydrogen",
+          "family": "gemini 4 hydrogen",
+          "allowance": 19,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.006165,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 3081.91403081914,
+          "requestsRawInWindow": 3081.91403081914,
+          "normalizedPer1": 162.20600162206,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 157060502.83860502,
+          "derivedTokensPerMonth": 157060502.83860502
+        },
+        {
           "model": "MAI-Code-1.1-Flash",
           "family": "mai-code-1.1-flash",
           "allowance": 19,
@@ -41389,15 +41457,15 @@
         "copilot-models"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 31,
+      "modelCount": 32,
       "modelStats": {
-        "count": 31,
+        "count": 32,
         "min": 573.5294117647059,
         "max": 57352.94117647059,
-        "mean": 8470.270118718543,
-        "median": 2800.919276070095,
+        "mean": 8403.262741985474,
+        "median": 2834.2831674468125,
         "p25": 1414.4784564050487,
-        "p75": 5239.909832546157
+        "p75": 5882.97910405038
       },
       "dataTier": "A",
       "dataTierNote": "Official seat price and 3,900 AI credits per user per month from the GitHub Copilot docs",
@@ -42009,6 +42077,29 @@
           "estimate": null,
           "rawTokensPerMonth": 241790510.94890508,
           "derivedTokensPerMonth": 241790510.94890508
+        },
+        {
+          "model": "Gemini 4 Hydrogen",
+          "family": "gemini 4 hydrogen",
+          "allowance": 39,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.006165,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 6326.03406326034,
+          "requestsRawInWindow": 6326.03406326034,
+          "normalizedPer1": 162.20600162206,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 322387347.93187344,
+          "derivedTokensPerMonth": 322387347.93187344
         },
         {
           "model": "MAI-Code-1.1-Flash",
@@ -44525,40 +44616,40 @@
       "planA": "opencode-go",
       "planB": "copilot-pro",
       "meanRequestsA": 38747.622533065616,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1089.38141492484,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1098.8655083057345,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 38747.622533065616,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 154.867446055323,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 156.8997517798003,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-max",
       "meanRequestsA": 38747.622533065616,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 10.79639388063699,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 10.085086877069926,
       "winner": "copilot-max"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-business",
       "meanRequestsA": 38747.622533065616,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 838.9853275722425,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 846.4727697150536,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-enterprise",
       "meanRequestsA": 38747.622533065616,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 357.45439035570803,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 361.10211857912884,
       "winner": "opencode-go"
     },
     {
@@ -45269,40 +45360,40 @@
       "planA": "opencode-go-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 93552.48824001628,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2771.649498951766,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2794.5479499141748,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 93552.48824001628,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 515.353464061093,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 520.260274981609,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-max",
       "meanRequestsA": 93552.48824001628,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 115.37371242138246,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 117.09109624356309,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-business",
       "meanRequestsA": 93552.48824001628,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 2167.0917096987628,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 2185.1694341427697,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 93552.48824001628,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1004.4805765199106,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1013.2876730439139,
       "winner": "opencode-go-plus"
     },
     {
@@ -46005,40 +46096,40 @@
       "planA": "opencode-go-teams",
       "planB": "copilot-pro",
       "meanRequestsA": 42628.86352962564,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1208.518425310794,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1218.9525138046458,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 42628.86352962564,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 180.3968054237417,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 182.632681529567,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-max",
       "meanRequestsA": 42628.86352962564,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 1.861118101690451,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 1.078561464651584,
       "winner": "draw"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-business",
       "meanRequestsA": 42628.86352962564,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 933.0408620874692,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 941.2783003720888,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-enterprise",
       "meanRequestsA": 42628.86352962564,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 403.2763174272287,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 407.28942838640245,
       "winner": "opencode-go-teams"
     },
     {
@@ -46733,40 +46824,40 @@
       "planA": "command-code-go",
       "planB": "copilot-pro",
       "meanRequestsA": 2763.7074658889787,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 15.166348763403459,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 14.489887655070987,
       "winner": "copilot-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 2763.7074658889787,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 81.82136044930073,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 81.67640449751521,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-max",
       "meanRequestsA": 2763.7074658889787,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 93.63747615725526,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 93.58674157413033,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-business",
       "meanRequestsA": 2763.7074658889787,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 33.02606481321324,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 32.49201656979288,
       "winner": "copilot-business"
     },
     {
       "planA": "command-code-go",
       "planB": "copilot-enterprise",
       "meanRequestsA": 2763.7074658889787,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 67.371672601309,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 67.11149525195037,
       "winner": "copilot-enterprise"
     },
     {
@@ -47453,40 +47544,40 @@
       "planA": "command-code-goat",
       "planB": "copilot-pro",
       "meanRequestsA": 27637.074658889782,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 748.3365123659653,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 755.1011234492898,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 27637.074658889782,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 81.78639550699262,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 83.23595502484791,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-max",
       "meanRequestsA": 27637.074658889782,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 36.37476157255261,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 35.867415741303255,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-business",
       "meanRequestsA": 27637.074658889782,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 569.7393518678675,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 575.079834302071,
       "winner": "command-code-goat"
     },
     {
       "planA": "command-code-goat",
       "planB": "copilot-enterprise",
       "meanRequestsA": 27637.074658889782,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 226.28327398690988,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 228.8850474804963,
       "winner": "command-code-goat"
     },
     {
@@ -48165,40 +48256,40 @@
       "planA": "command-code-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 37988.78615289356,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1066.0884790350244,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1075.386835211417,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 37988.78615289356,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 149.8761026503624,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 151.86860754530375,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-max",
       "meanRequestsA": 37988.78615289356,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 12.543364072373176,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 11.845987359143727,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-business",
       "meanRequestsA": 37988.78615289356,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 820.5961676592299,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 827.9369751669084,
       "winner": "command-code-pro"
     },
     {
       "planA": "command-code-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 37988.78615289356,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 348.49556885962494,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 352.0718596966991,
       "winner": "command-code-pro"
     },
     {
@@ -48869,40 +48960,40 @@
       "planA": "command-code-max10",
       "planB": "copilot-pro",
       "meanRequestsA": 41455.61198833466,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1172.5047685489476,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1182.6516851739345,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 41455.61198833466,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 172.67959326048884,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 174.85393253727176,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-max",
       "meanRequestsA": 41455.61198833466,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 4.562142358828936,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 3.801123611954915,
       "winner": "draw"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-business",
       "meanRequestsA": 41455.61198833466,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 904.609027801801,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 912.6197514531062,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "copilot-enterprise",
       "meanRequestsA": 41455.61198833466,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 389.42491098036476,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 393.32757122074435,
       "winner": "command-code-max10"
     },
     {
@@ -49565,40 +49656,40 @@
       "planA": "command-code-max20",
       "planB": "copilot-pro",
       "meanRequestsA": 82911.22397666932,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2445.009537097895,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2465.303370347869,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 82911.22397666932,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 445.3591865209777,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 449.7078650745435,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-max",
       "meanRequestsA": 82911.22397666932,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 90.87571528234213,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.39775277609017,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-business",
       "meanRequestsA": 82911.22397666932,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1909.218055603602,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1925.2395029062125,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "copilot-enterprise",
       "meanRequestsA": 82911.22397666932,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 878.8498219607295,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 886.6551424414887,
       "winner": "command-code-max20"
     },
     {
@@ -50253,40 +50344,40 @@
       "planA": "command-code-team-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 11054.829863555915,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 239.33460494638615,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 242.04044937971605,
       "winner": "command-code-team-pro"
     },
     {
       "planA": "command-code-team-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 11054.829863555915,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 27.285441797202935,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 26.705617990060826,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "command-code-team-pro",
       "planB": "copilot-max",
       "meanRequestsA": 11054.829863555915,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 74.54990462902103,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 74.3469662965213,
       "winner": "copilot-max"
     },
     {
       "planA": "command-code-team-pro",
       "planB": "copilot-business",
       "meanRequestsA": 11054.829863555915,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 167.89574074714704,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 170.03193372082848,
       "winner": "command-code-team-pro"
     },
     {
       "planA": "command-code-team-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 11054.829863555915,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 30.513309594763992,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 31.55401899219854,
       "winner": "command-code-team-pro"
     },
     {
@@ -50933,40 +51024,40 @@
       "planA": "glm-lite",
       "planB": "copilot-pro",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 154.68683018610184,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 156.71769568480443,
       "winner": "glm-lite"
     },
     {
       "planA": "glm-lite",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 45.42425067440673,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 44.98906521039904,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "glm-lite",
       "planB": "copilot-max",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 80.89848773604236,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 80.74617282363967,
       "winner": "copilot-max"
     },
     {
       "planA": "glm-lite",
       "planB": "copilot-business",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 101.06855014692253,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 102.67186501431928,
       "winner": "glm-lite"
     },
     {
       "planA": "glm-lite",
       "planB": "copilot-enterprise",
       "meanRequestsA": 8297.177874448013,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 2.0435268514992444,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1.262424736613632,
       "winner": "draw"
     },
     {
@@ -51605,40 +51696,40 @@
       "planA": "glm-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1428.1209811166104,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1440.306174108826,
       "winner": "glm-pro"
     },
     {
       "planA": "glm-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 227.45449595355956,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 230.06560873760571,
       "winner": "glm-pro"
     },
     {
       "planA": "glm-pro",
       "planB": "copilot-max",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 14.60907358374579,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 15.522963058161965,
       "winner": "glm-pro"
     },
     {
       "planA": "glm-pro",
       "planB": "copilot-business",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1106.411300881535,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1116.0311900859153,
       "winner": "glm-pro"
     },
     {
       "planA": "glm-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 49783.067246688064,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 487.7388388910044,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 492.4254515803181,
       "winner": "glm-pro"
     },
     {
@@ -52269,40 +52360,40 @@
       "planA": "glm-max",
       "planB": "copilot-pro",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 3465.615622605425,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 3494.047739587262,
       "winner": "glm-max"
     },
     {
       "planA": "glm-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 664.0604905583057,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 670.1530870544135,
       "winner": "glm-max"
     },
     {
       "planA": "glm-max",
       "planB": "copilot-max",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 167.42117169540685,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 169.5535804690446,
       "winner": "glm-max"
     },
     {
       "planA": "glm-max",
       "planB": "copilot-business",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 2714.9597020569154,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 2737.40611020047,
       "winner": "glm-max"
     },
     {
       "planA": "glm-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 116160.49024227216,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1271.3906240790104,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1282.326053687409,
       "winner": "glm-max"
     },
     {
@@ -52925,40 +53016,40 @@
       "planA": "qwen-coding-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 90000,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2662.6037507691835,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2684.632674054789,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "qwen-coding-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 90000,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 491.98651802196815,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 496.7070015831692,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "qwen-coding-pro",
       "planB": "copilot-max",
       "meanRequestsA": 90000,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 107.1952813076888,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 108.84745055410914,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "qwen-coding-pro",
       "planB": "copilot-business",
       "meanRequestsA": 90000,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 2081.0029611335667,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 2098.394216359044,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "qwen-coding-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 90000,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 962.5399041419945,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 971.0125669441501,
       "winner": "qwen-coding-pro"
     },
     {
@@ -53573,40 +53664,40 @@
       "planA": "kimi-moderato",
       "planB": "copilot-pro",
       "meanRequestsA": 3300,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1.2954708615367405,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2.103198048675603,
       "winner": "draw"
     },
     {
       "planA": "kimi-moderato",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3300,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 78.29382767252784,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 78.1207432752838,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kimi-moderato",
       "planB": "copilot-max",
       "meanRequestsA": 3300,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 92.40283968538475,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.34226014634933,
       "winner": "copilot-max"
     },
     {
       "planA": "kimi-moderato",
       "planB": "copilot-business",
       "meanRequestsA": 3300,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 20.02989142510255,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 19.392212066835057,
       "winner": "copilot-business"
     },
     {
       "planA": "kimi-moderato",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3300,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 61.04020351479353,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 60.729539212047825,
       "winner": "copilot-enterprise"
     },
     {
@@ -54213,40 +54304,40 @@
       "planA": "kimi-allegretto",
       "planB": "copilot-pro",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 103.61412829743246,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 105.2377415321863,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 56.3684010791216,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 56.020483957388635,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "copilot-max",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 84.72894037769257,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 84.60716938508604,
       "winner": "copilot-max"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "copilot-business",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 60.74799602428882,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 62.0297959464629,
       "winner": "kimi-allegretto"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "copilot-enterprise",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 21.686873731756705,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 21.06240710300523,
       "winner": "copilot-enterprise"
     },
     {
@@ -54845,40 +54936,40 @@
       "planA": "kimi-allegro",
       "planB": "copilot-pro",
       "meanRequestsA": 23300,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 615.2074154769109,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 620.9104589497398,
       "winner": "kimi-allegro"
     },
     {
       "planA": "kimi-allegro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 23300,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 53.25873188790955,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 54.48081263208715,
       "winner": "kimi-allegro"
     },
     {
       "planA": "kimi-allegro",
       "planB": "copilot-max",
       "meanRequestsA": 23300,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 46.35944383923169,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 45.93171557876951,
       "winner": "copilot-max"
     },
     {
       "planA": "kimi-allegro",
       "planB": "copilot-business",
       "meanRequestsA": 23300,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 464.6374332712456,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 469.13983601295246,
       "winner": "kimi-allegro"
     },
     {
       "planA": "kimi-allegro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 23300,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 175.07977518342744,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 177.27325344220773,
       "winner": "kimi-allegro"
     },
     {
@@ -55469,40 +55560,40 @@
       "planA": "kimi-vivace",
       "planB": "copilot-pro",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1354.3880923910524,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1365.9853414376664,
       "winner": "kimi-vivace"
     },
     {
       "planA": "kimi-vivace",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 211.65459122665422,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 214.13971602235716,
       "winner": "kimi-vivace"
     },
     {
       "planA": "kimi-vivace",
       "planB": "copilot-max",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 9.07910692932894,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 9.948900607824962,
       "winner": "draw"
     },
     {
       "planA": "kimi-vivace",
       "planB": "copilot-business",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1048.2011255718837,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1057.356848503421,
       "winner": "kimi-vivace"
     },
     {
       "planA": "kimi-vivace",
       "planB": "copilot-enterprise",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 459.3800355350205,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 463.8405159375642,
       "winner": "kimi-vivace"
     },
     {
@@ -56085,40 +56176,40 @@
       "planA": "claude-max-20x",
       "planB": "copilot-pro",
       "meanRequestsA": 165682,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 4985.707940388222,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 5026.261230030505,
       "winner": "claude-max-20x"
     },
     {
       "planA": "claude-max-20x",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 165682,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 989.7945586546193,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 998.4845492922515,
       "winner": "claude-max-20x"
     },
     {
       "planA": "claude-max-20x",
       "planB": "copilot-max",
       "meanRequestsA": 165682,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 281.4280955291166,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 284.4695922522879,
       "winner": "claude-max-20x"
     },
     {
       "planA": "claude-max-20x",
       "planB": "copilot-business",
       "meanRequestsA": 165682,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 3915.0325845170178,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 3947.048339497768,
       "winner": "claude-max-20x"
     },
     {
       "planA": "claude-max-20x",
       "planB": "copilot-enterprise",
       "meanRequestsA": 165682,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1856.0415155339324,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1871.6389346271185,
       "winner": "claude-max-20x"
     },
     {
@@ -56693,40 +56784,40 @@
       "planA": "kiro-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 0.8071775487709099,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 0.016216819910552793,
       "winner": "draw"
     },
     {
       "planA": "kiro-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 78.74439518902233,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 78.57490360426654,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kiro-pro",
       "planB": "copilot-max",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 92.56053831615782,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.5012162614933,
       "winner": "copilot-max"
     },
     {
       "planA": "kiro-pro",
       "planB": "copilot-business",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 21.68987701218754,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 21.065434331508325,
       "winner": "copilot-business"
     },
     {
       "planA": "kiro-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 61.84891444183494,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 61.544698776888666,
       "winner": "copilot-enterprise"
     },
     {
@@ -57293,40 +57384,40 @@
       "planA": "kiro-pro-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 98.3825753427351,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 99.96447232387438,
       "winner": "kiro-pro-plus"
     },
     {
       "planA": "kiro-pro-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 57.48944814084247,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 57.15047021631262,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kiro-pro-plus",
       "planB": "copilot-max",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 85.12130684929487,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 85.00266457570942,
       "winner": "copilot-max"
     },
     {
       "planA": "kiro-pro-plus",
       "planB": "copilot-business",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 56.61782263900142,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 57.86668867674294,
       "winner": "kiro-pro-plus"
     },
     {
       "planA": "kiro-pro-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 23.699009483563394,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 23.090587567740585,
       "winner": "copilot-enterprise"
     },
     {
@@ -57885,40 +57976,40 @@
       "planA": "kiro-pro-max",
       "planB": "copilot-pro",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 395.95797313669925,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 399.91272782783824,
       "winner": "kiro-pro-max"
     },
     {
       "planA": "kiro-pro-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 6.2767085292927405,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 7.124155963108225,
       "winner": "draw"
     },
     {
       "planA": "kiro-pro-max",
       "planB": "copilot-max",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 62.80315201474755,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 62.50654541291214,
       "winner": "copilot-max"
     },
     {
       "planA": "kiro-pro-max",
       "planB": "copilot-business",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 291.5457682658153,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 294.6679430219775,
       "winner": "kiro-pro-max"
     },
     {
       "planA": "kiro-pro-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 90.75306659103828,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 92.27412608763017,
       "winner": "kiro-pro-max"
     },
     {
@@ -58469,40 +58560,40 @@
       "planA": "kiro-power",
       "planB": "copilot-pro",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 891.9159462733985,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 899.8254556556765,
       "winner": "kiro-power"
     },
     {
       "planA": "kiro-power",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 112.55341705858548,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 114.24831192621645,
       "winner": "kiro-power"
     },
     {
       "planA": "kiro-power",
       "planB": "copilot-max",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 25.606304029495107,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 25.01309082582428,
       "winner": "copilot-max"
     },
     {
       "planA": "kiro-power",
       "planB": "copilot-business",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 683.0915365316306,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 689.335886043955,
       "winner": "kiro-power"
     },
     {
       "planA": "kiro-power",
       "planB": "copilot-enterprise",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 281.50613318207655,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 284.54825217526036,
       "winner": "kiro-power"
     },
     {
@@ -59045,40 +59136,40 @@
       "planA": "amazon-q-free",
       "planB": "copilot-pro",
       "meanRequestsA": 50,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 98.46522013846156,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 98.45298184774734,
       "winner": "copilot-pro"
     },
     {
       "planA": "amazon-q-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 50,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 99.67111860109891,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 99.66849611023157,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "amazon-q-free",
       "planB": "copilot-max",
       "meanRequestsA": 50,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 99.88489151038462,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 99.88397363858105,
       "winner": "copilot-max"
     },
     {
       "planA": "amazon-q-free",
       "planB": "copilot-business",
       "meanRequestsA": 50,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 98.78833168825913,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 98.77866987980053,
       "winner": "copilot-business"
     },
     {
       "planA": "amazon-q-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 50,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 99.40970005325444,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 99.40499301836437,
       "winner": "copilot-enterprise"
     },
     {
@@ -59613,40 +59704,40 @@
       "planA": "amazon-q-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 1000,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 69.30440276923129,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 69.0596369549468,
       "winner": "copilot-pro"
     },
     {
       "planA": "amazon-q-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 1000,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 93.42237202197813,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 93.36992220463145,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "amazon-q-pro",
       "planB": "copilot-max",
       "meanRequestsA": 1000,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 97.69783020769235,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 97.67947277162101,
       "winner": "copilot-max"
     },
     {
       "planA": "amazon-q-pro",
       "planB": "copilot-business",
       "meanRequestsA": 1000,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 75.76663376518259,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 75.57339759601062,
       "winner": "copilot-business"
     },
     {
       "planA": "amazon-q-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 1000,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 88.19400106508895,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 88.09986036728722,
       "winner": "copilot-enterprise"
     },
     {
@@ -60173,40 +60264,40 @@
       "planA": "jetbrains-ai-free",
       "planB": "copilot-pro",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 91.4442846295908,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 91.37606159995953,
       "winner": "copilot-pro"
     },
     {
       "planA": "jetbrains-ai-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 98.1666324206266,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 98.15201319999133,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "jetbrains-ai-free",
       "planB": "copilot-max",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 99.35832134721932,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 99.35320461999696,
       "winner": "copilot-max"
     },
     {
       "planA": "jetbrains-ai-free",
       "planB": "copilot-business",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 93.24548786546643,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 93.19162757891542,
       "winner": "copilot-business"
     },
     {
       "planA": "jetbrains-ai-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 96.7093402421503,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 96.68310061536904,
       "winner": "copilot-enterprise"
     },
     {
@@ -60725,40 +60816,40 @@
       "planA": "jetbrains-ai-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 71.48094876530267,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 71.25353866653172,
       "winner": "copilot-pro"
     },
     {
       "planA": "jetbrains-ai-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 93.888774735422,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 93.84004399997107,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "jetbrains-ai-pro",
       "planB": "copilot-max",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 97.8610711573977,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 97.84401539998989,
       "winner": "copilot-max"
     },
     {
       "planA": "jetbrains-ai-pro",
       "planB": "copilot-business",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 77.48495955155474,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 77.30542526305136,
       "winner": "copilot-business"
     },
     {
       "planA": "jetbrains-ai-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 89.03113414050102,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 88.94366871789681,
       "winner": "copilot-enterprise"
     },
     {
@@ -61269,40 +61360,40 @@
       "planA": "jetbrains-ai-ultimate",
       "planB": "copilot-pro",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 0.18332067855933998,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 0.6126146671389332,
       "winner": "draw"
     },
     {
       "planA": "jetbrains-ai-ultimate",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 78.61071157397699,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 78.44015399989878,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "jetbrains-ai-ultimate",
       "planB": "copilot-max",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 92.51374905089195,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.45405389996458,
       "winner": "copilot-max"
     },
     {
       "planA": "jetbrains-ai-ultimate",
       "planB": "copilot-business",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 21.19735843044157,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 20.56898842067978,
       "winner": "copilot-business"
     },
     {
       "planA": "jetbrains-ai-ultimate",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 61.60896949175358,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 61.30284051263886,
       "winner": "copilot-enterprise"
     },
     {
@@ -61805,40 +61896,40 @@
       "planA": "gemini-code-assist-individual",
       "planB": "copilot-pro",
       "meanRequestsA": 7305,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 124.23133777076542,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 126.0193520441137,
       "winner": "gemini-code-assist-individual"
     },
     {
       "planA": "gemini-code-assist-individual",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 7305,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 51.95042762055024,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 51.56728170483276,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "gemini-code-assist-individual",
       "planB": "copilot-max",
       "meanRequestsA": 7305,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 83.18264966719259,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 83.04854859669148,
       "winner": "copilot-max"
     },
     {
       "planA": "gemini-code-assist-individual",
       "planB": "copilot-business",
       "meanRequestsA": 7305,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 77.02474034534117,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 78.43633056114241,
       "winner": "gemini-code-assist-individual"
     },
     {
       "planA": "gemini-code-assist-individual",
       "planB": "copilot-enterprise",
       "meanRequestsA": 7305,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 13.757177780474795,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 13.06947998303315,
       "winner": "copilot-enterprise"
     },
     {
@@ -62333,40 +62424,40 @@
       "planA": "gemini-code-assist-standard",
       "planB": "copilot-pro",
       "meanRequestsA": 45660,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1301.5609695568992,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1312.7369766371296,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "gemini-code-assist-standard",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 45660,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 200.33449347647854,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 202.72935213652787,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "gemini-code-assist-standard",
       "planB": "copilot-max",
       "meanRequestsA": 45660,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 5.117072716767446,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 5.955273247784709,
       "winner": "draw"
     },
     {
       "planA": "gemini-code-assist-standard",
       "planB": "copilot-business",
       "meanRequestsA": 45660,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1006.4955022817628,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1015.3186657661549,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "gemini-code-assist-standard",
       "planB": "copilot-enterprise",
       "meanRequestsA": 45660,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 439.0619113680385,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 443.36037562966544,
       "winner": "gemini-code-assist-standard"
     },
     {
@@ -62853,40 +62944,40 @@
       "planA": "gemini-code-assist-enterprise",
       "planB": "copilot-pro",
       "meanRequestsA": 60880,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1768.747959409199,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1783.6493021828396,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "gemini-code-assist-enterprise",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 60880,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 300.4459913019714,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 303.6391361820371,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "gemini-code-assist-enterprise",
       "planB": "copilot-max",
       "meanRequestsA": 60880,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 40.15609695568993,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 41.27369766371294,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "gemini-code-assist-enterprise",
       "planB": "copilot-business",
       "meanRequestsA": 60880,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1375.327336375684,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1387.0915543548733,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "gemini-code-assist-enterprise",
       "planB": "copilot-enterprise",
       "meanRequestsA": 60880,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 618.7492151573847,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 624.480500839554,
       "winner": "gemini-code-assist-enterprise"
     },
     {
@@ -63365,40 +63456,40 @@
       "planA": "augment-standard",
       "planB": "copilot-pro",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 42.96189753060533,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 42.50707733306345,
       "winner": "copilot-pro"
     },
     {
       "planA": "augment-standard",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 87.777549470844,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 87.68008799994217,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "augment-standard",
       "planB": "copilot-max",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 95.7221423147954,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 95.68803079997976,
       "winner": "copilot-max"
     },
     {
       "planA": "augment-standard",
       "planB": "copilot-business",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 54.96991910310947,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 54.61085052610273,
       "winner": "copilot-business"
     },
     {
       "planA": "augment-standard",
       "planB": "copilot-enterprise",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 78.06226828100205,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 77.88733743579363,
       "winner": "copilot-enterprise"
     },
     {
@@ -63869,41 +63960,41 @@
       "planA": "augment-business",
       "planB": "copilot-pro",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 185.1905123469733,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 187.46461333468272,
       "winner": "augment-business"
     },
     {
       "planA": "augment-business",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 38.88774735421998,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 38.400439999710834,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "augment-business",
       "planB": "copilot-max",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 78.610711573977,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 78.4401539998988,
       "winner": "copilot-max"
     },
     {
       "planA": "augment-business",
       "planB": "copilot-business",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 125.1504044844527,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 126.94574736948638,
       "winner": "augment-business"
     },
     {
       "planA": "augment-business",
       "planB": "copilot-enterprise",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 9.688658594989796,
-      "winner": "draw"
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 10.563312821031868,
+      "winner": "augment-business"
     },
     {
       "planA": "augment-business",
@@ -64365,40 +64456,40 @@
       "planA": "cursor-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 2616.5465037326767,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 19.683542385845698,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 19.04310125024631,
       "winner": "copilot-pro"
     },
     {
       "planA": "cursor-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 2616.5465037326767,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 82.78933051125264,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 82.65209312505277,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "cursor-pro",
       "planB": "copilot-max",
       "meanRequestsA": 2616.5465037326767,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 93.97626567893843,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 93.92823259376848,
       "winner": "copilot-max"
     },
     {
       "planA": "cursor-pro",
       "planB": "copilot-business",
       "meanRequestsA": 2616.5465037326767,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 36.59227030461501,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 36.086658881773396,
       "winner": "copilot-business"
     },
     {
       "planA": "cursor-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 2616.5465037326767,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 69.10905476378679,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 68.86273125009473,
       "winner": "copilot-enterprise"
     },
     {
@@ -64853,40 +64944,40 @@
       "planA": "cursor-ultra",
       "planB": "copilot-pro",
       "meanRequestsA": 52330.930074653545,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1506.3291522830862,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1519.137974995074,
       "winner": "cursor-ultra"
     },
     {
       "planA": "cursor-ultra",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 52330.930074653545,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 244.2133897749472,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 246.95813749894455,
       "winner": "cursor-ultra"
     },
     {
       "planA": "cursor-ultra",
       "planB": "copilot-max",
       "meanRequestsA": 52330.930074653545,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 20.474686421231468,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 21.43534812463055,
       "winner": "cursor-ultra"
     },
     {
       "planA": "cursor-ultra",
       "planB": "copilot-business",
       "meanRequestsA": 52330.930074653545,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1168.1545939077,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1178.2668223645323,
       "winner": "cursor-ultra"
     },
     {
       "planA": "cursor-ultra",
       "planB": "copilot-enterprise",
       "meanRequestsA": 52330.930074653545,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 517.8189047242644,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 522.7453749981057,
       "winner": "cursor-ultra"
     },
     {
@@ -65333,40 +65424,40 @@
       "planA": "trae-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 5.197105289331905,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 4.441149718702874,
       "winner": "draw"
     },
     {
       "planA": "trae-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 79.6850939905711,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 79.52310351115062,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "trae-pro",
       "planB": "copilot-max",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 92.88978289669988,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.83308622890272,
       "winner": "copilot-max"
     },
     {
       "planA": "trae-pro",
       "planB": "copilot-business",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 25.155609438946225,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 24.558802409502267,
       "winner": "copilot-business"
     },
     {
       "planA": "trae-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 63.537348188204554,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 63.24659604565493,
       "winner": "copilot-enterprise"
     },
     {
@@ -65805,41 +65896,41 @@
       "planA": "trae-pro-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 184.40868413200434,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 186.67655084389142,
       "winner": "trae-pro-plus"
     },
     {
       "planA": "trae-pro-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 39.05528197171333,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 38.56931053345182,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "trae-pro-plus",
       "planB": "copilot-max",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 78.66934869009967,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 78.49925868670815,
       "winner": "copilot-max"
     },
     {
       "planA": "trae-pro-plus",
       "planB": "copilot-business",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 124.53317168316138,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 126.32359277149322,
       "winner": "trae-pro-plus"
     },
     {
       "planA": "trae-pro-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 9.387955435386353,
-      "winner": "draw"
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 10.260211863035206,
+      "winner": "trae-pro-plus"
     },
     {
       "planA": "trae-pro-plus",
@@ -66269,40 +66360,40 @@
       "planA": "trae-ultra",
       "planB": "copilot-pro",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 848.0289471066811,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 855.5885028129713,
       "winner": "trae-ultra"
     },
     {
       "planA": "trae-ultra",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 103.1490600942889,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 104.76896488849393,
       "winner": "trae-ultra"
     },
     {
       "planA": "trae-ultra",
       "planB": "copilot-max",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 28.89782896699892,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 28.33086228902716,
       "winner": "copilot-max"
     },
     {
       "planA": "trae-ultra",
       "planB": "copilot-business",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 648.4439056105379,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 654.4119759049775,
       "winner": "trae-ultra"
     },
     {
       "planA": "trae-ultra",
       "planB": "copilot-enterprise",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 264.6265181179545,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 267.53403954345066,
       "winner": "trae-ultra"
     },
     {
@@ -66725,40 +66816,40 @@
       "planA": "zed-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 18.06459083921007,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 17.411240230287184,
       "winner": "copilot-pro"
     },
     {
       "planA": "zed-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 82.44241232268786,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 82.30240862077582,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "zed-pro",
       "planB": "copilot-max",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 93.85484431294076,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 93.80584301727154,
       "winner": "copilot-max"
     },
     {
       "planA": "zed-pro",
       "planB": "copilot-business",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 35.314150662534246,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 34.798347550226715,
       "winner": "copilot-business"
     },
     {
       "planA": "zed-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 68.48638109200385,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 68.23509239626429,
       "winner": "copilot-enterprise"
     },
     {
@@ -67173,40 +67264,40 @@
       "planA": "warp-build",
       "planB": "copilot-pro",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 72.22666589751492,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 72.00520212582533,
       "winner": "copilot-pro"
     },
     {
       "planA": "warp-build",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 94.04857126375319,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 94.00111474124829,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "warp-build",
       "planB": "copilot-max",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 97.91699994231362,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 97.9003901594369,
       "winner": "copilot-max"
     },
     {
       "planA": "warp-build",
       "planB": "copilot-business",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 78.07368360330125,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 77.89884378354631,
       "winner": "copilot-business"
     },
     {
       "planA": "warp-build",
       "planB": "copilot-enterprise",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 89.31794842212112,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 89.23277004839434,
       "winner": "copilot-enterprise"
     },
     {
@@ -67613,40 +67704,40 @@
       "planA": "warp-max",
       "planB": "copilot-pro",
       "meanRequestsA": 9047.986228671778,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 177.73334102485086,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 179.94797874174665,
       "winner": "warp-max"
     },
     {
       "planA": "warp-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 9047.986228671778,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 40.48571263753193,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 40.01114741248284,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "warp-max",
       "planB": "copilot-max",
       "meanRequestsA": 9047.986228671778,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 79.16999942313619,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 79.00390159436901,
       "winner": "copilot-max"
     },
     {
       "planA": "warp-max",
       "planB": "copilot-business",
       "meanRequestsA": 9047.986228671778,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 119.26316396698758,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 121.01156216453685,
       "winner": "warp-max"
     },
     {
       "planA": "warp-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 9047.986228671778,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 6.820515778788838,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 7.672299516056458,
       "winner": "draw"
     },
     {
@@ -68045,40 +68136,40 @@
       "planA": "replit-core",
       "planB": "copilot-pro",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 5.197105289331905,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 4.441149718702874,
       "winner": "draw"
     },
     {
       "planA": "replit-core",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 79.6850939905711,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 79.52310351115062,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "replit-core",
       "planB": "copilot-max",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 92.88978289669988,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.83308622890272,
       "winner": "copilot-max"
     },
     {
       "planA": "replit-core",
       "planB": "copilot-business",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 25.155609438946225,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 24.558802409502267,
       "winner": "copilot-business"
     },
     {
       "planA": "replit-core",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 63.537348188204554,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 63.24659604565493,
       "winner": "copilot-enterprise"
     },
     {
@@ -68469,40 +68560,40 @@
       "planA": "kilo-pass",
       "planB": "copilot-pro",
       "meanRequestsA": 2934.06084586155,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 9.937250024865296,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 9.219092232767734,
       "winner": "draw"
     },
     {
       "planA": "kilo-pass",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 2934.06084586155,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 80.70083929104256,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 80.54694833559309,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kilo-pass",
       "planB": "copilot-max",
       "meanRequestsA": 2934.06084586155,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 93.24529375186489,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 93.19143191745758,
       "winner": "copilot-max"
     },
     {
       "planA": "kilo-pass",
       "planB": "copilot-business",
       "meanRequestsA": 2934.06084586155,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 28.897828966998908,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 28.33086228902715,
       "winner": "copilot-business"
     },
     {
       "planA": "kilo-pass",
       "planB": "copilot-enterprise",
       "meanRequestsA": 2934.06084586155,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 65.36048077879433,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 65.08426624337218,
       "winner": "copilot-enterprise"
     },
     {
@@ -68885,40 +68976,40 @@
       "planA": "v0-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 42.20434206600216,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 43.3382754219457,
       "winner": "v0-plus"
     },
     {
       "planA": "v0-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 69.52764098585666,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 69.28465526672592,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "v0-plus",
       "planB": "copilot-max",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 89.33467434504983,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 89.24962934335407,
       "winner": "copilot-max"
     },
     {
       "planA": "v0-plus",
       "planB": "copilot-business",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 12.26658584158069,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 13.161796385746616,
       "winner": "v0-plus"
     },
     {
       "planA": "v0-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 45.30602228230683,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 44.869894068482395,
       "winner": "copilot-enterprise"
     },
     {
@@ -69293,40 +69384,40 @@
       "planA": "bolt-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 93.97676754625628,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 93.92873846296197,
       "winner": "copilot-pro"
     },
     {
       "planA": "bolt-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 98.70930733134064,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 98.69901538492041,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "bolt-pro",
       "planB": "copilot-max",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 99.54825756596922,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 99.54465538472215,
       "winner": "copilot-max"
     },
     {
       "planA": "bolt-pro",
       "planB": "copilot-business",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 95.24481648388654,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 95.20689878654892,
       "winner": "copilot-business"
     },
     {
       "planA": "bolt-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 97.6833721331755,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 97.66489940883153,
       "winner": "copilot-enterprise"
     },
     {
@@ -69693,40 +69784,40 @@
       "planA": "copilot-free",
       "planB": "copilot-pro",
       "meanRequestsA": 2000,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 38.608805538462576,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 38.11927390989358,
       "winner": "copilot-pro"
     },
     {
       "planA": "copilot-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 2000,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 86.84474404395625,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 86.7398444092629,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "copilot-free",
       "planB": "copilot-max",
       "meanRequestsA": 2000,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 95.3956604153847,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 95.35894554324203,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-free",
       "planB": "copilot-business",
       "meanRequestsA": 2000,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 51.53326753036518,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 51.146795192021244,
       "winner": "copilot-business"
     },
     {
       "planA": "copilot-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 2000,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 76.3880021301779,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 76.19972073457444,
       "winner": "copilot-enterprise"
     },
     {
@@ -70085,40 +70176,40 @@
       "planA": "bolt-free",
       "planB": "copilot-pro",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 99.39767675462564,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 99.3928738462962,
       "winner": "copilot-pro"
     },
     {
       "planA": "bolt-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 99.87093073313406,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 99.86990153849204,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "bolt-free",
       "planB": "copilot-max",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 99.95482575659692,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 99.95446553847222,
       "winner": "copilot-max"
     },
     {
       "planA": "bolt-free",
       "planB": "copilot-business",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 99.52448164838866,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 99.52068987865489,
       "winner": "copilot-business"
     },
     {
       "planA": "bolt-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 99.76833721331755,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 99.76648994088315,
       "winner": "copilot-enterprise"
     },
     {
@@ -70469,40 +70560,40 @@
       "planA": "bolt-teams",
       "planB": "copilot-pro",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 93.97676754625628,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 93.92873846296197,
       "winner": "copilot-pro"
     },
     {
       "planA": "bolt-teams",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 98.70930733134064,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 98.69901538492041,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "bolt-teams",
       "planB": "copilot-max",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 99.54825756596922,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 99.54465538472215,
       "winner": "copilot-max"
     },
     {
       "planA": "bolt-teams",
       "planB": "copilot-business",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 95.24481648388654,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 95.20689878654892,
       "winner": "copilot-business"
     },
     {
       "planA": "bolt-teams",
       "planB": "copilot-enterprise",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 97.6833721331755,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 97.66489940883153,
       "winner": "copilot-enterprise"
     },
     {
@@ -70845,40 +70936,40 @@
       "planA": "v0-business",
       "planB": "copilot-pro",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 42.20434206600216,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 43.3382754219457,
       "winner": "v0-business"
     },
     {
       "planA": "v0-business",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 69.52764098585666,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 69.28465526672592,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "v0-business",
       "planB": "copilot-max",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 89.33467434504983,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 89.24962934335407,
       "winner": "copilot-max"
     },
     {
       "planA": "v0-business",
       "planB": "copilot-business",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 12.26658584158069,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 13.161796385746616,
       "winner": "v0-business"
     },
     {
       "planA": "v0-business",
       "planB": "copilot-enterprise",
       "meanRequestsA": 4632.727651360343,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 45.30602228230683,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 44.869894068482395,
       "winner": "copilot-enterprise"
     },
     {
@@ -71213,40 +71304,40 @@
       "planA": "qoder-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 5.197105289331905,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 4.441149718702874,
       "winner": "draw"
     },
     {
       "planA": "qoder-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 79.6850939905711,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 79.52310351115062,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "qoder-pro",
       "planB": "copilot-max",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 92.88978289669988,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 92.83308622890272,
       "winner": "copilot-max"
     },
     {
       "planA": "qoder-pro",
       "planB": "copilot-business",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 25.155609438946225,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 24.558802409502267,
       "winner": "copilot-business"
     },
     {
       "planA": "qoder-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3088.485100906895,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 63.537348188204554,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 63.24659604565493,
       "winner": "copilot-enterprise"
     },
     {
@@ -71573,41 +71664,41 @@
       "planA": "qoder-pro-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 184.40868413200434,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 186.67655084389142,
       "winner": "qoder-pro-plus"
     },
     {
       "planA": "qoder-pro-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 39.05528197171333,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 38.56931053345182,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "qoder-pro-plus",
       "planB": "copilot-max",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 78.66934869009967,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 78.49925868670815,
       "winner": "copilot-max"
     },
     {
       "planA": "qoder-pro-plus",
       "planB": "copilot-business",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 124.53317168316138,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 126.32359277149322,
       "winner": "qoder-pro-plus"
     },
     {
       "planA": "qoder-pro-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 9265.455302720686,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 9.387955435386353,
-      "winner": "draw"
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 10.260211863035206,
+      "winner": "qoder-pro-plus"
     },
     {
       "planA": "qoder-pro-plus",
@@ -71925,40 +72016,40 @@
       "planA": "qoder-ultra",
       "planB": "copilot-pro",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 848.0289471066811,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 855.5885028129713,
       "winner": "qoder-ultra"
     },
     {
       "planA": "qoder-ultra",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 103.1490600942889,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 104.76896488849393,
       "winner": "qoder-ultra"
     },
     {
       "planA": "qoder-ultra",
       "planB": "copilot-max",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 28.89782896699892,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 28.33086228902716,
       "winner": "copilot-max"
     },
     {
       "planA": "qoder-ultra",
       "planB": "copilot-business",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 648.4439056105379,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 654.4119759049775,
       "winner": "qoder-ultra"
     },
     {
       "planA": "qoder-ultra",
       "planB": "copilot-enterprise",
       "meanRequestsA": 30884.851009068952,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 264.6265181179545,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 267.53403954345066,
       "winner": "qoder-ultra"
     },
     {
@@ -72269,40 +72360,40 @@
       "planA": "qoder-teams",
       "planB": "copilot-pro",
       "meanRequestsA": 6176.97020181379,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 89.6057894213362,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 91.11770056259425,
       "winner": "qoder-teams"
     },
     {
       "planA": "qoder-teams",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 6176.97020181379,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 59.37018798114223,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 59.046207022301225,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "qoder-teams",
       "planB": "copilot-max",
       "meanRequestsA": 6176.97020181379,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 85.77956579339978,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 85.66617245780543,
       "winner": "copilot-max"
     },
     {
       "planA": "qoder-teams",
       "planB": "copilot-business",
       "meanRequestsA": 6176.97020181379,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 49.68878112210755,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 50.882395180995466,
       "winner": "qoder-teams"
     },
     {
       "planA": "qoder-teams",
       "planB": "copilot-enterprise",
       "meanRequestsA": 6176.97020181379,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 27.074696376409115,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 26.49319209130987,
       "winner": "copilot-enterprise"
     },
     {
@@ -72605,40 +72696,40 @@
       "planA": "lovable-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 18.50361838833514,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 19.44856285162142,
       "winner": "lovable-pro"
     },
     {
       "planA": "lovable-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 74.60636748821389,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 74.40387938893826,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "lovable-pro",
       "planB": "copilot-max",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 91.11222862087487,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 91.0413577861284,
       "winner": "copilot-max"
     },
     {
       "planA": "lovable-pro",
       "planB": "copilot-business",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 6.444511798682761,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 5.69850301187782,
       "winner": "draw"
     },
     {
       "planA": "lovable-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 54.42168523525569,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 54.05824505706867,
       "winner": "copilot-enterprise"
     },
     {
@@ -72933,40 +73024,40 @@
       "planA": "replit-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 15442.425504534476,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 374.01447355334057,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 377.79425140648567,
       "winner": "replit-pro"
     },
     {
       "planA": "replit-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 15442.425504534476,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 1.5745300471444512,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 2.3844824442469603,
       "winner": "draw"
     },
     {
       "planA": "replit-pro",
       "planB": "copilot-max",
       "meanRequestsA": 15442.425504534476,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 64.44891448349945,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 64.16543114451359,
       "winner": "copilot-max"
     },
     {
       "planA": "replit-pro",
       "planB": "copilot-business",
       "meanRequestsA": 15442.425504534476,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 274.2219528052689,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 277.2059879524887,
       "winner": "replit-pro"
     },
     {
       "planA": "replit-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 15442.425504534476,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 82.31325905897724,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 83.76701977172533,
       "winner": "replit-pro"
     },
     {
@@ -73253,40 +73344,40 @@
       "planA": "warp-business",
       "planB": "copilot-pro",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 72.22666589751492,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 72.00520212582533,
       "winner": "copilot-pro"
     },
     {
       "planA": "warp-business",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 94.04857126375319,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 94.00111474124829,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "warp-business",
       "planB": "copilot-max",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 97.91699994231362,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 97.9003901594369,
       "winner": "copilot-max"
     },
     {
       "planA": "warp-business",
       "planB": "copilot-business",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 78.07368360330125,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 77.89884378354631,
       "winner": "copilot-business"
     },
     {
       "planA": "warp-business",
       "planB": "copilot-enterprise",
       "meanRequestsA": 904.7986228671779,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 89.31794842212112,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 89.23277004839434,
       "winner": "copilot-enterprise"
     },
     {
@@ -73565,40 +73656,40 @@
       "planA": "jetbrains-ai-business-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 42.96189753060533,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 42.50707733306345,
       "winner": "copilot-pro"
     },
     {
       "planA": "jetbrains-ai-business-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 87.777549470844,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 87.68008799994217,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "jetbrains-ai-business-pro",
       "planB": "copilot-max",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 95.7221423147954,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 95.68803079997976,
       "winner": "copilot-max"
     },
     {
       "planA": "jetbrains-ai-business-pro",
       "planB": "copilot-business",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 54.96991910310947,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 54.61085052610273,
       "winner": "copilot-business"
     },
     {
       "planA": "jetbrains-ai-business-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 78.06226828100205,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 77.88733743579363,
       "winner": "copilot-enterprise"
     },
     {
@@ -73869,40 +73960,40 @@
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "copilot-pro",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 99.63335864288132,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 101.22522933427787,
       "winner": "jetbrains-ai-business-ultimate"
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 57.221423147953985,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 56.88030799979759,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "copilot-max",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 85.0274981017839,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 84.90810779992917,
       "winner": "copilot-max"
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "copilot-business",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 57.60528313911686,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 58.86202315864044,
       "winner": "jetbrains-ai-business-ultimate"
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "copilot-enterprise",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 23.217938983507146,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 22.6056810252777,
       "winner": "copilot-enterprise"
     },
     {
@@ -74165,40 +74256,40 @@
       "planA": "kiro-free",
       "planB": "copilot-pro",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 95.04266104723085,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 95.0031313682239,
       "winner": "copilot-pro"
     },
     {
       "planA": "kiro-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 98.93771308154948,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 98.92924243604799,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kiro-free",
       "planB": "copilot-max",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 99.62819957854231,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 99.6252348526168,
       "winner": "copilot-max"
     },
     {
       "planA": "kiro-free",
       "planB": "copilot-business",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 96.086311353077,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 96.05510371175572,
       "winner": "copilot-business"
     },
     {
       "planA": "kiro-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 98.09333117201187,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 98.07812744931688,
       "winner": "copilot-enterprise"
     },
     {
@@ -74453,40 +74544,40 @@
       "planA": "trae-free",
       "planB": "copilot-pro",
       "meanRequestsA": 5000,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 53.47798615384356,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 54.701815225266046,
       "winner": "trae-free"
     },
     {
       "planA": "trae-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 5000,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 67.11186010989066,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 66.84961102315727,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "trae-free",
       "planB": "copilot-max",
       "meanRequestsA": 5000,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 88.48915103846173,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 88.39736385810505,
       "winner": "copilot-max"
     },
     {
       "planA": "trae-free",
       "planB": "copilot-business",
       "meanRequestsA": 5000,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 21.166831174087044,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 22.133012019946886,
       "winner": "trae-free"
     },
     {
       "planA": "trae-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 5000,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 40.97000532544476,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 40.49930183643611,
       "winner": "copilot-enterprise"
     },
     {
@@ -74733,40 +74824,40 @@
       "planA": "lovable-business",
       "planB": "copilot-pro",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 18.50361838833514,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 19.44856285162142,
       "winner": "lovable-business"
     },
     {
       "planA": "lovable-business",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 74.60636748821389,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 74.40387938893826,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "lovable-business",
       "planB": "copilot-max",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 91.11222862087487,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 91.0413577861284,
       "winner": "copilot-max"
     },
     {
       "planA": "lovable-business",
       "planB": "copilot-business",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 6.444511798682761,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 5.69850301187782,
       "winner": "draw"
     },
     {
       "planA": "lovable-business",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3860.606376133619,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 54.42168523525569,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 54.05824505706867,
       "winner": "copilot-enterprise"
     },
     {
@@ -75005,40 +75096,40 @@
       "planA": "codebuddy-free",
       "planB": "copilot-pro",
       "meanRequestsA": 5000,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 53.47798615384356,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 54.701815225266046,
       "winner": "codebuddy-free"
     },
     {
       "planA": "codebuddy-free",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 5000,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 67.11186010989066,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 66.84961102315727,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "codebuddy-free",
       "planB": "copilot-max",
       "meanRequestsA": 5000,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 88.48915103846173,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 88.39736385810505,
       "winner": "copilot-max"
     },
     {
       "planA": "codebuddy-free",
       "planB": "copilot-business",
       "meanRequestsA": 5000,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 21.166831174087044,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 22.133012019946886,
       "winner": "codebuddy-free"
     },
     {
       "planA": "codebuddy-free",
       "planB": "copilot-enterprise",
       "meanRequestsA": 5000,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 40.97000532544476,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 40.49930183643611,
       "winner": "copilot-enterprise"
     },
     {
@@ -75269,41 +75360,41 @@
       "planA": "kilo-pass-49",
       "planB": "copilot-pro",
       "meanRequestsA": 7566.788497221893,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 132.26709204113683,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 134.11918318917796,
       "winner": "kilo-pass-49"
     },
     {
       "planA": "kilo-pass-49",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 7566.788497221893,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 50.228480276899234,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 49.831603602319,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "kilo-pass-49",
       "planB": "copilot-max",
       "meanRequestsA": 7566.788497221893,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 82.57996809691474,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 82.44106126081165,
       "winner": "copilot-max"
     },
     {
       "planA": "kilo-pass-49",
       "planB": "copilot-business",
       "meanRequestsA": 7566.788497221893,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 83.36875687458176,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 84.83093409671945,
       "winner": "kilo-pass-49"
     },
     {
       "planA": "kilo-pass-49",
       "planB": "copilot-enterprise",
       "meanRequestsA": 7566.788497221893,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 10.666503061101162,
-      "winner": "copilot-enterprise"
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 9.954160311854586,
+      "winner": "draw"
     },
     {
       "planA": "kilo-pass-49",
@@ -75525,40 +75616,40 @@
       "planA": "kilo-pass-199",
       "planB": "copilot-pro",
       "meanRequestsA": 30730.426754023603,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 843.2888023711475,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 850.8105602989064,
       "winner": "kilo-pass-199"
     },
     {
       "planA": "kilo-pass-199",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 30730.426754023603,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 102.13331479381739,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 103.74512006405143,
       "winner": "kilo-pass-199"
     },
     {
       "planA": "kilo-pass-199",
       "planB": "copilot-max",
       "meanRequestsA": 30730.426754023603,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 29.253339822163927,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 28.689207977582033,
       "winner": "copilot-max"
     },
     {
       "planA": "kilo-pass-199",
       "planB": "copilot-business",
       "meanRequestsA": 30730.426754023603,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 644.7016860824851,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 650.6399160254524,
       "winner": "kilo-pass-199"
     },
     {
       "planA": "kilo-pass-199",
       "planB": "copilot-enterprise",
       "meanRequestsA": 30730.426754023603,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 262.80338552736464,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 265.6963693457334,
       "winner": "kilo-pass-199"
     },
     {
@@ -75773,40 +75864,40 @@
       "planA": "standardcompute-starter",
       "planB": "copilot-pro",
       "meanRequestsA": 8087.610135808383,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 148.25402328825678,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 150.23359376876346,
       "winner": "standardcompute-starter"
     },
     {
       "planA": "standardcompute-starter",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 8087.610135808383,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 46.80270929537353,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 46.37851562097924,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "standardcompute-starter",
       "planB": "copilot-max",
       "meanRequestsA": 8087.610135808383,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 81.38094825338074,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 81.23248046734274,
       "winner": "copilot-max"
     },
     {
       "planA": "standardcompute-starter",
       "planB": "copilot-business",
       "meanRequestsA": 8087.610135808383,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 95.9900183854659,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 97.55283718586591,
       "winner": "standardcompute-starter"
     },
     {
       "planA": "standardcompute-starter",
       "planB": "copilot-enterprise",
       "meanRequestsA": 8087.610135808383,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 4.517683350670421,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 3.756310088937076,
       "winner": "draw"
     },
     {
@@ -76013,40 +76104,40 @@
       "planA": "standardcompute-economy",
       "planB": "copilot-pro",
       "meanRequestsA": 16579.600778407184,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 408.92074774092634,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 412.97886722596513,
       "winner": "standardcompute-economy"
     },
     {
       "planA": "standardcompute-economy",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 16579.600778407184,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 9.054445944484257,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 9.924042976992542,
       "winner": "draw"
     },
     {
       "planA": "standardcompute-economy",
       "planB": "copilot-max",
       "meanRequestsA": 16579.600778407184,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 61.830943919430524,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 61.526584958052624,
       "winner": "copilot-max"
     },
     {
       "planA": "standardcompute-economy",
       "planB": "copilot-business",
       "meanRequestsA": 16579.600778407184,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 301.7795376902051,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 304.9833162310251,
       "winner": "standardcompute-economy"
     },
     {
       "planA": "standardcompute-economy",
       "planB": "copilot-enterprise",
       "meanRequestsA": 16579.600778407184,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 95.73874913112562,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 97.29956431767897,
       "winner": "standardcompute-economy"
     },
     {
@@ -76245,40 +76336,40 @@
       "planA": "standardcompute-standard",
       "planB": "copilot-pro",
       "meanRequestsA": 38416.14814508981,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1079.2066106192194,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1088.6095704016263,
       "winner": "standardcompute-standard"
     },
     {
       "planA": "standardcompute-standard",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 38416.14814508981,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 152.68713084697566,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 154.7020508003486,
       "winner": "standardcompute-standard"
     },
     {
       "planA": "standardcompute-standard",
       "planB": "copilot-max",
       "meanRequestsA": 38416.14814508981,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 11.559504203558546,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 10.85428221987803,
       "winner": "copilot-max"
     },
     {
       "planA": "standardcompute-standard",
       "planB": "copilot-business",
       "meanRequestsA": 38416.14814508981,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 830.9525873309628,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 838.3759766328628,
       "winner": "standardcompute-standard"
     },
     {
       "planA": "standardcompute-standard",
       "planB": "copilot-enterprise",
       "meanRequestsA": 38416.14814508981,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 353.54100408431543,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 357.15752707754876,
       "winner": "standardcompute-standard"
     },
     {
@@ -76469,40 +76560,40 @@
       "planA": "standardcompute-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 108778.35632662274,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 3239.016613227053,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 3265.641836189868,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "standardcompute-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 108778.35632662274,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 615.5035599772259,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 621.2089648978291,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "standardcompute-pro",
       "planB": "copilot-max",
       "meanRequestsA": 108778.35632662274,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 150.42624599202895,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 152.4231377142401,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "standardcompute-pro",
       "planB": "copilot-business",
       "meanRequestsA": 108778.35632662274,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 2536.065747284516,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 2557.0856601498963,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "standardcompute-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 108778.35632662274,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1184.2371589334825,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1194.4776293037962,
       "winner": "standardcompute-pro"
     },
     {
@@ -76685,40 +76776,40 @@
       "planA": "standardcompute-proplus",
       "planB": "copilot-pro",
       "meanRequestsA": 222004.89822794008,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 6714.572939262646,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 6768.912148952556,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "standardcompute-proplus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 222004.89822794008,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 1360.2656298419963,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 1371.9097462041195,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "standardcompute-proplus",
       "planB": "copilot-max",
       "meanRequestsA": 222004.89822794008,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 411.0929704446985,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 415.1684111714417,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "standardcompute-proplus",
       "planB": "copilot-business",
       "meanRequestsA": 222004.89822794008,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 5279.926004681038,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 5322.825380752019,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "standardcompute-proplus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 222004.89822794008,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 2520.9895920240965,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 2541.889288058677,
       "winner": "standardcompute-proplus"
     },
     {
@@ -76893,40 +76984,40 @@
       "planA": "standardcompute-growth",
       "planB": "copilot-pro",
       "meanRequestsA": 452501.78709847905,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 13789.812602977967,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 13900.569571362317,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "standardcompute-growth",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 452501.78709847905,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 2876.388414923851,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 2900.1220510062117,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "standardcompute-growth",
       "planB": "copilot-max",
       "meanRequestsA": 452501.78709847905,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 941.7359452233475,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 950.0427178521736,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "standardcompute-growth",
       "planB": "copilot-business",
       "meanRequestsA": 452501.78709847905,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 10865.641528666818,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 10953.081240549198,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "standardcompute-growth",
       "planB": "copilot-enterprise",
       "meanRequestsA": 452501.78709847905,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 5242.23561652999,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 5284.83445052397,
       "winner": "standardcompute-growth"
     },
     {
@@ -77093,40 +77184,40 @@
       "planA": "standardcompute-scale",
       "planB": "copilot-pro",
       "meanRequestsA": 1152080.0638459043,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 35263.78561741218,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 35545.77543236036,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "standardcompute-scale",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 1152080.0638459043,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 7477.954060874041,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 7538.380449791508,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "standardcompute-scale",
       "planB": "copilot-max",
       "meanRequestsA": 1152080.0638459043,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 2552.2839213059133,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 2573.433157427027,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "standardcompute-scale",
       "planB": "copilot-business",
       "meanRequestsA": 1152080.0638459043,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 27818.778119009618,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 28041.4016571266,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "standardcompute-scale",
       "planB": "copilot-enterprise",
       "meanRequestsA": 1152080.0638459043,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 13501.456006696997,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 13609.913627830914,
       "winner": "standardcompute-scale"
     },
     {
@@ -77285,40 +77376,40 @@
       "planA": "freebuff-starter",
       "planB": "copilot-pro",
       "meanRequestsA": 80436.4194747657,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2369.0439348825685,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2388.732020593439,
       "winner": "freebuff-starter"
     },
     {
       "planA": "freebuff-starter",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 80436.4194747657,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 429.080843189122,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 433.29971869859423,
       "winner": "freebuff-starter"
     },
     {
       "planA": "freebuff-starter",
       "planB": "copilot-max",
       "meanRequestsA": 80436.4194747657,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 85.17829511619264,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 86.65490154450792,
       "winner": "freebuff-starter"
     },
     {
       "planA": "freebuff-starter",
       "planB": "copilot-business",
       "meanRequestsA": 80436.4194747657,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1849.2452117493965,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1864.7884373106099,
       "winner": "freebuff-starter"
     },
     {
       "planA": "freebuff-starter",
       "planB": "copilot-enterprise",
       "meanRequestsA": 80436.4194747657,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 849.6322826471422,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 857.2046233051694,
       "winner": "freebuff-starter"
     },
     {
@@ -77469,40 +77560,40 @@
       "planA": "freebuff-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 128102.44583018245,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 3832.181081479647,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 3863.536180945108,
       "winner": "freebuff-plus"
     },
     {
       "planA": "freebuff-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 128102.44583018245,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 742.610231745639,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 749.3291816310947,
       "winner": "freebuff-plus"
     },
     {
       "planA": "freebuff-plus",
       "planB": "copilot-max",
       "meanRequestsA": 128102.44583018245,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 194.91358111097355,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 197.26521357088305,
       "winner": "freebuff-plus"
     },
     {
       "planA": "freebuff-plus",
       "planB": "copilot-business",
       "meanRequestsA": 128102.44583018245,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 3004.3534853786696,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 3029.107511272454,
       "winner": "freebuff-plus"
     },
     {
       "planA": "freebuff-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 128102.44583018245,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1412.3773390306344,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1424.4369926711959,
       "winner": "freebuff-plus"
     },
     {
@@ -77645,40 +77736,40 @@
       "planA": "freebuff-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 208538.86530494818,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 6301.225016362217,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 6352.268201538547,
       "winner": "freebuff-pro"
     },
     {
       "planA": "freebuff-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 208538.86530494818,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 1271.6910749347612,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 1282.6289003296893,
       "winner": "freebuff-pro"
     },
     {
       "planA": "freebuff-pro",
       "planB": "copilot-max",
       "meanRequestsA": 208538.86530494818,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 380.0918762271662,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 383.92011511539107,
       "winner": "freebuff-pro"
     },
     {
       "planA": "freebuff-pro",
       "planB": "copilot-business",
       "meanRequestsA": 208538.86530494818,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 4953.598697128066,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 4993.895948583065,
       "winner": "freebuff-pro"
     },
     {
       "planA": "freebuff-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 208538.86530494818,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 2362.0096216777765,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 2381.6416159763653,
       "winner": "freebuff-pro"
     },
     {
@@ -77813,40 +77904,40 @@
       "planA": "opendesign-go",
       "planB": "copilot-pro",
       "meanRequestsA": 67852.74678924361,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1982.7805864439565,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1999.3886192632658,
       "winner": "opendesign-go"
     },
     {
       "planA": "opendesign-go",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 67852.74678924361,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 346.31012566656227,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 349.86898984212854,
       "winner": "opendesign-go"
     },
     {
       "planA": "opendesign-go",
       "planB": "copilot-max",
       "meanRequestsA": 67852.74678924361,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 56.20854398329676,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 57.454146444744936,
       "winner": "opendesign-go"
     },
     {
       "planA": "opendesign-go",
       "planB": "copilot-business",
       "meanRequestsA": 67852.74678924361,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1544.3004629820714,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1557.4120678394206,
       "winner": "opendesign-go"
     },
     {
       "planA": "opendesign-go",
       "planB": "copilot-enterprise",
       "meanRequestsA": 67852.74678924361,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 701.0694563245991,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 707.4571612551026,
       "winner": "opendesign-go"
     },
     {
@@ -77973,40 +78064,40 @@
       "planA": "opendesign-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 90470.32905232481,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2677.0407819252755,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2699.1848256843546,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opendesign-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 90470.32905232481,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 495.0801675554164,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 499.8253197895047,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opendesign-plus",
       "planB": "copilot-max",
       "meanRequestsA": 90470.32905232481,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 108.27805864439566,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 109.93886192632658,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opendesign-plus",
       "planB": "copilot-business",
       "meanRequestsA": 90470.32905232481,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 2092.4006173094285,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 2109.8827571192273,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opendesign-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 90470.32905232481,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 968.0926084327989,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 976.6095483401368,
       "winner": "opendesign-plus"
     },
     {
@@ -78125,40 +78216,40 @@
       "planA": "opendesign-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 203558.24036773085,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 6148.341759331871,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 6198.165857789798,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opendesign-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 203558.24036773085,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 1238.930376999687,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 1249.6069695263857,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opendesign-pro",
       "planB": "copilot-max",
       "meanRequestsA": 203558.24036773085,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 368.6256319498903,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 372.3624393342348,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opendesign-pro",
       "planB": "copilot-business",
       "meanRequestsA": 203558.24036773085,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 4832.901388946215,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 4872.236203518262,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opendesign-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 203558.24036773085,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 2303.208368973798,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 2322.371483765308,
       "winner": "opendesign-pro"
     },
     {
@@ -78269,40 +78360,40 @@
       "planA": "opendesign-max",
       "planB": "copilot-pro",
       "meanRequestsA": 339263.733946218,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 10313.902932219782,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 10396.943096316327,
       "winner": "opendesign-max"
     },
     {
       "planA": "opendesign-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 339263.733946218,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 2131.550628332811,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 2149.344949210642,
       "winner": "opendesign-max"
     },
     {
       "planA": "opendesign-max",
       "planB": "copilot-max",
       "meanRequestsA": 339263.733946218,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 681.0427199164835,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 687.2707322237245,
       "winner": "opendesign-max"
     },
     {
       "planA": "opendesign-max",
       "planB": "copilot-business",
       "meanRequestsA": 339263.733946218,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 8121.502314910356,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 8187.0603391971,
       "winner": "opendesign-max"
     },
     {
       "planA": "opendesign-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 339263.733946218,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 3905.347281622995,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 3937.285806275512,
       "winner": "opendesign-max"
     },
     {
@@ -78405,40 +78496,40 @@
       "planA": "mimo-lite",
       "planB": "copilot-pro",
       "meanRequestsA": 10421.328912833265,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 219.88891491769468,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 222.43969997497092,
       "winner": "mimo-lite"
     },
     {
       "planA": "mimo-lite",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 10421.328912833265,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 31.452375374779685,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 30.90577857679193,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "mimo-lite",
       "planB": "copilot-max",
       "meanRequestsA": 10421.328912833265,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 76.0083313811729,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 75.81702250187719,
       "winner": "copilot-max"
     },
     {
       "planA": "mimo-lite",
       "planB": "copilot-business",
       "meanRequestsA": 10421.328912833265,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 152.54388019818003,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 154.55765787497705,
       "winner": "mimo-lite"
     },
     {
       "planA": "mimo-lite",
       "planB": "copilot-enterprise",
       "meanRequestsA": 10421.328912833265,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 23.034198045267253,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 24.01526922114272,
       "winner": "mimo-lite"
     },
     {
@@ -78533,40 +78624,40 @@
       "planA": "mimo-standard",
       "planB": "copilot-pro",
       "meanRequestsA": 27959.662936869732,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 758.2385522182051,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 765.0821218840681,
       "winner": "mimo-standard"
     },
     {
       "planA": "mimo-standard",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 27959.662936869732,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 83.90826118961544,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 85.37474040372895,
       "winner": "mimo-standard"
     },
     {
       "planA": "mimo-standard",
       "planB": "copilot-max",
       "meanRequestsA": 27959.662936869732,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 35.63210858363461,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 35.11884085869489,
       "winner": "copilot-max"
     },
     {
       "planA": "mimo-standard",
       "planB": "copilot-business",
       "meanRequestsA": 27959.662936869732,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 577.5567517512146,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 582.9595699084749,
       "winner": "mimo-standard"
     },
     {
       "planA": "mimo-standard",
       "planB": "copilot-enterprise",
       "meanRequestsA": 27959.662936869732,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 230.09175085315596,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 232.72389303233405,
       "winner": "mimo-standard"
     },
     {
@@ -78653,40 +78744,40 @@
       "planA": "mimo-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 96587.92650918636,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2864.8240894810724,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2888.465511963145,
       "winner": "mimo-pro"
     },
     {
       "planA": "mimo-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 96587.92650918636,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 535.3194477459443,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 540.3854668492456,
       "winner": "mimo-pro"
     },
     {
       "planA": "mimo-pro",
       "planB": "copilot-max",
       "meanRequestsA": 96587.92650918636,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 122.36180671108046,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 124.13491339723586,
       "winner": "mimo-pro"
     },
     {
       "planA": "mimo-pro",
       "planB": "copilot-business",
       "meanRequestsA": 96587.92650918636,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 2240.650596958742,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 2259.314877865641,
       "winner": "mimo-pro"
     },
     {
       "planA": "mimo-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 96587.92650918636,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1040.3169574927208,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1049.409812293518,
       "winner": "mimo-pro"
     },
     {
@@ -78765,40 +78856,40 @@
       "planA": "mimo-max",
       "planB": "copilot-pro",
       "meanRequestsA": 208426.5782566653,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 6297.778298353893,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 6348.793999499418,
       "winner": "mimo-max"
     },
     {
       "planA": "mimo-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 208426.5782566653,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 1270.952492504406,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 1281.8844284641614,
       "winner": "mimo-max"
     },
     {
       "planA": "mimo-max",
       "planB": "copilot-max",
       "meanRequestsA": 208426.5782566653,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 379.83337237654194,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 383.6595499624563,
       "winner": "mimo-max"
     },
     {
       "planA": "mimo-max",
       "planB": "copilot-business",
       "meanRequestsA": 208426.5782566653,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 4950.877603963601,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 4991.153157499541,
       "winner": "mimo-max"
     },
     {
       "planA": "mimo-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 208426.5782566653,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 2360.683960905345,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 2380.305384422854,
       "winner": "mimo-max"
     },
     {
@@ -78869,40 +78960,40 @@
       "planA": "stepfun-flash-mini",
       "planB": "copilot-pro",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 1056.4189494396037,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 1065.6402010635952,
       "winner": "stepfun-flash-mini"
     },
     {
       "planA": "stepfun-flash-mini",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 147.8040605942009,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 149.78004308505618,
       "winner": "stepfun-flash-mini"
     },
     {
       "planA": "stepfun-flash-mini",
       "planB": "copilot-max",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 13.268578792029718,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 12.576984920230371,
       "winner": "copilot-max"
     },
     {
       "planA": "stepfun-flash-mini",
       "planB": "copilot-business",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 812.9623285049506,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 820.2422639975753,
       "winner": "stepfun-flash-mini"
     },
     {
       "planA": "stepfun-flash-mini",
       "planB": "copilot-enterprise",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 344.77651901523245,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 348.3231542552291,
       "winner": "stepfun-flash-mini"
     },
     {
@@ -78965,40 +79056,40 @@
       "planA": "stepfun-flash-plus",
       "planB": "copilot-pro",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 4525.675797758415,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 4562.560804254381,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "stepfun-flash-plus",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 891.2162423768036,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 899.1201723402247,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "stepfun-flash-plus",
       "planB": "copilot-max",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 246.92568483188114,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 249.6920603190785,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "stepfun-flash-plus",
       "planB": "copilot-business",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 3551.8493140198025,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 3580.969055990301,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "stepfun-flash-plus",
       "planB": "copilot-enterprise",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 1679.1060760609298,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 1693.2926170209164,
       "winner": "stepfun-flash-plus"
     },
     {
@@ -79053,40 +79144,40 @@
       "planA": "stepfun-flash-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 23028.378988792072,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 23212.804021271902,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "stepfun-flash-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 4856.081211884018,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 4895.600861701124,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "stepfun-flash-pro",
       "planB": "copilot-max",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 1634.6284241594055,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 1648.4603015953926,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "stepfun-flash-pro",
       "planB": "copilot-business",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 18159.24657009901,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 18304.845279951503,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "stepfun-flash-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 8795.530380304648,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 8866.463085104582,
       "winner": "stepfun-flash-pro"
     },
     {
@@ -79133,40 +79224,40 @@
       "planA": "stepfun-flash-max",
       "planB": "copilot-pro",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 115541.89494396035,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 116464.0201063595,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 24680.406059420086,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 24878.004308505613,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-max",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 8573.142120797027,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 8642.301507976961,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-business",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 91196.23285049504,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 91924.2263997575,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 44377.65190152324,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 44732.3154255229,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79205,40 +79296,40 @@
       "planA": "cerebras-code-pro",
       "planB": "copilot-pro",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 340.03327014070067,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 343.54208284985043,
       "winner": "cerebras-code-pro"
     },
     {
       "planA": "cerebras-code-pro",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 5.707156398421242,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 4.9552679607463235,
       "winner": "draw"
     },
     {
       "planA": "cerebras-code-pro",
       "planB": "copilot-max",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 66.99750473944745,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 66.73434378626122,
       "winner": "copilot-max"
     },
     {
       "planA": "cerebras-code-pro",
       "planB": "copilot-business",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 247.39468695318484,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 250.16480224988192,
       "winner": "cerebras-code-pro"
     },
     {
       "planA": "cerebras-code-pro",
       "planB": "copilot-enterprise",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 69.24356543873114,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 70.59310878840408,
       "winner": "cerebras-code-pro"
     },
     {
@@ -79269,40 +79360,40 @@
       "planA": "cerebras-code-max",
       "planB": "copilot-pro",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 3257.7961995071337,
-      "advantagePercent": 2100.166350703503,
+      "meanRequestsB": 3232.0241315328763,
+      "advantagePercent": 2117.7104142492517,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "cerebras-code-max",
       "planB": "copilot-pro-plus",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 15203.048931033285,
-      "advantagePercent": 371.4642180078938,
+      "meanRequestsB": 15082.779280486751,
+      "advantagePercent": 375.2236601962683,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "cerebras-code-max",
       "planB": "copilot-max",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 43437.282660095116,
-      "advantagePercent": 65.01247630276275,
+      "meanRequestsB": 43093.65508710502,
+      "advantagePercent": 66.32828106869385,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "cerebras-code-max",
       "planB": "copilot-business",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 1636.9734347659244,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 1650.8240112494093,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "cerebras-code-max",
       "planB": "copilot-enterprise",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 746.2178271936557,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 752.9655439420203,
       "winner": "cerebras-code-max"
     },
     {
@@ -79332,201 +79423,201 @@
     {
       "planA": "copilot-pro",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 3257.7961995071337,
-      "meanRequestsB": 15203.048931033285,
+      "meanRequestsA": 3232.0241315328763,
+      "meanRequestsB": 15082.779280486751,
       "advantagePercent": 78.57142857142856,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "copilot-pro",
       "planB": "copilot-max",
-      "meanRequestsA": 3257.7961995071337,
-      "meanRequestsB": 43437.282660095116,
+      "meanRequestsA": 3232.0241315328763,
+      "meanRequestsB": 43093.65508710502,
       "advantagePercent": 92.5,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-pro",
       "planB": "copilot-business",
-      "meanRequestsA": 3257.7961995071337,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 21.052631578947356,
+      "meanRequestsA": 3232.0241315328763,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 21.052631578947366,
       "winner": "copilot-business"
     },
     {
       "planA": "copilot-pro",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 3257.7961995071337,
-      "meanRequestsB": 8470.270118718543,
+      "meanRequestsA": 3232.0241315328763,
+      "meanRequestsB": 8403.262741985474,
       "advantagePercent": 61.53846153846152,
       "winner": "copilot-enterprise"
     },
     {
       "planA": "copilot-pro",
       "planB": "ollama-pro",
-      "meanRequestsA": 3257.7961995071337,
+      "meanRequestsA": 3232.0241315328763,
       "meanRequestsB": 38016.602246938884,
-      "advantagePercent": 91.4305960897138,
+      "advantagePercent": 91.49838770298541,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-pro",
       "planB": "ollama-max",
-      "meanRequestsA": 3257.7961995071337,
+      "meanRequestsA": 3232.0241315328763,
       "meanRequestsB": 190083.01123469448,
-      "advantagePercent": 98.28611921794275,
+      "advantagePercent": 98.29967754059709,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-pro",
       "planB": "ollama-team",
-      "meanRequestsA": 3257.7961995071337,
+      "meanRequestsA": 3232.0241315328763,
       "meanRequestsB": 633610.0374489815,
-      "advantagePercent": 99.48583576538283,
+      "advantagePercent": 99.48990326217913,
       "winner": "ollama-team"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "copilot-max",
-      "meanRequestsA": 15203.048931033285,
-      "meanRequestsB": 43437.282660095116,
+      "meanRequestsA": 15082.779280486751,
+      "meanRequestsB": 43093.65508710502,
       "advantagePercent": 65.00000000000001,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "copilot-business",
-      "meanRequestsA": 15203.048931033285,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 268.4210526315789,
+      "meanRequestsA": 15082.779280486751,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 268.42105263157885,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 15203.048931033285,
-      "meanRequestsB": 8470.270118718543,
+      "meanRequestsA": 15082.779280486751,
+      "meanRequestsB": 8403.262741985474,
       "advantagePercent": 79.48717948717952,
       "winner": "copilot-pro-plus"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "ollama-pro",
-      "meanRequestsA": 15203.048931033285,
+      "meanRequestsA": 15082.779280486751,
       "meanRequestsB": 38016.602246938884,
-      "advantagePercent": 60.009448418664405,
+      "advantagePercent": 60.325809280598655,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "ollama-max",
-      "meanRequestsA": 15203.048931033285,
+      "meanRequestsA": 15082.779280486751,
       "meanRequestsB": 190083.01123469448,
-      "advantagePercent": 92.00188968373288,
+      "advantagePercent": 92.06516185611974,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "ollama-team",
-      "meanRequestsA": 15203.048931033285,
+      "meanRequestsA": 15082.779280486751,
       "meanRequestsB": 633610.0374489815,
-      "advantagePercent": 97.60056690511986,
+      "advantagePercent": 97.61954855683592,
       "winner": "ollama-team"
     },
     {
       "planA": "copilot-max",
       "planB": "copilot-business",
-      "meanRequestsA": 43437.282660095116,
-      "meanRequestsB": 4126.541852709035,
-      "advantagePercent": 952.6315789473687,
+      "meanRequestsA": 43093.65508710502,
+      "meanRequestsB": 4093.8972332749763,
+      "advantagePercent": 952.6315789473686,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-max",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 43437.282660095116,
-      "meanRequestsB": 8470.270118718543,
+      "meanRequestsA": 43093.65508710502,
+      "meanRequestsB": 8403.262741985474,
       "advantagePercent": 412.82051282051316,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-max",
       "planB": "ollama-pro",
-      "meanRequestsA": 43437.282660095116,
+      "meanRequestsA": 43093.65508710502,
       "meanRequestsB": 38016.602246938884,
-      "advantagePercent": 14.258718803816063,
+      "advantagePercent": 13.354830626861048,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-max",
       "planB": "ollama-max",
-      "meanRequestsA": 43437.282660095116,
+      "meanRequestsA": 43093.65508710502,
       "meanRequestsB": 190083.01123469448,
-      "advantagePercent": 77.1482562392368,
+      "advantagePercent": 77.3290338746278,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-max",
       "planB": "ollama-team",
-      "meanRequestsA": 43437.282660095116,
+      "meanRequestsA": 43093.65508710502,
       "meanRequestsB": 633610.0374489815,
-      "advantagePercent": 93.14447687177105,
+      "advantagePercent": 93.19871016238834,
       "winner": "ollama-team"
     },
     {
       "planA": "copilot-business",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 4126.541852709035,
-      "meanRequestsB": 8470.270118718543,
-      "advantagePercent": 51.28205128205126,
+      "meanRequestsA": 4093.8972332749763,
+      "meanRequestsB": 8403.262741985474,
+      "advantagePercent": 51.282051282051256,
       "winner": "copilot-enterprise"
     },
     {
       "planA": "copilot-business",
       "planB": "ollama-pro",
-      "meanRequestsA": 4126.541852709035,
+      "meanRequestsA": 4093.8972332749763,
       "meanRequestsB": 38016.602246938884,
-      "advantagePercent": 89.14542171363748,
+      "advantagePercent": 89.23129109044821,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-business",
       "planB": "ollama-max",
-      "meanRequestsA": 4126.541852709035,
+      "meanRequestsA": 4093.8972332749763,
       "meanRequestsB": 190083.01123469448,
-      "advantagePercent": 97.8290843427275,
+      "advantagePercent": 97.84625821808964,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-business",
       "planB": "ollama-team",
-      "meanRequestsA": 4126.541852709035,
+      "meanRequestsA": 4093.8972332749763,
       "meanRequestsB": 633610.0374489815,
-      "advantagePercent": 99.34872530281825,
+      "advantagePercent": 99.35387746542689,
       "winner": "ollama-team"
     },
     {
       "planA": "copilot-enterprise",
       "planB": "ollama-pro",
-      "meanRequestsA": 8470.270118718543,
+      "meanRequestsA": 8403.262741985474,
       "meanRequestsB": 38016.602246938884,
-      "advantagePercent": 77.71954983325588,
+      "advantagePercent": 77.8958080277621,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-enterprise",
       "planB": "ollama-max",
-      "meanRequestsA": 8470.270118718543,
+      "meanRequestsA": 8403.262741985474,
       "meanRequestsB": 190083.01123469448,
-      "advantagePercent": 95.54390996665117,
+      "advantagePercent": 95.57916160555241,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-enterprise",
       "planB": "ollama-team",
-      "meanRequestsA": 8470.270118718543,
+      "meanRequestsA": 8403.262741985474,
       "meanRequestsB": 633610.0374489815,
-      "advantagePercent": 98.66317298999535,
+      "advantagePercent": 98.67374848166573,
       "winner": "ollama-team"
     },
     {
@@ -87985,6 +88076,13 @@
     },
     {
       "planId": "copilot-pro",
+      "family": "gemini 4 hydrogen",
+      "modelCount": 1,
+      "normalizedPer1Median": 243.30900243309003,
+      "normalizedPer1Mean": 243.30900243309003
+    },
+    {
+      "planId": "copilot-pro",
       "family": "mai-code-1.1-flash",
       "modelCount": 1,
       "normalizedPer1Median": 1107.5014766686354,
@@ -88199,6 +88297,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 218.3542329527731,
       "normalizedPer1Mean": 218.3542329527731
+    },
+    {
+      "planId": "copilot-pro-plus",
+      "family": "gemini 4 hydrogen",
+      "modelCount": 1,
+      "normalizedPer1Median": 291.1389772703641,
+      "normalizedPer1Mean": 291.1389772703641
     },
     {
       "planId": "copilot-pro-plus",
@@ -88419,6 +88524,13 @@
     },
     {
       "planId": "copilot-max",
+      "family": "gemini 4 hydrogen",
+      "modelCount": 1,
+      "normalizedPer1Median": 324.41200324412,
+      "normalizedPer1Mean": 324.41200324412
+    },
+    {
+      "planId": "copilot-max",
       "family": "mai-code-1.1-flash",
       "modelCount": 1,
       "normalizedPer1Median": 1476.6686355581808,
@@ -88636,6 +88748,13 @@
     },
     {
       "planId": "copilot-business",
+      "family": "gemini 4 hydrogen",
+      "modelCount": 1,
+      "normalizedPer1Median": 162.20600162206,
+      "normalizedPer1Mean": 162.20600162206
+    },
+    {
+      "planId": "copilot-business",
       "family": "mai-code-1.1-flash",
       "modelCount": 1,
       "normalizedPer1Median": 738.3343177790903,
@@ -88850,6 +88969,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 121.654501216545,
       "normalizedPer1Mean": 121.654501216545
+    },
+    {
+      "planId": "copilot-enterprise",
+      "family": "gemini 4 hydrogen",
+      "modelCount": 1,
+      "normalizedPer1Median": 162.20600162206,
+      "normalizedPer1Mean": 162.20600162206
     },
     {
       "planId": "copilot-enterprise",
@@ -90550,8 +90676,8 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-13T11:03:22.760Z",
-    "count": 461,
+    "fetchedAt": "2026-11-15T03:04:25.271Z",
+    "count": 462,
     "scores": {
       "claude-fable-5-2": {
         "intelligence": 61.06
@@ -90592,10 +90718,10 @@
       "ernie-5-5-flash-preview": {
         "intelligence": 52.33
       },
-      "claude-fable-5-1": {
+      "claude-fable-5": {
         "intelligence": 52.2
       },
-      "claude-fable-5": {
+      "claude-fable-5-1": {
         "intelligence": 52.2
       },
       "gpt-5-6-sol": {
@@ -90712,10 +90838,10 @@
       "qwen3-7-max": {
         "intelligence": 44.35
       },
-      "mimo-v2-6-flash": {
+      "claude-opus-4-6": {
         "intelligence": 43.97
       },
-      "claude-opus-4-6": {
+      "mimo-v2-6-flash": {
         "intelligence": 43.97
       },
       "grok-4-6": {
@@ -90892,10 +91018,10 @@
       "mimo-v2-5": {
         "intelligence": 35.59
       },
-      "nemotron-3-ultra-550b-a55b": {
+      "deepseek-v4-flash-0423": {
         "intelligence": 35.49
       },
-      "deepseek-v4-flash-0423": {
+      "nemotron-3-ultra-550b-a55b": {
         "intelligence": 35.49
       },
       "minimax-m2-7": {
@@ -91039,10 +91165,10 @@
       "claude-opus-4-1-20250805": {
         "intelligence": 29.26
       },
-      "gemini-2-5-pro-preview-06-05": {
+      "gpt-5-4-mini": {
         "intelligence": 29.22
       },
-      "gpt-5-4-mini": {
+      "gemini-2-5-pro-preview-06-05": {
         "intelligence": 29.22
       },
       "gpt-5-3-chat-latest": {
@@ -91366,10 +91492,10 @@
       "grok-4-1-thinking-2025-11-17": {
         "intelligence": 15.48
       },
-      "deepseek-r1-zero": {
+      "lfm3-vl-2b": {
         "intelligence": 15.37
       },
-      "lfm3-vl-2b": {
+      "deepseek-r1-zero": {
         "intelligence": 15.37
       },
       "claude-3-5-sonnet-20240620": {
@@ -91408,10 +91534,10 @@
       "gpt-4o-2024-08-06": {
         "intelligence": 13.37
       },
-      "llama-3-3-70b-instruct": {
+      "qwen3-vl-8b-instruct": {
         "intelligence": 13.2
       },
-      "qwen3-vl-8b-instruct": {
+      "llama-3-3-70b-instruct": {
         "intelligence": 13.2
       },
       "gpt-4-1-mini-2025-04-14": {
@@ -91597,10 +91723,10 @@
       "hermes-3-405b": {
         "intelligence": 3.78
       },
-      "mistral-small-3-1-24b-instruct-2503": {
+      "mistral-small-24b-instruct-2501": {
         "intelligence": 3.65
       },
-      "mistral-small-24b-instruct-2501": {
+      "mistral-small-3-1-24b-instruct-2503": {
         "intelligence": 3.65
       },
       "hermes-3-70b": {
@@ -91612,10 +91738,10 @@
       "qwen-2-5-14b-instruct": {
         "intelligence": 3.12
       },
-      "ministral-3-14b-base-2512": {
+      "gpt-4o-mini-2024-07-18": {
         "intelligence": 3.09
       },
-      "gpt-4o-mini-2024-07-18": {
+      "ministral-3-14b-base-2512": {
         "intelligence": 3.09
       },
       "lfm-2-5-vl-3b": {
@@ -91723,10 +91849,10 @@
       "deepseek-r1-distill-qwen-1-5b": {
         "intelligence": -3.64
       },
-      "grok-4-20-beta-0309-non-reasoning": {
+      "qwen-2-5-coder-7b-instruct": {
         "intelligence": -3.73
       },
-      "qwen-2-5-coder-7b-instruct": {
+      "grok-4-20-beta-0309-non-reasoning": {
         "intelligence": -3.73
       },
       "phi-3-5-vision-instruct": {
@@ -92004,6 +92130,11 @@
         "aliasOf": "gemini-4-carbon",
         "fallback": true
       },
+      "gemini-4-hydrogen": {
+        "intelligence": 53.62,
+        "aliasOf": "gemini-4-argon",
+        "fallback": true
+      },
       "beam": {
         "intelligence": 43.78,
         "aliasOf": "beam-1-0-501b-a23b",
@@ -92037,7 +92168,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-13",
+      "verifiedAt": "2026-11-15",
       "crawled": true
     },
     {
@@ -92120,6 +92251,12 @@
   ],
   "changelog": {
     "entries": [
+      {
+        "date": "2026-11-15",
+        "commit": "e6f23e8",
+        "text": "OpenDesign credits breakdown follows the renamed Coding Plan label",
+        "textEn": "OpenDesign credits breakdown follows the renamed Coding Plan label"
+      },
       {
         "date": "2026-11-06",
         "commit": "91acd82",
@@ -92713,23 +92850,17 @@
         "commit": "81f9706",
         "text": "Per-$1 rates, budget calculator, pareto defaults, calmer UI",
         "textEn": "Per-$1 rates, budget calculator, pareto defaults, calmer UI"
-      },
-      {
-        "date": "2026-09-11",
-        "commit": "f11e353",
-        "text": "Fix AI score aliases resolving to generic base models (Muse Spark)",
-        "textEn": "Fix AI score aliases resolving to generic base models (Muse Spark)"
       }
     ]
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Fri, 13 Nov 2026 00:02:31 +0000",
+    "updatedAt": "Sun, 15 Nov 2026 00:02:32 +0000",
     "rates": {
-      "EUR": 0.903491,
-      "CNY": 6.685071,
-      "GBP": 0.755149,
-      "JPY": 159.795417
+      "EUR": 0.905984,
+      "CNY": 6.689676,
+      "GBP": 0.756391,
+      "JPY": 159.778993
     }
   },
   "statistics": {
