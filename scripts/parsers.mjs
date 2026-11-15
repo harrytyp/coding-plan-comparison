@@ -783,7 +783,11 @@ export function parseOpenDesignCredits(html) {
   const table = html.slice(start);
   const windows = {};
   for (const t of OD_TIERS) {
-    const cell = table.match(new RegExp(`<th[^>]*>\\s*${OD_TIER_NAME[t]}\\s*</th>((?:\\s*<td[^>]*>[\\s\\S]*?</td>)+)`, "i"));
+    // Die Tabelle beschriftet die Zeilen inzwischen "Go", "Go Plus", "Go Pro", "Go Max"
+    // (frueher nur "Plus/Pro/Max"). Suffix tolerieren, "Go" bleibt exakt, damit die
+    // Go-Zeile nicht die Go-Plus-Zeile faengt.
+    const label = t === "go" ? "Go" : `Go\\s*${OD_TIER_NAME[t]}`;
+    const cell = table.match(new RegExp(`<th[^>]*>\\s*${label}\\s*</th>((?:\\s*<td[^>]*>[\\s\\S]*?</td>)+)`, "i"));
     if (!cell) continue;
     const tds = [...cell[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)]
       .map((x) => x[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
