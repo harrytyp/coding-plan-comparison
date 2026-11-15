@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-11-15"
+    commit: "e84b40a"
+    text: "OpenDesign credit table rows are labelled Go Plus/Pro/Max now"
+    textEn: "OpenDesign credit table rows are labelled Go Plus/Pro/Max now"
+  - date: "2026-11-15"
     commit: "e6f23e8"
     text: "OpenDesign credits breakdown follows the renamed Coding Plan label"
     textEn: "OpenDesign credits breakdown follows the renamed Coding Plan label"
@@ -399,7 +403,3 @@ entries:
     commit: "d67421b"
     text: "Mobile nav, canvas pareto, neutral calculator, changelog, imprint"
     textEn: "Mobile nav, canvas pareto, neutral calculator, changelog, imprint"
-  - date: "2026-09-12"
-    commit: "81f9706"
-    text: "Per-$1 rates, budget calculator, pareto defaults, calmer UI"
-    textEn: "Per-$1 rates, budget calculator, pareto defaults, calmer UI"

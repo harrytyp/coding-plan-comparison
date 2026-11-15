@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>OpenDesign credit table rows are labelled Go Plus/Pro/Max now</title>
+    <id>https://vibeplan.cc/#e84b40a</id>
+    <updated>2026-11-15T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/e84b40a"/>
+    <summary>OpenDesign credit table rows are labelled Go Plus/Pro/Max now</summary>
+  </entry>
+  <entry>
     <title>OpenDesign credits breakdown follows the renamed Coding Plan label</title>
     <id>https://vibeplan.cc/#e6f23e8</id>
     <updated>2026-11-15T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/5269ffd"/>
     <summary>A static comparison page that targets \"coding plan comparison\"</summary>
-  </entry>
-  <entry>
-    <title>One price including the fee, no separate fee marker</title>
-    <id>https://vibeplan.cc/#82c67cf</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/82c67cf"/>
-    <summary>One price including the fee, no separate fee marker</summary>
   </entry>
 </feed>

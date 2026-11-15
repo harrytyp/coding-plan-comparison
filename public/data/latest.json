@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-15T03:04:25.974Z",
+  "generatedAt": "2026-11-15T03:07:54.323Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -36118,6 +36118,14 @@
       "meter": "dollar_usage",
       "quotas": [
         {
+          "label": "7-day window",
+          "unit": "usd",
+          "amount": 74,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
           "label": "Monthly",
           "unit": "usd",
           "amount": 310,
@@ -36128,7 +36136,7 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": null,
+        "weekly": 74,
         "monthly": 310
       },
       "officialConversion": null,
@@ -36457,6 +36465,14 @@
       "meter": "dollar_usage",
       "quotas": [
         {
+          "label": "7-day window",
+          "unit": "usd",
+          "amount": 90,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
           "label": "Monthly",
           "unit": "usd",
           "amount": 480,
@@ -36467,7 +36483,7 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": null,
+        "weekly": 90,
         "monthly": 480
       },
       "officialConversion": null,
@@ -36796,6 +36812,14 @@
       "meter": "dollar_usage",
       "quotas": [
         {
+          "label": "7-day window",
+          "unit": "usd",
+          "amount": 150,
+          "window": "week",
+          "refresh": "weekly",
+          "disclosure": "exact"
+        },
+        {
           "label": "Monthly",
           "unit": "usd",
           "amount": 900,
@@ -36806,7 +36830,7 @@
       ],
       "windowCaps": {
         "h5": null,
-        "weekly": null,
+        "weekly": 150,
         "monthly": 900
       },
       "officialConversion": null,
@@ -90676,7 +90700,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-15T03:04:25.271Z",
+    "fetchedAt": "2026-11-15T03:07:54.118Z",
     "count": 462,
     "scores": {
       "claude-fable-5-2": {
@@ -92253,6 +92277,12 @@
     "entries": [
       {
         "date": "2026-11-15",
+        "commit": "e84b40a",
+        "text": "OpenDesign credit table rows are labelled Go Plus/Pro/Max now",
+        "textEn": "OpenDesign credit table rows are labelled Go Plus/Pro/Max now"
+      },
+      {
+        "date": "2026-11-15",
         "commit": "e6f23e8",
         "text": "OpenDesign credits breakdown follows the renamed Coding Plan label",
         "textEn": "OpenDesign credits breakdown follows the renamed Coding Plan label"
@@ -92844,12 +92874,6 @@
         "commit": "d67421b",
         "text": "Mobile nav, canvas pareto, neutral calculator, changelog, imprint",
         "textEn": "Mobile nav, canvas pareto, neutral calculator, changelog, imprint"
-      },
-      {
-        "date": "2026-09-12",
-        "commit": "81f9706",
-        "text": "Per-$1 rates, budget calculator, pareto defaults, calmer UI",
-        "textEn": "Per-$1 rates, budget calculator, pareto defaults, calmer UI"
       }
     ]
   },
