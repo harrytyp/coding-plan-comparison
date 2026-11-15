@@ -731,8 +731,15 @@ export function parseOpenDesignPricing(html) {
     const introPrice = odNum((chunk.match(/data-intro-price="([\d.]+)"/) || [])[1]);
     const yearly = odNum((chunk.match(/<div class="price" data-when="yearly"[^>]*>[\s\S]{0,200}?rolling-price-number"[^>]*>([\d.]+)</) || [])[1]);
     const credits = odNum((chunk.match(/data-total-credits="([\d.]+)"/) || [])[1]);
-    const design = odNum((chunk.match(/Design Plan [Uu]p to\s*<strong[^>]*>\$([\d,]+)/) || [])[1]);
-    const planModels = odNum((chunk.match(/plan models\s*<strong[^>]*>\$([\d,]+)/) || [])[1]) ?? 0;
+    // Die Karte zerlegt die Monats-Credits in "Coding Plan up to $X" und optional
+    // "Top Models $Y". Frueher hiess der erste Teil "Design Plan" und stand direkt als
+    // "Design Plan Up to $X" im HTML; deshalb ueber /plan up to/i statt ueber den Namen
+    // zuordnen, sonst reisst die naechste Umbenennung den ganzen Tageslauf mit.
+    const parts = [...chunk.matchAll(/class="credit-breakdown-part"[^>]*>([^<]*?)\s*(?:<strong[^>]*>)?\$([\d,]+)/g)]
+      .map((m) => ({ label: m[1].trim(), usd: odNum(m[2]) }));
+    const design = parts.find((x) => /plan\s*up to/i.test(x.label))?.usd
+      ?? odNum((chunk.match(/design-plan-cap[^>]*>\s*Up to \$([\d,]+)/) || [])[1]);
+    const planModels = parts.find((x) => /top models|plan models/i.test(x.label))?.usd ?? 0;
     if (priceMonthly === null || credits === null || design === null) continue;
     cards.push({
       tier, name: OD_TIER_NAME[tier], priceMonthly, introPrice, priceYearlyMonthly: yearly,
