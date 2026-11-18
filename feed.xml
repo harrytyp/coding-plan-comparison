@@ -9,6 +9,13 @@
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
   <entry>
+    <title>Match models the feed renamed to '(latest)'</title>
+    <id>https://vibeplan.cc/#bba4314</id>
+    <updated>2026-11-18T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/bba4314"/>
+    <summary>Match models the feed renamed to '(latest)'</summary>
+  </entry>
+  <entry>
     <title>OpenDesign rows with nested markup and partial tiers are parsed again</title>
     <id>https://vibeplan.cc/#5e2f974</id>
     <updated>2026-11-18T00:00:00Z</updated>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ff76c30"/>
     <summary>Preview build resolves the JSON-LD date placeholder</summary>
-  </entry>
-  <entry>
-    <title>Indexnow, 404 page, font preload, repo-ready metadata</title>
-    <id>https://vibeplan.cc/#c38ed23</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/c38ed23"/>
-    <summary>Indexnow, 404 page, font preload, repo-ready metadata</summary>
   </entry>
 </feed>
