@@ -706,9 +706,18 @@ test("OpenDesign Go: Credits, Fenster und Modell-Caps kommen 1:1 aus der Quelle"
   for (const r of plan.modelRows) {
     assert.ok(r.allowance <= src.creditsMonthly, `${r.model}: Obergrenze ueber dem Monatsmaximum`);
   }
-  // ... und die veroeffentlichten Einzel-Obergrenzen (Luna 15 $, Flash-X 30 $) muessen ankommen.
-  assert.ok(plan.modelRows.some((r) => r.allowance === 15), "Einzel-Obergrenze 15 $ fehlt");
-  assert.ok(plan.modelRows.some((r) => r.allowance === 30), "Einzel-Obergrenze 30 $ fehlt");
+  // 1:1 heisst: jede gebaute Zeile traegt exakt die Obergrenze, die die Quelle fuer
+  // dieses Modell veroeffentlicht, ohne fest verdrahtete Dollarbetraege. Die Quelle
+  // tauscht Modelle aus (am 17.11. fielen Flash-X/Haiku/Luna aus der Tabelle, Eco
+  // und MiMo-Varianten kamen dazu), ein Test auf "es gibt eine 30-$-Zeile" reisst
+  // dann den ganzen Tageslauf. Zeilen ohne Feed-Preis fallen im Build raus, deshalb
+  // wird jede gebaute Zeile gegen die Quelle geprueft, nicht umgekehrt.
+  const key = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
+  for (const r of plan.modelRows) {
+    const m = src.models.find((x) => key(x.model) === key(r.model));
+    assert.ok(m, `${r.model}: Modell fehlt in der Quelle`);
+    assert.equal(r.allowance, m.usd, `${r.model}: Obergrenze`);
+  }
 });
 
 test("CSS: keine zerschnittenen Regeln (Klebe-Bug nach Text-Aufraeumen)", async () => {

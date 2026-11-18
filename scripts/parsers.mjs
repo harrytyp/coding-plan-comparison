@@ -750,19 +750,34 @@ export function parseOpenDesignPricing(html) {
 
   const rows = html.split(/<div class="dpu-row"/).slice(1);
   const models = [];
+  const unreadable = [];
   for (const row of rows) {
     if (/dpu-head/.test(row.slice(0, 60))) continue;
     const name = (row.match(/<strong[^>]*>([^<]+)<\/strong>/) || [])[1];
     if (!name) continue;
-    const vals = [...row.matchAll(/<span data-usage-value="(go|plus|pro|max)"[^>]*>([^<]*)<\/span>/g)].map((x) => ({ tier: x[1], raw: x[2].trim() }));
-    if (vals.length < OD_TIERS.length * 2) continue;
+    // Der Zellinhalt kann verschachteltes Markup tragen (z.B. Kampagnen-Zeilen mit
+    // Tooltip-Span), deshalb Tags strippen statt [^<]* zu verlangen.
+    const vals = [...row.matchAll(/<span data-usage-value="(go|plus|pro|max)"[^>]*>([\s\S]*?)<\/span>/g)]
+      .map((x) => ({ tier: x[1], raw: x[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim() }));
+    if (!vals.length) continue;
+    // "/ week" = Kampagnen-Obergrenze pro Woche, keine Monats-Obergrenze. Nicht als
+    // Monatswert verbuchen, sonst steht eine Wochenzahl in der Monatsspalte.
+    const isMonthly = (v) => v.raw.includes("$") && !/\/\s*week/i.test(v.raw);
     const requests7d = {}, monthlyUsd = {};
     for (const t of OD_TIERS) {
       requests7d[t] = odNum((vals.find((v) => v.tier === t && !v.raw.includes("$")) || {}).raw);
-      monthlyUsd[t] = odNum((vals.find((v) => v.tier === t && v.raw.includes("$")) || {}).raw);
+      const mon = vals.find((v) => v.tier === t && isMonthly(v));
+      monthlyUsd[t] = odNum(mon?.raw);
+      // Eine "$"-Zelle, die keine Zahl hergibt, ist ein Parserfehler und darf nicht
+      // still als "kein Cap" durchgehen.
+      if (mon && monthlyUsd[t] == null) unreadable.push(`${name.trim()}/${t}`);
     }
+    // Zeilen duerfen nur einen Teil der Tarife belegen (z.B. ein Modell, das es nur
+    // in Go und Go Plus gibt). Fehlende Tarife bleiben null, die Zeile zaehlt trotzdem.
+    if (!OD_TIERS.some((t) => monthlyUsd[t] != null)) continue;
     models.push({ model: name.trim(), requests7d, monthlyUsd });
   }
+  if (unreadable.length) throw new Error(`OpenDesign: Monats-Obergrenze unlesbar bei ${unreadable.join(", ")}`);
   if (models.length < 5) throw new Error(`OpenDesign: nur ${models.length} Modellzeilen erkannt`);
 
   for (const c of cards) {
