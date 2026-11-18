@@ -4,6 +4,10 @@
 # Handgeschriebene Eintraege von vorher: data/changelog-archive.yml.
 entries:
   - date: "2026-11-18"
+    commit: "bba4314"
+    text: "Match models the feed renamed to '(latest)'"
+    textEn: "Match models the feed renamed to '(latest)'"
+  - date: "2026-11-18"
     commit: "5e2f974"
     text: "OpenDesign rows with nested markup and partial tiers are parsed again"
     textEn: "OpenDesign rows with nested markup and partial tiers are parsed again"
@@ -399,7 +403,3 @@ entries:
     commit: "9788d2a"
     text: "Explicit plot background, visible error on version mismatch"
     textEn: "Explicit plot background, visible error on version mismatch"
-  - date: "2026-09-13"
-    commit: "bbd733a"
-    text: "Small clipped dots, percentile viewport, no duplicate detail rows"
-    textEn: "Small clipped dots, percentile viewport, no duplicate detail rows"
