@@ -36,17 +36,17 @@ const FALLBACK_PATTERN = { input: 800, cachedRead: 50000, output: 162 };
 // "normalized": Gleichheit ohne Trennzeichen/Case und ohne "V" vor Zahlen, weil Quellen
 // "GLM 5.3 Flash" / "MiMo 2.6 Flash" schreiben und der Feed "GLM-5.3-Flash" / "MiMo V2.6 Flash".
 const modelKey = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "").replace(/([a-z])v(?=\d)/g, "$1");
+// Marketing-Zusaetze, die der Feed anhaengt, sobald ein Nachfolger im Katalog steht:
+// "(latest)", "(beta)", "(preview)". Der Tarif selbst nennt das Modell ohne Suffix.
+const bareModelKey = (s) => modelKey(String(s).replace(/\((latest|beta|preview)\)/gi, ""));
 function findFeedModel(allModels, modelName, mode) {
   if (mode === "normalized") {
     const key = modelKey(modelName);
     const exact = allModels.find((m) => m.name && modelKey(m.name) === key);
     if (exact) return exact;
-    // Feeds haengen "(latest)" (und aehnliche Marketing-Zusaetze) an, sobald ein
-    // Nachfolger im Katalog steht; der Tarif selbst nennt das Modell ohne Suffix.
     // Ohne diesen zweiten Versuch faellt die Zeile still aus dem Katalog.
-    const strip = (s) => String(s).replace(/\((latest|beta|preview)\)/ig, "");
-    const bare = modelKey(strip(modelName));
-    const hit = allModels.find((m) => m.name && modelKey(strip(m.name)) === bare);
+    const bare = bareModelKey(modelName);
+    const hit = allModels.find((m) => m.name && bareModelKey(m.name) === bare);
     // Der Tarif nennt die offizielle Schreibweise ohne Zusatz; die soll auch im
     // Katalog stehen, sonst steht dasselbe Modell unter zwei Namen darin.
     return hit ? { ...hit, name: modelName } : null;
@@ -1166,6 +1166,16 @@ async function main() {
 
   for (const plan of plans) {
     const models = modelsForPlan(plan, feeds);
+    // Ein Modell, das der Tarif ausweist und fuer das der Feed einen Preis hat, darf
+    // nicht still aus dem Katalog fallen (Feed-Umbenennung, Tippfehler). Sichtbar
+    // machen statt raten: Warnung mit Namen.
+    if (plan.feedModels?.length > models.length) {
+      const have = new Set(models.map((m) => bareModelKey(m.name)));
+      const missing = plan.feedModels
+        .map((e) => (typeof e === "string" ? e : e?.model))
+        .filter((n) => n && !have.has(bareModelKey(n)));
+      if (missing.length) warnings.push(`${plan.id}: Modell ohne Feed-Treffer nicht im Katalog: ${missing.join(", ")}`);
+    }
     // Normalisierungs-Basis: USD. Bei CNY-Plänen (Kimi, GLM) ist der
     // paidPrice in CNY, aber die Normalisierung braucht den USD-Preis.
     // monthlyUsd (mit dokumentiertem Kurs umgerechnet) ist die korrekte Basis.
