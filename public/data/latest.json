@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-18T07:41:30.879Z",
+  "generatedAt": "2026-11-18T07:44:48.985Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -91593,7 +91593,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-18T07:41:30.672Z",
+    "fetchedAt": "2026-11-18T07:44:48.314Z",
     "count": 473,
     "scores": {
       "claude-fable-5-2": {
@@ -93842,6 +93842,11 @@
     "codebuddy-pro: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
     "codebuddy-team: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
     "refact-free: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
-    "refact-pro: no model pricing from feeds (meter=credits), raw quotas only, no request normalization"
+    "refact-pro: no model pricing from feeds (meter=credits), raw quotas only, no request normalization",
+    "freebuff-starter: Modell ohne Feed-Treffer nicht im Katalog: Solar Mini 4, Solar Pro 4, Space Bunny Alpha",
+    "freebuff-plus: Modell ohne Feed-Treffer nicht im Katalog: Solar Mini 4, Solar Pro 4, Space Bunny Alpha",
+    "freebuff-pro: Modell ohne Feed-Treffer nicht im Katalog: Solar Mini 4, Solar Pro 4, Space Bunny Alpha",
+    "opendesign-go: Modell ohne Feed-Treffer nicht im Katalog: DeepSeek V4.1 Flash Eco",
+    "opendesign-plus: Modell ohne Feed-Treffer nicht im Katalog: DeepSeek V4.1 Flash Eco"
   ]
 }
