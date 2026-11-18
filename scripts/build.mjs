@@ -39,7 +39,17 @@ const modelKey = (s) => String(s).toLowerCase().replace(/[^a-z0-9]/g, "").replac
 function findFeedModel(allModels, modelName, mode) {
   if (mode === "normalized") {
     const key = modelKey(modelName);
-    return allModels.find((m) => m.name && modelKey(m.name) === key) ?? null;
+    const exact = allModels.find((m) => m.name && modelKey(m.name) === key);
+    if (exact) return exact;
+    // Feeds haengen "(latest)" (und aehnliche Marketing-Zusaetze) an, sobald ein
+    // Nachfolger im Katalog steht; der Tarif selbst nennt das Modell ohne Suffix.
+    // Ohne diesen zweiten Versuch faellt die Zeile still aus dem Katalog.
+    const strip = (s) => String(s).replace(/\((latest|beta|preview)\)/ig, "");
+    const bare = modelKey(strip(modelName));
+    const hit = allModels.find((m) => m.name && modelKey(strip(m.name)) === bare);
+    // Der Tarif nennt die offizielle Schreibweise ohne Zusatz; die soll auch im
+    // Katalog stehen, sonst steht dasselbe Modell unter zwei Namen darin.
+    return hit ? { ...hit, name: modelName } : null;
   }
   return allModels.find((m) => m.name && m.name.toLowerCase().includes(String(modelName).toLowerCase())) ?? null;
 }
