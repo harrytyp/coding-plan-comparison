@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-20T11:44:27.173Z",
+  "generatedAt": "2026-11-21T11:08:17.301Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -91812,7 +91812,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-20T11:44:26.956Z",
+    "fetchedAt": "2026-11-21T11:08:17.091Z",
     "count": 475,
     "scores": {
       "claude-fable-5-2": {
@@ -93355,7 +93355,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-20",
+      "verifiedAt": "2026-11-21",
       "crawled": true
     },
     {
