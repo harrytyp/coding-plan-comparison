@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T11:08:17.301Z",
+  "generatedAt": "2026-11-22T11:29:22.359Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -43175,15 +43175,15 @@
         "ollama-pricing"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 22,
+      "modelCount": 23,
       "modelStats": {
-        "count": 22,
+        "count": 23,
         "min": 3025.7186081694404,
         "max": 201775.62550443903,
-        "mean": 38192.467359631235,
-        "median": 18904.614158555705,
-        "p25": 6415.638642135856,
-        "p75": 64571.048579179915
+        "mean": 37354.244963964426,
+        "median": 18913.352259294497,
+        "p25": 6453.7262638635475,
+        "p75": 63725.61220415137
       },
       "dataTier": "A",
       "dataTierNote": "Official credit allowance ($60) and official model prices from the Ollama pricing page",
@@ -43404,6 +43404,29 @@
           "estimate": null,
           "rawTokensPerMonth": 1648722096.408929,
           "derivedTokensPerMonth": 1648722096.408929
+        },
+        {
+          "model": "hy4",
+          "family": "tencent hy4",
+          "allowance": 60,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0031723619999999998,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 18913.352259294497,
+          "requestsRawInWindow": 18913.352259294497,
+          "normalizedPer1": 945.6676129647249,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 963862257.8381661,
+          "derivedTokensPerMonth": 963862257.8381661
         },
         {
           "model": "inkling-2-small",
@@ -43743,15 +43766,15 @@
         "ollama-pricing"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 22,
+      "modelCount": 23,
       "modelStats": {
-        "count": 22,
+        "count": 23,
         "min": 15128.593040847201,
         "max": 1008878.1275221952,
-        "mean": 190962.33679815623,
-        "median": 94523.07079277854,
-        "p25": 32078.193210679277,
-        "p75": 322855.2428958996
+        "mean": 186771.22481982212,
+        "median": 94566.76129647248,
+        "p25": 32268.631319317734,
+        "p75": 318628.06102075684
       },
       "dataTier": "A",
       "dataTierNote": "Official credit allowance ($300) and official model prices from the Ollama pricing page",
@@ -43972,6 +43995,29 @@
           "estimate": null,
           "rawTokensPerMonth": 8243610482.044645,
           "derivedTokensPerMonth": 8243610482.044645
+        },
+        {
+          "model": "hy4",
+          "family": "tencent hy4",
+          "allowance": 300,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0031723619999999998,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 94566.76129647248,
+          "requestsRawInWindow": 94566.76129647248,
+          "normalizedPer1": 945.6676129647249,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 4819311289.19083,
+          "derivedTokensPerMonth": 4819311289.19083
         },
         {
           "model": "inkling-2-small",
@@ -44311,15 +44357,15 @@
         "ollama-pricing"
       ],
       "verifiedAt": "2026-09-23",
-      "modelCount": 22,
+      "modelCount": 23,
       "modelStats": {
-        "count": 22,
+        "count": 23,
         "min": 50428.64346949067,
         "max": 3362927.0917406506,
-        "mean": 636541.1226605206,
-        "median": 315076.9026425951,
-        "p25": 106927.31070226425,
-        "p75": 1076184.142986332
+        "mean": 622570.7493994071,
+        "median": 315222.53765490826,
+        "p25": 107562.10439772578,
+        "p75": 1062093.5367358562
       },
       "dataTier": "A",
       "dataTierNote": "Official credit allowance ($1000) and official model prices from the Ollama pricing page",
@@ -44540,6 +44586,29 @@
           "estimate": null,
           "rawTokensPerMonth": 27478701606.815487,
           "derivedTokensPerMonth": 27478701606.815487
+        },
+        {
+          "model": "hy4",
+          "family": "tencent hy4",
+          "allowance": 1000,
+          "window": "month",
+          "windowNote": null,
+          "costPerRequest": 0.0031723619999999998,
+          "patternUsed": {
+            "input": 800,
+            "cachedRead": 50000,
+            "output": 162
+          },
+          "creditsPerRequest": null,
+          "providerPattern": null,
+          "unit": "requests",
+          "requestsPerMonth": 315222.53765490826,
+          "requestsRawInWindow": 315222.53765490826,
+          "normalizedPer1": 630.4450753098165,
+          "privacy": null,
+          "estimate": null,
+          "rawTokensPerMonth": 16064370963.969435,
+          "derivedTokensPerMonth": 16064370963.969435
         },
         {
           "model": "inkling-2-small",
@@ -45576,24 +45645,24 @@
       "planA": "opencode-go",
       "planB": "ollama-pro",
       "meanRequestsA": 46254.88815357628,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 21.109976263190777,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 23.82766188474239,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-max",
       "meanRequestsA": 46254.88815357628,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 75.77800474736185,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 75.23446762305153,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-team",
       "meanRequestsA": 46254.88815357628,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 92.73340142420855,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 92.57034028691545,
       "winner": "ollama-team"
     },
     {
@@ -46320,24 +46389,24 @@
       "planA": "opencode-go-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 112333.12659747661,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 194.1237745645382,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 200.72385804034906,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "ollama-max",
       "meanRequestsA": 112333.12659747661,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 41.17524508709237,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 39.85522839193018,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "ollama-team",
       "meanRequestsA": 112333.12659747661,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 82.3525735261277,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 81.95656851757906,
       "winner": "ollama-team"
     },
     {
@@ -47056,24 +47125,24 @@
       "planA": "opencode-go-teams",
       "planB": "ollama-pro",
       "meanRequestsA": 50696.93746930754,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 32.74067106461236,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 35.719347341151675,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "ollama-max",
       "meanRequestsA": 50696.93746930754,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 73.45186578707754,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 72.85613053176967,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "ollama-team",
       "meanRequestsA": 50696.93746930754,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 92.03555973612326,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 91.8568391595309,
       "winner": "ollama-team"
     },
     {
@@ -47784,24 +47853,24 @@
       "planA": "command-code-go",
       "planB": "ollama-pro",
       "meanRequestsA": 2865.7381950484482,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 92.49658795787181,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 92.32821276989263,
       "winner": "ollama-pro"
     },
     {
       "planA": "command-code-go",
       "planB": "ollama-max",
       "meanRequestsA": 2865.7381950484482,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.49931759157437,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.46564255397853,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-go",
       "planB": "ollama-team",
       "meanRequestsA": 2865.7381950484482,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.54979527747231,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.53969276619355,
       "winner": "ollama-team"
     },
     {
@@ -48504,24 +48573,24 @@
       "planA": "command-code-goat",
       "planB": "ollama-pro",
       "meanRequestsA": 28657.381950484483,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 24.96587957871811,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 23.282127698926292,
       "winner": "ollama-pro"
     },
     {
       "planA": "command-code-goat",
       "planB": "ollama-max",
       "meanRequestsA": 28657.381950484483,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 84.99317591574362,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 84.65642553978525,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-goat",
       "planB": "ollama-team",
       "meanRequestsA": 28657.381950484483,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 95.49795277472309,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 95.39692766193558,
       "winner": "ollama-team"
     },
     {
@@ -49216,24 +49285,24 @@
       "planA": "command-code-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 39344.627546162,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 3.0167210085740193,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 5.328397305628041,
       "winner": "draw"
     },
     {
       "planA": "command-code-pro",
       "planB": "ollama-max",
       "meanRequestsA": 39344.627546162,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 79.39665579828521,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 78.93432053887439,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-pro",
       "planB": "ollama-team",
       "meanRequestsA": 39344.627546162,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 93.81899673948556,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 93.68029616166231,
       "winner": "ollama-team"
     },
     {
@@ -49920,24 +49989,24 @@
       "planA": "command-code-max10",
       "planB": "ollama-pro",
       "meanRequestsA": 42986.07292572672,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 12.551180631922843,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 15.076808451610546,
       "winner": "command-code-max10"
     },
     {
       "planA": "command-code-max10",
       "planB": "ollama-max",
       "meanRequestsA": 42986.07292572672,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 77.48976387361543,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 76.98463830967789,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-max10",
       "planB": "ollama-team",
       "meanRequestsA": 42986.07292572672,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 93.24692916208464,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 93.09539149290337,
       "winner": "ollama-team"
     },
     {
@@ -50616,24 +50685,24 @@
       "planA": "command-code-max20",
       "planB": "ollama-pro",
       "meanRequestsA": 85972.14585145345,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 125.10236126384568,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 130.1536169032211,
       "winner": "command-code-max20"
     },
     {
       "planA": "command-code-max20",
       "planB": "ollama-max",
       "meanRequestsA": 85972.14585145345,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 54.979527747230875,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 53.969276619355774,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-max20",
       "planB": "ollama-team",
       "meanRequestsA": 85972.14585145345,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 86.49385832416925,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 86.19078298580673,
       "winner": "ollama-team"
     },
     {
@@ -51304,24 +51373,24 @@
       "planA": "command-code-team-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 11462.952780193793,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 69.98635183148724,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 69.31285107957052,
       "winner": "ollama-pro"
     },
     {
       "planA": "command-code-team-pro",
       "planB": "ollama-max",
       "meanRequestsA": 11462.952780193793,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 93.99727036629744,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 93.8625702159141,
       "winner": "ollama-max"
     },
     {
       "planA": "command-code-team-pro",
       "planB": "ollama-team",
       "meanRequestsA": 11462.952780193793,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.19918110988924,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.15877106477423,
       "winner": "ollama-team"
     },
     {
@@ -51984,24 +52053,24 @@
       "planA": "glm-lite",
       "planB": "ollama-pro",
       "meanRequestsA": 9246.603739923794,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 75.7894569815165,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 75.24617684323702,
       "winner": "ollama-pro"
     },
     {
       "planA": "glm-lite",
       "planB": "ollama-max",
       "meanRequestsA": 9246.603739923794,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 95.1578913963033,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 95.0492353686474,
       "winner": "ollama-max"
     },
     {
       "planA": "glm-lite",
       "planB": "ollama-team",
       "meanRequestsA": 9246.603739923794,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.54736741889099,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.51477061059423,
       "winner": "ollama-team"
     },
     {
@@ -52656,24 +52725,24 @@
       "planA": "glm-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 55479.622439542756,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 45.26325811090106,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 48.522938940577845,
       "winner": "glm-pro"
     },
     {
       "planA": "glm-pro",
       "planB": "ollama-max",
       "meanRequestsA": 55479.622439542756,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 70.9473483778198,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 70.29541221188444,
       "winner": "ollama-max"
     },
     {
       "planA": "glm-pro",
       "planB": "ollama-team",
       "meanRequestsA": 55479.622439542756,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 91.28420451334594,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 91.08862366356533,
       "winner": "ollama-team"
     },
     {
@@ -53320,24 +53389,24 @@
       "planA": "glm-max",
       "planB": "ollama-pro",
       "meanRequestsA": 129452.45235893312,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 238.9476022587692,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 246.55352419468167,
       "winner": "glm-max"
     },
     {
       "planA": "glm-max",
       "planB": "ollama-max",
       "meanRequestsA": 129452.45235893312,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 32.210479548246184,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 30.689295161063658,
       "winner": "ollama-max"
     },
     {
       "planA": "glm-max",
       "planB": "ollama-team",
       "meanRequestsA": 129452.45235893312,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 79.66314386447385,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 79.2067885483191,
       "winner": "ollama-team"
     },
     {
@@ -53976,24 +54045,24 @@
       "planA": "qwen-coding-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 90000,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 135.64856167195006,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 140.9364721113299,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "qwen-coding-pro",
       "planB": "ollama-max",
       "meanRequestsA": 90000,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 52.87028766561001,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 51.81270557773402,
       "winner": "ollama-max"
     },
     {
       "planA": "qwen-coding-pro",
       "planB": "ollama-team",
       "meanRequestsA": 90000,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 85.861086299683,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 85.5438116733202,
       "winner": "ollama-team"
     },
     {
@@ -54624,24 +54693,24 @@
       "planA": "kimi-moderato",
       "planB": "ollama-pro",
       "meanRequestsA": 3300,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 91.35955273869516,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.16566268925123,
       "winner": "ollama-pro"
     },
     {
       "planA": "kimi-moderato",
       "planB": "ollama-max",
       "meanRequestsA": 3300,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.27191054773904,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.23313253785024,
       "winner": "ollama-max"
     },
     {
       "planA": "kimi-moderato",
       "planB": "ollama-team",
       "meanRequestsA": 3300,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.48157316432172,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.46993976135508,
       "winner": "ollama-team"
     },
     {
@@ -55264,24 +55333,24 @@
       "planA": "kimi-allegretto",
       "planB": "ollama-pro",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 82.63182823232664,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 82.24208964809087,
       "winner": "ollama-pro"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "ollama-max",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 96.52636564646532,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 96.44841792961817,
       "winner": "ollama-max"
     },
     {
       "planA": "kimi-allegretto",
       "planB": "ollama-team",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.9579096939396,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.93452537888545,
       "winner": "ollama-team"
     },
     {
@@ -55896,24 +55965,24 @@
       "planA": "kimi-allegro",
       "planB": "ollama-pro",
       "meanRequestsA": 23300,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 38.99320570048405,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 37.624224442289034,
       "winner": "ollama-pro"
     },
     {
       "planA": "kimi-allegro",
       "planB": "ollama-max",
       "meanRequestsA": 23300,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 87.7986411400968,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 87.5248448884578,
       "winner": "ollama-max"
     },
     {
       "planA": "kimi-allegro",
       "planB": "ollama-team",
       "meanRequestsA": 23300,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 96.33959234202905,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 96.25745346653734,
       "winner": "ollama-team"
     },
     {
@@ -56520,24 +56589,24 @@
       "planA": "kimi-vivace",
       "planB": "ollama-pro",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 24.05849445087407,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 26.84234427896581,
       "winner": "kimi-vivace"
     },
     {
       "planA": "kimi-vivace",
       "planB": "ollama-max",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 75.18830110982519,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 74.63153114420685,
       "winner": "ollama-max"
     },
     {
       "planA": "kimi-vivace",
       "planB": "ollama-team",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 92.55649033294755,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 92.38945934326205,
       "winner": "ollama-team"
     },
     {
@@ -57136,24 +57205,24 @@
       "planA": "claude-max-20x",
       "planB": "ollama-pro",
       "meanRequestsA": 165682,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 333.80805549924474,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 343.5426285816596,
       "winner": "claude-max-20x"
     },
     {
       "planA": "claude-max-20x",
       "planB": "ollama-max",
       "meanRequestsA": 165682,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 13.238388900151076,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 11.29147428366809,
       "winner": "ollama-max"
     },
     {
       "planA": "claude-max-20x",
       "planB": "ollama-team",
       "meanRequestsA": 165682,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 73.97151667004532,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 73.38744228510042,
       "winner": "ollama-team"
     },
     {
@@ -57744,24 +57813,24 @@
       "planA": "kiro-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 91.53890747730104,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.34904211524709,
       "winner": "ollama-pro"
     },
     {
       "planA": "kiro-pro",
       "planB": "ollama-max",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.3077814954602,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.26980842304943,
       "winner": "ollama-max"
     },
     {
       "planA": "kiro-pro",
       "planB": "ollama-team",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.49233444863806,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.48094252691483,
       "winner": "ollama-team"
     },
     {
@@ -58344,24 +58413,24 @@
       "planA": "kiro-pro-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 83.07807678633728,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 82.6983519376854,
       "winner": "ollama-pro"
     },
     {
       "planA": "kiro-pro-plus",
       "planB": "ollama-max",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 96.61561535726746,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 96.53967038753709,
       "winner": "ollama-max"
     },
     {
       "planA": "kiro-pro-plus",
       "planB": "ollama-team",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.98468460718024,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.96190111626112,
       "winner": "ollama-team"
     },
     {
@@ -58936,24 +59005,24 @@
       "planA": "kiro-pro-max",
       "planB": "ollama-pro",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 57.69506104997557,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 56.74574599061788,
       "winner": "ollama-pro"
     },
     {
       "planA": "kiro-pro-max",
       "planB": "ollama-max",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 91.53901220999512,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 91.34914919812358,
       "winner": "ollama-max"
     },
     {
       "planA": "kiro-pro-max",
       "planB": "ollama-team",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 97.46170366299853,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 97.40474475943708,
       "winner": "ollama-team"
     },
     {
@@ -59520,24 +59589,24 @@
       "planA": "kiro-power",
       "planB": "ollama-pro",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 15.390122099951153,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 13.49149198123577,
       "winner": "ollama-pro"
     },
     {
       "planA": "kiro-power",
       "planB": "ollama-max",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 83.07802441999024,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 82.69829839624715,
       "winner": "ollama-max"
     },
     {
       "planA": "kiro-power",
       "planB": "ollama-team",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 94.92340732599706,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 94.80948951887414,
       "winner": "ollama-team"
     },
     {
@@ -60096,24 +60165,24 @@
       "planA": "amazon-q-free",
       "planB": "ollama-pro",
       "meanRequestsA": 50,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 99.86908413240447,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 99.86614640438259,
       "winner": "ollama-pro"
     },
     {
       "planA": "amazon-q-free",
       "planB": "ollama-max",
       "meanRequestsA": 50,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.9738168264809,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.97322928087652,
       "winner": "ollama-max"
     },
     {
       "planA": "amazon-q-free",
       "planB": "ollama-team",
       "meanRequestsA": 50,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.99214504794426,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.99196878426295,
       "winner": "ollama-team"
     },
     {
@@ -60664,24 +60733,24 @@
       "planA": "amazon-q-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 1000,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 97.38168264808944,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 97.32292808765189,
       "winner": "ollama-pro"
     },
     {
       "planA": "amazon-q-pro",
       "planB": "ollama-max",
       "meanRequestsA": 1000,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.4763365296179,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.46458561753037,
       "winner": "ollama-max"
     },
     {
       "planA": "amazon-q-pro",
       "planB": "ollama-team",
       "meanRequestsA": 1000,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.84290095888537,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.83937568525911,
       "winner": "ollama-team"
     },
     {
@@ -61224,24 +61293,24 @@
       "planA": "jetbrains-ai-free",
       "planB": "ollama-pro",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 99.27020224288403,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 99.25382571526549,
       "winner": "ollama-pro"
     },
     {
       "planA": "jetbrains-ai-free",
       "planB": "ollama-max",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.85404044857681,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.8507651430531,
       "winner": "ollama-max"
     },
     {
       "planA": "jetbrains-ai-free",
       "planB": "ollama-team",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.95621213457304,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.95522954291593,
       "winner": "ollama-team"
     },
     {
@@ -61776,24 +61845,24 @@
       "planA": "jetbrains-ai-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 97.56734080961343,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 97.51275238421829,
       "winner": "ollama-pro"
     },
     {
       "planA": "jetbrains-ai-pro",
       "planB": "ollama-max",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.51346816192267,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.50255047684365,
       "winner": "ollama-max"
     },
     {
       "planA": "jetbrains-ai-pro",
       "planB": "ollama-team",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.85404044857681,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.8507651430531,
       "winner": "ollama-team"
     },
     {
@@ -62320,24 +62389,24 @@
       "planA": "jetbrains-ai-ultimate",
       "planB": "ollama-pro",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 91.485692833647,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.29463334476404,
       "winner": "ollama-pro"
     },
     {
       "planA": "jetbrains-ai-ultimate",
       "planB": "ollama-max",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.2971385667294,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.25892666895281,
       "winner": "ollama-max"
     },
     {
       "planA": "jetbrains-ai-ultimate",
       "planB": "ollama-team",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.48914157001883,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.47767800068584,
       "winner": "ollama-team"
     },
     {
@@ -62856,24 +62925,24 @@
       "planA": "gemini-code-assist-individual",
       "planB": "ollama-pro",
       "meanRequestsA": 7305,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 80.8731917442934,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 80.44398968029705,
       "winner": "ollama-pro"
     },
     {
       "planA": "gemini-code-assist-individual",
       "planB": "ollama-max",
       "meanRequestsA": 7305,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 96.17463834885868,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 96.08879793605941,
       "winner": "ollama-max"
     },
     {
       "planA": "gemini-code-assist-individual",
       "planB": "ollama-team",
       "meanRequestsA": 7305,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.8523915046576,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.82663938081782,
       "winner": "ollama-team"
     },
     {
@@ -63384,24 +63453,24 @@
       "planA": "gemini-code-assist-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 45660,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 19.552370288235977,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 22.235103517814704,
       "winner": "gemini-code-assist-standard"
     },
     {
       "planA": "gemini-code-assist-standard",
       "planB": "ollama-max",
       "meanRequestsA": 45660,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 76.08952594235281,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 75.55297929643706,
       "winner": "ollama-max"
     },
     {
       "planA": "gemini-code-assist-standard",
       "planB": "ollama-team",
       "meanRequestsA": 45660,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 92.82685778270584,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 92.66589378893111,
       "winner": "ollama-team"
     },
     {
@@ -63904,24 +63973,24 @@
       "planA": "gemini-code-assist-enterprise",
       "planB": "ollama-pro",
       "meanRequestsA": 60880,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 59.40316038431466,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 62.98013802375293,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "gemini-code-assist-enterprise",
       "planB": "ollama-max",
       "meanRequestsA": 60880,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 68.11936792313709,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 67.40397239524941,
       "winner": "ollama-max"
     },
     {
       "planA": "gemini-code-assist-enterprise",
       "planB": "ollama-team",
       "meanRequestsA": 60880,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 90.43581037694112,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 90.22119171857483,
       "winner": "ollama-team"
     },
     {
@@ -64416,24 +64485,24 @@
       "planA": "augment-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 95.13468161922685,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 95.02550476843659,
       "winner": "ollama-pro"
     },
     {
       "planA": "augment-standard",
       "planB": "ollama-max",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.02693632384538,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.00510095368732,
       "winner": "ollama-max"
     },
     {
       "planA": "augment-standard",
       "planB": "ollama-team",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.70808089715361,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.7015302861062,
       "winner": "ollama-team"
     },
     {
@@ -64920,24 +64989,24 @@
       "planA": "augment-business",
       "planB": "ollama-pro",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 75.67340809613425,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 75.12752384218298,
       "winner": "ollama-pro"
     },
     {
       "planA": "augment-business",
       "planB": "ollama-max",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 95.13468161922685,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 95.02550476843659,
       "winner": "ollama-max"
     },
     {
       "planA": "augment-business",
       "planB": "ollama-team",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.54040448576805,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.50765143053097,
       "winner": "ollama-team"
     },
     {
@@ -65416,24 +65485,24 @@
       "planA": "cursor-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 2738.3327277104277,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 92.83017590373123,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 92.66928636798283,
       "winner": "ollama-pro"
     },
     {
       "planA": "cursor-pro",
       "planB": "ollama-max",
       "meanRequestsA": 2738.3327277104277,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.56603518074624,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.53385727359657,
       "winner": "ollama-max"
     },
     {
       "planA": "cursor-pro",
       "planB": "ollama-team",
       "meanRequestsA": 2738.3327277104277,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.56981055422386,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.56015718207897,
       "winner": "ollama-team"
     },
     {
@@ -65904,24 +65973,24 @@
       "planA": "cursor-ultra",
       "planB": "ollama-pro",
       "meanRequestsA": 54766.65455420856,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 43.396481925375554,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 46.61427264034344,
       "winner": "cursor-ultra"
     },
     {
       "planA": "cursor-ultra",
       "planB": "ollama-max",
       "meanRequestsA": 54766.65455420856,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 71.32070361492491,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 70.67714547193131,
       "winner": "ollama-max"
     },
     {
       "planA": "cursor-ultra",
       "planB": "ollama-team",
       "meanRequestsA": 54766.65455420856,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 91.39621108447746,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 91.2031436415794,
       "winner": "ollama-team"
     },
     {
@@ -66384,24 +66453,24 @@
       "planA": "trae-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 91.67430932295319,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.48748235344472,
       "winner": "ollama-pro"
     },
     {
       "planA": "trae-pro",
       "planB": "ollama-max",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.33486186459064,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.29749647068894,
       "winner": "ollama-max"
     },
     {
       "planA": "trae-pro",
       "planB": "ollama-team",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.5004585593772,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.48924894120668,
       "winner": "ollama-team"
     },
     {
@@ -66856,24 +66925,24 @@
       "planA": "trae-pro-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 75.02292796885959,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 74.46244706033414,
       "winner": "ollama-pro"
     },
     {
       "planA": "trae-pro-plus",
       "planB": "ollama-max",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 95.00458559377192,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 94.89248941206682,
       "winner": "ollama-max"
     },
     {
       "planA": "trae-pro-plus",
       "planB": "ollama-team",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.50137567813158,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.46774682362005,
       "winner": "ollama-team"
     },
     {
@@ -67320,24 +67389,24 @@
       "planA": "trae-ultra",
       "planB": "ollama-pro",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 16.743093229531937,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 14.874823534447101,
       "winner": "ollama-pro"
     },
     {
       "planA": "trae-ultra",
       "planB": "ollama-max",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 83.34861864590638,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 82.97496470688942,
       "winner": "ollama-max"
     },
     {
       "planA": "trae-ultra",
       "planB": "ollama-team",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 95.00458559377192,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 94.89248941206682,
       "winner": "ollama-team"
     },
     {
@@ -67776,24 +67845,24 @@
       "planA": "zed-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 93.01095522172986,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 92.85412234067134,
       "winner": "ollama-pro"
     },
     {
       "planA": "zed-pro",
       "planB": "ollama-max",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.60219104434597,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.57082446813426,
       "winner": "ollama-max"
     },
     {
       "planA": "zed-pro",
       "planB": "ollama-team",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.58065731330379,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.57124734044028,
       "winner": "ollama-team"
     },
     {
@@ -68224,24 +68293,24 @@
       "planA": "warp-build",
       "planB": "ollama-pro",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 97.46334285671779,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 97.4064207363623,
       "winner": "ollama-pro"
     },
     {
       "planA": "warp-build",
       "planB": "ollama-max",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.49266857134356,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.48128414727246,
       "winner": "ollama-max"
     },
     {
       "planA": "warp-build",
       "planB": "ollama-team",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.84780057140307,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.84438524418174,
       "winner": "ollama-team"
     },
     {
@@ -68664,24 +68733,24 @@
       "planA": "warp-max",
       "planB": "ollama-pro",
       "meanRequestsA": 9688.119514738097,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 74.63342856717796,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 74.06420736362304,
       "winner": "ollama-pro"
     },
     {
       "planA": "warp-max",
       "planB": "ollama-max",
       "meanRequestsA": 9688.119514738097,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 94.9266857134356,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 94.81284147272461,
       "winner": "ollama-max"
     },
     {
       "planA": "warp-max",
       "planB": "ollama-team",
       "meanRequestsA": 9688.119514738097,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.47800571403069,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.44385244181738,
       "winner": "ollama-team"
     },
     {
@@ -69096,24 +69165,24 @@
       "planA": "replit-core",
       "planB": "ollama-pro",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 91.67430932295319,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.48748235344472,
       "winner": "ollama-pro"
     },
     {
       "planA": "replit-core",
       "planB": "ollama-max",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.33486186459064,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.29749647068894,
       "winner": "ollama-max"
     },
     {
       "planA": "replit-core",
       "planB": "ollama-team",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.5004585593772,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.48924894120668,
       "winner": "ollama-team"
     },
     {
@@ -69520,24 +69589,24 @@
       "planA": "kilo-pass",
       "planB": "ollama-pro",
       "meanRequestsA": 3020.7973595802137,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 92.09059385680554,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.91310823577248,
       "winner": "ollama-pro"
     },
     {
       "planA": "kilo-pass",
       "planB": "ollama-max",
       "meanRequestsA": 3020.7973595802137,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.41811877136111,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.3826216471545,
       "winner": "ollama-max"
     },
     {
       "planA": "kilo-pass",
       "planB": "ollama-team",
       "meanRequestsA": 3020.7973595802137,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.52543563140833,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.51478649414635,
       "winner": "ollama-team"
     },
     {
@@ -69936,24 +70005,24 @@
       "planA": "v0-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 87.5114639844298,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 87.23122353016707,
       "winner": "ollama-pro"
     },
     {
       "planA": "v0-plus",
       "planB": "ollama-max",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.50229279688595,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.44624470603341,
       "winner": "ollama-max"
     },
     {
       "planA": "v0-plus",
       "planB": "ollama-team",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.25068783906579,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.23387341181002,
       "winner": "ollama-team"
     },
     {
@@ -70344,24 +70413,24 @@
       "planA": "bolt-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 99.48622162554244,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 99.47469253319177,
       "winner": "ollama-pro"
     },
     {
       "planA": "bolt-pro",
       "planB": "ollama-max",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.89724432510849,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.89493850663835,
       "winner": "ollama-max"
     },
     {
       "planA": "bolt-pro",
       "planB": "ollama-team",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.96917329753255,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.9684815519915,
       "winner": "ollama-team"
     },
     {
@@ -70744,24 +70813,24 @@
       "planA": "copilot-free",
       "planB": "ollama-pro",
       "meanRequestsA": 2000,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 94.76336529617889,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 94.64585617530378,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-free",
       "planB": "ollama-max",
       "meanRequestsA": 2000,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.95267305923578,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.92917123506075,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-free",
       "planB": "ollama-team",
       "meanRequestsA": 2000,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.68580191777073,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.67875137051823,
       "winner": "ollama-team"
     },
     {
@@ -71136,24 +71205,24 @@
       "planA": "bolt-free",
       "planB": "ollama-pro",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 99.94862216255424,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 99.94746925331917,
       "winner": "ollama-pro"
     },
     {
       "planA": "bolt-free",
       "planB": "ollama-max",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.98972443251085,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.98949385066383,
       "winner": "ollama-max"
     },
     {
       "planA": "bolt-free",
       "planB": "ollama-team",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.99691732975326,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.99684815519915,
       "winner": "ollama-team"
     },
     {
@@ -71520,24 +71589,24 @@
       "planA": "bolt-teams",
       "planB": "ollama-pro",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 99.48622162554244,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 99.47469253319177,
       "winner": "ollama-pro"
     },
     {
       "planA": "bolt-teams",
       "planB": "ollama-max",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.89724432510849,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.89493850663835,
       "winner": "ollama-max"
     },
     {
       "planA": "bolt-teams",
       "planB": "ollama-team",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.96917329753255,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.9684815519915,
       "winner": "ollama-team"
     },
     {
@@ -71896,24 +71965,24 @@
       "planA": "v0-business",
       "planB": "ollama-pro",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 87.5114639844298,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 87.23122353016707,
       "winner": "ollama-pro"
     },
     {
       "planA": "v0-business",
       "planB": "ollama-max",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.50229279688595,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.44624470603341,
       "winner": "ollama-max"
     },
     {
       "planA": "v0-business",
       "planB": "ollama-team",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.25068783906579,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.23387341181002,
       "winner": "ollama-team"
     },
     {
@@ -72264,24 +72333,24 @@
       "planA": "qoder-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 91.67430932295319,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.48748235344472,
       "winner": "ollama-pro"
     },
     {
       "planA": "qoder-pro",
       "planB": "ollama-max",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 98.33486186459064,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 98.29749647068894,
       "winner": "ollama-max"
     },
     {
       "planA": "qoder-pro",
       "planB": "ollama-team",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.5004585593772,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.48924894120668,
       "winner": "ollama-team"
     },
     {
@@ -72624,24 +72693,24 @@
       "planA": "qoder-pro-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 75.02292796885959,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 74.46244706033414,
       "winner": "ollama-pro"
     },
     {
       "planA": "qoder-pro-plus",
       "planB": "ollama-max",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 95.00458559377192,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 94.89248941206682,
       "winner": "ollama-max"
     },
     {
       "planA": "qoder-pro-plus",
       "planB": "ollama-team",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.50137567813158,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.46774682362005,
       "winner": "ollama-team"
     },
     {
@@ -72976,24 +73045,24 @@
       "planA": "qoder-ultra",
       "planB": "ollama-pro",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 16.743093229531937,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 14.874823534447101,
       "winner": "ollama-pro"
     },
     {
       "planA": "qoder-ultra",
       "planB": "ollama-max",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 83.34861864590638,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 82.97496470688942,
       "winner": "ollama-max"
     },
     {
       "planA": "qoder-ultra",
       "planB": "ollama-team",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 95.00458559377192,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 94.89248941206682,
       "winner": "ollama-team"
     },
     {
@@ -73320,24 +73389,24 @@
       "planA": "qoder-teams",
       "planB": "ollama-pro",
       "meanRequestsA": 6359.5733885899235,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 83.34861864590638,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 82.97496470688942,
       "winner": "ollama-pro"
     },
     {
       "planA": "qoder-teams",
       "planB": "ollama-max",
       "meanRequestsA": 6359.5733885899235,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 96.66972372918127,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 96.59499294137788,
       "winner": "ollama-max"
     },
     {
       "planA": "qoder-teams",
       "planB": "ollama-team",
       "meanRequestsA": 6359.5733885899235,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.00091711875439,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.97849788241336,
       "winner": "ollama-team"
     },
     {
@@ -73656,24 +73725,24 @@
       "planA": "lovable-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 89.5928866536915,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 89.3593529418059,
       "winner": "ollama-pro"
     },
     {
       "planA": "lovable-pro",
       "planB": "ollama-max",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.9185773307383,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.87187058836118,
       "winner": "ollama-max"
     },
     {
       "planA": "lovable-pro",
       "planB": "ollama-team",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.37557319922149,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.36156117650835,
       "winner": "ollama-team"
     },
     {
@@ -73984,24 +74053,24 @@
       "planA": "replit-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 15898.933471474811,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 58.37154661476597,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 57.437411767223544,
       "winner": "ollama-pro"
     },
     {
       "planA": "replit-pro",
       "planB": "ollama-max",
       "meanRequestsA": 15898.933471474811,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 91.67430932295319,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 91.4874823534447,
       "winner": "ollama-max"
     },
     {
       "planA": "replit-pro",
       "planB": "ollama-team",
       "meanRequestsA": 15898.933471474811,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 97.50229279688595,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 97.44624470603341,
       "winner": "ollama-team"
     },
     {
@@ -74304,24 +74373,24 @@
       "planA": "warp-business",
       "planB": "ollama-pro",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 97.46334285671779,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 97.4064207363623,
       "winner": "ollama-pro"
     },
     {
       "planA": "warp-business",
       "planB": "ollama-max",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.49266857134356,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.48128414727246,
       "winner": "ollama-max"
     },
     {
       "planA": "warp-business",
       "planB": "ollama-team",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.84780057140307,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.84438524418174,
       "winner": "ollama-team"
     },
     {
@@ -74616,24 +74685,24 @@
       "planA": "jetbrains-ai-business-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 95.13468161922685,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 95.02550476843659,
       "winner": "ollama-pro"
     },
     {
       "planA": "jetbrains-ai-business-pro",
       "planB": "ollama-max",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.02693632384538,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.00510095368732,
       "winner": "ollama-max"
     },
     {
       "planA": "jetbrains-ai-business-pro",
       "planB": "ollama-team",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.70808089715361,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.7015302861062,
       "winner": "ollama-team"
     },
     {
@@ -74920,24 +74989,24 @@
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "ollama-pro",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 82.97138566729399,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 82.58926668952809,
       "winner": "ollama-pro"
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "ollama-max",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 96.59427713345879,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 96.5178533379056,
       "winner": "ollama-max"
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "ollama-team",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.97828314003763,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.95535600137168,
       "winner": "ollama-team"
     },
     {
@@ -75216,24 +75285,24 @@
       "planA": "kiro-free",
       "planB": "ollama-pro",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 99.57714174766645,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 99.56765288615578,
       "winner": "ollama-pro"
     },
     {
       "planA": "kiro-free",
       "planB": "ollama-max",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 99.91542834953329,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 99.91353057723116,
       "winner": "ollama-max"
     },
     {
       "planA": "kiro-free",
       "planB": "ollama-team",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.97462850486,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.97405917316935,
       "winner": "ollama-team"
     },
     {
@@ -75504,24 +75573,24 @@
       "planA": "trae-free",
       "planB": "ollama-pro",
       "meanRequestsA": 5000,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 86.90841324044723,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 86.61464043825944,
       "winner": "ollama-pro"
     },
     {
       "planA": "trae-free",
       "planB": "ollama-max",
       "meanRequestsA": 5000,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.38168264808944,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.32292808765189,
       "winner": "ollama-max"
     },
     {
       "planA": "trae-free",
       "planB": "ollama-team",
       "meanRequestsA": 5000,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.21450479442684,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.19687842629557,
       "winner": "ollama-team"
     },
     {
@@ -75784,24 +75853,24 @@
       "planA": "lovable-business",
       "planB": "ollama-pro",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 89.5928866536915,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 89.3593529418059,
       "winner": "ollama-pro"
     },
     {
       "planA": "lovable-business",
       "planB": "ollama-max",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.9185773307383,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.87187058836118,
       "winner": "ollama-max"
     },
     {
       "planA": "lovable-business",
       "planB": "ollama-team",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.37557319922149,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.36156117650835,
       "winner": "ollama-team"
     },
     {
@@ -76056,24 +76125,24 @@
       "planA": "codebuddy-free",
       "planB": "ollama-pro",
       "meanRequestsA": 5000,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 86.90841324044723,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 86.61464043825944,
       "winner": "ollama-pro"
     },
     {
       "planA": "codebuddy-free",
       "planB": "ollama-max",
       "meanRequestsA": 5000,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.38168264808944,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.32292808765189,
       "winner": "ollama-max"
     },
     {
       "planA": "codebuddy-free",
       "planB": "ollama-team",
       "meanRequestsA": 5000,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.21450479442684,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.19687842629557,
       "winner": "ollama-team"
     },
     {
@@ -76320,24 +76389,24 @@
       "planA": "kilo-pass-49",
       "planB": "ollama-pro",
       "meanRequestsA": 7790.477401022657,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 79.60205784123534,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 79.14433176593954,
       "winner": "ollama-pro"
     },
     {
       "planA": "kilo-pass-49",
       "planB": "ollama-max",
       "meanRequestsA": 7790.477401022657,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 95.92041156824706,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 95.8288663531879,
       "winner": "ollama-max"
     },
     {
       "planA": "kilo-pass-49",
       "planB": "ollama-team",
       "meanRequestsA": 7790.477401022657,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.77612347047412,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.74865990595637,
       "winner": "ollama-team"
     },
     {
@@ -76576,24 +76645,24 @@
       "planA": "kilo-pass-199",
       "planB": "ollama-pro",
       "meanRequestsA": 31638.87760823487,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 17.15937776338429,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 15.300449416774875,
       "winner": "ollama-pro"
     },
     {
       "planA": "kilo-pass-199",
       "planB": "ollama-max",
       "meanRequestsA": 31638.87760823487,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 83.43187555267686,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 83.06008988335498,
       "winner": "ollama-max"
     },
     {
       "planA": "kilo-pass-199",
       "planB": "ollama-team",
       "meanRequestsA": 31638.87760823487,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 95.02956266580306,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 94.91802696500649,
       "winner": "ollama-team"
     },
     {
@@ -76824,24 +76893,24 @@
       "planA": "standardcompute-starter",
       "planB": "ollama-pro",
       "meanRequestsA": 9422.354885807366,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 75.32928470663136,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 74.77567838702912,
       "winner": "ollama-pro"
     },
     {
       "planA": "standardcompute-starter",
       "planB": "ollama-max",
       "meanRequestsA": 9422.354885807366,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 95.06585694132627,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 94.95513567740582,
       "winner": "ollama-max"
     },
     {
       "planA": "standardcompute-starter",
       "planB": "ollama-team",
       "meanRequestsA": 9422.354885807366,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.51975708239789,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.48654070322175,
       "winner": "ollama-team"
     },
     {
@@ -77064,24 +77133,24 @@
       "planA": "standardcompute-economy",
       "planB": "ollama-pro",
       "meanRequestsA": 19315.8275159051,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 49.42503364859431,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 48.29014069340969,
       "winner": "ollama-pro"
     },
     {
       "planA": "standardcompute-economy",
       "planB": "ollama-max",
       "meanRequestsA": 19315.8275159051,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 89.88500672971887,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 89.65802813868193,
       "winner": "ollama-max"
     },
     {
       "planA": "standardcompute-economy",
       "planB": "ollama-team",
       "meanRequestsA": 19315.8275159051,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 96.96550201891566,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 96.89740844160458,
       "winner": "ollama-team"
     },
     {
@@ -77296,24 +77365,24 @@
       "planA": "standardcompute-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 44756.18570758498,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 17.18589764350098,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 19.815527661611654,
       "winner": "standardcompute-standard"
     },
     {
       "planA": "standardcompute-standard",
       "planB": "ollama-max",
       "meanRequestsA": 44756.18570758498,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 76.5628204712998,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 76.03689446767767,
       "winner": "ollama-max"
     },
     {
       "planA": "standardcompute-standard",
       "planB": "ollama-team",
       "meanRequestsA": 44756.18570758498,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 92.96884614138993,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 92.81106834030331,
       "winner": "ollama-team"
     },
     {
@@ -77520,24 +77589,24 @@
       "planA": "standardcompute-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 126730.67321410905,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 231.82112069580802,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 239.2671256944583,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "standardcompute-pro",
       "planB": "ollama-max",
       "meanRequestsA": 126730.67321410905,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 33.635775860838415,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 32.146574861108334,
       "winner": "ollama-max"
     },
     {
       "planA": "standardcompute-pro",
       "planB": "ollama-team",
       "meanRequestsA": 126730.67321410905,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 80.09073275825152,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 79.6439724583325,
       "winner": "ollama-team"
     },
     {
@@ -77736,24 +77805,24 @@
       "planA": "standardcompute-proplus",
       "planB": "ollama-pro",
       "meanRequestsA": 258643.64161541214,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 577.2111348029688,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 592.4076282760506,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "standardcompute-proplus",
       "planB": "ollama-max",
       "meanRequestsA": 258643.64161541214,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 35.442226960593715,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 38.48152565521013,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "standardcompute-proplus",
       "planB": "ollama-team",
       "meanRequestsA": 258643.64161541214,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 59.36733191182187,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 58.45554230343697,
       "winner": "ollama-team"
     },
     {
@@ -77944,24 +78013,24 @@
       "planA": "standardcompute-growth",
       "planB": "ollama-pro",
       "meanRequestsA": 527180.7558609222,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 1280.326520663975,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 1311.300794245721,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "standardcompute-growth",
       "planB": "ollama-max",
       "meanRequestsA": 527180.7558609222,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 176.06530413279492,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 182.2601588491442,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "standardcompute-growth",
       "planB": "ollama-team",
       "meanRequestsA": 527180.7558609222,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 17.1804087601615,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 15.32195234525674,
       "winner": "ollama-team"
     },
     {
@@ -78144,24 +78213,24 @@
       "planA": "standardcompute-scale",
       "planB": "ollama-pro",
       "meanRequestsA": 1342214.453483259,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 3414.343393540361,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 3493.204613767702,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "standardcompute-scale",
       "planB": "ollama-max",
       "meanRequestsA": 1342214.453483259,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 602.868678708072,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 618.6409227535403,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "standardcompute-scale",
       "planB": "ollama-team",
       "meanRequestsA": 1342214.453483259,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 110.86060361242164,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 115.59227682606212,
       "winner": "standardcompute-scale"
     },
     {
@@ -78336,24 +78405,24 @@
       "planA": "freebuff-starter",
       "planB": "ollama-pro",
       "meanRequestsA": 98471.79409374151,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 157.83040714940682,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 163.6160741268819,
       "winner": "freebuff-starter"
     },
     {
       "planA": "freebuff-starter",
       "planB": "ollama-max",
       "meanRequestsA": 98471.79409374151,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 48.43391857011865,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 47.27678517462361,
       "winner": "ollama-max"
     },
     {
       "planA": "freebuff-starter",
       "planB": "ollama-team",
       "meanRequestsA": 98471.79409374151,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 84.5301755710356,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 84.18303555238708,
       "winner": "ollama-team"
     },
     {
@@ -78520,24 +78589,24 @@
       "planA": "freebuff-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 156825.44985299572,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 310.61879657127747,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 319.8330069428119,
       "winner": "freebuff-plus"
     },
     {
       "planA": "freebuff-plus",
       "planB": "ollama-max",
       "meanRequestsA": 156825.44985299572,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 17.876240685744538,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 16.033398611437622,
       "winner": "ollama-max"
     },
     {
       "planA": "freebuff-plus",
       "planB": "ollama-team",
       "meanRequestsA": 156825.44985299572,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 75.36287220572335,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 74.81001958343128,
       "winner": "ollama-team"
     },
     {
@@ -78696,24 +78765,24 @@
       "planA": "freebuff-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 255297.24394673726,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 568.4492037206843,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 583.4490810696939,
       "winner": "freebuff-pro"
     },
     {
       "planA": "freebuff-pro",
       "planB": "ollama-max",
       "meanRequestsA": 255297.24394673726,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 33.68984074413683,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 36.689816213938784,
       "winner": "freebuff-pro"
     },
     {
       "planA": "freebuff-pro",
       "planB": "ollama-team",
       "meanRequestsA": 255297.24394673726,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 59.89304777675895,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 58.99305513581836,
       "winner": "ollama-team"
     },
     {
@@ -78864,24 +78933,24 @@
       "planA": "opendesign-go",
       "planB": "ollama-pro",
       "meanRequestsA": 87893.12099358032,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 130.13208381106534,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 135.2962055005279,
       "winner": "opendesign-go"
     },
     {
       "planA": "opendesign-go",
       "planB": "ollama-max",
       "meanRequestsA": 87893.12099358032,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 53.97358323778695,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 52.940758899894426,
       "winner": "ollama-max"
     },
     {
       "planA": "opendesign-go",
       "planB": "ollama-team",
       "meanRequestsA": 87893.12099358032,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 86.19207497133607,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 85.88222766996833,
       "winner": "ollama-team"
     },
     {
@@ -79024,24 +79093,24 @@
       "planA": "opendesign-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 117190.82799144043,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 206.84277841475378,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 213.72827400070383,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opendesign-plus",
       "planB": "ollama-max",
       "meanRequestsA": 117190.82799144043,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 38.631444317049265,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 37.25434519985923,
       "winner": "ollama-max"
     },
     {
       "planA": "opendesign-plus",
       "planB": "ollama-team",
       "meanRequestsA": 117190.82799144043,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 81.58943329511477,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 81.17630355995777,
       "winner": "ollama-team"
     },
     {
@@ -79176,24 +79245,24 @@
       "planA": "opendesign-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 263679.36298074096,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 590.396251433196,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 605.8886165015836,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opendesign-pro",
       "planB": "ollama-max",
       "meanRequestsA": 263679.36298074096,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 38.079250286639144,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 41.17772330031673,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opendesign-pro",
       "planB": "ollama-team",
       "meanRequestsA": 263679.36298074096,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 58.57622491400824,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 57.64668300990499,
       "winner": "ollama-team"
     },
     {
@@ -79320,24 +79389,24 @@
       "planA": "opendesign-max",
       "planB": "ollama-pro",
       "meanRequestsA": 439465.60496790166,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 1050.6604190553267,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 1076.4810275026396,
       "winner": "opendesign-max"
     },
     {
       "planA": "opendesign-max",
       "planB": "ollama-max",
       "meanRequestsA": 439465.60496790166,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 130.13208381106529,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 135.29620550052792,
       "winner": "opendesign-max"
     },
     {
       "planA": "opendesign-max",
       "planB": "ollama-team",
       "meanRequestsA": 439465.60496790166,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 30.960374856680396,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 29.411138349841625,
       "winner": "ollama-team"
     },
     {
@@ -79456,24 +79525,24 @@
       "planA": "mimo-lite",
       "planB": "ollama-pro",
       "meanRequestsA": 14086.910143170182,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 63.11599873733269,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 62.28832852394741,
       "winner": "ollama-pro"
     },
     {
       "planA": "mimo-lite",
       "planB": "ollama-max",
       "meanRequestsA": 14086.910143170182,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 92.62319974746654,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 92.45766570478948,
       "winner": "ollama-max"
     },
     {
       "planA": "mimo-lite",
       "planB": "ollama-team",
       "meanRequestsA": 14086.910143170182,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 97.78695992423995,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 97.73729971143685,
       "winner": "ollama-team"
     },
     {
@@ -79584,24 +79653,24 @@
       "planA": "mimo-standard",
       "planB": "ollama-pro",
       "meanRequestsA": 37794.149164602924,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 1.0429234416243216,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 1.1776551796532697,
       "winner": "draw"
     },
     {
       "planA": "mimo-standard",
       "planB": "ollama-max",
       "meanRequestsA": 37794.149164602924,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 80.20858468832486,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 79.76446896406935,
       "winner": "ollama-max"
     },
     {
       "planA": "mimo-standard",
       "planB": "ollama-team",
       "meanRequestsA": 37794.149164602924,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 94.06257540649746,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 93.92934068922081,
       "winner": "ollama-team"
     },
     {
@@ -79704,24 +79773,24 @@
       "planA": "mimo-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 130561.60620499193,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 241.85171901984324,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 249.5228088024386,
       "winner": "mimo-pro"
     },
     {
       "planA": "mimo-pro",
       "planB": "ollama-max",
       "meanRequestsA": 130561.60620499193,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 31.629656196031362,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 30.095438239512273,
       "winner": "ollama-max"
     },
     {
       "planA": "mimo-pro",
       "planB": "ollama-team",
       "meanRequestsA": 130561.60620499193,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 79.4888968588094,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 79.02863147185369,
       "winner": "ollama-team"
     },
     {
@@ -79816,24 +79885,24 @@
       "planA": "mimo-max",
       "planB": "ollama-pro",
       "meanRequestsA": 281738.20286340365,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 637.6800252533461,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 654.2334295210518,
       "winner": "mimo-max"
     },
     {
       "planA": "mimo-max",
       "planB": "ollama-max",
       "meanRequestsA": 281738.20286340365,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 47.536005050669175,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 50.846685904210354,
       "winner": "mimo-max"
     },
     {
       "planA": "mimo-max",
       "planB": "ollama-team",
       "meanRequestsA": 281738.20286340365,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 55.73919848479923,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 54.74599422873689,
       "winner": "ollama-team"
     },
     {
@@ -79920,24 +79989,24 @@
       "planA": "stepfun-flash-mini",
       "planB": "ollama-pro",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 1.3581075281764887,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 0.8553984200927012,
       "winner": "draw"
     },
     {
       "planA": "stepfun-flash-mini",
       "planB": "ollama-max",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 80.27162150563531,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 79.82892031598145,
       "winner": "ollama-max"
     },
     {
       "planA": "stepfun-flash-mini",
       "planB": "ollama-team",
       "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 94.0814864516906,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 93.94867609479444,
       "winner": "ollama-team"
     },
     {
@@ -80016,24 +80085,24 @@
       "planA": "stepfun-flash-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 294.56756988729404,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 303.4215936803708,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "stepfun-flash-plus",
       "planB": "ollama-max",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 21.086486022541216,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 19.315681263925832,
       "winner": "ollama-max"
     },
     {
       "planA": "stepfun-flash-plus",
       "planB": "ollama-team",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 76.32594580676235,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 75.79470437917774,
       "winner": "ollama-team"
     },
     {
@@ -80104,24 +80173,24 @@
       "planA": "stepfun-flash-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 1872.8378494364702,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 1917.1079684018541,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "stepfun-flash-pro",
       "planB": "ollama-max",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 294.56756988729387,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 303.4215936803708,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "stepfun-flash-pro",
       "planB": "ollama-team",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 18.370270966188194,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 21.026478104111245,
       "winner": "stepfun-flash-pro"
     },
     {
@@ -80184,24 +80253,24 @@
       "planA": "stepfun-flash-max",
       "planB": "ollama-pro",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 9764.18924718235,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 9985.539842009268,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "ollama-max",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 1872.837849436469,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 1917.1079684018537,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "ollama-team",
       "meanRequestsA": 3767377.2585223727,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 491.8513548309409,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 505.1323905205561,
       "winner": "stepfun-flash-max"
     },
     {
@@ -80256,24 +80325,24 @@
       "planA": "cerebras-code-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 62.46540707562937,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 61.62313770485783,
       "winner": "ollama-pro"
     },
     {
       "planA": "cerebras-code-pro",
       "planB": "ollama-max",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 92.49308141512587,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 92.32462754097158,
       "winner": "ollama-max"
     },
     {
       "planA": "cerebras-code-pro",
       "planB": "ollama-team",
       "meanRequestsA": 14335.387151210707,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 97.74792442453776,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 97.69738826229147,
       "winner": "ollama-team"
     },
     {
@@ -80320,24 +80389,24 @@
       "planA": "cerebras-code-max",
       "planB": "ollama-pro",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 87.67296462185313,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 91.88431147571083,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "cerebras-code-max",
       "planB": "ollama-max",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 62.465407075629386,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 61.62313770485783,
       "winner": "ollama-max"
     },
     {
       "planA": "cerebras-code-max",
       "planB": "ollama-team",
       "meanRequestsA": 71676.93575605353,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 88.73962212268881,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 88.48694131145734,
       "winner": "ollama-team"
     },
     {
@@ -80376,24 +80445,24 @@
       "planA": "copilot-pro",
       "planB": "ollama-pro",
       "meanRequestsA": 4635.813613454593,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 87.86196877566866,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 87.58959358453971,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-pro",
       "planB": "ollama-max",
       "meanRequestsA": 4635.813613454593,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 97.57239375513373,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 97.51791871690794,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-pro",
       "planB": "ollama-team",
       "meanRequestsA": 4635.813613454593,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.27171812654012,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.25537561507238,
       "winner": "ollama-team"
     },
     {
@@ -80424,24 +80493,24 @@
       "planA": "copilot-pro-plus",
       "planB": "ollama-pro",
       "meanRequestsA": 21633.7968627881,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 43.35585428645378,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 42.08477006118533,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "ollama-max",
       "meanRequestsA": 21633.7968627881,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 88.67117085729076,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 88.41695401223706,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-pro-plus",
       "planB": "ollama-team",
       "meanRequestsA": 21633.7968627881,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 96.60135125718723,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 96.52508620367112,
       "winner": "ollama-team"
     },
     {
@@ -80464,24 +80533,24 @@
       "planA": "copilot-max",
       "planB": "ollama-pro",
       "meanRequestsA": 61810.848179394576,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 61.840416324417816,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 65.47208553947053,
       "winner": "copilot-max"
     },
     {
       "planA": "copilot-max",
       "planB": "ollama-max",
       "meanRequestsA": 61810.848179394576,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 67.63191673511645,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 66.90558289210588,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-max",
       "planB": "ollama-team",
       "meanRequestsA": 61810.848179394576,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 90.28957502053493,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 90.07167486763177,
       "winner": "ollama-team"
     },
     {
@@ -80496,71 +80565,71 @@
       "planA": "copilot-business",
       "planB": "ollama-pro",
       "meanRequestsA": 5872.030577042485,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 84.6251604491803,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 84.2801518737503,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-business",
       "planB": "ollama-max",
       "meanRequestsA": 5872.030577042485,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 96.92503208983607,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 96.85603037475006,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-business",
       "planB": "ollama-team",
       "meanRequestsA": 5872.030577042485,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 99.07750962695083,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 99.05680911242501,
       "winner": "ollama-team"
     },
     {
       "planA": "copilot-enterprise",
       "planB": "ollama-pro",
       "meanRequestsA": 12053.115394981944,
-      "meanRequestsB": 38192.467359631235,
-      "advantagePercent": 68.44111881673852,
+      "meanRequestsB": 37354.244963964426,
+      "advantagePercent": 67.73294331980324,
       "winner": "ollama-pro"
     },
     {
       "planA": "copilot-enterprise",
       "planB": "ollama-max",
       "meanRequestsA": 12053.115394981944,
-      "meanRequestsB": 190962.33679815623,
-      "advantagePercent": 93.68822376334771,
+      "meanRequestsB": 186771.22481982212,
+      "advantagePercent": 93.54658866396065,
       "winner": "ollama-max"
     },
     {
       "planA": "copilot-enterprise",
       "planB": "ollama-team",
       "meanRequestsA": 12053.115394981944,
-      "meanRequestsB": 636541.1226605206,
-      "advantagePercent": 98.10646712900432,
+      "meanRequestsB": 622570.7493994071,
+      "advantagePercent": 98.0639765991882,
       "winner": "ollama-team"
     },
     {
       "planA": "ollama-pro",
       "planB": "ollama-max",
-      "meanRequestsA": 38192.467359631235,
-      "meanRequestsB": 190962.33679815623,
+      "meanRequestsA": 37354.244963964426,
+      "meanRequestsB": 186771.22481982212,
       "advantagePercent": 80,
       "winner": "ollama-max"
     },
     {
       "planA": "ollama-pro",
       "planB": "ollama-team",
-      "meanRequestsA": 38192.467359631235,
-      "meanRequestsB": 636541.1226605206,
+      "meanRequestsA": 37354.244963964426,
+      "meanRequestsB": 622570.7493994071,
       "advantagePercent": 94,
       "winner": "ollama-team"
     },
     {
       "planA": "ollama-max",
       "planB": "ollama-team",
-      "meanRequestsA": 190962.33679815623,
-      "meanRequestsB": 636541.1226605206,
+      "meanRequestsA": 186771.22481982212,
+      "meanRequestsB": 622570.7493994071,
       "advantagePercent": 70,
       "winner": "ollama-team"
     }
@@ -90186,6 +90255,13 @@
     },
     {
       "planId": "ollama-pro",
+      "family": "tencent hy4",
+      "modelCount": 1,
+      "normalizedPer1Median": 945.6676129647249,
+      "normalizedPer1Mean": 945.6676129647249
+    },
+    {
+      "planId": "ollama-pro",
       "family": "inkling-2-small",
       "modelCount": 1,
       "normalizedPer1Median": 1577.2870662460568,
@@ -90340,6 +90416,13 @@
     },
     {
       "planId": "ollama-max",
+      "family": "tencent hy4",
+      "modelCount": 1,
+      "normalizedPer1Median": 945.6676129647249,
+      "normalizedPer1Mean": 945.6676129647249
+    },
+    {
+      "planId": "ollama-max",
       "family": "inkling-2-small",
       "modelCount": 1,
       "normalizedPer1Median": 1577.2870662460566,
@@ -90491,6 +90574,13 @@
       "modelCount": 1,
       "normalizedPer1Median": 1078.3996549121105,
       "normalizedPer1Mean": 1078.3996549121105
+    },
+    {
+      "planId": "ollama-team",
+      "family": "tencent hy4",
+      "modelCount": 1,
+      "normalizedPer1Median": 630.4450753098165,
+      "normalizedPer1Mean": 630.4450753098165
     },
     {
       "planId": "ollama-team",
@@ -91812,935 +91902,938 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-21T11:08:17.091Z",
-    "count": 475,
+    "fetchedAt": "2026-11-22T11:29:22.185Z",
+    "count": 476,
     "scores": {
       "claude-fable-5-2": {
-        "intelligence": 60.51
+        "intelligence": 60.61
       },
       "claude-mythos-5-2": {
-        "intelligence": 58.66
+        "intelligence": 58.72
       },
       "gemini-4-neon": {
-        "intelligence": 58.46
+        "intelligence": 58.49
       },
       "claude-opus-5-5": {
-        "intelligence": 57.96
+        "intelligence": 58
       },
       "gpt-6-2-astra": {
-        "intelligence": 57.76
+        "intelligence": 57.81
       },
       "gemini-4-carbon": {
-        "intelligence": 56.35
+        "intelligence": 56.39
       },
       "claude-sonnet-5-5": {
-        "intelligence": 56.25
+        "intelligence": 56.29
       },
       "gpt-6-astra": {
-        "intelligence": 55.37
+        "intelligence": 55.46
       },
       "kimi-k3-1-pro": {
-        "intelligence": 53.91
+        "intelligence": 53.98
       },
       "gpt-6-2-sol": {
-        "intelligence": 53.48
+        "intelligence": 53.55
       },
       "claude-mythos-preview": {
-        "intelligence": 53.25
+        "intelligence": 53.31
       },
       "gemini-4-argon": {
-        "intelligence": 52.6
-      },
-      "muse-wonder-full-1-0": {
-        "intelligence": 52.14
+        "intelligence": 52.67
       },
       "claude-opus-5": {
-        "intelligence": 52.11
+        "intelligence": 52.19
+      },
+      "muse-wonder-full-1-0": {
+        "intelligence": 52.16
       },
       "gpt-6-1-sol": {
-        "intelligence": 51.79
+        "intelligence": 51.84
       },
       "claude-fable-5-1": {
-        "intelligence": 51.6
+        "intelligence": 51.65
       },
       "claude-fable-5": {
-        "intelligence": 51.59
+        "intelligence": 51.65
       },
       "muse-wonder-full": {
-        "intelligence": 51.59
+        "intelligence": 51.6
       },
       "gpt-5-6-sol": {
-        "intelligence": 51.4
+        "intelligence": 51.47
       },
       "ernie-5-5-flash-preview": {
-        "intelligence": 51.29
+        "intelligence": 51.35
       },
       "muse-spark-1-3": {
-        "intelligence": 50.66
+        "intelligence": 50.75
       },
       "kimi-k3": {
-        "intelligence": 50.16
+        "intelligence": 49.99
       },
       "qwen4-max": {
-        "intelligence": 49.77
+        "intelligence": 49.84
       },
       "deepseek-v4-1-flash-1017": {
-        "intelligence": 49.68
+        "intelligence": 49.78
       },
       "qwen3-8-max": {
-        "intelligence": 49.42
+        "intelligence": 49.4
       },
       "glm-5-3": {
-        "intelligence": 49.2
-      },
-      "muse-wonder-1-0": {
-        "intelligence": 49.08
+        "intelligence": 49.27
       },
       "longcat-2-5": {
-        "intelligence": 48.89
+        "intelligence": 48.97
+      },
+      "muse-wonder-1-0": {
+        "intelligence": 48.96
       },
       "claude-opus-4-8": {
-        "intelligence": 48.65
-      },
-      "muse-wonder": {
-        "intelligence": 48.58
+        "intelligence": 48.69
       },
       "claude-haiku-5-5": {
-        "intelligence": 48.33
+        "intelligence": 48.47
+      },
+      "muse-wonder": {
+        "intelligence": 48.43
       },
       "deepseek-v4-1-flash": {
-        "intelligence": 48.23
+        "intelligence": 48.31
       },
       "deepseek-v4-pro-0813": {
-        "intelligence": 48.22
-      },
-      "hy4-preview": {
-        "intelligence": 47.89
+        "intelligence": 48.28
       },
       "gpt-5-6-terra": {
-        "intelligence": 47.71
+        "intelligence": 47.78
+      },
+      "hy4-preview": {
+        "intelligence": 47.78
       },
       "glm-5-3-flash": {
-        "intelligence": 47.54
-      },
-      "gemini-4-hydrogen": {
-        "intelligence": 47.51
-      },
-      "gemini-3-8-flash": {
-        "intelligence": 47.49
+        "intelligence": 47.6
       },
       "mimo-v2-6-pro": {
-        "intelligence": 47.44
+        "intelligence": 47.59
+      },
+      "gemini-3-8-flash": {
+        "intelligence": 47.58
+      },
+      "gemini-4-hydrogen": {
+        "intelligence": 47.54
       },
       "muse-spark-1-1": {
-        "intelligence": 47.41
+        "intelligence": 47.47
       },
       "minimax-m3-1-flash": {
-        "intelligence": 47.24
+        "intelligence": 47.3
       },
       "qwen3-8-flash-next": {
-        "intelligence": 46.99
+        "intelligence": 47.02
       },
       "qwen3-8-flash": {
-        "intelligence": 46.92
+        "intelligence": 46.96
       },
       "inkling-2-small": {
-        "intelligence": 46.72
+        "intelligence": 46.9
       },
       "swe-2": {
-        "intelligence": 46.71
+        "intelligence": 46.86
       },
       "gpt-5-5": {
-        "intelligence": 46.23
+        "intelligence": 46.29
       },
       "gpt-6-1-terra": {
-        "intelligence": 45.95
+        "intelligence": 45.99
       },
       "claude-sonnet-5": {
-        "intelligence": 45.87
+        "intelligence": 45.96
       },
       "gemini-3-7-flash": {
-        "intelligence": 45.81
+        "intelligence": 45.88
       },
       "gpt-6-sol": {
-        "intelligence": 45.64
+        "intelligence": 45.72
       },
       "mistral-large-4": {
-        "intelligence": 45.41
+        "intelligence": 45.59
       },
       "gpt-5-5-pro": {
-        "intelligence": 45.12
+        "intelligence": 45.15
       },
       "muse-ember-1-0": {
-        "intelligence": 44.77
+        "intelligence": 44.93
       },
       "grok-4-7": {
-        "intelligence": 44.62
+        "intelligence": 44.77
       },
       "seed-2-1-pro": {
         "intelligence": 44.62
       },
       "muse-spark-open": {
-        "intelligence": 44.46
+        "intelligence": 44.58
       },
       "qwen3-7-max": {
-        "intelligence": 44.06
+        "intelligence": 44
       },
       "glm-5-2": {
-        "intelligence": 44.01
+        "intelligence": 43.84
       },
       "claude-opus-4-6": {
-        "intelligence": 43.62
-      },
-      "claude-opus-4-7": {
-        "intelligence": 43.52
+        "intelligence": 43.69
       },
       "mimo-v2-6-flash": {
-        "intelligence": 43.37
+        "intelligence": 43.6
       },
-      "beam-1-0-501b-a23b": {
-        "intelligence": 43.33
+      "claude-opus-4-7": {
+        "intelligence": 43.51
       },
       "swe-2-flash": {
-        "intelligence": 43.23
+        "intelligence": 43.43
       },
       "qwen3-8-27b": {
         "intelligence": 43.2
       },
-      "grok-4-5": {
-        "intelligence": 43
-      },
-      "grok-4-6": {
-        "intelligence": 42.98
+      "beam-1-0-501b-a23b": {
+        "intelligence": 43.13
       },
       "claude-mythos-5-1": {
-        "intelligence": 42.97
+        "intelligence": 43.1
+      },
+      "grok-4-5": {
+        "intelligence": 43.09
+      },
+      "grok-4-6": {
+        "intelligence": 43.08
       },
       "gpt-5-6-luna": {
-        "intelligence": 42.8
+        "intelligence": 42.88
       },
       "kimi-k2-6": {
-        "intelligence": 42.68
+        "intelligence": 42.64
       },
       "gemini-3-1-pro-preview": {
         "intelligence": 42.24
       },
-      "deepseek-v4-pro-max": {
-        "intelligence": 42.1
-      },
       "gpt-5-2-pro-2025-12-11": {
+        "intelligence": 42.17
+      },
+      "deepseek-v4-pro-max": {
+        "intelligence": 42.05
+      },
+      "gemini-3-5-flash": {
         "intelligence": 42.03
       },
       "ling-3-0-flash-fin": {
         "intelligence": 42.02
       },
-      "gemini-3-5-flash": {
-        "intelligence": 42.01
-      },
       "deepseek-v4-flash-vision-exp": {
-        "intelligence": 41.83
+        "intelligence": 41.98
       },
       "ember-1": {
-        "intelligence": 41.76
+        "intelligence": 41.87
       },
       "gemini-3-6-flash": {
-        "intelligence": 41.62
+        "intelligence": 41.79
       },
       "hy3": {
-        "intelligence": 41.56
-      },
-      "seed-2-1-turbo": {
-        "intelligence": 41.48
+        "intelligence": 41.55
       },
       "gpt-6-luna": {
-        "intelligence": 41.45
+        "intelligence": 41.52
+      },
+      "seed-2-1-turbo": {
+        "intelligence": 41.46
       },
       "qwen3-7-plus": {
-        "intelligence": 41.45
+        "intelligence": 41.27
       },
       "sakana-namazu": {
-        "intelligence": 41.16
+        "intelligence": 41.12
       },
       "deepseek-v4-flash-0731": {
-        "intelligence": 41
+        "intelligence": 41.06
       },
       "muse-spark": {
-        "intelligence": 40.96
-      },
-      "gpt-5-4": {
-        "intelligence": 40.81
+        "intelligence": 40.99
       },
       "hy4-flash": {
-        "intelligence": 40.76
+        "intelligence": 40.95
+      },
+      "gpt-5-4": {
+        "intelligence": 40.84
       },
       "glm-5-3-flashx-legal": {
-        "intelligence": 40.6
+        "intelligence": 40.65
       },
       "gpt-5-2-2025-12-11": {
-        "intelligence": 40.31
+        "intelligence": 40.41
       },
       "gpt-6-cyber": {
-        "intelligence": 40.13
+        "intelligence": 40.19
       },
       "minimax-m3": {
-        "intelligence": 40.1
+        "intelligence": 40.08
       },
       "grok-4-heavy": {
-        "intelligence": 39.94
+        "intelligence": 39.81
+      },
+      "inkling-2-mini": {
+        "intelligence": 39.36
       },
       "seed-2-0-pro": {
-        "intelligence": 38.47
+        "intelligence": 38.35
       },
       "laguna-s-2-1": {
-        "intelligence": 38.36
-      },
-      "deepseek-v4-flash-max": {
-        "intelligence": 38.28
+        "intelligence": 38.26
       },
       "qwen3-6-plus": {
-        "intelligence": 38.22
+        "intelligence": 38.17
       },
       "glm-5-1": {
-        "intelligence": 38.21
+        "intelligence": 38.17
+      },
+      "deepseek-v4-flash-max": {
+        "intelligence": 38.15
       },
       "gemini-3-8-flash-cyber": {
-        "intelligence": 37.92
+        "intelligence": 37.97
       },
       "kimi-k2-5": {
-        "intelligence": 37.87
-      },
-      "kimi-k2-7-code": {
-        "intelligence": 37.74
+        "intelligence": 37.77
       },
       "gemini-3-pro-preview": {
-        "intelligence": 37.7
+        "intelligence": 37.64
+      },
+      "kimi-k2-7-code": {
+        "intelligence": 37.6
       },
       "k2-horizon-375b-a23b": {
-        "intelligence": 37.69
+        "intelligence": 37.57
       },
       "qwen3-5-397b-a17b": {
-        "intelligence": 37.58
-      },
-      "inkling-small": {
-        "intelligence": 37.37
+        "intelligence": 37.5
       },
       "claude-opus-4-5-20251101": {
-        "intelligence": 37.36
+        "intelligence": 37.37
+      },
+      "inkling-small": {
+        "intelligence": 37.29
       },
       "qwen3-8-omni-flash": {
-        "intelligence": 37.2
-      },
-      "glm-5": {
-        "intelligence": 36.21
-      },
-      "step-3-5-flash": {
-        "intelligence": 36.16
+        "intelligence": 37.17
       },
       "inkling": {
-        "intelligence": 36.13
+        "intelligence": 36.16
       },
-      "minimax-m2-5": {
-        "intelligence": 36.06
+      "step-3-5-flash": {
+        "intelligence": 36.04
       },
       "claude-sonnet-4-6": {
-        "intelligence": 35.98
+        "intelligence": 36.02
+      },
+      "glm-5": {
+        "intelligence": 36.01
+      },
+      "minimax-m2-5": {
+        "intelligence": 36.01
       },
       "gemini-3-flash-preview": {
-        "intelligence": 35.96
-      },
-      "gpt-5-1-thinking-2025-11-12": {
-        "intelligence": 35.88
-      },
-      "gpt-5-1-instant-2025-11-12": {
-        "intelligence": 35.78
-      },
-      "gemini-3-5-flash-cyber": {
-        "intelligence": 35.76
+        "intelligence": 35.89
       },
       "muse-spark-1-2": {
-        "intelligence": 35.72
+        "intelligence": 35.87
       },
-      "gpt-5-1-2025-11-13": {
-        "intelligence": 35.64
+      "gpt-5-1-thinking-2025-11-12": {
+        "intelligence": 35.84
+      },
+      "gemini-3-5-flash-cyber": {
+        "intelligence": 35.81
+      },
+      "gpt-5-1-instant-2025-11-12": {
+        "intelligence": 35.74
       },
       "gpt-5-3-codex": {
         "intelligence": 35.6
       },
-      "mercury-3": {
-        "intelligence": 35.44
+      "gpt-5-1-2025-11-13": {
+        "intelligence": 35.6
       },
       "nemotron-3-ultra-550b-a55b": {
-        "intelligence": 35.27
+        "intelligence": 35.53
+      },
+      "mercury-3": {
+        "intelligence": 35.35
       },
       "mimo-v2-5": {
-        "intelligence": 35.27
+        "intelligence": 35.24
       },
       "deepseek-v4-flash-0423": {
-        "intelligence": 35.26
-      },
-      "kimi-k2-thinking-0905": {
-        "intelligence": 35.04
+        "intelligence": 35.14
       },
       "minimax-m2-7": {
-        "intelligence": 35.02
+        "intelligence": 35.12
+      },
+      "kimi-k2-thinking-0905": {
+        "intelligence": 34.98
       },
       "mimo-v2-pro": {
-        "intelligence": 34.71
+        "intelligence": 34.65
       },
       "ling-3-0-flash": {
-        "intelligence": 34.69
-      },
-      "muse-glimmer-30b": {
-        "intelligence": 34.46
+        "intelligence": 34.58
       },
       "qwen3-6-27b": {
-        "intelligence": 34.46
+        "intelligence": 34.43
       },
-      "longcat-flash-thinking-2601": {
-        "intelligence": 34.36
+      "muse-glimmer-30b": {
+        "intelligence": 34.33
       },
       "gpt-5-1-high-2025-11-12": {
-        "intelligence": 34.28
+        "intelligence": 34.26
+      },
+      "longcat-flash-thinking-2601": {
+        "intelligence": 34.24
       },
       "nemotron-3-5-super-vl-120b-a12b": {
-        "intelligence": 34.17
+        "intelligence": 34.08
       },
       "qwen3-5-122b-a10b": {
-        "intelligence": 33.93
-      },
-      "solar-pro4": {
-        "intelligence": 33.63
+        "intelligence": 33.89
       },
       "gpt-5-2-codex": {
-        "intelligence": 33.51
+        "intelligence": 33.49
+      },
+      "solar-pro4": {
+        "intelligence": 33.47
       },
       "glm-4-7": {
-        "intelligence": 33.39
+        "intelligence": 33.31
       },
       "seed-1-8": {
-        "intelligence": 33.24
+        "intelligence": 33.25
       },
       "gpt-5-high-2025-08-07": {
-        "intelligence": 33.1
+        "intelligence": 33.08
       },
       "deepseek-v3-2-speciale": {
-        "intelligence": 32.95
+        "intelligence": 32.89
       },
       "gpt-5-2025-08-07": {
-        "intelligence": 32.89
+        "intelligence": 32.85
       },
       "grok-4": {
-        "intelligence": 32.89
+        "intelligence": 32.82
       },
       "qwen3-5-27b": {
-        "intelligence": 32.77
-      },
-      "ernie-5-0": {
         "intelligence": 32.73
       },
+      "ernie-5-0": {
+        "intelligence": 32.72
+      },
       "deepseek-v3-2": {
-        "intelligence": 32.35
+        "intelligence": 32.24
       },
       "gemma-4-31b-it": {
-        "intelligence": 32.22
-      },
-      "solar-mini4": {
-        "intelligence": 32.13
+        "intelligence": 32.19
       },
       "mai-thinking-1": {
-        "intelligence": 32.06
+        "intelligence": 32.02
       },
       "qwen3-max-thinking": {
-        "intelligence": 31.82
-      },
-      "deepseek-reasoner": {
-        "intelligence": 31.69
+        "intelligence": 31.75
       },
       "particle-1": {
+        "intelligence": 31.58
+      },
+      "deepseek-reasoner": {
         "intelligence": 31.57
       },
       "gpt-5-5-instant": {
         "intelligence": 31.39
       },
+      "solar-mini4": {
+        "intelligence": 31.36
+      },
       "qwen3-6-35b-a3b": {
-        "intelligence": 31.38
+        "intelligence": 31.35
       },
       "claude-sonnet-4-5-20250929": {
-        "intelligence": 31.23
+        "intelligence": 31.3
       },
       "seed-2-0-lite": {
-        "intelligence": 31.07
+        "intelligence": 31.02
       },
       "minimax-m2-1": {
-        "intelligence": 30.85
+        "intelligence": 30.73
       },
       "grok-4-fast": {
-        "intelligence": 30.69
-      },
-      "grok-3-mini": {
-        "intelligence": 30.51
-      },
-      "gpt-5-1-medium-2025-11-12": {
-        "intelligence": 30.37
+        "intelligence": 30.55
       },
       "gpt-rosalind-research": {
-        "intelligence": 30.33
+        "intelligence": 30.39
+      },
+      "gpt-5-1-medium-2025-11-12": {
+        "intelligence": 30.35
+      },
+      "grok-3-mini": {
+        "intelligence": 30.34
       },
       "o3-2025-04-16": {
-        "intelligence": 30.12
+        "intelligence": 30.14
       },
       "gemini-3-1-flash-lite-preview": {
-        "intelligence": 29.94
+        "intelligence": 29.95
       },
       "nova-2-pro": {
-        "intelligence": 29.93
+        "intelligence": 29.87
       },
       "k2-horizon-32b": {
-        "intelligence": 29.88
+        "intelligence": 29.79
       },
       "mimo-v2-flash": {
-        "intelligence": 29.78
+        "intelligence": 29.69
       },
       "qwen3-5-35b-a3b": {
-        "intelligence": 29.72
+        "intelligence": 29.69
       },
       "grok-3": {
-        "intelligence": 29.55
-      },
-      "k2-horizon-mova-36b-a4b": {
         "intelligence": 29.42
       },
-      "glm-5v-turbo": {
-        "intelligence": 29.19
+      "k2-horizon-mova-36b-a4b": {
+        "intelligence": 29.34
       },
-      "step-3-7-flash": {
-        "intelligence": 29.18
+      "glm-5v-turbo": {
+        "intelligence": 29.17
       },
       "claude-opus-4-1-20250805": {
-        "intelligence": 29.13
+        "intelligence": 29.1
+      },
+      "step-3-7-flash": {
+        "intelligence": 29.09
       },
       "gemini-2-5-pro-preview-06-05": {
-        "intelligence": 29.08
+        "intelligence": 29.01
       },
       "gpt-5-4-mini": {
-        "intelligence": 28.97
+        "intelligence": 28.94
       },
       "gemini-3-5-flash-lite": {
-        "intelligence": 28.89
+        "intelligence": 28.83
       },
       "gpt-5-1-codex": {
-        "intelligence": 28.89
-      },
-      "gpt-5-3-chat-latest": {
-        "intelligence": 28.88
-      },
-      "gemma-4-26b-a4b-it": {
-        "intelligence": 28.76
+        "intelligence": 28.81
       },
       "gpt-5-medium-2025-08-07": {
-        "intelligence": 28.73
+        "intelligence": 28.72
       },
-      "nemotron-3-5-bolt-74b-a9b-24gb": {
-        "intelligence": 28.59
+      "gemma-4-26b-a4b-it": {
+        "intelligence": 28.71
+      },
+      "gpt-5-3-chat-latest": {
+        "intelligence": 28.7
       },
       "gpt-5-1-codex-high": {
-        "intelligence": 28.58
+        "intelligence": 28.56
+      },
+      "nemotron-3-5-bolt-74b-a9b-24gb": {
+        "intelligence": 28.49
       },
       "mai-code-1-flash": {
-        "intelligence": 28.16
+        "intelligence": 28.11
       },
       "glm-4-6": {
-        "intelligence": 28.08
+        "intelligence": 27.99
       },
       "gpt-oss-120b": {
-        "intelligence": 27.98
+        "intelligence": 27.92
       },
       "longcat-flash-thinking": {
-        "intelligence": 27.83
-      },
-      "deepseek-v3-2-exp": {
-        "intelligence": 27.32
+        "intelligence": 27.74
       },
       "seed-2-0-mini": {
-        "intelligence": 27.24
+        "intelligence": 27.28
       },
-      "mai-code-1-1-flash": {
-        "intelligence": 27.18
+      "deepseek-v3-2-exp": {
+        "intelligence": 27.21
       },
       "qwen3-235b-a22b-thinking-2507": {
-        "intelligence": 27.12
+        "intelligence": 27.09
       },
-      "gemini-2-5-pro": {
-        "intelligence": 26.96
+      "mai-code-1-1-flash": {
+        "intelligence": 27.01
       },
       "claude-opus-4-20250514": {
-        "intelligence": 26.95
+        "intelligence": 26.93
       },
-      "glm-4-5": {
+      "gemini-2-5-pro": {
         "intelligence": 26.92
       },
+      "glm-4-5": {
+        "intelligence": 26.82
+      },
       "gpt-oss-20b-high": {
-        "intelligence": 26.81
+        "intelligence": 26.8
       },
       "o4-mini": {
-        "intelligence": 26.55
+        "intelligence": 26.49
       },
       "gpt-5-mini-2025-08-07": {
-        "intelligence": 26.45
-      },
-      "gpt-5-codex-2025-09-15": {
-        "intelligence": 26.21
+        "intelligence": 26.42
       },
       "mimo-v2-omni": {
-        "intelligence": 26.21
+        "intelligence": 26.13
+      },
+      "gpt-5-codex-2025-09-15": {
+        "intelligence": 26.09
       },
       "minimax-m2": {
-        "intelligence": 26.04
-      },
-      "nemotron-3-super-120b-a12b": {
-        "intelligence": 25.82
+        "intelligence": 25.93
       },
       "qwen3-vl-235b-a22b-thinking": {
+        "intelligence": 25.76
+      },
+      "nemotron-3-super-120b-a12b": {
         "intelligence": 25.75
       },
       "k2-horizon-7b": {
-        "intelligence": 25.61
-      },
-      "mistral-medium-3-5": {
         "intelligence": 25.49
       },
-      "k-exaone-236b-a23b": {
-        "intelligence": 25.26
+      "mistral-medium-3-5": {
+        "intelligence": 25.39
       },
-      "gpt-5-4-nano": {
-        "intelligence": 25.06
+      "k-exaone-236b-a23b": {
+        "intelligence": 25.23
       },
       "exaone-4-5-33b": {
-        "intelligence": 25.04
+        "intelligence": 25.01
       },
-      "mimo-v2-5-pro": {
-        "intelligence": 24.83
-      },
-      "step3-vl-10b": {
-        "intelligence": 24.79
-      },
-      "nova-2-omni": {
-        "intelligence": 24.75
-      },
-      "sarvam-105b": {
-        "intelligence": 24.65
+      "gpt-5-4-nano": {
+        "intelligence": 25
       },
       "lfm3-1-7b": {
-        "intelligence": 24.58
+        "intelligence": 25
+      },
+      "mimo-v2-5-pro": {
+        "intelligence": 24.8
+      },
+      "step3-vl-10b": {
+        "intelligence": 24.76
+      },
+      "nova-2-omni": {
+        "intelligence": 24.72
+      },
+      "sarvam-105b": {
+        "intelligence": 24.59
       },
       "gpt-oss-120b-high": {
-        "intelligence": 24.51
+        "intelligence": 24.48
       },
       "nova-2-lite": {
-        "intelligence": 24.31
+        "intelligence": 24.25
       },
       "claude-haiku-4-5-20251001": {
-        "intelligence": 24.3
+        "intelligence": 24.24
       },
       "chatgpt-4o-latest": {
         "intelligence": 24.13
       },
       "laguna-xs-2-1": {
-        "intelligence": 23.94
+        "intelligence": 23.87
       },
       "qwen3-vl-235b-a22b-instruct": {
         "intelligence": 23.77
       },
       "qwen3-5-9b": {
-        "intelligence": 23.64
+        "intelligence": 23.61
       },
       "claude-sonnet-4-20250514": {
-        "intelligence": 23.5
+        "intelligence": 23.46
       },
       "glm-4-5-air": {
-        "intelligence": 23.5
-      },
-      "deepseek-r1-0528": {
-        "intelligence": 23.33
-      },
-      "command-a-plus-05-2026": {
-        "intelligence": 23.27
+        "intelligence": 23.4
       },
       "qwen3-235b-a22b-instruct-2507": {
-        "intelligence": 23.26
+        "intelligence": 23.24
+      },
+      "deepseek-r1-0528": {
+        "intelligence": 23.24
+      },
+      "command-a-plus-05-2026": {
+        "intelligence": 23.23
       },
       "claude-3-7-sonnet-20250219": {
-        "intelligence": 23.11
+        "intelligence": 23.07
       },
       "qwen3-next-80b-a3b-thinking": {
-        "intelligence": 22.92
-      },
-      "grok-4-20-beta-0309-reasoning": {
-        "intelligence": 22.92
-      },
-      "mercury-2": {
-        "intelligence": 22.9
-      },
-      "granite-4-2-30b": {
         "intelligence": 22.89
       },
+      "grok-4-20-beta-0309-reasoning": {
+        "intelligence": 22.87
+      },
+      "granite-4-2-30b": {
+        "intelligence": 22.85
+      },
+      "mercury-2": {
+        "intelligence": 22.81
+      },
       "qwen3-vl-32b-thinking": {
-        "intelligence": 22.76
+        "intelligence": 22.77
       },
       "glm-4-7-flash": {
-        "intelligence": 22.46
+        "intelligence": 22.36
       },
       "grok-4-3": {
-        "intelligence": 21.5
+        "intelligence": 21.48
       },
       "nemotron-labs-dory-1-0-4b": {
-        "intelligence": 21.45
+        "intelligence": 21.39
       },
       "north-mini-code-1-0": {
-        "intelligence": 21.36
+        "intelligence": 21.3
       },
       "u2": {
-        "intelligence": 21.28
+        "intelligence": 21.17
       },
       "deepseek-v3-1": {
-        "intelligence": 21.22
-      },
-      "nemotron-3-5-lightning-30b-a3b": {
-        "intelligence": 21.16
-      },
-      "kimi-k2-0905": {
         "intelligence": 21.14
       },
+      "kimi-k2-0905": {
+        "intelligence": 21.13
+      },
       "gemma-4-12b-it": {
-        "intelligence": 21.11
+        "intelligence": 21.07
+      },
+      "nemotron-3-5-lightning-30b-a3b": {
+        "intelligence": 21.07
       },
       "k2-horizon-3-7b": {
-        "intelligence": 21.03
+        "intelligence": 20.96
       },
       "kimi-k2-instruct": {
-        "intelligence": 20.99
+        "intelligence": 20.96
       },
       "gemini-2-5-flash": {
-        "intelligence": 20.9
+        "intelligence": 20.87
       },
       "qwen3-max": {
-        "intelligence": 20.88
+        "intelligence": 20.84
       },
       "kimi-k2-instruct-0905": {
-        "intelligence": 20.7
-      },
-      "minimax-m1-80k": {
-        "intelligence": 20.55
+        "intelligence": 20.66
       },
       "o3-mini": {
-        "intelligence": 20.52
+        "intelligence": 20.49
+      },
+      "minimax-m1-80k": {
+        "intelligence": 20.49
       },
       "qwen3-coder-480b-a35b-instruct": {
-        "intelligence": 20.32
+        "intelligence": 20.27
       },
       "o1-2024-12-17": {
-        "intelligence": 20.17
+        "intelligence": 20.15
       },
       "nemotron-3-nano-30b-a3b": {
-        "intelligence": 20.16
+        "intelligence": 20.13
       },
       "grok-code-fast-1": {
-        "intelligence": 20.11
+        "intelligence": 20.02
       },
       "ministral-14b-latest": {
-        "intelligence": 19.79
+        "intelligence": 19.69
       },
       "minimax-m1-40k": {
-        "intelligence": 19.64
+        "intelligence": 19.59
       },
       "qwen3-vl-32b-instruct": {
         "intelligence": 19.42
       },
       "qwen3-next-80b-a3b-instruct": {
-        "intelligence": 19.29
+        "intelligence": 19.27
       },
       "gpt-4-5": {
-        "intelligence": 19.24
+        "intelligence": 19.21
       },
       "granite-4-2-8b": {
-        "intelligence": 19.23
+        "intelligence": 19.2
       },
       "longcat-flash-chat": {
-        "intelligence": 19.05
+        "intelligence": 19.01
       },
       "o1-pro": {
-        "intelligence": 18.97
+        "intelligence": 18.94
       },
       "grok-4-1-2025-11-17": {
         "intelligence": 18.86
       },
       "sarvam-30b": {
-        "intelligence": 18.64
+        "intelligence": 18.58
       },
       "qwen3-5-4b": {
-        "intelligence": 18.59
+        "intelligence": 18.56
       },
       "diffusiongemma-26b-a4b-it": {
-        "intelligence": 18.47
+        "intelligence": 18.45
       },
       "gpt-5-nano-2025-08-07": {
-        "intelligence": 18.47
+        "intelligence": 18.44
       },
       "llama-3-1-nemotron-ultra-253b-v1": {
-        "intelligence": 18.34
+        "intelligence": 18.26
       },
       "claude-3-5-sonnet-20241022": {
-        "intelligence": 18.24
+        "intelligence": 18.21
       },
       "mistral-small-latest": {
-        "intelligence": 17.99
+        "intelligence": 17.94
       },
       "longcat-flash-lite": {
-        "intelligence": 17.88
+        "intelligence": 17.85
       },
       "qwen3-32b": {
-        "intelligence": 17.72
+        "intelligence": 17.64
       },
       "nvidia-nemotron-nano-9b-v2": {
-        "intelligence": 17.68
+        "intelligence": 17.57
       },
       "qwen3-vl-30b-a3b-thinking": {
-        "intelligence": 17.43
+        "intelligence": 17.5
       },
       "lfm-2-5-2-6b": {
-        "intelligence": 17.39
+        "intelligence": 17.43
       },
       "qwen3-14b": {
-        "intelligence": 17.27
+        "intelligence": 17.24
       },
       "gpt-oss-20b": {
-        "intelligence": 17.13
+        "intelligence": 17.05
       },
       "gpt-4-1-2025-04-14": {
-        "intelligence": 17.04
+        "intelligence": 17.01
       },
       "qwen3-30b-a3b": {
-        "intelligence": 16.52
+        "intelligence": 16.46
       },
       "kimi-k1-5": {
-        "intelligence": 16.4
+        "intelligence": 16.37
       },
       "gemini-2-0-flash-thinking": {
-        "intelligence": 16.02
+        "intelligence": 16
       },
       "gemini-2-0-flash": {
-        "intelligence": 15.85
+        "intelligence": 15.82
       },
       "o1-preview": {
-        "intelligence": 15.84
+        "intelligence": 15.81
       },
       "ministral-8b-latest": {
-        "intelligence": 15.8
+        "intelligence": 15.72
       },
       "qwen3-vl-30b-a3b-instruct": {
-        "intelligence": 15.57
+        "intelligence": 15.56
       },
       "qwen3-vl-8b-thinking": {
-        "intelligence": 15.44
+        "intelligence": 15.45
       },
       "grok-4-1-thinking-2025-11-17": {
         "intelligence": 15.37
       },
       "claude-3-5-sonnet-20240620": {
-        "intelligence": 15.31
-      },
-      "deepseek-r1-zero": {
         "intelligence": 15.3
       },
-      "lfm3-vl-2b": {
+      "deepseek-r1-zero": {
         "intelligence": 15.23
       },
+      "lfm3-vl-2b": {
+        "intelligence": 15.22
+      },
       "qwen3-235b-a22b": {
-        "intelligence": 14.91
+        "intelligence": 14.87
       },
       "deepseek-v3": {
-        "intelligence": 14.78
+        "intelligence": 14.75
       },
       "granite-4-2-3b": {
-        "intelligence": 14.47
+        "intelligence": 14.45
       },
       "phi-4-reasoning-plus": {
-        "intelligence": 14.28
+        "intelligence": 14.24
       },
       "llama-3-1-405b-instruct": {
-        "intelligence": 14.13
+        "intelligence": 14.11
       },
       "llama-4-maverick": {
-        "intelligence": 13.94
+        "intelligence": 13.9
       },
       "qwq-32b": {
-        "intelligence": 13.92
+        "intelligence": 13.86
       },
       "minicpm-sala": {
-        "intelligence": 13.83
+        "intelligence": 13.82
       },
       "deepseek-r1-distill-llama-70b": {
-        "intelligence": 13.77
+        "intelligence": 13.69
       },
       "qwen2-vl-72b": {
-        "intelligence": 13.45
+        "intelligence": 13.44
       },
       "llama-3-3-70b-instruct": {
-        "intelligence": 13.16
+        "intelligence": 13.15
       },
       "gpt-4o-2024-08-06": {
-        "intelligence": 13.14
+        "intelligence": 13.12
       },
       "qwen3-vl-8b-instruct": {
-        "intelligence": 13.06
+        "intelligence": 13.05
       },
       "gpt-4-1-mini-2025-04-14": {
-        "intelligence": 13.01
+        "intelligence": 12.99
       },
       "devstral-medium-2507": {
-        "intelligence": 12.88
+        "intelligence": 12.81
       },
       "deepseek-v3-0324": {
-        "intelligence": 12.68
-      },
-      "kimi-k2-base": {
         "intelligence": 12.63
       },
-      "gemma-4-e4b-it": {
-        "intelligence": 12.51
+      "kimi-k2-base": {
+        "intelligence": 12.61
       },
-      "llama-3-3-nemotron-super-49b-v1": {
+      "gemma-4-e4b-it": {
         "intelligence": 12.5
       },
-      "deepseek-r1-distill-qwen-32b": {
-        "intelligence": 12.27
+      "llama-3-3-nemotron-super-49b-v1": {
+        "intelligence": 12.47
       },
       "qwen2-5-vl-72b": {
-        "intelligence": 12.24
+        "intelligence": 12.22
+      },
+      "deepseek-r1-distill-qwen-32b": {
+        "intelligence": 12.18
       },
       "qwen3-vl-4b-thinking": {
-        "intelligence": 12.15
+        "intelligence": 12.14
       },
       "magistral-medium": {
-        "intelligence": 12.12
+        "intelligence": 12.08
       },
       "gemini-2-0-flash-lite": {
-        "intelligence": 11.72
+        "intelligence": 11.7
       },
       "nova-pro": {
-        "intelligence": 11.68
+        "intelligence": 11.66
       },
       "qwen-2-5-72b-instruct": {
-        "intelligence": 11.47
+        "intelligence": 11.44
       },
       "gemini-1-5-pro": {
-        "intelligence": 11.41
+        "intelligence": 11.4
       },
       "phi-4-reasoning": {
-        "intelligence": 11.3
+        "intelligence": 11.26
       },
       "pixtral-large": {
-        "intelligence": 11.05
+        "intelligence": 11.02
       },
       "gpt-4o-2024-05-13": {
         "intelligence": 10.97
@@ -92749,202 +92842,202 @@
         "intelligence": 10.88
       },
       "ministral-3b-latest": {
-        "intelligence": 10.43
+        "intelligence": 10.37
       },
       "deepseek-r1-distill-qwen-14b": {
-        "intelligence": 10.16
+        "intelligence": 10.09
       },
       "qwen3-vl-4b-instruct": {
-        "intelligence": 10.06
+        "intelligence": 10.05
       },
       "magistral-small-2506": {
-        "intelligence": 10.02
+        "intelligence": 9.96
       },
       "mistral-large-3-2509": {
-        "intelligence": 9.97
+        "intelligence": 9.95
       },
       "ministral-3-14b-instruct-2512": {
-        "intelligence": 9.82
+        "intelligence": 9.8
       },
       "gemini-2-5-flash-lite": {
-        "intelligence": 9.51
+        "intelligence": 9.49
       },
       "claude-3-opus-20240229": {
-        "intelligence": 9.36
-      },
-      "qwen2-5-vl-32b": {
-        "intelligence": 9.33
+        "intelligence": 9.35
       },
       "o1-mini": {
-        "intelligence": 9.33
+        "intelligence": 9.31
+      },
+      "qwen2-5-vl-32b": {
+        "intelligence": 9.31
       },
       "gpt-4-turbo-2024-04-09": {
-        "intelligence": 8.58
+        "intelligence": 8.57
       },
       "qwq-32b-preview": {
-        "intelligence": 8.3
+        "intelligence": 8.24
       },
       "mistral-large-latest": {
-        "intelligence": 8.26
-      },
-      "devstral-small-2507": {
         "intelligence": 8.22
       },
+      "devstral-small-2507": {
+        "intelligence": 8.16
+      },
       "mistral-large-3-675b-instruct-2512-nvfp4": {
-        "intelligence": 8.15
+        "intelligence": 8.11
       },
       "nova-2-sonic": {
-        "intelligence": 8.1
+        "intelligence": 8.07
       },
       "grok-2-mini": {
-        "intelligence": 8.06
-      },
-      "mistral-large-3-675b-base-2512": {
         "intelligence": 8.05
       },
+      "mistral-large-3-675b-base-2512": {
+        "intelligence": 8.01
+      },
       "mistral-large-3-675b-instruct-2512-eagle": {
-        "intelligence": 7.95
+        "intelligence": 7.91
       },
       "mistral-small-3-2-24b-instruct-2506": {
-        "intelligence": 7.84
+        "intelligence": 7.82
       },
       "gemma-3-27b-it": {
-        "intelligence": 7.68
-      },
-      "deepseek-r1-distill-qwen-7b": {
         "intelligence": 7.67
       },
+      "deepseek-r1-distill-qwen-7b": {
+        "intelligence": 7.61
+      },
       "deepseek-v2-5": {
-        "intelligence": 7.56
+        "intelligence": 7.54
       },
       "qvq-72b-preview": {
-        "intelligence": 7.42
+        "intelligence": 7.41
       },
       "ministral-3-8b-instruct-2512": {
-        "intelligence": 7.37
+        "intelligence": 7.36
       },
       "llama-4-scout": {
-        "intelligence": 7.16
+        "intelligence": 7.14
       },
       "llama-3-1-70b-instruct": {
-        "intelligence": 6.99
+        "intelligence": 6.98
       },
       "nova-lite": {
-        "intelligence": 6.94
-      },
-      "qwen-2-5-32b-instruct": {
-        "intelligence": 6.88
+        "intelligence": 6.92
       },
       "mistral-large-2-2407": {
-        "intelligence": 6.88
+        "intelligence": 6.87
+      },
+      "qwen-2-5-32b-instruct": {
+        "intelligence": 6.87
       },
       "qwen2-5-vl-7b": {
-        "intelligence": 6.47
+        "intelligence": 6.46
       },
       "phi-4-mini-reasoning": {
-        "intelligence": 6.36
+        "intelligence": 6.34
       },
       "deepseek-r1-distill-llama-8b": {
-        "intelligence": 6.24
+        "intelligence": 6.19
       },
       "gemma-4-e2b-it": {
-        "intelligence": 5.79
+        "intelligence": 5.78
       },
       "gemini-1-5-flash": {
-        "intelligence": 5.43
+        "intelligence": 5.41
       },
       "qwen2-72b-instruct": {
-        "intelligence": 5.22
+        "intelligence": 5.21
       },
       "gemma-3-12b-it": {
-        "intelligence": 5.04
+        "intelligence": 5.02
       },
       "phi-4": {
-        "intelligence": 4.83
+        "intelligence": 4.82
       },
       "qwen2-5-omni-7b": {
-        "intelligence": 4.71
+        "intelligence": 4.7
       },
       "llama-3-2-90b-instruct": {
-        "intelligence": 4.59
+        "intelligence": 4.58
       },
       "claude-3-5-haiku-20241022": {
-        "intelligence": 4.47
+        "intelligence": 4.46
       },
       "llama-3-1-nemotron-nano-8b-v1": {
-        "intelligence": 4.03
+        "intelligence": 4.02
       },
       "hermes-3-405b": {
-        "intelligence": 3.8
+        "intelligence": 3.79
       },
       "mistral-small-3-1-24b-instruct-2503": {
-        "intelligence": 3.66
+        "intelligence": 3.65
       },
       "hermes-3-70b": {
-        "intelligence": 3.59
+        "intelligence": 3.58
       },
       "mistral-small-24b-instruct-2501": {
-        "intelligence": 3.59
+        "intelligence": 3.58
       },
       "qwen-2-5-14b-instruct": {
-        "intelligence": 3.13
+        "intelligence": 3.12
       },
       "ministral-3-14b-base-2512": {
-        "intelligence": 3.11
+        "intelligence": 3.1
       },
       "gpt-4o-mini-2024-07-18": {
-        "intelligence": 3.09
+        "intelligence": 3.08
       },
       "qwen3-5-2b": {
-        "intelligence": 3.04
+        "intelligence": 3.03
       },
       "lfm-2-5-vl-3b": {
-        "intelligence": 2.57
+        "intelligence": 2.54
       },
       "gpt-4-0613": {
-        "intelligence": 2.52
+        "intelligence": 2.51
       },
       "deepseek-vl2": {
-        "intelligence": 2.17
+        "intelligence": 2.15
       },
       "phi-4-multimodal-instruct": {
-        "intelligence": 2.13
+        "intelligence": 2.12
       },
       "qwen-2-5-7b-instruct": {
-        "intelligence": 1.93
+        "intelligence": 1.92
       },
       "ministral-3-3b-instruct-2512": {
-        "intelligence": 1.87
+        "intelligence": 1.86
       },
       "granite-3-3-8b-instruct": {
-        "intelligence": 1.85
-      },
-      "nova-micro": {
         "intelligence": 1.84
       },
+      "nova-micro": {
+        "intelligence": 1.83
+      },
       "qwen-2-5-coder-32b-instruct": {
-        "intelligence": 1.54
+        "intelligence": 1.53
       },
       "phi-3-5-moe-instruct": {
         "intelligence": 1.42
       },
       "claude-3-sonnet-20240229": {
-        "intelligence": 1.21
+        "intelligence": 1.2
       },
       "gpt-4-1-nano-2025-04-14": {
-        "intelligence": 0.77
+        "intelligence": 0.76
       },
       "deepseek-vl2-small": {
-        "intelligence": 0.5
+        "intelligence": 0.49
       },
       "jamba-1-5-large": {
-        "intelligence": 0.43
+        "intelligence": 0.42
       },
       "k2-horizon-0-9b": {
-        "intelligence": 0.28
+        "intelligence": 0.27
       },
       "gemini-diffusion": {
-        "intelligence": 0.01
+        "intelligence": 0
       },
       "llama-3-1-nemotron-70b-instruct": {
         "intelligence": -0.12
@@ -92953,40 +93046,40 @@
         "intelligence": -0.22
       },
       "codestral-22b": {
-        "intelligence": -0.49
+        "intelligence": -0.5
       },
       "mistral-small-24b-base-2501": {
-        "intelligence": -0.76
+        "intelligence": -0.77
       },
       "command-r-plus-04-2024": {
         "intelligence": -1.06
       },
       "granite-3-3-8b-base": {
-        "intelligence": -1.1
+        "intelligence": -1.11
       },
       "gemma-2-27b-it": {
-        "intelligence": -1.23
+        "intelligence": -1.24
       },
       "gemini-1-5-flash-8b": {
-        "intelligence": -1.31
+        "intelligence": -1.32
       },
       "grok-1-5v": {
-        "intelligence": -1.43
+        "intelligence": -1.44
       },
       "ministral-3-8b-base-2512": {
-        "intelligence": -1.58
+        "intelligence": -1.59
       },
       "llama-3-2-11b-instruct": {
-        "intelligence": -1.84
+        "intelligence": -1.85
       },
       "claude-3-haiku-20240307": {
-        "intelligence": -1.94
+        "intelligence": -1.95
       },
       "pixtral-12b-2409": {
-        "intelligence": -2.31
+        "intelligence": -2.32
       },
       "gemma-3-4b-it": {
-        "intelligence": -2.47
+        "intelligence": -2.48
       },
       "shieldstral-1-0-3b": {
         "intelligence": -2.74
@@ -92995,22 +93088,22 @@
         "intelligence": -3.15
       },
       "llama-3-1-8b-instruct": {
-        "intelligence": -3.17
+        "intelligence": -3.18
       },
       "gpt-5-1-codex-mini": {
-        "intelligence": -3.26
+        "intelligence": -3.27
       },
       "deepseek-r1-distill-qwen-1-5b": {
-        "intelligence": -3.56
+        "intelligence": -3.58
       },
       "qwen-2-5-coder-7b-instruct": {
-        "intelligence": -3.66
+        "intelligence": -3.68
       },
       "grok-4-20-beta-0309-non-reasoning": {
-        "intelligence": -3.75
+        "intelligence": -3.76
       },
       "phi-3-5-vision-instruct": {
-        "intelligence": -3.8
+        "intelligence": -3.81
       },
       "phi-3-5-mini-instruct": {
         "intelligence": -4.23
@@ -93025,46 +93118,46 @@
         "intelligence": -5.06
       },
       "ministral-8b-instruct-2410": {
-        "intelligence": -5.14
+        "intelligence": -5.15
       },
       "mistral-nemo-instruct-2407": {
         "intelligence": -5.23
       },
       "gemma-3n-e4b-it": {
-        "intelligence": -5.34
+        "intelligence": -5.35
       },
       "gemma-2-9b-it": {
-        "intelligence": -5.38
+        "intelligence": -5.39
       },
       "deepseek-vl2-tiny": {
-        "intelligence": -5.4
+        "intelligence": -5.41
       },
       "gemma-3n-e4b-it-litert-preview": {
-        "intelligence": -5.82
+        "intelligence": -5.83
       },
       "gemini-1-0-pro": {
         "intelligence": -5.95
       },
       "north-micro-vision-instruct": {
-        "intelligence": -5.96
+        "intelligence": -5.98
       },
       "jamba-1-5-mini": {
-        "intelligence": -6.09
+        "intelligence": -6.1
       },
       "granite-4-0-tiny-preview": {
-        "intelligence": -6.25
+        "intelligence": -6.26
       },
       "aion-1-0-instruct": {
-        "intelligence": -6.56
+        "intelligence": -6.57
       },
       "llama-3-2-3b-instruct": {
-        "intelligence": -6.57
+        "intelligence": -6.58
       },
       "gemma-3n-e4b": {
         "intelligence": -6.68
       },
       "ministral-3-3b-base-2512": {
-        "intelligence": -6.89
+        "intelligence": -6.9
       },
       "qwen3-5-0-8b": {
         "intelligence": -7.26
@@ -93076,124 +93169,124 @@
         "intelligence": -10.21
       },
       "gemma-3n-e2b": {
-        "intelligence": -10.77
+        "intelligence": -10.78
       },
       "gemma-3n-e2b-it": {
-        "intelligence": -11.24
+        "intelligence": -11.25
       },
       "gemma-3-1b-it": {
-        "intelligence": -11.3
+        "intelligence": -11.31
       },
       "ernie-4-5": {
         "intelligence": -14.14
       },
       "deepseek-v4-pro": {
-        "intelligence": 42.1,
+        "intelligence": 42.05,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "muse-spark-1-2-contributor": {
-        "intelligence": 35.72,
+        "intelligence": 35.87,
         "aliasOf": "muse-spark-1-2",
         "fallback": true
       },
       "muse-spark-1-3-contributor": {
-        "intelligence": 50.66,
+        "intelligence": 50.75,
         "aliasOf": "muse-spark-1-3",
         "fallback": true
       },
       "hy4": {
-        "intelligence": 40.76,
+        "intelligence": 40.95,
         "aliasOf": "hy4-flash",
         "fallback": true
       },
       "tencent-hy4-flash": {
-        "intelligence": 40.76,
+        "intelligence": 40.95,
         "aliasOf": "hy4-flash",
         "fallback": true
       },
       "tencent-hy4": {
-        "intelligence": 40.76,
+        "intelligence": 40.95,
         "aliasOf": "hy4-flash",
         "fallback": true
       },
       "tencent-hy4-preview": {
-        "intelligence": 40.76,
+        "intelligence": 40.95,
         "aliasOf": "hy4-flash",
         "fallback": true
       },
       "tencent-hy3": {
-        "intelligence": 41.56,
+        "intelligence": 41.55,
         "aliasOf": "hy3",
         "fallback": true
       },
       "kimi-k2-7-code-highspeed": {
-        "intelligence": 37.74,
+        "intelligence": 37.6,
         "aliasOf": "kimi-k2-7-code",
         "fallback": true
       },
       "glm-5-3-flashx": {
-        "intelligence": 49.2,
+        "intelligence": 49.27,
         "aliasOf": "glm-5-3",
         "fallback": true
       },
       "glm-5-2-fast": {
-        "intelligence": 44.01,
+        "intelligence": 43.84,
         "aliasOf": "glm-5-2",
         "fallback": true
       },
       "deepseek-v4-pro-latest": {
-        "intelligence": 42.1,
+        "intelligence": 42.05,
         "aliasOf": "deepseek-v4-pro-max",
         "fallback": true
       },
       "deepseek-v4-flash-latest": {
-        "intelligence": 38.28,
+        "intelligence": 38.15,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "deepseek-v4-flash-fast": {
-        "intelligence": 38.28,
+        "intelligence": 38.15,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "deepseek-v4-1-flash-latest": {
-        "intelligence": 48.23,
+        "intelligence": 48.31,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "deepseek-v4-1-flash-fast-latest": {
-        "intelligence": 48.23,
+        "intelligence": 48.31,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "deepseek-v4-1-flash-ultrafast": {
-        "intelligence": 48.23,
+        "intelligence": 48.31,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "qwen-4-max": {
-        "intelligence": 49.77,
+        "intelligence": 49.84,
         "aliasOf": "qwen4-max",
         "fallback": true
       },
       "qwen-3-8-omni-flash": {
-        "intelligence": 37.2,
+        "intelligence": 37.17,
         "aliasOf": "qwen3-8-omni-flash",
         "fallback": true
       },
       "qwen-3-8-max-prime": {
-        "intelligence": 49.42,
+        "intelligence": 49.4,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-max-0902": {
-        "intelligence": 49.42,
+        "intelligence": 49.4,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
       "qwen-3-8-max": {
-        "intelligence": 49.42,
+        "intelligence": 49.4,
         "aliasOf": "qwen3-8-max",
         "fallback": true
       },
@@ -93203,22 +93296,22 @@
         "fallback": true
       },
       "qwen-3-6-plus": {
-        "intelligence": 38.22,
+        "intelligence": 38.17,
         "aliasOf": "qwen3-6-plus",
         "fallback": true
       },
       "qwen-3-7-max": {
-        "intelligence": 44.06,
+        "intelligence": 44,
         "aliasOf": "qwen3-7-max",
         "fallback": true
       },
       "qwen-3-7-plus": {
-        "intelligence": 41.45,
+        "intelligence": 41.27,
         "aliasOf": "qwen3-7-plus",
         "fallback": true
       },
       "qwen-3-8-flash": {
-        "intelligence": 46.92,
+        "intelligence": 46.96,
         "aliasOf": "qwen3-8-flash",
         "fallback": true
       },
@@ -93233,37 +93326,37 @@
         "fallback": true
       },
       "mimo-v2-6-pro-ultraspeed": {
-        "intelligence": 47.44,
+        "intelligence": 47.59,
         "aliasOf": "mimo-v2-6-pro",
         "fallback": true
       },
       "nemotron-3-ultra": {
-        "intelligence": 35.27,
+        "intelligence": 35.53,
         "aliasOf": "nemotron-3-ultra-550b-a55b",
         "fallback": true
       },
       "nemotron-3-5-super-vl": {
-        "intelligence": 34.17,
+        "intelligence": 34.08,
         "aliasOf": "nemotron-3-5-super-vl-120b-a12b",
         "fallback": true
       },
       "claude-haiku-4-5": {
-        "intelligence": 24.3,
+        "intelligence": 24.24,
         "aliasOf": "claude-haiku-4-5-20251001",
         "fallback": true
       },
       "gemini-3-1-flash-lite": {
-        "intelligence": 29.94,
+        "intelligence": 29.95,
         "aliasOf": "gemini-3-1-flash-lite-preview",
         "fallback": true
       },
       "muse-ember": {
-        "intelligence": 44.77,
+        "intelligence": 44.93,
         "aliasOf": "muse-ember-1-0",
         "fallback": true
       },
       "qwen3-coder-next": {
-        "intelligence": 20.32,
+        "intelligence": 20.27,
         "aliasOf": "qwen3-coder-480b-a35b-instruct",
         "fallback": true
       },
@@ -93273,72 +93366,72 @@
         "fallback": true
       },
       "deepseek-v4-1-flash-fast": {
-        "intelligence": 48.23,
+        "intelligence": 48.31,
         "aliasOf": "deepseek-v4-1-flash",
         "fallback": true
       },
       "deepseek-v4-flash": {
-        "intelligence": 38.28,
+        "intelligence": 38.15,
         "aliasOf": "deepseek-v4-flash-max",
         "fallback": true
       },
       "qwen3-coder-480b": {
-        "intelligence": 20.32,
+        "intelligence": 20.27,
         "aliasOf": "qwen3-coder-480b-a35b-instruct",
         "fallback": true
       },
       "claude-sonnet-4": {
-        "intelligence": 35.98,
+        "intelligence": 36.02,
         "aliasOf": "claude-sonnet-4-6",
         "fallback": true
       },
       "claude-opus-4-8-fast-mode-preview": {
-        "intelligence": 48.65,
+        "intelligence": 48.69,
         "aliasOf": "claude-opus-4-8",
         "fallback": true
       },
       "gemini-3-8-flash-1": {
-        "intelligence": 47.49,
+        "intelligence": 47.58,
         "aliasOf": "gemini-3-8-flash",
         "fallback": true
       },
       "gemini-4-argon-2": {
-        "intelligence": 52.6,
+        "intelligence": 52.67,
         "aliasOf": "gemini-4-argon",
         "fallback": true
       },
       "gemini-4-carbon-3": {
-        "intelligence": 56.35,
+        "intelligence": 56.39,
         "aliasOf": "gemini-4-carbon",
         "fallback": true
       },
       "mai-code-2-4": {
-        "intelligence": 28.16,
+        "intelligence": 28.11,
         "aliasOf": "mai-code-1-flash",
         "fallback": true
       },
       "mai-code-2-flash-5": {
-        "intelligence": 28.16,
+        "intelligence": 28.11,
         "aliasOf": "mai-code-1-flash",
         "fallback": true
       },
       "beam": {
-        "intelligence": 43.33,
+        "intelligence": 43.13,
         "aliasOf": "beam-1-0-501b-a23b",
         "fallback": true
       },
       "gpt-oss120b": {
-        "intelligence": 27.98,
+        "intelligence": 27.92,
         "aliasOf": "gpt-oss-120b",
         "fallback": true
       },
       "gpt-oss20b": {
-        "intelligence": 17.13,
+        "intelligence": 17.05,
         "aliasOf": "gpt-oss-20b",
         "fallback": true
       },
       "nemotron-3-super": {
-        "intelligence": 25.82,
+        "intelligence": 25.75,
         "aliasOf": "nemotron-3-super-120b-a12b",
         "fallback": true
       }
@@ -93355,7 +93448,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-21",
+      "verifiedAt": "2026-11-22",
       "crawled": true
     },
     {
@@ -94042,12 +94135,12 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Fri, 20 Nov 2026 00:02:32 +0000",
+    "updatedAt": "Sun, 22 Nov 2026 00:02:32 +0000",
     "rates": {
-      "EUR": 0.910749,
-      "CNY": 6.69198,
-      "GBP": 0.762372,
-      "JPY": 159.74951
+      "EUR": 0.911256,
+      "CNY": 6.693346,
+      "GBP": 0.763601,
+      "JPY": 158.747474
     }
   },
   "statistics": {
