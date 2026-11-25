@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-24T13:47:18.290Z",
+  "generatedAt": "2026-11-25T12:59:52.264Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -80,9 +80,9 @@
         "count": 37,
         "min": 272.01508777020166,
         "max": 282485.8757062147,
-        "mean": 44878.957870569706,
+        "mean": 44970.956071493776,
         "median": 11367.942402425162,
-        "p25": 4411.764705882353,
+        "p25": 4538.57791225416,
         "p75": 22597.167821633022
       },
       "dataTier": "A",
@@ -911,7 +911,7 @@
         {
           "model": "Kimi K3.1 Pro",
           "family": "kimi k3.1 pro",
-          "allowance": 15,
+          "allowance": 60,
           "window": null,
           "windowNote": null,
           "costPerRequest": 0.01322,
@@ -923,17 +923,17 @@
           "creditsPerRequest": null,
           "providerPattern": null,
           "unit": "requests",
-          "requestsPerMonth": 1134.64447806354,
-          "requestsRawInWindow": 1134.64447806354,
-          "normalizedPer1": 113.464447806354,
+          "requestsPerMonth": 4538.57791225416,
+          "requestsRawInWindow": 4538.57791225416,
+          "normalizedPer1": 453.857791225416,
           "privacy": {
             "training": false,
             "retentionDays": true,
             "validUntil": null
           },
           "estimate": null,
-          "rawTokensPerMonth": 57823751.89107412,
-          "derivedTokensPerMonth": 57823751.89107412
+          "rawTokensPerMonth": 231295007.56429648,
+          "derivedTokensPerMonth": 231295007.56429648
         },
         {
           "model": "Gemini 4 Argon",
@@ -1155,7 +1155,7 @@
         "count": 37,
         "min": 1088.0603510808066,
         "max": 564971.7514124294,
-        "mean": 111851.6688343698,
+        "mean": 111974.33310226857,
         "median": 43091.06578569377,
         "p25": 16501.6501650165,
         "p75": 88235.29411764705
@@ -1986,7 +1986,7 @@
         {
           "model": "Kimi K3.1 Pro",
           "family": "kimi k3.1 pro",
-          "allowance": 60,
+          "allowance": 120,
           "window": null,
           "windowNote": null,
           "costPerRequest": 0.01322,
@@ -1998,17 +1998,17 @@
           "creditsPerRequest": null,
           "providerPattern": null,
           "unit": "requests",
-          "requestsPerMonth": 4538.57791225416,
-          "requestsRawInWindow": 4538.57791225416,
-          "normalizedPer1": 113.464447806354,
+          "requestsPerMonth": 9077.15582450832,
+          "requestsRawInWindow": 9077.15582450832,
+          "normalizedPer1": 226.928895612708,
           "privacy": {
             "training": false,
             "retentionDays": true,
             "validUntil": null
           },
           "estimate": null,
-          "rawTokensPerMonth": 231295007.56429648,
-          "derivedTokensPerMonth": 231295007.56429648
+          "rawTokensPerMonth": 462590015.12859297,
+          "derivedTokensPerMonth": 462590015.12859297
         },
         {
           "model": "Gemini 4 Argon",
@@ -2230,7 +2230,7 @@
         "count": 37,
         "min": 362.6867836936022,
         "max": 306026.3653483992,
-        "mean": 49502.14524869233,
+        "mean": 49594.14344961641,
         "median": 14363.688595231255,
         "p25": 5882.352941176471,
         "p75": 29842.283531535828
@@ -3061,7 +3061,7 @@
         {
           "model": "Kimi K3.1 Pro",
           "family": "kimi k3.1 pro",
-          "allowance": 20,
+          "allowance": 65,
           "window": null,
           "windowNote": null,
           "costPerRequest": 0.01322,
@@ -3073,17 +3073,17 @@
           "creditsPerRequest": null,
           "providerPattern": null,
           "unit": "requests",
-          "requestsPerMonth": 1512.85930408472,
-          "requestsRawInWindow": 1512.85930408472,
-          "normalizedPer1": 75.64296520423599,
+          "requestsPerMonth": 4916.7927382753405,
+          "requestsRawInWindow": 4916.7927382753405,
+          "normalizedPer1": 245.83963691376704,
           "privacy": {
             "training": false,
             "retentionDays": true,
             "validUntil": null
           },
           "estimate": null,
-          "rawTokensPerMonth": 77098335.8547655,
-          "derivedTokensPerMonth": 77098335.8547655
+          "rawTokensPerMonth": 250569591.5279879,
+          "derivedTokensPerMonth": 250569591.5279879
         },
         {
           "model": "Gemini 4 Argon",
@@ -38451,122 +38451,6 @@
       ]
     },
     {
-      "id": "stepfun-flash-mini",
-      "name": "Step Plan Flash Mini",
-      "provider": "stepfun",
-      "price": {
-        "monthlyUsd": 6.99,
-        "paidPrice": 6.99,
-        "advertised": 6.99,
-        "currency": "USD",
-        "monthlyCny": null,
-        "altPrice": null,
-        "yearlyUsd": 69.99,
-        "waitlist": null,
-        "billingNote": "Quarterly $18.99, yearly $69.99; credits are issued monthly and do not roll over"
-      },
-      "meter": "credits",
-      "quotas": [
-        {
-          "label": "Monthly",
-          "unit": "credits",
-          "amount": 400000000,
-          "window": "month",
-          "refresh": "monthly",
-          "disclosure": "exact"
-        }
-      ],
-      "windowCaps": {
-        "h5": null,
-        "weekly": null,
-        "monthly": 400000000
-      },
-      "officialConversion": null,
-      "disclosure": "disclosed",
-      "sourceIds": [
-        "stepfun-step-plan"
-      ],
-      "verifiedAt": "2026-09-23",
-      "modelCount": 2,
-      "modelStats": {
-        "count": 2,
-        "min": 24354.454734201565,
-        "max": 50993.0904362459,
-        "mean": 37673.772585223734,
-        "median": 37673.772585223734,
-        "p25": 31014.113659712646,
-        "p75": 44333.431510734816
-      },
-      "dataTier": "A",
-      "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
-      "notes": null,
-      "notesDe": null,
-      "priceNote": null,
-      "priceNoteDe": null,
-      "priceNoteSource": null,
-      "tag": null,
-      "tagDe": null,
-      "links": {
-        "overview": "https://platform.stepfun.ai/docs/en/step-plan/overview"
-      },
-      "modelRows": [
-        {
-          "model": "Step 3.7 Flash",
-          "family": "step 3.7 flash",
-          "allowance": 400000000,
-          "window": "month",
-          "windowNote": null,
-          "costPerRequest": 0.0023463000000000004,
-          "patternUsed": {
-            "input": 800,
-            "cachedRead": 50000,
-            "output": 162
-          },
-          "creditsPerRequest": 16424.100000000002,
-          "providerPattern": {
-            "input": 800,
-            "cachedRead": 50000,
-            "output": 162
-          },
-          "unit": "requests (provider credit formula)",
-          "requestsPerMonth": 24354.454734201565,
-          "requestsRawInWindow": 24354.454734201565,
-          "normalizedPer1": 3484.185226638278,
-          "privacy": null,
-          "estimate": null,
-          "rawTokensPerMonth": 1241151722.16438,
-          "derivedTokensPerMonth": 1241151722.16438
-        },
-        {
-          "model": "Step 3.5 Flash",
-          "family": "step 3.5 flash",
-          "allowance": 400000000,
-          "window": "month",
-          "windowNote": null,
-          "costPerRequest": 0.0011205999999999998,
-          "patternUsed": {
-            "input": 800,
-            "cachedRead": 50000,
-            "output": 162
-          },
-          "creditsPerRequest": 7844.199999999999,
-          "providerPattern": {
-            "input": 800,
-            "cachedRead": 50000,
-            "output": 162
-          },
-          "unit": "requests (provider credit formula)",
-          "requestsPerMonth": 50993.0904362459,
-          "requestsRawInWindow": 50993.0904362459,
-          "normalizedPer1": 7295.148846387109,
-          "privacy": null,
-          "estimate": null,
-          "rawTokensPerMonth": 2598709874.8119636,
-          "derivedTokensPerMonth": 2598709874.8119636
-        }
-      ]
-    },
-    {
       "id": "stepfun-flash-plus",
       "name": "Step Plan Flash Plus",
       "provider": "stepfun",
@@ -38803,22 +38687,22 @@
       "name": "Step Plan Flash Max",
       "provider": "stepfun",
       "price": {
-        "monthlyUsd": 99,
-        "paidPrice": 99,
-        "advertised": 99,
+        "monthlyUsd": 59,
+        "paidPrice": 59,
+        "advertised": 59,
         "currency": "USD",
         "monthlyCny": null,
         "altPrice": null,
-        "yearlyUsd": 989,
+        "yearlyUsd": 589,
         "waitlist": null,
-        "billingNote": "Quarterly $269, yearly $989; credits are issued monthly and do not roll over"
+        "billingNote": "Quarterly $159, yearly $589; credits are issued monthly and do not roll over"
       },
       "meter": "credits",
       "quotas": [
         {
           "label": "Monthly",
           "unit": "credits",
-          "amount": 40000000000,
+          "amount": 20000000000,
           "window": "month",
           "refresh": "monthly",
           "disclosure": "exact"
@@ -38827,7 +38711,7 @@
       "windowCaps": {
         "h5": null,
         "weekly": null,
-        "monthly": 40000000000
+        "monthly": 20000000000
       },
       "officialConversion": null,
       "disclosure": "disclosed",
@@ -38838,12 +38722,12 @@
       "modelCount": 2,
       "modelStats": {
         "count": 2,
-        "min": 2435445.4734201566,
-        "max": 5099309.043624589,
-        "mean": 3767377.2585223727,
-        "median": 3767377.2585223727,
-        "p25": 3101411.365971265,
-        "p75": 4433343.151073481
+        "min": 1217722.7367100783,
+        "max": 2549654.5218122946,
+        "mean": 1883688.6292611863,
+        "median": 1883688.6292611863,
+        "p25": 1550705.6829856324,
+        "p75": 2216671.5755367405
       },
       "dataTier": "A",
       "dataTierNote": "Official monthly credits and official USD->credits conversion from StepFun docs",
@@ -38861,7 +38745,7 @@
         {
           "model": "Step 3.7 Flash",
           "family": "step 3.7 flash",
-          "allowance": 40000000000,
+          "allowance": 20000000000,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0023463000000000004,
@@ -38877,18 +38761,18 @@
             "output": 162
           },
           "unit": "requests (provider credit formula)",
-          "requestsPerMonth": 2435445.4734201566,
-          "requestsRawInWindow": 2435445.4734201566,
-          "normalizedPer1": 24600.45932747633,
+          "requestsPerMonth": 1217722.7367100783,
+          "requestsRawInWindow": 1217722.7367100783,
+          "normalizedPer1": 20639.368418814887,
           "privacy": null,
           "estimate": null,
-          "rawTokensPerMonth": 124115172216.43802,
-          "derivedTokensPerMonth": 124115172216.43802
+          "rawTokensPerMonth": 62057586108.21901,
+          "derivedTokensPerMonth": 62057586108.21901
         },
         {
           "model": "Step 3.5 Flash",
           "family": "step 3.5 flash",
-          "allowance": 40000000000,
+          "allowance": 20000000000,
           "window": "month",
           "windowNote": null,
           "costPerRequest": 0.0011205999999999998,
@@ -38904,13 +38788,13 @@
             "output": 162
           },
           "unit": "requests (provider credit formula)",
-          "requestsPerMonth": 5099309.043624589,
-          "requestsRawInWindow": 5099309.043624589,
-          "normalizedPer1": 51508.172157824134,
+          "requestsPerMonth": 2549654.5218122946,
+          "requestsRawInWindow": 2549654.5218122946,
+          "normalizedPer1": 43214.48342054737,
           "privacy": null,
           "estimate": null,
-          "rawTokensPerMonth": 259870987481.19632,
-          "derivedTokensPerMonth": 259870987481.19632
+          "rawTokensPerMonth": 129935493740.59816,
+          "derivedTokensPerMonth": 129935493740.59816
         }
       ]
     },
@@ -45210,2233 +45094,2209 @@
     {
       "planA": "opencode-go",
       "planB": "opencode-go-plus",
-      "meanRequestsA": 44878.957870569706,
-      "meanRequestsB": 111851.6688343698,
-      "advantagePercent": 59.876362741599706,
+      "meanRequestsA": 44970.956071493776,
+      "meanRequestsB": 111974.33310226857,
+      "advantagePercent": 59.83815681186435,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "opencode-go-teams",
-      "meanRequestsA": 44878.957870569706,
-      "meanRequestsB": 49502.14524869233,
-      "advantagePercent": 9.339367728199122,
+      "meanRequestsA": 44970.956071493776,
+      "meanRequestsB": 49594.14344961641,
+      "advantagePercent": 9.322043000539793,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-go",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 2855.5681209927066,
-      "advantagePercent": 1471.6297412287975,
+      "advantagePercent": 1474.851453932751,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-goat",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 28555.68120992706,
-      "advantagePercent": 57.16297412287976,
+      "advantagePercent": 57.48514539327512,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 39251.65063648733,
-      "advantagePercent": 14.336485581707947,
+      "advantagePercent": 14.570866045796116,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max10",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 42833.521814890584,
-      "advantagePercent": 4.775316081919856,
+      "advantagePercent": 4.990096928850107,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-max20",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 85667.04362978117,
-      "advantagePercent": 47.61234195904007,
+      "advantagePercent": 47.504951535574946,
       "winner": "command-code-max20"
     },
     {
       "planA": "opencode-go",
       "planB": "command-code-team-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 11422.272483970826,
-      "advantagePercent": 292.90743530719936,
+      "advantagePercent": 293.71286348318773,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-lite",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 5826.662590275106,
-      "advantagePercent": 670.234369593911,
+      "advantagePercent": 671.8132871903687,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 34959.97554165064,
-      "advantagePercent": 28.37239493231849,
+      "advantagePercent": 28.63554786506144,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "glm-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 81573.27626385148,
-      "advantagePercent": 44.98325931472065,
+      "advantagePercent": 44.87047948640224,
       "winner": "glm-max"
     },
     {
       "planA": "opencode-go",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 90000,
-      "advantagePercent": 50.13449125492255,
+      "advantagePercent": 50.03227103167358,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-moderato",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3300,
-      "advantagePercent": 1259.9684203202942,
+      "advantagePercent": 1262.7562445907206,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 576.5672040789402,
+      "advantagePercent": 577.9541116305594,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-allegro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 23300,
-      "advantagePercent": 92.61355309257384,
+      "advantagePercent": 93.00839515662564,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kimi-vivace",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 5.280686624238196,
+      "advantagePercent": 5.086519762154095,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "claude-max-20x",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 165682,
-      "advantagePercent": 72.91259287637178,
+      "advantagePercent": 72.85706590245545,
       "winner": "claude-max-20x"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 1288.7964682212503,
+      "advantagePercent": 1291.6433876371275,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 594.4089784859693,
+      "advantagePercent": 595.8324602190005,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 177.7627318337204,
+      "advantagePercent": 178.33212276490366,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-power",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 38.8813659168602,
+      "advantagePercent": 39.16606138245182,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "amazon-q-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 50,
-      "advantagePercent": 89657.91574113941,
+      "advantagePercent": 89841.91214298755,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "amazon-q-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 1000,
-      "advantagePercent": 4387.89578705697,
+      "advantagePercent": 4397.095607149377,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 16001.358627428934,
+      "advantagePercent": 16034.365098533473,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 4730.40758822868,
+      "advantagePercent": 4740.309529560041,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 1280.116453779623,
+      "advantagePercent": 1282.9455798742977,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 7305,
-      "advantagePercent": 514.3594506580384,
+      "advantagePercent": 515.6188373921119,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 45660,
-      "advantagePercent": 1.7105609492560125,
+      "advantagePercent": 1.5090756209071965,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 60880,
-      "advantagePercent": 26.282920711942005,
+      "advantagePercent": 26.131806715680394,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "opencode-go",
       "planB": "augment-standard",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 2315.20379411434,
+      "advantagePercent": 2320.1547647800203,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "augment-business",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 383.040758822868,
+      "advantagePercent": 384.03095295600417,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "cursor-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 2738.3327277104277,
-      "advantagePercent": 1538.9154399105423,
+      "advantagePercent": 1542.2750828053993,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "cursor-ultra",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 54766.65455420856,
-      "advantagePercent": 18.054228004472893,
+      "advantagePercent": 17.886245859730042,
       "winner": "cursor-ultra"
     },
     {
       "planA": "opencode-go",
       "planB": "trae-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 1311.382655040655,
+      "advantagePercent": 1314.2758742961832,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "trae-pro-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 9539.360082884887,
-      "advantagePercent": 370.4608850135516,
+      "advantagePercent": 371.42529143206104,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "trae-ultra",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 31797.866942949622,
-      "advantagePercent": 41.13826550406547,
+      "advantagePercent": 41.42758742961832,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "zed-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 2669.288645690834,
-      "advantagePercent": 1581.3077874893766,
+      "advantagePercent": 1584.7543312369996,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "warp-build",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 968.8119514738097,
-      "advantagePercent": 4532.370379235865,
+      "advantagePercent": 4541.86636045122,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "warp-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 9688.119514738097,
-      "advantagePercent": 363.23703792358657,
+      "advantagePercent": 364.1866360451221,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "replit-core",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 1311.382655040655,
+      "advantagePercent": 1314.2758742961832,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kilo-pass",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3020.7973595802137,
-      "advantagePercent": 1385.6659526743738,
+      "advantagePercent": 1388.7114466275614,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "v0-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 4769.680041442443,
-      "advantagePercent": 840.9217700271032,
+      "advantagePercent": 842.8505828641221,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "bolt-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 196.22463796554297,
-      "advantagePercent": 22771.214509999732,
+      "advantagePercent": 22818.098633154656,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 2000,
-      "advantagePercent": 2143.947893528485,
+      "advantagePercent": 2148.5478035746887,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "bolt-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 19.622463796554296,
-      "advantagePercent": 228612.14509999732,
+      "advantagePercent": 229080.9863315466,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "bolt-teams",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 196.22463796554297,
-      "advantagePercent": 22771.214509999732,
+      "advantagePercent": 22818.098633154656,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "v0-business",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 4769.680041442443,
-      "advantagePercent": 840.9217700271032,
+      "advantagePercent": 842.8505828641221,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "qoder-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 1311.382655040655,
+      "advantagePercent": 1314.2758742961832,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "qoder-pro-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 9539.360082884887,
-      "advantagePercent": 370.4608850135516,
+      "advantagePercent": 371.42529143206104,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "qoder-ultra",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 31797.866942949622,
-      "advantagePercent": 41.13826550406547,
+      "advantagePercent": 41.42758742961832,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "qoder-teams",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 6359.5733885899235,
-      "advantagePercent": 605.6913275203275,
+      "advantagePercent": 607.1379371480916,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "lovable-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3974.7333678687028,
-      "advantagePercent": 1029.106124032524,
+      "advantagePercent": 1031.4206994369465,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "replit-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 15898.933471474811,
-      "advantagePercent": 182.27653100813095,
+      "advantagePercent": 182.85517485923663,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "warp-business",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 968.8119514738097,
-      "advantagePercent": 4532.370379235865,
+      "advantagePercent": 4541.86636045122,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-business-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 2315.20379411434,
+      "advantagePercent": 2320.1547647800203,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "jetbrains-ai-business-ultimate",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 6503.647970816233,
-      "advantagePercent": 590.0582268898115,
+      "advantagePercent": 591.4727899371488,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kiro-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 161.5,
-      "advantagePercent": 27688.82840282954,
+      "advantagePercent": 27745.793233123084,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "trae-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 5000,
-      "advantagePercent": 797.5791574113941,
+      "advantagePercent": 799.4191214298755,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "lovable-business",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 3974.7333678687028,
-      "advantagePercent": 1029.106124032524,
+      "advantagePercent": 1031.4206994369465,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "codebuddy-free",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 5000,
-      "advantagePercent": 797.5791574113941,
+      "advantagePercent": 799.4191214298755,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kilo-pass-49",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 7790.477401022657,
-      "advantagePercent": 476.0745530778182,
+      "advantagePercent": 477.2554588964013,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "kilo-pass-199",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 31638.87760823487,
-      "advantagePercent": 41.847503019161294,
+      "advantagePercent": 42.13827882373702,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-starter",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 9422.354885807366,
-      "advantagePercent": 376.3029881008796,
+      "advantagePercent": 377.27937035392597,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-economy",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 19315.8275159051,
-      "advantagePercent": 132.3429210248193,
+      "advantagePercent": 132.8192050506956,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-standard",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 44756.18570758498,
-      "advantagePercent": 0.274313284395733,
+      "advantagePercent": 0.47986744293180283,
       "winner": "draw"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 126730.67321410905,
-      "advantagePercent": 64.58713843116136,
+      "advantagePercent": 64.51454495509843,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-proplus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 258643.64161541214,
-      "advantagePercent": 82.64834287428488,
+      "advantagePercent": 82.6127733932996,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-growth",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 527180.7558609222,
-      "advantagePercent": 91.48698859515854,
+      "advantagePercent": 91.4695376165518,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "opencode-go",
       "planB": "standardcompute-scale",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 1342214.453483259,
-      "advantagePercent": 96.6563496798815,
+      "advantagePercent": 96.64949546961091,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-starter",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 98471.79409374151,
-      "advantagePercent": 54.42455549469669,
+      "advantagePercent": 54.331129553013845,
       "winner": "freebuff-starter"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 156825.44985299572,
-      "advantagePercent": 71.38286042690257,
+      "advantagePercent": 71.32419762631102,
       "winner": "freebuff-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "freebuff-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 255297.24394673726,
-      "advantagePercent": 82.42089997652586,
+      "advantagePercent": 82.38486425616249,
       "winner": "freebuff-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "opendesign-go",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 87893.12099358032,
-      "advantagePercent": 48.93916911444338,
+      "advantagePercent": 48.834498578360375,
       "winner": "opendesign-go"
     },
     {
       "planA": "opencode-go",
       "planB": "opendesign-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 117190.82799144043,
-      "advantagePercent": 61.70437683583254,
+      "advantagePercent": 61.62587393377028,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "opendesign-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 263679.36298074096,
-      "advantagePercent": 82.9797230381478,
+      "advantagePercent": 82.94483285945346,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "opendesign-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 439465.60496790166,
-      "advantagePercent": 89.78783382288867,
+      "advantagePercent": 89.76689971567208,
       "winner": "opendesign-max"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-lite",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 14086.910143170182,
-      "advantagePercent": 218.58624364356132,
+      "advantagePercent": 219.2393194422216,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-standard",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 37794.149164602924,
-      "advantagePercent": 18.745781721691035,
+      "advantagePercent": 18.989200883009882,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 130561.60620499193,
-      "advantagePercent": 65.62622108056313,
+      "advantagePercent": 65.55575763912871,
       "winner": "mimo-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "mimo-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 281738.20286340365,
-      "advantagePercent": 84.07068781782193,
+      "advantagePercent": 84.03803402788893,
       "winner": "mimo-max"
     },
     {
       "planA": "opencode-go",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 44878.957870569706,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 19.12520247088809,
-      "winner": "opencode-go"
-    },
-    {
-      "planA": "opencode-go",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 70.21869938227798,
+      "advantagePercent": 70.15765014655572,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "opencode-go",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 94.04373987645559,
+      "advantagePercent": 94.03153002931116,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "opencode-go",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 44878.957870569706,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.80874797529113,
+      "meanRequestsA": 44970.956071493776,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.61261201172445,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "opencode-go",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 213.06414955650092,
+      "advantagePercent": 213.70590551295794,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 37.387170088699804,
+      "advantagePercent": 37.25881889740841,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 4635.813613454593,
-      "advantagePercent": 868.092369812212,
+      "advantagePercent": 870.0768801613137,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 21633.7968627881,
-      "advantagePercent": 107.44836495975973,
+      "advantagePercent": 107.87361717742439,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 61810.848179394576,
-      "advantagePercent": 27.393072264084108,
+      "advantagePercent": 27.244233987901477,
       "winner": "copilot-max"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-business",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 5872.030577042485,
-      "advantagePercent": 664.2834498517462,
+      "advantagePercent": 665.8501685484055,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 12053.115394981944,
-      "advantagePercent": 272.343219158543,
+      "advantagePercent": 273.1064923697359,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-pro",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 37354.244963964426,
-      "advantagePercent": 20.144197570756294,
+      "advantagePercent": 20.390483370436698,
       "winner": "opencode-go"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-max",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 186771.22481982212,
-      "advantagePercent": 75.97116048584873,
+      "advantagePercent": 75.92190332591267,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go",
       "planB": "ollama-team",
-      "meanRequestsA": 44878.957870569706,
+      "meanRequestsA": 44970.956071493776,
       "meanRequestsB": 622570.7493994071,
-      "advantagePercent": 92.79134814575463,
+      "advantagePercent": 92.7765709977738,
       "winner": "ollama-team"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "opencode-go-teams",
-      "meanRequestsA": 111851.6688343698,
-      "meanRequestsB": 49502.14524869233,
-      "advantagePercent": 125.95317490270692,
+      "meanRequestsA": 111974.33310226857,
+      "meanRequestsB": 49594.14344961641,
+      "advantagePercent": 125.7813631079753,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "command-code-go",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 2855.5681209927066,
-      "advantagePercent": 3816.9672756917394,
+      "advantagePercent": 3821.2628926303446,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "command-code-goat",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 28555.68120992706,
-      "advantagePercent": 291.69672756917396,
+      "advantagePercent": 292.1262892630345,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "command-code-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 39251.65063648733,
-      "advantagePercent": 184.96042082468597,
+      "advantagePercent": 185.27292811013686,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "command-code-max10",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 42833.521814890584,
-      "advantagePercent": 161.1311517127827,
+      "advantagePercent": 161.41752617535636,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "command-code-max20",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 85667.04362978117,
-      "advantagePercent": 30.565575856391348,
+      "advantagePercent": 30.708763087678182,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "command-code-team-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 11422.272483970826,
-      "advantagePercent": 879.2418189229348,
+      "advantagePercent": 880.3157231575861,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "glm-lite",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 5826.662590275106,
-      "advantagePercent": 1819.652409958558,
+      "advantagePercent": 1821.7576334205016,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "glm-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 34959.97554165064,
-      "advantagePercent": 219.9420683264263,
+      "advantagePercent": 220.2929389034169,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "glm-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 81573.27626385148,
-      "advantagePercent": 37.11802928275414,
+      "advantagePercent": 37.26840238717868,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 90000,
-      "advantagePercent": 24.27963203818868,
+      "advantagePercent": 24.41592566918731,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kimi-moderato",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3300,
-      "advantagePercent": 3289.444510132418,
+      "advantagePercent": 3293.161609159654,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 1586.2060628296956,
+      "advantagePercent": 1588.0552728985213,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kimi-allegro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 23300,
-      "advantagePercent": 380.0500808342052,
+      "advantagePercent": 380.57653691960763,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kimi-vivace",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 136.0686115412714,
+      "advantagePercent": 136.32750069071687,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "claude-max-20x",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 165682,
-      "advantagePercent": 32.49015050858283,
+      "advantagePercent": 32.41611454336103,
       "winner": "claude-max-20x"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kiro-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 3361.2925525102833,
+      "advantagePercent": 3365.0884450647864,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 1630.6730544240172,
+      "advantagePercent": 1632.5710300680591,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 592.2670794895794,
+      "advantagePercent": 593.0262673978237,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kiro-power",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 246.1335397447897,
+      "advantagePercent": 246.51313369891187,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "amazon-q-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 50,
-      "advantagePercent": 223603.3376687396,
+      "advantagePercent": 223848.66620453712,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "amazon-q-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 1000,
-      "advantagePercent": 11085.166883436981,
+      "advantagePercent": 11097.433310226857,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 40029.359468919916,
+      "advantagePercent": 40073.3680970593,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 11938.807840675972,
+      "advantagePercent": 11952.010429117789,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 3339.659383050279,
+      "advantagePercent": 3343.431551176511,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 7305,
-      "advantagePercent": 1431.1658978010926,
+      "advantagePercent": 1432.8450801131905,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 45660,
-      "advantagePercent": 144.9664232027372,
+      "advantagePercent": 145.23507030720234,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 60880,
-      "advantagePercent": 83.72481740205289,
+      "advantagePercent": 83.92630273040173,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "augment-standard",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 5919.403920337986,
+      "advantagePercent": 5926.005214558894,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "augment-business",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 1103.8807840675975,
+      "advantagePercent": 1105.201042911779,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "cursor-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 2738.3327277104277,
-      "advantagePercent": 3984.663185831735,
+      "advantagePercent": 3989.142709691545,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "cursor-ultra",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 54766.65455420856,
-      "advantagePercent": 104.23315929158674,
+      "advantagePercent": 104.45713548457722,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "trae-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 3417.5840264709996,
+      "advantagePercent": 3421.4416521450376,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "trae-pro-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 9539.360082884887,
-      "advantagePercent": 1072.5280088236661,
+      "advantagePercent": 1073.8138840483457,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "trae-ultra",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 31797.866942949622,
-      "advantagePercent": 251.7584026470999,
+      "advantagePercent": 252.1441652145037,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "zed-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 2669.288645690834,
-      "advantagePercent": 4090.3174845829253,
+      "advantagePercent": 4094.9128762464234,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "warp-build",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 968.8119514738097,
-      "advantagePercent": 11445.240401319877,
+      "advantagePercent": 11457.901709607018,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "warp-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 9688.119514738097,
-      "advantagePercent": 1054.524040131988,
+      "advantagePercent": 1055.790170960702,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "replit-core",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 3417.5840264709996,
+      "advantagePercent": 3421.4416521450376,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kilo-pass",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3020.7973595802137,
-      "advantagePercent": 3602.72002786421,
+      "advantagePercent": 3606.7806864684608,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "v0-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 4769.680041442443,
-      "advantagePercent": 2245.0560176473323,
+      "advantagePercent": 2247.6277680966914,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "bolt-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 196.22463796554297,
-      "advantagePercent": 56901.84747137153,
+      "advantagePercent": 56964.359635578105,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 2000,
-      "advantagePercent": 5492.583441718491,
+      "advantagePercent": 5498.716655113429,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "bolt-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 19.622463796554296,
-      "advantagePercent": 569918.4747137154,
+      "advantagePercent": 570543.5963557811,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "bolt-teams",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 196.22463796554297,
-      "advantagePercent": 56901.84747137153,
+      "advantagePercent": 56964.359635578105,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "v0-business",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 4769.680041442443,
-      "advantagePercent": 2245.0560176473323,
+      "advantagePercent": 2247.6277680966914,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "qoder-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 3417.5840264709996,
+      "advantagePercent": 3421.4416521450376,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "qoder-pro-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 9539.360082884887,
-      "advantagePercent": 1072.5280088236661,
+      "advantagePercent": 1073.8138840483457,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "qoder-ultra",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 31797.866942949622,
-      "advantagePercent": 251.7584026470999,
+      "advantagePercent": 252.1441652145037,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "qoder-teams",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 6359.5733885899235,
-      "advantagePercent": 1658.7920132354998,
+      "advantagePercent": 1660.7208260725188,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "lovable-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3974.7333678687028,
-      "advantagePercent": 2714.067221176799,
+      "advantagePercent": 2717.1533217160295,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "replit-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 15898.933471474811,
-      "advantagePercent": 603.5168052941998,
+      "advantagePercent": 604.2883304290074,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "warp-business",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 968.8119514738097,
-      "advantagePercent": 11445.240401319877,
+      "advantagePercent": 11457.901709607018,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "jetbrains-ai-business-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 5919.403920337986,
+      "advantagePercent": 5926.005214558894,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "jetbrains-ai-business-ultimate",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 6503.647970816233,
-      "advantagePercent": 1619.8296915251394,
+      "advantagePercent": 1621.7157755882556,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kiro-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 161.5,
-      "advantagePercent": 69157.99927824756,
+      "advantagePercent": 69233.95238530562,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "trae-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 5000,
-      "advantagePercent": 2137.0333766873964,
+      "advantagePercent": 2139.4866620453718,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "lovable-business",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 3974.7333678687028,
-      "advantagePercent": 2714.067221176799,
+      "advantagePercent": 2717.1533217160295,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "codebuddy-free",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 5000,
-      "advantagePercent": 2137.0333766873964,
+      "advantagePercent": 2139.4866620453718,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kilo-pass-49",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 7790.477401022657,
-      "advantagePercent": 1335.7485822330607,
+      "advantagePercent": 1337.3231233245049,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "kilo-pass-199",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 31638.87760823487,
-      "advantagePercent": 253.52603281115572,
+      "advantagePercent": 253.91373388392338,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-starter",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 9422.354885807366,
-      "advantagePercent": 1087.0882617980023,
+      "advantagePercent": 1088.3901048020641,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-economy",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 19315.8275159051,
-      "advantagePercent": 479.06744477951327,
+      "advantagePercent": 479.7024901473484,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-standard",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 44756.18570758498,
-      "advantagePercent": 149.9133182732637,
+      "advantagePercent": 150.18739048464516,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 126730.67321410905,
-      "advantagePercent": 11.740649680445914,
+      "advantagePercent": 11.64385837902866,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-proplus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 258643.64161541214,
-      "advantagePercent": 56.75452598185783,
+      "advantagePercent": 56.70710000721076,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-growth",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 527180.7558609222,
-      "advantagePercent": 78.78305162112596,
+      "advantagePercent": 78.75978364965033,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "standardcompute-scale",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 1342214.453483259,
-      "advantagePercent": 91.66663206881009,
+      "advantagePercent": 91.65749312178264,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "freebuff-starter",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 98471.79409374151,
-      "advantagePercent": 13.587520024151424,
+      "advantagePercent": 13.712087946395224,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "freebuff-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 156825.44985299572,
-      "advantagePercent": 28.677603705765375,
+      "advantagePercent": 28.599386638309966,
       "winner": "freebuff-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "freebuff-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 255297.24394673726,
-      "advantagePercent": 56.187670847827306,
+      "advantagePercent": 56.13962322067613,
       "winner": "freebuff-pro"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "opendesign-go",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 87893.12099358032,
-      "advantagePercent": 27.258729204233646,
+      "advantagePercent": 27.39828991901099,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "opendesign-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 117190.82799144043,
-      "advantagePercent": 4.555953096824772,
+      "advantagePercent": 4.451282560741754,
       "winner": "draw"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "opendesign-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 263679.36298074096,
-      "advantagePercent": 57.580423598588794,
+      "advantagePercent": 57.53390336032966,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "opendesign-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 439465.60496790166,
-      "advantagePercent": 74.54825415915327,
+      "advantagePercent": 74.5203420161978,
       "winner": "opendesign-max"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "mimo-lite",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 14086.910143170182,
-      "advantagePercent": 694.0113743722525,
+      "advantagePercent": 694.8821421037997,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "mimo-standard",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 37794.149164602924,
-      "advantagePercent": 195.94969408420323,
+      "advantagePercent": 196.2742529659617,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "mimo-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 130561.60620499193,
-      "advantagePercent": 14.330351712467493,
+      "advantagePercent": 14.23640045722161,
       "winner": "mimo-pro"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "mimo-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 281738.20286340365,
-      "advantagePercent": 60.29943128138737,
+      "advantagePercent": 60.25589289481002,
       "winner": "mimo-max"
     },
     {
       "planA": "opencode-go-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 111851.6688343698,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 196.89532308277472,
-      "winner": "opencode-go-plus"
-    },
-    {
-      "planA": "opencode-go-plus",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 25.776169229306323,
+      "advantagePercent": 25.694770248343325,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 85.15523384586126,
+      "advantagePercent": 85.13895404966867,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 111851.6688343698,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 97.03104676917226,
+      "meanRequestsA": 111974.33310226857,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 94.05558161986747,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 680.2486787036183,
+      "advantagePercent": 681.1043533122277,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 56.04973574072367,
+      "advantagePercent": 56.22087066244556,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 4635.813613454593,
-      "advantagePercent": 2312.773207916319,
+      "advantagePercent": 2315.4192217151212,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 21633.7968627881,
-      "advantagePercent": 417.02283026778264,
+      "advantagePercent": 417.5898332246689,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 61810.848179394576,
-      "advantagePercent": 80.9579905937239,
+      "advantagePercent": 81.15644162863408,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-business",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 5872.030577042485,
-      "advantagePercent": 1804.8209536181464,
+      "advantagePercent": 1806.9099118803588,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 12053.115394981944,
-      "advantagePercent": 827.9896953524302,
+      "advantagePercent": 829.0073929673543,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "ollama-pro",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 37354.244963964426,
-      "advantagePercent": 199.43496098575383,
+      "advantagePercent": 199.7633420519944,
       "winner": "opencode-go-plus"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "ollama-max",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 186771.22481982212,
-      "advantagePercent": 40.11300780284922,
+      "advantagePercent": 40.04733158960112,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go-plus",
       "planB": "ollama-team",
-      "meanRequestsA": 111851.6688343698,
+      "meanRequestsA": 111974.33310226857,
       "meanRequestsB": 622570.7493994071,
-      "advantagePercent": 82.03390234085477,
+      "advantagePercent": 82.01419947688034,
       "winner": "ollama-team"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "command-code-go",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 2855.5681209927066,
-      "advantagePercent": 1633.5305323230552,
+      "advantagePercent": 1636.7522450270092,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "command-code-goat",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 28555.68120992706,
-      "advantagePercent": 73.35305323230554,
+      "advantagePercent": 73.67522450270091,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "command-code-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 39251.65063648733,
-      "advantagePercent": 26.114811596423436,
+      "advantagePercent": 26.349192060511626,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "command-code-max10",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 42833.521814890584,
-      "advantagePercent": 15.568702154870383,
+      "advantagePercent": 15.783483001800636,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "command-code-max20",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 85667.04362978117,
-      "advantagePercent": 42.21564892256481,
+      "advantagePercent": 42.10825849909968,
       "winner": "command-code-max20"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "command-code-team-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 11422.272483970826,
-      "advantagePercent": 333.3826330807638,
+      "advantagePercent": 334.1880612567523,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "glm-lite",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 5826.662590275106,
-      "advantagePercent": 749.5797462395208,
+      "advantagePercent": 751.1586638359786,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "glm-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 34959.97554165064,
-      "advantagePercent": 41.59662437325344,
+      "advantagePercent": 41.85977730599642,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "glm-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 81573.27626385148,
-      "advantagePercent": 39.315732411462804,
+      "advantagePercent": 39.20295258314439,
       "winner": "glm-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "qwen-coding-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 90000,
-      "advantagePercent": 44.997616390341854,
+      "advantagePercent": 44.89539616709288,
       "winner": "qwen-coding-pro"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kimi-moderato",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3300,
-      "advantagePercent": 1400.0650075361311,
+      "advantagePercent": 1402.8528318065578,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kimi-allegretto",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 6633.333333333334,
-      "advantagePercent": 646.2634962114421,
+      "advantagePercent": 647.6504037630614,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kimi-allegro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 23300,
-      "advantagePercent": 112.4555590072632,
+      "advantagePercent": 112.85040107131503,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kimi-vivace",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 47381.00000000001,
-      "advantagePercent": 4.476784467808459,
+      "advantagePercent": 4.67095132989257,
       "winner": "draw"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "claude-max-20x",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 165682,
-      "advantagePercent": 70.12219477753025,
+      "advantagePercent": 70.0666678036139,
       "winner": "claude-max-20x"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kiro-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3231.5,
-      "advantagePercent": 1431.862764929362,
+      "advantagePercent": 1434.7096843452393,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kiro-pro-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 6462.9,
-      "advantagePercent": 665.9432336674299,
+      "advantagePercent": 667.3667154004613,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kiro-pro-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 16157.3,
-      "advantagePercent": 206.37634535901626,
+      "advantagePercent": 206.94573629019953,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kiro-power",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 32314.6,
-      "advantagePercent": 53.18817267950813,
+      "advantagePercent": 53.472868145099774,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "amazon-q-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 50,
-      "advantagePercent": 98904.29049738466,
+      "advantagePercent": 99088.28689923281,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "amazon-q-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 1000,
-      "advantagePercent": 4850.214524869233,
+      "advantagePercent": 4859.414344961641,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "jetbrains-ai-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 278.7277701778386,
-      "advantagePercent": 17660.033461003233,
+      "advantagePercent": 17693.03993210778,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "jetbrains-ai-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 929.092567259462,
-      "advantagePercent": 5228.01003830097,
+      "advantagePercent": 5237.911979632332,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "jetbrains-ai-ultimate",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3251.8239854081166,
-      "advantagePercent": 1422.288582371706,
+      "advantagePercent": 1425.117708466381,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "gemini-code-assist-individual",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 7305,
-      "advantagePercent": 577.6474366692995,
+      "advantagePercent": 578.9068234033731,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "gemini-code-assist-standard",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 45660,
-      "advantagePercent": 8.414685170154023,
+      "advantagePercent": 8.616170498502873,
       "winner": "draw"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "gemini-code-assist-enterprise",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 60880,
-      "advantagePercent": 18.688986122384478,
+      "advantagePercent": 18.537872126122856,
       "winner": "gemini-code-assist-enterprise"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "augment-standard",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 2564.005019150485,
+      "advantagePercent": 2568.955989816166,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "augment-business",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 9290.92567259462,
-      "advantagePercent": 432.80100383009705,
+      "advantagePercent": 433.7911979632333,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "cursor-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 2738.3327277104277,
-      "advantagePercent": 1707.7476395676001,
+      "advantagePercent": 1711.1072824624575,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "cursor-ultra",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 54766.65455420856,
-      "advantagePercent": 9.612618021620012,
+      "advantagePercent": 9.44463587687714,
       "winner": "draw"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "trae-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 1456.7756584901426,
+      "advantagePercent": 1459.6688777456714,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "trae-pro-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 9539.360082884887,
-      "advantagePercent": 418.9252194967142,
+      "advantagePercent": 419.8896259152237,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "trae-ultra",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 31797.866942949622,
-      "advantagePercent": 55.67756584901424,
+      "advantagePercent": 55.96688777456711,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "zed-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 2669.288645690834,
-      "advantagePercent": 1754.507017388551,
+      "advantagePercent": 1757.9535611361741,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "warp-build",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 968.8119514738097,
-      "advantagePercent": 5009.572107712644,
+      "advantagePercent": 5019.068088927999,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "warp-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 9688.119514738097,
-      "advantagePercent": 410.95721077126433,
+      "advantagePercent": 411.9068088928,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "replit-core",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 1456.7756584901426,
+      "advantagePercent": 1459.6688777456714,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kilo-pass",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3020.7973595802137,
-      "advantagePercent": 1538.711219463308,
+      "advantagePercent": 1541.7567134164963,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "v0-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 4769.680041442443,
-      "advantagePercent": 937.8504389934284,
+      "advantagePercent": 939.7792518304474,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "bolt-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 196.22463796554297,
-      "advantagePercent": 25127.283261638586,
+      "advantagePercent": 25174.167384793513,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 2000,
-      "advantagePercent": 2375.1072624346166,
+      "advantagePercent": 2379.7071724808206,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "bolt-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 19.622463796554296,
-      "advantagePercent": 252172.83261638586,
+      "advantagePercent": 252641.67384793513,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "bolt-teams",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 196.22463796554297,
-      "advantagePercent": 25127.283261638586,
+      "advantagePercent": 25174.167384793513,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "v0-business",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 4769.680041442443,
-      "advantagePercent": 937.8504389934284,
+      "advantagePercent": 939.7792518304474,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "qoder-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3179.7866942949618,
-      "advantagePercent": 1456.7756584901426,
+      "advantagePercent": 1459.6688777456714,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "qoder-pro-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 9539.360082884887,
-      "advantagePercent": 418.9252194967142,
+      "advantagePercent": 419.8896259152237,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "qoder-ultra",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 31797.866942949622,
-      "advantagePercent": 55.67756584901424,
+      "advantagePercent": 55.96688777456711,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "qoder-teams",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 6359.5733885899235,
-      "advantagePercent": 678.3878292450713,
+      "advantagePercent": 679.8344388728357,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "lovable-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3974.7333678687028,
-      "advantagePercent": 1145.4205267921138,
+      "advantagePercent": 1147.735102196537,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "replit-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 15898.933471474811,
-      "advantagePercent": 211.3551316980285,
+      "advantagePercent": 211.93377554913423,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "warp-business",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 968.8119514738097,
-      "advantagePercent": 5009.572107712644,
+      "advantagePercent": 5019.068088927999,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "jetbrains-ai-business-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 1858.185134518924,
-      "advantagePercent": 2564.005019150485,
+      "advantagePercent": 2568.955989816166,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "jetbrains-ai-business-ultimate",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 6503.647970816233,
-      "advantagePercent": 661.144291185853,
+      "advantagePercent": 662.5588542331905,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kiro-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 161.5,
-      "advantagePercent": 30551.483126125284,
+      "advantagePercent": 30608.447956418826,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "trae-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 5000,
-      "advantagePercent": 890.0429049738467,
+      "advantagePercent": 891.8828689923281,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "lovable-business",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 3974.7333678687028,
-      "advantagePercent": 1145.4205267921138,
+      "advantagePercent": 1147.735102196537,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "codebuddy-free",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 5000,
-      "advantagePercent": 890.0429049738467,
+      "advantagePercent": 891.8828689923281,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kilo-pass-49",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 7790.477401022657,
-      "advantagePercent": 535.4186361184254,
+      "advantagePercent": 536.5995419370086,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "kilo-pass-199",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 31638.87760823487,
-      "advantagePercent": 56.459865174888705,
+      "advantagePercent": 56.75064097946445,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-starter",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 9422.354885807366,
-      "advantagePercent": 425.36914442965895,
+      "advantagePercent": 426.34552668270544,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-economy",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 19315.8275159051,
-      "advantagePercent": 156.27763142910194,
+      "advantagePercent": 156.75391545497823,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-standard",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 44756.18570758498,
-      "advantagePercent": 10.604030406244025,
+      "advantagePercent": 10.809584564780117,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 126730.67321410905,
-      "advantagePercent": 60.93909706842684,
+      "advantagePercent": 60.8665035923639,
       "winner": "standardcompute-pro"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-proplus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 258643.64161541214,
-      "advantagePercent": 80.86086905538583,
+      "advantagePercent": 80.82529957440052,
       "winner": "standardcompute-proplus"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-growth",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 527180.7558609222,
-      "advantagePercent": 90.6100242282456,
+      "advantagePercent": 90.59257324963886,
       "winner": "standardcompute-growth"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "standardcompute-scale",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 1342214.453483259,
-      "advantagePercent": 96.31190491800872,
+      "advantagePercent": 96.30505070773812,
       "winner": "standardcompute-scale"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "freebuff-starter",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 98471.79409374151,
-      "advantagePercent": 49.72961983248917,
+      "advantagePercent": 49.636193890806325,
       "winner": "freebuff-starter"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "freebuff-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 156825.44985299572,
-      "advantagePercent": 68.43487756923739,
+      "advantagePercent": 68.37621476864582,
       "winner": "freebuff-plus"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "freebuff-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 255297.24394673726,
-      "advantagePercent": 80.60999622110296,
+      "advantagePercent": 80.57396050073959,
       "winner": "freebuff-pro"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "opendesign-go",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 87893.12099358032,
-      "advantagePercent": 43.679158631415596,
+      "advantagePercent": 43.574488095332576,
       "winner": "opendesign-go"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "opendesign-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 117190.82799144043,
-      "advantagePercent": 57.7593689735617,
+      "advantagePercent": 57.68086607149942,
       "winner": "opendesign-plus"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "opendesign-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 263679.36298074096,
-      "advantagePercent": 81.22638621047187,
+      "advantagePercent": 81.19149603177752,
       "winner": "opendesign-pro"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "opendesign-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 439465.60496790166,
-      "advantagePercent": 88.73583172628312,
+      "advantagePercent": 88.71489761906652,
       "winner": "opendesign-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "mimo-lite",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 14086.910143170182,
-      "advantagePercent": 251.40527443977962,
+      "advantagePercent": 252.05835023844,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "mimo-standard",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 37794.149164602924,
-      "advantagePercent": 30.97832956391786,
+      "advantagePercent": 31.22174872523673,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "mimo-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 130561.60620499193,
-      "advantagePercent": 62.08522038939219,
+      "advantagePercent": 62.01475694795779,
       "winner": "mimo-pro"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "mimo-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 281738.20286340365,
-      "advantagePercent": 82.42973627801102,
+      "advantagePercent": 82.397082488078,
       "winner": "mimo-max"
     },
     {
       "planA": "opencode-go-teams",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 49502.14524869233,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 31.39683618546838,
-      "winner": "opencode-go-teams"
-    },
-    {
-      "planA": "opencode-go-teams",
       "planB": "stepfun-flash-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 67.1507909536329,
+      "advantagePercent": 67.08974171791064,
       "winner": "stepfun-flash-plus"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "stepfun-flash-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 93.43015819072657,
+      "advantagePercent": 93.41794834358213,
       "winner": "stepfun-flash-pro"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "stepfun-flash-max",
-      "meanRequestsA": 49502.14524869233,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.68603163814531,
+      "meanRequestsA": 49594.14344961641,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.36717933743286,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 245.31432410258685,
+      "advantagePercent": 245.9560800590439,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 30.937135179482624,
+      "advantagePercent": 30.808783988191212,
       "winner": "cerebras-code-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 4635.813613454593,
-      "advantagePercent": 967.8200069351687,
+      "advantagePercent": 969.8045172842706,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 21633.7968627881,
-      "advantagePercent": 128.81857291467904,
+      "advantagePercent": 129.2438251323437,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 61810.848179394576,
-      "advantagePercent": 19.913499479862352,
+      "advantagePercent": 19.76466120367971,
       "winner": "copilot-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-business",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 5872.030577042485,
-      "advantagePercent": 743.0157949488173,
+      "advantagePercent": 744.5825136454766,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 12053.115394981944,
-      "advantagePercent": 310.7000026673725,
+      "advantagePercent": 311.4632758785655,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "ollama-pro",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 37354.244963964426,
-      "advantagePercent": 32.52080264625068,
+      "advantagePercent": 32.76708844593108,
       "winner": "opencode-go-teams"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "ollama-max",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 186771.22481982212,
-      "advantagePercent": 73.49583947074987,
+      "advantagePercent": 73.44658231081378,
       "winner": "ollama-max"
     },
     {
       "planA": "opencode-go-teams",
       "planB": "ollama-team",
-      "meanRequestsA": 49502.14524869233,
+      "meanRequestsA": 49594.14344961641,
       "meanRequestsB": 622570.7493994071,
-      "advantagePercent": 92.04875184122497,
+      "advantagePercent": 92.03397469324413,
       "winner": "ollama-team"
     },
     {
@@ -48057,14 +47917,6 @@
     },
     {
       "planA": "command-code-go",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 2855.5681209927066,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 92.42027563198513,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "command-code-go",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 2855.5681209927066,
       "meanRequestsB": 150695.09034089494,
@@ -48083,8 +47935,8 @@
       "planA": "command-code-go",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 2855.5681209927066,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.92420275631984,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.8484055126397,
       "winner": "stepfun-flash-max"
     },
     {
@@ -48777,14 +48629,6 @@
     },
     {
       "planA": "command-code-goat",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 28555.68120992706,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 24.20275631985138,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "command-code-goat",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 28555.68120992706,
       "meanRequestsB": 150695.09034089494,
@@ -48803,8 +48647,8 @@
       "planA": "command-code-goat",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 28555.68120992706,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.2420275631985,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.48405512639702,
       "winner": "stepfun-flash-max"
     },
     {
@@ -49489,14 +49333,6 @@
     },
     {
       "planA": "command-code-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 39251.65063648733,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 4.188266645434013,
-      "winner": "draw"
-    },
-    {
-      "planA": "command-code-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 39251.65063648733,
       "meanRequestsB": 150695.09034089494,
@@ -49515,8 +49351,8 @@
       "planA": "command-code-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 39251.65063648733,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.95811733354566,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.91623466709132,
       "winner": "stepfun-flash-max"
     },
     {
@@ -50193,14 +50029,6 @@
     },
     {
       "planA": "command-code-max10",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 42833.521814890584,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 13.695865520222906,
-      "winner": "command-code-max10"
-    },
-    {
-      "planA": "command-code-max10",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 42833.521814890584,
       "meanRequestsB": 150695.09034089494,
@@ -50219,8 +50047,8 @@
       "planA": "command-code-max10",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 42833.521814890584,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.86304134479778,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.72608268959554,
       "winner": "stepfun-flash-max"
     },
     {
@@ -50889,14 +50717,6 @@
     },
     {
       "planA": "command-code-max20",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 85667.04362978117,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 127.3917310404458,
-      "winner": "command-code-max20"
-    },
-    {
-      "planA": "command-code-max20",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 85667.04362978117,
       "meanRequestsB": 150695.09034089494,
@@ -50915,8 +50735,8 @@
       "planA": "command-code-max20",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 85667.04362978117,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 97.72608268959554,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 95.45216537919107,
       "winner": "stepfun-flash-max"
     },
     {
@@ -51577,14 +51397,6 @@
     },
     {
       "planA": "command-code-team-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 11422.272483970826,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 69.68110252794055,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "command-code-team-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 11422.272483970826,
       "meanRequestsB": 150695.09034089494,
@@ -51603,8 +51415,8 @@
       "planA": "command-code-team-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 11422.272483970826,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.6968110252794,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.39362205055882,
       "winner": "stepfun-flash-max"
     },
     {
@@ -52257,14 +52069,6 @@
     },
     {
       "planA": "glm-lite",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 5826.662590275106,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 84.53390199483124,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "glm-lite",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 5826.662590275106,
       "meanRequestsB": 150695.09034089494,
@@ -52283,8 +52087,8 @@
       "planA": "glm-lite",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 5826.662590275106,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.84533901994831,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.69067803989662,
       "winner": "stepfun-flash-max"
     },
     {
@@ -52929,14 +52733,6 @@
     },
     {
       "planA": "glm-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 34959.97554165064,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 7.203411968987394,
-      "winner": "draw"
-    },
-    {
-      "planA": "glm-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 34959.97554165064,
       "meanRequestsB": 150695.09034089494,
@@ -52955,8 +52751,8 @@
       "planA": "glm-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 34959.97554165064,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.07203411968987,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.14406823937975,
       "winner": "stepfun-flash-max"
     },
     {
@@ -53593,14 +53389,6 @@
     },
     {
       "planA": "glm-max",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 81573.27626385148,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 116.52537207236273,
-      "winner": "glm-max"
-    },
-    {
-      "planA": "glm-max",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 81573.27626385148,
       "meanRequestsB": 150695.09034089494,
@@ -53619,8 +53407,8 @@
       "planA": "glm-max",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 81573.27626385148,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 97.83474627927637,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 95.66949255855275,
       "winner": "stepfun-flash-max"
     },
     {
@@ -54249,14 +54037,6 @@
     },
     {
       "planA": "qwen-coding-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 90000,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 138.89298528945164,
-      "winner": "qwen-coding-pro"
-    },
-    {
-      "planA": "qwen-coding-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 90000,
       "meanRequestsB": 150695.09034089494,
@@ -54275,8 +54055,8 @@
       "planA": "qwen-coding-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 90000,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 97.61107014710548,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 95.22214029421096,
       "winner": "stepfun-flash-max"
     },
     {
@@ -54897,14 +54677,6 @@
     },
     {
       "planA": "kimi-moderato",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3300,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.24059053938677,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kimi-moderato",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3300,
       "meanRequestsB": 150695.09034089494,
@@ -54923,8 +54695,8 @@
       "planA": "kimi-moderato",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3300,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91240590539387,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.82481181078774,
       "winner": "stepfun-flash-max"
     },
     {
@@ -55537,14 +55309,6 @@
     },
     {
       "planA": "kimi-allegretto",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 82.39270219533302,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kimi-allegretto",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 6633.333333333334,
       "meanRequestsB": 150695.09034089494,
@@ -55563,8 +55327,8 @@
       "planA": "kimi-allegretto",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 6633.333333333334,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.82392702195332,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.64785404390666,
       "winner": "stepfun-flash-max"
     },
     {
@@ -56169,14 +55933,6 @@
     },
     {
       "planA": "kimi-allegro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 23300,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 38.15326047506419,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kimi-allegro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 23300,
       "meanRequestsB": 150695.09034089494,
@@ -56195,8 +55951,8 @@
       "planA": "kimi-allegro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 23300,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.38153260475065,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.76306520950129,
       "winner": "stepfun-flash-max"
     },
     {
@@ -56793,14 +56549,6 @@
     },
     {
       "planA": "kimi-vivace",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 25.76653928888344,
-      "winner": "kimi-vivace"
-    },
-    {
-      "planA": "kimi-vivace",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 47381.00000000001,
       "meanRequestsB": 150695.09034089494,
@@ -56819,8 +56567,8 @@
       "planA": "kimi-vivace",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 47381.00000000001,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.74233460711118,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.48466921422234,
       "winner": "stepfun-flash-max"
     },
     {
@@ -57409,14 +57157,6 @@
     },
     {
       "planA": "claude-max-20x",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 165682,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 339.78075098585475,
-      "winner": "claude-max-20x"
-    },
-    {
-      "planA": "claude-max-20x",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 165682,
       "meanRequestsB": 150695.09034089494,
@@ -57435,8 +57175,8 @@
       "planA": "claude-max-20x",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 165682,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 95.60219249014145,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 91.20438498028291,
       "winner": "stepfun-flash-max"
     },
     {
@@ -58017,14 +57757,6 @@
     },
     {
       "planA": "kiro-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3231.5,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.42241464485707,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kiro-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3231.5,
       "meanRequestsB": 150695.09034089494,
@@ -58043,8 +57775,8 @@
       "planA": "kiro-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3231.5,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91422414644857,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.82844829289715,
       "winner": "stepfun-flash-max"
     },
     {
@@ -58617,14 +58349,6 @@
     },
     {
       "planA": "kiro-pro-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 6462.9,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 82.84509472636448,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kiro-pro-plus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 6462.9,
       "meanRequestsB": 150695.09034089494,
@@ -58643,8 +58367,8 @@
       "planA": "kiro-pro-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 6462.9,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.82845094726365,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.6569018945273,
       "winner": "stepfun-flash-max"
     },
     {
@@ -59209,14 +58933,6 @@
     },
     {
       "planA": "kiro-pro-max",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 16157.3,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 57.11260409758603,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kiro-pro-max",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 16157.3,
       "meanRequestsB": 150695.09034089494,
@@ -59235,8 +58951,8 @@
       "planA": "kiro-pro-max",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 16157.3,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.57112604097587,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.14225208195172,
       "winner": "stepfun-flash-max"
     },
     {
@@ -59793,14 +59509,6 @@
     },
     {
       "planA": "kiro-power",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 32314.6,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 14.225208195172067,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kiro-power",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 32314.6,
       "meanRequestsB": 150695.09034089494,
@@ -59819,8 +59527,8 @@
       "planA": "kiro-power",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 32314.6,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.14225208195172,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.28450416390343,
       "winner": "stepfun-flash-max"
     },
     {
@@ -60369,14 +60077,6 @@
     },
     {
       "planA": "amazon-q-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 50,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 99.86728167483919,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "amazon-q-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 50,
       "meanRequestsB": 150695.09034089494,
@@ -60395,8 +60095,8 @@
       "planA": "amazon-q-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 50,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.9986728167484,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.99734563349678,
       "winner": "stepfun-flash-max"
     },
     {
@@ -60937,14 +60637,6 @@
     },
     {
       "planA": "amazon-q-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 1000,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 97.34563349678386,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "amazon-q-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 1000,
       "meanRequestsB": 150695.09034089494,
@@ -60963,8 +60655,8 @@
       "planA": "amazon-q-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 1000,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.97345633496784,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.94691266993567,
       "winner": "stepfun-flash-max"
     },
     {
@@ -61497,14 +61189,6 @@
     },
     {
       "planA": "jetbrains-ai-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 99.26015434332382,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "jetbrains-ai-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 278.7277701778386,
       "meanRequestsB": 150695.09034089494,
@@ -61523,8 +61207,8 @@
       "planA": "jetbrains-ai-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 278.7277701778386,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.99260154343324,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.98520308686648,
       "winner": "stepfun-flash-max"
     },
     {
@@ -62049,14 +61733,6 @@
     },
     {
       "planA": "jetbrains-ai-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 97.53384781107941,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "jetbrains-ai-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 929.092567259462,
       "meanRequestsB": 150695.09034089494,
@@ -62075,8 +61751,8 @@
       "planA": "jetbrains-ai-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 929.092567259462,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.9753384781108,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.95067695622159,
       "winner": "stepfun-flash-max"
     },
     {
@@ -62593,14 +62269,6 @@
     },
     {
       "planA": "jetbrains-ai-ultimate",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.36846733877792,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "jetbrains-ai-ultimate",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3251.8239854081166,
       "meanRequestsB": 150695.09034089494,
@@ -62619,8 +62287,8 @@
       "planA": "jetbrains-ai-ultimate",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3251.8239854081166,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91368467338778,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.82736934677557,
       "winner": "stepfun-flash-max"
     },
     {
@@ -63129,14 +62797,6 @@
     },
     {
       "planA": "gemini-code-assist-individual",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 7305,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 80.60985269400618,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "gemini-code-assist-individual",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 7305,
       "meanRequestsB": 150695.09034089494,
@@ -63155,8 +62815,8 @@
       "planA": "gemini-code-assist-individual",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 7305,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.80609852694006,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.61219705388012,
       "winner": "stepfun-flash-max"
     },
     {
@@ -63657,14 +63317,6 @@
     },
     {
       "planA": "gemini-code-assist-standard",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 45660,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 21.198374536848476,
-      "winner": "gemini-code-assist-standard"
-    },
-    {
-      "planA": "gemini-code-assist-standard",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 45660,
       "meanRequestsB": 150695.09034089494,
@@ -63683,8 +63335,8 @@
       "planA": "gemini-code-assist-standard",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 45660,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.78801625463151,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.57603250926303,
       "winner": "stepfun-flash-max"
     },
     {
@@ -64177,14 +63829,6 @@
     },
     {
       "planA": "gemini-code-assist-enterprise",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 60880,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 61.59783271579795,
-      "winner": "gemini-code-assist-enterprise"
-    },
-    {
-      "planA": "gemini-code-assist-enterprise",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 60880,
       "meanRequestsB": 150695.09034089494,
@@ -64203,8 +63847,8 @@
       "planA": "gemini-code-assist-enterprise",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 60880,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.38402167284201,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 96.76804334568403,
       "winner": "stepfun-flash-max"
     },
     {
@@ -64689,14 +64333,6 @@
     },
     {
       "planA": "augment-standard",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 95.06769562215881,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "augment-standard",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 1858.185134518924,
       "meanRequestsB": 150695.09034089494,
@@ -64715,8 +64351,8 @@
       "planA": "augment-standard",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.95067695622159,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.90135391244318,
       "winner": "stepfun-flash-max"
     },
     {
@@ -65193,14 +64829,6 @@
     },
     {
       "planA": "augment-business",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 75.33847811079406,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "augment-business",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 9290.92567259462,
       "meanRequestsB": 150695.09034089494,
@@ -65219,8 +64847,8 @@
       "planA": "augment-business",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 9290.92567259462,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.75338478110794,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.50676956221588,
       "winner": "stepfun-flash-max"
     },
     {
@@ -65689,14 +65317,6 @@
     },
     {
       "planA": "cursor-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 2738.3327277104277,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 92.73146133290498,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "cursor-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 2738.3327277104277,
       "meanRequestsB": 150695.09034089494,
@@ -65715,8 +65335,8 @@
       "planA": "cursor-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 2738.3327277104277,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.92731461332906,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.8546292266581,
       "winner": "stepfun-flash-max"
     },
     {
@@ -66177,14 +65797,6 @@
     },
     {
       "planA": "cursor-ultra",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 54766.65455420856,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 45.370773341900275,
-      "winner": "cursor-ultra"
-    },
-    {
-      "planA": "cursor-ultra",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 54766.65455420856,
       "meanRequestsB": 150695.09034089494,
@@ -66203,8 +65815,8 @@
       "planA": "cursor-ultra",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 54766.65455420856,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.54629226658099,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.092584533162,
       "winner": "stepfun-flash-max"
     },
     {
@@ -66657,14 +66269,6 @@
     },
     {
       "planA": "trae-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.55968071129111,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "trae-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3179.7866942949618,
       "meanRequestsB": 150695.09034089494,
@@ -66683,8 +66287,8 @@
       "planA": "trae-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91559680711292,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.83119361422582,
       "winner": "stepfun-flash-max"
     },
     {
@@ -67129,14 +66733,6 @@
     },
     {
       "planA": "trae-pro-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 74.67904213387332,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "trae-pro-plus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 9539.360082884887,
       "meanRequestsB": 150695.09034089494,
@@ -67155,8 +66751,8 @@
       "planA": "trae-pro-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.74679042133874,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.49358084267746,
       "winner": "stepfun-flash-max"
     },
     {
@@ -67593,14 +67189,6 @@
     },
     {
       "planA": "trae-ultra",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 15.59680711291106,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "trae-ultra",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 31797.866942949622,
       "meanRequestsB": 150695.09034089494,
@@ -67619,8 +67207,8 @@
       "planA": "trae-ultra",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.15596807112911,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.31193614225822,
       "winner": "stepfun-flash-max"
     },
     {
@@ -68049,14 +67637,6 @@
     },
     {
       "planA": "zed-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 92.9147296314631,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "zed-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 2669.288645690834,
       "meanRequestsB": 150695.09034089494,
@@ -68075,8 +67655,8 @@
       "planA": "zed-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 2669.288645690834,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.92914729631464,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.85829459262926,
       "winner": "stepfun-flash-max"
     },
     {
@@ -68497,14 +68077,6 @@
     },
     {
       "planA": "warp-build",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 97.42841800809246,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "warp-build",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 968.8119514738097,
       "meanRequestsB": 150695.09034089494,
@@ -68523,8 +68095,8 @@
       "planA": "warp-build",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.97428418008093,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.94856836016184,
       "winner": "stepfun-flash-max"
     },
     {
@@ -68937,14 +68509,6 @@
     },
     {
       "planA": "warp-max",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 9688.119514738097,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 74.2841800809247,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "warp-max",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 9688.119514738097,
       "meanRequestsB": 150695.09034089494,
@@ -68963,8 +68527,8 @@
       "planA": "warp-max",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 9688.119514738097,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.74284180080925,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.48568360161849,
       "winner": "stepfun-flash-max"
     },
     {
@@ -69369,14 +68933,6 @@
     },
     {
       "planA": "replit-core",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.55968071129111,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "replit-core",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3179.7866942949618,
       "meanRequestsB": 150695.09034089494,
@@ -69395,8 +68951,8 @@
       "planA": "replit-core",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91559680711292,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.83119361422582,
       "winner": "stepfun-flash-max"
     },
     {
@@ -69793,14 +69349,6 @@
     },
     {
       "planA": "kilo-pass",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3020.7973595802137,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.98169667572655,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kilo-pass",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3020.7973595802137,
       "meanRequestsB": 150695.09034089494,
@@ -69819,8 +69367,8 @@
       "planA": "kilo-pass",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3020.7973595802137,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91981696675727,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.83963393351452,
       "winner": "stepfun-flash-max"
     },
     {
@@ -70209,14 +69757,6 @@
     },
     {
       "planA": "v0-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 87.33952106693665,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "v0-plus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 4769.680041442443,
       "meanRequestsB": 150695.09034089494,
@@ -70235,8 +69775,8 @@
       "planA": "v0-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.87339521066937,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.74679042133874,
       "winner": "stepfun-flash-max"
     },
     {
@@ -70617,14 +70157,6 @@
     },
     {
       "planA": "bolt-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 99.47914789387855,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "bolt-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 196.22463796554297,
       "meanRequestsB": 150695.09034089494,
@@ -70643,8 +70175,8 @@
       "planA": "bolt-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.99479147893878,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.98958295787757,
       "winner": "stepfun-flash-max"
     },
     {
@@ -71017,14 +70549,6 @@
     },
     {
       "planA": "copilot-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 2000,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 94.69126699356775,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "copilot-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 2000,
       "meanRequestsB": 150695.09034089494,
@@ -71043,8 +70567,8 @@
       "planA": "copilot-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 2000,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.94691266993567,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.89382533987136,
       "winner": "stepfun-flash-max"
     },
     {
@@ -71409,14 +70933,6 @@
     },
     {
       "planA": "bolt-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 99.94791478938787,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "bolt-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 19.622463796554296,
       "meanRequestsB": 150695.09034089494,
@@ -71435,8 +70951,8 @@
       "planA": "bolt-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 19.622463796554296,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.99947914789388,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.99895829578776,
       "winner": "stepfun-flash-max"
     },
     {
@@ -71793,14 +71309,6 @@
     },
     {
       "planA": "bolt-teams",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 99.47914789387855,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "bolt-teams",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 196.22463796554297,
       "meanRequestsB": 150695.09034089494,
@@ -71819,8 +71327,8 @@
       "planA": "bolt-teams",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 196.22463796554297,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.99479147893878,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.98958295787757,
       "winner": "stepfun-flash-max"
     },
     {
@@ -72169,14 +71677,6 @@
     },
     {
       "planA": "v0-business",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 87.33952106693665,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "v0-business",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 4769.680041442443,
       "meanRequestsB": 150695.09034089494,
@@ -72195,8 +71695,8 @@
       "planA": "v0-business",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 4769.680041442443,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.87339521066937,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.74679042133874,
       "winner": "stepfun-flash-max"
     },
     {
@@ -72537,14 +72037,6 @@
     },
     {
       "planA": "qoder-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 91.55968071129111,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "qoder-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3179.7866942949618,
       "meanRequestsB": 150695.09034089494,
@@ -72563,8 +72055,8 @@
       "planA": "qoder-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3179.7866942949618,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.91559680711292,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.83119361422582,
       "winner": "stepfun-flash-max"
     },
     {
@@ -72897,14 +72389,6 @@
     },
     {
       "planA": "qoder-pro-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 74.67904213387332,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "qoder-pro-plus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 9539.360082884887,
       "meanRequestsB": 150695.09034089494,
@@ -72923,8 +72407,8 @@
       "planA": "qoder-pro-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 9539.360082884887,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.74679042133874,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.49358084267746,
       "winner": "stepfun-flash-max"
     },
     {
@@ -73249,14 +72733,6 @@
     },
     {
       "planA": "qoder-ultra",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 15.59680711291106,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "qoder-ultra",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 31797.866942949622,
       "meanRequestsB": 150695.09034089494,
@@ -73275,8 +72751,8 @@
       "planA": "qoder-ultra",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 31797.866942949622,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.15596807112911,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.31193614225822,
       "winner": "stepfun-flash-max"
     },
     {
@@ -73593,14 +73069,6 @@
     },
     {
       "planA": "qoder-teams",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 6359.5733885899235,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 83.11936142258222,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "qoder-teams",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 6359.5733885899235,
       "meanRequestsB": 150695.09034089494,
@@ -73619,8 +73087,8 @@
       "planA": "qoder-teams",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 6359.5733885899235,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.83119361422582,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.66238722845165,
       "winner": "stepfun-flash-max"
     },
     {
@@ -73929,14 +73397,6 @@
     },
     {
       "planA": "lovable-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 89.44960088911388,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "lovable-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3974.7333678687028,
       "meanRequestsB": 150695.09034089494,
@@ -73955,8 +73415,8 @@
       "planA": "lovable-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.89449600889114,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.78899201778228,
       "winner": "stepfun-flash-max"
     },
     {
@@ -74257,14 +73717,6 @@
     },
     {
       "planA": "replit-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 15898.933471474811,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 57.79840355645553,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "replit-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 15898.933471474811,
       "meanRequestsB": 150695.09034089494,
@@ -74283,8 +73735,8 @@
       "planA": "replit-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 15898.933471474811,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.57798403556455,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.15596807112911,
       "winner": "stepfun-flash-max"
     },
     {
@@ -74577,14 +74029,6 @@
     },
     {
       "planA": "warp-business",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 97.42841800809246,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "warp-business",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 968.8119514738097,
       "meanRequestsB": 150695.09034089494,
@@ -74603,8 +74047,8 @@
       "planA": "warp-business",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 968.8119514738097,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.97428418008093,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.94856836016184,
       "winner": "stepfun-flash-max"
     },
     {
@@ -74889,14 +74333,6 @@
     },
     {
       "planA": "jetbrains-ai-business-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 95.06769562215881,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "jetbrains-ai-business-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 1858.185134518924,
       "meanRequestsB": 150695.09034089494,
@@ -74915,8 +74351,8 @@
       "planA": "jetbrains-ai-business-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 1858.185134518924,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.95067695622159,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.90135391244318,
       "winner": "stepfun-flash-max"
     },
     {
@@ -75193,14 +74629,6 @@
     },
     {
       "planA": "jetbrains-ai-business-ultimate",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 82.73693467755584,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "jetbrains-ai-business-ultimate",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 6503.647970816233,
       "meanRequestsB": 150695.09034089494,
@@ -75219,8 +74647,8 @@
       "planA": "jetbrains-ai-business-ultimate",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 6503.647970816233,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.82736934677557,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.65473869355111,
       "winner": "stepfun-flash-max"
     },
     {
@@ -75489,14 +74917,6 @@
     },
     {
       "planA": "kiro-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 161.5,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 99.5713198097306,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kiro-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 161.5,
       "meanRequestsB": 150695.09034089494,
@@ -75515,8 +74935,8 @@
       "planA": "kiro-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 161.5,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.9957131980973,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.99142639619461,
       "winner": "stepfun-flash-max"
     },
     {
@@ -75777,14 +75197,6 @@
     },
     {
       "planA": "trae-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 5000,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 86.72816748391935,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "trae-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 5000,
       "meanRequestsB": 150695.09034089494,
@@ -75803,8 +75215,8 @@
       "planA": "trae-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 5000,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.86728167483919,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.73456334967838,
       "winner": "stepfun-flash-max"
     },
     {
@@ -76057,14 +75469,6 @@
     },
     {
       "planA": "lovable-business",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 89.44960088911388,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "lovable-business",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 3974.7333678687028,
       "meanRequestsB": 150695.09034089494,
@@ -76083,8 +75487,8 @@
       "planA": "lovable-business",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 3974.7333678687028,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.89449600889114,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.78899201778228,
       "winner": "stepfun-flash-max"
     },
     {
@@ -76329,14 +75733,6 @@
     },
     {
       "planA": "codebuddy-free",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 5000,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 86.72816748391935,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "codebuddy-free",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 5000,
       "meanRequestsB": 150695.09034089494,
@@ -76355,8 +75751,8 @@
       "planA": "codebuddy-free",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 5000,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.86728167483919,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.73456334967838,
       "winner": "stepfun-flash-max"
     },
     {
@@ -76593,14 +75989,6 @@
     },
     {
       "planA": "kilo-pass-49",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 7790.477401022657,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 79.32121774266321,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kilo-pass-49",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 7790.477401022657,
       "meanRequestsB": 150695.09034089494,
@@ -76619,8 +76007,8 @@
       "planA": "kilo-pass-49",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 7790.477401022657,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.79321217742662,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.58642435485326,
       "winner": "stepfun-flash-max"
     },
     {
@@ -76849,14 +76237,6 @@
     },
     {
       "planA": "kilo-pass-199",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 31638.87760823487,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 16.01882307734651,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "kilo-pass-199",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 31638.87760823487,
       "meanRequestsB": 150695.09034089494,
@@ -76875,8 +76255,8 @@
       "planA": "kilo-pass-199",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 31638.87760823487,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.16018823077346,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.32037646154693,
       "winner": "stepfun-flash-max"
     },
     {
@@ -77097,14 +76477,6 @@
     },
     {
       "planA": "standardcompute-starter",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 9422.354885807366,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 74.98961680969809,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "standardcompute-starter",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 9422.354885807366,
       "meanRequestsB": 150695.09034089494,
@@ -77123,8 +76495,8 @@
       "planA": "standardcompute-starter",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 9422.354885807366,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.74989616809698,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.49979233619396,
       "winner": "stepfun-flash-max"
     },
     {
@@ -77337,14 +76709,6 @@
     },
     {
       "planA": "standardcompute-economy",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 19315.8275159051,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 48.72871445988108,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "standardcompute-economy",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 19315.8275159051,
       "meanRequestsB": 150695.09034089494,
@@ -77363,8 +76727,8 @@
       "planA": "standardcompute-economy",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 19315.8275159051,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.48728714459881,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 98.97457428919762,
       "winner": "stepfun-flash-max"
     },
     {
@@ -77569,14 +76933,6 @@
     },
     {
       "planA": "standardcompute-standard",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 44756.18570758498,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 18.79932015393404,
-      "winner": "standardcompute-standard"
-    },
-    {
-      "planA": "standardcompute-standard",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 44756.18570758498,
       "meanRequestsB": 150695.09034089494,
@@ -77595,8 +76951,8 @@
       "planA": "standardcompute-standard",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 44756.18570758498,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.81200679846066,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.62401359692132,
       "winner": "stepfun-flash-max"
     },
     {
@@ -77793,14 +77149,6 @@
     },
     {
       "planA": "standardcompute-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 126730.67321410905,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 236.3896539095606,
-      "winner": "standardcompute-pro"
-    },
-    {
-      "planA": "standardcompute-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 126730.67321410905,
       "meanRequestsB": 150695.09034089494,
@@ -77819,8 +77167,8 @@
       "planA": "standardcompute-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 126730.67321410905,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 96.6361034609044,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 93.27220692180879,
       "winner": "stepfun-flash-max"
     },
     {
@@ -78009,14 +77357,6 @@
     },
     {
       "planA": "standardcompute-proplus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 258643.64161541214,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 586.5350185737873,
-      "winner": "standardcompute-proplus"
-    },
-    {
-      "planA": "standardcompute-proplus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 258643.64161541214,
       "meanRequestsB": 150695.09034089494,
@@ -78035,8 +77375,8 @@
       "planA": "standardcompute-proplus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 258643.64161541214,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 93.13464981426213,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 86.26929962852425,
       "winner": "stepfun-flash-max"
     },
     {
@@ -78217,14 +77557,6 @@
     },
     {
       "planA": "standardcompute-growth",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 527180.7558609222,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 1299.330939497392,
-      "winner": "standardcompute-growth"
-    },
-    {
-      "planA": "standardcompute-growth",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 527180.7558609222,
       "meanRequestsB": 150695.09034089494,
@@ -78243,8 +77575,8 @@
       "planA": "standardcompute-growth",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 527180.7558609222,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 86.00669060502608,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 72.01338121005216,
       "winner": "stepfun-flash-max"
     },
     {
@@ -78417,14 +77749,6 @@
     },
     {
       "planA": "standardcompute-scale",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 1342214.453483259,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 3462.7290854585062,
-      "winner": "standardcompute-scale"
-    },
-    {
-      "planA": "standardcompute-scale",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 1342214.453483259,
       "meanRequestsB": 150695.09034089494,
@@ -78443,8 +77767,8 @@
       "planA": "standardcompute-scale",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 1342214.453483259,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 64.37270914541493,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 28.74541829082986,
       "winner": "stepfun-flash-max"
     },
     {
@@ -78609,14 +77933,6 @@
     },
     {
       "planA": "freebuff-starter",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 98471.79409374151,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 161.38023175402333,
-      "winner": "freebuff-starter"
-    },
-    {
-      "planA": "freebuff-starter",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 98471.79409374151,
       "meanRequestsB": 150695.09034089494,
@@ -78635,8 +77951,8 @@
       "planA": "freebuff-starter",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 98471.79409374151,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 97.38619768245977,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 94.77239536491953,
       "winner": "stepfun-flash-max"
     },
     {
@@ -78793,14 +78109,6 @@
     },
     {
       "planA": "freebuff-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 156825.44985299572,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 316.2722209415927,
-      "winner": "freebuff-plus"
-    },
-    {
-      "planA": "freebuff-plus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 156825.44985299572,
       "meanRequestsB": 150695.09034089494,
@@ -78819,8 +78127,8 @@
       "planA": "freebuff-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 156825.44985299572,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 95.83727779058407,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 91.67455558116815,
       "winner": "stepfun-flash-max"
     },
     {
@@ -78969,14 +78277,6 @@
     },
     {
       "planA": "freebuff-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 255297.24394673726,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 577.6524526956161,
-      "winner": "freebuff-pro"
-    },
-    {
-      "planA": "freebuff-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 255297.24394673726,
       "meanRequestsB": 150695.09034089494,
@@ -78995,8 +78295,8 @@
       "planA": "freebuff-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 255297.24394673726,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 93.22347547304383,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 86.44695094608767,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79137,14 +78437,6 @@
     },
     {
       "planA": "opendesign-go",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 87893.12099358032,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 133.30055622848195,
-      "winner": "opendesign-go"
-    },
-    {
-      "planA": "opendesign-go",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 87893.12099358032,
       "meanRequestsB": 150695.09034089494,
@@ -79163,8 +78455,8 @@
       "planA": "opendesign-go",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 87893.12099358032,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 97.66699443771518,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 95.33398887543036,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79297,14 +78589,6 @@
     },
     {
       "planA": "opendesign-plus",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 117190.82799144043,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 211.0674083046426,
-      "winner": "opendesign-plus"
-    },
-    {
-      "planA": "opendesign-plus",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 117190.82799144043,
       "meanRequestsB": 150695.09034089494,
@@ -79323,8 +78607,8 @@
       "planA": "opendesign-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 117190.82799144043,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 96.88932591695357,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 93.77865183390715,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79449,14 +78733,6 @@
     },
     {
       "planA": "opendesign-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 263679.36298074096,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 599.9016686854459,
-      "winner": "opendesign-pro"
-    },
-    {
-      "planA": "opendesign-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 263679.36298074096,
       "meanRequestsB": 150695.09034089494,
@@ -79475,8 +78751,8 @@
       "planA": "opendesign-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 263679.36298074096,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 93.00098331314554,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 86.00196662629108,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79593,14 +78869,6 @@
     },
     {
       "planA": "opendesign-max",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 439465.60496790166,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 1066.50278114241,
-      "winner": "opendesign-max"
-    },
-    {
-      "planA": "opendesign-max",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 439465.60496790166,
       "meanRequestsB": 150695.09034089494,
@@ -79619,8 +78887,8 @@
       "planA": "opendesign-max",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 439465.60496790166,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 88.3349721885759,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 76.6699443771518,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79729,14 +78997,6 @@
     },
     {
       "planA": "mimo-lite",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 14086.910143170182,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 62.60817758215354,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "mimo-lite",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 14086.910143170182,
       "meanRequestsB": 150695.09034089494,
@@ -79755,8 +79015,8 @@
       "planA": "mimo-lite",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 14086.910143170182,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99.62608177582155,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 99.25216355164306,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79857,14 +79117,6 @@
     },
     {
       "planA": "mimo-standard",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 37794.149164602924,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 0.3195235600758517,
-      "winner": "draw"
-    },
-    {
-      "planA": "mimo-standard",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 37794.149164602924,
       "meanRequestsB": 150695.09034089494,
@@ -79883,8 +79135,8 @@
       "planA": "mimo-standard",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 37794.149164602924,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 98.99680476439924,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 97.99360952879849,
       "winner": "stepfun-flash-max"
     },
     {
@@ -79977,14 +79229,6 @@
     },
     {
       "planA": "mimo-pro",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 130561.60620499193,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 246.5583541166257,
-      "winner": "mimo-pro"
-    },
-    {
-      "planA": "mimo-pro",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 130561.60620499193,
       "meanRequestsB": 150695.09034089494,
@@ -80003,8 +79247,8 @@
       "planA": "mimo-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 130561.60620499193,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 96.53441645883373,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 93.06883291766749,
       "winner": "stepfun-flash-max"
     },
     {
@@ -80089,14 +79333,6 @@
     },
     {
       "planA": "mimo-max",
-      "planB": "stepfun-flash-mini",
-      "meanRequestsA": 281738.20286340365,
-      "meanRequestsB": 37673.772585223734,
-      "advantagePercent": 647.8364483569292,
-      "winner": "mimo-max"
-    },
-    {
-      "planA": "mimo-max",
       "planB": "stepfun-flash-plus",
       "meanRequestsA": 281738.20286340365,
       "meanRequestsB": 150695.09034089494,
@@ -80115,8 +79351,8 @@
       "planA": "mimo-max",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 281738.20286340365,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 92.5216355164307,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 85.04327103286141,
       "winner": "stepfun-flash-max"
     },
     {
@@ -80200,110 +79436,6 @@
       "winner": "ollama-team"
     },
     {
-      "planA": "stepfun-flash-mini",
-      "planB": "stepfun-flash-plus",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 150695.09034089494,
-      "advantagePercent": 75,
-      "winner": "stepfun-flash-plus"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "stepfun-flash-pro",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 753475.4517044746,
-      "advantagePercent": 95,
-      "winner": "stepfun-flash-pro"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "stepfun-flash-max",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 99,
-      "winner": "stepfun-flash-max"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "cerebras-code-pro",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 162.80261696344886,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "cerebras-code-max",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 47.439476607310226,
-      "winner": "cerebras-code-max"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "copilot-pro",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 4635.813613454593,
-      "advantagePercent": 712.6679743094625,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "copilot-pro-plus",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 21633.7968627881,
-      "advantagePercent": 74.1431373520277,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "copilot-max",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 61810.848179394576,
-      "advantagePercent": 39.04990192679032,
-      "winner": "copilot-max"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "copilot-business",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 5872.030577042485,
-      "advantagePercent": 541.5799797179966,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "copilot-enterprise",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 12053.115394981944,
-      "advantagePercent": 212.56460550363934,
-      "winner": "stepfun-flash-mini"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "ollama-pro",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 37354.244963964426,
-      "advantagePercent": 0.8553984200927012,
-      "winner": "draw"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "ollama-max",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 186771.22481982212,
-      "advantagePercent": 79.82892031598145,
-      "winner": "ollama-max"
-    },
-    {
-      "planA": "stepfun-flash-mini",
-      "planB": "ollama-team",
-      "meanRequestsA": 37673.772585223734,
-      "meanRequestsB": 622570.7493994071,
-      "advantagePercent": 93.94867609479444,
-      "winner": "ollama-team"
-    },
-    {
       "planA": "stepfun-flash-plus",
       "planB": "stepfun-flash-pro",
       "meanRequestsA": 150695.09034089494,
@@ -80315,8 +79447,8 @@
       "planA": "stepfun-flash-plus",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 150695.09034089494,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 96,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 92,
       "winner": "stepfun-flash-max"
     },
     {
@@ -80403,8 +79535,8 @@
       "planA": "stepfun-flash-pro",
       "planB": "stepfun-flash-max",
       "meanRequestsA": 753475.4517044746,
-      "meanRequestsB": 3767377.2585223727,
-      "advantagePercent": 80,
+      "meanRequestsB": 1883688.6292611863,
+      "advantagePercent": 60,
       "winner": "stepfun-flash-max"
     },
     {
@@ -80490,81 +79622,81 @@
     {
       "planA": "stepfun-flash-max",
       "planB": "cerebras-code-pro",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 14335.387151210707,
-      "advantagePercent": 26180.261696344878,
+      "advantagePercent": 13040.130848172439,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "cerebras-code-max",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 71676.93575605353,
-      "advantagePercent": 5156.052339268976,
+      "advantagePercent": 2528.026169634488,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-pro",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 4635.813613454593,
-      "advantagePercent": 81166.79743094623,
+      "advantagePercent": 40533.398715473115,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-pro-plus",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 21633.7968627881,
-      "advantagePercent": 17314.313735202766,
+      "advantagePercent": 8607.156867601383,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-max",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 61810.848179394576,
-      "advantagePercent": 5995.0098073209665,
+      "advantagePercent": 2947.5049036604833,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-business",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 5872.030577042485,
-      "advantagePercent": 64057.99797179965,
+      "advantagePercent": 31978.998985899823,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "copilot-enterprise",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 12053.115394981944,
-      "advantagePercent": 31156.460550363932,
+      "advantagePercent": 15528.230275181966,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "ollama-pro",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 37354.244963964426,
-      "advantagePercent": 9985.539842009268,
+      "advantagePercent": 4942.769921004634,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "ollama-max",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 186771.22481982212,
-      "advantagePercent": 1917.1079684018537,
+      "advantagePercent": 908.5539842009268,
       "winner": "stepfun-flash-max"
     },
     {
       "planA": "stepfun-flash-max",
       "planB": "ollama-team",
-      "meanRequestsA": 3767377.2585223727,
+      "meanRequestsA": 1883688.6292611863,
       "meanRequestsB": 622570.7493994071,
-      "advantagePercent": 505.1323905205561,
+      "advantagePercent": 202.56619526027805,
       "winner": "stepfun-flash-max"
     },
     {
@@ -81087,8 +80219,8 @@
       "planId": "opencode-go",
       "family": "kimi k3.1 pro",
       "modelCount": 1,
-      "normalizedPer1Median": 113.464447806354,
-      "normalizedPer1Mean": 113.464447806354
+      "normalizedPer1Median": 453.857791225416,
+      "normalizedPer1Mean": 453.857791225416
     },
     {
       "planId": "opencode-go",
@@ -81276,8 +80408,8 @@
       "planId": "opencode-go-plus",
       "family": "kimi k3.1 pro",
       "modelCount": 1,
-      "normalizedPer1Median": 113.464447806354,
-      "normalizedPer1Mean": 113.464447806354
+      "normalizedPer1Median": 226.928895612708,
+      "normalizedPer1Mean": 226.928895612708
     },
     {
       "planId": "opencode-go-plus",
@@ -81465,8 +80597,8 @@
       "planId": "opencode-go-teams",
       "family": "kimi k3.1 pro",
       "modelCount": 1,
-      "normalizedPer1Median": 75.64296520423599,
-      "normalizedPer1Mean": 75.64296520423599
+      "normalizedPer1Median": 245.83963691376704,
+      "normalizedPer1Mean": 245.83963691376704
     },
     {
       "planId": "opencode-go-teams",
@@ -89253,20 +88385,6 @@
       "normalizedPer1Mean": 3860.6403013182676
     },
     {
-      "planId": "stepfun-flash-mini",
-      "family": "step 3.7 flash",
-      "modelCount": 1,
-      "normalizedPer1Median": 3484.185226638278,
-      "normalizedPer1Mean": 3484.185226638278
-    },
-    {
-      "planId": "stepfun-flash-mini",
-      "family": "step 3.5 flash",
-      "modelCount": 1,
-      "normalizedPer1Median": 7295.148846387109,
-      "normalizedPer1Mean": 7295.148846387109
-    },
-    {
       "planId": "stepfun-flash-plus",
       "family": "step 3.7 flash",
       "modelCount": 1,
@@ -89298,15 +88416,15 @@
       "planId": "stepfun-flash-max",
       "family": "step 3.7 flash",
       "modelCount": 1,
-      "normalizedPer1Median": 24600.45932747633,
-      "normalizedPer1Mean": 24600.45932747633
+      "normalizedPer1Median": 20639.368418814887,
+      "normalizedPer1Mean": 20639.368418814887
     },
     {
       "planId": "stepfun-flash-max",
       "family": "step 3.5 flash",
       "modelCount": 1,
-      "normalizedPer1Median": 51508.172157824134,
-      "normalizedPer1Mean": 51508.172157824134
+      "normalizedPer1Median": 43214.48342054737,
+      "normalizedPer1Mean": 43214.48342054737
     },
     {
       "planId": "cerebras-code-pro",
@@ -91198,10 +90316,10 @@
       "family": "kimi k3.1 pro",
       "planA": "opencode-go",
       "planB": "command-code-goat",
-      "requestsA": 113.464447806354,
+      "requestsA": 453.857791225416,
       "requestsB": 140.3394530690835,
-      "advantagePercent": 19.150000000000013,
-      "winner": "command-code-goat"
+      "advantagePercent": 223.39999999999995,
+      "winner": "opencode-go"
     },
     {
       "family": "gemini 4 argon",
@@ -91378,10 +90496,10 @@
       "family": "kimi k3.1 pro",
       "planA": "opencode-go",
       "planB": "command-code-pro",
-      "requestsA": 113.464447806354,
+      "requestsA": 453.857791225416,
       "requestsB": 105.25458980181261,
-      "advantagePercent": 7.800000000000007,
-      "winner": "draw"
+      "advantagePercent": 331.20000000000005,
+      "winner": "opencode-go"
     },
     {
       "family": "gemini 4 argon",
@@ -92268,7 +91386,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-24T13:47:17.834Z",
+    "fetchedAt": "2026-11-25T12:59:52.014Z",
     "count": 478,
     "scores": {
       "claude-fable-5-2": {
@@ -93824,7 +92942,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-24",
+      "verifiedAt": "2026-11-25",
       "crawled": true
     },
     {
@@ -94511,18 +93629,18 @@
   },
   "fx": {
     "base": "USD",
-    "updatedAt": "Tue, 24 Nov 2026 00:02:31 +0000",
+    "updatedAt": "Wed, 25 Nov 2026 00:02:31 +0000",
     "rates": {
-      "EUR": 0.915641,
-      "CNY": 6.679299,
-      "GBP": 0.766672,
-      "JPY": 159.06171
+      "EUR": 0.91245,
+      "CNY": 6.678179,
+      "GBP": 0.763269,
+      "JPY": 159.238818
     }
   },
   "statistics": {
-    "totalPlans": 141,
-    "comparablePlans": 95,
-    "plansWithModels": 95,
+    "totalPlans": 140,
+    "comparablePlans": 94,
+    "plansWithModels": 94,
     "undisclosed": 1,
     "sourceCount": 30
   },
