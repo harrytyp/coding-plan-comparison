@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-25T12:59:52.264Z",
+  "generatedAt": "2026-11-26T12:40:10.188Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -119,7 +119,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 13878540305.010895,
@@ -146,7 +146,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 6939270152.505447,
@@ -173,7 +173,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 392264824.81167513,
@@ -200,7 +200,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 196132412.40583757,
@@ -1194,7 +1194,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 27757080610.02179,
@@ -1221,7 +1221,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 13878540305.010895,
@@ -1248,7 +1248,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 1569059299.2467005,
@@ -1275,7 +1275,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 784529649.6233503,
@@ -2269,7 +2269,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 14572467320.26144,
@@ -2296,7 +2296,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 7286233660.13072,
@@ -2323,7 +2323,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 523019766.41556686,
@@ -2350,7 +2350,7 @@
           "privacy": {
             "training": false,
             "retentionDays": true,
-            "validUntil": "2026-11-30"
+            "validUntil": "2026-12-31"
           },
           "estimate": null,
           "rawTokensPerMonth": 261509883.20778343,
@@ -91386,7 +91386,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-25T12:59:52.014Z",
+    "fetchedAt": "2026-11-26T12:40:09.992Z",
     "count": 478,
     "scores": {
       "claude-fable-5-2": {
@@ -91716,10 +91716,10 @@
       "claude-sonnet-4-6": {
         "intelligence": 36.02
       },
-      "minimax-m2-5": {
+      "glm-5": {
         "intelligence": 36.01
       },
-      "glm-5": {
+      "minimax-m2-5": {
         "intelligence": 36.01
       },
       "gemini-3-flash-preview": {
@@ -91737,10 +91737,10 @@
       "gpt-5-1-instant-2025-11-12": {
         "intelligence": 35.74
       },
-      "gpt-5-1-2025-11-13": {
+      "gpt-5-3-codex": {
         "intelligence": 35.6
       },
-      "gpt-5-3-codex": {
+      "gpt-5-1-2025-11-13": {
         "intelligence": 35.6
       },
       "nemotron-3-ultra-550b-a55b": {
@@ -91875,10 +91875,10 @@
       "k2-horizon-32b": {
         "intelligence": 29.79
       },
-      "mimo-v2-flash": {
+      "qwen3-5-35b-a3b": {
         "intelligence": 29.69
       },
-      "qwen3-5-35b-a3b": {
+      "mimo-v2-flash": {
         "intelligence": 29.69
       },
       "grok-3": {
@@ -92085,16 +92085,16 @@
       "kimi-k2-0905": {
         "intelligence": 21.13
       },
-      "nemotron-3-5-lightning-30b-a3b": {
-        "intelligence": 21.07
-      },
       "gemma-4-12b-it": {
         "intelligence": 21.07
       },
-      "kimi-k2-instruct": {
-        "intelligence": 20.96
+      "nemotron-3-5-lightning-30b-a3b": {
+        "intelligence": 21.07
       },
       "k2-horizon-3-7b": {
+        "intelligence": 20.96
+      },
+      "kimi-k2-instruct": {
         "intelligence": 20.96
       },
       "gemini-2-5-flash": {
@@ -92106,10 +92106,10 @@
       "kimi-k2-instruct-0905": {
         "intelligence": 20.66
       },
-      "o3-mini": {
+      "minimax-m1-80k": {
         "intelligence": 20.49
       },
-      "minimax-m1-80k": {
+      "o3-mini": {
         "intelligence": 20.49
       },
       "qwen3-coder-480b-a35b-instruct": {
@@ -92942,7 +92942,7 @@
       "retentionDays": 30,
       "retentionNote": "hed files, code snippets, model outputs, and related request data, is retained for up to thirty (30) days unless you enable zero data retention or a different retention period is required by",
       "sourceUrl": "https://commandcode.ai/privacy",
-      "verifiedAt": "2026-11-25",
+      "verifiedAt": "2026-11-26",
       "crawled": true
     },
     {
