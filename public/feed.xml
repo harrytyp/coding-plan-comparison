@@ -5,9 +5,16 @@
   <id>https://vibeplan.cc/</id>
   <link rel="self" href="https://vibeplan.cc/feed.xml"/>
   <link rel="alternate" href="https://vibeplan.cc/"/>
-  <updated>2026-11-18T00:00:00Z</updated>
+  <updated>2026-11-28T00:00:00Z</updated>
   <author><name>Kolja Knodel</name><uri>https://github.com/harrytyp</uri></author>
   <rights>MIT</rights>
+  <entry>
+    <title>Qwen-docs liest Preis- und Quotenzeilen der neuen Seite</title>
+    <id>https://vibeplan.cc/#41fd624</id>
+    <updated>2026-11-28T00:00:00Z</updated>
+    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/41fd624"/>
+    <summary>Qwen-docs liest Preis- und Quotenzeilen der neuen Seite</summary>
+  </entry>
   <entry>
     <title>Match models the feed renamed to '(latest)'</title>
     <id>https://vibeplan.cc/#bba4314</id>
@@ -210,12 +217,5 @@
     <updated>2026-10-02T00:00:00Z</updated>
     <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/687619d"/>
     <summary>Record the Cloudflare setup (proxy, TLS, redirects, rollback)</summary>
-  </entry>
-  <entry>
-    <title>Preview build resolves the JSON-LD date placeholder</title>
-    <id>https://vibeplan.cc/#ff76c30</id>
-    <updated>2026-10-02T00:00:00Z</updated>
-    <link rel="alternate" href="https://github.com/harrytyp/coding-plan-comparison/commit/ff76c30"/>
-    <summary>Preview build resolves the JSON-LD date placeholder</summary>
   </entry>
 </feed>
