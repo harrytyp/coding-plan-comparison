@@ -179,22 +179,27 @@ export function parseGlmOverview(html) {
 export function parseQwenDocs(html) {
   const text = htmlToText(html);
   const out = { plans: [], taskConversion: null };
-  // Preise + Quoten: "Price $ 50 /month Quota Up to 6,000 requests per 5 hours ..."
-  const priceRe = /Price\s*\$?\s*([\d.]+)\s*\/month/g;
-  const quota5hRe = /Up to\s*([\d,]+)\s*requests per 5 hours/g;
-  const quotaWeekRe = /Up to\s*([\d,]+)\s*requests per week/g;
-  const quotaMonthRe = /Up to\s*([\d,]+)\s*requests per month/g;
-  let m;
-  const prices = [];
-  while ((m = priceRe.exec(text))) prices.push(parseFloat(m[1]));
-  const q5h = [...text.matchAll(quota5hRe)].map((x) => parseInt(x[1].replace(/,/g, ""), 10));
-  const qw = [...text.matchAll(quotaWeekRe)].map((x) => parseInt(x[1].replace(/,/g, ""), 10));
-  const qm = [...text.matchAll(quotaMonthRe)].map((x) => parseInt(x[1].replace(/,/g, ""), 10));
-  if (prices.length) {
-    out.plans.push({ name: "Coding Plan Pro", price: prices[0], quota5h: q5h[0] ?? null, quotaWeek: qw[0] ?? null, quotaMonth: qm[0] ?? null });
+  // Preise + Quoten, zwei Fassungen derselben Seite:
+  //   alt (bis 11/2026): "Price $ 50 /month ... Up to 6,000 requests per 5 hours"
+  //   neu (ab 27.11.2026): "Pricing $ 50 /Month(s) ... 6,000 requests every 5 hours"
+  const priceRe = /Pric(?:e|ing)\s*(?:US\$|\$)?\s*([\d.]+)\s*\/\s*month(?:\(s\))?/gi;
+  const quotaRe = (unit) => new RegExp(`([\\d,]+)\\s*requests\\s+(?:every|per)\\s*${unit}`, "gi");
+  const nums = (re) => [...text.matchAll(re)].map((x) => parseInt(x[1].replace(/,/g, ""), 10));
+  const prices = [...text.matchAll(priceRe)].map((x) => parseFloat(x[1]));
+  // Der Text nennt "Pricing" und "Usage limits"; Preis/Quote bleiben 1:1 aus der Quelle.
+  const q5h = nums(quotaRe("5\\s*hours"));
+  const qw = nums(quotaRe("week"));
+  const qm = nums(quotaRe("month"));
+  if (!prices.length || !qm.length) {
+    throw new Error("qwen-docs: kein Tarif erkannt (Seitenlayout geaendert?)");
   }
-  const conv = /Simple tasks typically use\s*([\d–-]+)\s*calls?, while complex tasks may use\s*([\d–-]+)\s*or more/i.exec(text);
-  if (conv) out.taskConversion = `simple ${conv[1]} calls, complex ${conv[2]}+ calls`;
+  out.plans.push({ name: "Coding Plan Pro", price: prices[0], quota5h: q5h[0] ?? null, quotaWeek: qw[0] ?? null, quotaMonth: qm[0] ?? null });
+  // Aufwands-Umrechnung, ebenfalls zwei Fassungen:
+  //   alt: "Simple tasks typically use 5-10 calls, while complex tasks may use 10-30 or more"
+  //   neu: "A simple task consumes about 5-10 calls, and a complex task about 10-30+ calls"
+  const simple = /simple tasks?[^.]{0,40}?(\d+\s*[–-]\s*\d+)\s*calls?/i.exec(text);
+  const complex = /complex tasks?[^.]{0,40}?(\d+\s*[–-]\s*\d+)/i.exec(text);
+  if (simple && complex) out.taskConversion = `simple ${simple[1]} calls, complex ${complex[1]}+ calls`;
   return out;
 }
 

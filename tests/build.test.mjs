@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseQwenTokenPersonal, htmlToText } from "../scripts/parsers.mjs";
+import { parseQwenTokenPersonal, parseQwenDocs, htmlToText } from "../scripts/parsers.mjs";
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 
@@ -569,6 +569,25 @@ test("Qwen-Token-Parser: Tariftabelle mit und ohne Aktionspreis", () => {
   assert.deepEqual(out.extraBundle, { price: 15, credits: 20000 });
   // Layoutwechsel ohne Preise muss laut scheitern, nicht still Tarife verlieren.
   assert.throws(() => parseQwenTokenPersonal("<h2>Plans and pricing</h2><p>Lite plan Essential plan</p>"), /keine Preise/);
+});
+
+// Regression 2026-11-27: Die Qwen-Coding-Plan-Seite wurde auf "Pricing $ 50 /Month(s)"
+// und "6,000 requests every 5 hours" umformuliert. Die alten Regexe fanden keinen Tarif,
+// qwen-coding-pro fiel still aus dem Katalog und der Build-Test kippte.
+test("Qwen-Docs: Tarifblock in alter und neuer Formulierung", () => {
+  const alt = `<p>Price $ 50 /month Quota Up to 6,000 requests per 5 hours, Up to 45,000 requests per week, Up to 90,000 requests per month</p>
+    <p>Simple tasks typically use 5-10 calls, while complex tasks may use 10-30 or more</p>`;
+  const neu = `<p>Pricing $ 50 /Month(s) Usage limits 6,000 requests every 5 hours 45,000 requests per week 90,000 requests per month</p>
+    <p>Quota consumption: A simple task consumes about 5-10 calls, and a complex task about 10-30+ calls</p>`;
+  for (const html of [alt, neu]) {
+    const out = parseQwenDocs(html);
+    assert.equal(out.plans.length, 1);
+    const p = out.plans[0];
+    assert.deepEqual({ price: p.price, quota5h: p.quota5h, quotaWeek: p.quotaWeek, quotaMonth: p.quotaMonth }, { price: 50, quota5h: 6000, quotaWeek: 45000, quotaMonth: 90000 });
+    assert.match(out.taskConversion, /simple 5-10 calls, complex 10-30\+ calls/);
+  }
+  // Layoutwechsel ohne Tarif muss laut scheitern, nicht still den Plan verlieren.
+  assert.throws(() => parseQwenDocs("<p>nichts</p>"), /kein Tarif/);
 });
 
 // Qwen Coding Plan Pro: die offizielle Monatsquote ist bereits eine Request-Zahl.
