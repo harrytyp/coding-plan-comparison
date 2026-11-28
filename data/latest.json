@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-28T07:33:00.409Z",
+  "generatedAt": "2026-11-28T11:51:32.452Z",
   "targetMonthlyPrice": 1,
   "methodology": {
     "basis": "Official raw data + provider credit formulas + workload patterns. '60 for 10' is only the sticker value; comparability comes from base credits (token prices) + cache model + pattern.",
@@ -91626,7 +91626,7 @@
   ],
   "aiScores": {
     "source": "LLM Stats (zeroeval.com)",
-    "fetchedAt": "2026-11-28T07:33:00.153Z",
+    "fetchedAt": "2026-11-28T11:51:32.239Z",
     "count": 478,
     "scores": {
       "claude-fable-5-2": {
